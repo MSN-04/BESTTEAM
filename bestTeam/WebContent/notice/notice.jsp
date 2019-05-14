@@ -32,7 +32,9 @@
   </head>
   <body>
   	
-  	<jsp:include page="../inc/header.jsp"></jsp:include>
+  	<header>
+  		<jsp:include page="../inc/header.jsp"/>
+  	</header>
   	
     <!-- END nav -->
 
@@ -58,7 +60,7 @@
     <div class="row d-flex">
     <div class="blog-entry align-self-stretch">
     <br><br><br><br>
-    <a href="noticeWriteForm.jsp">글쓰기</a><br>
+    <a href="noticeWriteForm.jsp" style="float: right; padding: 0.3rem; font-size: 16px;">글쓰기</a><br>
     <table class="table thead-light">
     <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
     <tr><td>2</td><td><a href="#">이벤트를 진행합니다.</a></td><td>19.04.23</td><td>admin</td><td>3</td></tr>

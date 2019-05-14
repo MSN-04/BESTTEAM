@@ -49,41 +49,59 @@
     	.row {
     		flex-wrap: nowrap;
     	}
-    	
+    	.up-button {
+	 		position: fixed;
+	 		right: 16px;
+	 		bottom: 16px;
+	 		z-index: 50;
+	 		width: 40px;
+	 		height: 40px;
+	 		border-radius: 50%;
+	 		background-color: #242424;
+	 		background-image: url("https://assets.website-files.com/5c330a4a121342bde4045c5d/5c35885e1c5d6080565a921c_chevrons-up-white.svg");
+	 		background-position: 50% 46%;
+	 		background-size: 20px;
+	 		background-repeat: no-repeat;
+	 		transition: all 400ms cubic-bezier(.215, .61, .355, 1);
+	 	}
+	 	.w-inline-block {
+	 		max-width: 100%;
+	 	}
     </style>
-    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+	    $(document).ready(function(){
+			$(window).scroll(function(){  //스크롤하면 아래 코드 실행
+		       var num = $(this).scrollTop();  // 스크롤값
+		       if( num >= 445 ){  // 스크롤을 36이상 했을 때
+					$('#goTop').css({
+		       			'transform' : 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
+		       			'opacity' : '1'
+		       		});
+		       }else{
+		    	   $('#goTop').css({
+		       			'transform' : 'translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
+		       			'opacity' : '0'
+		       		});
+		       }
+		 	 });
+			
+			$('#goTop').click( function() {
+				$( 'html, body' ).animate( { scrollTop : 475 }, 400, "swing" );
+				return false;
+			} );
+		});
+    </script>
   </head>
   <body>
-  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
-              </div>
-            </li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
-	        </ul>
-	      </div>
-		  </div>
-	  </nav>
+  	<header>
+  		<jsp:include page="../inc/header.jsp"/>
+  	</header>
     <!-- END nav -->
-
+    
+    <!-- 맨 위로 -->
+	<a href="#" class="up-button w-inline-block" id="goTop" style="display: block; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;"></a>
+    
     <section class="home-slider owl-carousel">
 
       <div class="slider-item" style="background-image: url(../images/bg_3.jpg);" data-stellar-background-ratio="0.5">
@@ -117,7 +135,7 @@
 // 			    System.out.println("내용:"+content);    
 			%>
 			
-	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 50px; font-weight: 300; font-family: Josefin Sans, Arial, sans-serif;"><%=title %></div>
+	 			<div style="margin-bottom: 18px;font-size: 2rem;font-weight: 400;color: #fff;font-family: Josefin Sans, Arial, sans-serif;"><%=title %></div>
 	 			
 				<div style="margin: auto;"><%=content %></div>
  			
