@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-response.sendRedirect("./index/index.jsp");
+response.sendRedirect("index.in");
 %>
 </body>
 </html>

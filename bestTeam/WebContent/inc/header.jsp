@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="./css/login.css">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -87,7 +87,7 @@
 			style="width: 300px; height: 300px;">
 			<a href="#" class="close"><img src="../images/close_pop.png"
 				class="btn_close" title="Close Window" alt="Close" /></a>
-			<form method="post" class="signin" action="#">
+			<form method="post" class="signin" action="LoginProAction.us">
 				<fieldset class="textbox">
 					<label class="username"> <span>ID</span> <input
 						id="username" name="username" value="" type="text"
