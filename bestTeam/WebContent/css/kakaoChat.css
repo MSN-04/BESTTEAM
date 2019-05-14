@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#kakaoChat {
+	 position: fixed;
+	 bottom: 30px;
+	 right: 30px;
+	 z-index: 999; 
+	 width: 60px;
+ }
+	 
+#plusfriend-chat-button {
+	position: fixed; 
+	bottom: 25px; 
+	right: 25px; 
+	z-index: 999;
+}	 
