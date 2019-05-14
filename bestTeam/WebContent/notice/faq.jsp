@@ -18,7 +18,7 @@ b{
 	
 }
 .ftco-menu {
-    padding-top: 12em;
+    padding-top: 12em !important;
 }
 
 .pb-5, .py-5 {
