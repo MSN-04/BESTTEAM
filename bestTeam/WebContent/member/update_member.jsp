@@ -132,32 +132,52 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label>
-									<p>slamzz</p>
+									<input type="text"
+										class="form-control" placeholder="slamzz" readonly="readonly">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="firstname">비밀번호</label> <input type="text"
+										class="form-control" placeholder="비밀번호를 입력해주세요.">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">변경할 비밀번호</label> <input type="text"
-										class="form-control" placeholder="********">
+										class="form-control" placeholder="변경할 비밀번호를 입력해주세요.">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호 확인</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요.">
+										class="form-control" placeholder="변경할 비밀번호를 다시 입력해주세요.">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
-										class="form-control" placeholder="이기홍">
+										class="form-control" placeholder="이기홍"  readonly="readonly">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" placeholder="27">
+										class="form-control" placeholder="27"  readonly="readonly">
+								</div>
+							</div>
+							<div class="w-100"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="phone">연락처</label> <input type="text"
+										class="form-control" placeholder="01030980386">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="emailaddress">Email</label> <input type="text"
+										class="form-control" placeholder="slamzz1993@gmail.com">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -278,7 +298,7 @@
 							<!-- 							</div> -->
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="streetaddress">주소 *</label> <input type="text"
+									<label for="streetaddress">주소</label> <input type="text"
 										class="form-control" id="address"
 										placeholder="부산 부산진구 동천로109(부전동)">
 								</div>
@@ -289,19 +309,7 @@
 										placeholder="7층 ITWILL 교육센터" required="required">
 								</div>
 							</div>
-							<div class="w-100"></div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="01030980386">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="slamzz1993@gmail.com">
-								</div>
-							</div>
+							
 							<div class="w-100"></div>
 							<div class="col-md-12">
 								<div class="form-group mt-4">

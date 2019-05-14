@@ -160,6 +160,19 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="phone">연락처</label> <input type="text"
+										class="form-control" placeholder="폰번호를 입력해주세요.">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="emailaddress">Email</label> <input type="text"
+										class="form-control" placeholder="이메일을 입력해주세요.">
+								</div>
+							</div>
+							<div class="w-100"></div>
 							<!-- 							<div class="col-md-12"> -->
 							<!-- 								<div class="form-group"> -->
 							<!-- 									<label for="country">State / Country</label> -->
@@ -277,7 +290,7 @@
 							<!-- 							</div> -->
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="streetaddress">주소 *</label> <input type="text"
+									<label for="streetaddress">주소</label> <input type="text"
 										class="form-control" id="address" placeholder="주소">
 								</div>
 							</div>
@@ -288,19 +301,7 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="폰번호를 입력해주세요.">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일을 입력해주세요.">
-								</div>
-							</div>
-							<div class="w-100"></div>
+							
 							<div class="col-md-12">
 								<div class="form-group mt-4">
 									<a href="login.jsp"
