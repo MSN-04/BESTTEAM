@@ -7,7 +7,7 @@
 
     <div id="plusfriend-chat-button"></div>
     <a href="javascript:void plusFriendChat()">
-	  <img id="kakaoChat" src="../images/icon_kakao.png"/>
+	  <img id="kakaoChat" src="./images/icon_kakao.png"/>
 	</a>
 	<script type='text/javascript'>
 	  //<![CDATA[

@@ -100,22 +100,6 @@
 <br>
 <!-- 카카오톡 상담------------------------------- -->
 
-    <div id="plusfriend-chat-button" style="position: fixed; bottom: 30px; right: 30px; z-index: 999;"></div>
-    <a href="javascript:void plusFriendChat()">
-	  <img id="kakaoChat" src="./images/kakao_icon2.png" style="width: 70px;"/>
-	</a>
-	<script type='text/javascript'>
-	  //<![CDATA[
-	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-	    Kakao.init('9600bd080a754be9e17d773bd75df6de');
-	    function plusFriendChat() {
-	      Kakao.PlusFriend.chat({
-	        plusFriendId: '_iTRgj' // 플러스친구 홈 URL에 명시된 id로 설정합니다.
-	      });
-	    }
-	  //]]>
-	</script>
-
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- /카카오톡 상담------------------------------- -->
 
