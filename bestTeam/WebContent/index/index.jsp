@@ -26,19 +26,14 @@
     <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
+
     <link rel="stylesheet" href="./css/flaticon.css">
     <link rel="stylesheet" href="./css/icomoon.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/kakaoChat.css">
     
-    <style type="text/css">
-	#kakaoChat {
-		 position: fixed;
-		 bottom: 30px;
-		 right: 30px;
-		 z-index: 999; 
-	 }
-	 </style>
   </head>
+
   <body>
   <header>
 <jsp:include page="../inc/header.jsp"/>
@@ -121,6 +116,7 @@
 	  //]]>
 	</script>
 
+<jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- /카카오톡 상담------------------------------- -->
 
 <br>
