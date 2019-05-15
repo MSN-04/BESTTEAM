@@ -48,7 +48,8 @@
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="../index/index.jsp">Coffee<small>Blend</small></a>
+<!-- 		<a class="navbar-brand" href="./index/index.jsp">Coffee<small>Blend</small></a> -->
+		<a href="./index/index.jsp"><img src="./images/untitled.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#ftco-nav" aria-controls="ftco-nav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -56,38 +57,38 @@
 		</button>
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a href="../index/index.jsp"
+				<li class="nav-item active"><a href="./index/index.jsp"
 					class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="../shop/shop.jsp"
+				<li class="nav-item"><a href="./shop/shop.jsp"
 					class="nav-link">Shop</a></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="../notice/notice.jsp"
+					class="nav-link dropdown-toggle" href="./notice/notice.jsp"
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Notice</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="../notice/notice.jsp">공지사항</a> <a
-							class="dropdown-item" href="../notice/faq.jsp">FAQ</a>
+						<a class="dropdown-item" href="./notice/notice.jsp">공지사항</a> <a
+							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
-				<li class="nav-item"><a href="../blog/blog.jsp"
+				<li class="nav-item"><a href="./blog/blog.jsp"
 					class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="../fest/fest.jsp"
+				<li class="nav-item"><a href="./fest/fest.jsp"
 					class="nav-link">Festival</a></li>
-				<li class="nav-item"><a href="../contact/contact.jsp"
+				<li class="nav-item"><a href="./contact/contact.jsp"
 					class="nav-link">Contact</a></li>
 				<li class="nav-item"><a href="#login-box"
 					class="login-window nav-link">Login</a></li>
-				<li class="nav-item"><a href="../member/join.jsp"
+				<li class="nav-item"><a href="./member/join.jsp"
 					class="nav-link">SignUp</a></li>
-				<li class="nav-item cart"><a href="../shop/cart.jsp"
+				<li class="nav-item cart"><a href="./shop/cart.jsp"
 					class="nav-link"><span class="icon icon-shopping_cart"></span><span
 						class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
 			</ul>
 		</div>
 		<div id="login-box" class="login-popup"
 			style="width: 300px; height: 300px;">
-			<a href="#" class="close"><img src="../images/close_pop.png"
+			<a href="#" class="close"><img src="./images/close_pop.png"
 				class="btn_close" title="Close Window" alt="Close" /></a>
-			<form method="post" class="signin" action="LoginProAction.us">
+			<form method="post" class="signin" action="#">
 				<fieldset class="textbox">
 					<label class="username"> <span>ID</span> <input
 						id="username" name="username" value="" type="text"
