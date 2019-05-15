@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Login Modal Dialog Window with CSS and jQuery</title>
+<link rel="stylesheet" type="text/css" href="../css/login.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('a.login-window').click(function() {
+		
+		// Getting the variable's value from a link 
+		var loginBox = $(this).attr('href');
+
+		//Fade in the Popup and add close button
+		$(loginBox).fadeIn(300);
+		
+		//Set the center alignment padding + border
+		var popMargTop = ($(loginBox).height() + 24) / 2; 
+		var popMargLeft = ($(loginBox).width() + 24) / 2; 
+		
+		$(loginBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>');
+		$('#mask').fadeIn(300);
+		
+		return false;
+	});
+	
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+});
+</script>
+</head>
+<body>
+<div class="container">
+	<div id="content">    
+		<div class="post">    	
+        	<div class="btn-sign">				
+				<a href="#login-box" class="login-window">로그인</a>
+        	</div>
+		</div>
+        
+        <div id="login-box" class="login-popup">
+        <a href="#" class="close"><img src="../images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+          <form method="post" class="signin" action="#">
+                <fieldset class="textbox">
+	            	<label class="username">
+		                <span>ID</span>
+		                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+	                </label>	                
+	                <label class="password">
+		                <span>Password</span>
+		                <input id="password" name="password" value="" type="password" placeholder="Password">
+	                </label>                
+                <button class="submit button" type="button">LOGIN</button>                
+                </fieldset>
+          </form>
+		</div>    
+    </div>
+</div>
+
+</body>
+</html>
