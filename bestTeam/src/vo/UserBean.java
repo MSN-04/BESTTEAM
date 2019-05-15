@@ -1,6 +1,6 @@
 package vo;
 
-public class userBean {
+public class UserBean {
 	private int user_num;
 	private String user_id;
 	private String user_pass;
@@ -11,7 +11,7 @@ public class userBean {
 	private String user_phone;
 	private String user_email;
 	
-	public userBean() {
+	public UserBean() {
 		super();
 	}
 	

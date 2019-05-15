@@ -937,7 +937,8 @@ pre {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
-    margin-left: 210px; }
+/*     margin-left: 210px;  */
+    }
   .order-md-first {
     -webkit-box-ordinal-group: 0;
     -ms-flex-order: -1;

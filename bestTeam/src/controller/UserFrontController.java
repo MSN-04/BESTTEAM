@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.DeleteMemberProAction;
+import action.JoinProAction;
 import action.LoginProAction;
+import action.LogoutProAction;
+import action.MypageProAction;
+import action.UpdateMemberProAction;
 import vo.ActionForward;
 
 @WebServlet("*.us")
@@ -32,17 +37,65 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-		System.out.println(requestURI + " " + contextPath +  " " + command);
+//		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/")) {
+		if(command.equals("/login.us")) {
+			System.out.println("controll login");
 			forward = new ActionForward();
-			forward.setPath("");
+			forward.setPath("/member/login.jsp");
+		} else if (command.equals("/update_member.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/update_member.jsp");
+		} else if (command.equals("/join.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/join.jsp");
+		} else if (command.equals("/mypage.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/mypage.jsp");
+		} else if (command.equals("/delete_member.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/delete_member.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
-			System.out.println("LoginProAction.us");
+			System.out.println("controll loginPro");
 			action = new LoginProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/UpdateMemberProAction.us")) {
+			action = new UpdateMemberProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/JoinProAction.us")) {
+			action = new JoinProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MypageProAction.us")) {
+			action = new MypageProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/DeleteMemberProAction.us")) {
+			action = new DeleteMemberProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/LogoutProAction.us")) {
+			action = new LogoutProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

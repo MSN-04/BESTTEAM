@@ -50,11 +50,8 @@
 	<div class="container">
 <!-- 		<a class="navbar-brand" href="./index/index.jsp">Coffee<small>Blend</small></a> -->
 		<a href="./index/index.jsp"><img src="./images/untitled.png"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#ftco-nav" aria-controls="ftco-nav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="oi oi-menu"></span> Menu </button>
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a href="./index/index.jsp"
@@ -69,33 +66,24 @@
 						<a class="dropdown-item" href="./notice/notice.jsp">공지사항</a> <a
 							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
-				<li class="nav-item"><a href="./blog/blog.jsp"
-					class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="./fest/fest.jsp"
-					class="nav-link">Festival</a></li>
-				<li class="nav-item"><a href="./contact/contact.jsp"
-					class="nav-link">Contact</a></li>
-				<li class="nav-item"><a href="#login-box"
-					class="login-window nav-link">Login</a></li>
-				<li class="nav-item"><a href="./member/join.jsp"
-					class="nav-link">SignUp</a></li>
-				<li class="nav-item cart"><a href="./shop/cart.jsp"
-					class="nav-link"><span class="icon icon-shopping_cart"></span><span
-						class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+				<li class="nav-item"><a href="./blog/blog.jsp" class="nav-link">Blog</a></li>
+				<li class="nav-item"><a href="./fest/fest.jsp" class="nav-link">Festival</a></li>
+				<li class="nav-item"><a href="./contact/contact.jsp" class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="login.us" class="login-window nav-link">Login</a></li>
+				<li class="nav-item"><a href="join.us" class="nav-link">SignUp</a></li>
+				<li class="nav-item cart"><a href="./shop/cart.jsp" class="nav-link">
+				<span class="icon icon-shopping_cart"></span>
+				<span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
 			</ul>
 		</div>
-		<div id="login-box" class="login-popup"
-			style="width: 300px; height: 300px;">
-			<a href="#" class="close"><img src="./images/close_pop.png"
-				class="btn_close" title="Close Window" alt="Close" /></a>
-			<form method="post" class="signin" action="#">
+		<div id="login-box" class="login-popup" style="width: 300px; height: 300px;">
+			<a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+			<form method="post" class="signin" action="loginProAction.us">
 				<fieldset class="textbox">
-					<label class="username"> <span>ID</span> <input
-						id="username" name="username" value="" type="text"
-						autocomplete="on" placeholder="Username">
-					</label> <label class="password"> <span>Password</span> <input
-						id="password" name="password" value="" type="password"
-						placeholder="Password">
+					<label class="username"> <span>ID</span> 
+					<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+					</label> <label class="password"> <span>Password</span> 
+					<input id="password" name="password" value="" type="password" placeholder="Password">
 					</label>
 					<button class="submit button btn btn-primary" type="submit">LOGIN</button>
 				</fieldset>
