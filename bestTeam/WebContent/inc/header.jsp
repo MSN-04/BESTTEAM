@@ -69,8 +69,21 @@
 				<li class="nav-item"><a href="./blog/blog.jsp" class="nav-link">Blog</a></li>
 				<li class="nav-item"><a href="./fest/fest.jsp" class="nav-link">Festival</a></li>
 				<li class="nav-item"><a href="./contact/contact.jsp" class="nav-link">Contact</a></li>
+				
+				<%
+				if(session.getAttribute("id")==null){
+				%>	
 				<li class="nav-item"><a href="login.us" class="login-window nav-link">Login</a></li>
 				<li class="nav-item"><a href="join.us" class="nav-link">SignUp</a></li>
+				<%	
+				} else {
+				%>
+				<li class="nav-item"><a href="MypageProAction.us" class="nav-link">Mypage</a></li>
+				<li class="nav-item"><a href="LogoutProAction.us" class="nav-link">Logout</a></li>
+				<%	
+				}
+				%>
+				
 				<li class="nav-item cart"><a href="./shop/cart.jsp" class="nav-link">
 				<span class="icon icon-shopping_cart"></span>
 				<span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>

@@ -33,6 +33,7 @@ public class UserDAO {
 	
 	public boolean isRightUser(UserBean userBean) {
 		boolean isRightUser = false;
+		
 		String sql = "SELECT * FROM user WHERE user_id=? AND user_pass=?";
 		try {
 			pstmt=con.prepareStatement(sql);

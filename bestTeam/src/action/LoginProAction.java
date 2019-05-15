@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.LoginProService;
 import vo.ActionForward;
@@ -27,17 +28,21 @@ public class LoginProAction implements Action {
 		LoginProService loginProService = new LoginProService();
 		boolean isRightUser = loginProService.isRightUser(userBean);
 		
-		if(isRightUser) {
-			forward = new ActionForward();
-			forward.setRedirect(true);
-			forward.setPath("index.in");
-		} else {
+		if(!isRightUser) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤!')");
+			out.println("alert('¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù!')");
 			out.println("history.back()");
 			out.println("</script>");
+		} else {
+			forward = new ActionForward();
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
+			
+			forward.setRedirect(true);
+			forward.setPath("index.in");
 		}
 		
 		return forward;
