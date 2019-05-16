@@ -16,7 +16,7 @@ import vo.ActionForward;
 import vo.noticeBean;
 
 public class noticeDeleteAction implements Action {
-
+   
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글 상제 내용 보기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
@@ -29,6 +29,7 @@ public class noticeDeleteAction implements Action {
 		
 		noticeViewService noticeDetailService = new noticeViewService();
 		noticeBean article = noticeDetailService.getArticle(notice_num);
+		
 		
 		
 		// 다른 페이지에서 page 번호를 전달받아 계속 유지하기 위해 request 객체의 setAttribute() 메서드로 전달

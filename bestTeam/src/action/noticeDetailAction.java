@@ -30,7 +30,7 @@ public class noticeDetailAction implements Action {
 		noticeViewService noticeDetailService = new noticeViewService();
 		noticeBean article = noticeDetailService.getArticle(notice_num);
 		
-		
+		  
 		// 다른 페이지에서 page 번호를 전달받아 계속 유지하기 위해 request 객체의 setAttribute() 메서드로 전달
 		request.setAttribute("page", page);
 		// 글 상세 내용을 담고 있는 noticeBean 객체도 전달

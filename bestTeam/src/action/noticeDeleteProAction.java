@@ -17,6 +17,7 @@ public class noticeDeleteProAction implements Action {
 		// ActionForward 인스턴스 생성
 		ActionForward forward = null;
 		
+		
 		// 게시물 번호 파라미터 가져오기
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		
