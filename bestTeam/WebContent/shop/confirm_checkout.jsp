@@ -31,6 +31,10 @@
     <link rel="stylesheet" href="../css/style.css">
     
     
+    
+    
+    
+    
     <style type="text/css">
     
 	    .confirmCheckout {
