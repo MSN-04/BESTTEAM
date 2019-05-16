@@ -21,9 +21,12 @@ b{
     padding-top: 12em !important;
 }
 
+
+
 .pb-5, .py-5 {
      padding-bottom: 0 !important; 
 }
+
 
 .mb-5, .my-5 {
     margin-bottom: 0 !important;

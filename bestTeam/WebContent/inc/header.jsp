@@ -122,6 +122,9 @@
 				//]]>
 			</script>
 			</div>
+			<div class="form-group fgdiv">
+	             <a class="fg" href="./member/forgotAccount.jsp">아이디/비밀번호 찾기</a>
+			</div>
 		</div>
 	</div>
 </nav>
