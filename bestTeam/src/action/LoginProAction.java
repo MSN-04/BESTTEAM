@@ -32,7 +32,7 @@ public class LoginProAction implements Action {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Æ²·È½À´Ï´Ù!')");
+			out.println("alert('ë¡œê·¸ì¸ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.')");
 			out.println("history.back()");
 			out.println("</script>");
 		} else {
