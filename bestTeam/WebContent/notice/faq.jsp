@@ -16,11 +16,12 @@ b{
 .nav-link active{
 	backgound-color:#c49B63;
 	
-	
 }
 .ftco-menu {
     padding-top: 12em !important;
 }
+
+
 
 .pb-5, .py-5 {
      padding-bottom: 0 !important; 
