@@ -94,7 +94,7 @@
 			<form method="post" class="signin" action="LoginProAction.us">
 				<fieldset class="textbox">
 					<label class="username"> <span>ID</span> 
-					<input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+					<input id="username" name="id" value="" type="text" autocomplete="on" placeholder="Username">
 					</label> <label class="password"> <span>Password</span> 
 					<input id="password" name="password" value="" type="password" placeholder="Password">
 					</label>

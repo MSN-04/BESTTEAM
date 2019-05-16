@@ -14,7 +14,7 @@ public class LoginProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("LogionProAtion()");
+//		System.out.println("LogionProAtion()");
 		
 		ActionForward forward = null;
 		UserBean userBean = new UserBean();
@@ -32,7 +32,7 @@ public class LoginProAction implements Action {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('로그인 할 수 없습니다.')");
+			out.println("alert('로그인 할 수 없습니다')");
 			out.println("history.back()");
 			out.println("</script>");
 		} else {

@@ -10,6 +10,7 @@ public class UserBean {
 	private String user_address;
 	private String user_phone;
 	private String user_email;
+	private String user_post;
 	
 	public UserBean() {
 		super();
@@ -68,6 +69,14 @@ public class UserBean {
 	}
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
+	}
+
+	public String getUser_post() {
+		return user_post;
+	}
+
+	public void setUser_post(String user_post) {
+		this.user_post = user_post;
 	}
 	
 	

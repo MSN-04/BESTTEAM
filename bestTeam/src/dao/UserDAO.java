@@ -55,7 +55,7 @@ public class UserDAO {
 	} 
 	public boolean userInsert(UserBean userBean) {
 		boolean isInsertUser = false;
-		String sql = "INSERT INTO user VALUES(null,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO user VALUES(null,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -67,12 +67,12 @@ public class UserDAO {
 			pstmt.setString(6, userBean.getUser_address());
 			pstmt.setString(7, userBean.getUser_phone());
 			pstmt.setString(8, userBean.getUser_email());
+			pstmt.setString(9, userBean.getUser_post());
 			pstmt.executeUpdate();
 			isInsertUser = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
 			close(pstmt);
 		}
 		return isInsertUser;
@@ -124,11 +124,38 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
 			close(pstmt);
 		}
 		return isUpdateUser;
 		
+	}
+	
+	public UserBean getUserInfo(String id) {
+		UserBean userBean = null;
+		String sql = "select * from user where id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				userBean = new UserBean();
+				userBean.setUser_id(rs.getString("user_id"));
+				userBean.setUser_pass(rs.getString("user_pass"));
+				userBean.setUser_name(rs.getString("user_name"));
+				userBean.setUser_age(rs.getString("user_age"));
+				userBean.setUser_gender(rs.getString("user_gender"));
+				userBean.setUser_address(rs.getString("user_address"));
+				userBean.setUser_phone(rs.getString("user_phone"));
+				userBean.setUser_email(rs.getString("user_email"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return userBean;
 	}
 }
 

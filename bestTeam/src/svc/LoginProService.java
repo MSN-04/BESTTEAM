@@ -17,10 +17,16 @@ public class LoginProService {
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		System.out.println(userBean.getUser_id()+ userBean.getUser_pass());
+//		System.out.println(userBean.getUser_id()+ userBean.getUser_pass());
 		
 		isRightUser = userDAO.isRightUser(userBean);
 
+		if(isRightUser) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
 		close(con);
 		return isRightUser;
 	}

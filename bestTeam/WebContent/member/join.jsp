@@ -68,35 +68,6 @@
 		<jsp:include page="../inc/header.jsp" />
 		<!-- END nav -->
 	</header>
-	<!--   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"> -->
-	<!-- 	    <div class="container"> -->
-	<!-- 	      <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a> -->
-	<!-- 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> -->
-	<!-- 	        <span class="oi oi-menu"></span> Menu -->
-	<!-- 	      </button> -->
-	<!-- 	      <div class="collapse navbar-collapse" id="ftco-nav"> -->
-	<!-- 	        <ul class="navbar-nav ml-auto"> -->
-	<!-- 	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li> -->
-	<!-- 	          <li class="nav-item dropdown"> -->
-	<!--               <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a> -->
-	<!--               <div class="dropdown-menu" aria-labelledby="dropdown04"> -->
-	<!--               	<a class="dropdown-item" href="shop.html">Shop</a> -->
-	<!--                 <a class="dropdown-item" href="product-single.html">Single Product</a> -->
-	<!--                 <a class="dropdown-item" href="cart.html">Cart</a> -->
-	<!--                 <a class="dropdown-item" href="checkout.html">Checkout</a> -->
-	<!--               </div> -->
-	<!--             </li> -->
-	<!-- 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
-	<!-- 	          <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li> -->
-	<!-- 	        </ul> -->
-	<!-- 	      </div> -->
-	<!-- 		  </div> -->
-	<!-- 	  </nav> -->
-	<!-- END nav -->
 
 	<section class="home-slider owl-carousel">
 
@@ -130,46 +101,46 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label> <input type="text"
-										class="form-control" placeholder="아이디를 입력해주세요.">
+										class="form-control" placeholder="아이디를 입력해주세요." name="id">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">비밀번호</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요.">
+									<label for="firstname">비밀번호</label> <input type="password"
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">비밀번호 확인</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요.">
+									<label for="firstname">비밀번호 확인</label> <input type="password"
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
-										class="form-control" placeholder="이름을 입력해주세요.">
+										class="form-control" placeholder="이름을 입력해주세요." name="name">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" placeholder="나이를 입력해주세요.">
+										class="form-control" placeholder="나이를 입력해주세요." name="age">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="폰번호를 입력해주세요.">
+										class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일을 입력해주세요.">
+										class="form-control" placeholder="이메일을 입력해주세요." name="email">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -196,7 +167,7 @@
 								<div class="form-group">
 									<label for="postcodezip">우편번호</label> <input type="text"
 										class="form-control" id="postcode" placeholder="우편번호"
-										required="required">
+										required="required" name="post">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -291,13 +262,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address" placeholder="주소">
+										class="form-control" id="address" placeholder="주소" name="address1">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="detailAddress"
-										placeholder="상세주소" required="required">
+										placeholder="상세주소" required="required" name="address2">
 								</div>
 							</div>
 							<div class="w-100"></div>
