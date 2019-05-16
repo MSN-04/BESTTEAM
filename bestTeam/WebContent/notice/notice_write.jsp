@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+   
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
 	rel="stylesheet">
@@ -132,7 +132,7 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="notice-single.jsp" method="post">
+			<form id="frm" action="notice_view.no" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td><input type="text" id="title" name="title" class="frmTitle" /></td>
