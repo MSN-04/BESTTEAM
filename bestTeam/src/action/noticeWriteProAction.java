@@ -22,7 +22,7 @@ public class noticeWriteProAction implements Action {
 		
 		ActionForward forward = null;
 		noticeBean noticeBean = null;
-		
+		   
 		// 파일 업로드를 위한 정보 저장
 		String realFolder = ""; // 실제 경로
 		String saveFolder = "/noticeUpload"; // 톰캣(이클립스) 상의 가상의 경로

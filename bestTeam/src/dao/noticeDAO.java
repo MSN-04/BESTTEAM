@@ -24,7 +24,7 @@ public class noticeDAO {
 		return instance;
 	}
 	// -------------------------------------------------------------------
-	
+	     
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;

@@ -25,7 +25,7 @@ public class noticeWriteProService {
 		noticeDAO NoticeDAO = noticeDAO.getInstance();
 		NoticeDAO.setConnection(con); // Connection 객체를 noticeDAO 객체에 전달
 		int insertCount = NoticeDAO.insertArticle(noticeBean); // 글 등록 처리(결과를 int형으로 전달받음)
-		
+		     
 		// insertCount 가 0보다 크면 트랜잭션 Commit, 아니면 트랜잭션 Rollback 수행
 		if(insertCount > 0) {
 			commit(con);

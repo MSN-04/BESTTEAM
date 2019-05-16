@@ -4,15 +4,15 @@
 <%
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
 	// request.getAttribute() 메서드로 가져오기
-	ArrayList<i> articleList = (ArrayList<i>)request.getAttribute("articleList");
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+// 	ArrayList<i> articleList = (ArrayList<i>)request.getAttribute("articleList");
+// 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	
-	int listCount = pageInfo.getListCount();
-	int nowPage = pageInfo.getPage();
-	int maxPage = pageInfo.getMaxPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
-%>  
+// 	int listCount = pageInfo.getListCount();
+// 	int nowPage = pageInfo.getPage();
+// 	int maxPage = pageInfo.getMaxPage();
+// 	int startPage = pageInfo.getStartPage();
+// 	int endPage = pageInfo.getEndPage();
+ %> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -74,16 +74,16 @@
     <a href="noticeWrite.jsp">글쓰기</a><br>
     <table class="table thead-light">
     <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
-    <tr><td><%=articleList.get(i).getBoard_num() %></td>
-    <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td>
-    <td>19.04.23</td>
-    <td>Tinkervell</td>
-    <td><%=articleList.get(i).getBoard_readcount() %></td></tr>
-    <tr><td><%=articleList.get(i).getBoard_num() %></td>
-    <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td>
-    <td>19.04.23</td>
-    <td>Tinkervell</td>
-    <td><%=articleList.get(i).getBoard_readcount() %></td></tr>
+<%--     <tr><td><%=articleList.get(i).getBoard_num() %></td> --%>
+<%--     <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td> --%>
+<!--     <td>19.04.23</td> -->
+<!--     <td>Tinkervell</td> -->
+<%--     <td><%=articleList.get(i).getBoard_readcount() %></td></tr> --%>
+<%--     <tr><td><%=articleList.get(i).getBoard_num() %></td> --%>
+<%--     <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td> --%>
+<!--     <td>19.04.23</td> -->
+<!--     <td>Tinkervell</td> -->
+<%--     <td><%=articleList.get(i).getBoard_readcount() %></td></tr> --%>
     
     
 						

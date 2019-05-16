@@ -28,7 +28,7 @@ public class noticeViewService {
 		
 		// 게시물을 성공적으로 읽어왔을 때 조회수 증가 처리
 		int updateCount = NoticeDAO.updateReadcount(notice_num);
-		
+		   
 		// updateCount 가 1일 경우 commit, 0일 경우 rollback 수행
 		if(updateCount == 1) {
 			commit(con);

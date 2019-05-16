@@ -25,7 +25,7 @@ public class noticeDeleteProService {
 //		
 //		return isArticleWriter;
 //	}
-
+   
 	// 게시물 번호에 해당하는 글 삭제 작업 수행
 	public boolean removeArticle(int notice_num) {
 		boolean isRemoveSuccess = false;

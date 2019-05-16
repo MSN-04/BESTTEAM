@@ -12,7 +12,7 @@ public class noticeBean {
 	private Date notice_date;
 	public int getNotice_num() {
 		return notice_num;
-	}
+	}   
 	public void setNotice_num(int notice_num) {
 		this.notice_num = notice_num;
 	}

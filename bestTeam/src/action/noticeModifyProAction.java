@@ -17,7 +17,7 @@ public class noticeModifyProAction implements Action {
 		
 		// ActionForward 선언
 		ActionForward forward = null;
-		
+		  
 		// 파라미터로 전달된 글번호(notice_num) 가져오기
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		

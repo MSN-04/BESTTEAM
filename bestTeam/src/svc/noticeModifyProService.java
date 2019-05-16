@@ -22,7 +22,7 @@ public class noticeModifyProService {
 //		NoticeDAO.setConnection(con);
 //
 //		isArticleWriter = NoticeDAO.isArticlenoticeWriter(notice_num, pass); // 본인 확인(패스워드 일치여부 판별)
-//		
+//		    
 //		close(con);
 //		
 //		return isArticleWriter;
