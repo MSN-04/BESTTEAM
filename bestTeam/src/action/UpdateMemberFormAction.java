@@ -2,25 +2,30 @@ package action;
 
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import svc.MyPageProService;
+import svc.JoinProService;
+import svc.UpdateMemberFormService;
 import vo.ActionForward;
 import vo.UserBean;
 
-public class MypageProAction implements Action {
+public class UpdateMemberFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("updateFormAction");
 		ActionForward forward = null;
 		UserBean userBean = null;
 		
 		HttpSession session = request.getSession();
+		String id = session.getAttribute("id").toString();
 		
-		if(session.getAttribute("id") == null) {
+		UpdateMemberFormService updateMemberFormService = new UpdateMemberFormService();
+		userBean = updateMemberFormService.getUpdateForm(id);
+		
+		if(userBean == null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -28,17 +33,14 @@ public class MypageProAction implements Action {
 			out.println("location.href='login.us'");
 			out.println("</script>");
 		} else {
-			String id = session.getAttribute("id").toString();
-			MyPageProService mypageProService = new MyPageProService();
-			userBean = mypageProService.getMypage(id);
 			request.setAttribute("userBean", userBean);
 			
 			forward = new ActionForward();
-			forward.setPath("mypage.us");
-			
+			forward.setPath("update_member.us");
 		}
 		
 		return forward;
 	}
 
+	
 }

@@ -15,6 +15,7 @@ import action.JoinProAction;
 import action.LoginProAction;
 import action.LogoutProAction;
 import action.MypageProAction;
+import action.UpdateMemberFormAction;
 import action.UpdateMemberProAction;
 import vo.ActionForward;
 
@@ -96,6 +97,13 @@ public class UserFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/LogoutProAction.us")) {
 			action = new LogoutProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/UpdateMemberFormAction.us")) {
+			action = new UpdateMemberFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

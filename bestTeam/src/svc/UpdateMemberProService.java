@@ -1,27 +1,23 @@
 package svc;
 
 import static db.JdbcUtil.*;
-
 import java.sql.Connection;
 
 import dao.UserDAO;
 import vo.UserBean;
 
-public class MyPageProService {
+public class UpdateMemberProService {
 
-	public UserBean getMypage(String id) throws Exception {
-		UserBean userBean = new UserBean();
+	public boolean setUpdate(UserBean userBean) throws Exception {
+		boolean isUpdate = false;
 		
 		Connection con = getConnection();
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		userBean = userDAO.getUserInfo(id);
+		userDAO.userUpdate(userBean);
 		
-		close(con);
-			
-		
-		return userBean;
+		return false;
 	}
 
 }
