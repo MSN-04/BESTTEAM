@@ -21,7 +21,7 @@ public class noticeDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글 상제 내용 보기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 //		System.out.println("noticeDetailAction");
-		
+		  
 		// request 객체로부터 전달된 파라미터(notice_num, page) 가져와서 변수에 저장
 		int notice_num = Integer.parseInt(request.getParameter("notice_num")); // String -> int 형변환 필요
 //		int page = Integer.parseInt(request.getParameter("page"));
