@@ -84,6 +84,9 @@
 				}
 			}
 		
+// 			alert(paramTaste[0]);
+// 			alert(paramTaste[1]);
+			
 			if(paramTaste[1] == 'item_favor_aroma') {
 				$("#v-pills-1-tab").addClass("active");
 			} else if (paramTaste[1] == 'item_favor_acidity') {
@@ -94,7 +97,7 @@
 				$("#v-pills-4-tab").addClass("active");
 			} else if (paramTaste[1] == 'item_favor_body') {
 				$("#v-pills-5-tab").addClass("active");
-			} else if (paramTaste[1] == 'all' || paramTaste[0] == "") {
+			} else if (paramTaste[1] == 'all' || paramTaste[1] == null) {
 				$("#v-pills-0-tab").addClass("active");
 				$("#v-degree-tab").addClass("display_none");
 // 				alert($("#v-degree-tab").attr("display"));
@@ -300,6 +303,36 @@
 // 				}
 			}
 			
+			function page (p) {
+				var params = location.search.substr(location.search.indexOf("?") + 1);
+				var QuestionIndex = location.href.indexOf("?");
+				var url = "";
+				if (QuestionIndex == -1 ) {
+					url = location.href.substring();
+				} else {
+					url = location.href.substring(0, QuestionIndex);
+				}
+				
+				var param = "";
+				var paramUrl = "?";
+				
+// 				alert(params);
+// 				alert(url);
+				params = params.split("&");
+				for (var i = 0 ; i < params.length ; i++) {
+					param = params[i].split("=");
+					if (param[0] != 'page' && param[0] != "") {
+						paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
+					} else {
+						continue;
+					}
+				}
+// 				alert("paramUrl1 : "+paramUrl);
+				paramUrl = paramUrl + 'page=' + p;
+				location.href = url + paramUrl;
+// 				alert("paramUrl2 : "+paramUrl);
+			}
+			
 			
 			</script>
 			
@@ -461,320 +494,26 @@
 													<% if(nowPage <= 1) { %>
 													<li><a>&lt;</a></li>
 													<% } else { %>
-													<li><a href="shopMain.em?page=<%=nowPage-1 %>">&lt;</a></li>
+													<li><a href= "javascript:page(<%=nowPage-1 %>);">&lt;</a></li>
 													<% } 
 													for (int a = startPage ; a <= endPage; a++) {
 														if(a == nowPage) {
 															%><li class="active"><span><%=a %></span></li><%
 														} else {
-															%><li><a href="shopMain.em?page=<%=a %>"><%=a %></a></li><%
+															%><li><a href="javascript:page(<%=a %>);"><%=a %></a></li><%
 														}
 													}
 													%>
 													<% if(nowPage >= maxPage) { %>
 													<li><a>&gt;</a></li>
 													<% } else { %>
-													<li><a href="shopMain.em?page=<%=nowPage+1 %>">&gt;</a></li>
+													<li><a href="javascript:page(<%=nowPage+1 %>);">&gt;</a></li>
 													<% } %>
 												</ul>
 											</div>
 										</div>
 									</div>
 								</div>
-
-
-<!-- 								<div class="tab-pane fade" id="v-pills-1" role="tabpanel" -->
-<!-- 									aria-labelledby="v-pills-1-tab"> -->
-
-<!-- 									<div class="shop-select"> -->
-<!-- 										<select class="shop-name-select"> -->
-<!-- 											<option class="sop-01">신상품순</option> -->
-<!-- 											<option class="sop-01">인기상품순</option> -->
-<!-- 											<option class="sop-01">낮은가격순</option> -->
-<!-- 											<option class="sop-01">높은가격순</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-
-<!-- 									<div class="shop-subcategory text text-center mb-5"> -->
-<!-- 										<a href="#" class="ss-1"> 원두 전체 </a> / <a href="#" -->
-<!-- 											class="ss-1"> 싱글오리진 </a> / <a href="#" class="ss-1"> 신맛높은 -->
-<!-- 											원두 </a> / <a href="#" class="ss-1"> 신맛중간 원두 </a> / <a href="#" -->
-<!-- 											class="ss-1"> 신맛없는 원두 </a> -->
-<!-- 									</div> -->
-
-<!-- 									<div class="row"> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-1.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-2.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-3.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-1.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-2.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-3.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-1.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-2.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-3.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-1.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-2.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="col-md-3 text-center"> -->
-<!-- 											<div class="menu-entry"> -->
-<!-- 												<a href="#" class="img" -->
-<!-- 													style="background-image: url(./images/menu-3.jpg);"></a> -->
-<!-- 												<div class="text"> -->
-<!-- 													<h3> -->
-<!-- 														<a href="product-single.html">Grilled Beef</a> -->
-<!-- 													</h3> -->
-<!-- 													<p>Far far away, behind the word mountains, far from -->
-<!-- 														the countries Vokalia and Consonantia.</p> -->
-<!-- 													<p class="price"> -->
-<!-- 														<span>$2.90</span> -->
-<!-- 													</p> -->
-<!-- 													<p> -->
-<!-- 														<a href="cart.html" -->
-<!-- 															class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 															cart</a> -->
-<!-- 													</p> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-
-<!-- 									<div class="row mt-5"> -->
-<!-- 										<div class="col text-center"> -->
-<!-- 											<div class="block-27"> -->
-<!-- 												<ul> -->
-<!-- 													<li><a href="#">&lt;</a></li> -->
-<!-- 													<li class="active"><span>1</span></li> -->
-<!-- 													<li><a href="#">2</a></li> -->
-<!-- 													<li><a href="#">3</a></li> -->
-<!-- 													<li><a href="#">4</a></li> -->
-<!-- 													<li><a href="#">5</a></li> -->
-<!-- 													<li><a href="#">&gt;</a></li> -->
-<!-- 												</ul> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-							
 							</div>
 						</div>
 					</div>

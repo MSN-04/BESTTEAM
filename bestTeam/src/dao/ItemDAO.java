@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -237,65 +238,88 @@ public class ItemDAO {
 		
 		
 		public int registItem(ItemBean itemBean) {
-			int num = 0;
-			int insertCount = 0;
-			
-			sql="select max(item_num) from item";
-			
-			try {
-				pstmt = con.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-				num = rs.getInt(1) + 1;
-				}
-				
-				sql = "INSERT INTO item VALUES(?, ?, now(), ?, ?, ?, ?, ?, ?)";
-			
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, num);
-				pstmt.setString(2, itemBean.getItem_name());
-				pstmt.setString(3, itemBean.getItem_info());
-				pstmt.setString(4, itemBean.getItem_img());
-				pstmt.setInt(5, itemBean.getItem_amount());
-				pstmt.setInt(6, itemBean.getItem_price());
-				pstmt.setString(7, itemBean.getItem_content());
-				pstmt.setInt(8, 0);
+	        int num = 0;
+	        int f_num = 0;
+	        int insertCount = 0;
+	        
+	        String sql="select max(item_num) from item";
+	        
+	        try {
+	          pstmt = con.prepareStatement(sql);
+	          rs = pstmt.executeQuery();
+	          
+	          if(rs.next()) {
+	          num = rs.getInt(1) + 1;
+	          }
+	          
+	          sql = "INSERT INTO item VALUES(?, ?, now(), ?, ?, ?, ?, ?, ?)";
+	        
+	          pstmt = con.prepareStatement(sql);
+	          pstmt.setInt(1, num);
+	          pstmt.setString(2, itemBean.getItem_name());
+	          pstmt.setString(3, itemBean.getItem_info());
+	          pstmt.setString(4, itemBean.getItem_img());
+	          pstmt.setInt(5, itemBean.getItem_amount());
+	          pstmt.setInt(6, itemBean.getItem_price());
+	          pstmt.setString(7, itemBean.getItem_content());
+	          pstmt.setInt(8, 0);
+	          
+	          pstmt.executeUpdate();
+	          
+	          sql="select max(item_favor_num) from item_favor";
+	          
+	          pstmt = con.prepareStatement(sql);
+	          rs = pstmt.executeQuery();
+	          
+	          if(rs.next()) {
+	            f_num = rs.getInt(1) + 1;
+	          }
+	          
+	          sql = "INSERT INTO item_favor VALUES(?, ?, ?, ?, ?, ?, ?)";
+	          
+	          pstmt = con.prepareStatement(sql);
+	          pstmt.setInt(1, f_num);
+	          pstmt.setInt(2, num);
+	          pstmt.setInt(3, itemBean.getItem_favor_aroma());
+	          pstmt.setInt(4, itemBean.getItem_favor_acidity());
+	          pstmt.setInt(5, itemBean.getItem_favor_sweetness());
+	          pstmt.setInt(6, itemBean.getItem_favor_bitterness());
+	          pstmt.setInt(7, itemBean.getItem_favor_body());
 
-				insertCount = pstmt.executeUpdate();
-			} catch (SQLException e) {
-				System.out.println("INSERT 에러 : " + e.getMessage());
-			} finally {
-				close(rs);
-				close(pstmt);
-			}
-			
-			return insertCount;
-			
-		}
+	          insertCount = pstmt.executeUpdate();
+	        } catch (SQLException e) {
+	          System.out.println("INSERT 에러 : " + e.getMessage());
+	        } finally {
+	          close(rs);
+	          close(pstmt);
+	        }
+	        
+	        return insertCount;
+	        
+	      }
 		
 		public boolean isRegistSuccess(ItemBean itemBean) {
-			sql = "SELECT * FROM item WHERE item_num=?";
-			
-			try {
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, itemBean.getItem_num());
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					return true;
-				}
-				
-			} catch (SQLException e) {
-//				e.printStackTrace();
-				System.out.println("isRegistSuccess() 실패! : " + e.getMessage());
-			} finally {
-				close(rs);
-				close(pstmt);
-			}
-			
-			return false;
-		}
+		      sql = "SELECT * FROM item WHERE item_num=?";
+		      
+		      try {
+		        pstmt = con.prepareStatement(sql);
+		        pstmt.setInt(1, itemBean.getItem_num());
+		        rs = pstmt.executeQuery();
+		        
+		        if(rs.next()) {
+		          return true;
+		        }
+		        
+		      } catch (SQLException e) {
+//		        e.printStackTrace();
+		        System.out.println("isRegistSuccess() 실패! : " + e.getMessage());
+		      } finally {
+		        close(rs);
+		        close(pstmt);
+		      }
+		      
+		      return false;
+		    }
 		
 		/*-------------------------------------- 영비 --------------------------------------*/
 		

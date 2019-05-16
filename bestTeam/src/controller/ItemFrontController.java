@@ -107,7 +107,6 @@ public class ItemFrontController extends HttpServlet {
 		        System.out.println("itemDeletePro 실패"+ e.getMessage());
 		      }
 		    
-		    
 		} else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
 			System.out.println("itemView");
 		}
