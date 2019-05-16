@@ -1,5 +1,10 @@
+<%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%
+	UserBean myPage = (UserBean)request.getAttribute("userBean");
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,40 +81,40 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="update_member.us"
+					<form action="UpdateMemberFormAction.us"
 						class="billing-form ftco-bg-dark p-3 p-md-5" id="frm">
 						<h3 class="mb-4 billing-heading">회원 정보</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label>
-									<p>slamzz</p>
+									<p><%=myPage.getUser_id() %></p>
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이름</label>
-									<p>이기홍</p>
+									<p><%=myPage.getUser_name() %></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">나이</label>
-									<p>27</p>
+									<p><%=myPage.getUser_age() %></p>
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label>
-									<p>01030980386</p>
+									<p><%=myPage.getUser_phone() %></p>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label>
-									<p>slamzz1993@gmail.com</p>
+									<p><%=myPage.getUser_email() %></p>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -117,7 +122,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="postcodezip">우편번호</label>
-									<p>47246</p>
+									<p><%=myPage.getUser_post() %></p>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -136,7 +141,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label>
-									<p>부산 부산진구 동천로109(부전동)</p>
+									<p><%=myPage.getUser_address() %></p>
 								</div>
 							</div>
 							<div class="col-md-6">

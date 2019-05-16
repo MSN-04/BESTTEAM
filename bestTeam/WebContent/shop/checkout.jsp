@@ -42,8 +42,6 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     
-    
-    
     <style type="text/css">
     
 	    .money { text-align: right; }
@@ -62,7 +60,10 @@
 	    	color: black !important; }
 	    	
 	    .p-best { padding: 50px !important; }
-    
+    	
+    	.table tbody tr td {
+		    padding: 15px 10px !important;
+		}
     </style>
     
   </head>
@@ -121,7 +122,6 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>배송비</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,16 +132,14 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>SWEETNESS<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
@@ -149,16 +147,14 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>AROMA<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
  
                   <tr class="text-center">
@@ -167,16 +163,14 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>ACIDITY<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
@@ -184,34 +178,30 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>BITTERNESS<br>CoffeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   
                   <tr class="text-center">
                      <td class="product-num"><a href="#">5</a></td>
                     
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/dish-2.jpg);"></div></td>
+                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Grilled Ribs Beef</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>BODY / TEXTURE<br>CoffeBean</h3>
                     </td>
                     
-                    <td class="price">$15.70</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$15.70</td>
-                    <td><p>무료</p></td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                 </tbody>
               </table>
@@ -219,6 +209,7 @@
             
             
 		</form>
+		<br><br>
 		
 
 

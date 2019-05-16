@@ -1,7 +1,13 @@
+<%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	<%
+	UserBean updatePage = (UserBean)request.getAttribute("userBean");
+	%>
+	
 <!DOCTYPE html>
-<html lang="en">
+<html lang="UTF-8">
 <head>
 <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
@@ -133,13 +139,13 @@
 								<div class="form-group">
 									<label for="firstname">아이디</label>
 									<input type="text"
-										class="form-control" placeholder="slamzz" readonly="readonly">
+										class="form-control" placeholder=<%=updatePage.getUser_id() %> readonly="readonly">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요.">
+										class="form-control" placeholder="비밀번호를 입력해주세요." required="required">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -158,26 +164,26 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
-										class="form-control" placeholder="이기홍"  readonly="readonly">
+										class="form-control" placeholder=<%=updatePage.getUser_name() %>  readonly="readonly">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" placeholder="27"  readonly="readonly">
+										class="form-control" placeholder=<%=updatePage.getUser_age() %>  readonly="readonly">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="01030980386">
+										class="form-control" placeholder="폰 번호를 입력하세요" value=<%=updatePage.getUser_phone() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="slamzz1993@gmail.com">
+										class="form-control" placeholder="이메일 주소를 입력하세요" value=<%=updatePage.getUser_email() %>>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -203,8 +209,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="postcodezip">우편번호</label> <input type="text"
-										class="form-control" id="postcode" placeholder="47246"
-										required="required">
+										class="form-control" id="postcode" placeholder="우편번호를 입력하세요"
+										required="required" value=<%=updatePage.getUser_post() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -299,14 +305,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address"
-										placeholder="부산 부산진구 동천로109(부전동)">
+										class="form-control" id="address" value=<%=updatePage.getUser_address() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="detailAddress"
-										placeholder="7층 ITWILL 교육센터" required="required">
+										placeholder="7층 ITWILL 교육센터" required="required" value=<%=updatePage.getUser_address() %>>
 								</div>
 							</div>
 							
