@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     
+<<<<<<< HEAD
+=======
+    
+    
+    
+    
+    
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
     <style type="text/css">
     
 	    .confirmCheckout {
