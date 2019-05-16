@@ -132,7 +132,7 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="notice-single.jsp" method="post">
+			<form id="frm" action="notice_view.no" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td><input type="text" id="title" name="title" class="frmTitle" /></td>

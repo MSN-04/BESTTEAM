@@ -1,5 +1,18 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
+	// request.getAttribute() 메서드로 가져오기
+	ArrayList<i> articleList = (ArrayList<i>)request.getAttribute("articleList");
+	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	
+	int listCount = pageInfo.getListCount();
+	int nowPage = pageInfo.getPage();
+	int maxPage = pageInfo.getMaxPage();
+	int startPage = pageInfo.getStartPage();
+	int endPage = pageInfo.getEndPage();
+%>  
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,9 +45,7 @@
   </head>
   <body>
   	
-  	<header>
-  		<jsp:include page="../inc/header.jsp"/>
-  	</header>
+  	<jsp:include page="../inc/header.jsp"></jsp:include>
   	
     <!-- END nav -->
 
@@ -47,7 +58,7 @@
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Notice</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="notice.jsp">Notice</a></span> <span><a href="qna.jsp">Q&A</a></span></p>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="notice_list.jsp">Notice</a></span> </p>
             </div>
 
           </div>
@@ -60,11 +71,24 @@
     <div class="row d-flex">
     <div class="blog-entry align-self-stretch">
     <br><br><br><br>
-    <a href="noticeWriteForm.jsp" style="float: right; padding: 0.3rem; font-size: 16px;">글쓰기</a><br>
+    <a href="noticeWrite.jsp">글쓰기</a><br>
     <table class="table thead-light">
     <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
-    <tr><td>2</td><td><a href="#">이벤트를 진행합니다.</a></td><td>19.04.23</td><td>admin</td><td>3</td></tr>
-    <tr><td>1</td><td><a href="#">안녕하세요.</a></td><td>19.04.23</td><td>admin</td><td>21</td></tr>
+    <tr><td><%=articleList.get(i).getBoard_num() %></td>
+    <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td>
+    <td>19.04.23</td>
+    <td>Tinkervell</td>
+    <td><%=articleList.get(i).getBoard_readcount() %></td></tr>
+    <tr><td><%=articleList.get(i).getBoard_num() %></td>
+    <td><a href="noticeView.no?notice_num=<%=articleList.get(i).getnotice_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getnotice_subject() %></a></td>
+    <td>19.04.23</td>
+    <td>Tinkervell</td>
+    <td><%=articleList.get(i).getBoard_readcount() %></td></tr>
+    
+    
+						
+						
+    
     
     </table>
     <div class="row mt-5"> 
