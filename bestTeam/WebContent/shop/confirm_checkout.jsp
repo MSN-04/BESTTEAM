@@ -47,6 +47,10 @@
 	    }
 	    
 	    .money { text-align: right; }
+	    
+	    .table tbody tr td {
+		    padding: 15px 10px !important;
+		}
     
     </style>
     
@@ -98,7 +102,7 @@
 			<h3 class="mb-4 billing-heading">주문상품 정보</h3>
 <!-- 			<div class="row align-items-end" > -->
 			
-			  <div class="cart-list">
+			  			  <div class="cart-list">
 
               <table class="table">
                 <thead class="thead-primary">
@@ -109,26 +113,24 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>배송비</th>
                   </tr>
                 </thead>
                 <tbody>
+
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
                      <td class="product-num"><a href="#">1</a></td>
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>SWEETNESS<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
@@ -136,16 +138,14 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>AROMA<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
  
                   <tr class="text-center">
@@ -154,16 +154,14 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>ACIDITY<br>CoffeeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
@@ -171,41 +169,37 @@
                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>BITTERNESS<br>CoffeBean</h3>
                     </td>
                     
-                    <td class="price">$4.90</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                   
                   <tr class="text-center">
                      <td class="product-num"><a href="#">5</a></td>
                     
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/dish-2.jpg);"></div></td>
+                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3>Grilled Ribs Beef</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
+                      <h3>BODY / TEXTURE<br>CoffeBean</h3>
                     </td>
                     
-                    <td class="price">$15.70</td>
+                    <td class="price">10,000원</td>
                     
                     <td class="price">1개</td>
                     
-                    <td class="total">$15.70</td>
-                    <td><p>무료</p></td>
+                    <td class="total">10,000원</td>
                   </tr><!-- END TR-->
                 </tbody>
               </table>
             </div>
             
-            
 		</form>
+		<br><br>
 		
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
@@ -271,8 +265,18 @@
 	           	<div class="col-md-12">
 		            <div class="form-group">
 		            	<table>
+		            		<tr> <td width="100px"><label for="firstname">우편번호</label></td>
+		            			 <td><label><span>47246</span></label></td> </tr>
+		            	</table>
+		            </div>
+	           	</div>
+	           	
+	           	<!-- 5th line -->
+	           	<div class="col-md-12">
+		            <div class="form-group">
+		            	<table>
 		            		<tr> <td width="100px"><label for="firstname">배송지</label></td>
-		            			 <td><label><span>(47246) 부산 부산진구 동천로 109 삼한골든게이트 7층 </span></label></td> </tr>
+		            			 <td><label><span>부산 부산진구 동천로 109 삼한골든게이트 7층 </span></label></td> </tr>
 		            	</table>
 		            </div>
 	           	</div>
