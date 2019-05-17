@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.UpdateMemberProService;
 import vo.ActionForward;
@@ -18,8 +19,12 @@ public class UpdateMemberProAction implements Action {
 		boolean isUpdateSuccess = false;
 		UserBean userBean = new UserBean();
 		
+		HttpSession session = request.getSession();
+		
+		String id = session.getAttribute("id").toString();
+		String pass = request.getParameter("pass");
 		userBean.setUser_id(request.getParameter("id"));
-		userBean.setUser_pass(request.getParameter("pass"));
+		userBean.setUser_pass(request.getParameter("new_pass"));
 		userBean.setUser_name(request.getParameter("name"));
 		userBean.setUser_age(request.getParameter("age"));
 		userBean.setUser_phone(request.getParameter("phone"));
@@ -29,7 +34,7 @@ public class UpdateMemberProAction implements Action {
 		userBean.setUser_post(request.getParameter("post"));
 		
 		UpdateMemberProService updateMemberProService = new UpdateMemberProService();
-		isUpdateSuccess = updateMemberProService.setUpdate(userBean);
+		isUpdateSuccess = updateMemberProService.setUpdate(userBean, id, pass);
 		
 		if(!isUpdateSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
@@ -42,10 +47,11 @@ public class UpdateMemberProAction implements Action {
 			request.setAttribute("userBean", userBean);
 			
 			forward = new ActionForward();
-			forward.setPath("mypage.us");
+			forward.setRedirect(true);
+			forward.setPath("MypageProAction.us");
 		}
 		
-		return null;
+		return forward;
 	}
 
 
