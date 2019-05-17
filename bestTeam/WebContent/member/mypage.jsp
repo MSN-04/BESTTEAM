@@ -138,17 +138,13 @@
 							<!-- 										class="form-control" placeholder=""> -->
 							<!-- 								</div> -->
 							<!-- 							</div> -->
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label for="streetaddress">주소</label>
 									<p><%=myPage.getUser_address() %></p>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<p>7층 ITWILL 교육센터</p>
-								</div>
-							</div>
+							
 
 							<div class="w-100"></div>
 							<div class="col-md-12">

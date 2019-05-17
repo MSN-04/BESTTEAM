@@ -27,6 +27,7 @@ public class JoinProAction implements Action {
 		userBean.setUser_address(request.getParameter("address1") +" "+ request.getParameter("address2"));
 		userBean.setUser_gender("남");
 		userBean.setUser_post(request.getParameter("post"));
+		System.out.println(request.getParameter("post"));
 		
 		JoinProService joinProService = new JoinProService();
 		isJoinSuccess = joinProService.setJoin(userBean);
