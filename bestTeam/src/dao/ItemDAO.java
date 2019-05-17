@@ -32,6 +32,8 @@ public class ItemDAO {
 		}
 		return instance;
 	}
+	
+	
 
 	//-- 아이템 조회해서 ItemBean 리턴 
 	public ItemBean selectItem(int item_num) {
