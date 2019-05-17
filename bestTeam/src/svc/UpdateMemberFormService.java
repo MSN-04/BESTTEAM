@@ -16,12 +16,12 @@ public class UpdateMemberFormService {
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		boolean isUpdateUser = userDAO.isUpdateUser(id);
 		
-		if(isUpdateUser) {
+		
+		
 			userBean = userDAO.getUserInfo(id);
 			System.out.println("updateform 성공");
-		}
+		
 		
 		return userBean;
 	}

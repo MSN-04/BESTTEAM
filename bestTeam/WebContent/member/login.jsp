@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    if(session.getAttribute("id")!=null){
+    	response.sendRedirect("index.in");
+    }
+    %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,11 +61,7 @@
 	            <span class="mr-2">
 	            <div class="container">
 	<div id="content">    
-		<div class="post">    	
-        	<div class="btn-sign">				
-				<a href="#login-box" class="login-window"><img src="./images/login_bt.gif" alt="로그인 버튼"></a>
-        	</div>
-		</div>
+
         
         <div id="login-box" class="login-popup">
         <a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
@@ -80,7 +82,7 @@
     </div>
 </div>
 </span> 
-<span><a href="./member/join.jsp">회원가입</a></span></p>
+<span><a href="join.us">회원가입</a></span></p>
             </div>
 
           </div>
@@ -102,7 +104,7 @@
 								</div>
 							
 								<div class="form-group">
-									<label for="firstname">비밀번호</label> <input type="text"
+									<label for="firstname">비밀번호</label> <input type="password"
 										class="form-control" placeholder="비밀번호를 입력해주세요." name="password">
 								</div>
 								</div>
