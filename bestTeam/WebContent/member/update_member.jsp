@@ -132,58 +132,58 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm">
+					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" method="post">
 						<h3 class="mb-4 billing-heading">회원 정보 수정</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label>
 									<input type="text"
-										class="form-control" placeholder=<%=updatePage.getUser_id() %> readonly="readonly">
+										class="form-control"  readonly="readonly" name="id" value=<%=updatePage.getUser_id() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요." required="required">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" required="required">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">변경할 비밀번호</label> <input type="text"
-										class="form-control" placeholder="변경할 비밀번호를 입력해주세요.">
+										class="form-control" name="new_pass" placeholder="변경할 비밀번호를 입력해주세요.">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호 확인</label> <input type="text"
-										class="form-control" placeholder="변경할 비밀번호를 다시 입력해주세요.">
+										class="form-control" name="new_pass2" placeholder="변경할 비밀번호를 다시 입력해주세요.">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
-										class="form-control" placeholder=<%=updatePage.getUser_name() %>  readonly="readonly">
+										class="form-control" value=<%=updatePage.getUser_name() %> name="name" readonly="readonly">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" placeholder=<%=updatePage.getUser_age() %>  readonly="readonly">
+										class="form-control" value=<%=updatePage.getUser_age() %> name="age" readonly="readonly">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="폰 번호를 입력하세요" value=<%=updatePage.getUser_phone() %>>
+										class="form-control" placeholder="폰 번호를 입력하세요" value=<%=updatePage.getUser_phone() %> name="phone">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일 주소를 입력하세요" value=<%=updatePage.getUser_email() %>>
+										class="form-control" placeholder="이메일 주소를 입력하세요" name="email" value=<%=updatePage.getUser_email() %>>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -210,7 +210,7 @@
 								<div class="form-group">
 									<label for="postcodezip">우편번호</label> <input type="text"
 										class="form-control" id="postcode" placeholder="우편번호를 입력하세요"
-										required="required" value=<%=updatePage.getUser_post() %>>
+										required="required" name="post" value=<%=updatePage.getUser_post() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -305,13 +305,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address" value=<%=updatePage.getUser_address() %>>
+										class="form-control" id="address" name="address1" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="detailAddress"
-										placeholder="7층 ITWILL 교육센터" required="required" value=<%=updatePage.getUser_address() %>>
+										placeholder="7층 ITWILL 교육센터" required="required" name="address2" >
 								</div>
 							</div>
 							

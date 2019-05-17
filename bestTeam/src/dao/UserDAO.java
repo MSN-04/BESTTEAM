@@ -55,8 +55,8 @@ public class UserDAO {
 				
 	} 
 	
-	public boolean isUpdateUser(String id) {
-		boolean isRightUser = false;
+	public int isUpdateUser(String id, String pass) {
+		int isRightUser = 0;
 		String sql = "SELECT * FROM user WHERE user_id=?";
 		try {
 			pstmt=con.prepareStatement(sql);
@@ -64,7 +64,9 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				isRightUser = true;
+				if(pass.equals(rs.getString("user_pass"))) {
+					isRightUser = 1;
+				} 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -95,7 +97,6 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
 			close(pstmt);
 		}
 		return isInsertUser;
@@ -133,7 +134,7 @@ public class UserDAO {
 	public boolean userUpdate(UserBean userBean) {
 		boolean isUpdateUser = false;
 		int isUpdate = 0;
-		String sql = " UPDATE user SET user_pass=?,user_name=?,user_age=?,user_gender=?,user_address=?,user_phone=?,user_email=?,user_post=? WHERE id=?";
+		String sql = " UPDATE coffee.user SET user_pass=?,user_name=?,user_age=?,user_gender=?,user_address=?,user_phone=?,user_email=?,user_post=? WHERE user_id=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			
@@ -160,6 +161,28 @@ public class UserDAO {
 		return isUpdateUser;
 		
 	}
+	
+	//회원정보수정
+		public void passUpdate(String buf, String email) {
+			
+			
+			String sql = " UPDATE user SET user_pass=? WHERE user_email=?";
+			try {
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, buf);
+				pstmt.setString(2, email);
+				pstmt.executeUpdate();
+				System.out.println("비번수정");
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+				
+			}
+			
+		}
 	public UserBean getUserInfo(String id) {
 	    UserBean userBean = null;
 	    String sql = "select * from user where user_id=?";
@@ -178,6 +201,7 @@ public class UserDAO {
 	        userBean.setUser_address(rs.getString("user_address"));
 	        userBean.setUser_phone(rs.getString("user_phone"));
 	        userBean.setUser_email(rs.getString("user_email"));
+	        userBean.setUser_post(rs.getString("user_post"));
 	      }
 	    } catch (SQLException e) {
 	      e.printStackTrace();
@@ -222,5 +246,57 @@ public class UserDAO {
 			    
 		
 	}
+	//아이디 찾기
+	public String findId(String email,String phone) {
+		String id =null;
+		String sql;
+		if(email!=null &&phone ==null) {
+			 sql ="SELECT * FROM user WHERE user_email=?";			
+			 try {
+				pstmt = con.prepareStatement(sql);
+				 pstmt.setString(1, email);
+				 rs = pstmt.executeQuery();
+				 if(rs.next()) {
+					 id = rs.getString("user_id");
+				 }
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}else if(email==null && phone !=null) {
+			sql ="SELECT * FROM WHERE user_phone=?";	
+			 try {
+					pstmt = con.prepareStatement(sql);
+					 pstmt.setString(1, phone);
+					 rs = pstmt.executeQuery();
+					 if(rs.next()) {
+						 id = rs.getString("user_id");
+					 }
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		
+		
+		return id;
+	}
+	
+	public String findPass(String email) {
+		String pass = null;
+		String sql = "SELECT * FROM user WHERE user_email=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pass = rs.getString("user_pass");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return pass;
+	}
+	
 }
 
