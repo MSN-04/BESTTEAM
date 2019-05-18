@@ -105,7 +105,7 @@ public class UserDAO {
 	//회원탈퇴
 	public boolean userDelete(String id, String pass) {
 		boolean isDeleteUser = false;
-		String sql = "SELECT * FROM user WHERE id=?";
+		String sql = "SELECT * FROM user WHERE user_id=?";
 		try {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -113,7 +113,7 @@ public class UserDAO {
 			
 			if(rs.next()) {
 				if(pass.equals(rs.getString("user_pass"))) {
-					sql = "DELETE FROM user WHERE id=?";
+					sql = "DELETE FROM user WHERE user_id=?";
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					isDeleteUser = true;
