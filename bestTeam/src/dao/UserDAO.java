@@ -114,6 +114,7 @@ public class UserDAO {
 			if(rs.next()) {
 				if(pass.equals(rs.getString("user_pass"))) {
 					sql = "DELETE FROM user WHERE user_id=?";
+					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					isDeleteUser = true;
@@ -162,17 +163,17 @@ public class UserDAO {
 		
 	}
 	
-	//회원정보수정
-		public void passUpdate(String buf, String email) {
+	//비밀번호 찾기 => 메일로 발송된 임시비밀번호로 사용자 비밀번호 업데이트
+		public int passUpdate(String buf, String email) {
 			
-			
+			int result=0;
 			String sql = " UPDATE user SET user_pass=? WHERE user_email=?";
 			try {
 				pstmt = con.prepareStatement(sql);
 				
 				pstmt.setString(1, buf);
 				pstmt.setString(2, email);
-				pstmt.executeUpdate();
+				result = pstmt.executeUpdate(); //update된 행의 갯수 반환
 				System.out.println("비번수정");
 				
 			} catch (SQLException e) {
@@ -181,6 +182,7 @@ public class UserDAO {
 				close(pstmt);
 				
 			}
+			return result;
 			
 		}
 	public UserBean getUserInfo(String id) {
@@ -248,6 +250,7 @@ public class UserDAO {
 	}
 	//아이디 찾기
 	public String findId(String email,String phone) {
+		System.out.println("DAO에서"+phone);
 		String id =null;
 		String sql;
 		if(email!=null &&phone ==null) {
@@ -263,7 +266,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}else if(email==null && phone !=null) {
-			sql ="SELECT * FROM WHERE user_phone=?";	
+			sql ="SELECT * FROM user WHERE user_phone=?";	
 			 try {
 					pstmt = con.prepareStatement(sql);
 					 pstmt.setString(1, phone);
@@ -276,9 +279,10 @@ public class UserDAO {
 				}
 		}
 		
-		
+		System.out.println(id);
 		return id;
 	}
+	
 	
 	public String findPass(String email) {
 		String pass = null;
