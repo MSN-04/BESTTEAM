@@ -38,9 +38,18 @@
     				width:500px !important;
     				margin-right: 0 !important;
     				text-aglin:center;}
-    .col-xl-8{width:500px !important; float:left !important;}
-    .div0517{float:left !important;}
+    .col-xl-8{width:500px !important; }
+/*     .row{display: grid !important; grid-template-columns: 1fr 1fr;} */
+/*     #div0517{ display: grid !important; grid-template-rows: auto; */
+/*   } */
+/*      #div0522{ display: grid !important;grid-template-rows: auto; */
+/*   } */
 /*     .btn0517{width: 100px;} */
+#div0517,#div0522{margin:20px;}
+#div0517{border-right: 5px solid white;
+		padding-right:10px;}
+		#span0522{border-right: 5px solid gray;
+					padding-right:0px;}
     </style>
   </head>
   <body>
@@ -100,7 +109,8 @@
    <section class="ftco-section" id="login">
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-8 ftco-animate div0517">
+			<span id="span0522">
+				<div class="col-xl-8 ftco-animate " id="div0517">
 					<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">아이디 찾기</h3>
 						<div class="row align-items-end">
@@ -136,8 +146,9 @@
 	            </div>
 	            </form>
 	            </div>
-	            
-	            <div class="col-xl-8 ftco-animate div0517">
+	            </span>
+	            <span>
+	            <div class="col-xl-8 ftco-animate " id="div0522">
 					<form action="../mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">비밀번호 찾기</h3>
 						<div class="row align-items-end">
@@ -159,7 +170,8 @@
 	            </form>
 	            
 	            </div>
-	            
+	            </span>
+	          
 	          
 								
 						

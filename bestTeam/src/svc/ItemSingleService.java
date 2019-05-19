@@ -17,7 +17,10 @@ public class ItemSingleService {
  5. ItemBean 리턴
  */
 	public ItemBean getItem(int item_num) {
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 		System.out.println("ItemSingleService - getItem() 시작");
 		
 		// 1.
