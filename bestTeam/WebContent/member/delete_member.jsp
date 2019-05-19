@@ -75,7 +75,7 @@
 								</div>
 								<div class="form-group">
 									<label for="firstname">비밀번호 확인</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2">
 								</div>
 								</div>
 								
@@ -83,7 +83,7 @@
 	            </div>
 								<div class="col-md-12">
 								<div class="form-group mt-4">
-									<a href="login.jsp" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">탈퇴하기</a>
+									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">탈퇴하기</a>
 									</div>
 									</div>
 									</form>

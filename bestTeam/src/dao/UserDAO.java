@@ -33,6 +33,7 @@ public class UserDAO {
 		
 	}
 	
+	//로그인
 	public boolean isRightUser(UserBean userBean) {
 		boolean isRightUser = false;
 		String sql = "SELECT * FROM user WHERE user_id=? AND user_pass=?";
@@ -55,6 +56,8 @@ public class UserDAO {
 				
 	} 
 	
+	
+	// 회원정보 수정,탈퇴 회원 확인
 	public int isUpdateUser(String id, String pass) {
 		int isRightUser = 0;
 		String sql = "SELECT * FROM user WHERE user_id=?";
@@ -77,6 +80,8 @@ public class UserDAO {
 		return isRightUser;
 				
 	}
+	
+	// 회원가입
 	public boolean userInsert(UserBean userBean) {
 		boolean isInsertUser = false;
 		String sql = "INSERT INTO user VALUES(null,?,?,?,?,?,?,?,?,?)";
@@ -114,6 +119,7 @@ public class UserDAO {
 			if(rs.next()) {
 				if(pass.equals(rs.getString("user_pass"))) {
 					sql = "DELETE FROM user WHERE user_id=?";
+					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					isDeleteUser = true;
@@ -183,6 +189,8 @@ public class UserDAO {
 			}
 			
 		}
+		
+	// 마이페이지 정보	
 	public UserBean getUserInfo(String id) {
 	    UserBean userBean = null;
 	    String sql = "select * from user where user_id=?";
@@ -212,6 +220,7 @@ public class UserDAO {
 	    return userBean;
 	  }
 	
+	// 관리자페이지에서 가입회원 정보
 	public ArrayList<UserBean> getUserList(){
 		
 		ArrayList<UserBean> userList = new ArrayList<UserBean>();
@@ -246,6 +255,7 @@ public class UserDAO {
 			    
 		
 	}
+	
 	//아이디 찾기
 	public String findId(String email,String phone) {
 		String id =null;
