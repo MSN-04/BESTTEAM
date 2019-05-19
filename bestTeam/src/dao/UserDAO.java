@@ -114,6 +114,7 @@ public class UserDAO {
 			if(rs.next()) {
 				if(pass.equals(rs.getString("user_pass"))) {
 					sql = "DELETE FROM user WHERE user_id=?";
+					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					pstmt.executeUpdate();
 					isDeleteUser = true;

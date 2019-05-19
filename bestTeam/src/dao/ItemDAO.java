@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static db.JdbcUtil.*;
 
@@ -37,6 +38,8 @@ public class ItemDAO {
 
 	//-- 아이템 조회해서 ItemBean 리턴 
 	public ItemBean selectItem(int item_num) {
+		System.out.println("ItemDAO - selectItem() 시작");
+		
 		ItemBean itemBean = new ItemBean();
 		
 		sql = "SELECT * "
@@ -67,8 +70,10 @@ public class ItemDAO {
 				itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
 			}
 			
+			System.out.println("ItemDAO - selectItem() 성공");
+			
 		} catch (SQLException e) {
-			System.out.println("selectItem() 오류 "+e.getMessage());
+			System.out.println("ItemDAO - selectItem() 오류 "+e.getMessage());
 		} finally {
 			close(rs);
 			close(pstmt);
@@ -137,6 +142,99 @@ public class ItemDAO {
 		}
 		return isUpdateSuccess;
 		
+	}
+	
+	
+	/*----------------------------------------------------*/
+	
+	
+	public int selectListCount(String taste, int degree) {
+		int listCount = 0;
+		if (taste.equals("all")) {
+			sql = "select count(*) from item";
+		} else {
+			sql = "select count(*) from item_favor where " + taste + "=" + degree;
+		}
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				listCount = rs.getInt("count(*)");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("selectListCount 실패! (" + e.getMessage() + ")");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+
+	public ArrayList<ItemBean> selectItemList(int page, int limit, String taste, String filter, int degree) {
+		ArrayList<ItemBean> itemList = null;
+		ItemBean itemBean = null;
+		String sqlFilter = null;
+		
+		if (filter.equals("newest")) {
+			sqlFilter = "item_date desc, item_num desc";
+		} else if (filter.equals("popular")) {
+			sqlFilter = "item_sold desc, item_date desc";
+		} else if (filter.equals("lowPrice")) {
+			sqlFilter = "item_price asc, item_date desc";
+		} else if (filter.equals("highPrice")) {
+			sqlFilter = "item_price desc, item_date desc";
+		}
+		
+		if (taste.equals("all")) {
+			sql = "select * from item inner join item_favor on item.item_num = item_favor.item_favor_item_num order by " + sqlFilter + " limit ?, ? ";
+		} else {
+			sql = "select * from item inner join item_favor on item.item_num = item_favor.item_favor_item_num where item_favor."+ taste + "=" + degree + " order by " + sqlFilter + " limit ?, ?";
+		}
+		
+		
+		
+		try {
+			itemList = new ArrayList<>();
+			pstmt = con.prepareStatement(sql);
+			int startRow = (page-1) * 8;
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, limit);
+			System.out.println("sql : " + sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				itemBean = new ItemBean();
+				itemBean.setItem_amount(rs.getInt("item_amount"));
+				itemBean.setItem_content(rs.getString("item_content"));
+				itemBean.setItem_date(rs.getDate("item_date"));
+				itemBean.setItem_img(rs.getString("item_img"));
+				itemBean.setItem_info(rs.getString("item_info"));
+				itemBean.setItem_name(rs.getString("item_name"));
+				itemBean.setItem_num(rs.getInt("item_num"));
+				itemBean.setItem_price(rs.getInt("item_price"));
+				itemBean.setItem_favor_acidity(rs.getInt("item_favor_acidity"));
+				itemBean.setItem_favor_bitterness(rs.getInt("item_favor_bitterness"));
+				itemBean.setItem_favor_body(rs.getInt("item_favor_body"));
+				itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
+				itemBean.setItem_favor_sweetness(rs.getInt("item_favor_sweetness"));
+				itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
+				itemList.add(itemBean);
+				
+			}
+			
+//			System.out.println("selectItemList 성공!");
+			
+		} catch (SQLException e) {
+			System.out.println("selectItemList 실패! ( " + e.getMessage() + " )");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return itemList;
 	}
 	
 	

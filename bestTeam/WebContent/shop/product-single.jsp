@@ -423,9 +423,12 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 						</div>
 					</div>
 					<p>
-						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a><a href="cart.html"
-							class="btn btn-primary py-3 px-5">BUY</a>
-							<div class="row1">
+						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
+						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						
+						
+								
+		<div class="row1">
     <div class="column">
       <img class="demo cursor" id="im" src="../images/tt.jpg"  onclick="currentSlide(1)" alt="">
     </div>
@@ -461,11 +464,19 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill"
-									href="#v-pills-2" role="tab" aria-controls="v-pills-2" id="btn3"
-									aria-selected="false" style="width: 200px; text-align: center;">상품Q&A</a> 
+								<a class="nav-link"  data-toggle="pill" href="#v-pills-2" id="btn3"
+									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;">상품Q&A</a>  
 								
-
+								<%  String sessionId = (String) session.getAttribute("id");
+							
+									if(sessionId != null) {
+										if(sessionId.equals("admin")) { %>
+											<a class="nav-link"  href="product-modify.jsp?item_num=" id="btn4"
+												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
+												color: white !important;">상품정보 수정</a>
+								<%  	} 
+									} %>
+					
 								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
 							
 						</div>
@@ -474,8 +485,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 						</section>
 
 							
-	<section class="ftco-section" 
-		id="ft1">
+	<section class="ftco-section" id="ft1">
 		<div class="row rows" >
 			<div class="col-md-12 ftco-animate">
 					
