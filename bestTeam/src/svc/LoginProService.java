@@ -10,7 +10,7 @@ import static db.JdbcUtil.*;
 public class LoginProService {
 
 	public boolean isRightUser(UserBean userBean) throws Exception {
-//		System.out.println("LoginproService");
+		System.out.println("LoginproService");
 		boolean isRightUser = false;
 		
 		Connection con = getConnection();
