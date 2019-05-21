@@ -139,7 +139,7 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="itemRegisterPro.em" method="post" enctype="multipart/form-data">
+			<form id="frm" action="itemModifyPro.em" method="post" enctype="multipart/form-data">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>상품명 : </td>
@@ -155,7 +155,7 @@
 					</tr>
 					<tr>
 						<td>간단 설명 : </td>
-						<td><textarea rows="10" cols="30" id="ir1" name="item_content"  placeholder="<%=itemBean.getItem_info()%>"
+						<td><textarea rows="10" cols="30" id="ir1" name="item_info"  placeholder="<%=itemBean.getItem_info()%>"
 								style="width: 700px; height: 200px;" ></textarea></td>
 					</tr>
 					<tr>
@@ -188,8 +188,8 @@
 					</tr>
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" onclick="location.href='/itemModifyPro.em'" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
+							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
 							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em'"/>
 						</td>
 					</tr>

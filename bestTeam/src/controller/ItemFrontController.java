@@ -54,7 +54,7 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 미송
 		} else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
-//			System.out.println("itemSingle");
+			System.out.println("itemSingle");
 			action = new ItemSingleAction();
 			try {
 				forward = action.execute(request, response);

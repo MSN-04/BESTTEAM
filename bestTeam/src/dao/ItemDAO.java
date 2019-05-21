@@ -35,8 +35,7 @@ public class ItemDAO {
 		this.con = con;
 	}
 
-	
-	/*=======================================================*/
+
 	
 	/*-------------------------------------- 주영-------------- ------------------------*/
 	public int selectListCount(String taste, int degree) {
@@ -55,7 +54,10 @@ public class ItemDAO {
 				listCount = rs.getInt("count(*)");
 			}
 			
+			System.out.println("ItemDAO - selectItem() 성공");
+			
 		} catch (SQLException e) {
+			System.out.println("ItemDAO - selectItem() 오류 "+e.getMessage());
 			System.out.println("selectListCount 실패! (" + e.getMessage() + ")");
 		} finally {
 			close(rs);
@@ -129,15 +131,15 @@ public class ItemDAO {
 	}
 	
 	/*-------------------------------------- 미송 --------------------------------------*/
-	
+
 	//-- 아이템 조회해서 ItemBean 리턴 
 		public ItemBean selectItem(int item_num) {
 			ItemBean itemBean = new ItemBean();
 			
 			sql = "SELECT * "
-					+ "FROM item it INNER JOIN item_favor itf "
-					+ "ON it.item_num = itf.item_favor_item_num "
-					+ "WHERE it.item_num=?";
+					+ "FROM item em INNER JOIN item_favor emf "
+					+ "ON em.item_num = emf.item_favor_item_num "
+					+ "WHERE em.item_num=?";
 			
 			try {
 				pstmt = con.prepareStatement(sql);
@@ -153,6 +155,7 @@ public class ItemDAO {
 					itemBean.setItem_content(rs.getString("item_content"));
 					itemBean.setItem_price(rs.getInt("item_price"));
 					itemBean.setItem_date(rs.getDate("item_date"));
+					itemBean.setItem_sold(rs.getInt("item_sold"));
 					itemBean.setItem_favor_num(rs.getInt("item_favor_num"));
 					itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
 					itemBean.setItem_favor_acidity(rs.getInt("item_favor_acidity"));
@@ -172,7 +175,8 @@ public class ItemDAO {
 			return itemBean;
 		}
 		
-		//-- 조회된 아이템 수정
+		
+	//-- 조회된 아이템 수정
 		public int updateItem(ItemBean itemBean) {
 			int isUpdateSuccess = 0;
 			

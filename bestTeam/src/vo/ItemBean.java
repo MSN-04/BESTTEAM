@@ -20,13 +20,6 @@ public class ItemBean {
 	private int item_favor_bitterness;
 	private int item_favor_body;
 	
-	
-	public int getItem_sold() {
-		return item_sold;
-	}
-	public void setItem_sold(int item_sold) {
-		this.item_sold = item_sold;
-	}
 	public int getItem_num() {
 		return item_num;
 	}
@@ -74,6 +67,12 @@ public class ItemBean {
 	}
 	public void setItem_content(String item_content) {
 		this.item_content = item_content;
+	}
+	public int getItem_sold() {
+		return item_sold;
+	}
+	public void setItem_sold(int item_sold) {
+		this.item_sold = item_sold;
 	}
 	public int getItem_favor_num() {
 		return item_favor_num;

@@ -1,61 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-	<section>
-		<form action="itemRegisterPro.em" method="post">
-		
-			<table border="1">
-				<tr>
-					<td>상품 번호</td>
-					<td><input type="text" id="item_num" name="item_num" required ></td>
-				</tr>
-				<tr>
-					<td>상품이름</td>
-					<td><input type="text" id="item_name" name="item_name" required ></td>	
-				</tr>
-				<tr>				
-					<td>상품 개수</td>
-					<td><input type="text" id="item_amount" name="item_amount" required ></td>
-				</tr>
-				<tr>				
-					<td>상품 가격</td>
-					<td><input type="text" id="item_price" name="item_price" required ></td>
-				</tr>
-				<tr>				
-					<td>상품 등록 일자</td>
-					<td><input type="text" id="item_date" name="item_date" required ></td>
-				</tr>
-				<tr>
-					<td>상품 짤막 정보</td>
-					<td><textarea id="item_info" name="item_info" required></textarea></td>
-				</tr>
-				<tr>				
-					<td>상품 이미지</td>
-					<td><input type="text" id="item_img" name="item_img" required ></td>
-				</tr>
-				<tr>				
-					<td>상품 상세내용(url)</td>
-					<td><textarea id="item_content" name="item_content"></textarea></td>
-				</tr>
-				<tr>
-					<td><input type="submit" name="submit"></td>
-					<td><input type="reset" name="reset"></td>
-				
-				</tr>
-
-			</table>
-		</form>
-	
-	</section>
-=======
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,7 +171,6 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 
 </body>
 </html>

@@ -11,15 +11,16 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import svc.ItemModifyProService;
 import vo.ActionForward;
+import vo.ItemBean;
 import vo.UserBean;
 
 public class ItemModifyProAction implements Action {
-/* 아이템 수정 Action (<- FROM itemModifyPro.em )
- 1. Session id 받아 userBean에 저장
- 2. 수정확인 팝업창 띄우기
- 2. ItemModifyProService - isAdmin(id) : isRightAdmin 리턴해줌. 관리자 계정확인
+/* 아이템 수정 Action (<- FROM itemModifyPro.em = 수정하기 버튼 클릭시 )
+ 1. session id 가 admin 일 때만 수정 가능, 아닐 경우 shopMain.em 으로 이동
+ 2. itemModify.em 에서 전달 받은 값을 itemBean 에 저장
  3. ItemModifyProService - modifyItem(item) : isModifySuccess 리턴해줌. 아이템정보 수정 성공 확인
- 4. 아이템정보 수정 성공 시 포워딩 경로 저장 : /shop/product-single.jsp 
+    => 수정 성공 여부에 따라 확인 팝업창 띄우기
+ 4. 아이템정보 수정 성공 시 포워딩 경로 저장 : /itemSingle.em
  5. ActionForward forward 객체 리턴
  */
 	
@@ -31,32 +32,79 @@ public class ItemModifyProAction implements Action {
 		
 		// 1.
 		HttpSession session = request.getSession();
-		String sessionId = (String) session.getAttribute("id");
-		System.out.println("sessionId : "+ sessionId);
+		String id = session.getAttribute("id").toString();
 		
-		UserBean userBean = new UserBean();
-		userBean.setUser_id(sessionId);
-
-		// 2.
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		
-		
-		
-		
-		int item_num = Integer.parseInt(request.getParameter("item_num"));
-		
-		// 2.
-		ItemModifyProService itemModifyProService = new ItemModifyProService();
-		boolean isAdmin = itemModifyProService.isAdmin(sessionId);
-		
-		if(isAdmin) {
-			// 패스워드 일치 확인
+		if(! id.equals("admin")) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('수정할 권한이 없습니다')");
+			out.println("location.href='/shopMain.em'");
+			out.println("</script>");
+		}else {
+			int item_num = Integer.parseInt(request.getParameter("item_num"));
 			
+			// 2.
+			String item_name = request.getParameter("item_name");
+			int item_price = Integer.parseInt(request.getParameter("item_price"));
+			String item_img = request.getParameter("item_img");
+			String item_content = request.getParameter("item_content");
+			String item_info = request.getParameter("item_info");
+			int item_amount = Integer.parseInt(request.getParameter("item_amount"));
+			
+			int item_favor_aroma = Integer.parseInt(request.getParameter("item_favor_aroma"));
+			int item_favor_acidity = Integer.parseInt(request.getParameter("item_favor_acidity"));
+			int item_favor_sweetness = Integer.parseInt(request.getParameter("item_favor_sweetness"));
+			int item_favor_bitterness = Integer.parseInt(request.getParameter("item_favor_bitterness"));
+			int item_favor_body = Integer.parseInt(request.getParameter("item_favor_body"));
+
+			ItemBean itemBean = new ItemBean();
+			
+			itemBean.setItem_name(item_name);
+			itemBean.setItem_price(item_price);
+			itemBean.setItem_img(item_img);
+			itemBean.setItem_content(item_content);
+			itemBean.setItem_info(item_info);
+			itemBean.setItem_amount(item_amount);
+			
+			itemBean.setItem_favor_aroma(item_favor_aroma);
+			itemBean.setItem_favor_acidity(item_favor_acidity);
+			itemBean.setItem_favor_sweetness(item_favor_sweetness);
+			itemBean.setItem_favor_bitterness(item_favor_bitterness);
+			itemBean.setItem_favor_body(item_favor_body);
+			
+			// 3.
+			ItemModifyProService itemModifyProService = new ItemModifyProService();
+			int isModifySuccess = itemModifyProService.modifyItem(itemBean);
+			
+			if (isModifySuccess == 2) {  // item, item_favor 업데이트 성공
+				
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('아이템 정보 수정이 성공했습니다.')");
+				out.println("location.href='/shopMain.em'");
+				out.println("</script>");
+				
+				// 4.
+				forward.setPath("/itemSingle.em");
+				
+			} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
+				
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('item_favor 수정이 실패했습니다.')");
+				out.println("location.href='/shopMain.em'");
+				out.println("</script>");
+				
+			} else { // item 업데이트 실패
+				
+			}
 		}
 		
-		return null;
+		// 5.
+		return forward;
 	}
 
 }
