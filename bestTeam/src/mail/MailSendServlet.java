@@ -21,7 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Action;
 import dao.UserDAO;
+import vo.ActionForward;
 
 /*
  * Servlet implementation class MailSendServlet
@@ -58,6 +60,13 @@ import dao.UserDAO;
 			    
 			}
 			
+			String requestURI = request.getRequestURI();
+			String contextPath = request.getContextPath();
+			String command = requestURI.substring(contextPath.length());
+
+			Action action = null;
+			ActionForward forward = null;
+			
 			request.setCharacterEncoding("UTF-8");
 			String sender = "bestTeamEver@bestTeamEver.com";
 			String receiver = request.getParameter("email");
@@ -91,8 +100,24 @@ import dao.UserDAO;
 				Connection con = getConnection();
 				UserDAO userDAO = UserDAO.getInstance();
 				userDAO.setConnection(con);
-				userDAO.passUpdate(buf.toString(),receiver);
-				out.println("<h3>메일이 정상적으로 전송되었습니다.</h3>");
+				int result = userDAO.passUpdate(buf.toString(),receiver);
+				if(result==1) {
+					con.commit();
+					out.println("<script>");
+					out.println("alert('메일로 임시비밀번호가 발송되었습니다.')");
+					out.println("history.back()");
+					out.println("</script>");
+					forward = new ActionForward();
+					forward.setPath("/member/forgotAccount.jsp");
+				}else {
+					con.rollback();
+					out.println("<script>");
+					out.println("alert('오류발생')");
+					out.println("history.back()");
+					out.println("</script>");
+				}
+//				out.println("<h3>메일이 정상적으로 전송되었습니다.</h3>");
+				System.out.println(result);
 			} catch (Exception e) {
 				out.println("SMTP 서버가 잘못 설정되었거나, 서비스에 문제가 있습니다.");
 				e.printStackTrace();
