@@ -34,7 +34,6 @@ public class IndexFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 //		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
-		Action action = null;
 		ActionForward forward = null;
 		
 		if(command.equals("/index.in")) {

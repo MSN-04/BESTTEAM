@@ -1,3 +1,4 @@
+<%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -99,8 +100,14 @@
 		width: 100%;
 	}
 </style>
+
+<%
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+%>
 </head>
+
 <body>
+
 	<header>
 	<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
@@ -123,67 +130,81 @@
 						</p>
 					</div>
 
+
 				</div>
 			</div>
 		</div>
 	</section>
 
+<!-- 	<section> -->
+<!-- 		<form action=""> -->
+		
+<!-- 		</form> -->
+	
+<!-- 	</section> -->
+
+
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="itemRegisterPro.em" method="post" enctype="multipart/form-data">
+			<form id="frm" action="itemModifyPro.em?item_num=<%=itemBean.getItem_num() %>" method="get" enctype="multipart/form-data">
 				<table style="width: 100%; text-align: center;">
 					<tr>
+						<td>상품번호 : </td>
+						<td><input type="text" id="item_num" name="item_num" class="frmTitle" placeholder="<%=itemBean.getItem_num() %>" readonly="readonly"/></td>
+					</tr>
+					<tr>
 						<td>상품명 : </td>
-						<td><input type="text" id="item_name" name="item_name" class="frmTitle" /></td>
+						<td><input type="text" id="item_name" name="item_name" class="frmTitle" value="<%=itemBean.getItem_name() %>" required="required"/></td>
 					</tr>
 					<tr>
 						<td>가격 : </td>
-						<td><input type="text" id="item_price" name="item_price" class="frmTitle" /></td>
+						<td><input type="text" id="item_price" name="item_price" class="frmTitle" value="<%=itemBean.getItem_price() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>상품 이미지 : </td>
-						<td><input type="file" id="item_img" name="item_img" class="frmTitle" /></td>
+						<td><input type="file" id="item_img" name="item_img" class="frmTitle" value="<%=itemBean.getItem_img() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>간단 설명 : </td>
-						<td><textarea rows="10" cols="30" id="ir1" name="item_content" 
-								style="width: 700px; height: 200px;" ></textarea></td>
+						<td><textarea rows="10" cols="30" id="item_info" name="item_info"  value="<%=itemBean.getItem_info()%>"
+								style="width: 700px; height: 200px;"  required="required"></textarea></td>
 					</tr>
 					<tr>
 						<td>재고 : </td>
-						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" /></td>
+						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" value="<%=itemBean.getItem_amount() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>상세설명 이미지 : </td>
-						<td><input type="file" id="item_content" name="item_content" class="frmTitle" /></td>
+						<td><input type="file" id="item_content" name="item_content" class="frmTitle" value="<%=itemBean.getItem_content()%>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Aroma : </td>
-						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" /></td>
+						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" value="<%=itemBean.getItem_favor_aroma() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Acidity : </td>
-						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" /></td>
+						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" value="<%=itemBean.getItem_favor_acidity() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Sweetness : </td>
-						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" /></td>
+						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" value="<%=itemBean.getItem_favor_sweetness() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Bitterness : </td>
-						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" /></td>
+						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" value="<%=itemBean.getItem_favor_bitterness() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Body : </td>
-						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" /></td>
-					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
-						</td>
+						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" value="<%=itemBean.getItem_favor_body() %>"  required="required"/></td>
 					</tr>
 				</table>
+				<br><br>
+				
+				<p style="text-align: right;">
+					<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+					<input type="submit"  class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
+					<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>'"/>
+				</p>
 			</form>
 		</div>
 	</section>

@@ -1,5 +1,7 @@
+<%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,24 +19,24 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="./css/animate.css">
 
-<link rel="stylesheet" href="../css/owl.carousel.min.css">
-<link rel="stylesheet" href="../css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./css/magnific-popup.css">
 
-<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="./css/aos.css">
 
-<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="./css/ionicons.min.css">
 
-<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../css/jquery.timepicker.css">
-<link rel="stylesheet" href="../css/product-single.css">
+<link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./css/jquery.timepicker.css">
+<link rel="stylesheet" href="./css/product-single.css">
 
-<link rel="stylesheet" href="../css/flaticon.css">
-<link rel="stylesheet" href="../css/icomoon.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="./css/flaticon.css">
+<link rel="stylesheet" href="./css/icomoon.css">
+<link rel="stylesheet" href="./css/style.css">
 
 <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -80,7 +82,7 @@ function showSlides(n) {
 
 
 
-<script src="../js/jquery-3.3.1.js"></script>
+<script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	//  		$(document).ready(function(index){
 	//  			$('#btn1').click(function(){
@@ -283,21 +285,22 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 
 </script> 
 
-
-
+	
+<%
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+%>
 
 </head>
 <body>
 
 	<header>
-		<jsp:include page="../inc/header.jsp" />
+		<jsp:include page="/inc/header.jsp" />
 	</header>
 
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(../images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -306,8 +309,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product
-								Detail</span>
+							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
 						</p>
 					</div>
 
@@ -322,27 +324,27 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 
 
 <div class="container1">
-	<img src="../images/tt.jpg"  id="sd">
+	<span id="sd"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 500px; height: 500px;"></span>
 
   <!-- Full-width images with number text -->
   <div class="mySlides">
     <div class="numbertext"></div>
-      <img src="../images/tt.jpg"  id="sd">
+      <img src="./images/tt.jpg"  id="sd">
   </div>
 
   <div class="mySlides">
     <div class="numbertext"></div>
-      <img src="../images/tt3.jpg"  id="sd">
+      <img src="./images/tt3.jpg"  id="sd">
   </div>
 
   <div class="mySlides">
     <div class="numbertext"></div>
-      <img src="../images/tt4.jpg"  id="sd">
+      <img src="./images/tt4.jpg"  id="sd">
   </div>
 
   <div class="mySlides">
     <div class="numbertext"></div>
-      <img src="../images/tt5.jpg"  id="sd">
+      <img src="./images/tt5.jpg"  id="sd">
   </div>
 
   
@@ -366,20 +368,20 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 
 
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-					<h3>레귤러 블랜드</h3>
+					<h3><%=itemBean.getItem_name() %></h3>
 
 					<p class="price">
-						<span>￦ 20,000</span>
+						<span><%=itemBean.getItem_price() %> 원</span>
 					</p>
-					<p>기본적인 커피 맛에 충실한 커피입니다. 옅은 농도의 커피를 즐기시는 분들께 추천드립니다. 기본적인 배합을 통해 향을 낸 레스토랑의 후식처럼
-					편안한 커피입니다. </p>
+					<p><%=itemBean.getItem_info() %></p>
 					<div class="col-md-12 mb-3">
 
 						<div class="tagcloud">
-							<a href="#" class="tag-cloud-link">블랜딩원두</a>
-							<a href="#" class="tag-cloud-link">달콤 쌉싸름한 풍미</a> <a href="#"
-								class="tag-cloud-link">콜롬비아외</a>
-
+							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_acidity() %></a>
+							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_aroma() %></a> 
+							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_bitterness() %></a>
+							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_body() %></a>
+							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_sweetness() %></a>
 						</div>
 
 
@@ -426,20 +428,21 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
 						
-						
 								
 		<div class="row1">
+					
+   <div class="row1">
     <div class="column">
-      <img class="demo cursor" id="im" src="../images/tt.jpg"  onclick="currentSlide(1)" alt="">
+      <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
     </div>
     <div class="column"> 
-      <img class="demo cursor" id="im" src="../images/tt3.jpg"  onclick="currentSlide(2)" alt="">
+      <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt="">
     </div>
     <div class="column">
-      <img class="demo cursor" id="im" src="../images/tt4.jpg"  onclick="currentSlide(3)" alt="">
+      <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt="">
     </div>
     <div class="column">
-      <img class="demo cursor" id="im" src="../images/tt5.jpg"  onclick="currentSlide(4)" alt="">
+      <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt="">
     </div>
     
   </div>
@@ -471,9 +474,13 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 							
 									if(sessionId != null) {
 										if(sessionId.equals("admin")) { %>
-											<a class="nav-link"  href="product-modify.jsp?item_num=" id="btn4"
+											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 수정</a>
+												
+											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
+												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
+												color: white !important;">상품정보 삭제</a>
 								<%  	} 
 									} %>
 					
@@ -491,7 +498,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 					
 					<table class="table">
 						<tr>
-							<td><img src="../images/tt1.jpg"  class="img11"></td>
+							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
 
 					</table>
@@ -567,14 +574,14 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 						</tr>
 						<tr>
 							<td>2</td>
-							<td><a href="#"><img alt="key" src="../images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td>
+							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td>
 							<td>19.04.23</td>
 							<td>admin</td>
 							<td>3</td>
 						</tr>
 						<tr>
 							<td>1</td>
-							<td><a href="#"><img alt="key" src="../images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td>
+							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td>
 							<td>19.04.23</td>
 							<td>admin</td>
 							<td>21</td>
@@ -647,7 +654,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 	</section>
 
 	<footer class="ftco-footer ftco-section img">
-		<jsp:include page="../inc/footer.jsp" />
+		<jsp:include page="/inc/footer.jsp" />
 	</footer>
 
 
@@ -662,25 +669,25 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 	</div>
 
 
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../js/popper.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/jquery.easing.1.3.js"></script>
-	<script src="../js/jquery.waypoints.min.js"></script>
-	<script src="../js/jquery.stellar.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
-	<script src="../js/aos.js"></script>
-	<script src="../js/jquery.animateNumber.min.js"></script>
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/jquery.timepicker.min.js"></script>
-	<script src="../js/scrollax.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.waypoints.min.js"></script>
+	<script src="./js/jquery.stellar.min.js"></script>
+	<script src="./js/owl.carousel.min.js"></script>
+	<script src="./js/jquery.magnific-popup.min.js"></script>
+	<script src="./js/aos.js"></script>
+	<script src="./js/jquery.animateNumber.min.js"></script>
+	<script src="./js/bootstrap-datepicker.js"></script>
+	<script src="./js/jquery.timepicker.min.js"></script>
+	<script src="./js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../js/google-map.js"></script>
-	<script src="../js/main.js"></script>
-	<script src="../js/jquery.bxslider.min.js"></script>
+	<script src="./js/google-map.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/jquery.bxslider.min.js"></script>
 
 
 

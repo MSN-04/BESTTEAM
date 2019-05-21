@@ -17,6 +17,7 @@ public class ItemSingleService {
  5. ItemBean 리턴
  */
 	public ItemBean getItem(int item_num) {
+		System.out.println("ItemSingleService - getItem() 시작");
 		
 		// 1.
 		Connection con = getConnection();
@@ -31,6 +32,7 @@ public class ItemSingleService {
 		// 4.
 		close(con);
 		
+		System.out.println("ItemSingleService - getItem() 끝");
 		// 5.
 		return itemBean;
 	}
