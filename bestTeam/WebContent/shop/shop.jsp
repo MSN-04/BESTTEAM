@@ -11,12 +11,12 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-	System.out.println("listCount : " + listCount);
-	System.out.println("nowPage : " + nowPage);
-	System.out.println("maxPage : " + maxPage);
-	System.out.println("startPage : " + startPage);
-	System.out.println("endPage : " + endPage);
-	System.out.println("itemList.size() : " + itemList.size());
+// 	System.out.println("listCount : " + listCount);
+// 	System.out.println("nowPage : " + nowPage);
+// 	System.out.println("maxPage : " + maxPage);
+// 	System.out.println("startPage : " + startPage);
+// 	System.out.println("endPage : " + endPage);
+// 	System.out.println("itemList.size() : " + itemList.size());
 %>
 <!DOCTYPE html>
 <head>
@@ -435,11 +435,12 @@
 										<%
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
+// 													System.out.println("itemList.get(" + i + ").getItem_img() : " + itemList.get(i).getItem_img());
 										%>
 											<div class="col-md-3">
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
-														style="background-image: url(./images/menu-1.jpg);"></a>
+														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
 													<div class="text text-center pt-4">
 														<h3>
 															<a href="product-single.html"><%=itemList.get(i).getItem_name() %></a>
