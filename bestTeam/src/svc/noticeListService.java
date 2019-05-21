@@ -12,7 +12,7 @@ public class noticeListService {
 	
 	// 글 목록 갯수 구해서 리턴
 	public int getListCount() throws Exception {
-		System.out.println("noticeListService - getListCount()");
+//		System.out.println("noticeListService - getListCount()");
 		
 		int listCount = 0; // 글 목록 갯수
 		
@@ -28,7 +28,6 @@ public class noticeListService {
 		   
 		System.out.println("게시물 갯수 : " + listCount);
 		
-		// Connection 객체 반환
 		close(con);
 		
 		return listCount;
@@ -40,7 +39,6 @@ public class noticeListService {
 		
 		ArrayList<noticeBean> articleList = null;
 		
-		// Connection 객체 가져오기
 		Connection con = getConnection();
 		
 		// noticeDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
@@ -58,23 +56,5 @@ public class noticeListService {
 		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

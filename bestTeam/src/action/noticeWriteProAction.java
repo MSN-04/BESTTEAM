@@ -21,31 +21,29 @@ public class noticeWriteProAction implements Action {
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
 		
 		ActionForward forward = null;
-		noticeBean noticeBean = null;
+		noticeBean NoticeBean = null;
 		   
 		// 파일 업로드를 위한 정보 저장
-		String realFolder = ""; // 실제 경로
-		String saveFolder = "/noticeUpload"; // 톰캣(이클립스) 상의 가상의 경로
-		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-		
-		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
-		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-		
-		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
-		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-		
-		noticeBean = new noticeBean(); // 글 쓰기 데이터를 저장할 noticeBean 객체
-		// 파일명을 제외한 나머지 데이터는 multi.getParameter() 메서드를 사용
-		noticeBean.setNotice_writer(multi.getParameter("notice_writer"));
-		noticeBean.setNotice_subject(multi.getParameter("notice_subject"));
-		noticeBean.setNotice_content(multi.getParameter("notice_content"));
-		// 파일명을 가져오는 방법
-		noticeBean.setNotice_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
+//		String realFolder; // 실제 경로
+//		String saveFolder = "/noticeUpload"; // 톰캣(이클립스) 상의 가상의 경로
+//		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
+//		
+//		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
+//		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
+//		
+//		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
+//		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+//		
+		NoticeBean = new noticeBean(); // 글 쓰기 데이터를 저장할 noticeBean 객체
+//		NoticeBean.setNotice_writer(request.getParameter("notice_writer"));
+		NoticeBean.setNotice_subject(request.getParameter("notice_subject"));
+		NoticeBean.setNotice_content(request.getParameter("notice_content"));
+//		NoticeBean.setNotice_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 		
 		// 실제 비즈니스 로직 처리를 담당할 Service 클래스(XXXAction => XXXService) 인스턴스를 생성하여
 		// 처리 담당 메서드를 호출(매개변수로 noticeBean 객체 전달)
-		noticeWriteProService noticeWriteProService = new noticeWriteProService();
-		boolean isWriteSuccess = noticeWriteProService.registArticle(noticeBean);
+		noticeWriteProService NoticeWriteProService = new noticeWriteProService();
+		boolean isWriteSuccess = NoticeWriteProService.registArticle(NoticeBean);
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isWriteSuccess) {

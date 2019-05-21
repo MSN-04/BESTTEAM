@@ -27,8 +27,8 @@ public class noticeDetailAction implements Action {
 //		int page = Integer.parseInt(request.getParameter("page"));
 		String page = request.getParameter("page");
 		
-		noticeViewService noticeDetailService = new noticeViewService();
-		noticeBean article = noticeDetailService.getArticle(notice_num);
+		noticeViewService NoticeDetailService = new noticeViewService();
+		noticeBean article = NoticeDetailService.getArticle(notice_num);
 		
 		  
 		// 다른 페이지에서 page 번호를 전달받아 계속 유지하기 위해 request 객체의 setAttribute() 메서드로 전달
@@ -36,31 +36,14 @@ public class noticeDetailAction implements Action {
 		// 글 상세 내용을 담고 있는 noticeBean 객체도 전달
 		request.setAttribute("article", article);
 		
-		// Dispatch 방식으로 qna_notice_view.jsp 페이지 포워딩
+		// Dispatch 방식으로 notice_view.jsp 페이지 포워딩
 		ActionForward forward = new ActionForward();
-		forward.setPath("/notice/qna_notice_view.jsp"); // 이동할 jsp 페이지 지정
+		forward.setPath("./notice/notice_view.jsp"); // 이동할 jsp 페이지 지정
 		
 		return forward;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

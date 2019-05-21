@@ -53,10 +53,10 @@ public class noticeModifyProService {
 		return isModifySuccess;
 	}
 
-	public boolean isArticleWriter(int notice_num, String parameter) {
-		// TODO Auto-generated method stub
+	public boolean isArticleWriter(int notice_num) {
 		return false;
 	}
+
 	
 }
 
