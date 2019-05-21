@@ -324,7 +324,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 
 
 <div class="container1">
-	<span id="sd"><%=itemBean.getItem_img() %></span>
+	<span id="sd"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 500px; height: 500px;"></span>
 
   <!-- Full-width images with number text -->
   <div class="mySlides">
@@ -427,15 +427,11 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 					<p>
 						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
-<<<<<<< HEAD
-						
 						
 								
 		<div class="row1">
-=======
 					
    <div class="row1">
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
     <div class="column">
       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
     </div>
@@ -478,9 +474,13 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 							
 									if(sessionId != null) {
 										if(sessionId.equals("admin")) { %>
-											<a class="nav-link"  href="product-modify.jsp?item_num=" id="btn4"
+											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 수정</a>
+												
+											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
+												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
+												color: white !important;">상품정보 삭제</a>
 								<%  	} 
 									} %>
 					
@@ -498,7 +498,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 					
 					<table class="table">
 						<tr>
-							<td><class="img11"><%=itemBean.getItem_content() %></td>
+							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
 
 					</table>

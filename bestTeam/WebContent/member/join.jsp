@@ -75,6 +75,12 @@
   margin-left: 27%;
 }
 
+#checkMail{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-bottom: 5%;
+}
+
 
 </style>
 
@@ -92,6 +98,15 @@
   }
   checkFirst = true;
  }
+ 
+ function checkMail() {
+	  if (checkFirst == false) {
+	   //0.5초 후에 sendKeyword()함수 실행
+	   setTimeout("sendMail();", 500);
+	   loopSendKeyword = true;
+	  }
+	  checkFirst = true;
+	 }
  
  function checkPwd(){
   var pw1 = frm.pass.value;
@@ -134,7 +149,7 @@
    if (httpRequest.status == 200) {
     var resultText = httpRequest.responseText;
     var listView = document.getElementById('checkMsg');
-    alert(resultText);
+//     alert(resultText);
     if(resultText==0){
      listView.innerHTML = "사용 할 수 있는 ID 입니다";
      listView.style.color = "#4d79ff";
@@ -147,6 +162,46 @@
    }
   }
  }
+ 
+ function sendMail() {
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMail').style.color = "#ff4d4d";
+	   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("mail_check.us", params, displayResultMail, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendMail();", 500);
+	 }
+
+
+function displayResultMail() {
+ if (httpRequest.readyState == 4) {
+  if (httpRequest.status == 200) {
+   var resultText = httpRequest.responseText;
+   var listView = document.getElementById('checkMail');
+//    alert(resultText);
+   if(resultText==0){
+    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
+    listView.style.color = "#4d79ff";
+   }else{
+    listView.innerHTML = "이미 등록된 MAIL 입니다";
+    listView.style.color = "#ff4d4d";
+   }
+  } else {
+   alert("에러 발생: "+httpRequest.status);
+  }
+ }
+}
 </script>
 
 
@@ -233,10 +288,11 @@
 										class="form-control" placeholder="이메일을 입력해주세요." name="email">
 								</div>
 							</div>
+							<div id="checkMail">E-MAIL 중복확인하셈ㅎ</div>
 							<div class="col-md-6">
-								<div class="form-group">
+								<div class="">
 									<label for=""></label>
-									<p onclick="">
+									<p onclick="checkId()">
 										<a class="btn btn-best py-3 px-4">중복체크</a>
 									</p>
 								</div>

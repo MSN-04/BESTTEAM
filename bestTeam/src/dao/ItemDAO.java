@@ -176,9 +176,12 @@ public class ItemDAO {
 		}
 		
 		
-	//-- 조회된 아이템 수정
+	//-- 아이템 수정하고 결과 리턴
 		public int updateItem(ItemBean itemBean) {
+			System.out.println("updateItem() 시작");
+
 			int isUpdateSuccess = 0;
+			System.out.println(isUpdateSuccess);
 			
 			sql = "SELECT * "
 					+ "FROM item it INNER JOIN item_favor itf "
@@ -210,13 +213,15 @@ public class ItemDAO {
 					pstmt.setInt(8, itemBean.getItem_num());
 					pstmt.executeUpdate();
 					
+					
 					isUpdateSuccess = 1;
+					System.out.println(isUpdateSuccess);
 					
 					// item_favor 테이블 UPDATE
 					String sql2 = "UPDATE item_favor "
 							+ "SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, "
 							+ 	  "item_favor_sweetness=?, item_favor_aroma=?"
-							+ "WHERE item_favor_item_num=?";
+							+ "WHERE item_favor_num=?";
 					
 					pstmt = con.prepareStatement(sql2);
 					pstmt.setInt(1,itemBean.getItem_favor_acidity());
@@ -224,9 +229,10 @@ public class ItemDAO {
 					pstmt.setInt(3, itemBean.getItem_favor_body());
 					pstmt.setInt(4, itemBean.getItem_favor_sweetness());
 					pstmt.setInt(5, itemBean.getItem_favor_aroma());
-					pstmt.setInt(6, itemBean.getItem_num());
+					pstmt.setInt(6, itemBean.getItem_favor_num());
 					
 					isUpdateSuccess = 2;
+					System.out.println(isUpdateSuccess);
 				}
 				
 			} catch (SQLException e) {
@@ -335,7 +341,7 @@ public class ItemDAO {
 		      pstmt = con.prepareStatement(sql);
 		      pstmt.setInt(1, item_num);
 		      
-		      rs = pstmt.executeQuery();
+		      deleteItemCnt = pstmt.executeUpdate();
 		    } catch (SQLException e) {
 		      System.out.println("updateItem() 오류 "+e.getMessage());
 		    } finally {
