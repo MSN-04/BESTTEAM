@@ -11,6 +11,7 @@ public class ItemBean {
 	private int item_amount;
 	private int item_price;
 	private String item_content;
+	private int item_sold;
 	private int item_favor_num;
 	private int item_favor_item_num;
 	private int item_favor_aroma;
@@ -66,6 +67,12 @@ public class ItemBean {
 	}
 	public void setItem_content(String item_content) {
 		this.item_content = item_content;
+	}
+	public int getItem_sold() {
+		return item_sold;
+	}
+	public void setItem_sold(int item_sold) {
+		this.item_sold = item_sold;
 	}
 	public int getItem_favor_num() {
 		return item_favor_num;

@@ -90,7 +90,7 @@
 			</ul>
 		</div>
 		<div id="login-box" class="login-popup" style="width: 300px; height: 300px;">
-			<a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+			<a class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
 			<form method="post" class="signin" action="LoginProAction.us">
 				<fieldset class="textbox">
 					<label class="username"> <span>ID</span> 
