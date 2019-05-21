@@ -72,6 +72,7 @@
   color : #ff4d4d;
   font-size: 13px;
   margin-bottom: 5%;
+  margin-left: 27%;
 }
 
 
@@ -93,7 +94,6 @@
  }
  
  function checkPwd(){
-  var f1 = document.forms[0];
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   if(pw1!=pw2){
@@ -109,24 +109,24 @@
  
  
  function sendId() {
-  if (loopSendKeyword == false) return;
-  
-  var keyword = document.frm.id.value;
-  if (keyword == '') {
-   lastKeyword = '';
-   document.getElementById('checkMsg').style.color = "#ff4d4d";
-   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요";
-  } else if (keyword != lastKeyword) {
-   lastKeyword = keyword;
-   
-   if (keyword != '') {
-    var params = "id="+encodeURIComponent(keyword);
-    sendRequest("id_check.jsp", params, displayResult, 'POST');
-   } else {
-   }
-  }
-  setTimeout("sendId();", 500);
- }
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMsg').style.color = "#ff4d4d";
+	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("id_check.us", params, displayResult, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendId();", 500);
+	 }
  
  
  function displayResult() {
@@ -134,6 +134,7 @@
    if (httpRequest.status == 200) {
     var resultText = httpRequest.responseText;
     var listView = document.getElementById('checkMsg');
+    alert(resultText);
     if(resultText==0){
      listView.innerHTML = "사용 할 수 있는 ID 입니다";
      listView.style.color = "#4d79ff";
@@ -182,13 +183,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" method="post">
+					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post">
 						<h3 class="mb-4 billing-heading">회원 가입</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label> <input type="text"
-										class="form-control" placeholder="아이디를 입력해주세요." name="id" onkeydown="checkId()">
+										class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()">
 								</div>
 							</div>
 							<div id="checkMsg">아이디를 입력하세요</div>

@@ -117,7 +117,7 @@
 	            </div>
 	            </form>
 	            <div class="form-group fgdiv">
-	             <a class="fg" href="./index/index.html">아이디/비밀번호 찾기</a>
+	             <a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 									</div>
 							</div>
 								

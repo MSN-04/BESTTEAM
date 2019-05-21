@@ -101,7 +101,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate div0517">
-					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+					<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">아이디 찾기</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
@@ -119,7 +119,7 @@
                 </div>
 	            </div>
 	            </form>
-	            <form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+	            <form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								
