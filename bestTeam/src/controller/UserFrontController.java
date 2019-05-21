@@ -59,6 +59,10 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/delete_member.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/delete_member.jsp");
+		} else if (command.equals("/id_check.us")) {
+			System.out.println("idcheck controller");
+			forward = new ActionForward();
+			forward.setPath("/member/id_check.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
 			System.out.println("controll loginPro");
 			action = new LoginProAction();

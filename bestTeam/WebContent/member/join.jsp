@@ -72,6 +72,7 @@
   color : #ff4d4d;
   font-size: 13px;
   margin-bottom: 5%;
+  margin-left: 27%;
 }
 
 
@@ -93,7 +94,6 @@
  }
  
  function checkPwd(){
-  var f1 = document.forms[0];
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   if(pw1!=pw2){
@@ -109,24 +109,24 @@
  
  
  function sendId() {
-  if (loopSendKeyword == false) return;
-  
-  var keyword = document.frm.id.value;
-  if (keyword == '') {
-   lastKeyword = '';
-   document.getElementById('checkMsg').style.color = "#ff4d4d";
-   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요";
-  } else if (keyword != lastKeyword) {
-   lastKeyword = keyword;
-   
-   if (keyword != '') {
-    var params = "id="+encodeURIComponent(keyword);
-    sendRequest("id_check.jsp", params, displayResult, 'POST');
-   } else {
-   }
-  }
-  setTimeout("sendId();", 500);
- }
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = document.frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMsg').style.color = "black";
+	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("id_check.us", params, displayResult, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendId();", 500);
+	 }
  
  
  function displayResult() {
@@ -188,7 +188,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label> <input type="text"
-										class="form-control" placeholder="아이디를 입력해주세요." name="id" onkeydown="checkId()">
+										class="form-control" placeholder="아이디를 입력해주세요." name="id" onkeyup="checkId()">
 								</div>
 							</div>
 							<div id="checkMsg">아이디를 입력하세요</div>

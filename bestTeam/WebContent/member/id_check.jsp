@@ -13,6 +13,7 @@
 	String id = request.getParameter("id");
 	UserDAO userDAO = UserDAO.getInstance();
 	int re = userDAO.checkId(id);
+	System.out.println("제밟제바라저래냠올");
 %>
 
 <%=re %>
