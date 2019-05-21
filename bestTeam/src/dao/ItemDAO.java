@@ -6,148 +6,43 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 import static db.JdbcUtil.*;
 
+=======
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 
 import vo.ItemBean;
 
+import static db.JdbcUtil.*;
+
 public class ItemDAO {
 	
-	String sql;
-	
-	//-- 커넥션
 	private Connection con;
-	private PreparedStatement pstmt;
+	private PreparedStatement pstmt =null;
 	private ResultSet rs;
-	public void setConnection(Connection con) { // svc에서 보낸 커넥션을 DAO에 전달
-		this.con = con;
-	}
+	private String sql = null;
 	
-	//-- 싱글톤 디자인 패턴
-	private ItemDAO() {}  // 1. 생성자 호출 잠금
-	private static ItemDAO instance;  // 2. 인스턴스 생성
-	public static ItemDAO getInstance() {  // 3. 인스턴스 호출 메서드
-		if(instance == null) {
-			instance = new ItemDAO(); // 4. 인스턴스 없을때만 새로 생성 
+	private ItemDAO() {}
+	
+	private static ItemDAO instance ;
+	
+	public static ItemDAO getInstance() {
+		
+		if(instance ==null) {
+			instance = new ItemDAO();
 		}
 		return instance;
 	}
 	
-	
-
-	//-- 아이템 조회해서 ItemBean 리턴 
-	public ItemBean selectItem(int item_num) {
-		System.out.println("ItemDAO - selectItem() 시작");
-		
-		ItemBean itemBean = new ItemBean();
-		
-		sql = "SELECT * "
-				+ "FROM item it INNER JOIN item_favor itf "
-				+ "ON it.item_num = itf.item_favor_item_num "
-				+ "WHERE it.item_num=?";
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, item_num);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				itemBean.setItem_num(item_num);
-				itemBean.setItem_name(rs.getString("item_name"));
-				itemBean.setItem_info(rs.getString("item_info"));
-				itemBean.setItem_img(rs.getString("item_img"));
-				itemBean.setItem_amount(rs.getInt("item_amount"));
-				itemBean.setItem_content(rs.getString("item_content"));
-				itemBean.setItem_price(rs.getInt("item_price"));
-				itemBean.setItem_date(rs.getDate("item_date"));
-				itemBean.setItem_favor_num(rs.getInt("item_favor_num"));
-				itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
-				itemBean.setItem_favor_acidity(rs.getInt("item_favor_acidity"));
-				itemBean.setItem_favor_bitterness(rs.getInt("item_favor_bitterness"));
-				itemBean.setItem_favor_body(rs.getInt("item_favor_body"));
-				itemBean.setItem_favor_sweetness(rs.getInt("item_favor_sweetness"));
-				itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
-			}
-			
-			System.out.println("ItemDAO - selectItem() 성공");
-			
-		} catch (SQLException e) {
-			System.out.println("ItemDAO - selectItem() 오류 "+e.getMessage());
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return itemBean;
+	public void setConnection(Connection con) {
+		this.con = con;
 	}
 
-	//-- 조회된 아이템 수정
-	public int updateItem(ItemBean itemBean) {
-		int isUpdateSuccess = 0;
-		
-		sql = "SELECT * "
-				+ "FROM item it INNER JOIN item_favor itf "
-				+ "ON it.item_num = itf.item_favor_item_num "
-				+ "WHERE it.item_num=?";
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, itemBean.getItem_num());
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				
-				// item 테이블 UPDATE
-				String sql1 = "UPDATE item "
-						+ "SET item_name=?, item_info=?, item_img=?, "
-						+ 	  "item_amount=?, item_content=?, item_price=?, item_date=?"
-						+ "WHERE item_num=?";
-				
-				pstmt = con.prepareStatement(sql1);
-				
-				pstmt.setString(1, itemBean.getItem_name());
-				pstmt.setString(2, itemBean.getItem_info());
-				pstmt.setString(3, itemBean.getItem_img());
-				pstmt.setInt(4, itemBean.getItem_amount());
-				pstmt.setString(5, itemBean.getItem_content());
-				pstmt.setInt(6, itemBean.getItem_price());
-				pstmt.setDate(7, (Date) itemBean.getItem_date());
-				pstmt.setInt(8, itemBean.getItem_num());
-				pstmt.executeUpdate();
-				
-				isUpdateSuccess = 1;
-				
-				// item_favor 테이블 UPDATE
-				String sql2 = "UPDATE item_favor "
-						+ "SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, "
-						+ 	  "item_favor_sweetness=?, item_favor_aroma=?"
-						+ "WHERE item_favor_item_num=?";
-				
-				pstmt = con.prepareStatement(sql2);
-				pstmt.setInt(1,itemBean.getItem_favor_acidity());
-				pstmt.setInt(2, itemBean.getItem_favor_bitterness());
-				pstmt.setInt(3, itemBean.getItem_favor_body());
-				pstmt.setInt(4, itemBean.getItem_favor_sweetness());
-				pstmt.setInt(5, itemBean.getItem_favor_aroma());
-				pstmt.setInt(6, itemBean.getItem_num());
-				
-				isUpdateSuccess = 2;
-			}
-			
-		} catch (SQLException e) {
-			System.out.println("updateItem() 오류 "+e.getMessage());
-		} finally {
-			close(pstmt);
-		}
-		return isUpdateSuccess;
-		
-	}
+
 	
-	
-	/*----------------------------------------------------*/
-	
-	
+	/*-------------------------------------- 주영-------------- ------------------------*/
 	public int selectListCount(String taste, int degree) {
 		int listCount = 0;
 		if (taste.equals("all")) {
@@ -164,7 +59,10 @@ public class ItemDAO {
 				listCount = rs.getInt("count(*)");
 			}
 			
+			System.out.println("ItemDAO - selectItem() 성공");
+			
 		} catch (SQLException e) {
+			System.out.println("ItemDAO - selectItem() 오류 "+e.getMessage());
 			System.out.println("selectListCount 실패! (" + e.getMessage() + ")");
 		} finally {
 			close(rs);
@@ -237,23 +135,197 @@ public class ItemDAO {
 		return itemList;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	/*-------------------------------------- 미송 --------------------------------------*/
 
+	//-- 아이템 조회해서 ItemBean 리턴 
+		public ItemBean selectItem(int item_num) {
+			ItemBean itemBean = new ItemBean();
+			
+			sql = "SELECT * "
+					+ "FROM item em INNER JOIN item_favor emf "
+					+ "ON em.item_num = emf.item_favor_item_num "
+					+ "WHERE em.item_num=?";
+			
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, item_num);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					itemBean.setItem_num(item_num);
+					itemBean.setItem_name(rs.getString("item_name"));
+					itemBean.setItem_info(rs.getString("item_info"));
+					itemBean.setItem_img(rs.getString("item_img"));
+					itemBean.setItem_amount(rs.getInt("item_amount"));
+					itemBean.setItem_content(rs.getString("item_content"));
+					itemBean.setItem_price(rs.getInt("item_price"));
+					itemBean.setItem_date(rs.getDate("item_date"));
+					itemBean.setItem_sold(rs.getInt("item_sold"));
+					itemBean.setItem_favor_num(rs.getInt("item_favor_num"));
+					itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
+					itemBean.setItem_favor_acidity(rs.getInt("item_favor_acidity"));
+					itemBean.setItem_favor_bitterness(rs.getInt("item_favor_bitterness"));
+					itemBean.setItem_favor_body(rs.getInt("item_favor_body"));
+					itemBean.setItem_favor_sweetness(rs.getInt("item_favor_sweetness"));
+					itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("selectItem() 오류 "+e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			
+			return itemBean;
+		}
+		
+		
+	//-- 조회된 아이템 수정
+		public int updateItem(ItemBean itemBean) {
+			int isUpdateSuccess = 0;
+			
+			sql = "SELECT * "
+					+ "FROM item it INNER JOIN item_favor itf "
+					+ "ON it.item_num = itf.item_favor_item_num "
+					+ "WHERE it.item_num=?";
+			
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, itemBean.getItem_num());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					// item 테이블 UPDATE
+					String sql1 = "UPDATE item "
+							+ "SET item_name=?, item_info=?, item_img=?, "
+							+ 	  "item_amount=?, item_content=?, item_price=?, item_date=?"
+							+ "WHERE item_num=?";
+					
+					pstmt = con.prepareStatement(sql1);
+					
+					pstmt.setString(1, itemBean.getItem_name());
+					pstmt.setString(2, itemBean.getItem_info());
+					pstmt.setString(3, itemBean.getItem_img());
+					pstmt.setInt(4, itemBean.getItem_amount());
+					pstmt.setString(5, itemBean.getItem_content());
+					pstmt.setInt(6, itemBean.getItem_price());
+					pstmt.setDate(7, (Date) itemBean.getItem_date());
+					pstmt.setInt(8, itemBean.getItem_num());
+					pstmt.executeUpdate();
+					
+					isUpdateSuccess = 1;
+					
+					// item_favor 테이블 UPDATE
+					String sql2 = "UPDATE item_favor "
+							+ "SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, "
+							+ 	  "item_favor_sweetness=?, item_favor_aroma=?"
+							+ "WHERE item_favor_item_num=?";
+					
+					pstmt = con.prepareStatement(sql2);
+					pstmt.setInt(1,itemBean.getItem_favor_acidity());
+					pstmt.setInt(2, itemBean.getItem_favor_bitterness());
+					pstmt.setInt(3, itemBean.getItem_favor_body());
+					pstmt.setInt(4, itemBean.getItem_favor_sweetness());
+					pstmt.setInt(5, itemBean.getItem_favor_aroma());
+					pstmt.setInt(6, itemBean.getItem_num());
+					
+					isUpdateSuccess = 2;
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("updateItem() 오류 "+e.getMessage());
+			} finally {
+				close(pstmt);
+			}
+			return isUpdateSuccess;
+			
+		}
+	
+		/*-------------------------------------- 기홍 --------------------------------------*/
+		
+		
+		public int registItem(ItemBean itemBean) {
+			int num = 0;
+			int insertCount = 0;
+			
+			sql="select max(item_num) from item";
+			
+			try {
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+				num = rs.getInt(1) + 1;
+				}
+				
+				sql = "INSERT INTO item VALUES(?, ?, now(), ?, ?, ?, ?, ?, ?)";
+			
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, itemBean.getItem_name());
+				pstmt.setString(3, itemBean.getItem_info());
+				pstmt.setString(4, itemBean.getItem_img());
+				pstmt.setInt(5, itemBean.getItem_amount());
+				pstmt.setInt(6, itemBean.getItem_price());
+				pstmt.setString(7, itemBean.getItem_content());
+				pstmt.setInt(8, 0);
+
+				insertCount = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("INSERT 에러 : " + e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			
+			return insertCount;
+			
+		}
+		
+		public boolean isRegistSuccess(ItemBean itemBean) {
+			sql = "SELECT * FROM item WHERE item_num=?";
+			
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, itemBean.getItem_num());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					return true;
+				}
+				
+			} catch (SQLException e) {
+//				e.printStackTrace();
+				System.out.println("isRegistSuccess() 실패! : " + e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+			
+			return false;
+		}
+		
+		/*-------------------------------------- 영비 --------------------------------------*/
+		
+		public int deleteItem(int item_num) {
+		    int deleteItemCnt=0;
+		    
+		    sql="delete from item where item_num=?";
+		    try {
+		      pstmt = con.prepareStatement(sql);
+		      pstmt.setInt(1, item_num);
+		      
+		      rs = pstmt.executeQuery();
+		    } catch (SQLException e) {
+		      System.out.println("updateItem() 오류 "+e.getMessage());
+		    } finally {
+		      close(pstmt);
+		    }
+		    return deleteItemCnt;
+		    
+		  }
+		
+	
 }
-
-
-
-
-
-
-
-
-
-
-

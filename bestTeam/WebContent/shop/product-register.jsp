@@ -1,4 +1,3 @@
-<%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,57 +39,7 @@
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
-<!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
-<script type="text/javascript" src="<%=ctx%>/se2/js/HuskyEZCreator.js"
-	charset="utf-8"></script>
-<script type="text/javascript" src="<%=ctx%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
-	charset="utf-8"></script>
-	
-<!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
-<script type="text/javascript">
-	var oEditors = [];
-	
-	$(function(){
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
-		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
-		    fCreator: "createSEditor2",
-// 		    fOnAppLoad : function(){
-// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-// 		    }
-		});
-	
-		//저장버튼 클릭시 form 전송
-		$("#save").click(function() {
-			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
-		});
-		
-		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
-        
-		
-	});
-	 
-	// textArea에 이미지 첨부
-	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
-	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-	}
-	
-// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
-	
-</script>
-<!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
 <style type="text/css">
 	.frmTitle {
 		border: 0.1px solid #ccc;
@@ -100,14 +49,8 @@
 		width: 100%;
 	}
 </style>
-
-<%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-%>
 </head>
-
 <body>
-
 	<header>
 	<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
@@ -124,73 +67,70 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">상품정보 수정</h1>
+						<h1 class="mb-3 mt-5 bread">product-register</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a>
 						</p>
 					</div>
-
 
 				</div>
 			</div>
 		</div>
 	</section>
 
-
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="itemModifyPro.em" method="post" enctype="multipart/form-data">
+			<form id="frm" action="itemRegisterPro.em" method="post" enctype="multipart/form-data">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>상품명 : </td>
-						<td><input type="text" id="item_name" name="item_name" class="frmTitle" placeholder="<%=itemBean.getItem_name() %>" /></td>
+						<td><input type="text" id="item_name" name="item_name" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>가격 : </td>
-						<td><input type="text" id="item_price" name="item_price" class="frmTitle" placeholder="<%=itemBean.getItem_price() %>" /></td>
+						<td><input type="text" id="item_price" name="item_price" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>상품 이미지 : </td>
-						<td><input type="file" id="item_img" name="item_img" class="frmTitle" placeholder="<%=itemBean.getItem_img() %>" /></td>
+						<td><input type="file" id="item_img" name="item_img" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>간단 설명 : </td>
-						<td><textarea rows="10" cols="30" id="ir1" name="item_info"  placeholder="<%=itemBean.getItem_info()%>"
+						<td><textarea rows="10" cols="30" name="item_info" 
 								style="width: 700px; height: 200px;" ></textarea></td>
 					</tr>
 					<tr>
 						<td>재고 : </td>
-						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" placeholder="<%=itemBean.getItem_amount() %>" /></td>
+						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>상세설명 이미지 : </td>
-						<td><input type="file" id="item_content" name="item_content" class="frmTitle" placeholder="<%=itemBean.getItem_content()%>" /></td>
+						<td><input type="file" id="item_content" name="item_content" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>Aroma : </td>
-						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" placeholder="<%=itemBean.getItem_favor_aroma() %>" /></td>
+						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>Acidity : </td>
-						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" placeholder="<%=itemBean.getItem_favor_acidity() %>" /></td>
+						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>Sweetness : </td>
-						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" placeholder="<%=itemBean.getItem_favor_sweetness() %>" /></td>
+						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>Bitterness : </td>
-						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" placeholder="<%=itemBean.getItem_favor_bitterness() %>" /></td>
+						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>Body : </td>
-						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" placeholder="<%=itemBean.getItem_favor_body() %>" /></td>
+						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" /></td>
 					</tr>
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
-							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em'"/>
+							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
+							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" value="다시쓰기" />
 						</td>
 					</tr>
 				</table>
