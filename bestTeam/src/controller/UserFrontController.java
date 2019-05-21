@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.DeleteMemberProAction;
+import action.ForgotAccountProAction;
 import action.JoinProAction;
 import action.LoginProAction;
 import action.LogoutProAction;
@@ -63,6 +64,9 @@ public class UserFrontController extends HttpServlet {
 			System.out.println("idcheck controller");
 			forward = new ActionForward();
 			forward.setPath("/member/id_check.jsp");
+		}else if (command.equals("/ForgotAccount.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/forgotAccount.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
 			System.out.println("controll loginPro");
 			action = new LoginProAction();
@@ -113,7 +117,15 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	
+		} else if(command.equals("/ForgotAccountProAction.us")) {
+			
+			action = new ForgotAccountProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}		
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {
