@@ -289,24 +289,29 @@ public class UserDAO {
 		
 		return id;
 	}
-	
-	public String findPass(String email) {
-		String pass = null;
-		String sql = "SELECT * FROM user WHERE user_email=?";
+	// 회원가입 아이디 체크
+	public int checkId(String id) {
+		con = getConnection();
+		int re = 0;
+		String sql = "select * from user where user_id=?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, email);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
-				pass = rs.getString("user_pass");
+				re = 1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+			close(con);
 		}
 		
-		return pass;
+		return re;
 	}
+	
 	
 }
 

@@ -287,7 +287,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 
 	
 <%
-	ItemBean itemBean = (ItemBean) request.getAttribute("item");
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
 
 </head>
