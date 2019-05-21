@@ -45,7 +45,7 @@ public class UserFrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command.equals("/login.us")) {
-			System.out.println("controll login");
+//			System.out.println("controll login");
 			forward = new ActionForward();
 			forward.setPath("/member/login.jsp");
 		} else if (command.equals("/update_member.us")) {
@@ -61,14 +61,14 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/member/delete_member.jsp");
 		} else if (command.equals("/id_check.us")) {
-			System.out.println("idcheck controller");
+//			System.out.println("idcheck controller");
 			forward = new ActionForward();
 			forward.setPath("/member/id_check.jsp");
 		}else if (command.equals("/ForgotAccount.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/forgotAccount.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
-			System.out.println("controll loginPro");
+//			System.out.println("controll loginPro");
 			action = new LoginProAction();
 			try {
 				forward = action.execute(request, response);
