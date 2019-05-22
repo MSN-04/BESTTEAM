@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.ItemDeleteProAction;
 import action.ItemModifyFormAction;
+import action.ItemModifyProAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
 import action.shopMainAction;
@@ -54,7 +55,7 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 미송
 		} else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
-			System.out.println("itemSingle");
+//			System.out.println("itemSingle");
 			action = new ItemSingleAction();
 			try {
 				forward = action.execute(request, response);
@@ -94,6 +95,14 @@ public class ItemFrontController extends HttpServlet {
 		// 미송
 		} else if (command.equals("/itemModifyPro.em")) { // 아이템 수정 Pro
 			System.out.println("itemModifyPro");
+			
+			action = (Action) new ItemModifyProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				System.out.println("itemModifyPro 실패"+ e.getMessage());
+			}
 		
 		// 영비
 		} else if (command.equals("/itemDeletePro.em")) {
@@ -106,6 +115,7 @@ public class ItemFrontController extends HttpServlet {
 		      } catch (Exception e) {
 		        System.out.println("itemDeletePro 실패"+ e.getMessage());
 		      }
+		    
 		    
 		} else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
 			System.out.println("itemView");

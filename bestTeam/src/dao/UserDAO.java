@@ -316,6 +316,30 @@ public class UserDAO {
 		return re;
 	}
 	
+	// 회원가입 메일 체크
+	public int checkMail(String email) {
+		con = getConnection();
+		int re = 0;
+		String sql = "select * from user where user_email=?";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				re = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+			close(con);
+		}
+		
+		return re;
+	}
+	
 	
 }
 

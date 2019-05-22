@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+
 <!---------------------- 스마트 에디터 가져오는 영역 시작 ---------------------->
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
@@ -136,64 +137,80 @@
 		</div>
 	</section>
 
+<!-- 	<section> -->
+<!-- 		<form action=""> -->
+		
+<!-- 		</form> -->
+	
+<!-- 	</section> -->
+
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="itemModifyPro.em" method="post" enctype="multipart/form-data">
+			<form id="frm" action="itemModifyPro.em?item_num=<%=itemBean.getItem_num() %>&item_favor_num=<%=itemBean.getItem_favor_num() %>" method="post" enctype="multipart/form-data">
 				<table style="width: 100%; text-align: center;">
 					<tr>
+						<td>상품번호 : </td>
+						<td><input type="text" id="item_num" name="item_num" class="frmTitle" placeholder="<%=itemBean.getItem_num() %>" readonly="readonly"/></td>
+					</tr>
+					<tr>
 						<td>상품명 : </td>
-						<td><input type="text" id="item_name" name="item_name" class="frmTitle" placeholder="<%=itemBean.getItem_name() %>" /></td>
+						<td><input type="text" id="item_name" name="item_name" class="frmTitle" value="<%=itemBean.getItem_name() %>" required="required"/></td>
 					</tr>
 					<tr>
 						<td>가격 : </td>
-						<td><input type="text" id="item_price" name="item_price" class="frmTitle" placeholder="<%=itemBean.getItem_price() %>" /></td>
+						<td><input type="text" id="item_price" name="item_price" class="frmTitle" value="<%=itemBean.getItem_price() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>상품 이미지 : </td>
-						<td><input type="file" id="item_img" name="item_img" class="frmTitle" placeholder="<%=itemBean.getItem_img() %>" /></td>
+						<td><input type="file" id="item_img" name="item_img" class="frmTitle" value="<%=itemBean.getItem_img() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>간단 설명 : </td>
-						<td><textarea rows="10" cols="30" id="ir1" name="item_info"  placeholder="<%=itemBean.getItem_info()%>"
-								style="width: 700px; height: 200px;" ></textarea></td>
+						<td><textarea rows="10" cols="30" id="item_info" name="item_info"  value="<%=itemBean.getItem_info()%>"
+								style="width: 700px; height: 200px;"  required="required"></textarea></td>
 					</tr>
 					<tr>
 						<td>재고 : </td>
-						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" placeholder="<%=itemBean.getItem_amount() %>" /></td>
+						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" value="<%=itemBean.getItem_amount() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>상세설명 이미지 : </td>
-						<td><input type="file" id="item_content" name="item_content" class="frmTitle" placeholder="<%=itemBean.getItem_content()%>" /></td>
+						<td><input type="file" id="item_content" name="item_content" class="frmTitle" value="<%=itemBean.getItem_content()%>"  required="required"/></td>
+					</tr>
+					<tr>
+					<tr>
+						<td>상품 취향 번호 : </td>
+						<td><input type="text" id="item_favor_num" name="item_favor_num" class="frmTitle" placeholder="<%=itemBean.getItem_favor_num() %>" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td>Aroma : </td>
-						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" placeholder="<%=itemBean.getItem_favor_aroma() %>" /></td>
+						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" value="<%=itemBean.getItem_favor_aroma() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Acidity : </td>
-						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" placeholder="<%=itemBean.getItem_favor_acidity() %>" /></td>
+						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" value="<%=itemBean.getItem_favor_acidity() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Sweetness : </td>
-						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" placeholder="<%=itemBean.getItem_favor_sweetness() %>" /></td>
+						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" value="<%=itemBean.getItem_favor_sweetness() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Bitterness : </td>
-						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" placeholder="<%=itemBean.getItem_favor_bitterness() %>" /></td>
+						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" value="<%=itemBean.getItem_favor_bitterness() %>"  required="required"/></td>
 					</tr>
 					<tr>
 						<td>Body : </td>
-						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" placeholder="<%=itemBean.getItem_favor_body() %>" /></td>
-					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
-							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em'"/>
-						</td>
+						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" value="<%=itemBean.getItem_favor_body() %>"  required="required"/></td>
 					</tr>
 				</table>
+				<br><br>
+				
+				<p style="text-align: right;">
+					<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+					<input type="submit"  class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
+					<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>'"/>
+				</p>
 			</form>
 		</div>
 	</section>

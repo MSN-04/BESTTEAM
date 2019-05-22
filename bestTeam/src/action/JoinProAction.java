@@ -22,6 +22,7 @@ public class JoinProAction implements Action {
 		boolean isJoinSuccess = false;
 		UserBean userBean = new UserBean();
 		
+		// 성별 계산
 		String gender = "";
 		int jumin2 = Integer.parseInt(request.getParameter("jumin2"));
 		int sex = jumin2/1000000;
@@ -31,13 +32,14 @@ public class JoinProAction implements Action {
 			gender="남";
 		}
 		
-		int year = Integer.parseInt(request.getParameter("jumin"));
+		// 나이 계산
+		int year = Integer.parseInt(request.getParameter("jumin1"));
 		year = year/10000;
-		int age2 = (Calendar.getInstance().get(Calendar.YEAR)-year+1);
+		int age2 = (((Calendar.getInstance().get(Calendar.YEAR)-year)%100)+1);
 		String age = Integer.toString(age2);
 		
 		
-		
+		System.out.println(age + " " + gender);
 		userBean.setUser_id(request.getParameter("id"));
 		userBean.setUser_pass(request.getParameter("pass"));
 		userBean.setUser_name(request.getParameter("name"));
