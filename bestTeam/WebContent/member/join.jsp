@@ -61,7 +61,150 @@
 .p-best {
 	padding: 50px !important;
 }
+
+#checkPwd{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-left: 73%;
+}
+
+#checkMsg{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-bottom: 5%;
+  margin-left: 27%;
+}
+
+#checkMail{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-bottom: 5%;
+}
+
+
 </style>
+
+<script type="text/javascript" src="./js/httpRequest.js"></script>
+<script type="text/javascript">
+ var checkFirst = false;
+ var lastKeyword = '';
+ var loopSendKeyword = false;
+ 
+ function checkId() {
+  if (checkFirst == false) {
+   //0.5초 후에 sendKeyword()함수 실행
+   setTimeout("sendId();", 500);
+   loopSendKeyword = true;
+  }
+  checkFirst = true;
+ }
+ 
+ function checkMail() {
+	  if (checkFirst == false) {
+	   //0.5초 후에 sendKeyword()함수 실행
+	   setTimeout("sendMail();", 500);
+	   loopSendKeyword = true;
+	  }
+	  checkFirst = true;
+	 }
+ 
+ function checkPwd(){
+  var pw1 = frm.pass.value;
+  var pw2 = frm.pass2.value;
+  if(pw1!=pw2){
+   document.getElementById('checkPwd').style.color = "#ff4d4d";
+   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
+  }else{
+   document.getElementById('checkPwd').style.color = "#4d79ff";
+   document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다"; 
+   
+  }
+  
+ }
+ 
+ 
+ function sendId() {
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMsg').style.color = "#ff4d4d";
+	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("id_check.us", params, displayResult, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendId();", 500);
+	 }
+ 
+ 
+ function displayResult() {
+  if (httpRequest.readyState == 4) {
+   if (httpRequest.status == 200) {
+    var resultText = httpRequest.responseText;
+    var listView = document.getElementById('checkMsg');
+//     alert(resultText);
+    if(resultText==0){
+     listView.innerHTML = "사용 할 수 있는 ID 입니다";
+     listView.style.color = "#4d79ff";
+    }else{
+     listView.innerHTML = "이미 등록된 ID 입니다";
+     listView.style.color = "#ff4d4d";
+    }
+   } else {
+    alert("에러 발생: "+httpRequest.status);
+   }
+  }
+ }
+ 
+ function sendMail() {
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMail').style.color = "#ff4d4d";
+	   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("mail_check.us", params, displayResultMail, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendMail();", 500);
+	 }
+
+
+function displayResultMail() {
+ if (httpRequest.readyState == 4) {
+  if (httpRequest.status == 200) {
+   var resultText = httpRequest.responseText;
+   var listView = document.getElementById('checkMail');
+//    alert(resultText);
+   if(resultText==0){
+    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
+    listView.style.color = "#4d79ff";
+   }else{
+    listView.innerHTML = "이미 등록된 MAIL 입니다";
+    listView.style.color = "#ff4d4d";
+   }
+  } else {
+   alert("에러 발생: "+httpRequest.status);
+  }
+ }
+}
+</script>
+
+
 </head>
 <body>
 	<header>
@@ -95,39 +238,63 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" method="post">
+					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post">
 						<h3 class="mb-4 billing-heading">회원 가입</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">아이디</label> <input type="text"
-										class="form-control" placeholder="아이디를 입력해주세요." name="id">
+										class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()">
 								</div>
 							</div>
+							<div id="checkMsg">아이디를 입력하세요</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="password"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호 확인</label> <input type="password"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()">
 								</div>
 							</div>
-							<div class="w-100"></div>
+								<div id="checkPwd">동일한 암호를 입력하세요</div>
+							<div class="w-100" ></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
 										class="form-control" placeholder="이름을 입력해주세요." name="name">
 								</div>
 							</div>
+							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" placeholder="나이를 입력해주세요." name="age">
+									<label for="firstname">주민 등록 번호</label> <input type="text"
+										class="form-control" placeholder="6자리 입력하세요" name="jumin1">
+								</div>
+							</div><div class="col-md-6">
+								<div class="form-group">
+									 <input type="password" class="form-control" placeholder="7자리 입력하세요"
+									  name="jumin2">
+								</div>
+							</div>
+							<div class="w-100"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="emailaddress">Email</label> <input type="text"
+										class="form-control" placeholder="이메일을 입력해주세요." name="email">
+								</div>
+							</div>
+							<div id="checkMail">E-MAIL 중복확인하셈ㅎ</div>
+							<div class="col-md-6">
+								<div class="">
+									<label for=""></label>
+									<p onclick="checkId()">
+										<a class="btn btn-best py-3 px-4">중복체크</a>
+									</p>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -135,12 +302,6 @@
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
 										class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일을 입력해주세요." name="email">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -279,6 +440,7 @@
 									<a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
 										</div>
 								</div>
+							</div>	
 					</form>
 				</div>
 			</div>
@@ -325,6 +487,7 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
+	
 
 	<script>
 		$(document).ready(function() {

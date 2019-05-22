@@ -179,66 +179,61 @@ public class ItemDAO {
 	//-- 아이템 수정하고 결과 리턴
 		public int updateItem(ItemBean itemBean) {
 			System.out.println("updateItem() 시작");
-
-			int isUpdateSuccess = 0;
-			System.out.println(isUpdateSuccess);
+			PreparedStatement pstmt1 = null;
+			PreparedStatement pstmt2 = null;
 			
-			sql = "SELECT * "
-					+ "FROM item it INNER JOIN item_favor itf "
-					+ "ON it.item_num = itf.item_favor_item_num "
-					+ "WHERE it.item_num=?";
+			int isUpdateSuccess = 0;
+			
+			sql = "SELECT * FROM item em INNER JOIN item_favor emf ON em.item_num = emf.item_favor_item_num WHERE em.item_num=?";
 			
 			try {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, itemBean.getItem_num());
 				rs = pstmt.executeQuery();
-				
+				System.out.println("SELECT 완료");
 				if(rs.next()) {
-					
 					// item 테이블 UPDATE
-					String sql1 = "UPDATE item "
-							+ "SET item_name=?, item_info=?, item_img=?, "
-							+ 	  "item_amount=?, item_content=?, item_price=?, item_date=?"
-							+ "WHERE item_num=?";
+					String sql1 = "UPDATE item SET item_name=?, item_info=?, item_img=?, item_amount=?, item_content=?, item_price=?, item_date=now() WHERE item_num=?";
 					
-					pstmt = con.prepareStatement(sql1);
+					pstmt1 = con.prepareStatement(sql1);
 					
-					pstmt.setString(1, itemBean.getItem_name());
-					pstmt.setString(2, itemBean.getItem_info());
-					pstmt.setString(3, itemBean.getItem_img());
-					pstmt.setInt(4, itemBean.getItem_amount());
-					pstmt.setString(5, itemBean.getItem_content());
-					pstmt.setInt(6, itemBean.getItem_price());
-					pstmt.setDate(7, (Date) itemBean.getItem_date());
-					pstmt.setInt(8, itemBean.getItem_num());
-					pstmt.executeUpdate();
-					
+					pstmt1.setString(1, itemBean.getItem_name());
+					pstmt1.setString(2, itemBean.getItem_info());
+					pstmt1.setString(3, itemBean.getItem_img());
+					pstmt1.setInt(4, itemBean.getItem_amount());
+					pstmt1.setString(5, itemBean.getItem_content());
+					pstmt1.setInt(6, itemBean.getItem_price());
+					pstmt1.setInt(7, itemBean.getItem_num());
+					int num1 = pstmt1.executeUpdate();
 					
 					isUpdateSuccess = 1;
-					System.out.println(isUpdateSuccess);
+					
+					System.out.println("item 테이블 UPDATE 완료 : " + num1);
 					
 					// item_favor 테이블 UPDATE
-					String sql2 = "UPDATE item_favor "
-							+ "SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, "
-							+ 	  "item_favor_sweetness=?, item_favor_aroma=?"
-							+ "WHERE item_favor_num=?";
+					String sql2 = "UPDATE item_favor SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, item_favor_sweetness=?, item_favor_aroma=?  WHERE item_favor_num=?";
 					
-					pstmt = con.prepareStatement(sql2);
-					pstmt.setInt(1,itemBean.getItem_favor_acidity());
-					pstmt.setInt(2, itemBean.getItem_favor_bitterness());
-					pstmt.setInt(3, itemBean.getItem_favor_body());
-					pstmt.setInt(4, itemBean.getItem_favor_sweetness());
-					pstmt.setInt(5, itemBean.getItem_favor_aroma());
-					pstmt.setInt(6, itemBean.getItem_favor_num());
+					pstmt2 = con.prepareStatement(sql2);
+					
+					pstmt2.setInt(1,itemBean.getItem_favor_acidity());
+					pstmt2.setInt(2, itemBean.getItem_favor_bitterness());
+					pstmt2.setInt(3, itemBean.getItem_favor_body());
+					pstmt2.setInt(4, itemBean.getItem_favor_sweetness());
+					pstmt2.setInt(5, itemBean.getItem_favor_aroma());
+					pstmt2.setInt(6, itemBean.getItem_favor_num());
+					int num2 = pstmt2.executeUpdate();
+					
+					System.out.println("item_favor 테이블 UPDATE 완료 : " + num2);
 					
 					isUpdateSuccess = 2;
-					System.out.println(isUpdateSuccess);
 				}
 				
 			} catch (SQLException e) {
 				System.out.println("updateItem() 오류 "+e.getMessage());
 			} finally {
 				close(pstmt);
+				close(pstmt1);
+				close(pstmt2);
 			}
 			return isUpdateSuccess;
 			

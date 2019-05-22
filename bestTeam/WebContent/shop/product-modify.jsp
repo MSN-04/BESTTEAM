@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+
 <!---------------------- 스마트 에디터 가져오는 영역 시작 ---------------------->
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
@@ -146,7 +147,7 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="itemModifyPro.em?item_num=<%=itemBean.getItem_num() %>" method="get" enctype="multipart/form-data">
+			<form id="frm" action="itemModifyPro.em?item_num=<%=itemBean.getItem_num() %>&item_favor_num=<%=itemBean.getItem_favor_num() %>" method="post" enctype="multipart/form-data">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>상품번호 : </td>
@@ -176,6 +177,11 @@
 					<tr>
 						<td>상세설명 이미지 : </td>
 						<td><input type="file" id="item_content" name="item_content" class="frmTitle" value="<%=itemBean.getItem_content()%>"  required="required"/></td>
+					</tr>
+					<tr>
+					<tr>
+						<td>상품 취향 번호 : </td>
+						<td><input type="text" id="item_favor_num" name="item_favor_num" class="frmTitle" placeholder="<%=itemBean.getItem_favor_num() %>" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td>Aroma : </td>

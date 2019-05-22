@@ -2,10 +2,13 @@ package action;
 
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import svc.ItemModifyProService;
 import vo.ActionForward;
@@ -30,7 +33,6 @@ public class ItemModifyProAction implements Action {
 		// 1.
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
-		System.out.println("세션아이디 : "+id);
 		
 		if(id != null) {
 			System.out.println("세션아이디 null 아님");
@@ -48,101 +50,108 @@ public class ItemModifyProAction implements Action {
 			}else {
 				System.out.println("세션아이디 == admin");
 				
-				request.setCharacterEncoding("UTF-8");
-
-				int item_num = Integer.parseInt(request.getParameter("item_num"));
-				System.out.println("item_num = "+item_num);
-				
 				// 2.
 				
-				try {
-					System.out.println("item_name" + request.getParameter("item_name"));
-					System.out.println("item_img" +request.getParameter("item_img"));
-					System.out.println("item_info" +request.getParameter("item_info"));
-					System.out.println("item_amount" +request.getParameter("item_amount"));
-					System.out.println("item_content" +request.getParameter("item_content"));
+				request.setCharacterEncoding("UTF-8");
+				
+				// 폴더의 물리적 경로
+				ServletContext context = request.getServletContext();
+				String realFolder = context.getRealPath("/itemUpload"); // 실제 경로
+				System.out.println("realFolder : "+realFolder );
+				
+				System.out.println("0");
+				
+				// 업로드 할 파일 최대 크기
+				int maxSize = 5 * 1024 * 1024; // 5MB
+				
+				System.out.println("1");
+
+				// (request, 폴더 물리적 경로, 파일 최대 크기, 캐릭터, 업로드한 파일 중 동일한 이름이 있으면 변경)				
+				MultipartRequest multi = new MultipartRequest(request, realFolder ,maxSize,"utf-8", new DefaultFileRenamePolicy() ); 
+				
+				System.out.println("2");
+				
+				System.out.println("item_num = "+ Integer.parseInt(request.getParameter("item_num")));
+				int item_num = Integer.parseInt(request.getParameter("item_num"));
+				String item_name = multi.getParameter("item_name");
+				int item_price = Integer.parseInt(multi.getParameter("item_price"));
+				int item_amount = Integer.parseInt(multi.getParameter("item_amount"));
+				String item_content = multi.getFilesystemName("item_content");
+				// 파일 받기
+				String item_img = multi.getFilesystemName("item_img");  //	String item_img = multi.getParameter("item_img"); 아님
+				String item_info = multi.getParameter("item_info");
+				
+				System.out.println("3");
+				int item_favor_aroma = Integer.parseInt(multi.getParameter("item_favor_aroma"));
+				System.out.println("item_favor_aroma : "+item_favor_aroma);
+				int item_favor_acidity = Integer.parseInt(multi.getParameter("item_favor_acidity"));
+				int item_favor_sweetness = Integer.parseInt(multi.getParameter("item_favor_sweetness"));
+				int item_favor_bitterness = Integer.parseInt(multi.getParameter("item_favor_bitterness"));
+				int item_favor_body = Integer.parseInt(multi.getParameter("item_favor_body"));
+				System.out.println("ifn : " + request.getParameter("item_favor_num"));
+				int item_favor_num = Integer.parseInt(request.getParameter("item_favor_num"));
+				
+				System.out.println("action - 파라미터값 저장");
+				
+				ItemBean newItemBean = new ItemBean();
+				
+				newItemBean.setItem_num(item_num);
+				newItemBean.setItem_name(item_name);
+				newItemBean.setItem_price(item_price);
+				newItemBean.setItem_img(item_img);
+				newItemBean.setItem_content(item_content);
+				newItemBean.setItem_info(item_info);
+				newItemBean.setItem_amount(item_amount);
+				
+				newItemBean.setItem_favor_num(item_favor_num);
+				newItemBean.setItem_favor_item_num(item_num);
+				newItemBean.setItem_favor_aroma(item_favor_aroma);
+				newItemBean.setItem_favor_acidity(item_favor_acidity);
+				newItemBean.setItem_favor_sweetness(item_favor_sweetness);
+				newItemBean.setItem_favor_bitterness(item_favor_bitterness);
+				newItemBean.setItem_favor_body(item_favor_body);
+				
+				System.out.println("action - newItemBean 저장");
+				
+				// 3.
+				ItemModifyProService itemModifyProService = new ItemModifyProService();
+				int isModifySuccess = itemModifyProService.modifyItem(newItemBean);
+				
+				if (isModifySuccess == 2) {  // item, item_favor 업데이트 성공
+					System.out.println("action - item, item_favor Up");
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('아이템 정보 수정이 성공했습니다.')");
+					out.println("location.href='./shopMain.em'");
+					out.println("</script>");
 					
-//					String item_name = request.getParameter("item_name");
-//					
-//					
-//					int item_price = Integer.parseInt(request.getParameter("item_price"));
-//					String item_img = request.getParameter("item_img");
-//					String item_info = request.getParameter("item_info");
-//					int item_amount = Integer.parseInt(request.getParameter("item_amount"));
-//					String item_content = request.getParameter("item_content");
-//					
-//					System.out.println("item_name = "+item_name);
-//					System.out.println("item_price = "+item_price);
-//					System.out.println("item_img = "+item_img);
-//					System.out.println("item_info = "+item_info);
-//					System.out.println("item_amount = "+item_amount);
-//					System.out.println("item_content = "+item_content);
-//					
-//					int item_favor_aroma = Integer.parseInt(request.getParameter("item_favor_aroma"));
-//					int item_favor_acidity = Integer.parseInt(request.getParameter("item_favor_acidity"));
-//					int item_favor_sweetness = Integer.parseInt(request.getParameter("item_favor_sweetness"));
-//					int item_favor_bitterness = Integer.parseInt(request.getParameter("item_favor_bitterness"));
-//					int item_favor_body = Integer.parseInt(request.getParameter("item_favor_body"));
-//					
-//					System.out.println("파라미터값 저장");
-//
-//					ItemBean itemBean = new ItemBean();
-//					
-//					itemBean.setItem_name(item_name);
-//					itemBean.setItem_price(item_price);
-//					itemBean.setItem_img(item_img);
-//					itemBean.setItem_content(item_content);
-//					itemBean.setItem_info(item_info);
-//					itemBean.setItem_amount(item_amount);
-//					
-//					itemBean.setItem_favor_aroma(item_favor_aroma);
-//					itemBean.setItem_favor_acidity(item_favor_acidity);
-//					itemBean.setItem_favor_sweetness(item_favor_sweetness);
-//					itemBean.setItem_favor_bitterness(item_favor_bitterness);
-//					itemBean.setItem_favor_body(item_favor_body);
-//					
-//					
-//					// 3.
-//					ItemModifyProService itemModifyProService = new ItemModifyProService();
-//					int isModifySuccess = itemModifyProService.modifyItem(itemBean);
-//					
-//					if (isModifySuccess == 2) {  // item, item_favor 업데이트 성공
-//						
-//						response.setContentType("text/html;charset=UTF-8");
-//						PrintWriter out = response.getWriter();
-//						out.println("<script>");
-//						out.println("alert('아이템 정보 수정이 성공했습니다.')");
-//						out.println("location.href='./shopMain.em'");
-//						out.println("</script>");
-//						
-//						itemBean = itemModifyProService.getItem(item_num);
-//						request.setAttribute("itemBean", itemBean);
-//						
-//						// 4.
-//						forward = new ActionForward();
-//						forward.setPath("/shop/product-single.jsp");
-//						forward.setRedirect(true);
-//						
-//					} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
-//						
-//						response.setContentType("text/html;charset=UTF-8");
-//						PrintWriter out = response.getWriter();
-//						out.println("<script>");
-//						out.println("alert('item_favor 수정이 실패했습니다.')");
-//						out.println("location.href='./shopMain.em'");
-//						out.println("</script>");
-//						
-//					} else { // item 업데이트 실패
-//						
-//						response.setContentType("text/html;charset=UTF-8");
-//						PrintWriter out = response.getWriter();
-//						out.println("<script>");
-//						out.println("alert('item, item_favor 수정이 실패했습니다.')");
-//						out.println("location.href='./shopMain.em'");
-//						out.println("</script>");
-//					}
-				} catch (Exception e) {
-					System.out.println("실패함 : " + e.getMessage());
+					ItemBean newItemBean2 = itemModifyProService.getItem(newItemBean.getItem_num());
+					request.setAttribute("newItemBean2", newItemBean2);
+					
+					// 4.
+					forward = new ActionForward();
+					forward.setPath("./itemSingle.em?item_num="+newItemBean.getItem_num());
+					forward.setRedirect(true);
+					
+				} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
+					System.out.println("action - item_favor Up fail");
+					
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>");
+					out.println("alert('item_favor 수정이 실패했습니다.')");
+					out.println("location.href='./shopMain.em'");
+					out.println("</script>");
+					
+				} else { // item 업데이트 실패
+					System.out.println("action - Up fail");
+					
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("alert('item, item_favor 수정이 실패했습니다.')");
+					out.println("location.href='./shopMain.em'");
+					out.println("</script>");
 				}
 			}
 		} else {  // id == null 일 때

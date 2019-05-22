@@ -23,7 +23,12 @@ public class ItemModifyProService {
 		System.out.println("ItemModifyProService  - modifyItem() 시작");
 		// 2.
 		ItemDAO itemDAO = ItemDAO.getInstance();
+		itemDAO.setConnection(con);
+		
 		int isModifySuccess = itemDAO.updateItem(itemBean);
+		
+		commit(con);
+		close(con);
 
 		return isModifySuccess;
 	}
@@ -33,6 +38,7 @@ public class ItemModifyProService {
 		System.out.println("ItemModifyProService  - getItem() 시작");
 		
 		// 1.
+		Connection con = getConnection();
 		
 		// 2.
 		ItemDAO itemDAO = ItemDAO.getInstance();

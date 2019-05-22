@@ -32,9 +32,9 @@ public class ItemRegisterProAction implements Action {
 		String realFolder; // 실제 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 		
-		
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
+		System.out.println("realFoldr : "+realFolder);
 		
 		System.out.println(realFolder);
 		
