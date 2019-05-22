@@ -49,14 +49,14 @@
 	id="ftco-navbar">
 	<div class="container">
 <!-- 		<a class="navbar-brand" href="./index/index.jsp">Coffee<small>Blend</small></a> -->
-		<a href="./index/index.jsp"><img src="./images/untitled.png"></a>
+		<a href="./index.in"><img src="./images/untitled.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="oi oi-menu"></span> Menu </button>
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a href="./index/index.jsp"
+				<li class="nav-item active"><a href="./index.in"
 					class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="./shop/shop.jsp"
+				<li class="nav-item"><a href="./shopMain.em"
 					class="nav-link">Shop</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="./notice/notice.jsp"
@@ -66,7 +66,7 @@
 						<a class="dropdown-item" href="./notice/notice.jsp">공지사항</a> <a
 							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
-				<li class="nav-item"><a href="./blog/blog.jsp" class="nav-link">Blog</a></li>
+				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>
 				<li class="nav-item"><a href="./fest/fest.jsp" class="nav-link">Festival</a></li>
 				<li class="nav-item"><a href="./contact/contact.jsp" class="nav-link">Contact</a></li>
 				
