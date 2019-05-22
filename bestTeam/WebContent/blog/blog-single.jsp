@@ -1,5 +1,11 @@
+<%@page import="vo.BlogBean"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+	BlogBean article = (BlogBean)request.getAttribute("article");
+	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+// 	String nowPage = request.getAttribute("page").toString(); // int 타입으로 setAttribute() 메서드에 저장했을 경우
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,24 +17,24 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
     <style type="text/css">
 /*      	.col-md-8 { border: 1px solid aqua; }  */
      	.col-md-8 {
@@ -157,7 +163,7 @@
     
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(../images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -243,20 +249,20 @@
 			</ul>
 <!-- 왼쪽 작은 메뉴 끝 -->
           <div class="col-md-8 ftco-animate" >
-            <h2 class="mb-3">"커피는 일어나고 있는 어떤 현상이다"</h2>
-					<p>제 1차 세계대전 이후 절망과 허무에 몸부림치는 청년 예술가들을 일컬어 ‘잃어버린 세대The Lost Generation’라 처음 명명한 미국의 시인이자 소설가, 거트루드 스타인. 그녀는 실험적인 언어로 《3인의 생애》,《텐더 버턴스》 등 미국 문학에 큰 영향을 끼친 주요 저서들을 남겼을 뿐 아니라 생전에 피카소, 마티스 같은 세기적 작가들을 발굴하고 전폭적으로 지원하는 선구자적인 일을 했습니다.</p>
+            <h2 class="mb-3"><%= article.getBlog_subject() %></h2>
+					<p><%= article.getBlog_content() %></p>
 					<p>
-              <img src="../images/image_1.jpg" alt="" class="img-fluid">
+              <img src="./images/image_1.jpg" alt="" class="img-fluid">
             </p>
-            <p>파리 플뢰리스 거리 27번지에 위치한 그녀의 아파트는 젊은 예술가들이 끊임없이 드나드는 문화교류의 장이었다고 하지요.</p>
-            <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-            <p>우디 앨런의 영화 〈미드나잇 인 파리〉에는 당대 예술가의 작품을 신랄하게 비평하는 스타인의 모습이 생생이 담겨 있습니다. 그러한 그녀는 예술적 안목이 까다롭기로 소문난 헤밍웨이가 인정하는 커피 애호가였다고 하는데요. 그녀가 얼마나 커피를 사랑했는지 아래의 글에서 배어 나옵니다.</p>
-            <p>
-              <img src="../images/image_2.jpg" alt="" class="img-fluid">
-            </p>
+<!--             <p>파리 플뢰리스 거리 27번지에 위치한 그녀의 아파트는 젊은 예술가들이 끊임없이 드나드는 문화교류의 장이었다고 하지요.</p> -->
+<!--             <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2> -->
+<!--             <p>우디 앨런의 영화 〈미드나잇 인 파리〉에는 당대 예술가의 작품을 신랄하게 비평하는 스타인의 모습이 생생이 담겨 있습니다. 그러한 그녀는 예술적 안목이 까다롭기로 소문난 헤밍웨이가 인정하는 커피 애호가였다고 하는데요. 그녀가 얼마나 커피를 사랑했는지 아래의 글에서 배어 나옵니다.</p> -->
+<!--             <p> -->
+<!--               <img src="./images/image_2.jpg" alt="" class="img-fluid"> -->
+<!--             </p> -->
 					
-            <p>“커피는 단지 음료가 아니라 그 이상의 무엇이다. 커피는 일어나고 있는 어떤 현상이다. 커피는 시간을 주지만, 단순히 물리적인 시간을 말하는 것이 아니라, 본연의 자신이 될 수 있는 기회를 준다는 의미다. 그러므로 한 잔 더 마시기를…”</p>
-            <p>스타인이 커피에 관해 남긴 문장을 읽고 있노라면 그녀의 철학적 사유에 대한 감탄과 더불어 깊은 여운이 남습니다. 커피를 마시는 시간은 스타인의 말처럼 단순히 물리적인 시간의 의미를 넘어 우리가 존재로서 자기 확인을 하게끔 이끄는 성찰의 시간, ‘어떤 현상’을 선사하지요. 그러므로 우리 함께 한 잔 더 마시기를….</p>
+<!--             <p>“커피는 단지 음료가 아니라 그 이상의 무엇이다. 커피는 일어나고 있는 어떤 현상이다. 커피는 시간을 주지만, 단순히 물리적인 시간을 말하는 것이 아니라, 본연의 자신이 될 수 있는 기회를 준다는 의미다. 그러므로 한 잔 더 마시기를…”</p> -->
+<!--             <p>스타인이 커피에 관해 남긴 문장을 읽고 있노라면 그녀의 철학적 사유에 대한 감탄과 더불어 깊은 여운이 남습니다. 커피를 마시는 시간은 스타인의 말처럼 단순히 물리적인 시간의 의미를 넘어 우리가 존재로서 자기 확인을 하게끔 이끄는 성찰의 시간, ‘어떤 현상’을 선사하지요. 그러므로 우리 함께 한 잔 더 마시기를….</p> -->
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>
@@ -268,7 +274,7 @@
             
             <div class="about-author d-flex">
               <div class="bio align-self-md-center mr-5">
-                <img src="../images/person_5.jpg" alt="Image placeholder" class="img-fluid mb-4" width="300px" height="300px">
+                <img src="./images/person_5.jpg" alt="Image placeholder" class="img-fluid mb-4" width="300px" height="300px">
               </div>
               <div class="desc align-self-md-center">
                 <h3>전주연</h3>
@@ -282,7 +288,7 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="../images/person_1.png" alt="Image placeholder">
+                    <img src="./images/person_1.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>권경민</h3>
@@ -294,7 +300,7 @@
 
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="../images/person_1.png" alt="Image placeholder">
+                    <img src="./images/person_1.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>송주영</h3>
@@ -306,7 +312,7 @@
                   <ul class="children">
                     <li class="comment">
                       <div class="vcard bio">
-                        <img src="../images/person_2.png" alt="Image placeholder">
+                        <img src="./images/person_2.png" alt="Image placeholder">
                       </div>
                       <div class="comment-body">
                         <h3>문세웅</h3>
@@ -319,7 +325,7 @@
                   <ul class="children">
                     <li class="comment">
                       <div class="vcard bio">
-                        <img src="../images/person_3.png" alt="Image placeholder">
+                        <img src="./images/person_3.png" alt="Image placeholder">
                       </div>
                       <div class="comment-body">
                        <h3>이기홍</h3>
@@ -331,7 +337,7 @@
                         <ul class="children">
                           <li class="comment">
                             <div class="vcard bio">
-                              <img src="../images/person_3.png" alt="Image placeholder">
+                              <img src="./images/person_3.png" alt="Image placeholder">
                             </div>
                             <div class="comment-body">
                               <h3>권경민</h3>
@@ -349,7 +355,7 @@
 
                 <li class="comment">
                   <div class="vcard bio">
-                    <img src="../images/person_1.png" alt="Image placeholder">
+                    <img src="./images/person_1.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>지이듬</h3>
@@ -481,23 +487,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="./js/google-map.js"></script>
+  <script src="./js/main.js"></script>
     
   </body>
 </html>

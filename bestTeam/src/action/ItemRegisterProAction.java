@@ -75,8 +75,9 @@ public class ItemRegisterProAction implements Action {
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
 			// => boardList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
+			
 			forward = new ActionForward();
-			forward.setPath("itemSingle.em");
+			forward.setPath("./itemSingle.em?item_num="+itemBean.getItem_num());
 			forward.setRedirect(true);
 		}
 		

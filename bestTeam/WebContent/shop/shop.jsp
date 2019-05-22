@@ -56,13 +56,28 @@
 
 <style type="text/css">
 	.display_none { display: none; }
+	
+/* 	#v-pills-1-tab:hover { */
+/* 		border: 1px solid red; */
+		
+/* 	} */
+/* 	#v-pills-2-tab { */
+/* 		border: 1px solid blue; */
+/* 	} */
+/* 	#v-pills-3-tab { */
+/* 		border: 1px solid green; */
+/* 	} */
+/* 	#v-pills-4-tab { */
+/* 		border: 1px solid blue; */
+/* 	} */
+/* 	#v-pills-5-tab { */
+/* 		border: 1px solid white; */
+/* 	} */
 </style>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-// 		$("#v-pills-0-tab").attr('aria-selected','false');
-// 		alert($("#v-pills-0-tab").attr('aria-selected'));
 		
 		var params = location.search.substr(location.search.indexOf("?") + 1);
 		var param = "";
@@ -70,7 +85,6 @@
 		var paramFilter = "";
 		var paramDegree = "";
 		
-// 		alert(params);
 		params = params.split("&");
 		if(params[0] != "") { // 파라미터 있음
 			for (var i = 0 ; i < params.length ; i++) {
@@ -83,12 +97,9 @@
 					paramDegree = param;
 				}
 			}
-		
-// 			alert(paramTaste[0]);
-// 			alert(paramTaste[1]);
 			
 			if(paramTaste[1] == 'item_favor_aroma') {
-				$("#v-pills-1-tab").addClass("active");
+				$("#v-pills-1-tab").addClass("active"); 
 			} else if (paramTaste[1] == 'item_favor_acidity') {
 				$("#v-pills-2-tab").addClass("active");
 			} else if (paramTaste[1] == 'item_favor_sweetness') {
@@ -100,10 +111,9 @@
 			} else if (paramTaste[1] == 'all' || paramTaste[1] == null) {
 				$("#v-pills-0-tab").addClass("active");
 				$("#v-degree-tab").addClass("display_none");
-// 				alert($("#v-degree-tab").attr("display"));
+				$("#v-degree-tab").css("display", "none");
 			}
-// 			params = params.split("=");
-// 			alert(paramFilter);
+			
 			if(paramFilter[1] == 'newest' || paramFilter[1] == "" ) {
 				$("#select_id").val("newest").prop("selected", true);
 			} else if(paramFilter[1] == 'popular' ) {
@@ -128,12 +138,9 @@
 			
 		} else { // 파라미터 없음
 			$("#v-pills-0-tab").addClass("active");
-			$("#v-degree-tab").addClass("display_none");
-// 			alert('파라미터없음');
+// 			$("#v-degree-tab").addClass("display_none");
+			$("#v-degree-tab").css("display", "none");
 		}
-// 		alert(params[0]);
-// 		alert(params[1]);
-// 		$("#select_id").val("&filter=popular").prop("selected", true);
 	});
 </script>
 </head>
@@ -204,135 +211,35 @@
 			// Get the element with id="defaultOpen" and click on it
 			document.getElementById("defaultOpen").click();
 			
-			function sortItems(item) {
-				if(item.value) {
-// 					alert(location.href+item.value);
-// 					alert();
-
-// 					var params = location.search.substr(location.search.indexOf("?") + 1);
-// 				    var sval = "";
-
-// 				    params = params.split("&");
-// 					if (params.length == 2) {
-// 						location.href = location.href.substring(0, location.href.indexOf("&")) + item.value;
-// 					} else {
-// 						if (params[0] == "") {
-// 							location.href = location.href + '?taste=all' + item.value;
-// 						} else {
-// 							location.href = location.href + item.value;
-// 						}
-// 					}
-					
-					var params = location.search.substr(location.search.indexOf("?") + 1);
-					var url = location.href.substring(0, location.href.indexOf("?"));
-					var param = "";
-					var paramUrl = "?";
-
-				    params = params.split("&");
-// 				    alert("params2 :" + params);
-// 					alert(params.length);
-					for (var i = 0 ; i < params.length ; i++) {
-						param = params[i].split("=");
-						if (param[0] != 'filter' && param[0] != "") {
-							paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
-						} else {
-							continue;
-						}
-					}
-// 					alert(paramUrl);
-					paramUrl = paramUrl + 'filter=' + item.value;
-// 					alert(url + paramUrl);
-					location.href = url + paramUrl;
-					
-// 					else if (params.length == 1) {
-// 						location.href = location.href + item.value;
-// 					} else {
-// 						location.href = location.href + '?taste=all' + item.value;
-// 					}
-// 				    for (var i = 0; i < params.length; i++) {
-// 				        temp = params[i].split("=");
-// 				        alert(temp[0]);
-// 				        alert(temp[1]);
-// 				        if (temp[0] == 'filter') {
-				        	
-// 				        }
-// 				        if ([temp[0]] == sname) { sval = temp[1]; }
-// 				    }
-// 				    return sval;
-// 					alert(sval);
-				}
-			}
-			
-			function degreeItems (de) {
-// 				if(item.value) {
-
-					var params = location.search.substr(location.search.indexOf("?") + 1);
-					var url = location.href.substring(0, location.href.indexOf("?"));
-					var param = "";
-					var paramUrl = "?";
-// 					alert("params1 :" + params);
-				    var sval = "";
-
-				    params = params.split("&");
-// 				    alert("params2 :" + params);
-// 					alert(params.length);
-					for (var i = 0 ; i < params.length ; i++) {
-						param = params[i].split("=");
-						if (param[0] != 'degree' && param[0] != "") {
-							paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
-						} else {
-							continue;
-						}
-					}
-					paramUrl = paramUrl + 'degree=' + de;
-					location.href = url + paramUrl;
-// 					if (params.length == 2) {
-// // 						alert(location.href.substring(0, location.href.indexOf("?")));
-// // 						alert(params);
-						
-// 					} else {
-// 						alert("xx");
-// // 						if (params[0] == "") {
-// // 							location.href = location.href + '?taste=all' + item.value;
-// // 						} else {
-// // 							location.href = location.href + item.value;
-// // 						}
-// 					}
-					
-
-// 				}
-			}
-			
-			function page (p) {
+			function getParams (kind, val) {
+				
 				var params = location.search.substr(location.search.indexOf("?") + 1);
 				var QuestionIndex = location.href.indexOf("?");
 				var url = "";
+				
 				if (QuestionIndex == -1 ) {
 					url = location.href.substring();
 				} else {
 					url = location.href.substring(0, QuestionIndex);
-				}
+				} 
 				
 				var param = "";
 				var paramUrl = "?";
 				
-// 				alert(params);
-// 				alert(url);
 				params = params.split("&");
 				for (var i = 0 ; i < params.length ; i++) {
 					param = params[i].split("=");
-					if (param[0] != 'page' && param[0] != "") {
+					if (param[0] != kind && param[0] != "") {
 						paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
 					} else {
 						continue;
 					}
 				}
-// 				alert("paramUrl1 : "+paramUrl);
-				paramUrl = paramUrl + 'page=' + p;
+				
+				paramUrl = paramUrl + kind + '=' + val;
 				location.href = url + paramUrl;
-// 				alert("paramUrl2 : "+paramUrl);
+				
 			}
-			
 			
 			</script>
 			
@@ -361,35 +268,34 @@
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
 
 								<a class="nav-link" id="v-pills-0-tab" 
-									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0"
+									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')"
 									aria-selected="true">ALL</a> 
-								<a class="nav-link" id="v-pills-1-tab" href="shopMain.em?taste=item_favor_aroma"
-									aria-controls="v-pills-1" aria-selected="false">Aroma</a>
-								<a class="nav-link" id="v-pills-2-tab"
+								<a class="nav-link" id="v-pills-1-tab" href="shopMain.em?taste=item_favor_aroma" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"                 
+									aria-controls="v-pills-1" aria-selected="false" >Aroma</a>
+								<a class="nav-link" id="v-pills-2-tab" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
 									href="shopMain.em?taste=item_favor_acidity" role="tab" aria-controls="v-pills-2"
 									aria-selected="false">Acidity</a> 
-								<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_sweetness"
+								<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_sweetness" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Sweetness</a>
-								<a class="nav-link" id="v-pills-4-tab" href="shopMain.em?taste=item_favor_bitterness"
+								<a class="nav-link" id="v-pills-4-tab" href="shopMain.em?taste=item_favor_bitterness" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Bitterness</a>
-								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body"
+								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
 							</div>
-							
+
 							<div class="nav ftco-animate nav-pills justify-content-center" 
 								id="v-degree-tab" role="tablist" aria-orientation="vertical">
-
 								<a class="nav-link" id="v-degree-0-tab" role="tab" 
 									aria-controls="v-pills-0" aria-selected="true">진하기</a> 
-								<a class="nav-link" id="v-degree-1-tab" href="javascript:degreeItems(1);"
+								<a class="nav-link" id="v-degree-1-tab" href="javascript:getParams ('degree', 1);"
 									aria-controls="v-pills-1" aria-selected="false">1</a>
-								<a class="nav-link" id="v-degree-2-tab" href="javascript:degreeItems(2);"
+								<a class="nav-link" id="v-degree-2-tab" href="javascript:getParams ('degree', 2);"
 									role="tab" aria-controls="v-pills-2" aria-selected="false">2</a> 
-								<a class="nav-link" id="v-degree-3-tab" href="javascript:degreeItems(3);"
+								<a class="nav-link" id="v-degree-3-tab" href="javascript:getParams ('degree', 3);"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">3</a>
-								<a class="nav-link" id="v-degree-4-tab" href="javascript:degreeItems(4);"
+								<a class="nav-link" id="v-degree-4-tab" href="javascript:getParams ('degree', 4);"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">4</a>
-								<a class="nav-link" id="v-degree-5-tab" href="javascript:degreeItems(5);"
+								<a class="nav-link" id="v-degree-5-tab" href="javascript:getParams ('degree', 5);"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">5</a>
 							</div>
 						</div>
@@ -404,16 +310,7 @@
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
 									<div class="shop-select">
-<!-- 										<a class="nav-link" id="v-pills-2-tab" -->
-<!-- 										href="shopMain.em?taste=item_favor_acidity" role="tab" aria-controls="v-pills-2" -->
-<!-- 										aria-selected="false">Acidity</a>  -->
-<!-- 										<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_sweetness" -->
-<!-- 											role="tab" aria-controls="v-pills-3" aria-selected="false">Sweetness</a> -->
-<!-- 										<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_bitterness" -->
-<!-- 											role="tab" aria-controls="v-pills-3" aria-selected="false">Bitterness</a> -->
-<!-- 										<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_body" -->
-<!-- 											role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a> -->
-										<select id="select_id" class="shop-name-select mb-5" onchange="sortItems(this)">
+										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
 											<option class="sop-01" value="newest">신상품순</option>
 											<option class="sop-01" value="popular">인기상품순</option>
 											<option class="sop-01" value="lowPrice">낮은가격순</option>
@@ -436,7 +333,6 @@
 										<%
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
-													System.out.println("itemList.get(" + i + ").getItem_img() : " + itemList.get(i).getItem_img());
 										%>
 											<div class="col-md-3">
 												<div class="menu-entry">
@@ -444,23 +340,19 @@
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
 													<div class="text text-center pt-4">
 														<h3>
-															<a href="product-single.html"><%=itemList.get(i).getItem_name() %></a>
+															<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><%=itemList.get(i).getItem_name() %></a>
 														</h3>
 														<p> 
 															<table>
 																<tr>
 																	<td>Acidity : </td>
 																	<td><%=itemList.get(i).getItem_favor_acidity() %></td>
-<!-- 																</tr> -->
-<!-- 																<tr> -->
 																	<td>Aroma : </td>
 																	<td><%=itemList.get(i).getItem_favor_aroma() %></td>
 																</tr>
 																<tr>
 																	<td>Bitterness : </td>
 																	<td><%=itemList.get(i).getItem_favor_bitterness() %>&nbsp;</td>
-<!-- 																</tr> -->
-<!-- 																<tr> -->
 																	<td>Sweetness : </td>
 																	<td><%=itemList.get(i).getItem_favor_sweetness() %></td>
 																</tr>
@@ -496,20 +388,20 @@
 													<% if(nowPage <= 1) { %>
 													<li><a>&lt;</a></li>
 													<% } else { %>
-													<li><a href= "javascript:page(<%=nowPage-1 %>);">&lt;</a></li>
+													<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
 													<% } 
 													for (int a = startPage ; a <= endPage; a++) {
 														if(a == nowPage) {
 															%><li class="active"><span><%=a %></span></li><%
 														} else {
-															%><li><a href="javascript:page(<%=a %>);"><%=a %></a></li><%
+															%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
 														}
 													}
 													%>
 													<% if(nowPage >= maxPage) { %>
 													<li><a>&gt;</a></li>
 													<% } else { %>
-													<li><a href="javascript:page(<%=nowPage+1 %>);">&gt;</a></li>
+													<li><a href="javascript:getParams ('page', <%=nowPage+1 %>);">&gt;</a></li>
 													<% } %>
 												</ul>
 											</div>

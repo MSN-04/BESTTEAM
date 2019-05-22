@@ -8,7 +8,7 @@
 <%
 	
 // 	String path = "D:\\workspace_gitTest\\bestTeam\\bestTeam\\WebContent\\img_upload"; 
-	String path = request.getSession().getServletContext().getRealPath("/") + File.separator + "img_upload"; // 이미지가 저장될 주소
+	String path = request.getSession().getServletContext().getRealPath("/") + File.separator + "itemUpload"; // 이미지가 저장될 주소
 	String filename = "";
 	if (request.getContentLength() > 10 * 1024 * 1024) {
 %>

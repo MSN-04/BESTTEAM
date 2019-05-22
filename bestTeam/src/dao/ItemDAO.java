@@ -328,23 +328,33 @@ public class ItemDAO {
 		
 		/*-------------------------------------- 영비 --------------------------------------*/
 		
-		public int deleteItem(int item_num) {
-		    int deleteItemCnt=0;
-		    
-		    sql="delete from item where item_num=?";
-		    try {
-		      pstmt = con.prepareStatement(sql);
-		      pstmt.setInt(1, item_num);
-		      
-		      deleteItemCnt = pstmt.executeUpdate();
-		    } catch (SQLException e) {
-		      System.out.println("updateItem() 오류 "+e.getMessage());
-		    } finally {
-		      close(pstmt);
-		    }
-		    return deleteItemCnt;
-		    
-		  }
+		public int deleteItem(int item_num,int item_favor_num) {
+	        int deleteItemCnt=0;
+	        System.out.println("dao시작");
+	        sql="delete from item where item_num=?";
+	        
+	        try {
+	          pstmt = con.prepareStatement(sql);
+	          pstmt.setInt(1, item_num);          
+	          pstmt.executeUpdate();
+	          
+	          if(item_num==item_favor_num) {
+	            System.out.println("item_num 과 item_favor_num 같음");
+	            sql="delete from item_favor where item_favor_num=?";
+	            pstmt=con.prepareStatement(sql);
+	            pstmt.setInt(1,item_favor_num);
+	            deleteItemCnt=pstmt.executeUpdate();
+	          }
+	          
+	        } catch (SQLException e) {
+	          System.out.println("updateItem() 오류 "+e.getMessage());
+	          System.out.println("deleteItemdao 에서 오류:"+e);
+	        } finally {
+	          close(pstmt);
+	        }
+	        return deleteItemCnt;
+	        
+	      }
 		
 	
 }

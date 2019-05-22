@@ -44,12 +44,12 @@ public class shopMainAction implements Action {
 		// 총 리스트 받아옴
 		itemList = shopMainService.getItemList(page, limit, taste, filter, degree);
 		
-		System.out.println("page : " + page);
-		System.out.println("limit : " + limit);
-		System.out.println("taste : " + taste);
-		System.out.println("filter : " + filter);
-		System.out.println("degree : " + degree);
-		System.out.println("itemList.size() : " + itemList.size());
+//		System.out.println("page : " + page);
+//		System.out.println("limit : " + limit);
+//		System.out.println("taste : " + taste);
+//		System.out.println("filter : " + filter);
+//		System.out.println("degree : " + degree);
+//		System.out.println("itemList.size() : " + itemList.size());
 
 		int maxPage = (int)((double)listCount / limit+0.95);
 		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1;
