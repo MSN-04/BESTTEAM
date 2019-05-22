@@ -253,8 +253,6 @@ public class UserDAO {
 			      close(pstmt);
 			    }
 			    return userList;
-			    
-		
 	}
 	
 	//아이디 찾기

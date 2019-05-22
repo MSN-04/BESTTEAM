@@ -83,7 +83,7 @@
 
 
 </style>
-
+<!-- id, pass, mail check -->
 <script type="text/javascript" src="./js/httpRequest.js"></script>
 <script type="text/javascript">
  var checkFirst = false;
@@ -100,13 +100,22 @@
  }
  
  function checkMail() {
-	  if (checkFirst == false) {
-	   //0.5초 후에 sendKeyword()함수 실행
-	   setTimeout("sendMail();", 500);
-	   loopSendKeyword = true;
+	  var keyword = frm.email.value;
+	  if (keyword == '') {
+		   lastKeyword = '';
+		   document.getElementById('checkMail').style.color = "#ff4d4d";
+		   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   	lastKeyword = keyword;
+	   
+		   if (keyword != '') {
+		    var params = "email="+keyword;
+		    sendRequest("mail_check.us", params, displayResultMail, 'POST');
+		   } else {
+		   }
 	  }
-	  checkFirst = true;
-	 }
+	  }
+	 
  
  function checkPwd(){
   var pw1 = frm.pass.value;
@@ -164,23 +173,7 @@
  }
  
  function sendMail() {
-	  if (loopSendKeyword == false) return;
-	  
-	  var keyword = frm.id.value;
-	  if (keyword == '') {
-	   lastKeyword = '';
-	   document.getElementById('checkMail').style.color = "#ff4d4d";
-	   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
-	  } else if (keyword != lastKeyword) {
-	   lastKeyword = keyword;
-	   
-	   if (keyword != '') {
-	    var params = "id="+keyword;
-	    sendRequest("mail_check.us", params, displayResultMail, 'POST');
-	   } else {
-	   }
-	  }
-	  setTimeout("sendMail();", 500);
+	
 	 }
 
 
@@ -288,15 +281,15 @@ function displayResultMail() {
 										class="form-control" placeholder="이메일을 입력해주세요." name="email">
 								</div>
 							</div>
-							<div id="checkMail">E-MAIL 중복확인하셈ㅎ</div>
 							<div class="col-md-6">
 								<div class="">
 									<label for=""></label>
-									<p onclick="checkId()">
-										<a class="btn btn-best py-3 px-4">중복체크</a>
+									<p>
+										<input type="button" class="btn btn-best py-3 px-4" onclick="checkMail()" value="중복체크">
 									</p>
 								</div>
 							</div>
+							<div id="checkMail">E-MAIL 중복확인하셈ㅎ</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -305,24 +298,6 @@ function displayResultMail() {
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- 							<div class="col-md-12"> -->
-							<!-- 								<div class="form-group"> -->
-							<!-- 									<label for="country">State / Country</label> -->
-							<!-- 									<div class="select-wrap"> -->
-							<!-- 										<div class="icon"> -->
-							<!-- 											<span class="ion-ios-arrow-down"></span> -->
-							<!-- 										</div> -->
-							<!-- 										<select name="" id="" class="form-control"> -->
-							<!-- 											<option value="">France</option> -->
-							<!-- 											<option value="">Italy</option> -->
-							<!-- 											<option value="">Philippines</option> -->
-							<!-- 											<option value="">South Korea</option> -->
-							<!-- 											<option value="">Hongkong</option> -->
-							<!-- 											<option value="">Japan</option> -->
-							<!-- 										</select> -->
-							<!-- 									</div> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -414,12 +389,6 @@ function displayResultMail() {
 				    }
 				</script>
 							<div class="w-100"></div>
-							<!-- 							<div class="col-md-6"> -->
-							<!-- 								<div class="form-group"> -->
-							<!-- 									<label for="towncity">Town / City</label> <input type="text" -->
-							<!-- 										class="form-control" placeholder=""> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"

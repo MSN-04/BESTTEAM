@@ -30,6 +30,8 @@
 			// Add the mask to body
 			$('body').append('<div id="mask"></div>');
 			$('#mask').fadeIn(300);
+			
+			$('.login-popup').css({'display' : inline-block})
 
 			return false;
 		});
@@ -89,6 +91,7 @@
 				<span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
 			</ul>
 		</div>
+		
 		<div id="login-box" class="login-popup" style="width: 300px; height: 300px;">
 			<a class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
 			<form method="post" class="signin" action="LoginProAction.us">
