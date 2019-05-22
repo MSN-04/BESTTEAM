@@ -17,6 +17,7 @@ public class ItemSingleService {
  5. ItemBean 리턴
  */
 	public ItemBean getItem(int item_num) {
+
 		System.out.println("ItemSingleService - getItem() 시작");
 		
 		// 1.
