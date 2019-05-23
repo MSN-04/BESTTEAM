@@ -409,11 +409,11 @@
 
 		
 		<form action="TasteProAction.us" name="frm" id="frm" method="POST" onsubmit="return false;">
-			<input name="COFFEE_AROMA" type="hidden" />
-			<input name="COFFEE_ACID" type="hidden" />
-			<input name="COFFEE_SWEET" type="hidden" />
-			<input name="COFFEE_BITTER" type="hidden" />
-			<input name="COFFEE_BODY" type="hidden" />
+			<input name="COFFEE_AROMA" id="COFFEE_AROMA" type="hidden" />
+			<input name="COFFEE_ACID"  id="COFFEE_ACID" type="hidden" />
+			<input name="COFFEE_SWEET" id="COFFEE_SWEET" type="hidden" />
+			<input name="COFFEE_BITTER" id="COFFEE_BITTER" type="hidden" />
+			<input name="COFFEE_BODY" id="COFFEE_BODY" type="hidden" />
 		</form>
 		
 

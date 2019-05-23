@@ -18,10 +18,10 @@ public class TasteProAction implements Action {
 		System.out.println("tasteactionforward");
 		FavorBean favorBean = new FavorBean();
 		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_AROMA")));
-		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_ACID")));
-		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_SWEET")));
-		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_BITTER")));
-		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_BODY")));
+		favorBean.setUser_favor_acid(Integer.parseInt(request.getParameter("COFFEE_ACID")));
+		favorBean.setUser_favor_sweet(Integer.parseInt(request.getParameter("COFFEE_SWEET")));
+		favorBean.setUser_favor_bitter(Integer.parseInt(request.getParameter("COFFEE_BITTER")));
+		favorBean.setUser_favor_body(Integer.parseInt(request.getParameter("COFFEE_BODY")));
 		
 		
 		HttpSession session = request.getSession();
