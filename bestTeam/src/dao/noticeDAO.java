@@ -15,7 +15,6 @@ public class noticeDAO {
 	// 싱글톤 디자인 패턴을 활용하여 1개의 인스턴스를 생성하여 공유
 	private noticeDAO() {
 	}
-
 	private static noticeDAO instance;
 
 	public static noticeDAO getInstance() {
@@ -159,6 +158,9 @@ public class noticeDAO {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Notice_num);
+//			pstmt.setString(2, Notice_subject);
+//			pstmt.setString(3, Notice_content);
+//			pstmt.setInt(4, x);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -260,8 +262,21 @@ public class noticeDAO {
 	}
 
 	public int deleteArticle(int notice_num) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deleteCount=0;
+		
+		String sql="delete from notice where notice_num=?";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, notice_num);
+			deleteCount=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("deleteArticle() 실패!"+e.getMessage());
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		return deleteCount;
 	}
 
 }

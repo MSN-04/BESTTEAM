@@ -19,6 +19,8 @@ public class noticeModifyFormAction implements Action {
 		// URL 에 전달된 notice_num 파라미터 가져와서 int 타입 변수 notice_num 에 저장 => String -> int 형변환 필요
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		
+		System.out.println("ModifyFormAction notice_num"+notice_num);
+		
 		// noticeDetailService 클래스의 getArticle() 메서드를 사용하여 원본글 가져와서 noticeBean 에 저장
 		noticeViewService NoticeDetailService = new noticeViewService();
 		noticeBean article = NoticeDetailService.getArticle(notice_num);

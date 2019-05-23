@@ -1,6 +1,16 @@
 <%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <script language="javascript">
+	function delconfirm(num){
+	var message = confirm("이 게시글을 삭제하시겠습니까?");
+	if(message == true){
+	location.href ="./BlogDeletePro.bl?num="+num;
+	}else
+	alert("취소되었습니다");
+	return false;
+	}
+	</script>
     <%
 	BlogBean article = (BlogBean)request.getAttribute("article");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
@@ -258,7 +268,7 @@
               <img src="./images/image_1.jpg" alt="" class="img-fluid">
             </p>
             <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
-            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=article.getBlog_num() %>')">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>

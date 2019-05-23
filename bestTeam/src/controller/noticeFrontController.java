@@ -117,8 +117,6 @@ public class noticeFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(command.equals("/noticeDeletePro.no")) {
-//			int notice_num = Integer.parseInt(request.getParameter("notice_num"));
-//			request.setAttribute("notice_num", notice_num);
 			action = new noticeModifyProAction();
 			try {
 				forward = action.execute(request, response);

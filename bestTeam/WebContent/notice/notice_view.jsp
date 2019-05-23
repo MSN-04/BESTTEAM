@@ -6,7 +6,7 @@
 function delconfirm(num){
 var message = confirm("이 게시글을 삭제하시겠습니까?");
 if(message == true){
-	location.href ="./noticeDeletePro.jsp?num="+num;
+	location.href ="./noticeDeletePro.no?num="+num;
 }else
 	alert("취소되었습니다");
 return false;

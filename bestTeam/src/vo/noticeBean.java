@@ -10,6 +10,8 @@ public class noticeBean {
 	private int notice_readcount;
 	private String notice_file;
 	private Date notice_date;
+	
+	
 	public int getNotice_num() {
 		return notice_num;
 	}   

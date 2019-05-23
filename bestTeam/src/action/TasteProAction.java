@@ -50,8 +50,7 @@ public class TasteProAction implements Action {
 		} else {
 			forward = new ActionForward();
 			
-			forward.setRedirect(true);
-			forward.setPath("mypage.us");
+			forward.setPath("index.in");
 		}
 		
 		return forward;

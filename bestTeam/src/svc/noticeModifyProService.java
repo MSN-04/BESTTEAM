@@ -53,32 +53,6 @@ public class noticeModifyProService {
 		return isModifySuccess;
 	}
 
-	public boolean isArticleWriter(int notice_num) {
-		return false;
-	}
-
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
