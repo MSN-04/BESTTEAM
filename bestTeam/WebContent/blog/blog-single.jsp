@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<%@page import="vo.BlogBean"%>
+=======
 <%@page import="vo.BlogBean"%> 
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%

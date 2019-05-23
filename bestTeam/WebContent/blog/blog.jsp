@@ -1,3 +1,5 @@
+<%@page import="vo.BlogBean"%>
+<%@page import="vo.PageInfo"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.BlogBean"%> 
 <%@page import="java.util.ArrayList"%>
@@ -86,13 +88,20 @@
 			%>
               <a href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>" class="block-20" style="background-image: url('./blog_img/<%=articleList.get(i).getBlog_file()%>');">
               </a>
+<<<<<<< HEAD
+                <h2 class="heading mt-2">
+                <a href="#"><%=articleList.get(i).getBlog_subject()%></a></h2>
+=======
                 <h2 class="heading mt-2"><a href="#"><%=articleList.get(i).getBlog_subject()%></a></h2>
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
                   <div class="text py-4 d-block">
               	<div class="meta">
                   <div><a href="#">Sept 28</a></div>
 <!--                   <div><a href="#">관리자</a></div> -->
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  <div><a href="#" class="meta-chat">
+                  <span class="icon-chat"></span> 3</a></div>
+                  <div><a href="#" class="meta-chat">
+                  <span class="icon-chat"></span> 3</a></div>
                 </div>
                 <p><%=articleList.get(i).getBlog_content()%></p>
               </div>

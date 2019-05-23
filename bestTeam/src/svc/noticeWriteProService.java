@@ -12,8 +12,13 @@ import static db.JdbcUtil.*; // JdbcUtil 클래스의 모든 static 메서드를
 // 글쓰기 요청에 대한 비즈니스 로직을 구현하는 Service 클래스 => DAO 객체를 통해 DB 작업을 수행
 public class noticeWriteProService {
 	
-	public boolean registArticle(noticeBean noticeBean) throws Exception {
-//		System.out.println("noticeWriteProService");
+	public boolean registArticle(noticeBean NoticeBean) throws Exception {
+		System.out.println("noticeWriteProService");
+		
+		System.out.println("getNotice_writer" + NoticeBean.getNotice_writer());
+		System.out.println("getNotice_num" +NoticeBean.getNotice_num());
+		System.out.println("getNotice_subject" +NoticeBean.getNotice_subject());
+		System.out.println("getNotice_content" +NoticeBean.getNotice_content());
 		
 		// 작업 수행 성공 여부를 리턴할 boolean 타입 변수 선언
 		boolean isWriteSuccess = false;
@@ -24,7 +29,7 @@ public class noticeWriteProService {
 		// 싱글톤 디자인 패턴으로 생성된 noticeDAO 인스턴스를 얻어오기
 		noticeDAO NoticeDAO = noticeDAO.getInstance();
 		NoticeDAO.setConnection(con); // Connection 객체를 noticeDAO 객체에 전달
-		int insertCount = NoticeDAO.insertArticle(noticeBean); // 글 등록 처리(결과를 int형으로 전달받음)
+		int insertCount = NoticeDAO.insertArticle(NoticeBean); // 글 등록 처리(결과를 int형으로 전달받음)
 		     
 		// insertCount 가 0보다 크면 트랜잭션 Commit, 아니면 트랜잭션 Rollback 수행
 		if(insertCount > 0) {
@@ -40,24 +45,6 @@ public class noticeWriteProService {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
