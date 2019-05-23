@@ -148,21 +148,29 @@
 
 	<section class="ftco-section">
 		<div class="container" style="border: 1px solid white;">
-			<form id="frm" action="blogWriteFormPro.bl" method="post" >
+			<form id="frm" action="blogWriteFormPro.bl" method="post" enctype="multipart/form-data">
 				<table width="100%">
 					<tr>
 						<td>제목</td>
-						<td><input type="text" id="title" name="blog_subject"
-							style="width: 100%;" /></td>
+						<td colspan="3"><input type="text" id="title" name="blog_subject"
+							style="width: 100%;"/></td>
+					</tr>
+					<tr>
+						<td>요약</td>
+						<td colspan="3"><input type="text" id="title" name="blog_content1" 
+							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
 						<td><input type="text" id="title" name="blog_writer"
 							style="width: 100%;" /></td>
+						<td style="width: 86px;"><input type="file" id="title" name="blog_file"
+							style="width: 100%;"required="required" /></td>
 					</tr>
+
 					<tr>
 						<td>내용</td>
-						<td><textarea rows="10" cols="30" id="ir1" name="blog_content" 
+						<td colspan="3"><textarea rows="10" cols="30" id="ir1" name="blog_content" 
 								style="width: 100%; height: 650px;" ></textarea></td>
 					</tr>
 					<tr>

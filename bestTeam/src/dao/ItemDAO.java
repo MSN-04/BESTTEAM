@@ -36,6 +36,7 @@ public class ItemDAO {
 	}
 
 
+
 	
 	/*-------------------------------------- 주영-------------- ------------------------*/
 	public int selectListCount(String taste, int degree) {
@@ -57,6 +58,7 @@ public class ItemDAO {
 			System.out.println("ItemDAO - selectItem() 성공");
 			
 		} catch (SQLException e) {
+
 			System.out.println("ItemDAO - selectItem() 오류 "+e.getMessage());
 			System.out.println("selectListCount 실패! (" + e.getMessage() + ")");
 		} finally {
@@ -131,6 +133,7 @@ public class ItemDAO {
 	}
 	
 	/*-------------------------------------- 미송 --------------------------------------*/
+
 
 	//-- 아이템 조회해서 ItemBean 리턴 
 		public ItemBean selectItem(int item_num) {

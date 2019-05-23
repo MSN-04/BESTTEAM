@@ -4,11 +4,11 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import dao.ItemDAO;
 import dao.UserDAO;
-import vo.ItemBean;
 import vo.UserBean;
 
 public class ItemDeleteProService {
 	// item 등록자가 관리자인지 일치여부 확인을 위해 id와 패스워드 확인작업
+
 	public boolean isAdminWriter(String user_id,String user_pass) throws Exception{
 		System.out.println(" ------ItemDeleteProService--isAdminWriter--");
 		boolean isAdminWriter=false;

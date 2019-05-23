@@ -28,6 +28,7 @@ public class ItemRegisterProAction implements Action {
 		ActionForward forward = null;
 		ItemBean itemBean = null;
 		
+
 		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
 		String realFolder; // 실제 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
