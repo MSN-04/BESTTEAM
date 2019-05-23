@@ -75,7 +75,7 @@
 				<%
 				if(session.getAttribute("id")==null){
 				%>	
-				<li class="nav-item"><a href="login.us" class="login-window nav-link">Login</a></li>
+				<li class="nav-item"><a href="#login-box" class="login-window nav-link">Login</a></li>
 				<li class="nav-item"><a href="join.us" class="nav-link">SignUp</a></li>
 				<%	
 				} else {
@@ -96,15 +96,17 @@
 			<a class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
 			<form method="post" class="signin" action="LoginProAction.us">
 				<fieldset class="textbox">
-					<label class="username"> <span>ID</span> 
+					<span id="login-logo"><img src="./images/untitled.png"></span>
+					<span> Welcome Back!</span>
+					<label class="username"> 
 					<input id="username" name="id" value="" type="text" autocomplete="on" placeholder="Username">
-					</label> <label class="password"> <span>Password</span> 
+					</label> 
+					<label class="password"> 
 					<input id="password" name="password" value="" type="password" placeholder="Password">
 					</label>
 					<button class="submit button btn btn-primary" type="submit">LOGIN</button>
 				</fieldset>
 			</form>
-			<br>
 			<div>
 			<a id="kakao-login-btn"></a> <a
 				href="http://developers.kakao.com/logout"></a>

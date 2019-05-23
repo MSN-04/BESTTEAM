@@ -16,26 +16,26 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="./css/animate.css">
 
-<link rel="stylesheet" href="../css/owl.carousel.min.css">
-<link rel="stylesheet" href="../css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./css/magnific-popup.css">
 
-<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="./css/aos.css">
 
-<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="./css/ionicons.min.css">
 
-<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../css/jquery.timepicker.css">
+<link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="../css/flaticon.css">
-<link rel="stylesheet" href="../css/icomoon.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/shop.css">
-<link rel="stylesheet" href="../css/agency.min.css">
+<link rel="stylesheet" href="./css/flaticon.css">
+<link rel="stylesheet" href="./css/icomoon.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/agency.min.css">
 <script type="text/javascript">
 // $(document).ready(function() {
 // 	$('input[name="COFFEE_AROMA"]').change(function() {
@@ -67,7 +67,7 @@
 
 	 <section class="home-slider owl-carousel" id="teammember">
 
-      <div class="slider-item" style="background-image: url(../images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 1;"><img class="mx-auto rounded-circle" src="../images/taste1_1.png" alt=""></a>
+                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste1_1.png" alt=""></a>
                     <h4>향 1</h4>
                  
                     
@@ -103,35 +103,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 2;"><img class="mx-auto rounded-circle" src="../images/taste1_2.png" alt=""></a>
+                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste1_2.png" alt=""></a>
                     <h4>향 2</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 3;"><img class="mx-auto rounded-circle" src="../images/taste1_3.png" alt=""></a>
+                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste1_3.png" alt=""></a>
                     <h4>향 3</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 4;"><img class="mx-auto rounded-circle" src="../images/taste1_4.png" alt=""></a>
+                  <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste1_4.png" alt=""></a>
                     <h4>향 4</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 5;"><img class="mx-auto rounded-circle" src="../images/taste1_5.png" alt=""></a>
+                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste1_5.png" alt=""></a>
                     <h4>향 5</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 0;"><img class="mx-auto rounded-circle" src="../images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -161,7 +161,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 1;"><img class="mx-auto rounded-circle" src="../images/taste2_1.png" alt=""></a>
+                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste2_1.png" alt=""></a>
                     <h4>신맛 없음</h4>
                  
                     
@@ -169,35 +169,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 2;"><img class="mx-auto rounded-circle" src="../images/taste2_2.png" alt=""></a>
+                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste2_2.png" alt=""></a>
                     <h4>약한 신맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 3;"><img class="mx-auto rounded-circle" src="../images/taste2_3.png" alt=""></a>
+                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste2_3.png" alt=""></a>
                     <h4>중간 신맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 4;"><img class="mx-auto rounded-circle" src="../images/taste2_4.png" alt=""></a>
+                  <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste2_4.png" alt=""></a>
                     <h4>강한 신맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 5;"><img class="mx-auto rounded-circle" src="../images/taste2_5.png" alt=""></a>
+                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste2_5.png" alt=""></a>
                     <h4>식초</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 0;"><img class="mx-auto rounded-circle" src="../images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -225,7 +225,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 1;"><img class="mx-auto rounded-circle" src="../images/taste3_1.png" alt=""></a>
+                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste3_1.png" alt=""></a>
                     <h4>단맛 없음</h4>
                  
                     
@@ -233,35 +233,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 2;"><img class="mx-auto rounded-circle" src="../images/taste3_2.png" alt=""></a>
+                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste3_2.png" alt=""></a>
                     <h4>약한 단맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 3;"><img class="mx-auto rounded-circle" src="../images/taste3_3.png" alt=""></a>
+                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste3_3.png" alt=""></a>
                     <h4>중간 단맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 4;"><img class="mx-auto rounded-circle" src="../images/taste3_4.png" alt=""></a>
+                  <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste3_4.png" alt=""></a>
                     <h4>강한 단맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 5;"><img class="mx-auto rounded-circle" src="../images/taste3_5.png" alt=""></a>
+                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste3_5.png" alt=""></a>
                     <h4> 설탕 </h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 0;"><img class="mx-auto rounded-circle" src="../images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -289,7 +289,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 1;"><img class="mx-auto rounded-circle" src="../images/taste4_1.png" alt=""></a>
+                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste4_1.png" alt=""></a>
                     <h4>쓴맛 없음</h4>
                  
                     
@@ -297,35 +297,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 2;"><img class="mx-auto rounded-circle" src="../images/taste4_2.png" alt=""></a>
+                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste4_2.png" alt=""></a>
                     <h4>약한 쓴맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 3;"><img class="mx-auto rounded-circle" src="../images/taste4_3.png" alt=""></a>
+                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste4_3.png" alt=""></a>
                     <h4>중간 쓴맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 4;"><img class="mx-auto rounded-circle" src="../images/taste4_4.png" alt=""></a>
+                  <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste4_4.png" alt=""></a>
                     <h4>강한 쓴맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 5;"><img class="mx-auto rounded-circle" src="../images/taste4_5.png" alt=""></a>
+                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste4_5.png" alt=""></a>
                     <h4>매우 강한 쓴맛</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 0;"><img class="mx-auto rounded-circle" src="../images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -353,7 +353,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(1)"><img class="mx-auto rounded-circle" src="../images/taste5_1.png" alt=""></a>
+                    <a href="#" onclick="i.goSubmit(1)"><img class="mx-auto rounded-circle" src="./images/taste5_1.png" alt=""></a>
                     <h4>매우 가벼움</h4>
                  
                     
@@ -361,35 +361,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(2)"><img class="mx-auto rounded-circle" src="../images/taste5_2.png" alt=""></a>
+                    <a href="#" onclick="i.goSubmit(2)"><img class="mx-auto rounded-circle" src="./images/taste5_2.png" alt=""></a>
                     <h4>가벼움 </h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(3)"><img class="mx-auto rounded-circle" src="../images/taste5_3.png" alt=""></a>
+                    <a href="#" onclick="i.goSubmit(3)"><img class="mx-auto rounded-circle" src="./images/taste5_3.png" alt=""></a>
                     <h4>중간</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#" onclick="i.goSubmit(4)"><img class="mx-auto rounded-circle" src="../images/taste5_4.png" alt=""></a>
+                  <a href="#" onclick="i.goSubmit(4)"><img class="mx-auto rounded-circle" src="./images/taste5_4.png" alt=""></a>
                     <h4>무거움</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(5)"><img class="mx-auto rounded-circle" src="../images/taste5_5.png" alt=""></a>
+                    <a href="#" onclick="i.goSubmit(5)"><img class="mx-auto rounded-circle" src="./images/taste5_5.png" alt=""></a>
                     <h4>매우 무거움</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(0)"><img class="mx-auto rounded-circle" src="../images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#" onclick="i.goSubmit(0)"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -408,7 +408,7 @@
 
 
 		
-		<form action="#" name="frm" id="frm" method="POST" onsubmit="return false;">
+		<form action="TasteProAction.us" name="frm" id="frm" method="POST" onsubmit="return false;">
 			<input name="COFFEE_AROMA" type="hidden" />
 			<input name="COFFEE_ACID" type="hidden" />
 			<input name="COFFEE_SWEET" type="hidden" />
@@ -420,8 +420,8 @@
     
     <script type="text/javascript">
 			var i = {
-					goSubmit : function(inten){
-						document.frm.COFFEE_INTEN.value = inten;
+					goSubmit : function(body){
+						document.frm.COFFEE_BODY.value = body;
 						document.frm.submit();
 					}
 			}
@@ -442,26 +442,26 @@
 	</div>
 
 
-	<script src="../js/jquery.min.js"></script>
-	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="../js/popper.min.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/jquery.easing.1.3.js"></script>
-	<script src="../js/jquery.waypoints.min.js"></script>
-	<script src="../js/jquery.stellar.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
-	<script src="../js/aos.js"></script>
-	<script src="../js/jquery.animateNumber.min.js"></script>
-	<script src="../js/bootstrap-datepicker.js"></script>
-	<script src="../js/jquery.timepicker.min.js"></script>
-	<script src="../js/scrollax.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.waypoints.min.js"></script>
+	<script src="./js/jquery.stellar.min.js"></script>
+	<script src="./js/owl.carousel.min.js"></script>
+	<script src="./js/jquery.magnific-popup.min.js"></script>
+	<script src="./js/aos.js"></script>
+	<script src="./js/jquery.animateNumber.min.js"></script>
+	<script src="./js/bootstrap-datepicker.js"></script>
+	<script src="./js/jquery.timepicker.min.js"></script>
+	<script src="./js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="../js/google-map.js"></script>
-	<script src="../js/main.js"></script>
+	<script src="./js/google-map.js"></script>
+	<script src="./js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script>
-	<script src="../js/app.js"></script>
+	<script src="./js/app.js"></script>
 	
 
 </body>

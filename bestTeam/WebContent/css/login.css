@@ -25,6 +25,8 @@
 	border-radius:3px 3px 3px 3px;
     -moz-border-radius: 3px; /* Firefox */
     -webkit-border-radius: 3px; /* Safari, Chrome */
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 img.btn_close {
@@ -87,6 +89,10 @@ form.signin input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #
 	margin-top:10px;
 	font:12px; 
 	width:214px;
+	margin-bottom: 5%;
+	margin-top: 0;
 }
+
+
 
 /* .button:hover { background:#ddd; } */
