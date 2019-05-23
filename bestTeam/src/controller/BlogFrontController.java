@@ -13,7 +13,7 @@ import action.Action;
 import action.BlogDeleteProAction;
 import action.BlogDetailAction;
 import action.BlogListAction;
-import action.BlogModifyFormAction;
+import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import vo.ActionForward;
 
