@@ -2,10 +2,7 @@ package action;
 
 import java.io.PrintWriter;
 
-<<<<<<< HEAD
-=======
 import javax.servlet.ServletContext;
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,27 +10,14 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 import svc.ItemModifyProService;
 import vo.ActionForward;
-<<<<<<< HEAD
-import vo.UserBean;
-=======
 import vo.ItemBean;
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 
 public class ItemModifyProAction implements Action {
-<<<<<<< HEAD
-/* 아이템 수정 Action (<- FROM itemModifyPro.em )
- 1. Session id 받아 userBean에 저장
- 2. 수정확인 팝업창 띄우기
- 2. ItemModifyProService - isAdmin(id) : isRightAdmin 리턴해줌. 관리자 계정확인
-=======
 /* 아이템 수정 Action (<- FROM itemModifyPro.em = 수정하기 버튼 클릭시 )
  1. session id 가 admin 일 때만 수정 가능
  2. itemModify.em 에서 전달 받은 값을 itemBean 에 저장
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
  3. ItemModifyProService - modifyItem(item) : isModifySuccess 리턴해줌. 아이템정보 수정 성공 확인
     => 수정 성공 여부에 따라 확인 팝업창 띄우기
  4. 아이템정보 수정 성공 시 포워딩 경로 저장 : /itemSingle.em
@@ -48,31 +32,8 @@ public class ItemModifyProAction implements Action {
 		
 		// 1.
 		HttpSession session = request.getSession();
-		String sessionId = (String) session.getAttribute("id");
-		System.out.println("sessionId : "+ sessionId);
+		String id = (String) session.getAttribute("id");
 		
-		UserBean userBean = new UserBean();
-		userBean.setUser_id(sessionId);
-
-		// 2.
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		
-		
-		
-		
-		int item_num = Integer.parseInt(request.getParameter("item_num"));
-		
-<<<<<<< HEAD
-		// 2.
-		ItemModifyProService itemModifyProService = new ItemModifyProService();
-		boolean isAdmin = itemModifyProService.isAdmin(sessionId);
-		
-		if(isAdmin) {
-			// 패스워드 일치 확인
-			
-=======
 		if(id != null) {
 			System.out.println("세션아이디 null 아님");
 			
@@ -167,11 +128,14 @@ public class ItemModifyProAction implements Action {
 					
 					ItemBean newItemBean2 = itemModifyProService.getItem(newItemBean.getItem_num());
 					request.setAttribute("newItemBean2", newItemBean2);
+
 					
 					// 4.
 					forward = new ActionForward();
 					forward.setPath("./itemSingle.em?item_num="+newItemBean.getItem_num());
 					forward.setRedirect(true);
+					
+
 					
 				} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
 					System.out.println("action - item_favor Up fail");
@@ -199,7 +163,6 @@ public class ItemModifyProAction implements Action {
 			out.println("<script>");
 			out.println("location.href='./shopMain.em'");
 			out.println("</script>");
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 		}
 		
 		// 5.

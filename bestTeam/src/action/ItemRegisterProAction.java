@@ -28,15 +28,7 @@ public class ItemRegisterProAction implements Action {
 		ActionForward forward = null;
 		ItemBean itemBean = null;
 		
-<<<<<<< HEAD
-		String realFolder = ""; // 실제 경로
-		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
-		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-		
-		
-		ServletContext context = request.getServletContext();
-		realFolder = context.getRealPath(saveFolder);
-=======
+
 		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
 		String realFolder; // 실제 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
@@ -46,7 +38,6 @@ public class ItemRegisterProAction implements Action {
 		System.out.println("realFoldr : "+realFolder);
 		
 		System.out.println(realFolder);
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		Enumeration files = multi.getFileNames();

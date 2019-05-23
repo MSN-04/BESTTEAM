@@ -40,18 +40,7 @@ public class shopMainAction implements Action {
 		ShopMainService shopMainService = new ShopMainService();
 		int listCount = shopMainService.getListCount(taste, degree);
 //		System.out.println("listCount : " + listCount);
-<<<<<<< HEAD
-		// 총 리스트 받아옴
-		itemList = shopMainService.getItemList(page, limit, taste, filter, degree);
-		
-		System.out.println("page : " + page);
-		System.out.println("limit : " + limit);
-		System.out.println("taste : " + taste);
-		System.out.println("filter : " + filter);
-		System.out.println("degree : " + degree);
-		System.out.println("itemList.size() : " + itemList.size());
-		
-=======
+
 
 		// 총 리스트 받아옴
 		itemList = shopMainService.getItemList(page, limit, taste, filter, degree);
@@ -63,7 +52,6 @@ public class shopMainAction implements Action {
 //		System.out.println("degree : " + degree);
 //		System.out.println("itemList.size() : " + itemList.size());
 
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 		int maxPage = (int)((double)listCount / limit+0.95);
 		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1;
 		int endPage = startPage + 10 - 1;
