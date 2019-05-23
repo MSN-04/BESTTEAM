@@ -16,6 +16,7 @@ import action.JoinProAction;
 import action.LoginProAction;
 import action.LogoutProAction;
 import action.MypageProAction;
+import action.TasteProAction;
 import action.UpdateMemberFormAction;
 import action.UpdateMemberProAction;
 import vo.ActionForward;
@@ -64,9 +65,16 @@ public class UserFrontController extends HttpServlet {
 //			System.out.println("idcheck controller");
 			forward = new ActionForward();
 			forward.setPath("/member/id_check.jsp");
-		}else if (command.equals("/ForgotAccount.us")) {
+		} else if (command.equals("/mail_check.us")) {
+//			System.out.println("idcheck controller");
+			forward = new ActionForward();
+			forward.setPath("/member/mail_check.jsp");
+		} else if (command.equals("/ForgotAccount.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/forgotAccount.jsp");
+		} else if (command.equals("/taste.us")) {
+			forward = new ActionForward();
+			forward.setPath("/taste/taste.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
 //			System.out.println("controll loginPro");
 			action = new LoginProAction();
@@ -125,7 +133,18 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if(command.equals("/TasteProAction.us")) {
+			System.out.println("tasteProAction controller");
+			action = new TasteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}		
+		
+		
+		
 		
 		if(forward != null) {
 			if(forward.isRedirect()) {

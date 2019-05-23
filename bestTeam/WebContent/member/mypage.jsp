@@ -1,9 +1,13 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 	<%
 	UserBean myPage = (UserBean)request.getAttribute("userBean");
+	
+	// 주소 가져와서 주소와 상세주소로 나누기
+	StringTokenizer st = new StringTokenizer(myPage.getUser_address(), ":");
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,21 +131,19 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<!-- 									<label for="towncity"></label> -->
-									<!-- 									<p onclick="execDaumPostcode()"><a class="btn btn-best py-3 px-4" >우편번호 검색</a></p> -->
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- 							<div class="col-md-6"> -->
-							<!-- 								<div class="form-group"> -->
-							<!-- 									<label for="towncity">Town / City</label> <input type="text" -->
-							<!-- 										class="form-control" placeholder=""> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label>
-									<p><%=myPage.getUser_address() %></p>
+									<p><%=st.nextToken() %></p>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="streetaddress">상세주소</label>
+									<p><%=st.nextToken() %></p>
 								</div>
 							</div>
 							

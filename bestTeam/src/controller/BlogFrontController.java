@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BlogDeleteProAction;
 import action.BlogDetailAction;
 import action.BlogListAction;
+import action.BlogModifyFormAction;
+import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import vo.ActionForward;
 
@@ -75,6 +78,33 @@ public class BlogFrontController extends HttpServlet {
 			
 		}else if(command.equals("/blogWriteFormPro.bl")) {
 			action = new BlogWriteProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/BlogDeletePro.bl")) {
+			action = new BlogDeleteProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/blogModifyPro.bl")) {
+			// 수정글 저장하기 - BoardModifyProAction 클래스로 이동
+			action = new BlogModifyProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/blogModifyForm.bl")) {
+			// 수정글 관련 정보 가져오기 - BoardModifyFormAction 클래스로 이동
+			action = new BlogModifyFormAction();
 			
 			try {
 				forward = action.execute(request, response);

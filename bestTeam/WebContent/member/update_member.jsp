@@ -1,9 +1,16 @@
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="java.util.Calendar"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 	<%
 	UserBean updatePage = (UserBean)request.getAttribute("userBean");
+	
+	int age = (Calendar.YEAR-(Integer.parseInt(updatePage.getUser_age())-1))%100;
+	
+	// 주소 가져와서 주소와 상세주소로 나누기
+		StringTokenizer st = new StringTokenizer(updatePage.getUser_address(), ":");
 	%>
 	
 <!DOCTYPE html>
@@ -67,42 +74,147 @@
 .p-best {
 	padding: 50px !important;
 }
+
+#checkPwd{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-left: 73%;
+}
+
+#checkMsg{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-bottom: 5%;
+  margin-left: 27%;
+}
+
+#checkMail{
+  color : #ff4d4d;
+  font-size: 13px;
+  margin-bottom: 1%;
+  margin-left: 3%;
+}
 </style>
+
+<!-- id, pass, mail check -->
+<script type="text/javascript" src="./js/httpRequest.js"></script>
+<script type="text/javascript">
+ var checkFirst = false;
+ var lastKeyword = '';
+ var loopSendKeyword = false;
+ 
+ function checkId() {
+  if (checkFirst == false) {
+   //0.5초 후에 sendKeyword()함수 실행
+   setTimeout("sendId();", 500);
+   loopSendKeyword = true;
+  }
+  checkFirst = true;
+ }
+ 
+ function checkMail() {
+	  var keyword = frm.email.value;
+	  if (keyword == '') {
+		   lastKeyword = '';
+		   document.getElementById('checkMail').style.color = "#ff4d4d";
+		   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   	lastKeyword = keyword;
+	   
+		   if (keyword != '') {
+		    var params = "email="+keyword;
+		    sendRequest("mail_check.us", params, displayResultMail, 'POST');
+		   } else {
+		   }
+	  }
+	  }
+	 
+ 
+ function checkPwd(){
+  var pw1 = frm.pass.value;
+  var pw2 = frm.pass2.value;
+  if(pw1!=pw2){
+   document.getElementById('checkPwd').style.color = "#ff4d4d";
+   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
+  }else{
+   document.getElementById('checkPwd').style.color = "#4d79ff";
+   document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다"; 
+   
+  }
+  
+ }
+ 
+ 
+ function sendId() {
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = frm.id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMsg').style.color = "#ff4d4d";
+	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+keyword;
+	    sendRequest("id_check.us", params, displayResult, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendId();", 500);
+	 }
+ 
+ 
+ function displayResult() {
+  if (httpRequest.readyState == 4) {
+   if (httpRequest.status == 200) {
+    var resultText = httpRequest.responseText;
+    var listView = document.getElementById('checkMsg');
+//     alert(resultText);
+    if(resultText==0){
+     listView.innerHTML = "사용 할 수 있는 ID 입니다";
+     listView.style.color = "#4d79ff";
+    } else {
+     listView.innerHTML = "이미 등록된 ID 입니다";
+     listView.style.color = "#ff4d4d";
+    }
+   } else {
+    alert("에러 발생: "+httpRequest.status);
+   }
+  }
+ }
+ 
+ function sendMail() {
+	
+	 }
+
+
+function displayResultMail() {
+ if (httpRequest.readyState == 4) {
+  if (httpRequest.status == 200) {
+   var resultText = httpRequest.responseText;
+   var listView = document.getElementById('checkMail');
+//    alert(resultText);
+   if(resultText==0 || frm.email.value == frm.check_mail.value){
+    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
+    listView.style.color = "#4d79ff";
+   } else if(resultText!=0 && frm.email.value != frm.chexk_mail.value ){
+    listView.innerHTML = "이미 등록된 MAIL 입니다";
+    listView.style.color = "#ff4d4d";
+   }
+  } else {
+   alert("에러 발생: "+httpRequest.status);
+  }
+ }
+}
+</script>
 </head>
 <body>
+
 	<header>
 		<jsp:include page="../inc/header.jsp" />
-		<!-- END nav -->
 	</header>
-	<!--   	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"> -->
-	<!-- 	    <div class="container"> -->
-	<!-- 	      <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a> -->
-	<!-- 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"> -->
-	<!-- 	        <span class="oi oi-menu"></span> Menu -->
-	<!-- 	      </button> -->
-	<!-- 	      <div class="collapse navbar-collapse" id="ftco-nav"> -->
-	<!-- 	        <ul class="navbar-nav ml-auto"> -->
-	<!-- 	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
-	<!-- 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li> -->
-	<!-- 	          <li class="nav-item dropdown"> -->
-	<!--               <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a> -->
-	<!--               <div class="dropdown-menu" aria-labelledby="dropdown04"> -->
-	<!--               	<a class="dropdown-item" href="shop.html">Shop</a> -->
-	<!--                 <a class="dropdown-item" href="product-single.html">Single Product</a> -->
-	<!--                 <a class="dropdown-item" href="cart.html">Cart</a> -->
-	<!--                 <a class="dropdown-item" href="checkout.html">Checkout</a> -->
-	<!--               </div> -->
-	<!--             </li> -->
-	<!-- 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li> -->
-	<!-- 	          <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li> -->
-	<!-- 	        </ul> -->
-	<!-- 	      </div> -->
-	<!-- 		  </div> -->
-	<!-- 	  </nav> -->
-	<!-- END nav -->
 
 	<section class="home-slider owl-carousel">
 
@@ -132,79 +244,76 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" method="post">
-						<h3 class="mb-4 billing-heading">회원 정보 수정</h3>
+					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post">
+						<h3 class="mb-4 billing-heading">회원 가입</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">아이디</label>
-									<input type="text"
-										class="form-control"  readonly="readonly" name="id" value=<%=updatePage.getUser_id() %>>
+									<label for="firstname">아이디</label> <input type="text"
+										class="form-control" readonly="readonly" name="id" id="id" value=<%=updatePage.getUser_id() %>>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstname">비밀번호</label> <input type="text"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" required="required">
-								</div>
-							</div>
+							<div id="checkMsg">아이디를 입력하세요</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">변경할 비밀번호</label> <input type="text"
-										class="form-control" name="new_pass" placeholder="변경할 비밀번호를 입력해주세요.">
+									<label for="firstname">비밀번호</label> <input type="password"
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">비밀번호 확인</label> <input type="text"
-										class="form-control" name="new_pass2" placeholder="변경할 비밀번호를 다시 입력해주세요.">
+									<label for="firstname">비밀번호 확인</label> <input type="password"
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()"
+										required="required">
 								</div>
 							</div>
+								<div id="checkPwd">동일한 암호를 입력하세요</div>
+							<div class="w-100" ></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">이 름</label> <input type="text"
 										class="form-control" value=<%=updatePage.getUser_name() %> name="name" readonly="readonly">
 								</div>
 							</div>
+							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">나 이</label> <input type="text"
-										class="form-control" value=<%=updatePage.getUser_age() %> name="age" readonly="readonly">
+									<label for="firstname">주민 등록 번호</label> <input type="text"
+										class="form-control" value="<%=age %>****" name="jumin1">
+								</div>
+							</div><div class="col-md-6">
+								<div class="form-group">
+									<label for="firstname">성별</label>
+									 <input type="text" class="form-control" value=<%=updatePage.getUser_gender() %>
+									  name="gender">
 								</div>
 							</div>
+							<div class="w-100"></div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="emailaddress">Email</label> <input type="text"
+										class="form-control" placeholder="이메일을 입력해주세요." name="email" value=<%=updatePage.getUser_email() %>>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="">
+									<label for=""></label>
+									<p>
+										<input type="button" class="btn btn-best py-3 px-4" onclick="checkMail()" value="중복체크">
+										<input type="hidden" id="check_mail" value=<%=updatePage.getUser_email() %>>
+									</p>
+								</div>
+							</div>
+							<div id="checkMail">E-MAIL 중복확인 하세요</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="폰 번호를 입력하세요" value=<%=updatePage.getUser_phone() %> name="phone">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일 주소를 입력하세요" name="email" value=<%=updatePage.getUser_email() %>>
+										class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- 							<div class="col-md-12"> -->
-							<!-- 								<div class="form-group"> -->
-							<!-- 									<label for="country">State / Country</label> -->
-							<!-- 									<div class="select-wrap"> -->
-							<!-- 										<div class="icon"> -->
-							<!-- 											<span class="ion-ios-arrow-down"></span> -->
-							<!-- 										</div> -->
-							<!-- 										<select name="" id="" class="form-control"> -->
-							<!-- 											<option value="">France</option> -->
-							<!-- 											<option value="">Italy</option> -->
-							<!-- 											<option value="">Philippines</option> -->
-							<!-- 											<option value="">South Korea</option> -->
-							<!-- 											<option value="">Hongkong</option> -->
-							<!-- 											<option value="">Japan</option> -->
-							<!-- 										</select> -->
-							<!-- 									</div> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -296,240 +405,33 @@
 				    }
 				</script>
 							<div class="w-100"></div>
-							<!-- 							<div class="col-md-6"> -->
-							<!-- 								<div class="form-group"> -->
-							<!-- 									<label for="towncity">Town / City</label> <input type="text" -->
-							<!-- 										class="form-control" placeholder=""> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address" name="address1" required="required">
+										class="form-control" id="address" placeholder="주소" name="address1" value=<%=st.nextToken() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="detailAddress"
-										placeholder="7층 ITWILL 교육센터" required="required" name="address2" >
+										placeholder="상세주소" required="required" name="address2" value=<%=st.nextToken() %>>
 								</div>
 							</div>
-							
 							<div class="w-100"></div>
+							
 							<div class="col-md-12">
 								<div class="form-group mt-4">
-									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">수정하기</a>
-									<a href="index.in"
-										class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
+									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a> 
+									<a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
+										</div>
 								</div>
-								<!-- 							<div class="col-md-12"> -->
-								<!-- 								<div class="form-group mt-4"> -->
-								<!-- 									<div class="radio"> -->
-								<!-- 										<label class="mr-3"><input type="radio" -->
-								<!-- 											name="optradio"> Create an Account? </label> <label><input -->
-								<!-- 											type="radio" name="optradio"> Ship to different -->
-								<!-- 											address</label> -->
-								<!-- 									</div> -->
-								<!-- 								</div> -->
-								<!-- 							</div> -->
-							</div>
+							</div>	
 					</form>
 				</div>
 			</div>
 		</div>
 
-		<!-- END -->
-
-
-
-		<!-- 					<div class="row mt-5 pt-3 d-flex"> -->
-		<!-- 						<div class="col-md-6 d-flex"> -->
-		<!-- 							<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-		<!-- 								<h3 class="billing-heading mb-4">Cart Total</h3> -->
-		<!-- 								<p class="d-flex"> -->
-		<!-- 									<span>Subtotal</span> <span>$20.60</span> -->
-		<!-- 								</p> -->
-		<!-- 								<p class="d-flex"> -->
-		<!-- 									<span>Delivery</span> <span>$0.00</span> -->
-		<!-- 								</p> -->
-		<!-- 								<p class="d-flex"> -->
-		<!-- 									<span>Discount</span> <span>$3.00</span> -->
-		<!-- 								</p> -->
-		<!-- 								<hr> -->
-		<!-- 								<p class="d-flex total-price"> -->
-		<!-- 									<span>Total</span> <span>$17.60</span> -->
-		<!-- 								</p> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 						<div class="col-md-6"> -->
-		<!-- 							<div class="cart-detail ftco-bg-dark p-3 p-md-4"> -->
-		<!-- 								<h3 class="billing-heading mb-4">Payment Method</h3> -->
-		<!-- 								<div class="form-group"> -->
-		<!-- 									<div class="col-md-12"> -->
-		<!-- 										<div class="radio"> -->
-		<!-- 											<label><input type="radio" name="optradio" -->
-		<!-- 												class="mr-2"> Direct Bank Tranfer</label> -->
-		<!-- 										</div> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 								<div class="form-group"> -->
-		<!-- 									<div class="col-md-12"> -->
-		<!-- 										<div class="radio"> -->
-		<!-- 											<label><input type="radio" name="optradio" -->
-		<!-- 												class="mr-2"> Check Payment</label> -->
-		<!-- 										</div> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 								<div class="form-group"> -->
-		<!-- 									<div class="col-md-12"> -->
-		<!-- 										<div class="radio"> -->
-		<!-- 											<label><input type="radio" name="optradio" -->
-		<!-- 												class="mr-2"> Paypal</label> -->
-		<!-- 										</div> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 								<div class="form-group"> -->
-		<!-- 									<div class="col-md-12"> -->
-		<!-- 										<div class="checkbox"> -->
-		<!-- 											<label><input type="checkbox" value="" class="mr-2"> -->
-		<!-- 												I have read and accept the terms and conditions</label> -->
-		<!-- 										</div> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 								<p> -->
-		<!-- 									<a href="#" class="btn btn-primary py-3 px-4">Place an -->
-		<!-- 										order</a> -->
-		<!-- 								</p> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-		<!-- 				</div> -->
-		<!-- 				.col-md-8 -->
-
-
-
-
-		<!-- 				<div class="col-xl-4 sidebar ftco-animate"> -->
-		<!-- 					<div class="sidebar-box"> -->
-		<!-- 						<form action="#" class="search-form"> -->
-		<!-- 							<div class="form-group"> -->
-		<!-- 								<div class="icon"> -->
-		<!-- 									<span class="icon-search"></span> -->
-		<!-- 								</div> -->
-		<!-- 								<input type="text" class="form-control" placeholder="Search..."> -->
-		<!-- 							</div> -->
-		<!-- 						</form> -->
-		<!-- 					</div> -->
-		<!-- 					<div class="sidebar-box ftco-animate"> -->
-		<!-- 						<div class="categories"> -->
-		<!-- 							<h3>Categories</h3> -->
-		<!-- 							<li><a href="#">Tour <span>(12)</span></a></li> -->
-		<!-- 							<li><a href="#">Hotel <span>(22)</span></a></li> -->
-		<!-- 							<li><a href="#">Coffee <span>(37)</span></a></li> -->
-		<!-- 							<li><a href="#">Drinks <span>(42)</span></a></li> -->
-		<!-- 							<li><a href="#">Foods <span>(14)</span></a></li> -->
-		<!-- 							<li><a href="#">Travel <span>(140)</span></a></li> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-
-		<!-- 					<div class="sidebar-box ftco-animate"> -->
-		<!-- 						<h3>Recent Blog</h3> -->
-		<!-- 						<div class="block-21 mb-4 d-flex"> -->
-		<!-- 							<a class="blog-img mr-4" -->
-		<!-- 								style="background-image: url(images/image_1.jpg);"></a> -->
-		<!-- 							<div class="text"> -->
-		<!-- 								<h3 class="heading"> -->
-		<!-- 									<a href="#">Even the all-powerful Pointing has no control -->
-		<!-- 										about the blind texts</a> -->
-		<!-- 								</h3> -->
-		<!-- 								<div class="meta"> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-calendar"></span> July 12, -->
-		<!-- 											2018</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-person"></span> Admin</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-chat"></span> 19</a> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 						<div class="block-21 mb-4 d-flex"> -->
-		<!-- 							<a class="blog-img mr-4" -->
-		<!-- 								style="background-image: url(images/image_2.jpg);"></a> -->
-		<!-- 							<div class="text"> -->
-		<!-- 								<h3 class="heading"> -->
-		<!-- 									<a href="#">Even the all-powerful Pointing has no control -->
-		<!-- 										about the blind texts</a> -->
-		<!-- 								</h3> -->
-		<!-- 								<div class="meta"> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-calendar"></span> July 12, -->
-		<!-- 											2018</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-person"></span> Admin</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-chat"></span> 19</a> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 						<div class="block-21 mb-4 d-flex"> -->
-		<!-- 							<a class="blog-img mr-4" -->
-		<!-- 								style="background-image: url(images/image_3.jpg);"></a> -->
-		<!-- 							<div class="text"> -->
-		<!-- 								<h3 class="heading"> -->
-		<!-- 									<a href="#">Even the all-powerful Pointing has no control -->
-		<!-- 										about the blind texts</a> -->
-		<!-- 								</h3> -->
-		<!-- 								<div class="meta"> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-calendar"></span> July 12, -->
-		<!-- 											2018</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-person"></span> Admin</a> -->
-		<!-- 									</div> -->
-		<!-- 									<div> -->
-		<!-- 										<a href="#"><span class="icon-chat"></span> 19</a> -->
-		<!-- 									</div> -->
-		<!-- 								</div> -->
-		<!-- 							</div> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-
-		<!-- 					<div class="sidebar-box ftco-animate"> -->
-		<!-- 						<h3>Tag Cloud</h3> -->
-		<!-- 						<div class="tagcloud"> -->
-		<!-- 							<a href="#" class="tag-cloud-link">dish</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">menu</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">food</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">sweet</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">tasty</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">delicious</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">desserts</a> <a href="#" -->
-		<!-- 								class="tag-cloud-link">drinks</a> -->
-		<!-- 						</div> -->
-		<!-- 					</div> -->
-
-
-		<!-- 					<div class="sidebar-box ftco-animate"> -->
-		<!-- 						<h3>Paragraph</h3> -->
-		<!-- 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. -->
-		<!-- 							Ducimus itaque, autem necessitatibus voluptate quod mollitia -->
-		<!-- 							delectus aut, sunt placeat nam vero culpa sapiente consectetur -->
-		<!-- 							similique, inventore eos fugit cupiditate numquam!</p> -->
-		<!-- 					</div> -->
-		<!-- 				</div> -->
-
-		<!-- 			</div> -->
-		<!-- 		</div> -->
 	</section>
-	<!-- .section -->
 
 	<footer class="ftco-footer ftco-section img">
 		<jsp:include page="../inc/footer.jsp" />
@@ -537,7 +439,6 @@
 
 
 
-	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"

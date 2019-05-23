@@ -41,6 +41,7 @@ public class shopMainAction implements Action {
 		int listCount = shopMainService.getListCount(taste, degree);
 //		System.out.println("listCount : " + listCount);
 
+
 		// 총 리스트 받아옴
 		itemList = shopMainService.getItemList(page, limit, taste, filter, degree);
 		

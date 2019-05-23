@@ -28,15 +28,15 @@ public class BlogWriteProAction implements Action {
 		BlogBean blogBean = null;
 		
 		// 파일 업로드를 위한 정보 저장
-//		String realFolder = ""; // 실제 경로
-//		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
-//		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
+		String realFolder = ""; // 실제 경로
+		String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
+		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 //		
-//		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
-//		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
+		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
+		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
 //		
 //		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
-//		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 //		
 //		
 //		
@@ -55,10 +55,14 @@ public class BlogWriteProAction implements Action {
 		blogBean = new BlogBean(); // 글 쓰기 데이터를 저장할 BoardBean 객체
 		// 파일명을 제외한 나머지 데이터는 multi.getParameter() 메서드를 사용
 		
-		blogBean.setBlog_subject(request.getParameter("blog_subject"));
-		blogBean.setBlog_writer(request.getParameter("blog_writer"));
+		blogBean.setBlog_subject(multi.getParameter("blog_subject"));
+		blogBean.setBlog_content(multi.getParameter("blog_content1"));
+		blogBean.setBlog_writer(multi.getParameter("blog_writer"));
 //		blogBean.setBlog_file(filename);
-		blogBean.setBlog_content(request.getParameter("blog_content"));
+		blogBean.setBlog_content(multi.getParameter("blog_content"));
+		
+		blogBean.setBlog_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
+		
 //		blogBean.setBlog_file1(filename);
 		// 파일명을 가져오는 방법
 		

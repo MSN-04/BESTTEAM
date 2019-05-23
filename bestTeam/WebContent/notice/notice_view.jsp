@@ -1,5 +1,23 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.noticeBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script language="javascript">
+function delconfirm(num){
+var message = confirm("이 게시글을 삭제하시겠습니까?");
+if(message == true){
+	location.href ="./noticeDeletePro.jsp?num="+num;
+}else
+	alert("취소되었습니다");
+return false;
+}
+</script>
+<%
+	noticeBean article = (noticeBean) request.getAttribute("article");
+	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+	ArrayList<noticeBean> articleList = (ArrayList<noticeBean>) request.getAttribute("articleList");
+	article.getNotice_num();
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,24 +29,24 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
     
     
     <style type="text/css">
@@ -54,34 +72,7 @@
     
   </head>
   <body>
-  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item active"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
-              </div>
-            </li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cart"><a href="cart.html" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
-	        </ul>
-	      </div>
-		  </div>
-	  </nav>
+  		<jsp:include page="/inc/header.jsp"></jsp:include>
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
@@ -89,11 +80,12 @@
       <div class="slider-item" style="background-image: url(../images/bg_3.jpg);" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
+        
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Notice Details</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.jsp">Home</a></span> <span class="mr-2"><a href="notice.jsp">Notice</a></span> <span>Blog Single</span></p>
             </div>
 
           </div>
@@ -109,21 +101,25 @@
 			    //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가                                                   
 			    request.setCharacterEncoding("utf-8");
 			    
-			    String title = request.getParameter("title");
-			    String content = request.getParameter("content");
-			    
-			    //콘솔 출력
-// 			    System.out.println("제목:"+title);
-// 			    System.out.println("내용:"+content);    
+// 			    String subject = request.getParameter("subject");
+// 			    String content = request.getParameter("content");
+			    article.getNotice_subject();
+			    article.getNotice_content();
+			   
 			%>
 			
-	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 50px; font-weight: 300; font-family: Josefin Sans, Arial, sans-serif;"><%=title %></div>
+	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px;
+	 			font-size: 50px; font-weight: 300;
+	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
 	 			
-				<div style="margin: auto;"><%=content %></div>
+				<div style="margin: auto;"><%=article.getNotice_content() %></div>
  			
            
           </div> <!-- .col-md-8 -->
+          <a href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
           
+          <a href="./noticedeletePro.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getNotice_num() %>')">글삭제</a>
+          <a href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
           
 <!--           <div class="col-md-4 sidebar ftco-animate"> -->
 <!--             <div class="sidebar-box"> -->
@@ -218,23 +214,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="./js/google-map.js"></script>
+  <script src="./js/main.js"></script>
     
   </body>
 </html>

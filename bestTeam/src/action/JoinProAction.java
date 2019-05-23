@@ -45,7 +45,7 @@ public class JoinProAction implements Action {
 		userBean.setUser_name(request.getParameter("name"));
 		userBean.setUser_age(age);
 		userBean.setUser_gender(gender);
-		userBean.setUser_address(request.getParameter("address1") +" "+ request.getParameter("address2"));
+		userBean.setUser_address(request.getParameter("address1") +" : "+ request.getParameter("address2"));
 		userBean.setUser_phone(request.getParameter("phone"));
 		userBean.setUser_email(request.getParameter("email"));
 		userBean.setUser_post(request.getParameter("post"));

@@ -128,11 +128,14 @@ public class ItemModifyProAction implements Action {
 					
 					ItemBean newItemBean2 = itemModifyProService.getItem(newItemBean.getItem_num());
 					request.setAttribute("newItemBean2", newItemBean2);
+
 					
 					// 4.
 					forward = new ActionForward();
 					forward.setPath("./itemSingle.em?item_num="+newItemBean.getItem_num());
 					forward.setRedirect(true);
+					
+
 					
 				} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
 					System.out.println("action - item_favor Up fail");

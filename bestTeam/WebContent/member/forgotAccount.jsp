@@ -12,35 +12,45 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/shop.css">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <style type="text/css">
     .btn btn-primary py-3 px-4{text-align: right}
     .billing-form{padding: 10px !important;
     				width:500px !important;
     				margin-right: 0 !important;
     				text-aglin:center;}
-    .col-xl-8{width:500px !important; float:left !important;}
-    .div0517{float:left !important;}
+    .col-xl-8{width:500px !important; }
+/*     .row{display: grid !important; grid-template-columns: 1fr 1fr;} */
+/*     #div0517{ display: grid !important; grid-template-rows: auto; */
+/*   } */
+/*      #div0522{ display: grid !important;grid-template-rows: auto; */
+/*   } */
 /*     .btn0517{width: 100px;} */
+#div0517,#div0522{margin:20px;}
+#div0517{border-right: 5px solid white;
+		padding-right:10px;}
+		#span0522{border-right: 5px solid gray;
+					padding-right:0px;}
     </style>
   </head>
   <body>
@@ -100,7 +110,8 @@
    <section class="ftco-section" id="login">
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-8 ftco-animate div0517">
+			<span id="span0522">
+				<div class="col-xl-8 ftco-animate " id="div0517">
 					<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">아이디 찾기</h3>
 						<div class="row align-items-end">
@@ -136,8 +147,9 @@
 	            </div>
 	            </form>
 	            </div>
-	            
-	            <div class="col-xl-8 ftco-animate div0517">
+	            </span>
+	            <span>
+	            <div class="col-xl-8 ftco-animate " id="div0522">
 					<form action="../mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">비밀번호 찾기</h3>
 						<div class="row align-items-end">
@@ -159,7 +171,8 @@
 	            </form>
 	            
 	            </div>
-	            
+	            </span>
+	          
 	          
 								
 						
@@ -188,23 +201,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="./js/google-map.js"></script>
+  <script src="./js/main.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {

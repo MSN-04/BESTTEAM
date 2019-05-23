@@ -26,11 +26,11 @@ public class noticeListAction implements Action {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		noticeListService noticeListService = new noticeListService();
+		noticeListService NoticeListService = new noticeListService();
 		
-		int listCount = noticeListService.getListCount(); // 총 게시물 목록 수 가져오기
+		int listCount = NoticeListService.getListCount(); // 총 게시물 목록 수 가져오기
 		
-		articleList = noticeListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+		articleList = NoticeListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 		
 		// 페이지 계산
 		int maxPage = (int)((double)listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)
@@ -53,30 +53,13 @@ public class noticeListAction implements Action {
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("articleList", articleList);
 		
-		// ActionForward 객체를 사용하여 notice 폴더의 qna_notice_list.jsp 페이지로 이동 처리 => Dispatch 방식 포워딩
+		// ActionForward 객체를 사용하여 notice 폴더의 notice_List.jsp 페이지로 이동 처리 => Dispatch 방식 포워딩
 		// => 기존 noticeList.bo 주소를 변경하지 않고 바로 jsp 페이지로 이동하기 위해서
 		ActionForward forward = new ActionForward();
-		forward.setPath("/notice/qna_notice_list.jsp");
+		forward.setPath("/notice/notice_list.jsp");
 		
 		return forward;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -56,12 +56,12 @@ public class noticeFrontController extends HttpServlet {
 		// if문을 사용하여 서블릿 주소 판별(매핑)하여 각 요청에 맞는 포워딩 수행
 		// => 1) 비즈니스 로직 없이 JSP 페이지로 바로 연결하는 요청
 		// => 2) 비즈니스 로직 처리를 위해 Action 클래스를 통한 DB 작업 수행 후 JSP 페이지로 연결(또는 다른 Action 클래스로 연결)하는 요청
-		if(command.equals("/noticeWrite.no")) {
+		if(command.equals("/noticeWriteForm.no")) {
 			// 글 쓰기 페이지 요청은 비즈니스 로직 없이 JSP 페이지(notice 디렉토리 내의 qna_notice_write.jsp 파일)로 바로 연결
 			// ActionForward 클래스의 인스턴스를 생성하여 path 변수에 해당 jsp 파일 위치 저장
 			forward = new ActionForward();
 			forward.setPath("./notice/notice_write.jsp");
-		} else if(command.equals("/noticeWrite.no")) {
+		} else if(command.equals("/noticeWritePro.no")) {
 //			System.out.println("noticeWritePro.no");
 			
 			// 글 쓰기 작업 요청은 비즈니스 로직 처리를 위해 XXXAction 클래스 인스턴스 생성이 필요 => 공통 부모인 Action 인터페이스 타입으로 업캐스팅
@@ -111,23 +111,15 @@ public class noticeFrontController extends HttpServlet {
 		} else if(command.equals("/noticeModifyPro.no")) {
 			// 수정글 저장하기 - noticeModifyProAction 클래스로 이동
 			action = new noticeModifyProAction();
-			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/noticeDeleteForm.no")) {
-			// 글 삭제를 위한 정보 입력 페이지 표시 - "/notice/qna_notice_delete.jsp" 로 이동
+		} else if(command.equals("/noticeDeletePro.no")) {
 //			int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 //			request.setAttribute("notice_num", notice_num);
-			
-			forward = new ActionForward();
-			forward.setPath("./notice/qna_notice_delete.jsp");
-		} else if(command.equals("/noticeDeletePro.no")) {
-			// 글 삭제 하기 - noticeDeleteProAction 클래스로 이동
-			action = new noticeDeleteProAction();
-			
+			action = new noticeModifyProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

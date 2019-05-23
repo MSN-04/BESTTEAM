@@ -1,6 +1,10 @@
+<%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+	<%
+	BlogBean article = (BlogBean)request.getAttribute("article");
+	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
 	rel="stylesheet">
@@ -70,20 +74,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
         
 		
 	});
 	 
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
+		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
 	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
 	
@@ -91,25 +88,43 @@
 	
 </script>
 <!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
-<style type="text/css">
-	.frmTitle {
-		border: 0.1px solid #ccc;
-		padding: 5px;
-		color: white;
-		background: rgba(0,0,0,0);
-		width: 100%;
-	}
-</style>
 </head>
 <body>
-	<%
-	String notice_writer = "admin";
-// 	String notice_writer = request.getParameter("user_id");
-	%>
-
-	<header>
-	<jsp:include page="/inc/header.jsp"></jsp:include>
-	</header>
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
+					<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+					<li class="nav-item active"><a href="blog.html"
+						class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="room.html" id="dropdown04"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown04">
+							<a class="dropdown-item" href="shop.html">Shop</a> <a
+								class="dropdown-item" href="product-single.html">Single
+								Product</a> <a class="dropdown-item" href="cart.html">Cart</a> <a
+								class="dropdown-item" href="checkout.html">Checkout</a>
+						</div></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					<li class="nav-item cart"><a href="cart.html" class="nav-link"><span
+							class="icon icon-shopping_cart"></span><span
+							class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 	<!-- END nav -->
 
 	<section class="home-slider owl-carousel">
@@ -123,7 +138,7 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Notice Write</h1>
+						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span
 								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
@@ -137,21 +152,36 @@
 	</section>
 
 	<section class="ftco-section">
-		<div class="container">
-			<form id="frm" action="noticeWritePro.no" method="post">
-<!-- 			enctype="multipart/form-data"> -->
-				<table style="width: 100%; text-align: center;">
+		<div class="container" style="border: 1px solid white;">
+			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" >
+				<table width="100%">
 					<tr>
-						<td><input type="text" id="title" name="notice_subject" class="frmTitle" /></td>
+						<td>제목</td>
+						<td><input type="text" id="title" name="blog_subject" value="<%=article.getBlog_subject() %>"
+							style="width: 100%;" /></td>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 
-								style="width: 100%; height: 650px;" ></textarea></td>
+						<td>요약</td>
+						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content() %>"
+							style="width: 100%;"/></td>
 					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+					<tr>
+						<td>글쓴이</td>
+						<td><input type="text" id="title" name="blog_writer" value="<%=article.getBlog_writer() %>"
+							style="width: 100%;" /></td>
+							<td style="width: 86px;"><input type="file" id="title" name="blog_file" 
+							style="width: 100%;"required="required" /></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td><textarea rows="10" cols="30" id="ir1" name="blog_content" 
+								style="width: 100%; height: 650px;"><%=article.getBlog_content() %></textarea></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="position: absolute; left: 50%;">	
+						
+							<input type="submit" id="save" value="저장" /> 
+							<input type="button" value="취소" />
 						</td>
 					</tr>
 				</table>
@@ -159,9 +189,9 @@
 		</div>
 	</section>
 	<!-- .section -->
-	
-<jsp:include page="/inc/footer.jsp"></jsp:include>
-
+	<footer>
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
+	</footer>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
