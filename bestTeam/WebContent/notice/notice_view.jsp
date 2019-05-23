@@ -16,6 +16,7 @@ return false;
 	noticeBean article = (noticeBean) request.getAttribute("article");
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	ArrayList<noticeBean> articleList = (ArrayList<noticeBean>) request.getAttribute("articleList");
+	article.getNotice_num();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +85,7 @@ return false;
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Notice Details</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.jsp">Home</a></span> <span class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog Single</span></p>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.jsp">Home</a></span> <span class="mr-2"><a href="notice.jsp">Notice</a></span> <span>Blog Single</span></p>
             </div>
 
           </div>
@@ -104,6 +105,7 @@ return false;
 // 			    String content = request.getParameter("content");
 			    article.getNotice_subject();
 			    article.getNotice_content();
+			   
 			%>
 			
 	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px;
@@ -114,9 +116,9 @@ return false;
  			
            
           </div> <!-- .col-md-8 -->
-          <a href="./noticeModifyForm.no?notice_num" class="btn btn-primary btn-outline-primary">글수정</a>
+          <a href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
+          
           <a href="./noticedeletePro.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getNotice_num() %>')">글삭제</a>
-          ./itemDeletePro.em?item
           <a href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
           
 <!--           <div class="col-md-4 sidebar ftco-animate"> -->

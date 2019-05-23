@@ -66,7 +66,7 @@ public class BlogDAO {
 			pstmt.setInt(8, blogBean.getBlog_re_lev());
 			pstmt.setInt(9, blogBean.getBlog_re_ref());
 			pstmt.setInt(10, blogBean.getBlog_re_seq());
-			pstmt.setString(11, blogBean.getBlog_file1());
+			pstmt.setString(11, blogBean.getBlog_content1());
 			insertCount = pstmt.executeUpdate(); // INSERT 실행 결과를 int 타입으로 리턴 받음
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -145,6 +145,7 @@ public class BlogDAO {
 				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
 				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
 				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
+				blogBean.setBlog_content1(rs.getString("blog_content1"));
 				
 				
 				articleList.add(blogBean); // ArrayList 객체에 레코드 단위로 저장
@@ -188,6 +189,7 @@ public class BlogDAO {
 				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
 				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
 				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
+				blogBean.setBlog_content1(rs.getString("blog_content1"));
 			}
 			
 		} catch (SQLException e) {
@@ -225,11 +227,11 @@ public class BlogDAO {
 	
 	
 	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
-	public boolean isArticleBoardWriter(int blog_num, String pass) {
+	public void isArticleBoardWriter(int blog_num) {
 //		System.out.println("BoardDAO - isArticleBoardWriter");
 		// 전체 레코드에서 글번호(board_num) 이 일치하는 레코드 찾기
 		// => 조회된 레코드에서 패스워드(board_pass) 가 전달받은 패스워드와 일치하면 isWriter 변수를 true 변경
-		boolean isWriter = false;
+		
 		
 		String sql = "SELECT * FROM blog WHERE blog_num=?";
 		
@@ -238,13 +240,7 @@ public class BlogDAO {
 			pstmt.setInt(1, blog_num);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				System.out.println("DB blog_pass = " + rs.getString("blog_pass"));
-				System.out.println("pass = " + pass);
-				if(pass.equals(rs.getString("blog_pass"))) {
-					isWriter = true;
-				}
-			}
+			
 			
 		} catch (SQLException e) {
 			System.out.println("isArticleBoardWriter() 실패! : " + e.getMessage());
@@ -253,7 +249,7 @@ public class BlogDAO {
 			close(pstmt);
 		}
 		
-		return isWriter;
+		
 	}
 
 	// 글 수정
@@ -262,13 +258,15 @@ public class BlogDAO {
 		
 		// BoardBean 객체의 board_num 에 해당하는 레코드를 수정
 		// => 글제목(board_subject), 글내용(content) 수정
-		String sql = "UPDATE blog SET blog_subject=?,blog_content=? WHERE blog_num=?";
+		String sql = "UPDATE blog SET blog_subject=?,blog_content=?,blog_file=?,blog_content1=? WHERE blog_num=?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getBlog_subject());
 			pstmt.setString(2, article.getBlog_content());
-			pstmt.setInt(3, article.getBlog_num());
+			pstmt.setString(3, article.getBlog_file());
+			pstmt.setString(4, article.getBlog_content1());
+			pstmt.setInt(5, article.getBlog_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("updateArticle() 실패! : " + e.getMessage());

@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 	<%
 	noticeBean article = (noticeBean)request.getAttribute("article");
+	 article.getNotice_num();
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +149,10 @@
 					</tr>
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
+							
+							<input type="button" class="btn btn-primary py-3 px-4"
+							style="color: black;" onclick ="location.href='./noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>'"
+							id="save" value="저장" />
 							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
 						</td>
 					</tr>

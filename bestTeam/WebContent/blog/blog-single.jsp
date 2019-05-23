@@ -1,14 +1,12 @@
-<<<<<<< HEAD
 <%@page import="vo.BlogBean"%>
-=======
-<%@page import="vo.BlogBean"%> 
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
 	BlogBean article = (BlogBean)request.getAttribute("article");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 // 	String nowPage = request.getAttribute("page").toString(); // int 타입으로 setAttribute() 메서드에 저장했을 경우
+
+	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,21 +250,15 @@
 				</li>
 			</ul>
 <!-- 왼쪽 작은 메뉴 끝 -->
+
           <div class="col-md-8 ftco-animate" >
             <h2 class="mb-3"><%= article.getBlog_subject() %></h2>
 					<p><%= article.getBlog_content() %></p>
 					<p>
               <img src="./images/image_1.jpg" alt="" class="img-fluid">
             </p>
-<!--             <p>파리 플뢰리스 거리 27번지에 위치한 그녀의 아파트는 젊은 예술가들이 끊임없이 드나드는 문화교류의 장이었다고 하지요.</p> -->
-<!--             <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2> -->
-<!--             <p>우디 앨런의 영화 〈미드나잇 인 파리〉에는 당대 예술가의 작품을 신랄하게 비평하는 스타인의 모습이 생생이 담겨 있습니다. 그러한 그녀는 예술적 안목이 까다롭기로 소문난 헤밍웨이가 인정하는 커피 애호가였다고 하는데요. 그녀가 얼마나 커피를 사랑했는지 아래의 글에서 배어 나옵니다.</p> -->
-<!--             <p> -->
-<!--               <img src="./images/image_2.jpg" alt="" class="img-fluid"> -->
-<!--             </p> -->
-					
-<!--             <p>“커피는 단지 음료가 아니라 그 이상의 무엇이다. 커피는 일어나고 있는 어떤 현상이다. 커피는 시간을 주지만, 단순히 물리적인 시간을 말하는 것이 아니라, 본연의 자신이 될 수 있는 기회를 준다는 의미다. 그러므로 한 잔 더 마시기를…”</p> -->
-<!--             <p>스타인이 커피에 관해 남긴 문장을 읽고 있노라면 그녀의 철학적 사유에 대한 감탄과 더불어 깊은 여운이 남습니다. 커피를 마시는 시간은 스타인의 말처럼 단순히 물리적인 시간의 의미를 넘어 우리가 존재로서 자기 확인을 하게끔 이끄는 성찰의 시간, ‘어떤 현상’을 선사하지요. 그러므로 우리 함께 한 잔 더 마시기를….</p> -->
+            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
+            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>

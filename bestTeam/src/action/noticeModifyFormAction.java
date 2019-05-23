@@ -12,7 +12,7 @@ public class noticeModifyFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		System.out.println("noticeModifyFormAction");
+		System.out.println("noticeModifyFormAction");
 		
 		ActionForward forward = new ActionForward();
 		

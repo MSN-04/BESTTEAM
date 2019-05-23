@@ -84,7 +84,7 @@
     <td>
     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
     <%=articleList.get(i).getNotice_subject() %>
-<!--     </a> -->
+    </a>
     </td>
     <td><%=articleList.get(i).getNotice_date() %></td>
     <td>Tinkervell</td>
@@ -93,7 +93,7 @@
     <td>
     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
     <%=articleList.get(i).getNotice_subject() %>
-<!--     </a> -->
+    </a>
     </td>
     <td><%=articleList.get(i).getNotice_date() %></td>
     <td>Tinkervell</td>

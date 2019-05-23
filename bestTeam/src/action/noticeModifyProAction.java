@@ -30,7 +30,6 @@ public class noticeModifyProAction implements Action {
 		// 패스워드 일치 여부 판별		
 //		if(!isRightUser) {
 			// 패스워드가 일치하지 않을 경우
-			// 자바스크립트를 사용하여 "수정할 권한이 없습니다." 출력 후 이전 페이지로 이동
 //			response.setContentType("text/html;charset=UTF-8");
 //			PrintWriter out = response.getWriter();
 //			out.println("<script>"); // 자바스크립트 시작 태그
