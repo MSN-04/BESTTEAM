@@ -263,7 +263,7 @@
 				<p style="text-align: right;">
 					<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
 					<input type="submit"  class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="수정하기" /> 
-					<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='/itemDeletePro.em?item_num=<%=itemBean.getItem_num()%>&item_favor_num=<%=itemBean.getItem_favor_item_num() %>'"/>
+					<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="delete" value="삭제하기" onclick="location.href='./itemDeletePro.em?item_num=<%=itemBean.getItem_num()%>&item_favor_num=<%=itemBean.getItem_favor_num() %>'"/>
 				</p>
 			</form>
 		</div>
