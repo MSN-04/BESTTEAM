@@ -139,7 +139,6 @@
 	<section class="ftco-section">
 		<div class="container">
 			<form id="frm" action="noticeWritePro.no" method="post">
-<!-- 			enctype="multipart/form-data"> -->
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td><input type="text" id="title" name="notice_subject" class="frmTitle" /></td>

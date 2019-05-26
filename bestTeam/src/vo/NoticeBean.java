@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Date;
 
-public class noticeBean {
+public class NoticeBean {
 	private int notice_num;
 	private String notice_writer;
 	private String notice_subject;

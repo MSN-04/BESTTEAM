@@ -5,12 +5,11 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import svc.noticeModifyProService;
-import svc.noticeViewService;
+import svc.NoticeViewService;
 import vo.ActionForward;
-import vo.noticeBean;
+import vo.NoticeBean;
 
-public class noticeModifyProAction implements Action {
+public class NoticeModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -22,8 +21,8 @@ public class noticeModifyProAction implements Action {
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		
 		// noticeModifyProService 인스턴스 생성 후 isArticleWriter() 메서드를 통해 본인 확인(매개변수로 글번호 전달)
-		noticeViewService NoticeViewService = new noticeViewService();
-		noticeBean article = NoticeViewService.getArticle(notice_num);
+		NoticeViewService noticeViewService = new NoticeViewService();
+		NoticeBean article = noticeViewService.getArticle(notice_num);
 		
 		request.setAttribute("article", article);
 		

@@ -1,4 +1,4 @@
-<%@page import="vo.noticeBean"%>
+<%@page import="vo.NoticeBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +6,7 @@
 <%
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
 	// request.getAttribute() 메서드로 가져오기
-	ArrayList<noticeBean> articleList = (ArrayList<noticeBean>)request.getAttribute("articleList");
+	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>)request.getAttribute("articleList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	
 	int listCount = pageInfo.getListCount();
@@ -72,12 +72,10 @@
     <div class="container">
     <div class="row d-flex">
     <div class="blog-entry align-self-stretch">
-    <%
+   		 <%
 			if(articleList != null && listCount > 0) {
 				for(int i = 0; i < articleList.size(); i++) {
 			%>
-    <a href="noticeWriteForm.no">글쓰기</a><br>
-    
     <table class="table thead-light">
     <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
     <tr><td><%=articleList.get(i).getNotice_num() %></td>
@@ -89,17 +87,20 @@
     <td><%=articleList.get(i).getNotice_date() %></td>
     <td>Tinkervell</td>
     <td><%=articleList.get(i).getNotice_readcount() %></td></tr>
-    <tr><td><%=articleList.get(i).getNotice_num() %></td>
-    <td>
-    <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
-    <%=articleList.get(i).getNotice_subject() %>
-    </a>
-    </td>
-    <td><%=articleList.get(i).getNotice_date() %></td>
-    <td>Tinkervell</td>
-    <td><%=articleList.get(i).getNotice_readcount() %></td></tr>
-    
+<%--     <tr><td><%=articleList.get(i).getNotice_num() %></td> --%>
+<!--     <td> -->
+<%--     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>"> --%>
+<%--     <%=articleList.get(i).getNotice_subject() %> --%>
+<!--     </a> -->
+<!--     </td> -->
+<%--     <td><%=articleList.get(i).getNotice_date() %></td> --%>
+<!--     <td>Tinkervell</td> -->
+<%--     <td><%=articleList.get(i).getNotice_readcount() %></td></tr> --%>
     </table>
+    <% }
+				}
+    %>
+    
     <div class="row mt-5"> 
           <div class="col text-center">
             <div class="block-27">
@@ -122,13 +123,12 @@
 				<% } else { %>
 				<li><a href="noticeList.no?page=<%=nowPage+1 %>">&gt;</a></li>
 				<%
+				
 				}
-				}
-			}
 				%>
 				
               </ul>
-              <a href="noticeWriteForm.no" class="btn btn-primary btn-outline-primary">글쓰기</a>
+              <a href="noticeWriteForm.no" class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
             </div>
 				
             

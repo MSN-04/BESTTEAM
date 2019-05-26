@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import svc.noticeListService;
+import svc.NoticeListService;
 import vo.ActionForward;
-import vo.noticeBean;
+import vo.NoticeBean;
 import vo.PageInfo;
 
-public class noticeListAction implements Action {
+public class NoticeListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("noticeListAction");
+		System.out.println("NoticeListAction");
 		
-		ArrayList<noticeBean> articleList = new ArrayList<noticeBean>();
+		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
 		
 		int page = 1;
 		int limit = 10;
@@ -26,11 +26,11 @@ public class noticeListAction implements Action {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		
-		noticeListService NoticeListService = new noticeListService();
+		NoticeListService noticeListService = new NoticeListService();
 		
-		int listCount = NoticeListService.getListCount(); // 총 게시물 목록 수 가져오기
+		int listCount = noticeListService.getListCount(); // 총 게시물 목록 수 가져오기
 		
-		articleList = NoticeListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+		articleList = noticeListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 		
 		// 페이지 계산
 		int maxPage = (int)((double)listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)

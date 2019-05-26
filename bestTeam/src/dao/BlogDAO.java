@@ -51,7 +51,6 @@ public class BlogDAO {
 			}
 		
 		
-		
 		sql = "INSERT INTO blog VALUES(?,?,?,?,?,?,now(),?,?,?,?,?)";
 		
 			pstmt = con.prepareStatement(sql);
@@ -290,7 +289,6 @@ public class BlogDAO {
 		}finally {
 			close(pstmt);
 		}
-		
 		
 		return deleteCount;
 	}

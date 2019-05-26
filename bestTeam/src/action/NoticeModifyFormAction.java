@@ -3,16 +3,15 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import svc.noticeViewService;
-import svc.noticeViewService;
+import svc.NoticeViewService;
 import vo.ActionForward;
-import vo.noticeBean;
+import vo.NoticeBean;
 
-public class noticeModifyFormAction implements Action {
+public class NoticeModifyFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("noticeModifyFormAction");
+		System.out.println("NoticeModifyFormAction");
 		
 		ActionForward forward = new ActionForward();
 		
@@ -22,8 +21,8 @@ public class noticeModifyFormAction implements Action {
 		System.out.println("ModifyFormAction notice_num"+notice_num);
 		
 		// noticeDetailService 클래스의 getArticle() 메서드를 사용하여 원본글 가져와서 noticeBean 에 저장
-		noticeViewService NoticeDetailService = new noticeViewService();
-		noticeBean article = NoticeDetailService.getArticle(notice_num);
+		NoticeViewService noticeDetailService = new NoticeViewService();
+		NoticeBean article = noticeDetailService.getArticle(notice_num);
 		
 		// request 객체에 noticeBean 객체(article) 저장
 		request.setAttribute("article", article);

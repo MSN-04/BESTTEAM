@@ -7,20 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static db.JdbcUtil.*;
-import vo.noticeBean;
-import vo.noticeBean;
 
-public class noticeDAO {
+import vo.NoticeBean;
+
+public class NoticeDAO {
 	// -------------------------------------------------------------------
 	// 싱글톤 디자인 패턴을 활용하여 1개의 인스턴스를 생성하여 공유
-	private noticeDAO() {
+	private NoticeDAO() {
 	}
-	private static noticeDAO instance;
+	private static NoticeDAO instance;
 
-	public static noticeDAO getInstance() {
+	public static NoticeDAO getInstance() {
 		// noticeDAO 객체를 저장하는 변수 instance 가 null 일 때만 인스턴스 생성
 		if (instance == null) {
-			instance = new noticeDAO();
+			instance = new NoticeDAO();
 		}
 
 		return instance;
@@ -35,8 +35,8 @@ public class noticeDAO {
 		this.con = con; // Service 클래스로부터 전달받은 DB 연결 객체(Connection 객체)를 멤버변수에 저장
 	}
 
-	// 글 등록 처리 : insertArticle() => noticeBean 객체 전달받음 => 실행 결과 레코드 수를 리턴
-	public int insertArticle(noticeBean NoticeBean) {
+	// 글 등록 처리 : insertArticle() => NoticeBean 객체 전달받음 => 실행 결과 레코드 수를 리턴
+	public int insertArticle(NoticeBean noticeBean) {
 		// 현재 전체 게시물 마지막 번호를 찾아서 + 1(새로운 게시물 번호 계산)
 		int num = 0;
 		int insertCount = 0;
@@ -56,9 +56,9 @@ public class noticeDAO {
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num); // 계산된 새 게시물 번호
-//			pstmt.setString(2, NoticeBean.getNotice_writer());
-			pstmt.setString(2, NoticeBean.getNotice_subject());
-			pstmt.setString(3, NoticeBean.getNotice_content());
+			pstmt.setString(2, noticeBean.getNotice_writer());
+			pstmt.setString(3, noticeBean.getNotice_subject());
+			pstmt.setString(4, noticeBean.getNotice_content());
 //			pstmt.setInt(4, NoticeBean.getNotice_readcount());
 //			pstmt.setString(6, NoticeBean.getNotice_file());
 //			pstmt.setString(4, "a"); 
@@ -106,11 +106,11 @@ public class noticeDAO {
 	}
 
 	// 글 목록 가져오기
-	public ArrayList<noticeBean> selectArticleList(int page, int limit) {
+	public ArrayList<NoticeBean> selectArticleList(int page, int limit) {
 		System.out.println("selectArticleList()");
 
-		ArrayList<noticeBean> articleList = new ArrayList<noticeBean>();
-		noticeBean NoticeBean = null;
+		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
+		NoticeBean noticeBean = null;
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
 
@@ -124,17 +124,17 @@ public class noticeDAO {
 
 			while (rs.next()) {
 				// 1개 게시물 레코드 읽어와서 noticeBean 객체에 저장
-				NoticeBean = new noticeBean();
+				noticeBean = new NoticeBean();
 
-				NoticeBean.setNotice_num(rs.getInt("notice_num"));
-//				NoticeBean.setNotice_writer(rs.getString("notice_writer"));
-				NoticeBean.setNotice_subject(rs.getString("notice_subject"));
-				NoticeBean.setNotice_content(rs.getString("notice_content"));
-				NoticeBean.setNotice_readcount(rs.getInt("notice_readcount"));
+				noticeBean.setNotice_num(rs.getInt("notice_num"));
+				noticeBean.setNotice_writer(rs.getString("notice_writer"));
+				noticeBean.setNotice_subject(rs.getString("notice_subject"));
+				noticeBean.setNotice_content(rs.getString("notice_content"));
+				noticeBean.setNotice_readcount(rs.getInt("notice_readcount"));
 //				NoticeBean.setNotice_file(rs.getString("notice_file"));
-				NoticeBean.setNotice_date(rs.getDate("notice_date"));
+				noticeBean.setNotice_date(rs.getDate("notice_date"));
 
-				articleList.add(NoticeBean); // ArrayList 객체에 레코드 단위로 저장
+				articleList.add(noticeBean); // ArrayList 객체에 레코드 단위로 저장
 
 //				System.out.println(rs.getInt("notice_num"));
 			}
@@ -150,29 +150,29 @@ public class noticeDAO {
 	}
 
 	// 글번호(notice_num) 에 해당하는 레코드 정보 조회 => noticeBean 객체에 저장하여 리턴
-	public noticeBean selectArticle(int Notice_num) {
-		noticeBean NoticeBean = null;
+	public NoticeBean selectArticle(int notice_num) {
+		NoticeBean noticeBean = null;
 
 		String sql = "SELECT * FROM notice WHERE notice_num=?";
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Notice_num);
+			pstmt.setInt(1, notice_num);
 //			pstmt.setString(2, Notice_subject);
 //			pstmt.setString(3, Notice_content);
 //			pstmt.setInt(4, x);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				NoticeBean = new noticeBean();
+				noticeBean = new NoticeBean();
 
-				NoticeBean.setNotice_num(rs.getInt("notice_num"));
-//				NoticeBean.setNotice_writer(rs.getString("notice_writer"));
-				NoticeBean.setNotice_subject(rs.getString("notice_subject"));
-				NoticeBean.setNotice_content(rs.getString("notice_content"));
-				NoticeBean.setNotice_readcount(rs.getInt("notice_readcount"));
+				noticeBean.setNotice_num(rs.getInt("notice_num"));
+				noticeBean.setNotice_writer(rs.getString("notice_writer"));
+				noticeBean.setNotice_subject(rs.getString("notice_subject"));
+				noticeBean.setNotice_content(rs.getString("notice_content"));
+				noticeBean.setNotice_readcount(rs.getInt("notice_readcount"));
 //				NoticeBean.setNotice_file(rs.getString("notice_file"));
-				NoticeBean.setNotice_date(rs.getDate("notice_date"));
+				noticeBean.setNotice_date(rs.getDate("notice_date"));
 			}
 
 		} catch (SQLException e) {
@@ -183,7 +183,7 @@ public class noticeDAO {
 			close(pstmt);
 		}
 
-		return NoticeBean;
+		return noticeBean;
 	}
 
 	// 게시물 조회수 업데이트 => 기존 readcount 값을 1 증가시킨 후 결과값을 리턴
@@ -209,7 +209,7 @@ public class noticeDAO {
 
 //	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
 //	public boolean isArticlenoticeWriter(int notice_num, String pass) {
-////		System.out.println("noticeDAO - isArticlenoticeWriter");
+////		System.out.println("NoticeDAO - isArticlenoticeWriter");
 //		// 전체 레코드에서 글번호(notice_num) 이 일치하는 레코드 찾기
 //		// => 조회된 레코드에서 패스워드(notice_pass) 가 전달받은 패스워드와 일치하면 isWriter 변수를 true 변경
 //		boolean isWriter = false;
@@ -220,14 +220,6 @@ public class noticeDAO {
 //			pstmt = con.prepareStatement(sql);
 //			pstmt.setInt(1, notice_num);
 //			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				System.out.println("DB notice_pass = " + rs.getString("notice_pass"));
-//				System.out.println("pass = " + pass);
-//				if(pass.equals(rs.getString("notice_pass"))) {
-//					isWriter = true;
-//				}
-//			}
 //			
 //		} catch (SQLException e) {
 //			System.out.println("isArticlenoticeWriter() 실패! : " + e.getMessage());
@@ -240,7 +232,7 @@ public class noticeDAO {
 //	}
 
 	// 글 수정
-	public int updateArticle(noticeBean article) {
+	public int updateArticle(NoticeBean article) {
 		int updateCount = 0;
 
 		// noticeBean 객체의 notice_num 에 해당하는 레코드를 수정
