@@ -196,7 +196,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="100"><%=fb.getUser_favor_acid() %></strong>
+		              	<strong class="number" data-number="100"><%=fb.getUser_favor_acidity() %></strong>
 		              	<span>acidity</span>
 		              </div>
 		            </div>
@@ -205,7 +205,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="85"><%=fb.getUser_favor_sweet() %></strong>
+		              	<strong class="number" data-number="85"><%=fb.getUser_favor_sweetness() %></strong>
 		              	<span>sweet</span>
 		              </div>
 		            </div>
@@ -214,7 +214,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="10567"><%=fb.getUser_favor_bitter() %></strong>
+		              	<strong class="number" data-number="10567"><%=fb.getUser_favor_bitterness() %></strong>
 		              	<span>bitter</span>
 		              </div>
 		            </div>
