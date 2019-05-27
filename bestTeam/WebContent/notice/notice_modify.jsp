@@ -1,9 +1,11 @@
-<%@page import="vo.noticeBean"%>
+<%@page import="vo.NoticeBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
-	noticeBean article = (noticeBean)request.getAttribute("article");
-	 article.getNotice_num();
+	NoticeBean article = (NoticeBean)request.getAttribute("article");
+	article.getNotice_num();
+	System.out.println(article.getNotice_num());
+	int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,8 +139,7 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<form id="frm" action="noticeModifyPro.no" method="post">
-<!-- 			enctype="multipart/form-data"> -->
+			<form id="frm" action="noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td><input type="text" id="notice_subject" name="notice_subject" class="frmTitle" value="<%=article.getNotice_subject()%>"></td>
@@ -150,8 +151,8 @@
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
 							
-							<input type="button" class="btn btn-primary py-3 px-4"
-							style="color: black;" onclick ="location.href='./noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>'"
+							<input type="submit" class="btn btn-primary py-3 px-4"
+							style="color: black;" onclick="location.href='./noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>'"
 							id="save" value="저장" />
 							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
 						</td>
