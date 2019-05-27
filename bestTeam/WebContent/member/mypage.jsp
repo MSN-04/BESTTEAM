@@ -1,3 +1,4 @@
+<%@page import="vo.FavorBean"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,9 @@
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 	StringTokenizer st = new StringTokenizer(myPage.getUser_address(), ":");
+	
+	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
+	
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,7 +187,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="100">0</strong>
+		              	<strong class="number" data-number="100"><%=fb.getUser_favor_aroma() %></strong>
 		              	<span>aroma</span>
 		              </div>
 		            </div>
@@ -192,7 +196,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="100">0</strong>
+		              	<strong class="number" data-number="100"><%=fb.getUser_favor_acid() %></strong>
 		              	<span>acidity</span>
 		              </div>
 		            </div>
@@ -201,7 +205,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="85">0</strong>
+		              	<strong class="number" data-number="85"><%=fb.getUser_favor_sweet() %></strong>
 		              	<span>sweet</span>
 		              </div>
 		            </div>
@@ -210,7 +214,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="10567">0</strong>
+		              	<strong class="number" data-number="10567"><%=fb.getUser_favor_bitter() %></strong>
 		              	<span>bitter</span>
 		              </div>
 		            </div>
@@ -219,7 +223,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="900">0</strong>
+		              	<strong class="number" data-number="900"><%=fb.getUser_favor_body() %></strong>
 		              	<span>body</span>
 		              </div>
 		            </div>
