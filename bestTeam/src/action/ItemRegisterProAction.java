@@ -28,7 +28,6 @@ public class ItemRegisterProAction implements Action {
 		ActionForward forward = null;
 		ItemBean itemBean = null;
 		
-
 		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
 		String realFolder; // 실제 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
@@ -77,7 +76,7 @@ public class ItemRegisterProAction implements Action {
 		} else {
 			// => boardList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
-			forward.setPath("itemSingle.em");
+			forward.setPath("shopMain.em");
 			forward.setRedirect(true);
 		}
 		

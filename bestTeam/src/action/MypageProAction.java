@@ -36,12 +36,12 @@ public class MypageProAction implements Action {
 			userBean = mypageProService.getMypage(id);
 			request.setAttribute("userBean", userBean);
 			favorBean = mypageProService.getMyFavor(id);
-			request.setAttribute("userFavor", favorBean);
-			System.out.println(favorBean);
+			request.setAttribute("favorBean", favorBean);
+			System.out.println(favorBean.getUser_favor_body());
 			
 			forward = new ActionForward();
 //			forward.setRedirect(true);
-			forward.setPath("mypage.us");
+			forward.setPath("./member/mypage.jsp");
 			
 		}
 		
