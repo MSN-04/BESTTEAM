@@ -40,7 +40,7 @@ public class MypageProAction implements Action {
 			System.out.println(favorBean);
 			
 			forward = new ActionForward();
-			forward.setRedirect(true);
+//			forward.setRedirect(true);
 			forward.setPath("mypage.us");
 			
 		}
