@@ -6,6 +6,9 @@ public class FavorBean {
 	private String user_favor_user_id;
 	private int user_favor_aroma;
 	private int user_favor_acid;
+	private int user_favor_sweet;
+	private int user_favor_bitter;
+	private int user_favor_body;
 
 	public FavorBean() {}
 	
@@ -51,8 +54,6 @@ public class FavorBean {
 	public void setUser_favor_body(int user_favor_body) {
 		this.user_favor_body = user_favor_body;
 	}
-	private int user_favor_sweet;
-	private int user_favor_bitter;
-	private int user_favor_body;
+	
 	
 }
