@@ -107,6 +107,23 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 영비
 		} else if(command.equals("/itemDeleteForm.em")) {
+		     System.out.println("itemDeleteForm--");
+		     forward = new ActionForward();
+		     forward.setPath("./shop/product-delete.jsp");
+		// 영비     
+		} else if (command.equals("/itemDeletePro.em")) {
+		     System.out.println("itemDeletePro");
+		          
+		     action = (Action) new ItemDeleteProAction();
+		          
+		     try {
+		    	 forward = action.execute(request, response);
+		     } catch (Exception e) {
+		    	 System.out.println("controller-itemDeletePro 실패"+ e.getMessage());
+		    	 System.out.println("controller- 에러:"+e);
+		     }
+		         
+	    } else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
 			System.out.println("itemDeleteForm--");
 			forward = new ActionForward();
 			forward.setPath("./shop/product-delete.jsp");

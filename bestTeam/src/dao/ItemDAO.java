@@ -332,6 +332,7 @@ public class ItemDAO {
 		/*-------------------------------------- 영비 --------------------------------------*/
 		
 		public int deleteItem(int item_num,int item_favor_num) {
+
 		    int deleteItemCnt=0;
 		    System.out.println("dao시작");
 		    sql="delete from item where item_num=?";
