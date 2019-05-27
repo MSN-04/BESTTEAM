@@ -14,21 +14,16 @@ public class QnaWriteProService {
 	
 	public boolean registArticle(QnaBean qnaBean) throws Exception {
 		System.out.println("qnaWriteProService");
-		
 //		System.out.println("getQna_writer" + QnaBean.getQna_writer());
 //		System.out.println("getQna_num" +QnaBean.getQna_num());
 //		System.out.println("getQna_subject" +QnaBean.getQna_subject());
 //		System.out.println("getQna_content" +QnaBean.getQna_content());
 		
-		// 작업 수행 성공 여부를 리턴할 boolean 타입 변수 선언
 		boolean isWriteSuccess = false;
-		
-		// DB 작업 전 DB 접속을 위해 JdbcUtil 클래스의 static 메서드 getConnection() 를 호출하여 DB 접속
 		Connection con = getConnection();
 		
-		// 싱글톤 디자인 패턴으로 생성된 qnaDAO 인스턴스를 얻어오기
 		QnaDAO qnaDAO = QnaDAO.getInstance();
-		qnaDAO.setConnection(con); // Connection 객체를 qnaDAO 객체에 전달
+		qnaDAO.setConnection(con);
 		int insertCount = qnaDAO.insertArticle(qnaBean); // 글 등록 처리(결과를 int형으로 전달받음)
 		     
 		// insertCount 가 0보다 크면 트랜잭션 Commit, 아니면 트랜잭션 Rollback 수행
