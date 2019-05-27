@@ -49,6 +49,16 @@
 .btn btn-primary py-3 px-4 {
 	text-align: right
 }
+.col-lg-3 {
+    
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+    }
+.col-md-10 {
+   
+    flex: 0 0 100%;
+    max-width: 100%;
+    }
 </style>
 </head>
 <body>
@@ -163,6 +173,61 @@
 				
 				</form>
 				<!-- END -->
+				
+				<br>
+				<h3 class="mb-4 billing-heading">취향 정보</h3>
+			<div class="row justify-content-center">
+        	<div class="col-md-10">
+        		<div class="row">
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+		              	<strong class="number" data-number="100">0</strong>
+		              	<span>aroma</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+		              	<strong class="number" data-number="100">0</strong>
+		              	<span>acidity</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+		              	<strong class="number" data-number="85">0</strong>
+		              	<span>sweet</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+		              	<strong class="number" data-number="10567">0</strong>
+		              	<span>bitter</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+		              	<strong class="number" data-number="900">0</strong>
+		              	<span>body</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+        </div>
+        
 			</div>
 		</div>
 	</div>	

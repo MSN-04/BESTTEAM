@@ -14,11 +14,12 @@
 //item_num파라미터 가져오기
 //ItemDAO idao=new ItemDAO();
 int item_num=Integer.parseInt(request.getParameter("item_num"));
+int item_favor_num=Integer.parseInt(request.getParameter("item_favor_num"));
 //ItemBean ib=new ItemBean();
 //ib=idao.selectItem(item_num);    //selectItem에서 다 가져와서 ib에 담기
 %>
 <div class="container">
-<form id="del" action="itemDeletePro.em" method="post" enctype="multipart/form-data">
+<form id="del" action="itemDeletePro.em?item_num=<%=item_num %>&item_favor_num=<%=item_favor_num %>" method="post" enctype="multipart/form-data">
 <table border="1">
 
 <tr>

@@ -14,16 +14,21 @@ public class BlogBean {
 	private int blog_re_lev;
 	private int blog_re_ref;
 	private int blog_re_seq;
-	private String blog_file1;
+	private String blog_content1;
+	
+
+	public String getBlog_content1() {
+		return blog_content1;
+	}
+
+	public void setBlog_content1(String blog_content1) {
+		this.blog_content1 = blog_content1;
+	}
+
 	public int getBlog_num() {
 		return blog_num;
 	}
-	public String getBlog_file1() {
-		return blog_file1;
-	}
-	public void setBlog_file1(String blog_file1) {
-		this.blog_file1 = blog_file1;
-	}
+	
 	public void setBlog_num(int blog_num) {
 		this.blog_num = blog_num;
 	}
