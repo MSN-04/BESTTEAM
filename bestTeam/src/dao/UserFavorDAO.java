@@ -40,9 +40,9 @@ private static UserFavorDAO instance ;
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, favorBean.getUser_favor_user_id());
 			pstmt.setInt(2, favorBean.getUser_favor_aroma());
-			pstmt.setInt(3, favorBean.getUser_favor_acid());
-			pstmt.setInt(4, favorBean.getUser_favor_sweet());
-			pstmt.setInt(5, favorBean.getUser_favor_bitter());
+			pstmt.setInt(3, favorBean.getUser_favor_acidity());
+			pstmt.setInt(4, favorBean.getUser_favor_sweetness());
+			pstmt.setInt(5, favorBean.getUser_favor_bitterness());
 			pstmt.setInt(6, favorBean.getUser_favor_body());
 			isSetFavorSuccess = pstmt.executeUpdate();
 			
@@ -69,9 +69,9 @@ private static UserFavorDAO instance ;
 				favorBean.setUser_favor_num(rs.getInt("user_favor_num"));
 				favorBean.setUser_favor_user_id(rs.getString("user_favor_user_id"));
 				favorBean.setUser_favor_aroma(rs.getInt("user_favor_aroma"));
-				favorBean.setUser_favor_acid(rs.getInt("user_favor_acidity"));
-				favorBean.setUser_favor_sweet(rs.getInt("user_favor_sweetness"));
-				favorBean.setUser_favor_bitter(rs.getInt("user_favor_bitterness"));
+				favorBean.setUser_favor_acidity(rs.getInt("user_favor_acidity"));
+				favorBean.setUser_favor_sweetness(rs.getInt("user_favor_sweetness"));
+				favorBean.setUser_favor_bitterness(rs.getInt("user_favor_bitterness"));
 				favorBean.setUser_favor_body(rs.getInt("user_favor_body"));
 			}
 		} catch (SQLException e) {
