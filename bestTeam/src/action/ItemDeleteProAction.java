@@ -40,6 +40,7 @@ public class ItemDeleteProAction implements Action {
 			out.println("</script>"); 		
 		}else if(request.getParameter("user_id").equals("admin")&&request.getParameter("user_pass").equals("1234")) { //글 작성자 본인(관리자)일 경우
 			boolean isDeleteSuccess=itemdeleteproservice.deleteItem(item_num,item_favor_num);
+
 			System.out.println("ItemDeleteProAction --b");
 			//---글 삭제 성공여부
 			if(!isDeleteSuccess) {

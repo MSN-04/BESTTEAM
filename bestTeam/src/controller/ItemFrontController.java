@@ -24,15 +24,15 @@ public class ItemFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProceess(request, response);
+		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProceess(request, response);
+		doProcess(request, response);
 	}
 	
-	protected void doProceess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -106,34 +106,30 @@ public class ItemFrontController extends HttpServlet {
 			}
 		
 		// 영비
+		} else if(command.equals("/itemDeleteForm.em")) {
+		     System.out.println("itemDeleteForm--");
+		     forward = new ActionForward();
+		     forward.setPath("./shop/product-delete.jsp");
+		// 영비     
 		} else if (command.equals("/itemDeletePro.em")) {
-		      System.out.println("itemDeletePro");
-		      
-		      action = (Action) new ItemDeleteProAction();
-		      
-		      try {
-		        forward = action.execute(request, response);
-		      } catch (Exception e) {
-		        System.out.println("itemDeletePro 실패"+ e.getMessage());
-		      }
-		    
-		    
-		} else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
-			System.out.println("itemView");
-		} else if (command.equals("/cartPro.em")) { // 등록 페이지 Pro
-			System.out.println("cart");
-			action = new CartAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/cart.em")) {
+		     System.out.println("itemDeletePro");
+		          
+		     action = (Action) new ItemDeleteProAction();
+		          
+		     try {
+		    	 forward = action.execute(request, response);
+		     } catch (Exception e) {
+		    	 System.out.println("controller-itemDeletePro 실패"+ e.getMessage());
+		    	 System.out.println("controller- 에러:"+e);
+		     }
+		         
+	    } else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
+			System.out.println("itemDeleteForm--");
 			forward = new ActionForward();
-			forward.setPath("/shop/cart.jsp");
+			forward.setPath("./shop/product-delete.jsp");
+			
 		}
+
 		
 		
 		if(forward != null) {
