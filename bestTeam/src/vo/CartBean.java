@@ -7,11 +7,6 @@ public class CartBean {
 	private int cart_count;
 	private int price;
 	
-	public CartBean(String user_id, int item_num) {
-		cart_user_id = user_id;
-		cart_item_num = item_num;
-	}
-	
 	public int getCart_num() {
 		return cart_num;
 	}

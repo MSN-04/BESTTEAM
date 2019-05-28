@@ -1,7 +1,11 @@
 package action;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -32,9 +36,18 @@ public class ItemRegisterProAction implements Action {
 		String realFolder; // 실제 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 		
+		
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
-		System.out.println("realFoldr : "+realFolder);
+		System.out.println("realFolder : "+realFolder);
+		Path newDirectory = Paths.get(realFolder);
+        
+        try {
+            Path createDirResult = Files.createDirectories(newDirectory);
+            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		
 		System.out.println(realFolder);
 		
