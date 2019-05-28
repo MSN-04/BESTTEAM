@@ -1,3 +1,4 @@
+<%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -66,6 +67,12 @@
 		    padding: 15px 10px !important;
 		}
     </style>
+  
+<%
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+	int cart_count = (int) request.getAttribute("cart_count"); 
+%>
+  
     
   </head>
   
