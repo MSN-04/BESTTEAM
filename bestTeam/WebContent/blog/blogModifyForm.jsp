@@ -162,8 +162,7 @@
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>"
-							style="width: 100%;"/></td>
+						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>" style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
