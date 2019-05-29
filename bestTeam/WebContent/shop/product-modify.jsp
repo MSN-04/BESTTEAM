@@ -216,8 +216,8 @@
 	</section>
 	<!-- .section -->
 	
+	
 <jsp:include page="../inc/footer.jsp"></jsp:include>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

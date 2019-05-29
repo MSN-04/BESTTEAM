@@ -153,8 +153,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -281,6 +280,13 @@
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Bitterness</a>
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
+								<% 
+									String id = (String)session.getAttribute("id");
+									if (id != null && id.equals("admin")) {
+								%>
+								<a class="nav-link" id="v-pills-5-tab" href="itemRegister.em" style="font-weight: bold;"
+									role="tab" aria-controls="v-pills-3" aria-selected="false">상품 등록</a>
+								<% } %>
 							</div>
 
 							<div class="nav ftco-animate nav-pills justify-content-center" 
@@ -299,9 +305,11 @@
 									role="tab" aria-controls="v-pills-3" aria-selected="false">5</a>
 							</div>
 						</div>
-		
-		
-
+						
+<!-- 						<div class="col-md-12 nav-link-wrap mb-5"> -->
+<!-- 							<a href="itemRegister.em" style="padding: 0.3em 0.5em; border-radius: 5px; border: 1px solid; font-weight: bold; color: #c49b63; font-size: 20px;">상품 등록</a> -->
+<!-- 						</div> -->
+						
 						<div class="col-md-12 d-flex align-items-center">
 
 							<div class="tab-content ftco-animate" id="v-pills-tabContent" style="width: 100%;">
