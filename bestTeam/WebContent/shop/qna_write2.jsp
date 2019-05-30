@@ -166,8 +166,8 @@ UserBean userBean = (UserBean) request.getAttribute("userBean");
 					<tr>
 						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="작성자"
-								name="qna_name" readonly="readonly" value="<%=userBean.getName() %>">
+<!-- 							<input type="text" class="form-control" placeholder="작성자" -->
+<%-- 								name="qna_name" readonly="readonly" value="<%=userBean.getName() %>"> --%>
 						</div>
 						<!-- 						</div> -->
 
@@ -176,9 +176,9 @@ UserBean userBean = (UserBean) request.getAttribute("userBean");
 					<tr>
 						<!-- 							<div class="col-md-6"> -->
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail" value="<%=userBean.getEmail() %>"/> 이메일로
+<!-- 							<input type="text" class="form-control" placeholder="이메일" -->
+<!-- 								name="qna_email" readonly="readonly"> <input -->
+<%-- 								type="checkbox" id="checkemail" name="qna_checkemail" value="<%=userBean.getEmail() %>"/> 이메일로 --%>
 							답변 받기
 						</div>
 						<!-- 							</div> -->
@@ -189,9 +189,9 @@ UserBean userBean = (UserBean) request.getAttribute("userBean");
 					<tr>
 						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly"> <input
-								type="checkbox" id="checksms" name="qna_checksms" value="<%=userBean.getPhone() %>"/> 문자로 답변 받기
+<!-- 							<input type="text" class="form-control" placeholder="휴대폰번호" -->
+<!-- 								name="qna_phone" readonly="readonly"> <input -->
+<%-- 								type="checkbox" id="checksms" name="qna_checksms" value="<%=userBean.getPhone() %>"/> 문자로 답변 받기 --%>
 						</div>
 						</div>
 						<!-- 						</div> -->

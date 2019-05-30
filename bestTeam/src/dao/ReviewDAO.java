@@ -124,7 +124,7 @@ public class ReviewDAO {
 		
 		
 		
-		String sql = "SELECT * FROM review ORDER BY blog_num desc limit ? , ?";
+		String sql = "SELECT * FROM REVIEW ORDER BY review_item_num desc limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
 		
@@ -136,21 +136,17 @@ public class ReviewDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				// 1개 게시물 레코드 읽어와서 BoardBean 객체에 저장
-//				blogBean = new BlogBean();
-//				
-//				blogBean.setBlog_num(rs.getInt("blog_num"));
-//				blogBean.setBlog_writer(rs.getString("blog_writer"));
-//				blogBean.setBlog_subject(rs.getString("blog_subject"));
-//				blogBean.setBlog_content(rs.getString("blog_content"));
-//				blogBean.setBlog_readcount(rs.getInt("blog_readcount"));
-//				blogBean.setBlog_file(rs.getString("blog_file"));
-//				blogBean.setBlog_date(rs.getDate("blog_date"));
-//				blogBean.setBlog_like(rs.getInt("blog_like"));
-//				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
-//				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
-//				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
-//				blogBean.setBlog_content1(rs.getString("blog_content1"));
+				reviewBean = new ReviewBean();
+				
+				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
+				reviewBean.setReview_user_id(rs.getString("review_user_id"));
+				reviewBean.setReview_content(rs.getString("review_content"));
+				reviewBean.setReview_readcount(rs.getInt("review_readcount"));
+				reviewBean.setReview_rate(rs.getFloat("review_rate"));
+				reviewBean.setReview_img(rs.getString("review_img"));
+				reviewBean.setReview_date(rs.getDate("review_date"));
+				reviewBean.setReview_subject(rs.getString("review_subject"));
+				
 				
 				
 				articleList.add(reviewBean); // ArrayList 객체에 레코드 단위로 저장
@@ -170,31 +166,27 @@ public class ReviewDAO {
 
 
 	// 글번호(board_num) 에 해당하는 레코드 정보 조회 => BoardBean 객체에 저장하여 리턴
-	public BlogBean selectArticle(int blog_num) {
-		BlogBean blogBean = null;
+	public ReviewBean selectArticle(int review_num) {
+		ReviewBean reviewBean = null;
 		
-		String sql = "SELECT * FROM blog WHERE blog_num=?";
+		String sql = "SELECT * FROM REVIEW WHERE review_num=?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, blog_num);
+			pstmt.setInt(1, review_num);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				blogBean = new BlogBean();
+				reviewBean = new ReviewBean();
 				
-				blogBean.setBlog_num(rs.getInt("blog_num"));
-				blogBean.setBlog_writer(rs.getString("blog_writer"));
-				blogBean.setBlog_subject(rs.getString("blog_subject"));
-				blogBean.setBlog_content(rs.getString("blog_content"));
-				blogBean.setBlog_readcount(rs.getInt("blog_readcount"));
-				blogBean.setBlog_file(rs.getString("blog_file"));
-				blogBean.setBlog_date(rs.getDate("blog_date"));
-				blogBean.setBlog_like(rs.getInt("blog_like"));
-				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
-				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
-				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
-				blogBean.setBlog_content1(rs.getString("blog_content1"));
+				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
+				reviewBean.setReview_user_id(rs.getString("review_user_id"));
+				reviewBean.setReview_content(rs.getString("review_content"));
+				reviewBean.setReview_readcount(rs.getInt("review_readcount"));
+				reviewBean.setReview_rate(rs.getFloat("review_rate"));
+				reviewBean.setReview_img(rs.getString("review_img"));
+				reviewBean.setReview_date(rs.getDate("review_date"));
+				reviewBean.setReview_subject(rs.getString("review_subject"));
 			}
 			
 		} catch (SQLException e) {
@@ -205,7 +197,7 @@ public class ReviewDAO {
 			close(pstmt);
 		}
 				
-		return blogBean;
+		return reviewBean;
 	}
 	
 	
