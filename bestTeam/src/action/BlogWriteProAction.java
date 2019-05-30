@@ -56,7 +56,7 @@ public class BlogWriteProAction implements Action {
 		// 파일명을 제외한 나머지 데이터는 multi.getParameter() 메서드를 사용
 		
 		blogBean.setBlog_subject(multi.getParameter("blog_subject"));
-		blogBean.setBlog_content1(multi.getParameter("blog_content1"));
+		blogBean.setBlog_content(multi.getParameter("blog_content1"));
 		blogBean.setBlog_writer(multi.getParameter("blog_writer"));
 //		blogBean.setBlog_file(filename);
 		blogBean.setBlog_content(multi.getParameter("blog_content"));

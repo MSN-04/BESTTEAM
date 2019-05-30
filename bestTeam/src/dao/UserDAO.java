@@ -257,8 +257,9 @@ public class UserDAO {
 	
 	//아이디 찾기
 	public String findId(String email,String phone) {
-		System.out.println("DAO에서"+phone);
-		String id =null;
+		System.out.println("DAO에서 email"+email);
+		System.out.println("DAO에서 phone"+phone);
+		String id=null;
 		String sql;
 		if(email!=null &&phone ==null) {
 			 sql ="SELECT * FROM user WHERE user_email=?";			

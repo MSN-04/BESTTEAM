@@ -65,7 +65,7 @@ public class BlogDAO {
 			pstmt.setInt(8, blogBean.getBlog_re_lev());
 			pstmt.setInt(9, blogBean.getBlog_re_ref());
 			pstmt.setInt(10, blogBean.getBlog_re_seq());
-			pstmt.setString(11, blogBean.getBlog_content1());
+			pstmt.setString(11, blogBean.getBlog_content());
 			insertCount = pstmt.executeUpdate(); // INSERT 실행 결과를 int 타입으로 리턴 받음
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -144,7 +144,7 @@ public class BlogDAO {
 				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
 				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
 				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
-				blogBean.setBlog_content1(rs.getString("blog_content1"));
+				blogBean.setBlog_content(rs.getString("blog_content1"));
 				
 				articleList.add(blogBean); // ArrayList 객체에 레코드 단위로 저장
 				
@@ -187,7 +187,7 @@ public class BlogDAO {
 				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
 				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
 				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
-				blogBean.setBlog_content1(rs.getString("blog_content1"));
+				blogBean.setBlog_content(rs.getString("blog_content1"));
 			}
 			
 		} catch (SQLException e) {
@@ -263,7 +263,7 @@ public class BlogDAO {
 			pstmt.setString(1, article.getBlog_subject());
 			pstmt.setString(2, article.getBlog_content());
 			pstmt.setString(3, article.getBlog_file());
-			pstmt.setString(4, article.getBlog_content1());
+			pstmt.setString(4, article.getBlog_content());
 			pstmt.setInt(5, article.getBlog_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
