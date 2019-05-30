@@ -12,7 +12,9 @@ public class BuyBean {
 	private Date buy_paydate;
 	private String shipnum;
 	private String post;
+	private String buy_name;  // 가입시 저장한 이름 말고 다른 이름으로 주문할 경우
 	
+	public BuyBean() {};
 	
 	public BuyBean(int buy_num, String buy_user_id, String buy_address, String buy_phone, String buy_phone2,
 			Date buy_orderdate, Date buy_paydate, String shipnum, String post) {
@@ -97,6 +99,14 @@ public class BuyBean {
 
 	public void setPost(String post) {
 		this.post = post;
+	}
+
+	public String getBuy_name() {
+		return buy_name;
+	}
+
+	public void setBuy_name(String buy_name) {
+		this.buy_name = buy_name;
 	}
 	
 }

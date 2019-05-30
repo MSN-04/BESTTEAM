@@ -254,9 +254,6 @@
           <div class="col-md-8 ftco-animate" >
             <h2 class="mb-3"><%= article.getBlog_subject() %></h2>
 					<p><%= article.getBlog_content() %></p>
-					<p>
-              <img src="./images/image_1.jpg" alt="" class="img-fluid">
-            </p>
             <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
             <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
@@ -268,15 +265,7 @@
               </div>
             </div>
             
-            <div class="about-author d-flex">
-              <div class="bio align-self-md-center mr-5">
-                <img src="./images/person_5.jpg" alt="Image placeholder" class="img-fluid mb-4" width="300px" height="300px">
-              </div>
-              <div class="desc align-self-md-center">
-                <h3>전주연</h3>
-                <p>커피의 향은 피아노 선율과 같다고 생각하여 한 소절 한 소절 건반을 누르는 마음으로 원두를 마주합니다. 단순히 마시는 것이 아닌 보고 듣고 느끼는 커피를 내립니다. 2019 월드 챔피언십 바리스타 경연대회에서 우승을 거머쥐었으며 현재 한남동에서 'Cafe Rdo'를 운영중입니다.</p>
-              </div>
-            </div>
+            
 
 
             <div class="pt-5 mt-5">

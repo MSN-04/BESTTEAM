@@ -22,7 +22,7 @@ public class ItemDeleteProAction implements Action {
 		int item_num=Integer.parseInt(request.getParameter("item_num"));
 		int item_favor_num=Integer.parseInt(request.getParameter("item_favor_num"));
 		System.out.println("ItemDeleteProAction - item_num : "+item_num);
-		System.out.println("ItemDeleteProAction - item_num : "+item_favor_num);
+		System.out.println("ItemDeleteProAction - item_favor_num : "+item_favor_num);
 		//ItemDeleteProService
 		ItemDeleteProService itemdeleteproservice=new ItemDeleteProService();
 		System.out.println("user_id :: " +request.getParameter("user_id"));
@@ -40,6 +40,7 @@ public class ItemDeleteProAction implements Action {
 			out.println("</script>"); 		
 		}else if(request.getParameter("user_id").equals("admin")&&request.getParameter("user_pass").equals("1234")) { //글 작성자 본인(관리자)일 경우
 			boolean isDeleteSuccess=itemdeleteproservice.deleteItem(item_num,item_favor_num);
+
 			System.out.println("ItemDeleteProAction --b");
 			//---글 삭제 성공여부
 			if(!isDeleteSuccess) {

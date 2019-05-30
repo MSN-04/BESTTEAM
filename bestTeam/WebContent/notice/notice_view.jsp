@@ -1,22 +1,33 @@
+<%@page import="vo.QnaBean"%>
+<%@page import="vo.NoticeBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="vo.noticeBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script language="javascript">
 function delconfirm(num){
 var message = confirm("이 게시글을 삭제하시겠습니까?");
 if(message == true){
-	location.href ="./noticeDeletePro.jsp?num="+num;
+	location.href ="./noticeDeletePro.no?num="+num;
 }else
 	alert("취소되었습니다");
 return false;
 }
 </script>
 <%
-	noticeBean article = (noticeBean) request.getAttribute("article");
-	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	ArrayList<noticeBean> articleList = (ArrayList<noticeBean>) request.getAttribute("articleList");
-	article.getNotice_num();
+// 	NoticeBean article = (NoticeBean)request.getAttribute("article");
+// 	NoticeBean noticeBean = (NoticeBean)request.getAttribute("NoticeBean");
+	NoticeBean article = (NoticeBean)request.getAttribute("article");
+	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+	
+	
+// 	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
+// 	NoticeBean noticebean = new NoticeBean();
+// 	int noticeNum = noticebean.getNotice_num();
+// 	String noticeSubject = noticebean.getNotice_subject();
+// 	String noticeContent = noticebean.getNotice_content();
+// 	System.out.println(noticeNum);
+%>
+<%
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,25 +111,20 @@ return false;
           	<%    
 			    //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가                                                   
 			    request.setCharacterEncoding("utf-8");
-			    
-// 			    String subject = request.getParameter("subject");
-// 			    String content = request.getParameter("content");
-			    article.getNotice_subject();
-			    article.getNotice_content();
-			   
 			%>
 			
 	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px;
 	 			font-size: 50px; font-weight: 300;
-	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
+	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject() %>></div>
 	 			
-				<div style="margin: auto;"><%=article.getNotice_content() %></div>
+				<div style="margin: auto;"><%= article.getNotice_subject() %></div>
  			
            
           </div> <!-- .col-md-8 -->
-          <a href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
+          <a href="./noticeModifyForm.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
           
-          <a href="./noticedeletePro.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getNotice_num() %>')">글삭제</a>
+          <a href="./noticedeletePro.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary"
+          onclick="delconfirm('<%= article.getNotice_num() %>')">글삭제</a>
           <a href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
           
 <!--           <div class="col-md-4 sidebar ftco-animate"> -->

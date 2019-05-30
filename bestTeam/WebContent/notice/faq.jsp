@@ -464,30 +464,6 @@ b{
 <!-- 										어떻게 해야 하나요? </a> -->
 <!-- 								</h5> -->
 <!-- 							</div> -->
-<!-- 							<div id="collapse4" class="panel-collapse collapse in"> -->
-<!-- 								<div class="panel-body"> -->
-<!-- 									<b>A</b> &nbsp;&nbsp; 주문 후 배송 정보 변경은 전날 밤 11시 전 1588-8888에 전화 -->
-<!-- 									주시거나, <br> 수정 내용을 남겨주세요. <br> 밤 11시 이후에는 배송이 시작되어 수정이 -->
-<!-- 									불가합니다.<br> from kurly -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 							<hr><hr><hr> -->
-<!-- 							<div class="panel-heading"> -->
-
-<!-- 								<h5 class="panel-title"> -->
-<!-- 									<a data-toggle="collapse" data-parent="#accordian" -->
-<!-- 										href="#collapse5">Q 5 &nbsp; &nbsp; 주문 후 주문 정보를 변경하려고 하는데 -->
-<!-- 										어떻게 해야 하나요? </a> -->
-<!-- 								</h5> -->
-<!-- 							</div> -->
-<!-- 							<div id="collapse5" class="panel-collapse collapse in"> -->
-<!-- 								<div class="panel-body"> -->
-<!-- 									<b>A</b> &nbsp;&nbsp; 주문 후 배송 정보 변경은 전날 밤 11시 전 1588-8888에 전화 -->
-<!-- 									주시거나, <br> 수정 내용을 남겨주세요. <br> 밤 11시 이후에는 배송이 시작되어 수정이 -->
-<!-- 									불가합니다.<br> from kurly -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 
 
 	<!--     <section class="ftco-section"> -->

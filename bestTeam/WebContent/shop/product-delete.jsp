@@ -19,21 +19,22 @@ int item_favor_num=Integer.parseInt(request.getParameter("item_favor_num"));
 //ib=idao.selectItem(item_num);    //selectItem에서 다 가져와서 ib에 담기
 %>
 <div class="container">
-<form id="del" action="itemDeletePro.em?item_num=<%=item_num %>&item_favor_num=<%=item_favor_num %>" method="post" enctype="multipart/form-data">
-<table border="1">
+<form id="del" action="itemDeletePro.em?item_num=<%=item_num %>&item_favor_num=<%=item_favor_num %>" method="post" >
+	<table border="1">
+	
+	<tr>
+	<td>관리자 아이디</td><td><input type="text" name="user_id" required="required"></td>
+	</tr>
+	<tr>
+	<td>비밀번호 확인</td><td><input type="password" name="user_pass" required="required"></td>
+	</tr>
+	<tr>
+	<td colspan="2" align="center">
+	<input type="submit" value="삭제하기" >
+	</td>
+	</tr>
+	</table>
 
-<tr>
-<td>관리자 아이디</td><td><input type="text" name="user_id" required="required"></td>
-</tr>
-<tr>
-<td>비밀번호 확인</td><td><input type="password" name="user_pass" required="required"></td>
-</tr>
-<tr>
-<td colspan="2" align="center">
-<input type="submit" value="삭제하기" >
-</td>
-</tr>
-</table>
 </form>
 </div>
 </body>

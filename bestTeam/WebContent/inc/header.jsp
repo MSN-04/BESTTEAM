@@ -65,7 +65,7 @@
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Notice</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="./notice/notice.jsp">공지사항</a> <a
+						<a class="dropdown-item" href="./noticeList.no">공지사항</a> <a
 							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>

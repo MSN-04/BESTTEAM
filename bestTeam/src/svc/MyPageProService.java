@@ -5,6 +5,8 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 
 import dao.UserDAO;
+import dao.UserFavorDAO;
+import vo.FavorBean;
 import vo.UserBean;
 
 public class MyPageProService {
@@ -23,5 +25,27 @@ public class MyPageProService {
 		
 		return userBean;
 	}
+	
+	//취향정보 가져오는 메서드
+	public FavorBean getMyFavor(String id) throws Exception{
+		FavorBean favorBean = new FavorBean();
+		
+		Connection con = getConnection();
+		UserFavorDAO userFavorDAO = UserFavorDAO.getInstance();
+		userFavorDAO.setConnection(con);
+		
+		favorBean = userFavorDAO.getFavor(id);
+		
+		close(con);
+		
+		return favorBean;
+	}
+
+	public UserBean getUserInfo(UserBean userBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

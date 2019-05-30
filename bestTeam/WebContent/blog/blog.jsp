@@ -84,16 +84,23 @@
 			if(articleList != null && listCount > 0) {
 				for(int i = 0; i < articleList.size(); i++) {
 			%>
+				
               	<a href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>" class="block-20" style="background-image: url('./img_upload/<%=articleList.get(i).getBlog_file()%>')">
     			</a>
                 <h2 class="heading mt-2"><a href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>"><%=articleList.get(i).getBlog_subject()%></a></h2>
                   <div class="text py-4 d-block">
               	<div class="meta">
+              	<div><a href="#"><%=articleList.get(i).getBlog_content1() %></a></div><br>
+                  
+                  <div><a href="#"><%=articleList.get(i).getBlog_writer()%></a></div>
                   <div><a href="#"><%=articleList.get(i).getBlog_date() %></a></div>
-                 	<div><a href="#"><%=articleList.get(i).getBlog_writer()%></a></div> 
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+<<<<<<< HEAD
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div><br>
                   <div><a href="#"><%=articleList.get(i).getBlog_content() %></a></div>
+=======
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
                 </div>
                 
               </div>

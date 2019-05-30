@@ -1,7 +1,25 @@
+<%@page import="vo.PageInfo"%>
+<%@page import="vo.ReviewBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
+	// request.getAttribute() 메서드로 가져오기
+	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
+	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	
+	int listCount = pageInfo.getListCount();
+	int nowPage = pageInfo.getPage();
+	int maxPage = pageInfo.getMaxPage();
+	int startPage = pageInfo.getStartPage();
+	int endPage = pageInfo.getEndPage();
+%>  
+
+	
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -206,6 +224,7 @@ function showSlides(n) {
              
             
      });
+	
 </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> 
@@ -280,6 +299,15 @@ j(".bx-start").click(function(){	//시작버튼 눌렀을때
 j(".bx-start").hide();	//onload시 시작버튼 숨김. 
 
 }); 
+$(document).ready(function(){
+	$("#rere").hide();
+
+
+$( '#rere1' ).click(
+	    function() {
+	        $( '#rere' ).toggle();
+	    }
+	);
 
 
 
@@ -478,7 +506,7 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 수정</a>
 												
-											<a class="nav-link"  href="./itemDeleteForm.em?item_num=<%=itemBean.getItem_num()%>&item_favor_num=<%=itemBean.getItem_favor_num() %>" id="btn4"
+											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 삭제</a>
 								<%  	} 
@@ -512,8 +540,13 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 				<div class="blog-entry align-self-stretch">
 					<br>
 					<br>
-					<table class="table thead-light">
 					<tr>REVIEW</tr>
+					<table class="table thead-light">
+					<%
+											if (reviewList != null && listCount > 0) {
+												
+										%>
+					
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
@@ -521,22 +554,27 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 							<th>글쓴이</th>
 							<th>조회수</th>
 						</tr>
+						<%
+						for (int i = 0 ; i < reviewList.size() ; i++) {
+						%>
 						<tr>
-							<td>2</td>
-							<td><a href="#">이벤트를 진행합니다.</a></td>
-							<td>19.04.23</td>
-							<td>admin</td>
-							<td>3</td>
+							
+ 							<td><a data-toggle="collapse" data-parent="#accordian"
+										href="#collapse"><%=reviewList.get(i).getReview_num()%></a><div id="collapse" class="panel-collapse collapse in">
+ 							<div class="panel-body"><br><%=reviewList.get(i).getReview_content() %></div></div></td>
+ 							<td><%=reviewList.get(i).getReview_subject() %></td>
+ 							<td><%=reviewList.get(i).getReview_date() %></td> 
+ 							<td><%=reviewList.get(i).getReview_user_id() %></td> 
+ 							<td><%=reviewList.get(i).getReview_readcount() %></td> 
+							
 						</tr>
-						<tr>
-							<td>1</td>
-							<td><a href="#">안녕하세요.</a></td>
-							<td>19.04.23</td>
-							<td>admin</td>
-							<td>21</td>
-						</tr>
+<%-- 						<tr><td id="rere" colspan="5"><%=reviewList.get(i).getReview_content() %></td></tr> --%>
 
+						
+               <%}
+ 				}%>	 
 					</table>
+					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
@@ -549,6 +587,9 @@ j(".bx-start").hide();	//onload시 시작버튼 숨김.
 									<li><a href="#">5</a></li>
 									<li><a href="#">&gt;</a></li>
 								</ul>
+								
+								
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 							</div>
 						</div>
 					</div>

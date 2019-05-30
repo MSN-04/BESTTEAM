@@ -162,8 +162,12 @@
 					</tr>
 					<tr>
 						<td>요약</td>
+<<<<<<< HEAD
 						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content() %>"
 							style="width: 100%;"/></td>
+=======
+						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>" style="width: 100%;"/></td>
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 					</tr>
 					<tr>
 						<td>글쓴이</td>

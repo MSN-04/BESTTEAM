@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.CartAction;
 import action.ItemDeleteProAction;
 import action.ItemModifyFormAction;
-
 import action.ItemModifyProAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
+import action.confirm_checkoutProAction;
 import action.shopMainAction;
 import vo.ActionForward;
 
@@ -24,15 +25,15 @@ public class ItemFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProceess(request, response);
+		doProcess(request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProceess(request, response);
+		doProcess(request, response);
 	}
 	
-	protected void doProceess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -107,29 +108,56 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 영비
 		} else if(command.equals("/itemDeleteForm.em")) {
+		     System.out.println("itemDeleteForm--");
+		     forward = new ActionForward();
+		     forward.setPath("./shop/product-delete.jsp");
+		// 영비     
+		} else if (command.equals("/itemDeletePro.em")) {
+		     System.out.println("itemDeletePro");
+		          
+		     action = (Action) new ItemDeleteProAction();
+		          
+		     try {
+		    	 forward = action.execute(request, response);
+		     } catch (Exception e) {
+		    	 System.out.println("controller-itemDeletePro 실패"+ e.getMessage());
+		    	 System.out.println("controller- 에러:"+e);
+		     }
+		         
+	    } else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
 			System.out.println("itemDeleteForm--");
 			forward = new ActionForward();
 			forward.setPath("./shop/product-delete.jsp");
 			
 		}
+		//------------------------- confirm_checkout by yb --------------------
+		else if(command.equals("/confirm_checkoutList.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkoutList.jsp");
 
-		else if (command.equals("/itemDeletePro.em")) {
-		      System.out.println("itemDeletePro");
+		}else if(command.equals("/confirm_checkoutPro.sh")) {
+			 System.out.println("itemFrontController --> confirm_checkoutPro.sh");
 		      
-		      action = (Action) new ItemDeleteProAction();
+		      action = (Action) new confirm_checkoutProAction();
 		      
 		      try {
 		        forward = action.execute(request, response);
 		      } catch (Exception e) {
-		        System.out.println("controller-itemDeletePro 실패"+ e.getMessage());
+		        System.out.println("controller-confirm_checkoutPro 실패"+ e.getMessage());
 		        System.out.println("controller- 에러:"+e);
 		        
 		      }
-		    
-		    
-		}  else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
-			System.out.println("itemView");
+			
+		}else if(command.equals("/confirm_checkout.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkout.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkout.jsp");
 		}
+		
+		//-----------------------------------------------------------------------
+		
+
 		
 		
 		if(forward != null) {

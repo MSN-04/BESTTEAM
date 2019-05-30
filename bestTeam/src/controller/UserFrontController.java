@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.DeleteMemberProAction;
+import action.FavorProAction;
 import action.ForgotAccountProAction;
 import action.JoinProAction;
 import action.LoginProAction;
 import action.LogoutProAction;
 import action.MypageProAction;
-import action.TasteProAction;
 import action.UpdateMemberFormAction;
 import action.UpdateMemberProAction;
 import vo.ActionForward;
@@ -135,7 +135,7 @@ public class UserFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/TasteProAction.us")) {
 			System.out.println("tasteProAction controller");
-			action = new TasteProAction();
+			action = new FavorProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

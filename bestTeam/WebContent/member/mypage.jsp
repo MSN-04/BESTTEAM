@@ -1,3 +1,4 @@
+<%@page import="vo.FavorBean"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +9,9 @@
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 	StringTokenizer st = new StringTokenizer(myPage.getUser_address(), ":");
+	
+	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
+	
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +63,12 @@
     flex: 0 0 100%;
     max-width: 100%;
     }
+ #section-counter{
+ 	padding:50px;
+ }
+ #h0528{display:inline-block;}
+ #div0528{display:inline-block;
+ 		margin-left:80px;}
 </style>
 </head>
 <body>
@@ -175,58 +185,66 @@
 				<!-- END -->
 				
 				<br>
-				<h3 class="mb-4 billing-heading">취향 정보</h3>
+				<section class="ftco-counter ftco-bg-dark img" id="section-counter"  data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+      <div class="container">
+				<h3 class="mb-4 billing-heading" id="h0528">취향 정보</h3>
+				<div class="col-md-8 ftco-animate" id="div0528">
+				<a href="taste.us" class="btn btn-primary btn-outline-primary" style="float: right;">수정하러 가즈아</a>
+				</div>
 			<div class="row justify-content-center">
         	<div class="col-md-10">
         		<div class="row">
 		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="100">0</strong>
-		              	<span>aroma</span>
+		              		<span>aroma</span>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_aroma() %>"><%=fb.getUser_favor_aroma() %></strong>
+		              <div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
 		          </div>
 		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
+		              <span>acidity</span>	
+		              	<strong class="number" data-number="<%=fb.getUser_favor_acidity() %>"><%=fb.getUser_favor_acidity() %></strong>
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="100">0</strong>
-		              	<span>acidity</span>
 		              </div>
 		            </div>
 		          </div>
 		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="85">0</strong>
 		              	<span>sweet</span>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_sweetness() %>"><%=fb.getUser_favor_sweetness() %></strong>
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
 		          </div>
 		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="10567">0</strong>
 		              	<span>bitter</span>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_bitterness() %>"><%=fb.getUser_favor_bitterness() %></strong>
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
 		          </div>
 		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
-		              	<strong class="number" data-number="900">0</strong>
 		              	<span>body</span>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_body() %>"><%=fb.getUser_favor_body() %></strong>
+		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
 		          </div>
 		        </div>
 		      </div>
         </div>
+        </div>
+        </section>
         
 			</div>
 		</div>

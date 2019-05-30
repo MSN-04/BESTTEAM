@@ -51,7 +51,6 @@ public class BlogDAO {
 			}
 		
 		
-		
 		sql = "INSERT INTO blog VALUES(?,?,?,?,?,?,now(),?,?,?,?,?)";
 		
 			pstmt = con.prepareStatement(sql);
@@ -146,7 +145,6 @@ public class BlogDAO {
 				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
 				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
 				blogBean.setBlog_content(rs.getString("blog_content1"));
-				
 				
 				articleList.add(blogBean); // ArrayList 객체에 레코드 단위로 저장
 				
@@ -291,7 +289,6 @@ public class BlogDAO {
 		}finally {
 			close(pstmt);
 		}
-		
 		
 		return deleteCount;
 	}
