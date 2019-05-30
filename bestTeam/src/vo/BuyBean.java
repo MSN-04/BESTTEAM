@@ -19,7 +19,7 @@ public class BuyBean {
 	public BuyBean() {};
 	
 	public BuyBean(int buy_num, String buy_user_id, String buy_address, String buy_phone, String buy_phone2,
-			Date buy_orderdate, Date buy_paydate, String shipnum, String post, int total) {
+			Date buy_orderdate, Date buy_paydate, String shipnum, String post, int buy_total) {
 		this.buy_num = buy_num;
 		this.buy_user_id = buy_user_id;
 		this.buy_address = buy_address;
@@ -29,7 +29,7 @@ public class BuyBean {
 		this.buy_paydate = buy_paydate;
 		this.shipnum = shipnum;
 		this.post = post;
-		this.buy_total = total;
+		this.buy_total = buy_total;
 	}
 
 	public int getBuy_total() {

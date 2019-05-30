@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 
 import vo.ActionForward;
+import vo.BuyBean;
 
 public class CheckoutProAction implements Action {
 
@@ -29,10 +30,11 @@ public class CheckoutProAction implements Action {
 		}
 		System.out.println("세션id : " + id);
 		
-		 
+		
+		
 		forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("confirmCheckout.sh");
+		forward.setPath("mypage.us");
 		
 		System.out.println("CheckoutProAction");
 		

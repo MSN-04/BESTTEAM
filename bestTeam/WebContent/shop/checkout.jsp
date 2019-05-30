@@ -69,8 +69,8 @@
     </style>
   
 <%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-	int cart_count = (int) request.getAttribute("cart_count"); 
+// 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+// 	int cart_count = (int) request.getAttribute("cart_count"); 
 %>
   
     
