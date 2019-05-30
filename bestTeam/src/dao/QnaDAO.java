@@ -247,7 +247,7 @@ public class QnaDAO {
 	}
 
 	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
-	public boolean isArticleqnaWriter(int qna_num, String pass) {
+	public boolean isArticleqnaWriter(int qna_num) {
 //		System.out.println("QnaDAO - isArticleqnaWriter");
 		// 전체 레코드에서 글번호(qna_num) 이 일치하는 레코드 찾기
 		// => 조회된 레코드에서 패스워드(qna_pass) 가 전달받은 패스워드와 일치하면 isWriter 변수를 true 변경

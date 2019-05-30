@@ -56,12 +56,12 @@ public class NoticeDAO {
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num); // 계산된 새 게시물 번호
-			pstmt.setString(2, noticeBean.getNotice_writer());
-			pstmt.setString(3, noticeBean.getNotice_subject());
-			pstmt.setString(4, noticeBean.getNotice_content());
-//			pstmt.setInt(4, NoticeBean.getNotice_readcount());
-//			pstmt.setString(6, NoticeBean.getNotice_file());
-//			pstmt.setString(4, "a"); 
+//			pstmt.setString(2, noticeBean.getNotice_writer());
+			pstmt.setString(2, noticeBean.getNotice_subject());
+			pstmt.setString(3, noticeBean.getNotice_content());
+//			pstmt.setInt(5, noticeBean.getNotice_readcount());
+//			pstmt.setString(6, noticeBean.getNotice_file());
+//			pstmt.setDate(7, noticeBean.getNotice_date()); 
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 

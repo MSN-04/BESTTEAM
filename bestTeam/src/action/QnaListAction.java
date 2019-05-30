@@ -1,9 +1,11 @@
 package action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.QnaListService;
 import vo.ActionForward;
@@ -19,7 +21,7 @@ public class QnaListAction implements Action {
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
 		
 		int page = 1;
-		int limit = 10;
+		int limit = 5;
 		
 		// 페이지 번호 파라미터가 있을 경우 가져오기
 		if(request.getParameter("page") != null) {
@@ -56,10 +58,11 @@ public class QnaListAction implements Action {
 		// ActionForward 객체를 사용하여 qna 폴더의 qna_List.jsp 페이지로 이동 처리 => Dispatch 방식 포워딩
 		// => 기존 qnaList.bo 주소를 변경하지 않고 바로 jsp 페이지로 이동하기 위해서
 		ActionForward forward = new ActionForward();
-		forward.setPath("/qna/qna_list.jsp");
-		
+		forward.setPath("/shop/qna_list.jsp");
+
 		return forward;
 	}
 
 }
+
 

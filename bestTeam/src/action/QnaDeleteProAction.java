@@ -14,7 +14,6 @@ public class QnaDeleteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("qnaDeleteProAction");
 		
-		// ActionForward 인스턴스 생성
 		ActionForward forward = null;
 		
 		// 게시물 번호 파라미터 가져오기

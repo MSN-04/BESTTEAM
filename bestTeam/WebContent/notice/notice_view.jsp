@@ -14,15 +14,18 @@ return false;
 }
 </script>
 <%
-	// ???????
 // 	NoticeBean article = (NoticeBean)request.getAttribute("article");
 // 	NoticeBean noticeBean = (NoticeBean)request.getAttribute("NoticeBean");
+	NoticeBean article = (NoticeBean)request.getAttribute("article");
+	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	
-	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
-	NoticeBean noticebean = new NoticeBean();
-	int noticeNum = noticebean.getNotice_num();
-	System.out.println(noticeNum);
+	
+// 	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
+// 	NoticeBean noticebean = new NoticeBean();
+// 	int noticeNum = noticebean.getNotice_num();
+// 	String noticeSubject = noticebean.getNotice_subject();
+// 	String noticeContent = noticebean.getNotice_content();
+// 	System.out.println(noticeNum);
 %>
 <%
 %>
@@ -108,25 +111,20 @@ return false;
           	<%    
 			    //제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가                                                   
 			    request.setCharacterEncoding("utf-8");
-			    
-// 			    String subject = request.getParameter("subject");
-// 			    String content = request.getParameter("content");
-// 			    article.getNotice_subject();
-// 			    article.getNotice_content();
-			   
 			%>
 			
 	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px;
 	 			font-size: 50px; font-weight: 300;
-	 			font-family: Josefin Sans, Arial, sans-serif;"><%=noticeNum %></div>
+	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject() %>></div>
 	 			
-				<div style="margin: auto;"><%=noticebean.getNotice_num() %></div>
+				<div style="margin: auto;"><%= article.getNotice_subject() %></div>
  			
            
           </div> <!-- .col-md-8 -->
-          <a href="./noticeModifyForm.no?notice_num=<%=noticeNum %>" class="btn btn-primary btn-outline-primary">글수정</a>
+          <a href="./noticeModifyForm.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
           
-          <a href="./noticedeletePro.no?notice_num=<%=noticeNum %>" class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=noticeNum %>')">글삭제</a>
+          <a href="./noticedeletePro.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary"
+          onclick="delconfirm('<%= article.getNotice_num() %>')">글삭제</a>
           <a href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
           
 <!--           <div class="col-md-4 sidebar ftco-animate"> -->
