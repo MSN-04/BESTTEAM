@@ -10,8 +10,8 @@ import vo.ActionForward;
 import vo.ItemBean;
 import vo.PageInfo;
 
-public class shopMainAction implements Action {
-
+public class ShopMainAction implements Action {
+ 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;

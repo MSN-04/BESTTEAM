@@ -15,7 +15,7 @@ import vo.CartBean;
 import vo.ItemBean;
 import vo.UserBean;
 
-public class BuyFormAction implements Action {
+public class CheckoutAction implements Action {
 
 	/*  buy.sh  ->  checkout.jsp 로 이동
 	 1. cart_count 받아 checkout.jsp 페이지에 구매수량 띄우기

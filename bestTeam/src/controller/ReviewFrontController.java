@@ -17,7 +17,7 @@ import action.BlogModifyFormAction;
 import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import action.ReviewProAction;
-import action.reviewWriteProAction;
+import action.ReviewWriteProAction;
 import vo.ActionForward;
 
 @WebServlet("*.re") // => URL 요청에 마지막이 *.bo 로 끝나는 요청을 매핑하는 서블릿 지정(web.xml 설정 대신 사용)
@@ -71,7 +71,7 @@ public class ReviewFrontController extends HttpServlet {
 			forward.setPath("./shop/reviewWriteForm.jsp");
 			
 		}else if(command.equals("/reviewWritePro.re")) {
-			action = new reviewWriteProAction();
+			action = new ReviewWriteProAction();
 			
 			try {
 				forward = action.execute(request, response);
