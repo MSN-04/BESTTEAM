@@ -13,11 +13,13 @@ public class BuyBean {
 	private String shipnum;
 	private String post;
 	private String buy_name;  // 가입시 저장한 이름 말고 다른 이름으로 주문할 경우
+	private int buy_total;
 	
+
 	public BuyBean() {};
 	
 	public BuyBean(int buy_num, String buy_user_id, String buy_address, String buy_phone, String buy_phone2,
-			Date buy_orderdate, Date buy_paydate, String shipnum, String post) {
+			Date buy_orderdate, Date buy_paydate, String shipnum, String post, int total) {
 		this.buy_num = buy_num;
 		this.buy_user_id = buy_user_id;
 		this.buy_address = buy_address;
@@ -27,8 +29,17 @@ public class BuyBean {
 		this.buy_paydate = buy_paydate;
 		this.shipnum = shipnum;
 		this.post = post;
+		this.buy_total = total;
 	}
 
+	public int getBuy_total() {
+		return buy_total;
+	}
+	
+	public void setBuy_total(int buy_total) {
+		this.buy_total = buy_total;
+	}
+	
 	public int getBuy_num() {
 		return buy_num;
 	}

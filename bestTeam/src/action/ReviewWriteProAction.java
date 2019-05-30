@@ -21,7 +21,7 @@ import vo.ActionForward;
 import vo.ReviewBean;
 
 // XXXAction 클래스는 Action 인터페이스를 상속받아 추상메서드로 공통 메서드인 execute() 메서드를 구현한다
-public class reviewWriteProAction implements Action {
+public class ReviewWriteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
