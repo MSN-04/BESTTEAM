@@ -309,7 +309,7 @@
 <!-- 						<div class="col-md-12 nav-link-wrap mb-5"> -->
 <!-- 							<a href="itemRegister.em" style="padding: 0.3em 0.5em; border-radius: 5px; border: 1px solid; font-weight: bold; color: #c49b63; font-size: 20px;">상품 등록</a> -->
 <!-- 						</div> -->
-						
+						 
 						<div class="col-md-12 d-flex align-items-center">
 
 							<div class="tab-content ftco-animate" id="v-pills-tabContent" style="width: 100%;">
