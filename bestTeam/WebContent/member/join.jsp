@@ -172,7 +172,6 @@
      lastKeyword = '';
      document.getElementById('checkMsg').style.color = "#ff4d4d";
 
-세웅 문, [30.05.19 16:36]
 document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
     } else if (keyword != lastKeyword) {
      lastKeyword = keyword;
