@@ -29,7 +29,7 @@ public class CheckoutProAction implements Action {
 		}
 		System.out.println("세션id : " + id);
 		
-		
+		 
 		forward = new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath("confirmCheckout.sh");

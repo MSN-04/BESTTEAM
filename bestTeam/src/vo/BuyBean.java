@@ -15,7 +15,7 @@ public class BuyBean {
 	private String buy_name;  // 가입시 저장한 이름 말고 다른 이름으로 주문할 경우
 	private int buy_total;
 	
-
+ 
 	public BuyBean() {};
 	
 	public BuyBean(int buy_num, String buy_user_id, String buy_address, String buy_phone, String buy_phone2,
