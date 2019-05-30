@@ -92,7 +92,6 @@
  var loopSendKeyword = false;
  var reg = /^[a-zA-Z0-9]{8,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
  
-    
  
  //아이디,패스워드 검사
  function validate() {
