@@ -11,7 +11,7 @@ import vo.ItemBean;
 import vo.PageInfo;
 
 public class ShopMainAction implements Action {
-
+ 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
