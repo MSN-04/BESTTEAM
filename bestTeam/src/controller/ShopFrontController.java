@@ -71,9 +71,9 @@ public class ShopFrontController extends HttpServlet{
 			forward.setPath("./shop/confirm_checkoutList.jsp");
 
 		} 
-		else if(command.equals("/confirmCheckoutProList.sh")) {
-			System.out.println(" itemFrontController -->confirmCheckoutListPro.sh--");
-				action = new ConfirmCheckoutListPro();
+		else if(command.equals("/confirmCheckoutListProAction.sh")) {
+			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
+				action = new ConfirmCheckoutListProAction();
 			
 			try {
 				forward = action.execute(request, response);
