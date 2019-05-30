@@ -95,7 +95,12 @@
                   <div><a href="#"><%=articleList.get(i).getBlog_writer()%></a></div>
                   <div><a href="#"><%=articleList.get(i).getBlog_date() %></a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+<<<<<<< HEAD
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div><br>
+                  <div><a href="#"><%=articleList.get(i).getBlog_content() %></a></div>
+=======
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
                 </div>
                 
               </div>

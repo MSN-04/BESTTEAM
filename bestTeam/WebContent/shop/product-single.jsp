@@ -589,6 +589,7 @@ $( '#rere1' ).click(
 								</ul>
 								
 								
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 							</div>
 						</div>
 					</div>
