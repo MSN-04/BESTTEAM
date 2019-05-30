@@ -41,6 +41,11 @@ public class MyPageProService {
 		return favorBean;
 	}
 
+	public UserBean getUserInfo(UserBean userBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
