@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import svc.MyPageProService;
 import svc.QnaWriteProService;
 import vo.ActionForward;
 import vo.QnaBean;
+import vo.UserBean;
 
 public class QnaWriteProAction implements Action {
 
@@ -41,9 +43,12 @@ public class QnaWriteProAction implements Action {
 		qnaBean.setQna_content(request.getParameter("qna_content"));
 //		QnaBean.setQna_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 		
-		// 실제 비즈니스 로직 처리를 담당할 Service 클래스(XXXAction => XXXService) 인스턴스를 생성하여
-		// 처리 담당 메서드를 호출(매개변수로 qnaBean 객체 전달)
 		QnaWriteProService qnaWriteProService = new QnaWriteProService();
+		UserBean userBean = new UserBean();
+		MyPageProService mypageProService = new MyPageProService();
+		userBean = (UserBean) mypageProService.getUserInfo(userBean);
+		
+		
 		boolean isWriteSuccess = qnaWriteProService.registArticle(qnaBean);
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())

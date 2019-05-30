@@ -8,6 +8,7 @@ public class BuyItemBean {
 	private int item_count;
 	private String item_img;
 
+	public BuyItemBean() {};
 	
 	public BuyItemBean(int item_num, int item_buy_num, String item_name, int item_price, int item_count,
 			String item_img) {

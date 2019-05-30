@@ -16,6 +16,7 @@ import action.ItemModifyFormAction;
 import action.ItemModifyProAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
+import action.confirm_checkoutProAction;
 import action.shopMainAction;
 import vo.ActionForward;
 
@@ -129,6 +130,33 @@ public class ItemFrontController extends HttpServlet {
 			forward.setPath("./shop/product-delete.jsp");
 			
 		}
+		//------------------------- confirm_checkout by yb --------------------
+		else if(command.equals("/confirm_checkoutList.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkoutList.jsp");
+
+		}else if(command.equals("/confirm_checkoutPro.sh")) {
+			 System.out.println("itemFrontController --> confirm_checkoutPro.sh");
+		      
+		      action = (Action) new confirm_checkoutProAction();
+		      
+		      try {
+		        forward = action.execute(request, response);
+		      } catch (Exception e) {
+		        System.out.println("controller-confirm_checkoutPro 실패"+ e.getMessage());
+		        System.out.println("controller- 에러:"+e);
+		        
+		      }
+			
+		}else if(command.equals("/confirm_checkout.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkout.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkout.jsp");
+		}
+		
+		//-----------------------------------------------------------------------
+		
 
 		
 		

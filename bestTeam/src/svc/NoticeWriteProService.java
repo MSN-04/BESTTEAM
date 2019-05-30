@@ -23,7 +23,6 @@ public class NoticeWriteProService {
 		// 작업 수행 성공 여부를 리턴할 boolean 타입 변수 선언
 		boolean isWriteSuccess = false;
 		
-		// DB 작업 전 DB 접속을 위해 JdbcUtil 클래스의 static 메서드 getConnection() 를 호출하여 DB 접속
 		Connection con = getConnection();
 		
 		// 싱글톤 디자인 패턴으로 생성된 noticeDAO 인스턴스를 얻어오기

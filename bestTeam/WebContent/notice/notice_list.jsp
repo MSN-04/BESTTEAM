@@ -72,12 +72,12 @@
     <div class="container">
     <div class="row d-flex">
     <div class="blog-entry align-self-stretch">
+    <table class="table thead-light">
+    <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
    		 <%
 			if(articleList != null && listCount > 0) {
 				for(int i = 0; i < articleList.size(); i++) {
 			%>
-    <table class="table thead-light">
-    <tr><th>번호</th><th>제목</th><th>날짜</th><th>글쓴이</th><th>조회수</th></tr>
     <tr><td><%=articleList.get(i).getNotice_num() %></td>
     <td>
     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
@@ -87,19 +87,10 @@
     <td><%=articleList.get(i).getNotice_date() %></td>
     <td>Tinkervell</td>
     <td><%=articleList.get(i).getNotice_readcount() %></td></tr>
-<%--     <tr><td><%=articleList.get(i).getNotice_num() %></td> --%>
-<!--     <td> -->
-<%--     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>"> --%>
-<%--     <%=articleList.get(i).getNotice_subject() %> --%>
-<!--     </a> -->
-<!--     </td> -->
-<%--     <td><%=articleList.get(i).getNotice_date() %></td> --%>
-<!--     <td>Tinkervell</td> -->
-<%--     <td><%=articleList.get(i).getNotice_readcount() %></td></tr> --%>
-    </table>
     <% }
 				}
     %>
+    </table>
     
     <div class="row mt-5"> 
           <div class="col text-center">
