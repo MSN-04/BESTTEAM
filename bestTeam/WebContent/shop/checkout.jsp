@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<% %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +72,7 @@
   
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-	int cart_count = (int) request.getAttribute("cart_count"); 
+// 	int cart_count = (int) request.getAttribute("cart_count"); 
 %>
   
     
@@ -112,7 +114,6 @@
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
-<!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
 		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
@@ -220,15 +221,17 @@
 		<br><br>
 		
 
+<!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-		<form action="#" class="billing-form ftco-bg-dark p-3 p-md-5">
+		<form action="checkoutPro.sh">
+		<div class="billing-form ftco-bg-dark p-3 p-md-5">
 			<h3 class="mb-4 billing-heading">주문자 정보</h3>
 	          	<div class="row align-items-end" >
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">주문하시는 분 *</label>
-	                  <input type="text" class="form-control" placeholder="성함" required="required">
+	                  <input type="text" class="form-control" id="name" placeholder="성함" required="required">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
@@ -237,28 +240,7 @@
 	                  
 	                </div>
                 </div>	   
-                
-
-<!--                 나라선택       -->
-<!--                 <div class="w-100"></div> -->
-<!-- 		            <div class="col-md-12"> -->
-<!-- 		            	<div class="form-group"> -->
-<!-- 		            		<label for="country">State / Country</label> -->
-<!-- 		            		<div class="select-wrap"> -->
-<!-- 		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div> -->
-<!-- 		                  <select name="" id="" class="form-control"> -->
-<!-- 		                  	<option value="">France</option> -->
-<!-- 		                    <option value="">Italy</option> -->
-<!-- 		                    <option value="">Philippines</option> -->
-<!-- 		                    <option value="">South Korea</option> -->
-<!-- 		                    <option value="">Hongkong</option> -->
-<!-- 		                    <option value="">Japan</option> -->
-<!-- 		                  </select> -->
-<!-- 		                </div> -->
-<!-- 		            	</div> -->
-<!-- 		            </div> -->
-
-		        
+               
 		            
 		            
 	            <div class="w-100"></div>
@@ -266,14 +248,14 @@
 	            <div class="col-md-6">
                 	<div class="form-group">
                 		<label for="phone">연락처 1 *</label>
-                  		<input type="text" class="form-control" placeholder="연락처" required="required">
+                  		<input type="text" class="form-control" id="phone" placeholder="연락처" required="required">
                 	</div>
               	</div>
               
               	<div class="col-md-6">
               		<div class="form-group">
                 		<label for="emailaddress">연락처 2</label>
-                  		<input type="text" class="form-control" placeholder="(선택사항)">
+                  		<input type="text" class="form-control" id="phone2" placeholder="(선택사항)">
                 	</div>
                	</div>
                	
@@ -398,7 +380,7 @@
                 <div class="col-md-12">
           		<div class="form-group">
                 		<label for="emailaddress">Email</label>
-                  		<input type="text" class="form-control" placeholder="Email을 입력해주세요">
+                  		<input type="text" class="form-control" id="Email" placeholder="Email을 입력해주세요">
                 	</div>
                 </div>
                 
@@ -413,7 +395,7 @@
                 </div>
 	          
 	          </div>
-	          </form><!-- END -->
+	          </div><!-- END -->
 
 
 
@@ -456,101 +438,127 @@
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="radio">
-								   <label><input type="radio" name="optradio" class="mr-2"> <span>카드 결제</span></label>
+								   <label><input type="radio" name="ckoutRadio" value="카드 결제" class="mr-2"> <span>카드 결제</span></label>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="radio">
-								   <label><input type="radio" name="optradio" class="mr-2"> <span>휴대폰 결제</span></label>
+								   <label><input type="radio" name="ckoutRadio" value="휴대폰 결제" class="mr-2"> <span>휴대폰 결제</span></label>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="radio">
-								   <label><input type="radio" name="optradio" class="mr-2"> <span>무통장 입금</span></label>
+								   <label><input type="radio" name="ckoutRadio" value="실시간 계좌이체" class="mr-2"> <span>실시간 계좌이체</span></label>
 								</div>
 							</div>
 						</div>
 						
 						<hr>
+						
 									
 						<div class="form-group">
 							<div class="col-md-12">
 								<div class="checkbox">
-								   <label><input type="checkbox" value="" class="mr-2"> 결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
+								   <label><input type="checkbox" name="checkBuy" class="mr-2"> 결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 								</div>
 							</div>
 						</div>
 						<p style="text-align: right;" onclick="checkout()"><a class="btn btn-best py-3 px-4">결제하기</a></p>
 						
+						
 						<script type="text/javascript">
+						
 							function checkout() {
 								
-								var a = confirm("결제하시겠습니까?");    // confirm의 결과 값(true or false)를 a에 저장
+								// 1. 구매동의 체크 여부 확인
+								if(! $("input:checkbox[name='checkBuy']").is(":checked")) {
+									var check = confirm("구매진행에 동의해주세요");
+									
+								} else {
+
 								
-								if(a){
+								    // 2. 결제방법에 체크한 라디오의 value 값 가져오기 
+									var ckRadio = $('input:radio[name="ckoutRadio"]:checked').val();
+
+								    var payMethod;
+								    
+								    if(ckRadio == null) {
+								    	var select = confirm("결제방법을 선택해주세요"); 
+								    	return;
+									} else if(ckRadio == '카드 결제') {
+										payMethod = 'card';
+									} else if(ckRadio == '휴대폰 결제') {
+										payMethod = 'phone';
+									} else if(ckRadio == '실시간 계좌이체') {
+										payMethod = 'trans';
+									}
 									
-									// 결제 API 연동 2
-									var IMP = window.IMP; // 생략해도 괜찮습니다.
-									IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
+									var a = confirm("결제하시겠습니까?");    // confirm의 결과 값(true or false)를 a에 저장
 									
-									// 결제 API 연동 3
-									// IMP.request_pay(param, callback) 호출
-									// IMP.request_pay(param, callback)을 호출하면 PC 환경에서는 지정한 pg사의 결제모듈 창이 나타남 
-									IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
-									    pg: "html5_inicis",		// 결제방식
-									    pay_method: "card",		// 결제수단
-									    merchant_uid: "20190430-A02",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
-									    name: "원두",	// 주문명
-									    amount: 100,	// 결제 금액
-									    buyer_email: "gildong@gmail.com",	// 구매자 email
-									    buyer_name: "홍길동",	// 구매자 이름
-									    buyer_tel: "010-1111-2222",	// 구매자 전화번호
-									    buyer_addr: "부산 부산진구 동천로 109 삼한골든게이트 7층",	// 구매자 주소
-									    buyer_postcode: "47246"	// 구매자 우편번호
-									/*
-									    * 주문번호(merchant_uid) 생성하기 
-										IMP.request_pay를 호출하기 전에 여러분의 서버에 주문 정보를 전달(데이터베이스에 주문정보 INSERT)하고 
-										서버가 생성한 주문 번호를 param의 merchant_uid속성에 지정하기를 권장드립니다. 
-										결제 완료 후 결제 위변조 여부를 검증하는 단계에서 신뢰도있는 검증을 위해 
-										여러분의 서버에서 주문정보를 조회해야 하기 때문입니다.
-									*/
-									}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
-										    if (rsp.success) { 
-										    	// 결제 성공 시
-										    	alert("결제 성공");
-										    	// jQuery로 HTTP 요청
-										        jQuery.ajax({
-										            url: " http://kbinsurebs.co.kr/bestTeam", // 가맹점 서버
-										            method: "POST",
-										            headers: { "Content-Type": "application/json" },
-										            data: {
-										                imp_uid: rsp.imp_uid,  // * imp_uid : 거래 고유 번호
-										                merchant_uid: rsp.merchant_uid
-										            }
-										        }).done(function (data) {
-										        	location.href="confirm_checkout.jsp";
-										       	})
-										    } else { 
-										    	// 결제 실패 시
-										    	alert("결제 실패 : " +  rsp.error_msg);
-										    	history.back();
-									    }
-									/*
-										*
-										가맹점 서버에 imp_uid(거래 고유 번호)를 전달하면 아임포트 서버에서 imp_uid로 결제 정보를 조회할 수 있습니다.
-										또, 가맹점에서 관리하는 주문번호인 merchant_uid로 가맹점의 데이터베이스에서 주문 정보를 조회합니다.
-										조회한 정보들을 통해 결제 위변조 여부를 검증하고, 서비스의 데이터베이스에 저장할 수 있습니다.
-									*/
-									});
-									
-// 									IMP.request_pay();
-									
-								}else{
-									history.back();
+									// 3. 결제 API 진행
+									if(a){
+										
+										// 결제 API 연동 2
+										var IMP = window.IMP; // 생략해도 괜찮습니다.
+										IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
+										
+										// 결제 API 연동 3
+										// IMP.request_pay(param, callback) 호출
+										// IMP.request_pay(param, callback)을 호출하면 PC 환경에서는 지정한 pg사의 결제모듈 창이 나타남 
+										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
+										    pg: "html5_inicis",		// 결제방식
+										    pay_method: payMethod,		// 결제수단
+										    merchant_uid: "20190430-A02",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
+										    name: "원두",	// 주문명
+										    amount: 1500,	// 결제 금액
+										    buyer_email: "gildong@gmail.com",	// 구매자 email
+										    buyer_name: "홍길동",	// 구매자 이름
+										    buyer_tel: "010-1111-2222",	// 구매자 전화번호
+										    buyer_addr: "부산 부산진구 동천로 109 삼한골든게이트 7층",	// 구매자 주소
+										    buyer_postcode: "47246"	// 구매자 우편번호
+										/*
+										    * 주문번호(merchant_uid) 생성하기 
+											IMP.request_pay를 호출하기 전에 여러분의 서버에 주문 정보를 전달(데이터베이스에 주문정보 INSERT)하고 
+											서버가 생성한 주문 번호를 param의 merchant_uid속성에 지정하기를 권장드립니다. 
+											결제 완료 후 결제 위변조 여부를 검증하는 단계에서 신뢰도있는 검증을 위해 
+											여러분의 서버에서 주문정보를 조회해야 하기 때문입니다.
+										*/
+										}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
+											    if (rsp.success) { 
+	// 										    	// 결제 성공 시
+	// 										    	alert("결제 성공");
+											    	// jQuery로 HTTP 요청
+											        jQuery.ajax({
+											            url: " http://kbinsurebs.co.kr/bestTeam", // 가맹점 서버
+											            method: "POST",
+											            headers: { "Content-Type": "application/json" },
+											            data: {
+											                imp_uid: rsp.imp_uid,  // * imp_uid : 거래 고유 번호
+											                merchant_uid: rsp.merchant_uid
+											            }
+											            
+											        }).done(function (data) {
+											        	location.href="confirm_checkout.jsp";
+											       	})
+											    } else { 
+											    	// 결제 실패 시
+											    	alert("결제 실패 : " +  rsp.error_msg);
+											    	history.back();
+										    }
+										/*
+											*
+											가맹점 서버에 imp_uid(거래 고유 번호)를 전달하면 아임포트 서버에서 imp_uid로 결제 정보를 조회할 수 있습니다.
+											또, 가맹점에서 관리하는 주문번호인 merchant_uid로 가맹점의 데이터베이스에서 주문 정보를 조회합니다.
+											조회한 정보들을 통해 결제 위변조 여부를 검증하고, 서비스의 데이터베이스에 저장할 수 있습니다.
+										*/
+										});
+									}else{
+										history.back();
+									}
 								}
 							}
 						</script>
@@ -560,7 +568,7 @@
 	          	
 	          </div>
           </div> <!-- .col-md-8 -->
-
+		</form>
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
