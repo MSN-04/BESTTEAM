@@ -4,8 +4,8 @@ import java.sql.Connection;
 
 import com.sun.xml.internal.ws.encoding.RootOnlyCodec;
 
+import dao.BuyDAO;
 import vo.BuyBean;
-import vo.BuyDAO;
 
 import static db.JdbcUtil.*;
 
