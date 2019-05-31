@@ -1,6 +1,6 @@
+<%@page import="vo.BuyItemBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="vo.BuyBean"%>
-<%@page import="vo.BuyItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
