@@ -78,7 +78,7 @@
 			if(articleList != null && listCount > 0) {
 				for(int i = 0; i < articleList.size(); i++) {
 			%>
-    <tr><td><%=articleList.get(i).getNotice_num() %></td>
+    <tr><td align="center"><%=articleList.get(i).getNotice_num() %></td>
     <td>
     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
     <%=articleList.get(i).getNotice_subject() %>

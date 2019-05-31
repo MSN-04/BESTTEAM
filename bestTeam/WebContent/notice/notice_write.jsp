@@ -83,7 +83,7 @@
 	 
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
+		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
 	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
 	
@@ -150,7 +150,7 @@
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
 							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
 						</td>
 					</tr>
 				</table>

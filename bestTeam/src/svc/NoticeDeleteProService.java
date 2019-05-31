@@ -7,25 +7,7 @@ import java.sql.Connection;
 import dao.NoticeDAO;
 
 public class NoticeDeleteProService {
-	// 게시물 작성자 일치 여부 확인을 위해 게시물 번호와 패스워드를 전달받아 확인 작업 수행
-//	public boolean isArticleWriter(int notice_num, String pass) throws Exception {
-//		System.out.println("noticeDeleteProService - isArticleWriter()");
-//		boolean isArticleWriter = false;
-//		
-//		// Connection 객체 가져오기
-//		Connection con = getConnection();
-//		
-//		// noticeDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
-//		noticeDAO noticeDAO = noticeDAO.getInstance();
-//		noticeDAO.setConnection(con);
-//
-//		isArticleWriter = noticeDAO.isArticlenoticeWriter(notice_num, pass); // 본인 확인(패스워드 일치여부 판별)
-//		
-//		close(con);
-//		
-//		return isArticleWriter;
-//	}
-   
+	
 	// 게시물 번호에 해당하는 글 삭제 작업 수행
 	public boolean removeArticle(int notice_num) {
 		boolean isRemoveSuccess = false;
@@ -48,7 +30,6 @@ public class NoticeDeleteProService {
 			rollback(con);
 		}
 		
-		// Connection 반환
 		close(con);
 		
 		return isRemoveSuccess;

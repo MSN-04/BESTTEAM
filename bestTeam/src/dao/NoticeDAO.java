@@ -78,7 +78,6 @@ public class NoticeDAO {
 	// 글 목록 갯수 구하기
 	public int selectListCount() {
 		System.out.println("selectListCount()");
-
 		int listCount = 0;
 
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
