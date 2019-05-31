@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+	request.setCharacterEncoding("utf-8");
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
 	// request.getAttribute() 메서드로 가져오기
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
@@ -17,7 +18,6 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
 	//qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
@@ -28,10 +28,8 @@
 	String qnaWriter = qnabean.getQna_writer();
 	
 	
-
 	ArrayList<QnaBean> articleList2 = (ArrayList<QnaBean>) request.getAttribute("articleList2");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-
 	System.out.println("jsp에서 reviewList.size: " + reviewList.size());
 	int listCount2 = pageInfo.getListCount();
 	int nowPage2 = pageInfo.getPage();
@@ -87,17 +85,14 @@
 // $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
 showSlides(slideIndex);
-
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
-
 // Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
-
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
@@ -115,59 +110,52 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
-
 		
 </script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
+// qna 안  카테고리 버튼 작동 자바스크립트
  	$(document).ready(function(index) {
  		$('#ac1').show();
  		$('#ac2').hide();
  		$('#ac3').hide();
  	});
-
  	$(document).ready(function(index) {
  		$('#btn1_1').click(function() {
-
  			$('#ac1').show();
  			$('#ac2').hide();
  			$('#ac3').hide();
  			var offset = $('#btn1_1').offset();
-
  		});
  	});
-
  	$(document).ready(function(index) {
  		$('#btn2_1').click(function() {
  			$('#ac1').hide();
  			$('#ac2').show();
  			$('#ac3').hide();
  			var offset = $('#btn2_1').offset();
-
  		});
  	});
-
  	$(document).ready(function(index) {
  		$('#btn3_1').click(function() {
  			$('#ac1').hide();
  			$('#ac2').hide();
  			$('#ac3').show();
  			var offset = $('#btn3_1').offset();
-
  		});
  	});
 </script> 
+
 <script type="text/javascript">
+// 상세정보, 리뷰, qna 버튼 작동 자바스크립트
 	//  		$(document).ready(function(index){
 	//  			$('#btn1').click(function(){
 	//  				$('.ftco-section').show();
 	//  	 		    $('.ftco-section').focus();
 	//  	 		  $('.ftco=section').hide();
 	//  				});
-
 	//  			});
 	//  		});
-
 	$(document).ready(function(index) {
 		$('#btn1').css('color', '#212529');
 		$('#btn1').css('background-color', '#c29963');
@@ -184,9 +172,7 @@ function showSlides(n) {
 		$('#ft1').show();
 		$('#ft2').hide();
 		$('#ft3').hide();
-
 	});
-
 	$(document).ready(function(index) {
 		$('#btn1').click(function() {
 			$('#btn1').css('color', '#212529');
@@ -198,7 +184,6 @@ function showSlides(n) {
 			$('#btn3').css('color', '#c29963');
 			$('#btn3').css('background-color', '#101012');
 			$('#btn3').css('border-color', '#c29963');
-
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
@@ -206,10 +191,8 @@ function showSlides(n) {
 			$('body,html').animate({
 				scrollTop : offset.top
 			}, 300);
-
 		});
 	});
-
 	$(document).ready(function(index) {
 		$('#btn2').click(function() {
 			$('#btn2').css('color', '#212529');
@@ -230,7 +213,6 @@ function showSlides(n) {
 			}, 300);
 		});
 	});
-
 	$(document).ready(function(index) {
 		$('#btn3').click(function() {
 			$('#btn3').css('color', '#212529');
@@ -253,23 +235,18 @@ function showSlides(n) {
 	});
 	
 	$(document).ready(function(){
-
         var quantitiy=0;
            $('.quantity-right-plus').click(function(e){
                 
                 var quantity = parseInt($(this).siblings('.quantity').val());
-
                 if (quantity>=1) {
                 	quantity = quantity + 1;
                 	$(this).siblings('.quantity').val(quantity);
                 }
                 
             });
-
              $('.quantity-left-minus').click(function(e){
-
             	 var quantity = parseInt($(this).siblings('.quantity').val());
-
                  if (quantity>1) {
                  	quantity = quantity - 1;
                  	$(this).siblings('.quantity').val(quantity);
@@ -286,75 +263,36 @@ function showSlides(n) {
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script> 
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
 <script> 
-
 var j = $.noConflict(true); // $.noConflict(true) 를 사용해서 $ -> 변수로 선언한 j로 바꾸니 해결!
-
 j(document).ready(function(){ 
-
     var main = j('.bxslider').bxSlider({ 
-
     mode: 'fade', 
-
     auto: true,	//자동으로 슬라이드 
-
     controls : true,	//좌우 화살표	
-
     autoControls: true,	//stop,play 
-
     pager:true,	//페이징 
-
     pause: 3000, 
-
     autoDelay: 0,	
-
     slideWidth: 800, 
-
     speed: 300, 
-
     stopAutoOnclick:true 
-
 }); 
-
-
-
-
 j(".bx-stop").click(function(){	// 중지버튼 눌렀을때 
-
     main.stopAuto(); 
-
     j(".bx-stop").hide(); 
-
     j(".bx-start").show(); 
-
     return false; 
-
 }); 
-
-
-
-
 j(".bx-start").click(function(){	//시작버튼 눌렀을때 
-
     main.startAuto(); 
-
     j(".bx-start").hide(); 
-
     j(".bx-stop").show(); 
-
     return false; 
-
 }); 
-
-
-
-
 j(".bx-start").hide();	//onload시 시작버튼 숨김. 
-
 }); 
 $(document).ready(function(){
 	$("#rere").hide();
-
-
 $( '#rere1' ).click(
 	    function() {
 	        $( '#rere' ).toggle();
@@ -366,31 +304,24 @@ $( '#rere1' ).click(
 <!--  	font-size: 25px;  -->
 <!--  	font-color: gold;  -->
 <!--  }  -->
-
 <!--  .nav-link {  -->
 <!--  	backgound-color: #c49B63;  -->
 <!--  }  -->
-
 <!--  .nav-link active {  -->
 <!--  	backgound-color: #c49B63;  -->
 <!--  }  -->
-
 <!--  .ftco-menu {  -->
 <!--  	padding-top: 12em !important;  -->
 <!--  }  -->
-
 <!--  .pb-5, .py-5 {  -->
 <!--  	padding-bottom: 0 !important;  -->
 <!--  }  -->
-
 <!--  .mb-5, .my-5 {  -->
 <!--  	margin-bottom: 0 !important;  -->
 <!--  }  -->
-
 <!--  .table tbody tr td {  -->
 <!--  	text-align: left !important;  -->
 <!--  }  -->
-
 <!--  .div0525 {  -->
 <!--  	float: right !important;  -->
 <!--  }  -->
@@ -399,30 +330,24 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
-
 </head>
 <body>
-
 	<header>
 		<jsp:include page="/inc/header.jsp" />
 	</header>
-
 	<section class="home-slider owl-carousel">
-
 		<div class="slider-item"
 			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
-
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
 						</p>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -431,61 +356,44 @@ $( '#rere1' ).click(
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-
-
 <div class="container1">
 	<span id="sd"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 500px; height: 500px;"></span>
-
   <!-- Full-width images with number text -->
   <div class="mySlides">
     <div class="numbertext"></div>
       <img src="./images/tt.jpg"  id="sd">
   </div>
-
   <div class="mySlides">
     <div class="numbertext"></div>
       <img src="./images/tt3.jpg"  id="sd">
   </div>
-
   <div class="mySlides">
     <div class="numbertext"></div>
       <img src="./images/tt4.jpg"  id="sd">
   </div>
-
   <div class="mySlides">
     <div class="numbertext"></div>
       <img src="./images/tt5.jpg"  id="sd">
   </div>
-
   
-
   <!-- Next and previous buttons -->
 <!--   <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
 <!--   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-
   <!-- Image text -->
   <div class="caption-container">
     <p id="caption"></p>
   </div>
-
   <!-- Thumbnail images -->
   
 </div>
 				
-
-
-
-
-
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3><%=itemBean.getItem_name() %></h3>
-
 					<p class="price">
 						<span><%=itemBean.getItem_price() %> 원</span>
 					</p>
 					<p><%=itemBean.getItem_info() %></p>
 					<div class="col-md-12 mb-3">
-
 						<div class="tagcloud">
 							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_acidity() %></a>
 							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_aroma() %></a> 
@@ -493,10 +401,7 @@ $( '#rere1' ).click(
 							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_body() %></a>
 							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_sweetness() %></a>
 						</div>
-
-
 					</div>
-
 					<div class="row mt-4">
 						<div class="col-md-6">
 							<div class="form-group d-flex"></div>
@@ -557,21 +462,13 @@ $( '#rere1' ).click(
     
   </div>
 					
-
-
-
 				</div>
 			</div>
 		</div>
 	</section>
-
-<section class="ftco-menu mb-5 pb-5" >
-
-		
-						
+						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">
-
 								<a class="nav-link active"  data-toggle="pill"
 									href="#v-pills-0" role="tab" aria-controls="v-pills-0" id="btn1"
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
@@ -596,11 +493,10 @@ $( '#rere1' ).click(
 					
 								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
 							
-						</div>
+							</div>
 						
 						
 						</section>
-
 							
 	<section class="ftco-section" id="ft1">
 		<div class="row rows" >
@@ -610,12 +506,10 @@ $( '#rere1' ).click(
 						<tr>
 							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
-
 					</table>
 				</div>
 			</div>
 	</section>
-
 	<section class="ftco=section" id="ft2">
 		<div class="container">
 			<div class="row d-flex">
@@ -652,7 +546,6 @@ $( '#rere1' ).click(
 							
 						</tr>
 <%-- 						<tr><td id="rere" colspan="5"><%=reviewList.get(i).getReview_content() %></td></tr> --%>
-
 						
                <%}
  				}%>	 
@@ -679,98 +572,51 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
-
 				
-
+<!-- QNA -->
 	<section class="ftco=section" id="ft3">
 		<div class="container">
 			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
-
-					    <p class="breadcrumbs"> 
-										<span class="mr-2"><a href="faq.jsp"><b>배송 관련</b> </a></span>| <span><a 
-												href="faq2.jsp"> 결제 관련 </a></span>|<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-					 					</p>
-					<section class="ftco-menu mb-5 pb-5">
-						<div class="nav ftco-animate nav-pills justify-content-left"
-							id="v-pills-tab" role="tablist" aria-orientation="vertical"
-							style="margin-top: -100px;">
-
-							<a class="nav-link active" data-toggle="pill" href="#v-pills-0" role="tab" aria-controls="v-pills-0" id="btn1_1" aria-selected="true" style="width: 200px; text-align: center;">배송관련</a>
-							<a class="nav-link" data-toggle="pill" href="#v-pills-1" id="btn2_1" role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">결제/환불관련</a> 
-							<a class="nav-link" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" id="btn3_1" aria-selected="false" style="width: 200px; text-align: center;">교환/반품관련</a>
-
-						</div>
-					</section>
-
-
+				<div class="blog-entry align-self-stretch" style="margin: auto;">
+					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
+							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
+							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
+							<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>">qna 작성</a>
+					 	</p>
 					<section class="ftco=section" id="ac1">
-						<%
-							request.setCharacterEncoding("utf-8");
-						%>
 						<div class="container">
 							<table class="table thead-light" id="ac1">
-							<tr>
-								<td><a data-toggle="collapse"
-										href="#collapse1">번호</a></td>
-									<td><a data-toggle="collapse"
-										href="#collapse1">제목 </a>
-										<div id="collapse1" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<br> <b>A</b> &nbsp;&nbsp;
-												<%-- 												<%=articleList.get(i).getQna_content()%> --%>
-												<section class="ftco=section" id="ac1">
-													<div class="container">
-														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;">수정</a> <a
-																href="QnaDeletePro.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;"
-																onclick="delconfirm('<%=qnaNum%>')">삭제</a>
-														</div>
-													</div>
-												</section>
-											</div></td>
-											<td><a data-toggle="collapse" 
-										href="#collapse1">작성자</a></td>
-											<td><a data-toggle="collapse"
-										href="#collapse1">작성일</a></td>
-								</tr>
-								<%
-									if (articleList2 != null && listCount2 > 0) {
-										for (int i = 0; i < articleList2.size(); i++) {
-											// articleList.size() ?
-								%>
-								
 								<tr>
-								<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=articleList2.get(i).getQna_num() %></a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=articleList2.get(i).getQna_subject() %> </a>
-										<div id="collapse1" class="panel-collapse collapse in">
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									<%
+										if (articleList2 != null && listCount2 > 0) {
+											for (int i = 0; i < articleList2.size(); i++) {
+									%>
+									
+								<tr>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=articleList2.size() - i %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=articleList2.get(i).getQna_subject() %> </a>
+										<div id="collapse<%=i %>" class="panel-collapse collapse in">
 											<div class="panel-body">
-												<br> <b>A</b> &nbsp;&nbsp;
-												<%-- 												<%=articleList.get(i).getQna_content()%> --%>
+												<br> <b><%=articleList2.get(i).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=articleList2.get(i).getQna_num() %>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;">수정</a> <a
-																href="QnaDeletePro.qna?qna_num=<%=articleList2.get(i).getQna_num() %>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;"
-																onclick="delconfirm('<%=articleList2.get(i).getQna_num() %>')">삭제</a>
+															<a href="QnaModifyForm.qna?qna_num=<%=articleList2.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="QnaDeletePro.qna?qna_num=<%=articleList2.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=articleList2.get(i).getQna_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
-											</div></td>
-											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=articleList2.get(i).getQna_writer() %></a></td>
-											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=articleList2.get(i).getQna_date() %></a></td>
+											</div>
+										</div>
+									</td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=articleList2.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=articleList2.get(i).getQna_date() %></a></td>
 								</tr>
 								<%
 									}
@@ -779,56 +625,11 @@ $( '#rere1' ).click(
 							</table>
 						</div>
 					</section>
-<!-- 					<br> -->
-<!-- 					<br> -->
-<!-- 					<table class="table thead-light"> -->
-<!-- 					<tr>Q & A</tr> -->
-<!-- 						<tr> -->
-<!-- 							<th>번호</th> -->
-<!-- 							<th>제목</th> -->
-<!-- 							<th>날짜</th> -->
-<!-- 							<th>글쓴이</th> -->
-<!-- 							<th>조회수</th> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>2</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>3</td> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>1</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>21</td> -->
-<!-- 						</tr> -->
-
-<!-- 					</table> -->
-<!-- 					<div class="row mt-5"> -->
-<!-- 						<div class="col text-center"> -->
-<!-- 							<div class="block-27"> -->
-<!-- 								<ul> -->
-<!-- 									<li><a href="#">&lt;</a></li> -->
-<!-- 									<li class="active"><span>1</span></li> -->
-<!-- 									<li><a href="#">2</a></li> -->
-<!-- 									<li><a href="#">3</a></li> -->
-<!-- 									<li><a href="#">4</a></li> -->
-<!-- 									<li><a href="#">5</a></li> -->
-<!-- 									<li><a href="#">&gt;</a></li> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 				</div>
 			</div>
 		</div>
-
 	</section>
-
-<!-- 	<section class="ftco-section ftco-services" > -->
-<section >
+<section>
 		<div class="container" >
 			<div class="row" >
 				<div class="col-md-4" style="margin-top: 30px; width: 80%;">
@@ -870,13 +671,9 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
-
 	<footer class="ftco-footer ftco-section img">
 		<jsp:include page="/inc/footer.jsp" />
 	</footer>
-
-
-
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
@@ -885,8 +682,6 @@ $( '#rere1' ).click(
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
-
-
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="./js/popper.min.js"></script>
@@ -901,14 +696,9 @@ $( '#rere1' ).click(
 	<script src="./js/bootstrap-datepicker.js"></script>
 	<script src="./js/jquery.timepicker.min.js"></script>
 	<script src="./js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/jquery.bxslider.min.js"></script>
-
-
-
-
 </body>
 </html>

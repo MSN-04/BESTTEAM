@@ -107,7 +107,6 @@ public class NoticeFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(command.equals("/noticeModifyPro.no")) {
-			// 수정글 저장하기 - noticeModifyProAction 클래스로 이동
 			action = new NoticeModifyProAction();
 			try {
 				forward = action.execute(request, response);

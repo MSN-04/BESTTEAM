@@ -135,7 +135,7 @@ String id=(String)session.getAttribute("id");
 	</section>
 	
 	
-<jsp:include page="../inc/footer.jsp"></jsp:include>
+<jsp:include page="/inc/footer.jsp"></jsp:include>
 
 
 	<!-- loader -->
