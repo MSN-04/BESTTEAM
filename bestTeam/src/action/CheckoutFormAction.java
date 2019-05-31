@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import svc.CheckoutService;
+import svc.CheckoutFormService;
 import vo.ActionForward;
 import vo.BuyItemBean;
 import vo.CartBean;
@@ -15,7 +15,7 @@ public class CheckoutFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("CheckoutAction 시작");
+		System.out.println("CheckoutFormAction 시작");
 		
 		// 0.
 		ActionForward forward = new ActionForward();
@@ -23,8 +23,8 @@ public class CheckoutFormAction implements Action {
 		// 1. user의 장바구니 상품 목록 - DAO에서 받아오기
 		String id = (String) request.getAttribute("id");
 		
-		CheckoutService checkoutService = new CheckoutService();
-		ArrayList<BuyItemBean> cartItems = checkoutService.getCartItems(id);
+		CheckoutFormService checkoutFormService = new CheckoutFormService();
+		ArrayList<BuyItemBean> cartItems = checkoutFormService.getCartItems(id);
 		
 		// 2.
 		request.setAttribute("cartItems", cartItems);
@@ -32,7 +32,7 @@ public class CheckoutFormAction implements Action {
 		// 3.
 		forward.setPath("/shop/checkout.jsp");
 		
-		System.out.println("CheckoutAction 끝");
+		System.out.println("CheckoutFormAction 끝");
 		
 		// 4.
 		return forward;
