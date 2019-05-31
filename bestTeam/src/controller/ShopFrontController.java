@@ -43,8 +43,8 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 미송
 		if(command.equals("/checkout.sh")) { // 구매진행 페이지 - 구매할 상품목록 / 배송정보 / 결제방법
-			System.out.println("checkout");
-			action = new CheckoutAction();
+			System.out.println("checkoutForm");
+			action = new CheckoutFormAction();
 			
 			try {
 				forward = action.execute(request, response);
