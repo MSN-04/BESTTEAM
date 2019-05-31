@@ -126,17 +126,27 @@ public class BuyDAO {
 	
 	public int insertBuyItem (ArrayList<BuyItemBean> itemList) {
 		int isinsertBuyItemSuccess = 0;
+		int num = 0;
 		try {
-			sql = "insert into buy_item(buy_item_num,buy_item_buy_num,buy_item_name,buy_item_price,buy_item_count,buy_item_img) values(?,?,?,?,?,?)";
+			sql = "select max(buy_item_num) from buy_item";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				num = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into buy_item(buy_item_buy_num,buy_item_name,buy_item_price,buy_item_count,buy_item_img,buy_item_item_num) values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			
 			for (int i = 0 ; i < itemList.size() ; i++) {
-				pstmt.setInt(1, itemList.get(i).getItem_num());
-				pstmt.setInt(2, itemList.get(i).getItem_buy_num());
-				pstmt.setString(3, itemList.get(i).getItem_name());
-				pstmt.setInt(4, itemList.get(i).getItem_price());
-				pstmt.setInt(5, itemList.get(i).getItem_count());
-				pstmt.setString(6, itemList.get(i).getItem_img());
+//				pstmt.setInt(1, num);
+				pstmt.setInt(1, itemList.get(i).getItem_buy_num());
+				pstmt.setString(2, itemList.get(i).getItem_name());
+				pstmt.setInt(3, itemList.get(i).getItem_price());
+				pstmt.setInt(4, itemList.get(i).getItem_count());
+				pstmt.setString(5, itemList.get(i).getItem_img());
+				pstmt.setInt(6, itemList.get(i).getItem_num());
 				if (pstmt.executeUpdate() > 0) {
 					isinsertBuyItemSuccess++;
 				}
@@ -146,7 +156,8 @@ public class BuyDAO {
 		} catch (SQLException e) {
 			System.out.println("insertBuyItem 실패! ( " + e.getMessage() + " )");
 		} finally {
-			
+			close(rs);
+			close(pstmt);
 		}
 		
 		return isinsertBuyItemSuccess;
