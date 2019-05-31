@@ -1,8 +1,12 @@
+<%@page import="vo.BuyItemBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<% %>
+<% 
+	ArrayList<BuyItemBean> cartItems = (ArrayList<BuyItemBean>) request.getAttribute("cartItems");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +76,7 @@
   
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-// 	int cart_count = (int) request.getAttribute("cart_count"); 
+	int cart_count = (int) request.getAttribute("cart_count"); 
 %>
   
     
@@ -131,87 +135,38 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                  </tr>
+                  </tr><!-- END TR-->
                 </thead>
                 <tbody>
 
+
+		<%
+			if(cartItems != null) {
+				for(int i=0; i<cartItems.size(); i++) {
+					
+					int totalPrice = cartItems.get(i).getItem_price() * cartItems.get(i).getItem_count();
+		%>
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">1</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
+                     <td class="product-num"><a href=""><%=i %></a></td>
+                    <td class="image-prod"><div class="img" style="background-image:<%=cartItems.get(i).getItem_img() %>;"></div></td>
                     
                     <td class="product-name">
-                      <h3>SWEETNESS<br>CoffeeBean</h3>
+                      <h3><%=cartItems.get(i).getItem_name() %></h3>
                     </td>
                     
-                    <td class="price">10,000원</td>
+                    <td class="price"><%=cartItems.get(i).getItem_price() %></td>
                     
-                    <td class="price">1개</td>
+                    <td class="price"><%=cartItems.get(i).getItem_count() %></td>
                     
-                    <td class="total">10,000원</td>
+                    <td class="total"><%=totalPrice %></td>
                   </tr><!-- END TR-->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">2</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>AROMA<br>CoffeeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
- 
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">3</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>ACIDITY<br>CoffeeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
-                  
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">4</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>BITTERNESS<br>CoffeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
-                  
-                  <tr class="text-center">
-                     <td class="product-num"><a href="#">5</a></td>
-                    
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>BODY / TEXTURE<br>CoffeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
+
+		<%			
+				}
+			}
+		%>
+
                 </tbody>
               </table>
             </div>
