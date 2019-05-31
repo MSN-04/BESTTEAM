@@ -17,7 +17,9 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
+	int pageSize = 5;
+	int pageBlock =3;
+	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
 	//qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
@@ -38,6 +40,7 @@
 	int maxPage2 = pageInfo.getMaxPage();
 	int startPage2 = pageInfo.getStartPage();
 	int endPage2 = pageInfo.getEndPage();
+	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 %>
 
 	
@@ -657,18 +660,37 @@ $( '#rere1' ).click(
                <%}
  				}%>	 
 					</table>
-					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+					<a href="#"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+							<% 
+							//실제 페이지수를 endPage로 변경
+							if(endPage2>pageCount2){
+								endPage2=pageCount2;
+							}
+							
+							if(startPage>pageCount){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage; i<=endPage;i++){ 
+								%>
+							
+									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									
+									<%} 
+									
+							if(endPage<pageCount2){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
+							<%
+							}
+							%>
 								</ul>
 								
 								
@@ -806,21 +828,38 @@ $( '#rere1' ).click(
 <!-- 						</tr> -->
 
 <!-- 					</table> -->
-<!-- 					<div class="row mt-5"> -->
-<!-- 						<div class="col text-center"> -->
-<!-- 							<div class="block-27"> -->
-<!-- 								<ul> -->
-<!-- 									<li><a href="#">&lt;</a></li> -->
-<!-- 									<li class="active"><span>1</span></li> -->
-<!-- 									<li><a href="#">2</a></li> -->
-<!-- 									<li><a href="#">3</a></li> -->
-<!-- 									<li><a href="#">4</a></li> -->
-<!-- 									<li><a href="#">5</a></li> -->
-<!-- 									<li><a href="#">&gt;</a></li> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+					<a href="#"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<ul>
+							<% 
+							//실제 페이지수를 endPage로 변경
+							if(endPage2>pageCount2){
+								endPage2=pageCount2;
+							}
+							
+							if(startPage2>pageCount2){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2-pageBlock %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage2; i<=endPage2;i++){ 
+								%>
+							
+									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									
+									<%} 
+									
+							if(endPage2<pageCount2){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2+pageSize %>'>&gt;</a></li>
+							<%
+							}
+							%>
+								</ul>
 				</div>
 			</div>
 		</div>
