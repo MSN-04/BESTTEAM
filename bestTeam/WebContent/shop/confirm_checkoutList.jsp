@@ -63,7 +63,7 @@
   
   <%
   BuyBean buyBean=new BuyBean();
-  BuyItemBean buyItemBean=new BuyItemBean(); 
+  BuyItemBean buyItemBean=new BuyItemBean();
   
   String user_id=request.getParameter("user_id");  //주문한 본인 아이디
   int buy_num= buyBean.getBuy_num();   //상품 주문번호
