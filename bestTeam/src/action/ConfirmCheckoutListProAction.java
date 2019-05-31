@@ -29,7 +29,7 @@ public class ConfirmCheckoutListProAction implements Action {
 		System.out.println("ConfirmCheckoutListProAction 시작");
 		ActionForward forward=null;
 		BuyBean buyBean=new BuyBean();
-		BuyItemBean buyItemBean=new BuyItemBean();
+//		BuyItemBean buyItemBean=new BuyItemBean();
 		UserBean userBean=new UserBean();
 		
 		

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.CheckoutAction;
 import action.CheckoutProAction;
+import action.ConfirmCheckoutListProAction;
 import action.ConfirmCheckoutProAction;
 import vo.ActionForward;
 
