@@ -48,6 +48,7 @@ public class NoticeListAction implements Action {
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
 		pageInfo.setListCount(listCount);
+		pageInfo.setLimit(limit);
 		
 		// PageInfo 객체와 ArrayList 객체를 request 객체의 setAttribute() 메서드를 사용하여 저장
 		request.setAttribute("pageInfo", pageInfo);

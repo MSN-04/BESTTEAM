@@ -6,7 +6,15 @@ public class PageInfo {
 	private int startPage;
 	private int endPage;
 	private int listCount;
+	private int limit;
 	
+	
+	public int getLimit() {
+		return limit;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
 	public int getPage() {
 		return page;
 	}
