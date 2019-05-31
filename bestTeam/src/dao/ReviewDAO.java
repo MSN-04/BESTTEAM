@@ -116,28 +116,30 @@ public class ReviewDAO {
 	
 	
 	// 글 목록 가져오기
-	public ArrayList<ReviewBean> selectArticleList(int page, int limit) {
+	public ArrayList<ReviewBean> selectArticleList(int page, int limit,int item_num) {
 //		System.out.println("selectArticleList()");
 		
 		ArrayList<ReviewBean> articleList = new ArrayList<ReviewBean>();
-		ReviewBean reviewBean = null;
+		ReviewBean reviewBean = new ReviewBean();
 		
 		
+//		String sql = "SELECT * FROM REVIEW ORDER BY review_item_num desc limit ? , ?";
+		String sql = "SELECT * FROM REVIEW WHERE review_item_num=? ORDER BY review_num DESC ";
 		
-		String sql = "SELECT * FROM REVIEW ORDER BY review_item_num desc limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, limit);
+			pstmt.setInt(1, item_num);
+//			pstmt.setInt(2, startRow);
+//			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				reviewBean = new ReviewBean();
-				
+				reviewBean.setReview_num(rs.getInt("review_num"));
 				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
 				reviewBean.setReview_user_id(rs.getString("review_user_id"));
 				reviewBean.setReview_content(rs.getString("review_content"));

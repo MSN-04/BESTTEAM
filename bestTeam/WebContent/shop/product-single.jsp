@@ -32,7 +32,7 @@
 	ArrayList<QnaBean> articleList2 = (ArrayList<QnaBean>) request.getAttribute("articleList2");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
 
-	System.out.println("jsp에서 article.size: " + articleList2.size());
+	System.out.println("jsp에서 reviewList.size: " + reviewList.size());
 	int listCount2 = pageInfo.getListCount();
 	int nowPage2 = pageInfo.getPage();
 	int maxPage2 = pageInfo.getMaxPage();
@@ -638,11 +638,12 @@ $( '#rere1' ).click(
 						</tr>
 						<%
 						for (int i = 0 ; i < reviewList.size() ; i++) {
+							System.out.println(reviewList.get(i).getReview_num());
+						
 						%>
 						<tr>
 							
- 							<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse"><%=reviewList.get(i).getReview_num()%></a><div id="collapse" class="panel-collapse collapse in">
+ 							<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse"><%=reviewList.size()-i %></a><div id="collapse" class="panel-collapse collapse in">
  							<div class="panel-body"><br><%=reviewList.get(i).getReview_content() %></div></div></td>
  							<td><%=reviewList.get(i).getReview_subject() %></td>
  							<td><%=reviewList.get(i).getReview_date() %></td> 
@@ -739,15 +740,15 @@ $( '#rere1' ).click(
 								</tr>
 								<%
 									if (articleList2 != null && listCount2 > 0) {
-										for (int i = 0; i < 3; i++) {
+										for (int i = 0; i < articleList2.size(); i++) {
 											// articleList.size() ?
 								%>
 								
 								<tr>
 								<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1">24</a></td>
+										href="#collapse1"><%=articleList2.get(i).getQna_num() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=qnaSubject %> </a>
+										href="#collapse1"><%=articleList2.get(i).getQna_subject() %> </a>
 										<div id="collapse1" class="panel-collapse collapse in">
 											<div class="panel-body">
 												<br> <b>A</b> &nbsp;&nbsp;
@@ -755,21 +756,21 @@ $( '#rere1' ).click(
 												<section class="ftco=section" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaNum%>"
+															<a href="QnaModifyForm.qna?qna_num=<%=articleList2.get(i).getQna_num() %>"
 																class="btn btn-primary btn-outline-primary"
 																style="float: right;">수정</a> <a
-																href="QnaDeletePro.qna?qna_num=<%=qnaNum%>"
+																href="QnaDeletePro.qna?qna_num=<%=articleList2.get(i).getQna_num() %>"
 																class="btn btn-primary btn-outline-primary"
 																style="float: right;"
-																onclick="delconfirm('<%=qnaNum%>')">삭제</a>
+																onclick="delconfirm('<%=articleList2.get(i).getQna_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
 											</div></td>
 											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=qnaWriter %></a></td>
+										href="#collapse1"><%=articleList2.get(i).getQna_writer() %></a></td>
 											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1">2019-05-31</a></td>
+										href="#collapse1"><%=articleList2.get(i).getQna_date() %></a></td>
 								</tr>
 								<%
 									}

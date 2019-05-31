@@ -10,7 +10,7 @@
 		if (message == true) {
 			location.href = "./QnaDeletePro.qna?num=" + num;
 		} else
-			alert("취소되었습니다");
+			alert("취소되었습니다");0
 		return false;
 	}
 </script>

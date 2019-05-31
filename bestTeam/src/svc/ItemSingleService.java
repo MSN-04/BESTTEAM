@@ -8,6 +8,8 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import org.apache.catalina.connector.Request;
+
 import dao.ItemDAO;
 import dao.ReviewDAO;
 
@@ -66,7 +68,7 @@ public class ItemSingleService {
 	}
 	
 	// 글 목록 조회 후 리턴
-	public ArrayList<ReviewBean> getArticleList(int page, int limit) throws Exception {
+	public ArrayList<ReviewBean> getArticleList(int page, int limit,int item_num) throws Exception {
 		System.out.println("ReviewBean - getArticleList()");
 		
 		ArrayList<ReviewBean> reviewList = null;
@@ -80,7 +82,8 @@ public class ItemSingleService {
 
 		// BoardDAO 클래스의 selectArticleList() 메서드를 호출하여 글 목록 가져와서 ArrayList 객체에 저장
 		// => 매개변수로 page, limit 전달
-		reviewList = reviewDAO.selectArticleList(page, limit);
+		
+		reviewList = reviewDAO.selectArticleList(page, limit, item_num);
 
 		// Connection 객체 반환
 		close(con);
