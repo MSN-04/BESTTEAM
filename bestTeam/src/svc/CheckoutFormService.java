@@ -19,11 +19,11 @@ public class CheckoutFormService {
 		System.out.println("CheckoutFormService - getCartItems() 시작");
 		
 		// 2. DAO 객체 호출, 커넥션 전달 - DB 연결
-		BuyDAO shopDAO = BuyDAO.getInstance();
+		BuyDAO buyDAO = BuyDAO.getInstance();
 		shopDAO.setConnection(con);
 		
 		// 3. 장바구니 아이템들 저장
-		ArrayList<BuyItemBean> cartItems = shopDAO.getCartItems(id);
+		ArrayList<BuyItemBean> cartItems = buyDAO.getCartItems(id);
 		
 		// 4. 커넥션 반환
 		close(con);
