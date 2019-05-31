@@ -18,7 +18,6 @@ public class BlogDetailService {
 //		System.out.println("BoardDetailService - getArticle()");
 		BlogBean blogBean = null;
 		
-		// Connection 객체 가져오기
 		Connection con = getConnection();
 		
 		// BoardDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달

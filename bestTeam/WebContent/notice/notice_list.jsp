@@ -14,6 +14,10 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
+	int limit = pageInfo.getLimit();
+	
+	int number = 0;
+	number = listCount-(nowPage-1)*(limit);
  %> 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +82,7 @@
 			if(articleList != null && listCount > 0) {
 				for(int i = 0; i < articleList.size(); i++) {
 			%>
-    <tr><td><%=articleList.get(i).getNotice_num() %></td>
+    <tr><td align="center"><%=number-- %></td>
     <td>
     <a href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num() %>&page=<%=nowPage %>">
     <%=articleList.get(i).getNotice_subject() %>
@@ -114,6 +118,7 @@
 				<% } else { %>
 				<li><a href="noticeList.no?page=<%=nowPage+1 %>">&gt;</a></li>
 				<%
+				
 				
 				}
 				%>

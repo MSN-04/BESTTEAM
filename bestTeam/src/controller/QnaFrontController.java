@@ -15,6 +15,7 @@ import action.QnaDetailAction;
 import action.QnaListAction;
 import action.QnaModifyFormAction;
 import action.QnaModifyProAction;
+import action.QnaWriteFormAction;
 import action.QnaWriteProAction;
 import vo.ActionForward;
 
@@ -57,8 +58,15 @@ public class QnaFrontController extends HttpServlet {
 		if(command.equals("/qnaWriteForm.qna")) {
 			// 글 쓰기 페이지 요청은 비즈니스 로직 없이 JSP 페이지(qna 디렉토리 내의 qna_qna_write.jsp 파일)로 바로 연결
 			// ActionForward 클래스의 인스턴스를 생성하여 path 변수에 해당 jsp 파일 위치 저장
-			forward = new ActionForward();
-			forward.setPath("./shop/qna_write2.jsp");
+			action = new QnaWriteFormAction();
+
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		} else if(command.equals("/qnaWritePro.qna")) {
 //			System.out.println("qnaWritePro.qna");
 			

@@ -1,21 +1,14 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="vo.QnaBean"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-
-UserBean userbean = new UserBean();
-QnaBean qnabean = new QnaBean();
-int qnaNum = qnabean.getQna_num();
-String qnaWriter = qnabean.getQna_writer();
+UserBean userbean = (UserBean) request.getAttribute("userBean");
 String userEmail = userbean.getUser_email();
 String userPhone = userbean.getUser_phone();
 
-QnaBean article = (QnaBean) request.getAttribute("article");
-int nowPage = Integer.parseInt(request.getAttribute("page").toString());
-UserBean userBean = (UserBean) request.getAttribute("userBean");
-	%>
+int item_num = Integer.parseInt(request.getParameter("item_num").toString());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -164,37 +157,37 @@ UserBean userBean = (UserBean) request.getAttribute("userBean");
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
 					<tr>
-						<!-- 						<div class="col-md-6"> -->
+												<div class="col-md-6">
 						<div class="form-group">
-<!-- 							<input type="text" class="form-control" placeholder="작성자" -->
-<%-- 								name="qna_name" readonly="readonly" value="<%=userBean.getName() %>"> --%>
+							<input type="text" class="form-control" placeholder="작성자"
+								name="qna_name" readonly="readonly" value="<%=userbean.getUser_name() %>">
 						</div>
-						<!-- 						</div> -->
+												</div>
 
 					</tr>
 
 					<tr>
-						<!-- 							<div class="col-md-6"> -->
+													<div class="col-md-6">
 						<div class="form-group">
-<!-- 							<input type="text" class="form-control" placeholder="이메일" -->
-<!-- 								name="qna_email" readonly="readonly"> <input -->
-<%-- 								type="checkbox" id="checkemail" name="qna_checkemail" value="<%=userBean.getEmail() %>"/> 이메일로 --%>
+							<input type="text" class="form-control" placeholder="이메일"
+								name="qna_email" readonly="readonly" value="<%=userbean.getUser_email() %>"> <input
+								type="checkbox" id="checkemail" name="qna_checkemail"/> 이메일로
 							답변 받기
 						</div>
-						<!-- 							</div> -->
+													</div>
 						</div>
 					</tr>
 
 
 					<tr>
-						<!-- 						<div class="col-md-6"> -->
+												<div class="col-md-6">
 						<div class="form-group">
-<!-- 							<input type="text" class="form-control" placeholder="휴대폰번호" -->
-<!-- 								name="qna_phone" readonly="readonly"> <input -->
-<%-- 								type="checkbox" id="checksms" name="qna_checksms" value="<%=userBean.getPhone() %>"/> 문자로 답변 받기 --%>
+							<input type="text" class="form-control" placeholder="휴대폰번호"
+								name="qna_phone" readonly="readonly" value="<%=userbean.getUser_phone() %>"> <input
+								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
 						</div>
 						</div>
-						<!-- 						</div> -->
+												</div>
 					</tr>
 					<tr>
 
@@ -218,7 +211,7 @@ UserBean userBean = (UserBean) request.getAttribute("userBean");
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ></textarea></td>
 					</tr>
-					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+										제목과 내용은 필수입력으로 메세지 띄우기
 					<tr style="display: inline-block;">
 						<td colspan="2"><input type="button"
 							class="btn btn-primary py-3 px-4" style="color: black;"

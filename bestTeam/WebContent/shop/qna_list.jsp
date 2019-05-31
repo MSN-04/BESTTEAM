@@ -10,7 +10,7 @@
 		if (message == true) {
 			location.href = "./QnaDeletePro.qna?num=" + num;
 		} else
-			alert("취소되었습니다");0
+			alert("취소되었습니다");
 		return false;
 	}
 </script>
@@ -189,13 +189,13 @@ b {
 							style="margin-top: -100px;">
 
 							<a class="nav-link active" data-toggle="pill" href="#v-pills-0"
-								role="tab" aria-controls="v-pills-0" id="btn1_1"
+								role="tab" aria-controls="v-pills-0" id="btn1"
 								aria-selected="true" style="width: 200px; text-align: center;">배송관련</a>
 							<a class="nav-link" data-toggle="pill" href="#v-pills-1"
-								id="btn2_1" role="tab" aria-controls="v-pills-1"
+								id="btn2" role="tab" aria-controls="v-pills-1"
 								aria-selected="false" style="width: 200px; text-align: center;">결제/환불
 								관련</a> <a class="nav-link" data-toggle="pill" href="#v-pills-2"
-								role="tab" aria-controls="v-pills-2" id="btn3_1"
+								role="tab" aria-controls="v-pills-2" id="btn3"
 								aria-selected="false" style="width: 200px; text-align: center;">교환/반품
 								관련</a>
 
