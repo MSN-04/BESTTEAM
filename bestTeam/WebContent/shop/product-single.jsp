@@ -691,8 +691,9 @@ $( '#rere1' ).click(
 					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
 							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
 							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
-							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-							<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>">qna 작성</a>
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> |
+							<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num()%>"> qna 작성 </a> 	
+						
 					 	</p>
 
 					<section class="ftco=section" id="ac1">

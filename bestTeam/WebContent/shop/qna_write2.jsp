@@ -211,7 +211,7 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ></textarea></td>
 					</tr>
-					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+										제목과 내용은 필수입력으로 메세지 띄우기
 					<tr style="display: inline-block;">
 						<td colspan="2"><input type="button"
 							class="btn btn-primary py-3 px-4" style="color: black;"
