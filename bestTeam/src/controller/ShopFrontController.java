@@ -42,16 +42,16 @@ public class ShopFrontController extends HttpServlet{
 		ActionForward forward = null;
 		
 		// 미송
-		if(command.equals("/checkout.sh")) { // 구매진행 페이지 - 구매상품(cart, cart_item 테이블) & 배송정보 & 결제정보 => buy, buy_item 테이블에 Insert
-			System.out.println("buy(checkout)");
-			action = new CheckoutAction();
+		if(command.equals("/checkout.sh")) { // 구매진행 페이지 - 구매할 상품목록 / 배송정보 / 결제방법
+			System.out.println("checkoutForm");
+			action = new CheckoutFormAction();
 			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
+		}
 		
 		// 주영
 		else if(command.equals("/checkoutPro.sh")) { 
