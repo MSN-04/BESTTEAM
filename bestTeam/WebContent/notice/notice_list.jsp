@@ -115,6 +115,7 @@
 				<li><a href="noticeList.no?page=<%=nowPage+1 %>">&gt;</a></li>
 				<%
 				
+				
 				}
 				%>
 				

@@ -1,6 +1,3 @@
-<%@page import="java.sql.Date"%>
-<%@page import="vo.BuyBean"%>
-<%@page import="vo.BuyItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,34 +58,6 @@
   
   <body>
   
-  <%
-  BuyBean buyBean=new BuyBean();
-  BuyItemBean buyItemBean=new BuyItemBean();
-  
-  String user_id=request.getParameter("user_id");  //주문한 본인 아이디
-  int buy_num= buyBean.getBuy_num();   //상품 주문번호
-  
-  String item_img=buyItemBean.getItem_img();  //상품이미지
-  
-  String item_name=buyItemBean.getItem_name();  //상품이름
-  
- int itemSubCount=buyItemBean.getItem_count()-1;  //상품이름 외 xx개 
-  
-  Date buy_orderDate=buyBean.getBuy_orderdate(); //주문날짜
-  
-  int item_count=buyItemBean.getItem_count(); //총 상품갯수
-  
-  int buy_total=buyBean.getBuy_total();   //총 결제금액
-  
-//---> CheckoutList에 있는정보: 그 전 페이지(myPage)에서 user_id를 가져온다.
-// 주문번호 :buy_num  ==>이걸로 상세페이지 가져옴!
-// 상품이미지: item_img (from BuyItemBean 첫번째 것 만 가져오기)
-// 주문상품: item_name(from BuyItemBean 첫번째 것만 이름 가져오기) + item_count(from BuyItemBean)갯수 가져오기
-// 주문날짜: buy_orderdate(from BuyBean)
-// 수량: item_count(from BuyItemBean)갯수 가져오기
-// 결제금액: buy_total(from BuyBean)총 결제금액 가져오기
-  %>
-  
   <header>
 	<jsp:include page="../inc/header.jsp"/>
     <!-- END nav -->
@@ -142,7 +111,7 @@
                     <th>&nbsp;</th>
                     <th>주문 상품</th>
                     <th>주문 날짜</th>
-                  
+                    <th>수량</th>
                     <th>결제 금액</th>
                   </tr>
                 </thead>
@@ -150,18 +119,18 @@
 
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(<%=item_img %>);"></div></td>
+                     <td class="product-num"><a href="#">20190529-000001</a></td>
+                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                     
                     <td class="product-name">
-                      <h3><%=item_name %><br>외 상품<%=itemSubCount %>개</h3>
+                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
                     </td>
                     
-                    <td class="price"><%=buy_orderDate %></td>
+                    <td class="price">2019/05/29 19:01</td>
                     
-                    <td class="price"><%=item_count %></td>
+                    <td class="price">커피 외2개</td>
                     
-                
+                    <td class="total">18,990원</td>
                   </tr><!-- END TR-->
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
@@ -174,7 +143,7 @@
                     
                     <td class="price">2019/05/29 19:01</td>
                     
-               
+                    <td class="price">커피 외2개</td>
                     
                     <td class="total">18,990원</td>
                   </tr><!-- END TR-->
@@ -189,7 +158,8 @@
                     </td>
                     
                     <td class="price">2019/05/29 19:01</td>
-             
+                    
+                    <td class="price">커피 외2개</td>
                     
                     <td class="total">21,000원</td>
                   </tr><!-- END TR-->
@@ -204,7 +174,7 @@
                     
                     <td class="price">2019/05/29 19:01</td>
                     
-           
+                    <td class="price">커피 외2개</td>
                     
                     <td class="total">24,800원</td>
                   </tr><!-- END TR-->
@@ -220,7 +190,7 @@
                     
                     <td class="price">2019/05/29 19:01</td>
                     
-   
+                    <td class="price">커피 외2개</td>
                     
                     <td class="total">10,600원</td>
                   </tr><!-- END TR-->

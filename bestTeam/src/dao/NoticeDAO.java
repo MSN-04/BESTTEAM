@@ -13,10 +13,8 @@ import vo.NoticeBean;
 public class NoticeDAO {
 	// -------------------------------------------------------------------
 	// 싱글톤 디자인 패턴을 활용하여 1개의 인스턴스를 생성하여 공유
-	private NoticeDAO() {
-	}
+	private NoticeDAO() {}
 	private static NoticeDAO instance;
-
 	public static NoticeDAO getInstance() {
 		// noticeDAO 객체를 저장하는 변수 instance 가 null 일 때만 인스턴스 생성
 		if (instance == null) {
@@ -158,9 +156,6 @@ public class NoticeDAO {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, notice_num);
-//			pstmt.setString(2, Notice_subject);
-//			pstmt.setString(3, Notice_content);
-//			pstmt.setInt(4, x);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -171,7 +166,7 @@ public class NoticeDAO {
 				noticeBean.setNotice_subject(rs.getString("notice_subject"));
 				noticeBean.setNotice_content(rs.getString("notice_content"));
 				noticeBean.setNotice_readcount(rs.getInt("notice_readcount"));
-//				NoticeBean.setNotice_file(rs.getString("notice_file"));
+				noticeBean.setNotice_file(rs.getString("notice_file"));
 				noticeBean.setNotice_date(rs.getDate("notice_date"));
 			}
 
@@ -232,7 +227,7 @@ public class NoticeDAO {
 //	}
 
 	// 글 수정
-	public int updateArticle(NoticeBean article) {
+	public int updateArticle(NoticeBean noticeBean) {
 		int updateCount = 0;
 
 		// noticeBean 객체의 notice_num 에 해당하는 레코드를 수정
@@ -240,9 +235,9 @@ public class NoticeDAO {
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, article.getNotice_subject());
-			pstmt.setString(2, article.getNotice_content());
-			pstmt.setInt(3, article.getNotice_num());
+			pstmt.setString(1, noticeBean.getNotice_subject());
+			pstmt.setString(2, noticeBean.getNotice_content());
+			pstmt.setInt(3, noticeBean.getNotice_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("updateArticle() 실패! : " + e.getMessage());

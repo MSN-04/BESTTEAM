@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.CheckoutAction;
 import action.CheckoutProAction;
-import action.ConfirmCheckoutListProAction;
 import action.ConfirmCheckoutProAction;
 import vo.ActionForward;
 
@@ -72,19 +71,6 @@ public class ShopFrontController extends HttpServlet{
 			forward.setPath("./shop/confirm_checkoutList.jsp");
 
 		} 
-		else if(command.equals("/confirmCheckoutListProAction.sh")) {
-			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
-				action = new ConfirmCheckoutListProAction();
-			
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("controller-confirmCheckoutListPro 실패"+ e.getMessage());
-		        System.out.println("controller- 에러:"+e);
-			}
-		} 
-		
 		
 		// 영비
 		else if(command.equals("/confirmCheckoutPro.sh")) {

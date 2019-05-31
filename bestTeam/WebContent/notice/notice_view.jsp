@@ -1,3 +1,4 @@
+<%@page import="vo.PageInfo"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.NoticeBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,20 +15,9 @@ return false;
 }
 </script>
 <%
-// 	NoticeBean article = (NoticeBean)request.getAttribute("article");
-// 	NoticeBean noticeBean = (NoticeBean)request.getAttribute("NoticeBean");
 	NoticeBean article = (NoticeBean)request.getAttribute("article");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	
-	
-// 	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
-// 	NoticeBean noticebean = new NoticeBean();
-// 	int noticeNum = noticebean.getNotice_num();
-// 	String noticeSubject = noticebean.getNotice_subject();
-// 	String noticeContent = noticebean.getNotice_content();
-// 	System.out.println(noticeNum);
-%>
-<%
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,16 +105,16 @@ return false;
 			
 	 			<div style="border-bottom: 1px solid grey; margin-bottom: 30px;
 	 			font-size: 50px; font-weight: 300;
-	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject() %>></div>
+	 			font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject() %></div>
 	 			
-				<div style="margin: auto;"><%= article.getNotice_subject() %></div>
+				<div style="margin: auto;"><%=article.getNotice_content() %></div>
  			
            
           </div> <!-- .col-md-8 -->
-          <a href="./noticeModifyForm.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
+          <a href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary">글수정</a>
           
-          <a href="./noticedeletePro.no?notice_num=<%= article.getNotice_num() %>" class="btn btn-primary btn-outline-primary"
-          onclick="delconfirm('<%= article.getNotice_num() %>')">글삭제</a>
+          <a href="./noticedeletePro.no?notice_num=<%=article.getNotice_num() %>" class="btn btn-primary btn-outline-primary"
+          onclick="delconfirm('<%=article.getNotice_num() %>')">글삭제</a>
           <a href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
           
 <!--           <div class="col-md-4 sidebar ftco-animate"> -->

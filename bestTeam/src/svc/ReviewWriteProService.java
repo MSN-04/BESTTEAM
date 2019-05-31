@@ -6,7 +6,6 @@ import dao.BlogDAO;
 import dao.ReviewDAO;
 import vo.BlogBean;
 import vo.ReviewBean;
- 
 
 // JdbcUtil 클래스의 static 메서드를 클래스명 없이 메서드명으로만으로도 호출 가능하도록 import 하기 위해 import static 사용
 // => import static 패키지명.클래스명.메서드명 또는 메서드명 대신 모든 메서드를 포함하도록 * 사용

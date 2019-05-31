@@ -1,13 +1,13 @@
-<%@page import="vo.BlogBean"%>
+<%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%
-	BlogBean article = (BlogBean)request.getAttribute("article");
-	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+<%
+	UserBean qnapage = (UserBean)request.getAttribute("userBean");
 	%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<meta charset="UTF-8">
 <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -88,43 +88,24 @@
 	
 </script>
 <!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
+<style type="text/css">
+.frmTitle {
+	border: 0.1px solid #ccc;
+	padding: 5px;
+	color: white;
+	background: rgba(0, 0, 0, 0);
+	width: 100%;
+}
+
+.td0525 {
+	width: 20% !important;
+}
+</style>
 </head>
 <body>
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">Coffee<small>Blend</small></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="menu.html" class="nav-link">Menu</a></li>
-					<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-					<li class="nav-item active"><a href="blog.html"
-						class="nav-link">Blog</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="room.html" id="dropdown04"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-						<div class="dropdown-menu" aria-labelledby="dropdown04">
-							<a class="dropdown-item" href="shop.html">Shop</a> <a
-								class="dropdown-item" href="product-single.html">Single
-								Product</a> <a class="dropdown-item" href="cart.html">Cart</a> <a
-								class="dropdown-item" href="checkout.html">Checkout</a>
-						</div></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-					<li class="nav-item cart"><a href="cart.html" class="nav-link"><span
-							class="icon icon-shopping_cart"></span><span
-							class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<header>
+		<jsp:include page="/inc/header.jsp"></jsp:include>
+	</header>
 	<!-- END nav -->
 
 	<section class="home-slider owl-carousel">
@@ -138,7 +119,7 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
+						<h1 class="mb-3 mt-5 bread">Qna Write</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span
 								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
@@ -151,59 +132,83 @@
 		</div>
 	</section>
 
+
 	<section class="ftco-section">
-		<div class="container" style="border: 1px solid white;">
-			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" >
-				<table width="100%">
+		<div class="col-md-5" id="mail">
+			<form id="frm" action="qnaWritePro.qna" method="post"
+				class="contact-form">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">QNA</h2>
+				</div>
+				<table style="width: 100%; text-align: left;">
+					<div class="row">
 					<tr>
-						<td>제목</td>
-						<td><input type="text" id="title" name="blog_subject" value="<%=article.getBlog_subject() %>"
-							style="width: 100%;" /></td>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="작성자"
+								name="qna_name" readonly="readonly">
+						</div>
+						<!-- 						</div> -->
+
+					</tr>
+
+					<tr>
+<!-- 													<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="이메일"
+								name="qna_email" readonly="readonly"> <input
+								type="checkbox" id="checkemail" name="qna_checkemail" /> 이메일로
+							답변 받기
+						</div>
+<!-- 						</div> -->
+					</tr>
+
+
+					<tr>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="휴대폰번호"
+								name="qna_phone" readonly="readonly"> <input
+								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
+						</div>
+						</div>
+<!-- 												</div> -->
 					</tr>
 					<tr>
-						<td>요약</td>
-<<<<<<< HEAD
-						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content() %>"
-							style="width: 100%;"/></td>
-=======
-						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>" style="width: 100%;"/></td>
+
+						<div class="col-md-6">
+							<div class="form-group">
+							비밀글 
+								<input type="checkbox" id="secret" name="qna_secret" />
+							</div>
+						</div>
+					</tr>
+				</table>
+				<table style="width: 100%; text-align: center;">
+					<tr>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Subject"
+								name="qna_subject" id="subject" required="required">
+						</div>
 					</tr>
 					<tr>
-						<td>글쓴이</td>
-						<td><input type="text" id="title" name="blog_writer" value="<%=article.getBlog_writer() %>"
-							style="width: 100%;" /></td>
-							<td style="width: 86px;"><input type="file" id="title" name="blog_file" 
-							style="width: 100%;"required="required" /></td>
+						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+								style="width: 100%; height: 650px;" required="required"
+								class="frmTitle" placeholder="내용을 입력하세요">
+								</textarea></td>
 					</tr>
-					<tr>
-						<td>내용</td>
-						<td><textarea rows="10" cols="30" id="ir1" name="blog_content" 
-								style="width: 100%; height: 650px;"><%=article.getBlog_content() %></textarea></td>
-					</tr>
-					<tr>
-						<td colspan="2" style="position: absolute; left: 50%;">	
-						
-							<input type="submit" id="save" value="저장" /> 
-							<input type="button" value="취소" />
-						</td>
+					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+					<tr style="display: inline-block;">
+						<td colspan="2"><input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> <input type="submit"
+							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+							value="등록" /></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</section>
-	<!-- .section -->
-	<footer>
-	<jsp:include page="../inc/footer.jsp"></jsp:include>
-	</footer>
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
 
 
 	<script src="./js/jquery.min.js"></script>
