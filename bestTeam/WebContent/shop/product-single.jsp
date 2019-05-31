@@ -547,10 +547,7 @@ $( '#rere1' ).click(
 		</div>
 	</section>
 
-<section class="ftco-menu mb-5 pb-5" >
-
-		
-						
+						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">
 
@@ -578,7 +575,7 @@ $( '#rere1' ).click(
 					
 								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
 							
-						</div>
+							</div>
 						
 						
 						</section>
@@ -668,10 +665,12 @@ $( '#rere1' ).click(
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch" style="margin: auto;">
 
-					    <p class="breadcrumbs" style="text-align: center;"> 
+					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
 							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
 							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
-							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> |
+							<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num()%>"> qna 작성 </a> 	
+						
 					 	</p>
 
 					<section class="ftco=section" id="ac1">
