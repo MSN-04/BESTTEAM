@@ -37,5 +37,4 @@ public class CheckoutFormAction implements Action {
 		// 4.
 		return forward;
 	}
-
 }
