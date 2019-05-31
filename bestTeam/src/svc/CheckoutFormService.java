@@ -20,7 +20,7 @@ public class CheckoutFormService {
 		
 		// 2. DAO 객체 호출, 커넥션 전달 - DB 연결
 		BuyDAO buyDAO = BuyDAO.getInstance();
-		shopDAO.setConnection(con);
+		buyDAO.setConnection(con);
 		
 		// 3. 장바구니 아이템들 저장
 		ArrayList<BuyItemBean> cartItems = buyDAO.getCartItems(id);
