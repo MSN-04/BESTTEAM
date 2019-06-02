@@ -19,18 +19,21 @@ public class QnaWriteFormAction implements Action {
 		
 		ActionForward forward = null;
 		UserBean userBean = null;
+		String id = "";
 		HttpSession session = request.getSession();
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
-		String id = session.getAttribute("id").toString();
+		 
 		
 		System.out.println(item_num);
-		if(id==null) {
+		if(session.getAttribute("id")==null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인하세요')");
 			out.println("location.href='login.us'");
 			out.println("</script>");
+		} else {
+			id = session.getAttribute("id").toString();
 		}
 		
 		QnaWriteFormService qnaWriteFormService = new QnaWriteFormService();

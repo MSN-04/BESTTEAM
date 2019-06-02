@@ -148,8 +148,7 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 
 	<section class="ftco-section">
 		<div class="col-md-9" id="mail">
-			<form id="frm" action="qnaWritePro.qna" method="post"
-				class="contact-form">
+			<form id="frm" action="qnaWritePro.qna?item_num=<%=item_num %>" method="post" class="contact-form">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">QNA</h2>
 				</div>
@@ -213,11 +212,8 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 					</tr>
 										제목과 내용은 필수입력으로 메세지 띄우기
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /> <input type="submit"
-							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="등록" /></td>
+						<td colspan="2"><input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" /></td>
 					</tr>
 				</table>
 			</form>

@@ -53,13 +53,14 @@ public class QnaDAO {
 				// 최대 게시물 번호 + 1
 			}
 
-			sql = "INSERT INTO qna VALUES(?,'Tinkervell',?,?,now())";
+			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now())";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-//			pstmt.setString(1, qnaBean.getQna_writer());
-			pstmt.setString(2, qnaBean.getQna_subject());
-			pstmt.setString(3, qnaBean.getQna_content());
+			pstmt.setInt(2, qnaBean.getQna_item_num());
+			pstmt.setString(3, qnaBean.getQna_writer());
+			pstmt.setString(4, qnaBean.getQna_subject());
+			pstmt.setString(5, qnaBean.getQna_content());
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 
