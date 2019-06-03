@@ -135,7 +135,7 @@
 	<div class="col-md-4" id="mail">
 	
 		<button type="button" class="quantity-left-minus btn input-group-btn">
-			<i class="icon-minus" ></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%>
+			<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%>
 		</button>
 		</div>
 		</div>
