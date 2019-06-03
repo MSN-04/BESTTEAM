@@ -90,7 +90,7 @@ public class ItemSingleAction implements Action {
 				
 				int listCount2 = qnaWriteProService.getListCount(); // 총 게시물 목록 수 가져오기
 				
-				qnaList = qnaWriteProService.getArticleList(page2, limit2); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+				qnaList = qnaWriteProService.getArticleList(page2, limit2, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 				
 				// 페이지 계산
 				

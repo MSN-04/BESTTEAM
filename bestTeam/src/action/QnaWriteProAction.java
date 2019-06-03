@@ -28,18 +28,6 @@ public class QnaWriteProAction implements Action {
 		HttpSession session = request.getSession();
 		UserBean userBean = null;
 		   
-		// 파일 업로드를 위한 정보 저장
-//		String realFolder; // 실제 경로
-//		String saveFolder = "/qnaUpload"; // 톰캣(이클립스) 상의 가상의 경로
-//		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-//		
-//		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
-//		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-//		
-//		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
-//		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-//		
-		
 		String name = request.getParameter("qna_writer");
 		String id = session.getAttribute("id").toString();
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
@@ -53,11 +41,6 @@ public class QnaWriteProAction implements Action {
 		qnaBean.setQna_writer(userBean.getUser_id());
 		qnaBean.setQna_subject(request.getParameter("qna_subject"));
 		qnaBean.setQna_content(request.getParameter("qna_content"));
-//		QnaBean.setQna_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
-		
-		
-//		MyPageProService mypageProService = new MyPageProService();
-//		userBean = (UserBean) mypageProService.getUserInfo(userBean);
 		
 		
 		boolean isWriteSuccess = qnaWriteProService.registArticle(qnaBean);
