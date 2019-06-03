@@ -87,6 +87,15 @@
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
 
 <script type="text/javascript">
+//삭제 확인메세지
+function delconfirm(num,item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?"+item_num);
+	if (message == true) {
+		location.href = "./qnaDeletePro.qna?qan_num=" + num+"&item_num="+item_num;
+	} else
+		alert("취소되었습니다");
+	return false;
+}
 	 
 // $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
@@ -632,8 +641,8 @@ $( '#rere1' ).click(
 												<section class="ftco=section" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="QnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>')">삭제</a>
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>

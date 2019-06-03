@@ -18,7 +18,8 @@ public class QnaDeleteProAction implements Action {
 		
 		// 게시물 번호 파라미터 가져오기
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
-		
+		int qna_item_num = Integer.parseInt(request.getParameter("item_num"));
+		System.out.println("qnaitemNum: "+qna_item_num);
 		QnaDeleteProService qnaDeleteProService = new QnaDeleteProService();
 		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_num);
 		
@@ -30,8 +31,9 @@ public class QnaDeleteProAction implements Action {
 			out.println("history.back()"); // 이전 페이지로 돌아가기
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
+			System.out.println("qna_item_num : "+qna_item_num);
 				forward = new ActionForward();
-				forward.setPath("qnaList.no?page=" + request.getParameter("page"));
+				forward.setPath("itemSingle.em?item_num="+qna_item_num);
 				forward.setRedirect(true);
 			
 		}

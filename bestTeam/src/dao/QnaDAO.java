@@ -168,6 +168,7 @@ public class QnaDAO {
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
 				qnaBean.setQna_date(rs.getDate("qna_date"));
+				qnaBean.setQna_item_num(rs.getInt("qan_item_num"));
 			}
 
 		} catch (SQLException e) {

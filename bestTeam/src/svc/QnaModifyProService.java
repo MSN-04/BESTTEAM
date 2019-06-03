@@ -6,6 +6,7 @@ import java.sql.Connection;
 
 import dao.QnaDAO;
 import vo.QnaBean;
+import vo.UserBean;
 
 
 public class QnaModifyProService {
@@ -52,6 +53,24 @@ public class QnaModifyProService {
 		close(con);
 		
 		return isModifySuccess;
+	}
+	
+	public UserBean getUserInfo(String name, String id) {
+		UserBean userBean = new UserBean();
+		
+		Connection con = getConnection();
+		QnaDAO qnaDAO = QnaDAO.getInstance();
+		qnaDAO.setConnection(con);
+		
+		userBean = qnaDAO.getUserInfo(id);
+		
+		if(userBean !=null && userBean.getUser_name().equals(name)) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		return userBean;
 	}
 
 	

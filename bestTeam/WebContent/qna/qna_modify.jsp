@@ -1,20 +1,8 @@
-<%@page import="vo.QnaBean"%>
 <%@page import="vo.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	//UserBean qnapage = (UserBean)request.getAttribute("userBean");
-QnaBean qnabean = (QnaBean)request.getAttribute("article");
-//	UserBean userbean = new UserBean();
-int qnaNum = qnabean.getQna_num();
-int item_num = qnabean.getQna_item_num();
-
-request.setAttribute("qna_num", qnaNum);
-String qnaSubject = qnabean.getQna_subject();
-String qnaWriter = qnabean.getQna_writer();
-String qnaContent = qnabean.getQna_content();
-
-System.out.println("qna_modify.jsp에서 : "+qnaContent);
+	UserBean qnapage = (UserBean)request.getAttribute("userBean");
 	%>
 <!DOCTYPE html>
 <html>
@@ -93,7 +81,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
 		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
-	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);  // textarea id 변경해야 함 [id = ir1(155번째줄)]
+	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
 	
 // 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
@@ -147,7 +135,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 
 	<section class="ftco-section">
 		<div class="col-md-5" id="mail">
-			<form id="frm" action="qnaModifyPro.qna" method="post"
+			<form id="frm" action="qnaWritePro.qna" method="post"
 				class="contact-form">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">QNA</h2>
@@ -157,12 +145,8 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 					<tr>
 						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
-							<input type="text" class="form-control" value="<%=qnaWriter %>"
+							<input type="text" class="form-control" placeholder="작성자"
 								name="qna_name" readonly="readonly">
-								<input type="hidden" class="form-control" value="<%=qnaNum %>"
-								name="qna_num" >
-								<input type="hidden" class="form-control" value="<%=item_num %>"
-								name="item_num" >
 						</div>
 						<!-- 						</div> -->
 
@@ -203,14 +187,14 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<div class="form-group">
-							<input type="text" class="form-control" value="<%=qnaSubject %>"
+							<input type="text" class="form-control" placeholder="Subject"
 								name="qna_subject" id="subject" required="required">
 						</div>
 					</tr>
 					<tr>
 						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
 								style="width: 100%; height: 650px;" required="required"
-								class="frmTitle" ><%=qnaContent %>
+								class="frmTitle" placeholder="내용을 입력하세요">
 								</textarea></td>
 					</tr>
 					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
@@ -219,7 +203,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 							class="btn btn-primary py-3 px-4" style="color: black;"
 							id="reset" value="취소" /> <input type="submit"
 							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="수정" /></td>
+							value="등록" /></td>
 					</tr>
 				</table>
 			</form>

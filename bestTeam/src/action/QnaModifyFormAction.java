@@ -22,13 +22,13 @@ public class QnaModifyFormAction implements Action {
 		
 		// qnaDetailService 클래스의 getArticle() 메서드를 사용하여 원본글 가져와서 qnaBean 에 저장
 		QnaViewService qnaDetailService = new QnaViewService();
-		QnaBean article = qnaDetailService.getArticle(qna_num);
+		QnaBean article = qnaDetailService.getArticleToModifyForm(qna_num);
 		
 		// request 객체에 qnaBean 객체(article) 저장
 		request.setAttribute("article", article);
 		
 		// ActionForward 객체의 setPath() 메서드를 사용하여 포워딩 경로를 "/qna/qna_qna_modify.jsp" 로 지정
-		forward.setPath("./qna/qna_modify.jsp");
+		forward.setPath("./shop/qna_modify.jsp?qna_num="+qna_num);
 		
 		return forward;
 	}
