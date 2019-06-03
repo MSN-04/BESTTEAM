@@ -525,77 +525,73 @@ $( '#rere1' ).click(
 				</div>
 			</div>
 	</section>
+	
+<!-- review -->
 	<section class="ftco=section" id="ft2">
 		<div class="container">
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch">
-					<br>
-					<br>
-					<tr>REVIEW</tr>
-					<table class="table thead-light">
-					<%
-											if (reviewList != null && listCount > 0) {
-												
-										%>
+				
 					
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>글쓴이</th>
-							<th>조회수</th>
-						</tr>
-						<%
-						for (int i = 0 ; i < reviewList.size() ; i++) {
-							System.out.println(reviewList.get(i).getReview_num());
-						
-						%>
-						<tr>
-							
- 							<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse"><%=reviewList.size()-i %></a><div id="collapse" class="panel-collapse collapse in">
- 							<div class="panel-body"><br><%=reviewList.get(i).getReview_content() %></div></div></td>
- 							<td><%=reviewList.get(i).getReview_subject() %></td>
- 							<td><%=reviewList.get(i).getReview_date() %></td> 
- 							<td><%=reviewList.get(i).getReview_user_id() %></td> 
- 							<td><%=reviewList.get(i).getReview_readcount() %></td> 
-							
-						</tr>
-<%-- 						<tr><td id="rere" colspan="5"><%=reviewList.get(i).getReview_content() %></td></tr> --%>
-						
-               <%}
- 				}%>	 
-					</table>
-					<a href="#"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-			
+ 					
+					<table class="table thead-light" id="ac1">
+                <tr>
+                  <td><a data-toggle="collapse">번호</a></td>
+                  <td><a data-toggle="collapse">제목 </a></td>
+                  <td><a data-toggle="collapse">작성일</a></td>
+                  <td><a data-toggle="collapse">작성자</a></td>
+                  <td><a data-toggle="collapse">조회수</a></td>
+                  
+                  
+                  </tr>
+                  <%
+                    if (reviewList != null && listCount > 0) {
+                      for (int i = 0; i < reviewList.size(); i++) {
+                    	  if(reviewList.get(i).getReview_item_num()==itemBean.getItem_num()){
+                    		  
+                  %>
+                  
+                <tr>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_subject() %> </a>
+                    <div id="collapse<%=i %>" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
+                        <section class="ftco=section" id="ac1">
+                          <div class="container">
+                            <div class="col-md-8 ftco-animate div0525">
+                              <a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num()%>&item_num=<%=itemBean.getItem_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a> 
+                              <a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num()%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">삭제</a>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
+                </tr>
+                <%
+                      }
+                  }
+                  }
+                %>
+              </table>
+					
+					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+					
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-							<% 
-							//실제 페이지수를 endPage로 변경
-							if(endPage2>pageCount2){
-								endPage2=pageCount2;
-							}
-							
-							if(startPage>pageCount){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
-							<%
-							}
-							
-							for(int i = startPage; i<=endPage;i++){ 
-								%>
-							
-									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
-									
-									<%} 
-									
-							if(endPage<pageCount2){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
-							<%
-							}
-							%>
+									<li><a href="#">&lt;</a></li>
+									<li class="active"><span>1</span></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#">&gt;</a></li>
 								</ul>
 								
 								

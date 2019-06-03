@@ -67,6 +67,18 @@ public class ShopFrontController extends HttpServlet{
 		}
 		
 		// 영비
+		else if(command.equals("/confirmCheckoutListProAction.sh")) {
+			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
+				action = new ConfirmCheckoutListProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("controller-confirmCheckoutListPro 실패"+ e.getMessage());
+		        System.out.println("controller- 에러:"+e);
+			}
+		} 
 		else if(command.equals("/confirmCheckoutList.sh")) {
 			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
 			forward = new ActionForward();
