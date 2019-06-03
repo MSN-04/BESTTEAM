@@ -177,6 +177,9 @@
 								<a href="delete_member.us"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원
 									탈퇴</a>
+									<a href="confirmCheckoutListProAction.sh"
+									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">주문 조회
+								</a>
 							</div>
 						</div>
 				</div>
