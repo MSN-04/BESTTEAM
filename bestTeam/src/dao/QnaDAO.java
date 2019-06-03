@@ -127,6 +127,7 @@ public class QnaDAO {
 				qnaBean = new QnaBean();
 
 				qnaBean.setQna_num(rs.getInt("qna_num"));
+				qnaBean.setQna_item_num(rs.getInt("qna_item_num"));
 				qnaBean.setQna_writer(rs.getString("qna_writer"));
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
