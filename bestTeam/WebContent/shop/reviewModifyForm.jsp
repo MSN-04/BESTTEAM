@@ -4,7 +4,10 @@
 <%@page import="vo.ReviewBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+	<%
+	ReviewBean article = (ReviewBean)request.getAttribute("article");
+	int review_num = Integer.parseInt(request.getParameter("review_num"));
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,14 +94,9 @@ String id=(String)session.getAttribute("id");
 	
 		
 	<section class="ftco-section" >
-	<div class="col-md-9" id="mail">
-	<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">REVIEW</h2>
-				</div>
-				</div>
 		<div class="container">
 			
-			<form id="frm" action="reviewWritePro.re" method="post" enctype="multipart/form-data">
+			<form id="frm" action="reviewModifyPro.re?review_num=<%=review_num %>" method="post" enctype="multipart/form-data">
 			
 				<table style="width: 100%; text-align: center;">
 			<tr><td></td>
@@ -108,27 +106,35 @@ String id=(String)session.getAttribute("id");
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
 						<td style="padding-right: 30px;">제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="form-control" /></td>
+						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" value="<%=article.getReview_subject() %>"/></td>
 					</tr>
 					
 					<tr>
 						<td style="padding-right: 30px;">후기작성</td>
 						<td><textarea rows="10" cols="30" name="review_content" 
-								style="width: 1015px; height: 200px;" ></textarea></td>
+								style="width: 1015px; height: 200px;" ><%=article.getReview_content() %></textarea></td>
 					</tr>
 					
 					<tr>
 						<td style="padding-right: 30px;">사진등록</td>
-						<td><input type="file" id="review_img" name="review_img" class="form-control" /></td>
+						<td><input type="file" id="review_img" name="review_img" class="frmTitle" /></td>
 					</tr>
-				<tr style="display: inline-block;">
+					<tr>
 						<td style="text-align: center; " colspan="2">
 							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
-					</td> 
+							
+						</td>
 					</tr>
 					
+					
+					
 				</table>
+				
+				
+				
+				     
+					
+				
 			</form>
 		</div>
 	</section>
