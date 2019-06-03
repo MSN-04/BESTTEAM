@@ -105,9 +105,9 @@
 						</p>
 					</div>
 
+					<!-- 				</div> -->
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<section class="ftco-section">
@@ -127,10 +127,19 @@
 				</div>
 
 			</div>
+		</div>
 	</section>
 	<!-- .section -->
-
-
+	
+	<div style="border-bottom" solid grey; margin-bottom: 30px;>
+	<div class="col-md-4" id="mail">
+	
+		<button type="button" class="quantity-left-minus btn input-group-btn">
+			<i class="icon-minus" ></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%>
+		</button>
+		</div>
+		</div>
+	
 	<%
 		String id = (String) session.getAttribute("id");
 		if (id != null && id.equals("admin")) {
@@ -148,10 +157,10 @@
 				<%
 					} else {
 				%>
-
-				<a href="./noticeList.no"
-					class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
-
+				<div class="col text-center">
+					<a href="./noticeList.no"
+						class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
+				</div>
 				<%
 					}
 				%>
