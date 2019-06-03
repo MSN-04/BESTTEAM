@@ -254,6 +254,8 @@
           <div class="col-md-8 ftco-animate" >
             <h2 class="mb-3"><%= article.getBlog_subject() %></h2>
 					<p><%= article.getBlog_content() %></p>
+					
+					
             <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
             <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
