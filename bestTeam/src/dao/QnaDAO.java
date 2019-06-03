@@ -105,7 +105,7 @@ public class QnaDAO {
 	}
 
 	// 글 목록 가져오기
-	public ArrayList<QnaBean> selectArticleList(int page, int limit) {
+	public ArrayList<QnaBean> selectArticleList(int page, int limit, int item_num) {
 		System.out.println("selectArticleList()");
 
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
@@ -113,12 +113,13 @@ public class QnaDAO {
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
 
-		String sql = "SELECT * FROM qna ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
+			pstmt.setInt(1, item_num);
+			pstmt.setInt(2, startRow);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
