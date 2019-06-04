@@ -503,11 +503,9 @@ String id=(String)session.getAttribute("id");
 										if(sessionId.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정</a>
+												color: white !important;">상품정보 수정 및 삭제</a>
 												
-											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
-												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 삭제</a>
+											
 								<%  	} 
 									} %>
 					
