@@ -18,7 +18,7 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
+	
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -481,6 +481,9 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
+<%
+String id=(String)session.getAttribute("id");
+%>
 						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">

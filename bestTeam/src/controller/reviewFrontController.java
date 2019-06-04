@@ -10,18 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.BlogDeleteProAction;
+import action.ReviewDeleteProAction;
+import action.ReviewModifyFormAction;
+import action.ReviewModifyProAction;
 import action.BlogDetailAction;
 import action.BlogListAction;
 import action.BlogModifyFormAction;
 import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import action.ReviewProAction;
-import action.ReviewWriteProAction;
+import action.reviewWriteProAction;
 import vo.ActionForward;
 
 @WebServlet("*.re") // => URL 요청에 마지막이 *.bo 로 끝나는 요청을 매핑하는 서블릿 지정(web.xml 설정 대신 사용)
-public class ReviewFrontController extends HttpServlet {
+public class reviewFrontController extends HttpServlet {
 	// 모든 클라이언트의 요청을 받아 처리 가능한 HttpServlet 클래스의 서브클래스로 FrontController 클래스 정의
 	// GET 방식의 요청을 처리할 doGet() 메서드, POST 방식의 요청을 처리할 doPost() 메서드를 오버라이딩
 	// => 두 개의 메서드를 공통적으로 처리할 doProcess() 메서드를 정의
@@ -65,11 +67,13 @@ public class ReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/reviewWriteForm.re")) {
+			// 글 쓰기 페이지 요청은 비즈니스 로직 없이 JSP 페이지(board 디렉토리 내의 qna_board_write.jsp 파일)로 바로 연결
+			// ActionForward 클래스의 인스턴스를 생성하여 path 변수에 해당 jsp 파일 위치 저장
 			forward = new ActionForward();
 			forward.setPath("./shop/reviewWriteForm.jsp");
 			
 		}else if(command.equals("/reviewWritePro.re")) {
-			action = new ReviewWriteProAction();
+			action = new reviewWriteProAction();
 			
 			try {
 				forward = action.execute(request, response);
@@ -79,6 +83,33 @@ public class ReviewFrontController extends HttpServlet {
 		}
 		else if(command.equals("/reviewPro.re")) {
 			action = new ReviewProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/reviewDeletePro.re")) {
+			action = new ReviewDeleteProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/reviewModifyForm.re")) {
+			// 수정글 관련 정보 가져오기 - BoardModifyFormAction 클래스로 이동
+			action = new ReviewModifyFormAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/reviewModifyPro.re")) {
+			// 수정글 저장하기 - BoardModifyProAction 클래스로 이동
+			action = new ReviewModifyProAction();
 			
 			try {
 				forward = action.execute(request, response);
