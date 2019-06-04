@@ -43,7 +43,15 @@ public class reviewWriteProAction implements Action {
 //		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-//		
+//		System.out.println("realFolder : "+realFolder);
+		Path newDirectory = Paths.get(realFolder);
+        
+        try {
+            Path createDirResult = Files.createDirectories(newDirectory);
+            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //		Path newDirectory = Paths.get(realFolder);
 //        
 //        try {
