@@ -481,6 +481,9 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
+<%
+String id=(String)session.getAttribute("id");
+%>
 						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">

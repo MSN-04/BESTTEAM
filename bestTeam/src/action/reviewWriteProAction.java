@@ -56,8 +56,7 @@ public class reviewWriteProAction implements Action {
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		
-		reviewBean = new ReviewBean(); 
-		
+		reviewBean = new ReviewBean();
 		reviewBean.setReview_subject(multi.getParameter("review_subject"));
 		reviewBean.setReview_content(multi.getParameter("review_content"));
 		reviewBean.setReview_item_num(Integer.parseInt(multi.getParameter("review_item_num")));
