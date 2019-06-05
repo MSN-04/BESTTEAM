@@ -5,6 +5,8 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
+
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -18,7 +20,7 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
+	
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -35,7 +37,7 @@
 	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
+// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
@@ -481,6 +483,9 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
+<%
+String id=(String)session.getAttribute("id");
+%>
 						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">
@@ -498,11 +503,9 @@ $( '#rere1' ).click(
 										if(sessionId.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정</a>
+												color: white !important;">상품정보 수정 및 삭제</a>
 												
-											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
-												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 삭제</a>
+											
 								<%  	} 
 									} %>
 					
@@ -585,15 +588,32 @@ $( '#rere1' ).click(
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+							<% 
+							//실제 페이지수를 endPage로 변경
+							if(endPage>pageCount){
+								endPage=pageCount;
+							}
+							
+							if(startPage>pageCount){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage; i<=endPage;i++){ 
+								%>
+							
+									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									
+									<%} 
+									
+							if(endPage<pageCount){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
+							<%
+							}
+							%>
 								</ul>
-								
 								
 							</div>
 						</div>
@@ -646,6 +666,20 @@ $( '#rere1' ).click(
 									</td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<div>댓글</div>
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">내용 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>								
 								</tr>
 								<%
 									}

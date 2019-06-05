@@ -124,7 +124,7 @@ public class ReviewDAO {
 		
 		
 		
-		String sql = "SELECT * FROM REVIEW ORDER BY review_item_num desc limit ? , ?";
+		String sql = "SELECT * FROM REVIEW ORDER BY review_num desc limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
 		
@@ -138,6 +138,7 @@ public class ReviewDAO {
 			while(rs.next()) {
 				reviewBean = new ReviewBean();
 				
+				reviewBean.setReview_num(rs.getInt("review_num"));
 				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
 				reviewBean.setReview_user_id(rs.getString("review_user_id"));
 				reviewBean.setReview_content(rs.getString("review_content"));
@@ -187,6 +188,7 @@ public class ReviewDAO {
 				reviewBean.setReview_img(rs.getString("review_img"));
 				reviewBean.setReview_date(rs.getDate("review_date"));
 				reviewBean.setReview_subject(rs.getString("review_subject"));
+				reviewBean.setReview_num(rs.getInt("review_num"));
 			}
 			
 		} catch (SQLException e) {
@@ -250,21 +252,21 @@ public class ReviewDAO {
 	}
 
 	// 글 수정
-	public int updateArticle(BlogBean article) {
+	public int updateArticle(ReviewBean article) {
 		int updateCount = 0;
 		
 		// BoardBean 객체의 board_num 에 해당하는 레코드를 수정
 		// => 글제목(board_subject), 글내용(content) 수정
-		String sql = "UPDATE blog SET blog_subject=?,blog_content=?,blog_file=?,blog_content1=? WHERE blog_num=?";
+		String sql = "UPDATE REVIEW SET review_subject=?,review_content=?,review_img=? WHERE review_num=?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, article.getBlog_subject());
-			pstmt.setString(2, article.getBlog_content());
-			pstmt.setString(3, article.getBlog_file());
-			pstmt.setString(4, article.getBlog_content1());
-			pstmt.setInt(5, article.getBlog_num());
+			pstmt.setString(1, article.getReview_subject());
+			pstmt.setString(2, article.getReview_content());
+			pstmt.setString(3, article.getReview_img());
+			pstmt.setInt(4, article.getReview_num());
 			updateCount = pstmt.executeUpdate();
+			System.out.println(updateCount);
 		} catch (SQLException e) {
 			System.out.println("updateArticle() 실패! : " + e.getMessage());
 		} finally {
@@ -275,13 +277,13 @@ public class ReviewDAO {
 	}
 
 
-	public int deleteArticle(int blog_num) {
+	public int deleteArticle(int review_num) {
 		int deleteCount=0;
 		
-		String sql="delete from blog where blog_num=?";
+		String sql="delete from REVIEW where review_num=?";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, blog_num);
+			pstmt.setInt(1, review_num);
 			deleteCount=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("deleteArticle() 실패!"+e.getMessage());
