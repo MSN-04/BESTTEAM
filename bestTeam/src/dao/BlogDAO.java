@@ -65,7 +65,7 @@ public class BlogDAO {
 			pstmt.setInt(8, blogBean.getBlog_re_lev());
 			pstmt.setInt(9, blogBean.getBlog_re_ref());
 			pstmt.setInt(10, blogBean.getBlog_re_seq());
-			pstmt.setString(11, blogBean.getBlog_content());
+			pstmt.setString(11, blogBean.getBlog_content1());
 			insertCount = pstmt.executeUpdate(); // INSERT 실행 결과를 int 타입으로 리턴 받음
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -254,8 +254,8 @@ public class BlogDAO {
 	public int updateArticle(BlogBean article) {
 		int updateCount = 0;
 		
-		// BoardBean 객체의 board_num 에 해당하는 레코드를 수정
-		// => 글제목(board_subject), 글내용(content) 수정
+		// BlogBean 객체의 board_num 에 해당하는 레코드를 수정
+		// => 글제목(blog_subject), 글내용(content) 수정
 		String sql = "UPDATE blog SET blog_subject=?,blog_content=?,blog_file=?,blog_content1=? WHERE blog_num=?";
 		
 		try {
@@ -263,7 +263,7 @@ public class BlogDAO {
 			pstmt.setString(1, article.getBlog_subject());
 			pstmt.setString(2, article.getBlog_content());
 			pstmt.setString(3, article.getBlog_file());
-			pstmt.setString(4, article.getBlog_content());
+			pstmt.setString(4, article.getBlog_content1());
 			pstmt.setInt(5, article.getBlog_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
