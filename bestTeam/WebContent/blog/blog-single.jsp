@@ -8,6 +8,16 @@
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 %>
+<script language="javascript">
+	function delconfirm(num) {
+		var message = confirm("이 게시글을 삭제하시겠습니까?");
+		if (message == true) {
+			location.href = "./noticeDeletePro.no?num=" + num;
+		} else
+			alert("취소되었습니다");
+		return false;
+	}
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -256,8 +266,8 @@
 					<p><%= article.getBlog_content() %></p>
 					
 					
-            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
-            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a>
+            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=article.getBlog_num()%>')">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>
