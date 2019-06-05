@@ -51,7 +51,8 @@ public class BlogDAO {
 			}
 		
 		
-		sql = "INSERT INTO blog VALUES(?,?,?,?,?,?,now(),?,?,?,?,?)";
+		
+		sql = "INSERT INTO blog VALUES(?,?,?,?,?,?,now(),?,?)";
 		
 			pstmt = con.prepareStatement(sql);
 			
@@ -62,10 +63,7 @@ public class BlogDAO {
 			pstmt.setInt(5, blogBean.getBlog_readcount());
 			pstmt.setString(6, blogBean.getBlog_file());
 			pstmt.setInt(7, blogBean.getBlog_like());
-			pstmt.setInt(8, blogBean.getBlog_re_lev());
-			pstmt.setInt(9, blogBean.getBlog_re_ref());
-			pstmt.setInt(10, blogBean.getBlog_re_seq());
-			pstmt.setString(11, blogBean.getBlog_content1());
+			pstmt.setString(8, blogBean.getBlog_content1());
 			insertCount = pstmt.executeUpdate(); // INSERT 실행 결과를 int 타입으로 리턴 받음
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -136,14 +134,11 @@ public class BlogDAO {
 				blogBean.setBlog_num(rs.getInt("blog_num"));
 				blogBean.setBlog_writer(rs.getString("blog_writer"));
 				blogBean.setBlog_subject(rs.getString("blog_subject"));
-				blogBean.setBlog_content(rs.getString("blog_content"));
+				blogBean.setBlog_content1(rs.getString("blog_content1"));
 				blogBean.setBlog_readcount(rs.getInt("blog_readcount"));
 				blogBean.setBlog_file(rs.getString("blog_file"));
 				blogBean.setBlog_date(rs.getDate("blog_date"));
 				blogBean.setBlog_like(rs.getInt("blog_like"));
-				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
-				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
-				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
 				blogBean.setBlog_content(rs.getString("blog_content1"));
 				
 				articleList.add(blogBean); // ArrayList 객체에 레코드 단위로 저장
@@ -179,15 +174,12 @@ public class BlogDAO {
 				blogBean.setBlog_num(rs.getInt("blog_num"));
 				blogBean.setBlog_writer(rs.getString("blog_writer"));
 				blogBean.setBlog_subject(rs.getString("blog_subject"));
-				blogBean.setBlog_content(rs.getString("blog_content"));
+				blogBean.setBlog_content1(rs.getString("blog_content1"));
 				blogBean.setBlog_readcount(rs.getInt("blog_readcount"));
 				blogBean.setBlog_file(rs.getString("blog_file"));
 				blogBean.setBlog_date(rs.getDate("blog_date"));
 				blogBean.setBlog_like(rs.getInt("blog_like"));
-				blogBean.setBlog_re_lev(rs.getInt("blog_re_lev"));
-				blogBean.setBlog_re_ref(rs.getInt("blog_re_ref"));
-				blogBean.setBlog_re_seq(rs.getInt("blog_re_seq"));
-				blogBean.setBlog_content(rs.getString("blog_content1"));
+				blogBean.setBlog_content(rs.getString("blog_content"));
 			}
 			
 		} catch (SQLException e) {
@@ -254,13 +246,14 @@ public class BlogDAO {
 	public int updateArticle(BlogBean article) {
 		int updateCount = 0;
 		
-		// BlogBean 객체의 board_num 에 해당하는 레코드를 수정
-		// => 글제목(blog_subject), 글내용(content) 수정
-		String sql = "UPDATE blog SET blog_subject=?,blog_content=?,blog_file=?,blog_content1=? WHERE blog_num=?";
+		// BoardBean 객체의 board_num 에 해당하는 레코드를 수정
+		// => 글제목(board_subject), 글내용(content) 수정
+		String sql = "UPDATE blog SET blog_subject=?,blog_writer=?,blog_content=?,blog_file=?,blog_content1=? WHERE blog_num=?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getBlog_subject());
+			pstmt.setString(2, article.getBlog_writer());
 			pstmt.setString(2, article.getBlog_content());
 			pstmt.setString(3, article.getBlog_file());
 			pstmt.setString(4, article.getBlog_content1());
