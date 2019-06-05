@@ -6,7 +6,23 @@ public class CartBean {
 	private String cart_user_id;
 	private int cart_count;
 	private int price;
+	private String cart_img;
+	private String cart_item_name;
 	
+	
+	
+	public String getCart_img() {
+		return cart_img;
+	}
+	public void setCart_img(String cart_img) {
+		this.cart_img = cart_img;
+	}
+	public String getCart_item_name() {
+		return cart_item_name;
+	}
+	public void setCart_item_name(String cart_item_name) {
+		this.cart_item_name = cart_item_name;
+	}
 	public int getCart_num() {
 		return cart_num;
 	}

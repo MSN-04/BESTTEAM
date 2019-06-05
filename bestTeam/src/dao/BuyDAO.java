@@ -9,6 +9,8 @@ import static db.JdbcUtil.*;
 
 import vo.BuyBean;
 import vo.BuyItemBean;
+import vo.CartBean;
+import vo.ItemBean;
 import vo.UserBean;
 
 public class BuyDAO {
@@ -231,6 +233,68 @@ public class BuyDAO {
 	}
 	
 	/*-------------------------------------- 기홍 ---------------------------------------*/
+	
+	public int insertCart(CartBean cartBean) {
+		int num = 0;
+        int insertCount = 0;
+        
+        String sql="select max(cart_num) from cart";
+        
+        try {
+          pstmt = con.prepareStatement(sql);
+          rs = pstmt.executeQuery();
+          
+          if(rs.next()) {
+        	  num = rs.getInt(1) + 1;
+          }
+          
+          sql = "INSERT INTO cart VALUES(?, ?, ?, ?, ?, ?, ?)";
+          
+          pstmt = con.prepareStatement(sql);
+          pstmt.setInt(1, num);
+          pstmt.setInt(2, cartBean.getCart_item_num());
+          pstmt.setString(3, cartBean.getCart_user_id());
+          pstmt.setInt(4, cartBean.getCart_count());
+          pstmt.setInt(5, cartBean.getPrice());
+          pstmt.setString(6, cartBean.getCart_img());
+          pstmt.setString(7, cartBean.getCart_item_name());
+          
+          
+          insertCount = pstmt.executeUpdate();
+        
+        } catch (SQLException e) {
+			System.out.println("INSERT 에러 : " + e.getMessage());
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+        
+        return insertCount;
+        
+      }
+	
+	public boolean isRegistSuccess(ItemBean itemBean) {
+	      sql = "SELECT * FROM item WHERE item_num=?";
+	      
+	      try {
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, itemBean.getItem_num());
+	        rs = pstmt.executeQuery();
+	        
+	        if(rs.next()) {
+	          return true;
+	        }
+	        
+	      } catch (SQLException e) {
+//	        e.printStackTrace();
+	        System.out.println("isRegistSuccess() 실패! : " + e.getMessage());
+	      } finally {
+	        close(rs);
+	        close(pstmt);
+	      }
+	      
+	      return false;
+	    }
 	
 	/*-------------------------------------- 영비 ---------------------------------------*/
 	public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id,int buy_num){
