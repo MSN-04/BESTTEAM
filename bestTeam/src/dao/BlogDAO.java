@@ -254,10 +254,10 @@ public class BlogDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, article.getBlog_subject());
 			pstmt.setString(2, article.getBlog_writer());
-			pstmt.setString(2, article.getBlog_content());
-			pstmt.setString(3, article.getBlog_file());
-			pstmt.setString(4, article.getBlog_content1());
-			pstmt.setInt(5, article.getBlog_num());
+			pstmt.setString(3, article.getBlog_content());
+			pstmt.setString(4, article.getBlog_file());
+			pstmt.setString(5, article.getBlog_content1());
+			pstmt.setInt(6, article.getBlog_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("updateArticle() 실패! : " + e.getMessage());
