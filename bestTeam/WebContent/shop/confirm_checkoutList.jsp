@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
-<%@page import="vo.BuyItemBean"%>
 <%@page import="java.sql.Date"%>
 <%@page import="vo.BuyBean"%>
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
+<%@page import="vo.BuyItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,6 +33,7 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     
+
     <style type="text/css">
     
 	    .confirmCheckout {
@@ -68,12 +61,11 @@
   
   <body>
   
-
   <%
   BuyBean buyBean=new BuyBean();
   
-  String user_id=request.getParameter("user_id");  //주문한 본인 아이디
-  int buy_num= buyBean.getBuy_num();   //상품 주문번호
+  String user_id=(String)session.getAttribute("id");  //주문한 본인 아이디
+  int buy_num=(int)session.getAttribute("buy_num");   //상품 주문번호
   
   String item_name=buyBean.getBuy_name();  //상품이름
   
@@ -93,7 +85,6 @@
 // 결제금액: buy_total(from BuyBean)총 결제금액 가져오기
   %>
   
-
   <header>
 	<jsp:include page="../inc/header.jsp"/>
     <!-- END nav -->
@@ -109,9 +100,9 @@
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Confirm Checkout</h1>
-	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span> 
-	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p>
+            	<h1 class="mb-3 mt-5 bread">주문 목록 </h1>
+<!-- 	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span>  -->
+<!-- 	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p> -->
             </div>
 
           </div>
@@ -135,7 +126,7 @@
 
 
 		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
-			<h3 class="mb-4 billing-heading">주문상품 정보</h3>
+			<h3 class="mb-4 billing-heading">주문상품 목록</h3>
 <!-- 			<div class="row align-items-end" > -->
 			
 			  			  <div class="cart-list">
@@ -143,21 +134,9 @@
               <table class="table">
                 <thead class="thead-primary">
                   <tr class="text-center">
-
-                    <th>No</th>
-                    <th>&nbsp;</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-
                     <th>주문번호</th>
 <!--                     <th>&nbsp;</th> -->
                     <th>주문 상품</th>
-
-                    <th>주문 날짜</th>
-                    <th>수량</th>
-
                     <th>주문 날짜</th>                 
                     <th>결제 금액</th>
                   </tr>
@@ -166,117 +145,82 @@
 
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">1</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                     <td class="product-num"><a href="#">20190529-000001</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
                      <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
-=======
                       <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">2019/05/29 19:01</td>
                     <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">커피 외2개</td>
                     <td class="price"><%=buy_total %></td>
                     
-                    <td class="total">18,990원</td>
-                  </tr><!-- END TR-->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">20190529-000002</a></td>
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> -->
+                
+                  </tr>
+                  <!-- END TR-->
+<!--                   <tr class="text-center"> -->
+<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+<!--                      <td class="product-num"><a href="#">20190529-000002</a></td> -->
+<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> --> 
                     
-                    <td class="product-name">
-                      <h3>SWEETNESS<br>CoffeeBean</h3>
-                      <h3>히말라야산 커피빈<br>상품 외 개</h3>
-                    </td>
+<!--                     <td class="product-name"> -->
+<!--                       <h3>히말라야산 커피빈<br>상품 외 개</h3> -->
+<!--                     </td> -->
                     
-                    <td class="price">10,000원</td>
+<!--                     <td class="price">2019/05/29 19:01</td> -->
                     
-                    <td class="price">1개</td>
-                    <td class="price">커피 외2개</td>
+               
                     
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">2</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>AROMA<br>CoffeeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
+<!--                     <td class="total">18,990원</td> -->
+<!--                   </tr>END TR -->
  
+                   <tr class="text-center">
+<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+                    
+                    <td class="product-name">
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
+                    </td>
+                    
+                    <td class="price"><%=buy_date %></td>
+                    
+                    <td class="price"><%=buy_total %></td>
+                    
+                
+                  </tr>
+                  <!-- END TR-->
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">3</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                     <td class="product-num"><a href="#">20190529-000003</a></td>
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> -->
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3>ACIDITY<br>CoffeeBean</h3>
-                       <h3>히말라야산 커피빈<br> 상품 외 개</h3>
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">10,000원</td>
-                    <td class="price">2019/05/29 19:01</td>
+                    <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">커피 외2개</td>
+                    <td class="price"><%=buy_total %></td>
                     
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
+                
                   </tr><!-- END TR-->
                   
+                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">4</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                     <td class="product-num"><a href="#">20190529-000004</a></td>
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> -->
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3>BITTERNESS<br>CoffeBean</h3>
-                      <h3>히말라야산 커피빈<br>상품 외 개</h3>
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">10,000원</td>
+                    <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">1개</td>
-                    <td class="price">커피 외2개</td>
+                    <td class="price"><%=buy_total %></td>
                     
-                    <td class="total">10,000원</td>
-                  </tr><!-- END TR-->
-                  
-                  <tr class="text-center">
-                     <td class="product-num"><a href="#">5</a></td>
-                    
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> -->
-                    
-                    <td class="product-name">
-                      <h3>BODY / TEXTURE<br>CoffeBean</h3>
-                      <h3>히말라야산 커피빈<br>상품 외 개</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    <td class="price">커피 외2개</td>
-                    
-                    <td class="total">10,000원</td>
+                
                   </tr><!-- END TR-->
                 </tbody>
               </table>
@@ -288,150 +232,13 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-        <form class="billing-form ftco-bg-dark p-3 p-md-5" >
-			<h3 class="mb-4 billing-heading">주문자 정보</h3>
-			
-			
-	          <div class="row align-items-end confirmCheckout">
-
-	          	<!-- 1st line -->
-	          	<div class="col-md-12">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문번호</label></td>
-		            			 <td><label><span>20190430-A01</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	  
-                 
-		            
-		      	<!-- 2nd line -->
-		      	<div class="col-md-6">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문자</label></td>
-		            			 <td><label><span>뷰쏭</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	   
-	          
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문일자</label></td>
-		            			 <td><label><span>2019.04.30</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 3rd line -->
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 1</label></td>
-		            			 <td><label><span>010-1111-2222</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 2</label></td>
-		            			 <td><label><span>051-333-4444</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 4th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">우편번호</label></td>
-		            			 <td><label><span>47246</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<!-- 5th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">배송지</label></td>
-		            			 <td><label><span>부산 부산진구 동천로 109 삼한골든게이트 7층 </span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-
-			
-	          
-	          </div>
-	          </form><!-- END -->
+      
 
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-	          <div class="row mt-5 pt-3 d-flex" >
 	          
-	          	<div class="col-md-6 d-flex">
-	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">결제 정보</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-	          					<p class="d-flex">
-		    						<span>상품 합계</span>
-		    						<span class="money">41,000 원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>배송비 합계</span>
-		    						<span class="money">2,500원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>할인금액 합계</span>
-		    						<span class="money">0 원</span>
-		    					</p>
-		    					<hr>
-		    					<p class="d-flex total-price">
-		    						<span>총 결제금액</span>
-		    						<span class="money">43,500 원</span>
-		    					</p>
-		    				</div>
-		    				</div>
-					</div>
-	          	</div>
-	          	
-<!-- 	          	<div class="col-md-6"> -->
-<!-- 	          		<div class="cart-detail ftco-bg-dark p-3 p-md-4"> -->
-	          	<div class="col-md-6 d-flex">
-	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">결제 수단</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-		            			<p class="d-flex">
-		    						<span>(무통장 입금)</span>
-		    						<span></span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>신한은행</span>
-		    						<span>110-1111-11111</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>결제일자</span>
-		    						<span>2019.05.01</span>
-		    					</p>
-		    				</div>
-		    				</div>
-					</div>
-	          	</div>
-	          	
-	          	
-	          </div>
-          </div> <!-- .col-md-8 -->
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
@@ -516,8 +323,26 @@
 <!--           </div> -->
 
         </div>
+        </div>
+<!--          <div class="row mt-5"> -->
+<!-- 	          <div class="col text-center">  -->
+<!-- 	             <div class="block-27">  -->
+<!-- 	               <ul>  -->
+<!-- 	                <li><a href="#">&lt;</a></li>  -->
+<!-- 	                <li class="active"><span>1</span></li> -->
+<!-- 	                <li><a href="#">2</a></li>  -->
+<!-- 	                <li><a href="#">3</a></li>  -->
+<!-- 	                 <li><a href="#">4</a></li>  -->
+<!-- 	                 <li><a href="#">5</a></li>  -->
+<!-- 	                 <li><a href="#">&gt;</a></li>  -->
+<!-- 	               </ul>  -->
+<!-- 	            </div>  -->
+<!-- 	          </div>  -->
+<!-- 	         </div>  -->
       </div>
+      
     </section> <!-- .section -->
+    
     
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
