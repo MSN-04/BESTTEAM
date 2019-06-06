@@ -4,10 +4,11 @@
     <%
 	BlogBean article = (BlogBean)request.getAttribute("article");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-// 	String nowPage = request.getAttribute("page").toString(); // int 타입으로 setAttribute() 메서드에 저장했을 경우
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 %>
+
+
 <script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");

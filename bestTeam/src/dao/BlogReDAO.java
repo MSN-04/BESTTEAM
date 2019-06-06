@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 import vo.CommentBean;
 
-public class CommentDAO {
-private CommentDAO() {}
-private static CommentDAO instance;
+public class BlogReDAO {
+private BlogReDAO() {}
+private static BlogReDAO instance;
 
 Connection con;
 PreparedStatement pstmt;
 ResultSet rs;
 
-public static CommentDAO getInstance() {
+public static BlogReDAO getInstance() {
 	if(instance ==null) {
-		instance = new CommentDAO();
+		instance = new BlogReDAO();
 	}
 	return instance;
 	}
@@ -33,12 +33,12 @@ public void setConnection(Connection con) {
 	public int insertComment(CommentBean commentBean) {
 		int insertCount = 0;
 		
-		String sql = "INSERT INTO comment_blog(comment_num,comment_content,comment_writer,comment_date,comment_blog_num) VALUES(null,?,?,NOW(),?)";
+		String sql = "INSERT INTO comment_qna(blog_re_num,blog_re_content,blog_re_writer,blog_re_date,blog_re_blog_num) VALUES(null,?,?,NOW(),?)";
 		try {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, commentBean.getComment_content());
 			pstmt.setString(2, commentBean.getComment_writer());
-			pstmt.setInt(3, commentBean.getComment_blog_num());
+			pstmt.setInt(3, commentBean.getComment_qna_num());
 			insertCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("CommentDAO에서 댓글등록 실패!");
@@ -54,7 +54,7 @@ public void setConnection(Connection con) {
 	public int updateComment(CommentBean commentBean) {
 		int updateCount = 0;
 		
-		String sql ="UPDATE comment_blog SET comment_content=? WHERE comment_num=?";
+		String sql ="UPDATE comment_qna SET blog_re_content=? WHERE blog_re_num=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, commentBean.getComment_content());
@@ -72,14 +72,14 @@ public void setConnection(Connection con) {
 	
 	//댓글 삭제 메소드
 	
-	public int deleteComment(int comment_num, String comment_writer) {
+	public int deleteComment(int blog_re_num, String blog_re_writer) {
 		int deleteCount = 0;
 		
-		String sql = "DELETE FROM comment_blog WHERE comment_num=? AND comment_writer=?";
+		String sql = "DELETE FROM comment_qna WHERE blog_re_num=? AND blog_re_writer=?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, comment_num);
-			pstmt.setString(2, comment_writer);
+			pstmt.setInt(1, blog_re_num);
+			pstmt.setString(2, blog_re_writer);
 			deleteCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,12 +90,12 @@ public void setConnection(Connection con) {
 	}
 	
 	//댓글 갯수 매소드
-	public int countComment(int comment_blog_num)throws SQLException{
+	public int countComment(int blog_re_blog_num)throws SQLException{
 		int count = 0;
 		
-		String sql = "SELECT COUNT(*) FROM comment_blog WHERE comment_blog_num=?";
+		String sql = "SELECT COUNT(*) FROM comment_qna WHERE blog_re_blog_num=?";
 		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, comment_blog_num);
+		pstmt.setInt(1, blog_re_blog_num);
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
@@ -106,19 +106,19 @@ public void setConnection(Connection con) {
 	}
 	
 	//댓글 리스트 메소드
-	public ArrayList<CommentBean> listComment(int comment_blog_num) throws SQLException{
+	public ArrayList<CommentBean> listComment(int blog_re_blog_num) throws SQLException{
 		ArrayList<CommentBean> list = new ArrayList<>();
-		String sql ="SELECT * FROM comment_blog WHERE comment_blog_num=? ORDER BY comment_num ASC";
+		String sql ="SELECT * FROM comment_qna WHERE blog_re_blog_num=? ORDER BY blog_re_num ASC";
 		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, comment_blog_num);
+		pstmt.setInt(1, blog_re_blog_num);
 		rs = pstmt.executeQuery();
 		while(rs.next()){
 			CommentBean commentBean = new CommentBean();
-			commentBean.setComment_num(rs.getInt("comment_num"));
-			commentBean.setComment_content(rs.getString("comment_content"));
-			commentBean.setComment_writer(rs.getString("comment_content"));
-			commentBean.setComment_date(rs.getDate("comment_date"));
-			commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
+			commentBean.setComment_num(rs.getInt("blog_re_num"));
+			commentBean.setComment_content(rs.getString("blog_re_content"));
+			commentBean.setComment_writer(rs.getString("blog_re_content"));
+			commentBean.setComment_date(rs.getDate("blog_re_date"));
+			commentBean.setComment_qna_num(rs.getInt("blog_re_blog_num"));
 			list.add(commentBean);
 		}
 		close(pstmt);
