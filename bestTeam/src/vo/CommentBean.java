@@ -8,6 +8,12 @@ String comment_content;
 String comment_writer;
 Date comment_date;
 int comment_blog_num;
+public int getComment_blog_num() {
+	return comment_blog_num;
+}
+public void setComment_blog_num(int comment_blog_num) {
+	this.comment_blog_num = comment_blog_num;
+}
 public int getComment_num() {
 	return comment_num;
 }
