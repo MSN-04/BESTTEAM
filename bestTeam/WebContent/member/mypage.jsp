@@ -12,6 +12,7 @@
 	String user_id=myPage.getUser_id();
 	
 	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
+	System.out.println("acidity"+fb.getUser_favor_acidity());
 	
 	%>
 <!DOCTYPE html>
