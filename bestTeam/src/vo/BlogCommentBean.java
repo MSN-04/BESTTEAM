@@ -2,12 +2,14 @@ package vo;
 
 import java.util.Date;
 
-public class CommentBean {
+public class BlogCommentBean {
 int comment_num;
 String comment_content;
 String comment_writer;
 Date comment_date;
 int comment_blog_num;
+
+
 public int getComment_blog_num() {
 	return comment_blog_num;
 }
