@@ -4,12 +4,14 @@ import static db.JdbcUtil.getConnection;
 
 import java.sql.Connection;
 
+import static db.JdbcUtil.*;
 import dao.UserDAO;
+import vo.UserBean;
 
 public class DeleteMemberProService {
 
-	public boolean deleteMember(String id, String pass) {
-		int isRightUser = 0;
+	public boolean deleteMember(UserBean userBean) {
+		boolean isRightUser = false;
 		boolean isDeleteSuccess = false;
 		
 		
@@ -17,14 +19,17 @@ public class DeleteMemberProService {
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		isRightUser = userDAO.isUpdateUser(id, pass);
+		isRightUser = userDAO.isRightUser(userBean);
 		
-		if(isRightUser>0) {
-			isDeleteSuccess = userDAO.userDelete(id, pass);
+		if(isRightUser) {
+			isDeleteSuccess = userDAO.userDelete(userBean.getUser_id(), userBean.getUser_pass());
+			commit(con);
+		}else {
+			rollback(con);
 		}
 		
+		close(con);
 		
-		userDAO.userDelete(id, pass);
 		
 		return isDeleteSuccess;
 	}

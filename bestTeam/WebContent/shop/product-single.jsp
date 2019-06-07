@@ -1,3 +1,4 @@
+<%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.ReviewBean"%>
@@ -14,7 +15,7 @@
 	// request.getAttribute() 메서드로 가져오기
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	
+	String id=(String)session.getAttribute("id");
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
@@ -316,6 +317,7 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
+
 <!-- <style type="text/css"> -->
 <!--  b {  -->
 <!--  	font-size: 25px;  -->
@@ -347,6 +349,45 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$('#cart').on('click',function(){
+			if('<%=id %>' != 'null' ) {
+				$.ajax({
+					url : 'cartInsert.sh',
+					type : 'get',
+					data : {
+						"item_num" : <%=itemBean.getItem_num() %>,
+						"quantity" : $('#quantity').val(),
+						"item_price" : <%=itemBean.getItem_price() %>,
+						"cart_img" : '<%=itemBean.getItem_img() %>',
+						"cart_item_name" : '<%=itemBean.getItem_name() %>'
+					},
+					success : function(data) {
+						
+						if (data == 1){
+							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
+							if (con == true) {
+								location.href="cart.sh";
+							}
+						} else if (data == -1) {
+							alert('장바구니 등록에 실패하였습니다.');
+						} else {
+							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
+						}
+						
+					},
+					error : function(request, status, error) {
+// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			} else {
+				alert('로그인 후 이용해주세요.');
+			}
+			
+		});
+	});
+</script>
 </head>
 <body>
 	<header>
@@ -448,7 +489,7 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
-                   <input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
+                   <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
@@ -457,8 +498,11 @@ $( '#rere1' ).click(
 						</div>
 					</div>
 					<p>
-						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
+					
+						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						
+		
 						
 								
 		<div class="row1">
@@ -483,9 +527,6 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
-<%
-String id=(String)session.getAttribute("id");
-%>
 						<section class="ftco-menu mb-5 pb-5" >
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">

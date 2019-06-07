@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import svc.DeleteMemberProService;
 import vo.ActionForward;
+import vo.UserBean;
 
 public class DeleteMemberProAction implements Action {
 
@@ -20,8 +21,12 @@ public class DeleteMemberProAction implements Action {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
+		UserBean userBean = new UserBean();
+		userBean.setUser_id(id);
+		userBean.setUser_pass(pass);
+		
 		DeleteMemberProService deleteMemberProService = new DeleteMemberProService();
-		isDeleteSuccess = deleteMemberProService.deleteMember(id, pass);
+		isDeleteSuccess = deleteMemberProService.deleteMember(userBean);
 		
 		if(!isDeleteSuccess) {
 			response.setContentType("text/html;charset=UTF-8");

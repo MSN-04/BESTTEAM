@@ -9,8 +9,10 @@
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 	StringTokenizer st = new StringTokenizer(myPage.getUser_address(), ":");
+	String user_id=myPage.getUser_id();
 	
 	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
+	System.out.println("acidity"+fb.getUser_favor_acidity());
 	
 	%>
 <!DOCTYPE html>
@@ -177,9 +179,11 @@
 								<a href="delete_member.us"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원
 									탈퇴</a>
+									
 									<a href="confirmCheckoutListProAction.sh"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">주문 조회
+									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회
 								</a>
+								
 							</div>
 						</div>
 				</div>

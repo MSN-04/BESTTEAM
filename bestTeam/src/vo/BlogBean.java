@@ -11,9 +11,6 @@ public class BlogBean {
 	private String blog_file;
 	private Date blog_date;
 	private int blog_like;
-	private int blog_re_lev;
-	private int blog_re_ref;
-	private int blog_re_seq;
 	private String blog_content1;
 	
 
@@ -73,24 +70,6 @@ public class BlogBean {
 	}
 	public void setBlog_like(int blog_like) {
 		this.blog_like = blog_like;
-	}
-	public int getBlog_re_lev() {
-		return blog_re_lev;
-	}
-	public void setBlog_re_lev(int blog_re_lev) {
-		this.blog_re_lev = blog_re_lev;
-	}
-	public int getBlog_re_ref() {
-		return blog_re_ref;
-	}
-	public void setBlog_re_ref(int blog_re_ref) {
-		this.blog_re_ref = blog_re_ref;
-	}
-	public int getBlog_re_seq() {
-		return blog_re_seq;
-	}
-	public void setBlog_re_seq(int blog_re_seq) {
-		this.blog_re_seq = blog_re_seq;
 	}
 			
 	

@@ -1,4 +1,4 @@
-<%@page import="vo.NoticeBean"%>
+<%@page import="vo.BuyBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +6,8 @@
 <%
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
 	// request.getAttribute() 메서드로 가져오기
-	ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
+	out.println("여기는 confirmCheckoutList.jsp");
+	ArrayList<BuyBean> buyList = (ArrayList<BuyBean>) request.getAttribute("buyList");
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
 	int listCount = pageInfo.getListCount();
@@ -18,6 +19,23 @@
 
 	int number = 0;
 	number = listCount - (nowPage - 1) * (limit);
+	
+	BuyBean buyBean=(BuyBean)request.getAttribute("BuyBean");
+	//------------------------------------------------------
+	
+	System.out.println("confirmCheckoutList.jsp-->listCount :"+listCount);
+	System.out.println("confirmCheckoutList.jsp-->nowPage :"+nowPage);
+	System.out.println("confirmCheckoutList.jsp-->maxPage :"+maxPage);
+	System.out.println("confirmCheckoutList.jsp-->startPage :"+startPage);
+	System.out.println("confirmCheckoutList.jsp-->endPage :"+endPage);
+	//System.out.println("confirmCheckoutList.jsp-->user_id :"+buyBean.getBuy_user_id());
+// 	System.out.println("confirmCheckoutList.jsp--> buy_num:"+buyBean.getBuy_num());
+// 	System.out.println("confirmCheckoutList.jsp--> buy_name:"+buyBean.getBuy_name());
+// 	System.out.println("confirmCheckoutList.jsp--> buy_date:"+buyBean.getBuy_buydate());
+// 	System.out.println("confirmCheckoutList.jsp-->buy_count:"+buyBean.getBuy_count());
+// 	System.out.println("confirmCheckoutList.jsp--> buy_total:"+buyBean.getBuy_total());
+	
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +90,7 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Notice</h1>
+						<h1 class="mb-3 mt-5 bread">주문 목록</h1>
 						<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="./noticeList.no">Notice</a></span> </p> -->
 					</div>
 
@@ -84,99 +102,173 @@
 	<br>
 	<br>
 	<br>
-	<section class="ftco=section">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
-					<table class="table thead-light">
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>글쓴이</th>
-							<th>조회수</th>
-						</tr>
-						<%
-							if (articleList != null && listCount > 0) {
-								for (int i = 0; i < articleList.size(); i++) {
+	    <section class="ftco-section">
+      <div class="container" >
+        <div class="row">
+          <div class="container" style=" margin: 50px;">
+<!--      <div class="col-xl-8 ftco-animate" style=" margin: auto;"> -->
+
+          
+<!-- box 1 -->          
+
+
+
+		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
+			<h3 class="mb-4 billing-heading">주문상품 목록</h3>
+<!-- 			<div class="row align-items-end" > -->
+			
+			  			  <div class="cart-list">
+
+              <table class="table">
+                <thead class="thead-primary">
+                  <tr class="text-center">
+                    <th>주문번호</th>
+ 					<th>주문 상품</th>
+                    <th>주문 날짜</th>   
+                    <th>결제 금액</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <%
+							if (buyList != null && listCount > 0) {
+								for (int i = 0; i < buyList.size(); i++) {
 						%>
-						<tr>
-							<td align="center"><%=number--%></td>
-							<td><a
-								href="noticeDetail.no?notice_num=<%=articleList.get(i).getNotice_num()%>&page=<%=nowPage%>">
-									<%=articleList.get(i).getNotice_subject()%>
-							</a></td>
-							<td><%=articleList.get(i).getNotice_date()%></td>
-							<td>Tinkervell</td>
-							<td><%=articleList.get(i).getNotice_readcount()%></td>
-						</tr>
-						<%
-							}
-							}
-						%>
-					</table>
 
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-									<%
-										if (nowPage <= 1) {
-									%>
-									<li><a>&lt;</a></li>
-									<%
-										} else {
-									%>
-									<li><a href="noticeList.no?page=<%=nowPage - 1%>">&lt;</a></li>
-									<%
-										}
-										for (int a = startPage; a <= endPage; a++) {
-											if (a == nowPage) {
-									%><li class="active"><span><%=a%></span></li>
-									<%
-										} else {
-									%><li><a href="noticeList.no?page=<%=a%>"><%=a%></a></li>
-									<%
-										}
-										}
-									%>
-									<%
-										if (nowPage >= maxPage) {
-									%>
-									<li><a>&gt;</a></li>
-									<%
-										} else {
-									%>
-									<li><a href="noticeList.no?page=<%=nowPage + 1%>">&gt;</a></li>
-									<%
-										}
-									%>
-								</ul>
-
-
-
-								<%
-									String id = (String) session.getAttribute("id");
-									if (id != null && id.equals("admin")) {
+                  
+                  <tr class="text-center">
+<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+                    
+                    <td class="product-name">
+                      <h3><%=buyList.get(i).getBuy_name() %><br> 상품 외<%=buyList.get(i).getBuy_count()-1 %>개</h3>
+                    </td>
+                    
+                    <td class="price"><%=buyList.get(i).getBuy_buydate() %></td>
+                    
+                    <td class="price"><%=buyList.get(i).getBuy_total() %></td>
+                    
+   <%                 
+							out.println("buyList.get(i).getBuy_num()"+buyList.get(i).getBuy_num());
+							out.println("buyList.get(i).getBuy_name()"+buyList.get(i).getBuy_name());
+							out.println("buyList.get(i).getBuy_count()"+buyList.get(i).getBuy_count());
+							out.println("buyList.get(i).getBuy_buydate()"+buyList.get(i).getBuy_buydate());
+							out.println("buyList.get(i).getBuy_total()"+buyList.get(i).getBuy_total());
+	%>
+                  </tr>
+                  <%}
+								}
+								
 								%>
-								<a href="noticeWriteForm.no"
-									class="btn btn-primary btn-outline-primary"
-									style="float: right;">글쓰기</a>
-									
-								<%
-									}
-								%><br>
-								<br>
+                
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                </tbody>
+              </table>
+            </div>
+            
+		</form>
+		<br><br>
+		
+<!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-	</section>
+      
+
+
+<!--   ------------------------------------------------------------------------------------------------------------------------ -->
+
+
+	          
+
+<!--   ------------------------------------------------------------------------------------------------------------------------ -->
+
+
+
+<!--           <div class="col-xl-4 sidebar ftco-animate"> -->
+          
+            
+            
+            
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <h3>최근 본 상품</h3> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+            
+            
+
+
+          
+<!--             <div class="sidebar-box"> -->
+<!--               <form action="#" class="search-form"> -->
+<!--                 <div class="form-group"> -->
+<!--                 	<div class="icon"> -->
+<!-- 	                  <span class="icon-search"></span> -->
+<!--                   	</div> -->
+<!--                   	<input type="text" class="form-control" placeholder="Search..."> -->
+<!--                	</div> -->
+<!--               </form> -->
+<!--             </div> -->
+
+
+
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <h3>Paragraph</h3> -->
+<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
+<!--             </div> -->
+<!--           </div> -->
+
+        </div>
+        </div>
+<!--          <div class="row mt-5"> -->
+<!-- 	          <div class="col text-center">  -->
+<!-- 	             <div class="block-27">  -->
+<!-- 	               <ul>  -->
+<!-- 	                <li><a href="#">&lt;</a></li>  -->
+<!-- 	                <li class="active"><span>1</span></li> -->
+<!-- 	                <li><a href="#">2</a></li>  -->
+<!-- 	                <li><a href="#">3</a></li>  -->
+<!-- 	                 <li><a href="#">4</a></li>  -->
+<!-- 	                 <li><a href="#">5</a></li>  -->
+<!-- 	                 <li><a href="#">&gt;</a></li>  -->
+<!-- 	               </ul>  -->
+<!-- 	            </div>  -->
+<!-- 	          </div>  -->
+<!-- 	         </div>  -->
+      </div>
+      
+    </section> 
 
 	<!--     <section class="ftco-section"> -->
 	<!--       <div class="container"> -->

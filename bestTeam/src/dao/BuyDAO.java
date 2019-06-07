@@ -9,6 +9,8 @@ import static db.JdbcUtil.*;
 
 import vo.BuyBean;
 import vo.BuyItemBean;
+import vo.CartBean;
+import vo.ItemBean;
 import vo.UserBean;
 
 public class BuyDAO {
@@ -232,51 +234,107 @@ public class BuyDAO {
 	
 	/*-------------------------------------- 기홍 ---------------------------------------*/
 	
+	public int insertCart(CartBean cartBean) {
+		int num = 0;
+        int insertCount = 0;
+        
+        String sql="select max(cart_num) from cart";
+        
+        try {
+          pstmt = con.prepareStatement(sql);
+          rs = pstmt.executeQuery();
+          
+          if(rs.next()) {
+        	  num = rs.getInt(1) + 1;
+          }
+          
+          sql = "INSERT INTO cart VALUES(?, ?, ?, ?, ?, ?, ?)";
+          
+          pstmt = con.prepareStatement(sql);
+          pstmt.setInt(1, num);
+          pstmt.setInt(2, cartBean.getCart_item_num());
+          pstmt.setString(3, cartBean.getCart_user_id());
+          pstmt.setInt(4, cartBean.getCart_count());
+          pstmt.setInt(5, cartBean.getPrice());
+          pstmt.setString(6, cartBean.getCart_img());
+          pstmt.setString(7, cartBean.getCart_item_name());
+          
+          
+          insertCount = pstmt.executeUpdate();
+        
+        } catch (SQLException e) {
+			System.out.println("INSERT 에러 : " + e.getMessage());
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+        
+        return insertCount;
+        
+      }
+	
+	public boolean isRegistSuccess(ItemBean itemBean) {
+	      sql = "SELECT * FROM item WHERE item_num=?";
+	      
+	      try {
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, itemBean.getItem_num());
+	        rs = pstmt.executeQuery();
+	        
+	        if(rs.next()) {
+	          return true;
+	        }
+	        
+	      } catch (SQLException e) {
+//	        e.printStackTrace();
+	        System.out.println("isRegistSuccess() 실패! : " + e.getMessage());
+	      } finally {
+	        close(rs);
+	        close(pstmt);
+	      }
+	      
+	      return false;
+	    }
+	
 	/*-------------------------------------- 영비 ---------------------------------------*/
-	public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id,int buy_num){
+		public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id){
 		System.out.println("BuyDAO --selectConfirmCheckoutList ");
 		
-		ArrayList<BuyBean> selectConfirmCheckoutList=null;
-		BuyBean buyBean=null;
-		UserBean userBean=null;
+		ArrayList<BuyBean> buyList=new ArrayList<>();
+		BuyBean buyBean=new BuyBean();
+		//UserBean userBean=null;
 		
-		String sql="select buy_user_id from buy where buy_user_id=?";  //buy 테이블에서 buy_user_id가져옴
 		try {
-			selectConfirmCheckoutList=new ArrayList<>();
+			String sql="select buy_user_id from buy where buy_user_id=?";  //buy 테이블에서 buy_user_id가져옴
+			buyList=new ArrayList<>();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,user_id);   //buy_user_id에 접속한 user_id넣는다.
 			System.out.println("user_id:"+user_id);
-			System.out.println("buy_user_id:"+buyBean.getBuy_user_id());
+		//	System.out.println("buy_user_id:"+buyBean.getBuy_user_id());
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()) {
-					String dbId=rs.getString("user_id");
-					System.out.println("dbId: "+dbId);
-			  
-					sql="select * from buy where buy_num=?"; 
+					
 					try {
+						sql="select * from buy where buy_user_id=? order by buy_num desc"; 
 						pstmt=con.prepareStatement(sql);
-						pstmt.setInt(1,buy_num);
+						pstmt.setString(1,user_id);
 						rs=pstmt.executeQuery();
 						
-						if(rs.next()) {
-							buyBean.setBuy_num(buy_num);
-							buyBean.setBuy_buydate(rs.getDate("buy_date"));
+						while(rs.next()) {
+							buyBean.setBuy_num(rs.getInt("buy_num"));
+							buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
 							buyBean.setBuy_count(rs.getInt("buy_count"));
 							buyBean.setBuy_name(rs.getString("buy_name"));
 							buyBean.setBuy_total(rs.getInt("buy_total"));
 							buyBean.setBuy_user_id(user_id);
-							selectConfirmCheckoutList.add(buyBean);
+							buyList.add(buyBean);
 						}
 						
 					}catch(SQLException e) {
 						e.printStackTrace();
 						System.out.println("selectConfirmCheckoutList 에러1:"+e);
 					}
-											
-			}
-			
-			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("selectConfirmCheckoutList 에러2:"+e);
@@ -284,7 +342,32 @@ public class BuyDAO {
 			close(rs);
 			close(pstmt);
 		}
-		return selectConfirmCheckoutList;
+		return buyList;
+	}
+	
+		//영비 -- 글 목록 개수 구하기
+	public int selectBuyListCount() {
+		System.out.println("dao--> selectBuyListCount()");
+		int buyListCount=0;
+		String sql="select count(*) from buy ";
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				buyListCount=rs.getInt(1);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("dao - selectListCount 에러:"+e);
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return buyListCount;
+		
 	}
 	
 }
