@@ -23,11 +23,11 @@
 	BuyBean buyBean=(BuyBean)request.getAttribute("BuyBean");
 	//------------------------------------------------------
 	
-	System.out.println("confirmCheckoutList.jsp-->listCount :"+listCount);
-	System.out.println("confirmCheckoutList.jsp-->nowPage :"+nowPage);
-	System.out.println("confirmCheckoutList.jsp-->maxPage :"+maxPage);
-	System.out.println("confirmCheckoutList.jsp-->startPage :"+startPage);
-	System.out.println("confirmCheckoutList.jsp-->endPage :"+endPage);
+// 	System.out.println("confirmCheckoutList.jsp-->listCount :"+listCount);
+// 	System.out.println("confirmCheckoutList.jsp-->nowPage :"+nowPage);
+// 	System.out.println("confirmCheckoutList.jsp-->maxPage :"+maxPage);
+// 	System.out.println("confirmCheckoutList.jsp-->startPage :"+startPage);
+// 	System.out.println("confirmCheckoutList.jsp-->endPage :"+endPage);
 	//System.out.println("confirmCheckoutList.jsp-->user_id :"+buyBean.getBuy_user_id());
 // 	System.out.println("confirmCheckoutList.jsp--> buy_num:"+buyBean.getBuy_num());
 // 	System.out.println("confirmCheckoutList.jsp--> buy_name:"+buyBean.getBuy_name());
@@ -149,11 +149,11 @@
                     <td class="price"><%=buyList.get(i).getBuy_total() %></td>
                     
    <%                 
-							out.println("buyList.get(i).getBuy_num()"+buyList.get(i).getBuy_num());
-							out.println("buyList.get(i).getBuy_name()"+buyList.get(i).getBuy_name());
-							out.println("buyList.get(i).getBuy_count()"+buyList.get(i).getBuy_count());
-							out.println("buyList.get(i).getBuy_buydate()"+buyList.get(i).getBuy_buydate());
-							out.println("buyList.get(i).getBuy_total()"+buyList.get(i).getBuy_total());
+// 							out.println("buyList.get(i).getBuy_num()"+buyList.get(i).getBuy_num());
+// 							out.println("buyList.get(i).getBuy_name()"+buyList.get(i).getBuy_name());
+// 							out.println("buyList.get(i).getBuy_count()"+buyList.get(i).getBuy_count());
+// 							out.println("buyList.get(i).getBuy_buydate()"+buyList.get(i).getBuy_buydate());
+// 							out.println("buyList.get(i).getBuy_total()"+buyList.get(i).getBuy_total());
 	%>
                   </tr>
                   <%}
