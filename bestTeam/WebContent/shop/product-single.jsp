@@ -372,6 +372,11 @@ $( '#rere1' ).click(
 							}
 						} else if (data == -1) {
 							alert('장바구니 등록에 실패하였습니다.');
+						} else if (data == 2) {
+							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
+							if (con == true) {
+								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val();
+							}
 						} else {
 							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
 						}

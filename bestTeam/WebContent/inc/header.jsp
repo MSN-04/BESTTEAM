@@ -87,7 +87,7 @@
 				}
 				%>
 				
-				<li class="nav-item cart"><a href="./shop/cart.jsp" class="nav-link">
+				<li class="nav-item cart"><a href="./cart.sh" class="nav-link">
 				<span class="icon icon-shopping_cart"></span>
 				<span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
 			</ul>
