@@ -9,6 +9,11 @@ public class QnaBean {
 	private String qna_subject;
 	private String qna_content;
 	private Date qna_date;
+	private int qna_re_ref;	// 참조 번호
+	private int qna_re_lev;	// 참조 레벨
+	private int qna_re_seq;	// 참조 순서
+
+
 	
 	public int getQna_item_num() {
 		return qna_item_num;
@@ -47,7 +52,24 @@ public class QnaBean {
 	public void setQna_date(Date qna_date) {
 		this.qna_date = qna_date;
 	}
-	
+	public int getQna_re_ref() {
+		return qna_re_ref;
+	}
+	public void setQna_re_ref(int qna_re_ref) {
+		this.qna_re_ref = qna_re_ref;
+	}
+	public int getQna_re_lev() {
+		return qna_re_lev;
+	}
+	public void setQna_re_lev(int qna_re_lev) {
+		this.qna_re_lev = qna_re_lev;
+	}
+	public int getQna_re_seq() {
+		return qna_re_seq;
+	}
+	public void setQna_re_seq(int qna_re_seq) {
+		this.qna_re_seq = qna_re_seq;
+	}
 	
 	
 	

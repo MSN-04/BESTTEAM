@@ -31,15 +31,15 @@ public void setConnection(Connection con) {
 	this.con = con;
 	}
 	//댓글 등록 메소드
-	public int insertComment(BlogCommentBean commentBean) {
+	public int insertComment(BlogCommentBean blogCommentBean) {
 		int insertCount = 0;
 		
 		String sql = "INSERT INTO comment_blog(comment_num,comment_content,comment_writer,comment_date,comment_blog_num) VALUES(null,?,?,NOW(),?)";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, commentBean.getComment_content());
-			pstmt.setString(2, commentBean.getComment_writer());
-			pstmt.setInt(3, commentBean.getComment_blog_num());
+			pstmt.setString(1, blogCommentBean.getComment_content());
+			pstmt.setString(2, blogCommentBean.getComment_writer());
+			pstmt.setInt(3, blogCommentBean.getComment_blog_num());
 			insertCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("CommentDAO에서 댓글등록 실패!");
@@ -125,6 +125,7 @@ public void setConnection(Connection con) {
 		close(pstmt);
 		return list;
 	}
+
 	
 	
 }
