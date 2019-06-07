@@ -1,12 +1,15 @@
+<%@page import="vo.BlogCommentBean"%>
 <%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	BlogBean article = (BlogBean)request.getAttribute("article");
+    BlogCommentBean article2 = (BlogCommentBean)request.getAttribute("article2");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+	String comment_writer = request.getParameter("comment_writer");
 %>
+
 <script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
@@ -307,7 +310,6 @@
 				<div class="col-md-8 ftco-animate">
 					<h2 class="mb-3"><%= article.getBlog_subject() %></h2>
 					<p><%= article.getBlog_content() %></p>
-<<<<<<< HEAD
 
 					<%
 									String id = (String) session.getAttribute("id");
@@ -322,19 +324,8 @@
 								%><br>
 								<br>
 						
-					<div class="tag-widget post-tag-container mb-5 mt-5">
-						<div class="tagcloud">
-							<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
-								class="tag-cloud-link">핸드드립</a> <a href="#"
-								class="tag-cloud-link">융드립</a> <a href="#"
-								class="tag-cloud-link">에스프레소</a>
-						</div>
-					</div>
-=======
 					
 					
-            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a>
-            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=article.getBlog_num()%>')">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>
@@ -345,9 +336,44 @@
             </div>
             
             
->>>>>>> refs/remotes/origin/master
 
+            <div class="pt-5 mt-5">
+              <h3 class="mb-5">코멘트 6개</h3>
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="./images/person_1.png" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3><%=comment_writer %></h3>
+                    <div class="meta">June 27, 2018 at 2:21pm</div>
+                    <p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
 
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="./images/person_1.png" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3>송주영</h3>
+                    <div class="meta">June 27, 2018 at 2:21pm</div>
+                     <p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+
+                  <ul class="children">
+                    <li class="comment">
+                      <div class="vcard bio">
+                        <img src="./images/person_2.png" alt="Image placeholder">
+                      </div>
+                      <div class="comment-body">
+                        <h3>문세웅</h3>
+                        <div class="meta">June 27, 2018 at 2:21pm</div>
+                       <p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
+                        <p><a href="#" class="reply">Reply</a></p>
+                      </div>
 
 
 					<div class="pt-5 mt-5">
@@ -386,22 +412,139 @@
 									</p>
 								</div>
 
-								<ul class="children">
-									<li class="comment">
-										<div class="vcard bio">
-											<img src="./images/person_2.png" alt="Image placeholder">
-										</div>
-										<div class="comment-body">
-											<h3>문세웅</h3>
-											<div class="meta">June 27, 2018 at 2:21pm</div>
-											<p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는
-												정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.
-												도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘
-												읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
-											<p>
-												<a href="#" class="reply">Reply</a>
-											</p>
-										</div>
+                <li class="comment">
+                  <div class="vcard bio">
+                    <img src="./images/person_1.png" alt="Image placeholder">
+                  </div>
+                  <div class="comment-body">
+                    <h3>지이듬</h3>
+                    <div class="meta">June 27, 2018 at 2:21pm</div>
+                     <p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">코멘트 남기기</h3>
+                <form id="frm_comment" action="blogCommentWritePro.bl" method="post">
+                  <div class="form-group">
+                    <label for="name">이름 *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+<!--                   <div class="form-group"> -->
+<!--                     <label for="email">이메일 *</label> -->
+<!--                     <input type="email" class="form-control" id="email"> -->
+<!--                   </div> -->
+<!--                   <div class="form-group"> -->
+<!--                     <label for="website">웹사이트</label> -->
+<!--                     <input type="url" class="form-control" id="website"> -->
+<!--                   </div> -->
+
+                  <div class="form-group">
+                    <label for="message">내용</label>
+                    <textarea name="" id="message" cols="30" rows="2" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+          </div> <!-- .col-md-8 -->
+          
+<!--           <div class="col-md-4 sidebar ftco-animate"> -->
+<!--             <div class="sidebar-box"> -->
+<!--               <form action="#" class="search-form"> -->
+<!--                 <div class="form-group"> -->
+<!--                 	<div class="icon"> -->
+<!-- 	                  <span class="icon-search"></span> -->
+<!--                   </div> -->
+<!--                   <input type="text" class="form-control" placeholder="Search..."> -->
+<!--                 </div> -->
+<!--               </form> -->
+<!--             </div> -->
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <div class="categories"> -->
+<!--                 <h3>카테고리</h3> -->
+<!--                 <li><a href="#">원두 <span>(12)</span></a></li> -->
+<!--                 <li><a href="#">로스팅 <span>(22)</span></a></li> -->
+<!--                 <li><a href="#">핸드드립 <span>(37)</span></a></li> -->
+<!--                 <li><a href="#">융드립 <span>(42)</span></a></li> -->
+<!--                 <li><a href="#">드리퍼 <span>(14)</span></a></li> -->
+<!--                 <li><a href="#">강배전 <span>(140)</span></a></li> -->
+<!--               </div> -->
+<!--             </div> -->
+
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <h3>최근에 올라온 글</h3> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_1.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> 관리자</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_2.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> 관리자</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <div class="block-21 mb-4 d-flex"> -->
+<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_3.jpg);"></a> -->
+<!--                 <div class="text"> -->
+<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
+<!--                   <div class="meta"> -->
+<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
+<!--                     <div><a href="#"><span class="icon-person"></span> 관리자</a></div> -->
+<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <h3>태그</h3> -->
+<!--               <div class="tagcloud"> -->
+<!--                 <a href="#" class="tag-cloud-link">로스팅</a> -->
+<!--                 <a href="#" class="tag-cloud-link">핸드로스팅</a> -->
+<!--                 <a href="#" class="tag-cloud-link">생두</a> -->
+<!--                 <a href="#" class="tag-cloud-link">융드립</a> -->
+<!--                 <a href="#" class="tag-cloud-link">드리퍼</a> -->
+<!--                 <a href="#" class="tag-cloud-link">홈로스팅</a> -->
+<!--                 <a href="#" class="tag-cloud-link">원두선별법</a> -->
+<!--                 <a href="#" class="tag-cloud-link">원두보관기간</a> -->
+<!--               </div> -->
+<!--             </div> -->
+
+<!--             <div class="sidebar-box ftco-animate"> -->
+<!--               <h3>Paragraph</h3> -->
+<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
+<!--             </div> -->
+<!--           </div> -->
+
+        </div>
+      </div>
+    </section> <!-- .section -->
+    <footer>
+  		<jsp:include page="../inc/footer.jsp"/>
+  	</footer>
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 
 
 										<ul class="children">
