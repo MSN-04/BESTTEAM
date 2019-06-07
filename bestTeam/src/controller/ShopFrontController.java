@@ -127,22 +127,22 @@ public class ShopFrontController extends HttpServlet{
 			}
 		} 
 		else if(command.equals("/confirmCheckoutList.sh")) {
-			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
+			System.out.println(" itemFrontController -->confirmCheckoutList.sh--");
 			forward = new ActionForward();
-			forward.setPath("./shop/confirm_checkoutList.jsp");
+			forward.setPath("./shop/confirmCheckoutList.jsp");
 
 		} 
 		
 		// 영비
-		else if(command.equals("/confirmCheckoutPro.sh")) {
-			 System.out.println("itemFrontController --> confirm_checkoutPro.sh");
+		else if(command.equals("/confirmCheckoutProAction.sh")) {
+			 System.out.println("itemFrontController --> confirmCheckoutProAction.sh");
 		      
 		      action = (Action) new ConfirmCheckoutProAction();
 		      
 		      try {
 		        forward = action.execute(request, response);
 		      } catch (Exception e) {
-		        System.out.println("controller-confirm_checkoutPro 실패"+ e.getMessage());
+		        System.out.println("controller-confirmCheckoutProAction 실패"+ e.getMessage());
 		        System.out.println("controller- 에러:"+e);
 		        
 		      }

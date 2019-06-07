@@ -11,7 +11,7 @@ import dao.BuyDAO;
 import svc.ConfirmCheckoutListService;
 import vo.ActionForward;
 import vo.BuyBean;
-
+import vo.PageInfo;
 import vo.UserBean;
 
 public class ConfirmCheckoutListProAction implements Action {
@@ -27,11 +27,11 @@ public class ConfirmCheckoutListProAction implements Action {
 		 * 수량: buy_count (from BuyBean)
 		 * 결제금액: buy_total(from BuyBean)총 결제금액 가져오기
 		 * ---------------------------------------------
-		 * 
 		 * */
 		System.out.println("ConfirmCheckoutListProAction 시작");
 		ActionForward forward=new ActionForward();
 		BuyBean buyBean=new BuyBean();	
+		ArrayList<BuyBean> buyList=new ArrayList<BuyBean>();
 
 		
 		HttpSession session = request.getSession();
@@ -42,7 +42,10 @@ public class ConfirmCheckoutListProAction implements Action {
 		String user_id=(String) session.getAttribute("id");		
 		
 		System.out.println("action ->user_id:"+user_id);
-		ArrayList<BuyBean> articleList=new ArrayList<BuyBean>();
+		
+		
+		int page=1;
+		int limit=10;
 
 				
 		if(user_id==null){ //id 가 없을 때,
@@ -53,20 +56,40 @@ public class ConfirmCheckoutListProAction implements Action {
 			out.println("history.back()"); // 
 			out.println("</script>"); 	
 
-		}else
+			
+		}else {
 		
-		{
+		
 			buyBean.setBuy_user_id(user_id);
 		
 			System.out.println("buyBean에 user_id 저장-->"+user_id);
 		ConfirmCheckoutListService confirmCheckoutListService=new ConfirmCheckoutListService();
-		articleList=confirmCheckoutListService.selectConfirmCheckoutList(user_id);
+		buyList=confirmCheckoutListService.selectConfirmCheckoutList(user_id);
 	
-		request.setAttribute("articleList",articleList);  //articleList에 서비스에서 가져온걸 저장.
+		int listCount= confirmCheckoutListService.getBuyListCount();
 		
+		// 페이지 계산
+		int maxPage = (int)((double)listCount / limit + 0.95); 
+		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1; 
+		int endPage = startPage + 10 - 1; 
 		
+		if(endPage > maxPage) {
+			endPage = maxPage; 
+		}
+		
+		// 페이지 번호 관련 정보를 PageInfo 객체에 저장
+		PageInfo pageInfo = new PageInfo();
+		pageInfo.setPage(page);
+		pageInfo.setMaxPage(maxPage);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		pageInfo.setListCount(listCount);
+		pageInfo.setLimit(limit);
+		
+		request.setAttribute("pageInfo", pageInfo);
+		request.setAttribute("buyList",buyList);  //buyList에 서비스에서 가져온걸 저장.
 		forward.setPath("./confirmCheckoutList.sh");
-		forward.setRedirect(true); // Redirect 방식
+	//	forward.setRedirect(true); // Redirect 방식
 				
 		}
 		return forward;

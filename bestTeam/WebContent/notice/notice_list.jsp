@@ -168,6 +168,7 @@
 								<a href="noticeWriteForm.no"
 									class="btn btn-primary btn-outline-primary"
 									style="float: right;">글쓰기</a>
+									
 								<%
 									}
 								%><br> <br>

@@ -399,13 +399,13 @@ public class BuyDAO {
 		public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id){
 		System.out.println("BuyDAO --selectConfirmCheckoutList ");
 		
-		ArrayList<BuyBean> selectConfirmCheckoutList=new ArrayList<>();
-		BuyBean buyBean=null;
+		ArrayList<BuyBean> buyList=new ArrayList<>();
+		BuyBean buyBean=new BuyBean();
 		//UserBean userBean=null;
 		
 		try {
 			String sql="select buy_user_id from buy where buy_user_id=?";  //buy 테이블에서 buy_user_id가져옴
-			selectConfirmCheckoutList=new ArrayList<>();
+			buyList=new ArrayList<>();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,user_id);   //buy_user_id에 접속한 user_id넣는다.
 			System.out.println("user_id:"+user_id);
@@ -421,12 +421,12 @@ public class BuyDAO {
 						
 						while(rs.next()) {
 							buyBean.setBuy_num(rs.getInt("buy_num"));
-							buyBean.setBuy_buydate(rs.getDate("buy_date"));
+							buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
 							buyBean.setBuy_count(rs.getInt("buy_count"));
 							buyBean.setBuy_name(rs.getString("buy_name"));
 							buyBean.setBuy_total(rs.getInt("buy_total"));
 							buyBean.setBuy_user_id(user_id);
-							selectConfirmCheckoutList.add(buyBean);
+							buyList.add(buyBean);
 						}
 						
 					}catch(SQLException e) {
@@ -441,23 +441,31 @@ public class BuyDAO {
 			close(rs);
 			close(pstmt);
 		}
-		return selectConfirmCheckoutList;
+		return buyList;
 	}
 	
-	public int selectBuy_num() {
-		int buy_num=0;
-		String sql="select buy_num from buy where buy_num=?";
+		//영비 -- 글 목록 개수 구하기
+	public int selectBuyListCount() {
+		System.out.println("dao--> selectBuyListCount()");
+		int buyListCount=0;
+		String sql="select count(*) from buy ";
 		
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1,buy_num);
 			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				buyListCount=rs.getInt(1);
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("dao - selectBuynum 에러:"+e);
+			System.out.println("dao - selectListCount 에러:"+e);
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
-		return buy_num;
+		return buyListCount;
 		
 	}
 
