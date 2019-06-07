@@ -5,7 +5,7 @@ import java.sql.Connection;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
-import dao.ItemDAO;
+import dao.BuyDAO;
 import vo.CartBean;
 
 import static db.JdbcUtil.*;
@@ -19,9 +19,9 @@ public class CartService {
 		
 		Connection con = getConnection();
 		
-		ItemDAO cartDAO = ItemDAO.getInstance();
-		cartDAO.setConnection(con);
-		int insertCount = cartDAO.insertCart(cartBean);
+		BuyDAO buyDAO = BuyDAO.getInstance();
+		buyDAO.setConnection(con);
+		int insertCount = buyDAO.insertCart(cartBean);
 		
 		if(insertCount > 0) {
 			commit(con);

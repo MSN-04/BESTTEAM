@@ -1,11 +1,9 @@
 package action;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import svc.QnaListService;
 import vo.ActionForward;
@@ -20,6 +18,7 @@ public class QnaListAction implements Action {
 		
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
 		
+		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		int page = 1;
 		int limit = 5;
 		
@@ -32,7 +31,7 @@ public class QnaListAction implements Action {
 		
 		int listCount = qnaListService.getListCount(); // 총 게시물 목록 수 가져오기
 		
-		articleList = qnaListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+		articleList = qnaListService.getArticleList(page, limit, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 		
 		// 페이지 계산
 		int maxPage = (int)((double)listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)

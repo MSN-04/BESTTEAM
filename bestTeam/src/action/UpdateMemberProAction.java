@@ -15,6 +15,7 @@ public class UpdateMemberProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("updatememberProAction");
 		ActionForward forward = null;
 		
 		boolean isUpdateSuccess = false;
@@ -22,12 +23,12 @@ public class UpdateMemberProAction implements Action {
 		
 		HttpSession session = request.getSession();
 		
-		String age = Integer.toString(((Calendar.YEAR-Integer.parseInt(request.getParameter("jumin1").substring(0, 1)))+1));
-		
+		String age = Integer.toString(((Calendar.getInstance().get(Calendar.YEAR)-(Integer.parseInt(request.getParameter("jumin1").substring(0, 2))))+1)%100);
+		System.out.println(age);
 		String id = session.getAttribute("id").toString();
-		String pass = request.getParameter("pass");
+//		String pass = request.getParameter("pass");
 		userBean.setUser_id(request.getParameter("id"));
-		userBean.setUser_pass(request.getParameter("new_pass"));
+		userBean.setUser_pass(request.getParameter("pass2"));
 		userBean.setUser_name(request.getParameter("name"));
 		userBean.setUser_age(age);
 		userBean.setUser_phone(request.getParameter("phone"));
@@ -35,10 +36,12 @@ public class UpdateMemberProAction implements Action {
 		userBean.setUser_address(request.getParameter("address1") +" : "+ request.getParameter("address2"));
 		userBean.setUser_gender("남");
 		userBean.setUser_post(request.getParameter("post"));
-		
+		System.out.println("1");
 		UpdateMemberProService updateMemberProService = new UpdateMemberProService();
-		isUpdateSuccess = updateMemberProService.setUpdate(userBean, id, pass);
+		isUpdateSuccess = updateMemberProService.setUpdate(userBean, id);
 		
+		System.out.println("2");
+		System.out.println(isUpdateSuccess);
 		if(!isUpdateSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -51,7 +54,7 @@ public class UpdateMemberProAction implements Action {
 			
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("MypageProAction.us");
+			forward.setPath("Mypage.us");
 		}
 		
 		return forward;

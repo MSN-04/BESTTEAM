@@ -1,3 +1,4 @@
+<%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.ReviewBean"%>
@@ -5,6 +6,8 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
+
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -12,13 +15,13 @@
 	// request.getAttribute() 메서드로 가져오기
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	
+	String id=(String)session.getAttribute("id");
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
+	
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -35,7 +38,7 @@
 	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
+// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
@@ -87,6 +90,15 @@
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
 
 <script type="text/javascript">
+//삭제 확인메세지
+function delconfirm(num,item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?"+item_num);
+	if (message == true) {
+		location.href = "./qnaDeletePro.qna?qan_num=" + num+"&item_num="+item_num;
+	} else
+		alert("취소되었습니다");
+	return false;
+}
 	 
 // $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
@@ -305,6 +317,7 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
+
 <!-- <style type="text/css"> -->
 <!--  b {  -->
 <!--  	font-size: 25px;  -->
@@ -336,6 +349,45 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$('#cart').on('click',function(){
+			if('<%=id %>' != 'null' ) {
+				$.ajax({
+					url : 'cartInsert.sh',
+					type : 'get',
+					data : {
+						"item_num" : <%=itemBean.getItem_num() %>,
+						"quantity" : $('#quantity').val(),
+						"item_price" : <%=itemBean.getItem_price() %>,
+						"cart_img" : '<%=itemBean.getItem_img() %>',
+						"cart_item_name" : '<%=itemBean.getItem_name() %>'
+					},
+					success : function(data) {
+						
+						if (data == 1){
+							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
+							if (con == true) {
+								location.href="cart.sh";
+							}
+						} else if (data == -1) {
+							alert('장바구니 등록에 실패하였습니다.');
+						} else {
+							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
+						}
+						
+					},
+					error : function(request, status, error) {
+// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			} else {
+				alert('로그인 후 이용해주세요.');
+			}
+			
+		});
+	});
+</script>
 </head>
 <body>
 	<header>
@@ -437,7 +489,7 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
-                   <input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
+                   <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
@@ -446,8 +498,11 @@ $( '#rere1' ).click(
 						</div>
 					</div>
 					<p>
-						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
+					
+						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						
+		
 						
 								
 		<div class="row1">
@@ -489,11 +544,9 @@ $( '#rere1' ).click(
 										if(sessionId.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정</a>
+												color: white !important;">상품정보 수정 및 삭제</a>
 												
-											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
-												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 삭제</a>
+											
 								<%  	} 
 									} %>
 					
@@ -516,56 +569,70 @@ $( '#rere1' ).click(
 				</div>
 			</div>
 	</section>
+	
+<!-- review -->
 	<section class="ftco=section" id="ft2">
 		<div class="container">
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch">
-					<br>
-					<br>
-					<tr>REVIEW</tr>
-					<table class="table thead-light">
-					<%
-											if (reviewList != null && listCount > 0) {
-												
-										%>
+				
 					
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>글쓴이</th>
-							<th>조회수</th>
-						</tr>
-						<%
-						for (int i = 0 ; i < reviewList.size() ; i++) {
-							System.out.println(reviewList.get(i).getReview_num());
-						
-						%>
-						<tr>
-							
- 							<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse"><%=reviewList.size()-i %></a><div id="collapse" class="panel-collapse collapse in">
- 							<div class="panel-body"><br><%=reviewList.get(i).getReview_content() %></div></div></td>
- 							<td><%=reviewList.get(i).getReview_subject() %></td>
- 							<td><%=reviewList.get(i).getReview_date() %></td> 
- 							<td><%=reviewList.get(i).getReview_user_id() %></td> 
- 							<td><%=reviewList.get(i).getReview_readcount() %></td> 
-							
-						</tr>
-<%-- 						<tr><td id="rere" colspan="5"><%=reviewList.get(i).getReview_content() %></td></tr> --%>
-						
-               <%}
- 				}%>	 
-					</table>
-					<a href="#"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-			
+ 					
+					<table class="table thead-light" id="ac1">
+                <tr>
+                  <td><a data-toggle="collapse">번호</a></td>
+                  <td><a data-toggle="collapse">제목 </a></td>
+                  <td><a data-toggle="collapse">작성일</a></td>
+                  <td><a data-toggle="collapse">작성자</a></td>
+                  <td><a data-toggle="collapse">조회수</a></td>
+                  
+                  
+                  </tr>
+                  <%
+                    if (reviewList != null && listCount > 0) {
+                      for (int i = 0; i < reviewList.size(); i++) {
+                    	  if(reviewList.get(i).getReview_item_num()==itemBean.getItem_num()){
+                    		  
+                  %>
+                  
+                <tr>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_subject() %> </a>
+                    <div id="collapse<%=i %>" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
+                        <section class="ftco=section" id="ac1">
+                          <div class="container">
+                            <div class="col-md-8 ftco-animate div0525">
+                              <a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num()%>&item_num=<%=itemBean.getItem_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a> 
+                              <a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num()%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">삭제</a>
+                            </div>
+                          </div>
+                        </section>
+                      </div>
+                    </div>
+                  </td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
+                </tr>
+                <%
+                      }
+                  }
+                  }
+                %>
+              </table>
+					
+					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+					
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
 							<% 
 							//실제 페이지수를 endPage로 변경
-							if(endPage2>pageCount2){
-								endPage2=pageCount2;
+							if(endPage>pageCount){
+								endPage=pageCount;
 							}
 							
 							if(startPage>pageCount){
@@ -581,14 +648,13 @@ $( '#rere1' ).click(
 									
 									<%} 
 									
-							if(endPage<pageCount2){
+							if(endPage<pageCount){
 								%>
 								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
 							<%
 							}
 							%>
 								</ul>
-								
 								
 							</div>
 						</div>
@@ -607,7 +673,6 @@ $( '#rere1' ).click(
 							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
 							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
 							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-							<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>">qna 작성</a>
 					 	</p>
 					<section class="ftco=section" id="ac1">
 						<div class="container">
@@ -632,8 +697,8 @@ $( '#rere1' ).click(
 												<section class="ftco=section" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="QnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>')">삭제</a>
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
@@ -642,6 +707,20 @@ $( '#rere1' ).click(
 									</td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<div>댓글</div>
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">내용 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>								
 								</tr>
 								<%
 									}
@@ -677,7 +756,7 @@ $( '#rere1' ).click(
 <!-- 						</tr> -->
 
 <!-- 					</table> -->
-					<a href="#"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
 			
 					<div class="row mt-5">
 						<div class="col text-center">

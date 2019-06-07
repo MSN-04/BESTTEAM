@@ -35,7 +35,7 @@ public class QnaListService {
 	}
 	
 	// 글 목록 조회 후 리턴
-	public ArrayList<QnaBean> getArticleList(int page, int limit) throws Exception {
+	public ArrayList<QnaBean> getArticleList(int page, int limit, int item_num) throws Exception {
 //		System.out.println("qnaListService - getArticleList()");
 		
 		ArrayList<QnaBean> articleList = null;
@@ -48,7 +48,7 @@ public class QnaListService {
 
 		// qnaDAO 클래스의 selectArticleList() 메서드를 호출하여 글 목록 가져와서 ArrayList 객체에 저장
 		// => 매개변수로 page, limit 전달
-		articleList = qnaDAO.selectArticleList(page, limit);
+		articleList = qnaDAO.selectArticleList(page, limit, item_num);
 
 		// Connection 객체 반환
 		close(con);

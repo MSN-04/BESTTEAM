@@ -13,7 +13,7 @@ import vo.QnaBean;
 public class QnaViewService {
 	
 	// 글 번호(qna_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
-	public QnaBean e(int qna_num) throws Exception {
+	public QnaBean getArticle(int qna_num) throws Exception {
 //		System.out.println("qnaViewService - getArticle()");
 		QnaBean qnaBean = null;
 		
@@ -40,10 +40,33 @@ public class QnaViewService {
 		
 		return qnaBean;
 	}
-
-	public QnaBean getArticle(int qna_num) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public QnaBean getArticleToModifyForm(int qna_num) throws Exception {
+//		System.out.println("qnaViewService - getArticle()");
+		QnaBean qnaBean = null;
+		
+		Connection con = getConnection();
+		
+		// qnaDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
+		QnaDAO qnaDAO = QnaDAO.getInstance();
+		qnaDAO.setConnection(con);
+		
+		// qnaDAO 객체의 selectArticle() 메서드를 호출하여 글번호(qna_num)를 전달 => qnaBean 객체 리턴받음
+		qnaBean = qnaDAO.selectArticle(qna_num);
+		
+		   
+	
+		if(qnaBean != null) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		close(con);
+		
+		return qnaBean;
 	}
+
+
 }
 

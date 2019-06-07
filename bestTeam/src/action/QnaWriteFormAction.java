@@ -17,8 +17,8 @@ public class QnaWriteFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("QnaWriteFormAction");
 		
-		ActionForward forward = null;
-		UserBean userBean = null;
+		ActionForward forward = new ActionForward();
+		UserBean userBean = new UserBean();
 		String id = "";
 		HttpSession session = request.getSession();
 		int item_num = Integer.parseInt(request.getParameter("item_num"));

@@ -65,11 +65,12 @@
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Notice</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="./noticeList.no">공지사항</a> <a
+						<a class="dropdown-item" href="./noticeList.no">공지사항</a> 
+						<a class="dropdown-item" href="./eventList.ev">이벤트</a> <a
 							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="./fest/fest.jsp" class="nav-link">Festival</a></li>
+				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li>
 				<li class="nav-item"><a href="./contact/contact.jsp" class="nav-link">Contact</a></li>
 				
 				<%
@@ -80,7 +81,7 @@
 				<%	
 				} else {
 				%>
-				<li class="nav-item"><a href="MypageProAction.us" class="nav-link">Mypage</a></li>
+				<li class="nav-item"><a href="Mypage.us" class="nav-link">Mypage</a></li>
 				<li class="nav-item"><a href="LogoutProAction.us" class="nav-link">Logout</a></li>
 				<%	
 				}

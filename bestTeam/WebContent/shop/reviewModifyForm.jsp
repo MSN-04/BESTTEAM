@@ -1,6 +1,13 @@
+<%@page import="vo.PageInfo"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="vo.ItemBean"%>
+<%@page import="vo.ReviewBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
+    pageEncoding="UTF-8"%>
+	<%
+	ReviewBean article = (ReviewBean)request.getAttribute("article");
+	int review_num = Integer.parseInt(request.getParameter("review_num"));
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
+
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
 	rel="stylesheet">
@@ -40,57 +47,9 @@
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
-<!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
-<script type="text/javascript" src="<%=ctx%>/se2/js/HuskyEZCreator.js"
-	charset="utf-8"></script>
-<script type="text/javascript" src="<%=ctx%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
-	charset="utf-8"></script>
-	
-<!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-
-<script type="text/javascript">
-	var oEditors = [];
-	
-	$(function(){
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
-		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
-		    fCreator: "createSEditor2",
-// 		    fOnAppLoad : function(){
-// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-// 		    }
-		});
-	
-		//저장버튼 클릭시 form 전송
-		$("#save").click(function() {
-			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
-		});
-		
-		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
-        
-		
-	});
-	 
-	// textArea에 이미지 첨부
-	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
-	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-	}
-	
-// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
-	
-</script>
-<!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
+<%
+String id=(String)session.getAttribute("id");
+%>
 <style type="text/css">
 	.frmTitle {
 		border: 0.1px solid #ccc;
@@ -100,15 +59,14 @@
 		width: 100%;
 	}
 </style>
+<%
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+%>
+
 </head>
 <body>
-	<%
-	String notice_writer = "admin";
-// 	String notice_writer = request.getParameter("user_id");
-	%>
-
 	<header>
-	<jsp:include page="/inc/header.jsp"></jsp:include>
+	<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
 	<!-- END nav -->
 
@@ -123,9 +81,9 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Notice Write</h1>
+						<h1 class="mb-3 mt-5 bread">product-register</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><span class="mr-2"><a href="./noticeList.no">Notice</a></span><a href="blog.html">FAQ</a></span> 
+							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a>
 						</p>
 					</div>
 
@@ -133,31 +91,60 @@
 			</div>
 		</div>
 	</section>
-
-	<section class="ftco-section">
+	
+		
+	<section class="ftco-section" >
 		<div class="container">
-			<form id="frm" action="noticeWritePro.no" method="post">
+			
+			<form id="frm" action="reviewModifyPro.re?review_num=<%=review_num %>" method="post" enctype="multipart/form-data">
+			
 				<table style="width: 100%; text-align: center;">
+			<tr><td></td>
+			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 100px; height: 100px;"><a href="" class="tag-cloud-link"><%=itemBean.getItem_name()%></a><td>
+			</tr>
 					<tr>
-						<td><input type="text" id="title" name="notice_subject" class="frmTitle" /></td>
+					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
+					<input type="hidden" value="<%=id%>" name="review_user_id">
+						<td style="padding-right: 30px;">제목</td>
+						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" value="<%=article.getReview_subject() %>"/></td>
+					</tr>
+					
+					<tr>
+						<td style="padding-right: 30px;">후기작성</td>
+						<td><textarea rows="10" cols="30" name="review_content" 
+								style="width: 1015px; height: 200px;" ><%=article.getReview_content() %></textarea></td>
+					</tr>
+					
+					<tr>
+						<td style="padding-right: 30px;">사진등록</td>
+						<td><input type="file" id="review_img" name="review_img" class="frmTitle" /></td>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 
-								style="width: 100%; height: 650px;" ></textarea></td>
-					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
+						<td style="text-align: center; " colspan="2">
+							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
+							
 						</td>
 					</tr>
+					
+					
+					
 				</table>
+				
+				
+				
+				     
+					
+				
 			</form>
 		</div>
 	</section>
-	<!-- .section -->
+
+
 	
-<jsp:include page="/inc/footer.jsp"></jsp:include>
+	
+	
+	
+<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 
 	<!-- loader -->

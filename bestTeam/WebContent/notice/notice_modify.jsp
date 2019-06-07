@@ -126,8 +126,7 @@
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Modify</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.jsp">Home</a></span> <span
-								class="mr-2"><a href="notice.jsp">Notice</a></span> <span>Blog
+							<span class="mr-2"><a href="./noticeList.no">Notice</a></span> <span>Blog
 								Single</span>
 						</p>
 					</div>

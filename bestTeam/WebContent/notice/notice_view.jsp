@@ -99,15 +99,15 @@
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Details</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.jsp">Home</a></span> <span
-								class="mr-2"><a href="notice.jsp">Notice</a></span> <span>Blog
-								Single</span>
+							<span class="mr-2"><a href="./noticeList.no">Notice</a></span>
+							<!-- 							<span class="mr-2">><a href="faq.jsp">FAQ</a></span> -->
+							<!-- 							<span class="mr-2"><a href="index.jsp">Home</a></span> -->
 						</p>
 					</div>
 
+					<!-- 				</div> -->
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<section class="ftco-section">
@@ -118,12 +118,6 @@
 						//제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가                                                   
 						request.setCharacterEncoding("utf-8");
 					%>
-					<!-- 			<tr> -->
-					<!-- 			<div class="form-group"> -->
-					<!-- 							<input type="text" class="form-control" placeholder="작성자" -->
-					<!-- 								name="qna_name" readonly="readonly"> -->
-					<!-- 						</div> -->
-					<!-- 						</tr> -->
 					<div
 						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 50px; font-weight: 300; font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
 
@@ -133,21 +127,50 @@
 				</div>
 
 			</div>
+		</div>
 	</section>
 	<!-- .section -->
-<div class="row mt-5"> 
-	<div class="block-27">
-		<a
-			href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
-			class="btn btn-primary btn-outline-primary">글수정</a> <a
-			href="./noticeDeletePro.no?notice_num=<%=notice_num%>"
-			class="btn btn-primary btn-outline-primary"
-			onclick="delconfirm('<%=article.getNotice_num()%>')">글삭제</a> <a
-			href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
-	</div>
+	
+	<div style="border-bottom" solid grey; margin-bottom: 30px;>
+	<div class="col-md-4" id="mail">
+	
+		<button type="button" class="quantity-left-minus btn input-group-btn">
+			<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%>
+		</button>
+		</div>
+		</div>
+	
+	<%
+		String id = (String) session.getAttribute("id");
+		if (id != null && id.equals("admin")) {
+	%>
+	<div class="row mt-5">
+		<div class="col text-center">
+			<div class="block-27">
+				<a
+					href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
+					class="btn btn-primary btn-outline-primary">글수정</a> <a
+					href="./noticeDeletePro.no?notice_num=<%=notice_num%>"
+					class="btn btn-primary btn-outline-primary"
+					onclick="delconfirm('<%=article.getNotice_num()%>')">글삭제</a> <a
+					href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
+				<%
+					} else {
+				%>
+				<div class="col text-center">
+					<a href="./noticeList.no"
+						class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
+				</div>
+				<%
+					}
+				%>
+			</div>
+		</div>
 	</div>
 
 
+	<br>
+	<br>
 	<!--           <div class="col-md-4 sidebar ftco-animate"> -->
 	<!--             <div class="sidebar-box"> -->
 	<!--               <form action="#" class="search-form"> -->
