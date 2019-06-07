@@ -1,3 +1,4 @@
+<%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.ReviewBean"%>
@@ -5,6 +6,8 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
+
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -12,13 +15,13 @@
 	// request.getAttribute() 메서드로 가져오기
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	
+	String id=(String)session.getAttribute("id");
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-
+	
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -35,7 +38,7 @@
 	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
+// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
@@ -314,6 +317,7 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
+
 <!-- <style type="text/css"> -->
 <!--  b {  -->
 <!--  	font-size: 25px;  -->
@@ -345,6 +349,45 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
+ <script type="text/javascript">
+	$(document).ready(function(){
+		$('#cart').on('click',function(){
+			if('<%=id %>' != 'null' ) {
+				$.ajax({
+					url : 'cartInsert.sh',
+					type : 'get',
+					data : {
+						"item_num" : <%=itemBean.getItem_num() %>,
+						"quantity" : $('#quantity').val(),
+						"item_price" : <%=itemBean.getItem_price() %>,
+						"cart_img" : '<%=itemBean.getItem_img() %>',
+						"cart_item_name" : '<%=itemBean.getItem_name() %>'
+					},
+					success : function(data) {
+						
+						if (data == 1){
+							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
+							if (con == true) {
+								location.href="cart.sh";
+							}
+						} else if (data == -1) {
+							alert('장바구니 등록에 실패하였습니다.');
+						} else {
+							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
+						}
+						
+					},
+					error : function(request, status, error) {
+// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			} else {
+				alert('로그인 후 이용해주세요.');
+			}
+			
+		});
+	});
+</script>
 </head>
 <body>
 	<header>
@@ -446,7 +489,7 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
-                   <input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
+                   <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
@@ -455,8 +498,11 @@ $( '#rere1' ).click(
 						</div>
 					</div>
 					<p>
-						<a href="cart.jsp" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
+					
+						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						
+		
 						
 								
 		<div class="row1">
@@ -498,11 +544,9 @@ $( '#rere1' ).click(
 										if(sessionId.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정</a>
+												color: white !important;">상품정보 수정 및 삭제</a>
 												
-											<a class="nav-link"  href="itemDeletePro.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
-												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 삭제</a>
+											
 								<%  	} 
 									} %>
 					
@@ -585,15 +629,32 @@ $( '#rere1' ).click(
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+							<% 
+							//실제 페이지수를 endPage로 변경
+							if(endPage>pageCount){
+								endPage=pageCount;
+							}
+							
+							if(startPage>pageCount){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage; i<=endPage;i++){ 
+								%>
+							
+									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									
+									<%} 
+									
+							if(endPage<pageCount){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
+							<%
+							}
+							%>
 								</ul>
-								
 								
 							</div>
 						</div>
@@ -646,6 +707,20 @@ $( '#rere1' ).click(
 									</td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<div>댓글</div>
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">내용 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>								
 								</tr>
 								<%
 									}

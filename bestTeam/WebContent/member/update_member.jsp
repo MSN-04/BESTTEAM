@@ -7,7 +7,9 @@
 	<%
 	UserBean updatePage = (UserBean)request.getAttribute("userBean");
 	
-	int age = (Calendar.YEAR-(Integer.parseInt(updatePage.getUser_age())-1))%100;
+	int age = (Calendar.getInstance().get(Calendar.YEAR)-(Integer.parseInt(updatePage.getUser_age())-1))%100;
+	System.out.println(Calendar.YEAR);
+	System.out.println(age);
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 		StringTokenizer st = new StringTokenizer(updatePage.getUser_address(), ":");
@@ -89,7 +91,7 @@
 }
 
 #checkMail{
-  color : #ff4d4d;
+  color : #4d79ff;
   font-size: 13px;
   margin-bottom: 1%;
   margin-left: 3%;
@@ -102,8 +104,34 @@
  var checkFirst = false;
  var lastKeyword = '';
  var loopSendKeyword = false;
+//아이디, 패스워드, 메일 적합한지 검사할 정규식
+ var regId = /^[a-zA-Z0-9]{4,12}$/ ;
+ var regPass = /^[a-zA-Z0-9]{4,12}$/;
+ var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
  
- function checkId() {
+ // 비밀번호 일치 확인
+ function checkPwd(){
+  var pw1 = frm.pass.value;
+  var pw2 = frm.pass2.value;
+  var pass = document.getElementById("pass");
+  if(check(regPass,pass)){
+	  if(pw1!=pw2){
+	   document.getElementById('checkPwd').style.color = "#ff4d4d";
+	   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
+	  }else{
+	   document.getElementById('checkPwd').style.color = "#4d79ff";
+	   document.getElementById('checkPwd').innerHTML = "사용할수 있는 암호 입니다"; 
+	   
+	  }
+  } else {
+	  document.getElementById('checkPwd').style.color = "#ff4d4d";
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력"; 
+  }
+  
+ }
+ 
+  function checkId() {
   if (checkFirst == false) {
    //0.5초 후에 sendKeyword()함수 실행
    setTimeout("sendId();", 500);
@@ -112,82 +140,97 @@
   checkFirst = true;
  }
  
- function checkMail() {
-	  var keyword = frm.email.value;
-	  if (keyword == '') {
-		   lastKeyword = '';
-		   document.getElementById('checkMail').style.color = "#ff4d4d";
-		   document.getElementById('checkMail').innerHTML = "아이디를 입력하세요.";
-	  } else if (keyword != lastKeyword) {
-	   	lastKeyword = keyword;
-	   
-		   if (keyword != '') {
-		    var params = "email="+keyword;
-		    sendRequest("mail_check.us", params, displayResultMail, 'POST');
-		   } else {
-		   }
-	  }
-	  }
-	 
- 
- function checkPwd(){
-  var pw1 = frm.pass.value;
-  var pw2 = frm.pass2.value;
-  if(pw1!=pw2){
-   document.getElementById('checkPwd').style.color = "#ff4d4d";
-   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
-  }else{
-   document.getElementById('checkPwd').style.color = "#4d79ff";
-   document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다"; 
-   
-  }
-  
- }
- 
- 
+ // 아이디 중복확인
  function sendId() {
-	  if (loopSendKeyword == false) return;
-	  
-	  var keyword = frm.id.value;
-	  if (keyword == '') {
-	   lastKeyword = '';
-	   document.getElementById('checkMsg').style.color = "#ff4d4d";
-	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
-	  } else if (keyword != lastKeyword) {
-	   lastKeyword = keyword;
-	   
-	   if (keyword != '') {
-	    var params = "id="+keyword;
-	    sendRequest("id_check.us", params, displayResult, 'POST');
-	   } else {
-	   }
-	  }
-	  setTimeout("sendId();", 500);
-	 }
+    if (loopSendKeyword == false) return;
+    
+    var keyword = frm.id.value;
+    if (keyword == '') {
+     lastKeyword = '';
+     document.getElementById('checkMsg').style.color = "#ff4d4d";
+
+document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+    } else if (keyword != lastKeyword) {
+     lastKeyword = keyword;
+     
+     if (keyword != '') {
+      var params = "id="+keyword;
+      sendRequest("id_check.us", params, displayResult, 'POST');
+     } else {
+     }
+    }
+    setTimeout("sendId();", 500);
+   }
  
- 
+ // id 중복확인 결과
  function displayResult() {
   if (httpRequest.readyState == 4) {
    if (httpRequest.status == 200) {
     var resultText = httpRequest.responseText;
     var listView = document.getElementById('checkMsg');
 //     alert(resultText);
-    if(resultText==0){
-     listView.innerHTML = "사용 할 수 있는 ID 입니다";
-     listView.style.color = "#4d79ff";
-    } else {
-     listView.innerHTML = "이미 등록된 ID 입니다";
-     listView.style.color = "#ff4d4d";
-    }
+	var id = document.getElementById("id");
+	if(check(regId,id)){
+	    if(resultText==0){
+	     listView.innerHTML = "사용 할 수 있는 ID 입니다";
+	     listView.style.color = "#4d79ff";
+	    }else{
+	     listView.innerHTML = "이미 등록된 ID 입니다";
+	     listView.style.color = "#ff4d4d";
+	    }
+		
+	} else {
+		listView.innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력";
+	     listView.style.color = "#ff4d4d";
+	}
    } else {
     alert("에러 발생: "+httpRequest.status);
    }
   }
  }
  
+ function checkMail() {
+    var keyword = frm.email.value;
+    if (keyword == '') {
+       lastKeyword = '';
+       document.getElementById('checkMail').style.color = "#ff4d4d";
+       document.getElementById('checkMail').innerHTML = "메일을 입력하세요.";
+    } else if (keyword != '') {
+    	var mail = document.getElementById("email");
+    	if(check(regMail,mail)){
+	        var params = "email="+keyword;
+	        sendRequest("mail_check.us", params, displayResultMail, 'POST');
+    	} else {
+    		document.getElementById('checkMail').style.color = "#ff4d4d";
+    	       document.getElementById('checkMail').innerHTML = "메일 형식을 확인하세요.";
+    	}
+      
+    }
+ }
+    
+   
+ 
+ 
  function sendMail() {
-	
-	 }
+	  if (loopSendKeyword == false) return;
+	    
+	    var keyword = frm.email.value;
+	    if (keyword == '') {
+	     lastKeyword = '';
+	     document.getElementById('checkMail').style.color = "#ff4d4d";
+
+	document.getElementById('checkMail').innerHTML = "메일을 입력하세요";
+	    } else if (keyword != lastKeyword) {
+	     lastKeyword = keyword;
+	     
+	     if (keyword != '') {
+	      var params = "email="+keyword;
+	      sendRequest("mail_check.us", params, displayResultMail, 'POST');
+	     } else {
+	     }
+	    }
+	    setTimeout("sendMail();", 500);
+   }
 
 
 function displayResultMail() {
@@ -196,18 +239,51 @@ function displayResultMail() {
    var resultText = httpRequest.responseText;
    var listView = document.getElementById('checkMail');
 //    alert(resultText);
-   if(resultText==0 || frm.email.value == frm.check_mail.value){
-    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
-    listView.style.color = "#4d79ff";
-   } else if(resultText!=0 && frm.email.value != frm.chexk_mail.value ){
-    listView.innerHTML = "이미 등록된 MAIL 입니다";
-    listView.style.color = "#ff4d4d";
-   }
-  } else {
+	   if(resultText==0){
+	    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
+	    listView.style.color = "#4d79ff";
+	   }else{
+	    listView.innerHTML = "이미 등록된 MAIL 입니다";
+	    listView.style.color = "#ff4d4d";
+	   }
+	  } else {
    alert("에러 발생: "+httpRequest.status);
   }
  }
 }
+
+//검사수행 함수
+function check(reg, what) {
+     if(reg.test(what.value)) {
+         return true;
+     } else {
+//      alert(message);
+//      what.value = what.value;
+//      what.focus();
+     return false;
+     }
+//      return true;
+    
+ }
+ 
+ function submit() {
+	if(document.getElementById('checkMsg').style.color == "#ff4d4d"){
+		alert("아이디를 확인하세요")
+		document.getElementById("id").focus();
+		return false;
+	}
+	if(document.getElementById('checkPwd').style.color == "#ff4d4d"){
+		alert("비밀번호 확인하세요")
+		document.getElementById("pass").focus();
+		return false;
+	}
+	if(document.getElementById('checkMail').style.color == "#ff4d4d"){
+		alert("메일 확인하세요")
+		document.getElementById("email").focus();
+		return false;
+	}
+}
+
 </script>
 </head>
 <body>
@@ -244,8 +320,8 @@ function displayResultMail() {
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post">
-						<h3 class="mb-4 billing-heading">회원 가입</h3>
+					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post" onsubmit="submit()">
+						<h3 class="mb-4 billing-heading">회원 정보 수정</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -253,7 +329,7 @@ function displayResultMail() {
 										class="form-control" readonly="readonly" name="id" id="id" value=<%=updatePage.getUser_id() %>>
 								</div>
 							</div>
-							<div id="checkMsg">아이디를 입력하세요</div>
+<!-- 							<div id="checkMsg">아이디를 입력하세요</div> -->
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -280,20 +356,20 @@ function displayResultMail() {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">주민 등록 번호</label> <input type="text"
-										class="form-control" value="<%=age %>****" name="jumin1">
+										class="form-control" value="<%=age %>****" name="jumin1" readonly="readonly">
 								</div>
 							</div><div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">성별</label>
 									 <input type="text" class="form-control" value=<%=updatePage.getUser_gender() %>
-									  name="gender">
+									  name="gender" readonly="readonly">
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일을 입력해주세요." name="email" value=<%=updatePage.getUser_email() %>>
+										class="form-control" placeholder="이메일을 입력해주세요." name="email" id="email" value=<%=updatePage.getUser_email() %>>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -305,7 +381,7 @@ function displayResultMail() {
 									</p>
 								</div>
 							</div>
-							<div id="checkMail">E-MAIL 중복확인 하세요</div>
+							<div id="checkMail">본인 EMAIL입니다</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -421,7 +497,7 @@ function displayResultMail() {
 							
 							<div class="col-md-12">
 								<div class="form-group mt-4">
-									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a> 
+									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a> 
 									<a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
 										</div>
 								</div>

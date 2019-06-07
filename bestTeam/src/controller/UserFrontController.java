@@ -55,9 +55,6 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/join.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/join.jsp");
-		} else if (command.equals("/mypage.us")) {
-			forward = new ActionForward();
-			forward.setPath("/member/mypage.jsp");
 		} else if (command.equals("/delete_member.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/delete_member.jsp");
@@ -97,7 +94,7 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/MypageProAction.us")) {
+		} else if(command.equals("/Mypage.us")) {
 			action = new MypageProAction();
 			try {
 				forward = action.execute(request, response);

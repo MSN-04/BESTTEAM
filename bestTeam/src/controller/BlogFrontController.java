@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BlogCommentWriteProAction;
 import action.BlogDeleteProAction;
 import action.BlogDetailAction;
 import action.BlogListAction;
@@ -18,7 +19,7 @@ import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import vo.ActionForward;
 
-@WebServlet("*.bl") // => URL 요청에 마지막이 *.bo 로 끝나는 요청을 매핑하는 서블릿 지정(web.xml 설정 대신 사용)
+@WebServlet("*.bl") // => URL 요청에 마지막이 *.bl 로 끝나는 요청을 매핑하는 서블릿 지정(web.xml 설정 대신 사용)
 public class BlogFrontController extends HttpServlet {
 	// 모든 클라이언트의 요청을 받아 처리 가능한 HttpServlet 클래스의 서브클래스로 FrontController 클래스 정의
 	// GET 방식의 요청을 처리할 doGet() 메서드, POST 방식의 요청을 처리할 doPost() 메서드를 오버라이딩

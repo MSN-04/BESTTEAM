@@ -1,13 +1,26 @@
+<%@page import="vo.BlogCommentBean"%>
 <%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
 	BlogBean article = (BlogBean)request.getAttribute("article");
+    BlogCommentBean article2 = (BlogCommentBean)request.getAttribute("article2");
 	String nowPage 	= (String)request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-// 	String nowPage = request.getAttribute("page").toString(); // int 타입으로 setAttribute() 메서드에 저장했을 경우
-
+	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+	String comment_writer = request.getParameter("comment_writer");
 %>
+
+<script language="javascript">
+	function delconfirm(num) {
+		var message = confirm("이 게시글을 삭제하시겠습니까?");
+		if (message == true) {
+			location.href = "./noticeDeletePro.no?num=" + num;
+		} else
+			alert("취소되었습니다");
+		return false;
+	}
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -256,8 +269,8 @@
 					<p><%= article.getBlog_content() %></p>
 					
 					
-            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
-            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+            <a href="blogModifyForm.bl?blog_num=<%=blog_num %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a>
+            <a href="BlogDeletePro.bl?blog_num=<%=blog_num%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=article.getBlog_num()%>')">삭제</a>
             <div class="tag-widget post-tag-container mb-5 mt-5">
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">로스팅</a>
@@ -278,7 +291,7 @@
                     <img src="./images/person_1.png" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
-                    <h3>권경민</h3>
+                    <h3><%=comment_writer %></h3>
                     <div class="meta">June 27, 2018 at 2:21pm</div>
                     <p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
@@ -356,7 +369,7 @@
               
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">코멘트 남기기</h3>
-                <form action="#">
+                <form id="frm_comment" action="blogCommentWritePro.bl" method="post">
                   <div class="form-group">
                     <label for="name">이름 *</label>
                     <input type="text" class="form-control" id="name">

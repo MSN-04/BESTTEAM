@@ -9,7 +9,8 @@ import vo.UserBean;
 
 public class UpdateMemberProService {
 
-	public boolean setUpdate(UserBean userBean,String id, String pass) throws Exception {
+	public boolean setUpdate(UserBean userBean, String id) throws Exception {
+		System.out.println("setUpdate");
 		boolean isUpdate = false;
 		int isRightUser = 0;
 		
@@ -17,15 +18,16 @@ public class UpdateMemberProService {
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		isRightUser = userDAO.isUpdateUser(id, pass);
-		
+		isRightUser = userDAO.isUpdateUser(id);
+		System.out.println("isRightUser"+isRightUser);
 		if(isRightUser==1) {
 			isUpdate = userDAO.userUpdate(userBean);
 			commit(con);
 		} else {
 			rollback(con);
 		}
-	
+		
+		close(con);
 		
 		return isUpdate;
 	}
