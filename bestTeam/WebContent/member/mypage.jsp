@@ -52,25 +52,23 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
 <style type="text/css">
-.btn btn-primary py-3 px-4 {
-	text-align: right
-}
-.col-lg-3 {
-    
-    flex: 0 0 20% !important;
-    max-width: 20% !important;
-    }
-.col-md-10 {
-   
-    flex: 0 0 100%;
-    max-width: 100%;
-    }
- #section-counter{
- 	padding:50px;
- }
- #h0528{display:inline-block;}
- #div0528{display:inline-block;
- 		margin-left:80px;}
+ .btn btn-primary py-3 px-4 { 
+ 	text-align: right 
+ } 
+ .col-lg-3 { 
+     flex: 0 0 20% !important; 
+     max-width: 20% !important; 
+     } 
+ .col-md-10 { 
+     flex: 0 0 100%; 
+     max-width: 100%; 
+     } 
+   #section-counter{  
+   	padding:50px;  
+   }  
+  #h0528{display:inline-block;} 
+  #div0528{display:inline-block; 
+  		margin-left:80px;} 
 </style>
 </head>
 <body>
@@ -191,13 +189,15 @@
 				</form>
 				<!-- END -->
 				
-				<br>
-				<section class="ftco-counter ftco-bg-dark img" id="section-counter"  data-stellar-background-ratio="0.5">
+<!-- 				<br> -->
+				
+				<section class="ftco-counter ftco-bg-dark img" id="section-counter"  data-stellar-background-ratio="0.5" style="border-top: solid 2px gray;">
+				
 			<div class="overlay"></div>
       <div class="container">
 				<h3 class="mb-4 billing-heading" id="h0528">취향 정보</h3>
-				<div class="col-md-8 ftco-animate" id="div0528">
-				<a href="taste.us" class="btn btn-primary btn-outline-primary" style="float: right;">수정하러 가즈아</a>
+				<div class="col-md-8" id="div0528">
+				<a href="taste.us" class="btn btn-primary btn-outline-primary" style="float: right;">취향 정보 수정</a>
 				</div>
 			<div class="row justify-content-center">
         	<div class="col-md-10">
@@ -206,7 +206,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              		<span>aroma</span>
-		              	<strong class="number" data-number="<%=fb.getUser_favor_aroma() %>"><%=fb.getUser_favor_aroma() %></strong>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_aroma() %>">0</strong>
 		              <div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
@@ -215,7 +215,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              <span>acidity</span>	
-		              	<strong class="number" data-number="<%=fb.getUser_favor_acidity() %>"><%=fb.getUser_favor_acidity() %></strong>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_acidity() %>">0</strong>
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
@@ -224,7 +224,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<span>sweet</span>
-		              	<strong class="number" data-number="<%=fb.getUser_favor_sweetness() %>"><%=fb.getUser_favor_sweetness() %></strong>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_sweetness() %>">0</strong>
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
@@ -233,7 +233,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<span>bitter</span>
-		              	<strong class="number" data-number="<%=fb.getUser_favor_bitterness() %>"><%=fb.getUser_favor_bitterness() %></strong>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_bitterness() %>">0</strong>
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
@@ -242,7 +242,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<span>body</span>
-		              	<strong class="number" data-number="<%=fb.getUser_favor_body() %>"><%=fb.getUser_favor_body() %></strong>
+		              	<strong class="number" data-number="<%=fb.getUser_favor_body() %>">0</strong>
 		              	<div class="icon"><span class="flaticon-coffee-cup"></span></div>
 		              </div>
 		            </div>
@@ -288,8 +288,7 @@
 	<script src="./js/bootstrap-datepicker.js"></script>
 	<script src="./js/jquery.timepicker.min.js"></script>
 	<script src="./js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
 
