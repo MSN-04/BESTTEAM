@@ -8,15 +8,52 @@
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
+	String comment_content = request.getParameter("comment_content");
+	String comment_num = request.getParameter("comment_num");
 %>
 
 <script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
-			location.href = "./noticeDeletePro.no?num=" + num;
+			location.href = "./BlogDeletePro.bl?num=" + num;
 		} else
-			alert("취소되었습니다");
+			alert("취소되었습니다.");
+		return false;
+	}
+
+	// 	// 댓글 등록
+	// 	function writeCmt(commnet_num) {
+	// 		var form = document.getElementById("writeCommentForm");
+
+	// 		var board = form.comment_blog_num.value
+	// 		var writer = form.comment_writer.value
+	// 		var content = form.comment_content.value;
+
+	// 		if (!content) {
+	// 			alert("내용을 입력하세요.");
+	// 			return false;
+	// 		} else {
+	// 			var param = "comment_blog_num=" + blog_num + "&comment_writer=" + writer
+	// 					+ "&comment_content=" + content;
+
+	// 			httpRequest = getXMLHttpRequest();
+	// 			httpRequest.onreadystatechange = checkFunc;
+	// 			httpRequest.open("POST", "BlogCommentWriteProAction.co", true);
+	// 			httpRequest.setRequestHeader('Content-Type',
+	// 					'application/x-www-form-urlencoded;charset=EUC-KR');
+	// 			httpRequest.send(param);
+	// 		}
+	// 	}
+
+	// 댓글삭제
+	function delCmt(comment_num) {
+		var message = confirm("이 댓글을 삭제하시겠습니까?");
+		if (message == true) {
+			location.href = "./BlogCommentDeletePro.bl?comment_num="
+					+ comment_num;
+		} else
+			alert("취소되었습니다.");
 		return false;
 	}
 </script>
@@ -231,166 +268,184 @@
 
 	<section class="ftco-section">
 		<div class="container">
-<!-- 			<div class="row"> -->
-				<!-- 왼쪽 작은 메뉴 시작 -->
-				<ul class="side-small-menu">
-					<li>
-						<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
-						<div
-							style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Writer</div>
-						<div>
-							<p
-								style="font-weight: bold; margin-bottom: 1px; line-height: 10px;">Moon</p>
-							<p>Team Leader</p>
-						</div>
-					</li>
-					<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
-					<li style="margin-bottom: 6px;">
-						<!-- 박수 -->
-						<button>
-							<span> <svg
-									style="width: 29px; height: 29px; vertical-align: bottom;">
+			<!-- 			<div class="row"> -->
+			<!-- 왼쪽 작은 메뉴 시작 -->
+			<ul class="side-small-menu">
+				<li>
+					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
+					<div
+						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Writer</div>
+					<div>
+						<p
+							style="font-weight: bold; margin-bottom: 1px; line-height: 10px;">Moon</p>
+						<p>Team Leader</p>
+					</div>
+				</li>
+				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
+				<li style="margin-bottom: 6px;">
+					<!-- 박수 -->
+					<button>
+						<span> <svg
+								style="width: 29px; height: 29px; vertical-align: bottom;">
 								<g>
 									<path d="M13.739 1l.761 2.966L15.261 1z"></path>
 									<path d="M16.815 4.776l1.84-2.551-1.43-.471z"></path>
 									<path d="M10.378 2.224l1.84 2.551-.408-3.022z"></path>
 									<path
-										d="M22.382 22.622c-1.04 1.04-2.115 1.507-3.166 1.608.168-.14.332-.29.492-.45 2.885-2.886 3.456-5.982 1.69-9.211l-1.101-1.937-.955-2.02c-.315-.676-.235-1.185.245-1.556a.836.836 0 0 1 .66-.16c.342.056.66.28.879.605l2.856 5.023c1.179 1.962 1.379 5.119-1.6 8.098m-13.29-.528l-5.02-5.02a1 1 0 0 1 .707-1.701c.255 0 .512.098.707.292l2.607 2.607a.442.442 0 0 0 .624-.624L6.11 15.04l-1.75-1.75a.998.998 0 1 1 1.41-1.413l4.154 4.156a.44.44 0 0 0 .624 0 .44.44 0 0 0 0-.624l-4.152-4.153-1.172-1.171a.998.998 0 0 1 0-1.41 1.018 1.018 0 0 1 1.41 0l1.172 1.17 4.153 4.152a.437.437 0 0 0 .624 0 .442.442 0 0 0 0-.624L8.43 9.222a.988.988 0 0 1-.291-.705.99.99 0 0 1 .29-.706 1 1 0 0 1 1.412 0l6.992 6.993a.443.443 0 0 0 .71-.501l-1.35-2.856c-.315-.676-.235-1.185.246-1.557a.85.85 0 0 1 .66-.16c.342.056.659.28.879.606L20.628 15c1.573 2.876 1.067 5.545-1.544 8.156-1.396 1.397-3.144 1.966-5.063 1.652-1.713-.286-3.463-1.248-4.928-2.714zM12.99 6.976l2.562 2.562c-.497.607-.563 1.414-.155 2.284l.265.562-4.257-4.257a.98.98 0 0 1-.117-.445c0-.267.104-.517.292-.706a1.023 1.023 0 0 1 1.41 0zm8.887 2.06c-.375-.557-.902-.916-1.486-1.011a1.738 1.738 0 0 0-1.342.332c-.376.29-.61.656-.712 1.065a2.1 2.1 0 0 0-1.095-.562 1.776 1.776 0 0 0-.992.128l-2.636-2.636a1.883 1.883 0 0 0-2.658 0 1.862 1.862 0 0 0-.478.847 1.886 1.886 0 0 0-2.671-.012 1.867 1.867 0 0 0-.503.909c-.754-.754-1.992-.754-2.703-.044a1.881 1.881 0 0 0 0 2.658c-.288.12-.605.288-.864.547a1.884 1.884 0 0 0 0 2.659l.624.622a1.879 1.879 0 0 0-.91 3.16l5.019 5.02c1.595 1.594 3.515 2.645 5.408 2.959a7.16 7.16 0 0 0 1.173.098c1.026 0 1.997-.24 2.892-.7.279.04.555.065.828.065 1.53 0 2.969-.628 4.236-1.894 3.338-3.338 3.083-6.928 1.738-9.166l-2.868-5.043z"></path>
+									d="M22.382 22.622c-1.04 1.04-2.115 1.507-3.166 1.608.168-.14.332-.29.492-.45 2.885-2.886 3.456-5.982 1.69-9.211l-1.101-1.937-.955-2.02c-.315-.676-.235-1.185.245-1.556a.836.836 0 0 1 .66-.16c.342.056.66.28.879.605l2.856 5.023c1.179 1.962 1.379 5.119-1.6 8.098m-13.29-.528l-5.02-5.02a1 1 0 0 1 .707-1.701c.255 0 .512.098.707.292l2.607 2.607a.442.442 0 0 0 .624-.624L6.11 15.04l-1.75-1.75a.998.998 0 1 1 1.41-1.413l4.154 4.156a.44.44 0 0 0 .624 0 .44.44 0 0 0 0-.624l-4.152-4.153-1.172-1.171a.998.998 0 0 1 0-1.41 1.018 1.018 0 0 1 1.41 0l1.172 1.17 4.153 4.152a.437.437 0 0 0 .624 0 .442.442 0 0 0 0-.624L8.43 9.222a.988.988 0 0 1-.291-.705.99.99 0 0 1 .29-.706 1 1 0 0 1 1.412 0l6.992 6.993a.443.443 0 0 0 .71-.501l-1.35-2.856c-.315-.676-.235-1.185.246-1.557a.85.85 0 0 1 .66-.16c.342.056.659.28.879.606L20.628 15c1.573 2.876 1.067 5.545-1.544 8.156-1.396 1.397-3.144 1.966-5.063 1.652-1.713-.286-3.463-1.248-4.928-2.714zM12.99 6.976l2.562 2.562c-.497.607-.563 1.414-.155 2.284l.265.562-4.257-4.257a.98.98 0 0 1-.117-.445c0-.267.104-.517.292-.706a1.023 1.023 0 0 1 1.41 0zm8.887 2.06c-.375-.557-.902-.916-1.486-1.011a1.738 1.738 0 0 0-1.342.332c-.376.29-.61.656-.712 1.065a2.1 2.1 0 0 0-1.095-.562 1.776 1.776 0 0 0-.992.128l-2.636-2.636a1.883 1.883 0 0 0-2.658 0 1.862 1.862 0 0 0-.478.847 1.886 1.886 0 0 0-2.671-.012 1.867 1.867 0 0 0-.503.909c-.754-.754-1.992-.754-2.703-.044a1.881 1.881 0 0 0 0 2.658c-.288.12-.605.288-.864.547a1.884 1.884 0 0 0 0 2.659l.624.622a1.879 1.879 0 0 0-.91 3.16l5.019 5.02c1.595 1.594 3.515 2.645 5.408 2.959a7.16 7.16 0 0 0 1.173.098c1.026 0 1.997-.24 2.892-.7.279.04.555.065.828.065 1.53 0 2.969-.628 4.236-1.894 3.338-3.338 3.083-6.928 1.738-9.166l-2.868-5.043z"></path>
 								</g>
 							</svg> <span style="vertical-align: bottom; margin-left: 8px;">
-									1 </span>
-							</span>
-						</button>
-					</li>
-					<!-- 				<li> -->
-					<!-- 					<button> -->
-					<!-- 						<span> -->
-					<!-- 							<svg width="29" height="29" > -->
-					<!-- 								<g> -->
-					<!-- 									<path d="M19.385 4h-9.77A2.623 2.623 0 0 0 7 6.615V23.01a1.022 1.022 0 0 0 1.595.847l5.905-4.004 5.905 4.004A1.022 1.022 0 0 0 22 23.011V6.62A2.625 2.625 0 0 0 19.385 4zM21 23l-5.91-3.955-.148-.107a.751.751 0 0 0-.884 0l-.147.107L8 23V6.615C8 5.725 8.725 5 9.615 5h9.77C20.275 5 21 5.725 21 6.615V23z"></path> -->
-					<!-- 								</g> -->
-					<!-- 							</svg> -->
-					<!-- 						</span> -->
-					<!-- 					</button> -->
-					<!-- 				</li> -->
-					<li>
-						<!-- 트위터 -->
-						<button>
-							<span> <a
-								href="http://twitter.com/share?url=<%=request.getRequestURL()%>&text=Cafe%20ThinkerBell%20에서의%20포스팅을%20확인해보세요"
-								target="_blank"> <svg width="29" height="29">
+								1 </span>
+						</span>
+					</button>
+				</li>
+				<!-- 				<li> -->
+				<!-- 					<button> -->
+				<!-- 						<span> -->
+				<!-- 							<svg width="29" height="29" > -->
+				<!-- 								<g> -->
+				<!-- 									<path d="M19.385 4h-9.77A2.623 2.623 0 0 0 7 6.615V23.01a1.022 1.022 0 0 0 1.595.847l5.905-4.004 5.905 4.004A1.022 1.022 0 0 0 22 23.011V6.62A2.625 2.625 0 0 0 19.385 4zM21 23l-5.91-3.955-.148-.107a.751.751 0 0 0-.884 0l-.147.107L8 23V6.615C8 5.725 8.725 5 9.615 5h9.77C20.275 5 21 5.725 21 6.615V23z"></path> -->
+				<!-- 								</g> -->
+				<!-- 							</svg> -->
+				<!-- 						</span> -->
+				<!-- 					</button> -->
+				<!-- 				</li> -->
+				<li>
+					<!-- 트위터 -->
+					<button>
+						<span> <a
+							href="http://twitter.com/share?url=<%=request.getRequestURL()%>&text=Cafe%20ThinkerBell%20에서의%20포스팅을%20확인해보세요"
+							target="_blank"> <svg width="29" height="29">
 									<g>
 										<path
-											d="M22.053 7.54a4.474 4.474 0 0 0-3.31-1.455 4.526 4.526 0 0 0-4.526 4.524c0 .35.04.7.082 1.05a12.9 12.9 0 0 1-9.3-4.77c-.39.69-.61 1.46-.65 2.26.03 1.6.83 2.99 2.02 3.79-.72-.02-1.41-.22-2.02-.57-.01.02-.01.04 0 .08-.01 2.17 1.55 4 3.63 4.44-.39.08-.79.13-1.21.16-.28-.03-.57-.05-.81-.08.54 1.77 2.21 3.08 4.2 3.15a9.564 9.564 0 0 1-5.66 1.94c-.34-.03-.7-.06-1.05-.08 2 1.27 4.38 2.02 6.94 2.02 8.31 0 12.86-6.9 12.84-12.85.02-.24.01-.43 0-.65.89-.62 1.65-1.42 2.26-2.34-.82.38-1.69.62-2.59.72a4.37 4.37 0 0 0 1.94-2.51c-.84.53-1.81.9-2.83 1.13z"></path>
+										d="M22.053 7.54a4.474 4.474 0 0 0-3.31-1.455 4.526 4.526 0 0 0-4.526 4.524c0 .35.04.7.082 1.05a12.9 12.9 0 0 1-9.3-4.77c-.39.69-.61 1.46-.65 2.26.03 1.6.83 2.99 2.02 3.79-.72-.02-1.41-.22-2.02-.57-.01.02-.01.04 0 .08-.01 2.17 1.55 4 3.63 4.44-.39.08-.79.13-1.21.16-.28-.03-.57-.05-.81-.08.54 1.77 2.21 3.08 4.2 3.15a9.564 9.564 0 0 1-5.66 1.94c-.34-.03-.7-.06-1.05-.08 2 1.27 4.38 2.02 6.94 2.02 8.31 0 12.86-6.9 12.84-12.85.02-.24.01-.43 0-.65.89-.62 1.65-1.42 2.26-2.34-.82.38-1.69.62-2.59.72a4.37 4.37 0 0 0 1.94-2.51c-.84.53-1.81.9-2.83 1.13z"></path>
 									</g>
 								</svg>
-							</a>
-							</span>
-						</button>
-					</li>
-					<li>
-						<!-- 페이스북 -->
-						<button>
-							<span> <a
-								href="http://www.facebook.com/share.php?u=<%=request.getRequestURL()%>"
-								target="_blank"> <svg width="29" height="29">
+						</a>
+						</span>
+					</button>
+				</li>
+				<li>
+					<!-- 페이스북 -->
+					<button>
+						<span> <a
+							href="http://www.facebook.com/share.php?u=<%=request.getRequestURL()%>"
+							target="_blank"> <svg width="29" height="29">
 									<g>
 										<path
-											d="M23.209 5H5.792A.792.792 0 0 0 5 5.791V23.21c0 .437.354.791.792.791h9.303v-7.125H12.72v-2.968h2.375v-2.375c0-2.455 1.553-3.662 3.741-3.662 1.049 0 1.95.078 2.213.112v2.565h-1.517c-1.192 0-1.469.567-1.469 1.397v1.963h2.969l-.594 2.968h-2.375L18.11 24h5.099a.791.791 0 0 0 .791-.791V5.79a.791.791 0 0 0-.791-.79"></path>
+										d="M23.209 5H5.792A.792.792 0 0 0 5 5.791V23.21c0 .437.354.791.792.791h9.303v-7.125H12.72v-2.968h2.375v-2.375c0-2.455 1.553-3.662 3.741-3.662 1.049 0 1.95.078 2.213.112v2.565h-1.517c-1.192 0-1.469.567-1.469 1.397v1.963h2.969l-.594 2.968h-2.375L18.11 24h5.099a.791.791 0 0 0 .791-.791V5.79a.791.791 0 0 0-.791-.79"></path>
 									</g>
 								</svg>
-							</a>
-							</span>
-						</button>
-					</li>
-				</ul>
-				<!-- 왼쪽 작은 메뉴 끝 -->
+						</a>
+						</span>
+					</button>
+				</li>
+			</ul>
+			<!-- 왼쪽 작은 메뉴 끝 -->
 
-				<div class="col-md-8 ftco-animate">
-					<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
-					<p><%=article.getBlog_content()%></p>
-
-					<%
-						String id = (String) session.getAttribute("id");
-						if (id != null && id.equals("admin")) {
-					%>
-					<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
-						class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
-					<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
-						class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
-					<%
-						}
-					%><br> <br>
-
-					<!-- <---------------- 태그클라우드 --------------->
-					<div class="tag-widget post-tag-container mb-5 mt-5">
-						<div class="tagcloud">
-							<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
-								class="tag-cloud-link">핸드드립</a> <a href="#"
-								class="tag-cloud-link">융드립</a> <a href="#"
-								class="tag-cloud-link">에스프레소</a>
-						</div>
-					</div>
-					<!-- <---------------- 태그클라우드 끝 ---------------> 
+			<div class="col-md-8 ftco-animate">
+				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
+				<p><%=article.getBlog_content()%></p>
 
 
+				<%
+					String id = (String) session.getAttribute("id");
+					if (id != null && id.equals("admin")) {
+				%>
+				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
+					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
+				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
+					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+				<%
+					}
+				%><br> <br>
 
-					<div class="pt-5 mt-5">
-						<h3 class="mb-5">코멘트 6개</h3>
-						<ul class="comment-list">
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="./images/person_1.png" alt="Image placeholder">
-								</div>
-								<div class="comment-body">
-									<h3><%=comment_writer%></h3>
-									<div class="meta">June 27, 2018 at 2:21pm</div>
-									<p>도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요.
-										잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는
-										정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다. 도움이
-										되는 정보네요. 잘 읽었습니다. 도움이 되는 정보네요. 잘 읽었습니다.</p>
-									<p>
-										<a href="#" class="reply">Reply</a>
-									</p>
-								</div>
-							</li>
-											<!-- END comment-list -->
-
-
-
-											<div class="comment-form-wrap pt-5">
-												<h3 class="mb-5">코멘트 남기기</h3>
-												<form id="frm_comment" action="blogCommentWritePro.bl"
-													method="post">
-													<div class="form-group">
-														<label for="name">이름 *</label> <input type="text"
-															class="form-control" id="name">
-													</div>
-													<!--                   <div class="form-group"> -->
-													<!--                     <label for="email">이메일 *</label> -->
-													<!--                     <input type="email" class="form-control" id="email"> -->
-													<!--                   </div> -->
-													<!--                   <div class="form-group"> -->
-													<!--                     <label for="website">웹사이트</label> -->
-													<!--                     <input type="url" class="form-control" id="website"> -->
-													<!--                   </div> -->
-
-													<div class="form-group">
-														<label for="message">내용</label>
-														<textarea name="" id="message" cols="30" rows="2"
-															class="form-control"></textarea>
-													</div>
-													<div class="form-group">
-														<input type="submit" value="작성 완료"
-															class="btn py-3 px-4 btn-primary">
-													</div>
-
-												</form>
-											</div>
-										</div>
+				<!-- <---------------- 태그클라우드 --------------->
+				<div class="tag-widget post-tag-container mb-5 mt-5">
+					<div class="tagcloud">
+						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
+							class="tag-cloud-link">핸드드립</a> <a href="#"
+							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a>
 					</div>
 				</div>
+				<!-- <---------------- 태그클라우드 끝 --------------->
+
+
+				<div class="pt-5 mt-5">
+					<h3 class="mb-5">코멘트 1개</h3>
+					<ul class="comment-list">
+						<li class="comment">
+							<div class="vcard bio">
+								<img src="./images/person_1.png" alt="Image placeholder">
+							</div>
+
+							<div class="comment-body">
+								<!-- 							session.getAttribute("id"); -->
+								<!-- 							if (id.equals(session.getAttribute("id")) -->
+								<h3><%=comment_writer%></h3>
+								<div class="meta">June 27, 2018 at 2:21pm</div>
+								<p><%=comment_content%></p>
+								<div
+									style='display: text-decoration; float: right; width: 1000px'>
+									<%
+										session.getAttribute("id");
+										if (id != null && id.equals("admin")) {
+									%>
+									<a href="BlogCommentDeletePro.bl?blog_num=<%=comment_num%>"
+										class="reply" onclick="delCmt(comment_num)">Delete</a>
+									<%
+										} else if (id != null && id.equals(session.getAttribute("id"))) {
+									%>
+									<a href="BlogCommentModifyPro.bl?blog_num=<%=comment_num%>"
+										class="edit">Edit</a> <a
+										href="BlogCommentDeletePro.bl?blog_num=<%=comment_num%>"
+										class="
+										delete" onclick="delCmt(comment_num)">
+										Delete</a>
+									<%
+										}
+									%>
+
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- END comment-list -->
+
+
+					<%
+						session.getAttribute("id");
+						if (id == null || id.equals("admin")) {
+					%>
+					<div class="comment-form-wrap pt-5">
+						<h3 class="mb-5">코멘트 남기기</h3>
+						<form id="frm_comment" action="BlogCommentWritePro.bl"
+							method="post">
+							<input type="hidden" name="comment_num" value="<%=blog_num%>">
+							<!--  블로그 게시글 번호   -->
+							<div class="form-group">
+								<label for="name">이름 *</label> <input type="text"
+									class="form-control" id="name">
+							</div>
+
+							<div class="form-group">
+								<label for="message">내용</label>
+								<textarea name="" id="message" cols="30" rows="2"
+									class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="작성 완료"
+									class="btn py-3 px-4 btn-primary">
+							</div>
+						</form>
+					</div>
+					<%
+						}
+					%>
+
+				</div>
 			</div>
+		</div>
 	</section>
 
 	<!-- .section -->
@@ -405,7 +460,6 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
-
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
