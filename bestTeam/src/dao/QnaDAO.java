@@ -311,4 +311,51 @@ public class QnaDAO {
 	}
 
 
+	//qna답글 등록 메서드
+	public int insertReply(QnaBean qnaBean) {
+		int result = 0; //리턴할 결과를 저장할 변수
+		
+		//해당 게시물의 기존 답글 순번을 1씩 증가시키는 쿼리(답글간의 순서)
+		
+		String sql = "UPDATE qna SET qna_re_seq = qna_re_seq+1 WHERE qna_re_ref =? AND qna_re_seq > ?";
+		
+		String sql2 = "INSERT INTO qna VALUES(null,?,?,?,?,NOW()?,?,?)";
+		
+		int qna_re_ref = qnaBean.getQna_re_ref();
+		int qna_re_lev = qnaBean.getQna_re_lev();
+		int qna_re_seq = qnaBean.getQna_re_seq();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qna_re_ref);
+			pstmt.setInt(2, qna_re_seq);
+			
+			pstmt.executeUpdate();
+   
+			qna_re_seq = qna_re_seq +1;
+			qna_re_lev = qna_re_lev +1;
+			
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setInt(1, qnaBean.getQna_num());
+			pstmt.setString(2, qnaBean.getQna_writer());
+			pstmt.setString(3, qnaBean.getQna_subject());
+			pstmt.setString(4, qnaBean.getQna_content());
+			pstmt.setInt(5, qna_re_ref);
+			pstmt.setInt(6, qna_re_lev);
+			pstmt.setInt(7, qna_re_seq);
+			
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(rs != null){ try{ rs.close(); }catch(SQLException se){ } }
+			if(pstmt != null){ try{ pstmt.close(); }catch(SQLException se){ } }
+		}
+
+		return result;
+	}
+	
 }
