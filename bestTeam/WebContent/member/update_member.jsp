@@ -105,8 +105,8 @@
  var lastKeyword = '';
  var loopSendKeyword = false;
 //아이디, 패스워드, 메일 적합한지 검사할 정규식
- var regId = /^[a-zA-Z0-9]{4,12}$/ ;
- var regPass = /^[a-zA-Z0-9]{4,12}$/;
+ var regId = /^[a-zA-Z0-9]{8,12}$/ ;
+ var regPass = /^[a-zA-Z0-9]{8,12}$/;
  var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
  
