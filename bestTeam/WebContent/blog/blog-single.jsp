@@ -1,3 +1,5 @@
+<%@page import="vo.PageInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.UserBean"%>
 <%@page import="vo.BlogCommentBean"%>
 <%@page import="vo.BlogBean"%>
@@ -5,14 +7,28 @@
 	pageEncoding="UTF-8"%>
 <%
 	BlogBean article = (BlogBean) request.getAttribute("article");
-	BlogCommentBean article2 = (BlogCommentBean) request.getAttribute("article2");
+	ArrayList<BlogCommentBean> article2 = (ArrayList<BlogCommentBean>)request.getAttribute("article2");
+	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	
+	UserBean userbean = (UserBean) request.getAttribute("userBean");
+
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+	
+	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
-	String comment_num = request.getParameter("comment_num");
-	
-	UserBean userbean = (UserBean) request.getAttribute("userBean");
+
+// 	int listCount = pageInfo.getListCount();
+// 	nowPage = pageInfo.getPage();
+// 	int maxPage = pageInfo.getMaxPage();
+// 	int startPage = pageInfo.getStartPage();
+// 	int endPage = pageInfo.getEndPage();
+// 	int limit = pageInfo.getLimit();
+
+// 	int number = 0;
+// 	number = listCount - (nowPage - 1) * (limit);
 %>
 
 <script language="javascript">
@@ -376,6 +392,10 @@
 
 				<div class="pt-5 mt-5">
 					<h3 class="mb-5">코멘트 1개</h3>
+					<%
+							// if (article2 != null && listCount > 0) { 
+								for (int i = 0; i < article2.size(); i++) {
+ 						%> 
 					<ul class="comment-list">
 						<li class="comment">
 							<div class="vcard bio">
@@ -383,27 +403,31 @@
 							</div>
 
 							<div class="comment-body">
-								<!-- 							session.getAttribute("id"); -->
-								<!-- 							if (id.equals(session.getAttribute("id")) -->
-								<h3><%=comment_writer%></h3>
+								<!-- 								<input type="hidden" name="comment_blog_num" -->
+								<%-- 									value="<%=article2.get(i).getBlog_num() %>" id="comment_blog_num"> --%>
+								<h3><%=article2.get(i).getComment_writer() %></h3>
 								<div class="meta">June 27, 2018 at 2:21pm</div>
-								<p><%=comment_content%></p>
+								<p>내용</p>
 								<div
 									style='display: text-decoration; float: right; width: 1000px'>
 									<%
 										session.getAttribute("id");
 										if (id != null && id.equals("admin")) {
 									%>
-									<a href="BlogCommentDeletePro.bl?blog_num=<%=comment_num%>"
-										class="reply" onclick="delCmt(comment_num)">Delete</a>
+									<a
+										href="BlogCommentDeletePro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
+										class="reply"
+										onclick="delCmt(<%=article2.get(i).getComment_num() %>)">Delete</a>
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
 									%>
-									<a href="BlogCommentModifyPro.bl?blog_num=<%=comment_num%>"
+									<a
+										href="BlogCommentModifyPro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
 										class="edit">Edit</a> <a
-										href="BlogCommentDeletePro.bl?blog_num=<%=comment_num%>"
+										href="BlogCommentDeletePro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
 										class="
-										delete" onclick="delCmt(comment_num)">
+										delete"
+										onclick="delCmt(<%=article2.get(i).getComment_num() %>)">
 										Delete</a>
 									<%
 										}
@@ -413,6 +437,9 @@
 							</div>
 						</li>
 					</ul>
+					<%
+					}
+				%>
 					<!-- END comment-list -->
 
 
@@ -424,17 +451,17 @@
 						<h3 class="mb-5">코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
-							<input type="hidden" name="comment_blog_num" value="<%=blog_num%>" id="comment_blog_num">
-							<!--  블로그 게시글 번호   -->
+							<input type="hidden" name="comment_blog_num"
+								value="<%=article.getBlog_num()%>" id="comment_blog_num">
+							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name" name="name" value="<%=userbean.getUser_name() %>">
+									class="form-control" id="name" name="name" value="<%=id %>">
 							</div>
-
 							<div class="form-group">
 								<label for="message">내용</label>
-								<textarea name="comment_content" id="comment_content" cols="30" rows="2"
-									class="form-control"></textarea>
+								<textarea name="comment_content" id="comment_content" cols="30"
+									rows="2" class="form-control"></textarea>
 							</div>
 							<div class="form-group">
 								<input type="submit" value="작성 완료"
@@ -443,9 +470,12 @@
 						</form>
 					</div>
 					<%
-						} 
-					%><br>
-
+						} else if (id == null) {
+						
+					%><br>로그인 후 댓글 작성이 가능합니다.
+					<%}
+// 							}
+						 %>
 				</div>
 			</div>
 		</div>
@@ -453,7 +483,7 @@
 
 	<!-- .section -->
 	<footer>
-		<jsp:include page="../inc/footer.jsp" />
+		<jsp:include page="/inc/footer.jsp" />
 	</footer>
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

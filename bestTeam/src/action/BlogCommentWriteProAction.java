@@ -36,16 +36,12 @@ public class BlogCommentWriteProAction implements Action {
 		UserBean userBean = null;
 		
 		HttpSession session = request.getSession();
-		String id = session.getAttribute("id").toString();
-		
-		blogCommentBean = new BlogCommentBean(); // 글 쓰기 데이터를 저장할 BoardBean 객체
+		blogCommentBean = new BlogCommentBean(); 
 		userBean = new UserBean();
 		
 		blogCommentBean.setComment_writer(userBean.getUser_name());
 		blogCommentBean.setComment_blog_num(Integer.parseInt(request.getParameter("comment_blog_num")));
-//		blogCommentBean.setComment_writer(request.getParameter("comment_writer"));
 		blogCommentBean.setComment_content(request.getParameter("comment_content"));
-		
 		
 		BlogCommentWriteProService blogCommentWriteProService = new BlogCommentWriteProService();
 		boolean isWriteSuccess = blogCommentWriteProService.registArticle(blogCommentBean);
