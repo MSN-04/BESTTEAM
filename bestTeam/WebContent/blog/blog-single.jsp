@@ -1,3 +1,4 @@
+<%@page import="vo.UserBean"%>
 <%@page import="vo.BlogCommentBean"%>
 <%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,6 +11,8 @@
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 	String comment_num = request.getParameter("comment_num");
+	
+	UserBean userbean = (UserBean) request.getAttribute("userBean");
 %>
 
 <script language="javascript">
@@ -415,22 +418,22 @@
 
 					<%
 						session.getAttribute("id");
-						if (id == null || id.equals("admin")) {
+						if (id != null) {
 					%>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
-							<input type="hidden" name="comment_num" value="<%=blog_num%>">
+							<input type="hidden" name="comment_blog_num" value="<%=blog_num%>" id="comment_blog_num">
 							<!--  블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name">
+									class="form-control" id="name" name="name" value="<%=userbean.getUser_name() %>">
 							</div>
 
 							<div class="form-group">
 								<label for="message">내용</label>
-								<textarea name="" id="message" cols="30" rows="2"
+								<textarea name="comment_content" id="comment_content" cols="30" rows="2"
 									class="form-control"></textarea>
 							</div>
 							<div class="form-group">
@@ -440,8 +443,8 @@
 						</form>
 					</div>
 					<%
-						}
-					%>
+						} 
+					%><br>
 
 				</div>
 			</div>

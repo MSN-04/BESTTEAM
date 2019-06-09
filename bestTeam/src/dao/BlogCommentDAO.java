@@ -34,9 +34,12 @@ public void setConnection(Connection con) {
 	public int insertComment(BlogCommentBean blogCommentBean) {
 		int insertCount = 0;
 		
-		String sql = "INSERT INTO comment_blog(comment_num,comment_content,comment_writer,comment_date,comment_blog_num) VALUES(null,?,?,NOW(),?)";
+		String sql = "INSERT INTO blog_comment VALUES (null,?,?,now(),?)";
+		
 		try {
-			pstmt=con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);
+			
+//			pstmt.setInt(1, blogCommentBean.getComment_num());
 			pstmt.setString(1, blogCommentBean.getComment_content());
 			pstmt.setString(2, blogCommentBean.getComment_writer());
 			pstmt.setInt(3, blogCommentBean.getComment_blog_num());
@@ -129,32 +132,6 @@ public void setConnection(Connection con) {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
