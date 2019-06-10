@@ -130,6 +130,7 @@ function showSlides(n) {
 		
 </script>
 <script src="./js/jquery-3.3.1.js"></script>
+<script  type="text/javascript" src="./js/httpRequest.js"></script>
 <script type="text/javascript">
 // qna 안  카테고리 버튼 작동 자바스크립트
  	$(document).ready(function(index) {
@@ -275,6 +276,13 @@ function showSlides(n) {
             
      });
 	
+	// review 조회수
+	
+	function read() {
+		var keyword = reviewhidden.value;
+		var params = "review_num="+keyword;
+	      sendRequest("reviewRead.re", params, displayResult, 'POST');
+	}
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> 
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script> 
@@ -555,8 +563,11 @@ String id=(String)session.getAttribute("id");
                   %>
                   
                 <tr>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_subject() %> </a>
+                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
+                  <td  ><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" onclick="read();"><%=reviewList.get(i).getReview_subject() %> </a>
+                  
+                  <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>">
+                  
                     <div id="collapse<%=i %>" class="panel-collapse collapse in">
                       <div class="panel-body">
                         <br> <b><%=reviewList.get(i).getReview_content() %></b>
@@ -565,16 +576,19 @@ String id=(String)session.getAttribute("id");
                             <div class="col-md-8 ftco-animate div0525">
                               <a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num()%>&item_num=<%=itemBean.getItem_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a> 
                               <a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num()%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">삭제</a>
+                              <a href="#" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">답글</a>
                             </div>
                           </div>
                         </section>
                       </div>
                     </div>
                   </td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
+                  <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
+                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
+                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
                 </tr>
+                
+                
                 <%
                       }
                   }
