@@ -7,7 +7,7 @@
   <head>
   <%
   	ArrayList<CartBean> cartList = (ArrayList<CartBean>)request.getAttribute("cartList");
-  	String id = (String)session.getAttribute("id");
+  	String id = (String)session.getAttribute("id"); 
   
   
   %>
