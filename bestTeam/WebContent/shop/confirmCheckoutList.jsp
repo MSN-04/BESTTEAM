@@ -6,7 +6,7 @@
 <%
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
 	// request.getAttribute() 메서드로 가져오기
-	out.println("여기는 confirmCheckoutList.jsp");
+	//out.println("여기는 confirmCheckoutList.jsp");
 	ArrayList<BuyBean> buyList = (ArrayList<BuyBean>) request.getAttribute("buyList");
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
@@ -134,14 +134,15 @@
                 <%
 							if (buyList != null && listCount > 0) {
 								for (int i = 0; i < buyList.size(); i++) {
-									int buy_num=buyList.get(i).getBuy_num();
+								//	int buy_num=buyList.get(i).getBuy_num();
+								System.out.println("buyList.size():"+buyList.size());
 						%>
 
                   
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
                      <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">
-                     <%=buy_num %>
+                     <%=buyList.get(i).getBuy_num() %>
                      </a></td>
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     

@@ -37,7 +37,7 @@ public class MypageProAction implements Action {
 			request.setAttribute("userBean", userBean);
 			favorBean = mypageProService.getMyFavor(id);
 			request.setAttribute("favorBean", favorBean);
-			System.out.println(favorBean.getUser_favor_body());
+			System.out.println("action" +favorBean.getUser_favor_body());
 			
 			forward = new ActionForward();
 //			forward.setRedirect(true);

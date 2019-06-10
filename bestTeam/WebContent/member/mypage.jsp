@@ -196,6 +196,8 @@
 			<div class="overlay"></div>
       <div class="container">
 				<h3 class="mb-4 billing-heading" id="h0528">취향 정보</h3>
+
+
 				<div class="col-md-8" id="div0528">
 				<a href="taste.us" class="btn btn-primary btn-outline-primary" style="float: right;">취향 정보 수정</a>
 				</div>
@@ -292,7 +294,6 @@
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
 
-	
 
 
 </body>
