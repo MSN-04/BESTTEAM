@@ -201,6 +201,34 @@ public class NoticeDAO {
 		return updateCount;
 	}
 
+	
+	// 리스트에서 이전글 가져오기
+//		public int getBefore(int notice_num) {
+//			int preNum = 0;
+//
+//
+//			String sql = "select notice_num, notice_subject from notice where notice_num=(select max(notice_num) from notice where notice_num < ?)";
+//
+//			try {
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setInt(1, notice_num);
+//				rs = pstmt.executeQuery();
+//
+//				if (rs.next()) {
+//					preNum = rs.getInt("notice_num");
+//				}
+//
+//			} catch (SQLException e) {
+//				System.out.println("selectArticle() 실패! : " + e.getMessage());
+//			} finally {
+//				close(rs);
+//				close(pstmt);
+//			}
+//
+//			return notice_num;
+//		}
+	
+	
 //	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
 //	public boolean isArticlenoticeWriter(int notice_num, String pass) {
 ////		System.out.println("NoticeDAO - isArticlenoticeWriter");

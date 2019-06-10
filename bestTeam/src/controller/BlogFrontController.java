@@ -112,6 +112,14 @@ public class BlogFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/BlogCommentWritePro.bl")) {
+			action = new BlogCommentWriteProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
