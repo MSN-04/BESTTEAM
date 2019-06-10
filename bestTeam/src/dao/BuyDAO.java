@@ -411,7 +411,7 @@ public class BuyDAO {
 		System.out.println("BuyDAO --selectConfirmCheckoutList ");
 		
 		ArrayList<BuyBean> buyList=new ArrayList<>();
-		BuyBean buyBean=new BuyBean();
+		
 		//UserBean userBean=null;
 		
 		try {
@@ -431,6 +431,7 @@ public class BuyDAO {
 						rs=pstmt.executeQuery();
 						
 						while(rs.next()) {
+							BuyBean buyBean=new BuyBean();
 							buyBean.setBuy_num(rs.getInt("buy_num"));
 							buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
 							buyBean.setBuy_count(rs.getInt("buy_count"));
@@ -479,5 +480,12 @@ public class BuyDAO {
 		return buyListCount;
 		
 	}
+	
+	//---------- 영비--> 주문 상세 내역 조회
+	// 주문상품조회: cart에서 가져오기-->상품 이미지(buy_item_img)/상품이름(buy_item_name)/ 가격 (buy_item_price)/ 갯수(buy_item_count) / 가격(buy_item_price)
+	
+	//주문자 정보: buy 에서 가져오기--> 주문번호(buy_num) / 주문자 / 주문일자 / 
+
+
 
 }
