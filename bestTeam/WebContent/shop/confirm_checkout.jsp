@@ -30,14 +30,7 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     
-<<<<<<< HEAD
-=======
-    
-    
-    
-    
-    
->>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
+
     <style type="text/css">
     
 	    .confirmCheckout {
@@ -80,9 +73,9 @@
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Confirm Checkout</h1>
-	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span> 
-	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p>
+            	<h1 class="mb-3 mt-5 bread">주문 상세 조회</h1>
+<!-- 	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span>  -->
+<!-- 	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p> -->
             </div>
 
           </div>

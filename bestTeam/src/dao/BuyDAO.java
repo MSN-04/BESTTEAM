@@ -61,7 +61,8 @@ public class BuyDAO {
 				count = rs.getInt(1);
 			}
 			
-			sql = "insert into buy(buy_num,buy_user_id,buy_address,buy_phone,buy_phone2,buy_shipnum,buy_post,buy_name,buy_buydate,buy_total,buy_email,buy_count) values("+num+",?,?,?,?,?,?,?,?,?,?,"+count+")";
+			sql = "insert into buy(buy_num,buy_user_id,buy_address,buy_phone,buy_phone2,buy_shipnum,buy_post,buy_name,buy_buydate,buy_total,buy_email,buy_count,buy_ordernum) "
+					+ "values("+num+",?,?,?,?,?,?,?,?,?,?,"+count+",?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id); // id
 			pstmt.setString(2, buyBean.getBuy_address()); // address
@@ -73,6 +74,7 @@ public class BuyDAO {
 			pstmt.setDate(8, buyBean.getBuy_buydate()); // buydate
 			pstmt.setInt(9, buyBean.getBuy_total()); // total
 			pstmt.setString(10, buyBean.getBuy_email()); // email
+			pstmt.setString(11, buyBean.getBuy_ordernum()); // ordernum
 			
 			if (pstmt.executeUpdate() > 0) {
 				itemList = getCartItem(id, num); // 카트내용 가져오기
@@ -411,7 +413,7 @@ public class BuyDAO {
 		System.out.println("BuyDAO --selectConfirmCheckoutList ");
 		
 		ArrayList<BuyBean> buyList=new ArrayList<>();
-		BuyBean buyBean=new BuyBean();
+		
 		//UserBean userBean=null;
 		
 		try {
@@ -431,6 +433,7 @@ public class BuyDAO {
 						rs=pstmt.executeQuery();
 						
 						while(rs.next()) {
+							BuyBean buyBean=new BuyBean();
 							buyBean.setBuy_num(rs.getInt("buy_num"));
 							buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
 							buyBean.setBuy_count(rs.getInt("buy_count"));
@@ -479,5 +482,12 @@ public class BuyDAO {
 		return buyListCount;
 		
 	}
+	
+	//---------- 영비--> 주문 상세 내역 조회
+	// 주문상품조회: cart에서 가져오기-->상품 이미지(buy_item_img)/상품이름(buy_item_name)/ 가격 (buy_item_price)/ 갯수(buy_item_count) / 가격(buy_item_price)
+	
+	//주문자 정보: buy 에서 가져오기--> 주문번호(buy_num) / 주문자 / 주문일자 / 
+
+
 
 }

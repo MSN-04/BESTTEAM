@@ -56,7 +56,9 @@
 
 <style type="text/css">
 	.display_none { display: none; }
-	
+	.coffeeInfo td {
+		text-align: left;
+	}
 /* 	#v-pills-1-tab:hover { */
 /* 		border: 1px solid red; */
 		
@@ -342,16 +344,16 @@
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
 										%>
-											<div class="col-md-3">
+											<div class="col-md-3" style="margin-bottom: 45px;" onmouseover="this.style.padding='1rem'; this.style.border='1px solid #c49b63';" onmouseout="this.style.padding='0 15px'; this.style.border='0px';">
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
-													<div class="text text-center pt-4">
+													<div class="text text-center pt-4" >
 														<h3>
 															<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><%=itemList.get(i).getItem_name() %></a>
 														</h3>
 														<p> 
-															<table>
+															<table class="coffeeInfo">
 																<tr>
 																	<td>Acidity : </td>
 																	<td><%=itemList.get(i).getItem_favor_acidity() %></td>
@@ -373,11 +375,11 @@
 														<p class="price">
 															<span><%=itemList.get(i).getItem_price() %>원</span>
 														</p>
-														<p>
-															<a href="cart.html"
-																class="btn btn-primary btn-outline-primary">Add to
-																Cart</a>
-														</p>
+<!-- 														<p> -->
+<!-- 															<a href="cart.html" -->
+<!-- 																class="btn btn-primary btn-outline-primary">Add to -->
+<!-- 																Cart</a> -->
+<!-- 														</p> -->
 													</div>
 												</div>
 											</div>

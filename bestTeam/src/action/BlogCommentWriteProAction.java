@@ -28,14 +28,16 @@ public class BlogCommentWriteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
-		System.out.println("BlogCommentWriteProAction()");
+		System.out.println("BlogCommentDeleteProAction()");
 		
+		HttpSession session = request.getSession();
 		ActionForward forward = null;
 		BlogCommentBean blogCommentBean = null;
 		UserBean userBean = null;
 		
-		HttpSession session = request.getSession();
+		String name = request.getParameter("comment_writer");
+		String id = session.getAttribute("id").toString();
+		
 		blogCommentBean = new BlogCommentBean(); 
 		userBean = new UserBean();
 		
@@ -44,6 +46,8 @@ public class BlogCommentWriteProAction implements Action {
 		blogCommentBean.setComment_content(request.getParameter("comment_content"));
 		
 		BlogCommentWriteProService blogCommentWriteProService = new BlogCommentWriteProService();
+		userBean = blogCommentWriteProService.getUserInfo(name, id);
+		
 		boolean isWriteSuccess = blogCommentWriteProService.registArticle(blogCommentBean);
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
@@ -64,23 +68,6 @@ public class BlogCommentWriteProAction implements Action {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

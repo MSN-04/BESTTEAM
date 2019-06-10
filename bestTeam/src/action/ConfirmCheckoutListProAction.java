@@ -34,11 +34,11 @@ public class ConfirmCheckoutListProAction implements Action {
 		ArrayList<BuyBean> buyList=new ArrayList<BuyBean>();
 
 		
-		HttpSession session = request.getSession();
 //		session.setAttribute("buy_num", buyBean.getBuy_num());
 //		int buy_num=(int) session.getAttribute("buy_num");  
 //		int buy_num=buyBean.getBuy_num();     
 		
+		HttpSession session = request.getSession();
 		String user_id=(String) session.getAttribute("id");		
 		
 		System.out.println("action ->user_id:"+user_id);

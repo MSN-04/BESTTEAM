@@ -35,7 +35,7 @@ public class BlogWriteProAction implements Action {
 		String realFolder; // 실제 경로
 		String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-//		
+		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
 		System.out.println("realFolder : "+realFolder);
@@ -66,7 +66,7 @@ public class BlogWriteProAction implements Action {
 //		String filename1 = multi.getFilesystemName(blog_file1);
 //		System.out.println(filename1);
 		
-		blogBean = new BlogBean(); // 글 쓰기 데이터를 저장할 BoardBean 객체
+		blogBean = new BlogBean(); // 글 쓰기 데이터를 저장할 BlogBean 객체
 		// 파일명을 제외한 나머지 데이터는 multi.getParameter() 메서드를 사용
 		
 		blogBean.setBlog_subject(multi.getParameter("blog_subject"));
