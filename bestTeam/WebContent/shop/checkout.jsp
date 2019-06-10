@@ -77,7 +77,7 @@
 		    padding: 15px 10px !important;
 		}
     </style>
-    
+
   </head>
   
   <body>
@@ -448,10 +448,14 @@
 						
 						
 						
-				<script type="text/javascript">
-
-
-						
+				
+					</div>
+	          	</div>
+	          	
+	          	
+	          </div>
+		</form>
+		    <script type="text/javascript">
 							function checkout() {
 								
 								// 1. 구매동의 체크 여부 확인
@@ -459,9 +463,8 @@
 									var check = confirm("구매진행에 동의해주세요");
 									
 								} else {
-
-								
-								    // 2. 결제방법에 체크한 라디오의 value 값 가져오기 
+									
+									// 2. 결제방법에 체크한 라디오의 value 값 가져오기 
 									var ckRadio = $('input:radio[name="ckoutRadio"]:checked').val();
 
 								    var payMethod;
@@ -484,6 +487,7 @@
 										
 <%-- 										String paymentName = <%=Calendar.DATE %>; --%>
 // 										alert(paymentName);
+// 										alert('aa');
 										
 										
 										//===== 결제 API 연동 2
@@ -496,14 +500,14 @@
 										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
 										    pg: "html5_inicis",		// 결제방식
 										    pay_method: payMethod,		// 결제수단
-										    merchant_uid: "20190430-A02",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
+										    merchant_uid: "201900610-C13",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
 										    name: "원두",	// 주문명
-										    amount: 1500,	// 결제 금액
-										    buyer_email: "gildong@gmail.com",	// 구매자 email
-										    buyer_name: "홍길동",	// 구매자 이름
-										    buyer_tel: "010-1111-2222",	// 구매자 전화번호
-										    buyer_addr: "부산 부산진구 동천로 109 삼한골든게이트 7층",	// 구매자 주소
-										    buyer_postcode: "47246"	// 구매자 우편번호
+										    amount: <%=totalPrice %> + 2500,	// 결제 금액
+										    buyer_email: $('#Email').val(),	// 구매자 email
+										    buyer_name: $('#name').val(),	// 구매자 이름
+										    buyer_tel: $('#phone').val(),	// 구매자 전화번호
+										    buyer_addr: $('#address').val() + " " + $('#detailAddress').val() ,	// 구매자 주소
+										    buyer_postcode: $('#postcode').val()	// 구매자 우편번호
 										/*
 										    * 주문번호(merchant_uid) 생성하기 
 											IMP.request_pay를 호출하기 전에 여러분의 서버에 주문 정보를 전달(데이터베이스에 주문정보 INSERT)하고 
@@ -514,46 +518,66 @@
 										}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
 											    if (rsp.success) { 
 	// 										    	// 결제 성공 시
-	// 										    	alert("결제 성공");
+// 											    	alert("결제 성공1");
 													
 													// 결제 정보 submit 추가
-													$("#frm").submit(function() {
+// 													$("#frm").submit(function() {
+// 														alert("결제 성공2");
+// 														// hidden 으로 submit할 값 저장
+// 														document.frm.impUid.value = rsp.imp_uid;   // 아임포트에서 부여하는 거래건 당 고유번호
+// 														document.frm.paidAmount.value = rsp.paid_amount;  // 결제금액
+// 														document.frm.status.value = rsp.status;  // 결제상태 - ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패)
+// 														document.frm.orderName.value = rsp.name;  // 주문명
 														
-														// hidden 으로 submit할 값 저장
-														document.frm.impUid.value = rsp.imp_uid;   // 아임포트에서 부여하는 거래건 당 고유번호
-														document.frm.paidAmount.value = rsp.paid_amount;  // 결제금액
-														document.frm.status.value = rsp.status;  // 결제상태 - ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패)
-														document.frm.orderName.value = rsp.name;  // 주문명
+// 														if($('#buyerPostcode').val() != "null") {
+// 															alert("결제 성공3");
+// 															document.frm.buyerPostcode.value = rsp.buyer_postcode;  // 신용카드결제시 - 카드사 승인번호
+// 														} else {
+// 															alert("결제 성공4");
+// 															document.frm.buyerPostcode.value = "신용카드결제아님";
+// 														}
 														
-														if($('#buyerPostcode').val() != "null") {}
-															document.frm.buyerPostcode.value = rsp.buyer_postcode;  // 신용카드결제시 - 카드사 승인번호
-														} else {
-															document.frm.buyerPostcode.value = "신용카드결제아님";
-														}
+// 														return true;
 														
-													})	
+// 													});	
 													
-													
+// 													alert('ajax시작1');
 											    	// jQuery.ajax 로 HTTP 요청
-											        jQuery.ajax({
-											            url: " http://kbinsurebs.co.kr/bestTeam", // 가맹점 서버
-											            method: "POST",
+											        $.ajax({
+											        	url: "checkoutPro.sh", // 가맹점 서버
+											            method: "get",
 											            headers: { "Content-Type": "application/json" },
 											            data: {
 											                imp_uid: rsp.imp_uid,  // * imp_uid : 거래 고유 번호
-											                merchant_uid: rsp.merchant_uid
-											            }
+											                merchant_uid: rsp.merchant_uid,
+											                buyer_name : $('#name').val(),
+											                buyer_phone : $('#phone').val(),
+											                buyer_phone2 : $('#phone2').val(),
+											                buyer_postcode : $('#postcode').val(),
+											                buyer_address : $('#address').val(),
+											                buyer_detailAddress : $('#detailAddress').val(),
+											                buyer_Email : $('#Email').val(),
+											                paid_amount : <%=totalPrice %>,
+											                status : rsp.status,
+											                orderName : rsp.name
+											                
+											            },
+											            success : function(data) {
+															alert('결제가 완료되었습니다.');
+															location.href = "Mypage.us";
+														},
+														error :function(request, status, error) {
+															alert('결제 실패! ' + error);
+														}
 											            
-											        }).done(function (data) {
-											        	location.href="confirm_checkout.jsp";
-											       	})
+											        });
 											       	
 
 											    } else { 
 											    	// 결제 실패 시
 											    	alert("결제 실패 : " +  rsp.error_msg);
 											    	history.back();
-										    }
+										   		}
 										/*
 											*
 											가맹점 서버에 imp_uid(거래 고유 번호)를 전달하면 아임포트 서버에서 imp_uid로 결제 정보를 조회할 수 있습니다.
@@ -561,19 +585,16 @@
 											조회한 정보들을 통해 결제 위변조 여부를 검증하고, 서비스의 데이터베이스에 저장할 수 있습니다.
 										*/
 										});
+										
 									}else{
 										history.back();
 									}
+								
+								    
 								}
 							}
 						</script>
-					</div>
-	          	</div>
-	          	
-	          	
-	          </div>
           </div> <!-- .col-md-8 -->
-		</form>
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 

@@ -373,11 +373,11 @@
 														<p class="price">
 															<span><%=itemList.get(i).getItem_price() %>원</span>
 														</p>
-														<p>
-															<a href="cart.html"
-																class="btn btn-primary btn-outline-primary">Add to
-																Cart</a>
-														</p>
+<!-- 														<p> -->
+<!-- 															<a href="cart.html" -->
+<!-- 																class="btn btn-primary btn-outline-primary">Add to -->
+<!-- 																Cart</a> -->
+<!-- 														</p> -->
 													</div>
 												</div>
 											</div>
