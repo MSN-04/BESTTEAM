@@ -53,7 +53,7 @@ public class QnaDAO {
 				// 최대 게시물 번호 + 1
 			}
 
-			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now())";
+			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now(),?,?,?,null)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
@@ -61,6 +61,9 @@ public class QnaDAO {
 			pstmt.setString(3, qnaBean.getQna_writer());
 			pstmt.setString(4, qnaBean.getQna_subject());
 			pstmt.setString(5, qnaBean.getQna_content());
+			pstmt.setInt(6, num);
+			pstmt.setInt(7, 0);
+			pstmt.setInt(8, 0);
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 
@@ -113,13 +116,15 @@ public class QnaDAO {
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
 
-		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
+//		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, item_num);
-			pstmt.setInt(2, startRow);
+//			pstmt.setInt(2, startRow-1);
+//			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -132,6 +137,9 @@ public class QnaDAO {
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
 				qnaBean.setQna_date(rs.getDate("qna_date"));
+				qnaBean.setQna_re_lev(rs.getInt("qna_re_lev"));
+				qnaBean.setQna_re_ref(rs.getInt("qna_re_ref"));
+				qnaBean.setQna_re_seq(rs.getInt("qna_re_seq"));
 
 				articleList.add(qnaBean); // ArrayList 객체에 레코드 단위로 저장
 
