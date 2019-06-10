@@ -152,7 +152,7 @@
                     
                     <td class="price"><%=buyList.get(i).getBuy_buydate() %></td>
                     
-                    <td class="price"><%=buyList.get(i).getBuy_total() %></td>
+                    <td class="price"><%=buyList.get(i).getBuy_total()+2500 %>&nbsp;원</td>
                     
    <%                 
 //							out.println("buyList.get(i).getBuy_num():"+buyList.get(i).getBuy_num());

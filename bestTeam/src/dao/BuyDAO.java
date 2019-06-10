@@ -482,10 +482,74 @@ public class BuyDAO {
 	}
 	
 	//---------- 영비--> 주문 상세 내역 조회
-	// 주문상품조회: cart에서 가져오기-->상품 이미지(buy_item_img)/상품이름(buy_item_name)/ 가격 (buy_item_price)/ 갯수(buy_item_count) / 가격(buy_item_price)
+	// 주문상품조회: cart에서 가져오기-->상품 이미지(buy_item_img)/상품이름(buy_item_name)
+	// 가격 (buy_item_price)/ 갯수(buy_item_count) / 가격(buy_item_price)
+	public ArrayList<BuyItemBean> getOrderInfoList(int buy_num){
+		System.out.println("BuyDAO --getOrderInfoList ");
+		
+		ArrayList<BuyItemBean> orderInfoList=new ArrayList<>();
+		
+		try {
+			String sql="select * from buy_item where buy_item_buy_num=?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,buy_num);
+			rs=pstmt.executeQuery();			
+		
+				BuyItemBean buyItemBean=new BuyItemBean();
+				buyItemBean.setItem_buy_num(rs.getInt("item_buy_num"));
+				buyItemBean.setItem_count(rs.getInt("item_count"));
+				buyItemBean.setItem_img(rs.getString("item_img"));
+				buyItemBean.setItem_name(rs.getString("item_name"));
+				buyItemBean.setItem_price(rs.getInt("item_price"));
+				orderInfoList.add(buyItemBean);
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getOrderInfoList 에러:"+e);
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return orderInfoList;
+		
+	}
 	
-	//주문자 정보: buy 에서 가져오기--> 주문번호(buy_num) / 주문자 / 주문일자 / 
-
+	//주문자 정보: buy 에서 가져오기--> 주문번호(buy_num) / 주문자 (buy_user_id)/ 
+	//주문일자(buy_buydate) / 연락처1(buy_phone)/연락처2(buy_phone2)/우편번호(buy_post)/배송지(buy_address)
+	public ArrayList<BuyBean> getOrderPersonList(String id){
+		System.out.println("BuyDAO --getOrderPersonList ");
+		
+		ArrayList<BuyBean> orderPersonList=new ArrayList<>();
+		
+		try {
+			String sql="select * from buy where buy_user_id=?"; 
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			
+		
+				BuyBean buyBean=new BuyBean();
+				buyBean.setBuy_address(rs.getString("buy_address"));
+				buyBean.setBuy_post(rs.getString("buy_post"));
+				buyBean.setBuy_phone2(rs.getString("buy_phone2"));
+				buyBean.setBuy_phone(rs.getString("buy_phone"));
+				buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
+				orderPersonList.add(buyBean);
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getOrderPersonList 에러:"+e);
+		}finally {
+			close(rs);
+			close(pstmt);
+		}		
+		return orderPersonList;
+		
+	}
+	
 
 
 }

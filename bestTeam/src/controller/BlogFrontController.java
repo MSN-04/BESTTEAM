@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BlogCommentDeleteProAction;
 import action.BlogCommentWriteProAction;
 import action.BlogDeleteProAction;
 import action.BlogDetailAction;
@@ -113,6 +114,7 @@ public class BlogFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/BlogCommentWritePro.bl")) {
+			// 댓글 쓰기
 			action = new BlogCommentWriteProAction();
 			
 			try {
@@ -120,6 +122,15 @@ public class BlogFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			}else if(command.equals("/BlogCommentDeletePro.bl")) {
+				// 댓글 삭제
+				action = new BlogCommentDeleteProAction();
+				
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
 		
 		
