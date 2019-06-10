@@ -5,7 +5,7 @@ public class CartBean {
 	private int cart_item_num;
 	private String cart_user_id;
 	private int cart_count;
-	private int price;
+	private int cart_price;
 	private String cart_img;
 	private String cart_item_name;
 	
@@ -47,11 +47,11 @@ public class CartBean {
 	public void setCart_count(int cart_count) {
 		this.cart_count = cart_count;
 	}
-	public int getPrice() {
-		return price;
+	public int getCart_price() {
+		return cart_price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setCart_price(int price) {
+		this.cart_price = price;
 	}
 
 }

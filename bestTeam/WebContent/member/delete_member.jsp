@@ -70,11 +70,11 @@
 								</div>
 							
 								<div class="form-group">
-									<label for="firstname">비밀번호</label> <input type="text"
+									<label for="firstname">비밀번호</label> <input type="password"
 										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass">
 								</div>
 								<div class="form-group">
-									<label for="firstname">비밀번호 확인</label> <input type="text"
+									<label for="firstname">비밀번호 확인</label> <input type="password"
 										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2">
 								</div>
 								</div>

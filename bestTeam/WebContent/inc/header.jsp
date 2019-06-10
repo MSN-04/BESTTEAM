@@ -65,11 +65,12 @@
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">Notice</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown04">
-						<a class="dropdown-item" href="./noticeList.no">공지사항</a> <a
+						<a class="dropdown-item" href="./noticeList.no">공지사항</a> 
+						<a class="dropdown-item" href="./eventList.ev">이벤트</a> <a
 							class="dropdown-item" href="./notice/faq.jsp">FAQ</a>
 					</div></li>
 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="./fest/fest.jsp" class="nav-link">Festival</a></li>
+				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li>
 				<li class="nav-item"><a href="./contact/contact.jsp" class="nav-link">Contact</a></li>
 				
 				<%
@@ -80,13 +81,13 @@
 				<%	
 				} else {
 				%>
-				<li class="nav-item"><a href="MypageProAction.us" class="nav-link">Mypage</a></li>
+				<li class="nav-item"><a href="Mypage.us" class="nav-link">Mypage</a></li>
 				<li class="nav-item"><a href="LogoutProAction.us" class="nav-link">Logout</a></li>
 				<%	
 				}
 				%>
 				
-				<li class="nav-item cart"><a href="./shop/cart.jsp" class="nav-link">
+				<li class="nav-item cart"><a href="./cart.sh" class="nav-link">
 				<span class="icon icon-shopping_cart"></span>
 				<span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
 			</ul>
@@ -95,6 +96,7 @@
 		<div id="login-box" class="login-popup" style="width: 300px; height: 300px;">
 			<a class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
 			<form method="post" class="signin" action="LoginProAction.us">
+		
 				<fieldset class="textbox">
 					<span id="login-logo"><img src="./images/untitled.png"></span>
 					<span> Welcome Back!</span>
