@@ -745,7 +745,7 @@ $( '#rere1' ).click(
 					<tr>
 						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="<%=id %>"
+							<input type="text" class="form-control" value="<%=id %>"
 								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
 						</div>
 						<!-- 						</div> -->
