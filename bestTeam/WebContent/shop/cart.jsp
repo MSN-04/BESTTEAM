@@ -173,7 +173,7 @@
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -209,9 +209,12 @@
                 
                 <!-- 상품시작 -->
                 <% 
+                	int total = 0;
                 	if (cartList != null) {
                 		if (cartList.size() != 0) {
-	                		for (int i = 0 ; i < cartList.size() ; i++) { %>
+	                		for (int i = 0 ; i < cartList.size() ; i++) { 
+	                			total += cartList.get(i).getCart_price();
+	                		%>
 		                  <tr class="text-center">
 		                 	<td class="product-remove">
 		                 		<input type="checkbox" value="<%=cartList.get(i).getCart_item_num() %>" class="cb<%=i %>" >
@@ -289,8 +292,10 @@
                   
                 </tbody>
               </table>
-        <a href="checkout.sh" class="btn btn-primary btn-outline-primary" id="buyAllBtn">전체 주문하기</a>
+<!--         <a href="checkout.sh" class="btn btn-primary btn-outline-primary" id="buyAllBtn">전체 주문하기</a> -->
+		<% if (cartList.size() != 0) { %>
         <a class="btn btn-primary btn-outline-primary" id="deleteBtn" >선택상품 삭제하기</a>
+        <% } %>
             </div>
           </div>
         </div>
@@ -310,93 +315,95 @@
         </div>
         
         
+        <% if (cartList.size() != 0) { %>
           <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate" id="total">
             <div class="cart-total mb-3" >
               <h3>Cart Totals</h3>
               <p class="d-flex">
                 <span>Subtotal</span>
-                <span>$20.60</span>
+                <span><%=total %></span>
               </p>
               <p class="d-flex">
                 <span>Delivery</span>
-                <span>$0.00</span>
+                <span>2500</span>
               </p>
-              <p class="d-flex">
-                <span>Discount</span>
-                <span>$3.00</span>
-              </p>
+<!--               <p class="d-flex"> -->
+<!--                 <span>Discount</span> -->
+<!--                 <span>$3.00</span> -->
+<!--               </p> -->
               <hr>
               <p class="d-flex total-price">
                 <span>Total</span>
-                <span>$17.60</span>
+                <span><%=total + 2500 %> 원</span>
               </p>
             
             
-            <span><a href="checkout.jsp" class="btn btn-primary py-3 px-4">선택한상품 주문하기</a></span>
+          	  <span><a href="checkout.sh" class="btn btn-primary py-3 px-4">주문하기</a></span>
             
             
+          	</div>
           </div>
-          </div>
+         <% } %> 
         </div>
       </div>
     </section>
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <span class="subheading">Discover</span>
-            <h2 class="mb-4">Related products</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(./images/menu-1.jpg);"></a>
-              <div class="text text-center pt-4">
-                <h3><a href="#">Coffee Capuccino</a></h3>
-                <p>A small river named Duden flows by their place and supplies</p>
-                <p class="price"><span>$5.90</span></p>
-                <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(./images/menu-2.jpg);"></a>
-              <div class="text text-center pt-4">
-                <h3><a href="#">Coffee Capuccino</a></h3>
-                <p>A small river named Duden flows by their place and supplies</p>
-                <p class="price"><span>$5.90</span></p>
-                <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(./images/menu-3.jpg);"></a>
-              <div class="text text-center pt-4">
-                <h3><a href="#">Coffee Capuccino</a></h3>
-                <p>A small river named Duden flows by their place and supplies</p>
-                <p class="price"><span>$5.90</span></p>
-                <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(./images/menu-4.jpg);"></a>
-              <div class="text text-center pt-4">
-                <h3><a href="#">Coffee Capuccino</a></h3>
-                <p>A small river named Duden flows by their place and supplies</p>
-                <p class="price"><span>$5.90</span></p>
-                <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!--     <section class="ftco-section"> -->
+<!--       <div class="container"> -->
+<!--         <div class="row justify-content-center mb-5 pb-3"> -->
+<!--           <div class="col-md-7 heading-section ftco-animate text-center"> -->
+<!--             <span class="subheading">Discover</span> -->
+<!--             <h2 class="mb-4">Related products</h2> -->
+<!--             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="row"> -->
+<!--           <div class="col-md-3"> -->
+<!--             <div class="menu-entry"> -->
+<!--               <a href="#" class="img" style="background-image: url(./images/menu-1.jpg);"></a> -->
+<!--               <div class="text text-center pt-4"> -->
+<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
+<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
+<!--                 <p class="price"><span>$5.90</span></p> -->
+<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="col-md-3"> -->
+<!--             <div class="menu-entry"> -->
+<!--               <a href="#" class="img" style="background-image: url(./images/menu-2.jpg);"></a> -->
+<!--               <div class="text text-center pt-4"> -->
+<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
+<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
+<!--                 <p class="price"><span>$5.90</span></p> -->
+<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="col-md-3"> -->
+<!--             <div class="menu-entry"> -->
+<!--               <a href="#" class="img" style="background-image: url(./images/menu-3.jpg);"></a> -->
+<!--               <div class="text text-center pt-4"> -->
+<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
+<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
+<!--                 <p class="price"><span>$5.90</span></p> -->
+<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="col-md-3"> -->
+<!--             <div class="menu-entry"> -->
+<!--               <a href="#" class="img" style="background-image: url(./images/menu-4.jpg);"></a> -->
+<!--               <div class="text text-center pt-4"> -->
+<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
+<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
+<!--                 <p class="price"><span>$5.90</span></p> -->
+<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </section> -->
 
     <footer class="ftco-footer ftco-section img">
    <jsp:include page="/inc/footer.jsp"></jsp:include>
