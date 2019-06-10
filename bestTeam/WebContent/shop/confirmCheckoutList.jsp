@@ -16,13 +16,15 @@
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	int limit = pageInfo.getLimit();
-
+	
 	int number = 0;
+	
+	
+	
 	number = listCount - (nowPage - 1) * (limit);
 	
 	BuyBean buyBean=(BuyBean)request.getAttribute("BuyBean");
 	//------------------------------------------------------
-	
 // 	System.out.println("confirmCheckoutList.jsp-->listCount :"+listCount);
 // 	System.out.println("confirmCheckoutList.jsp-->nowPage :"+nowPage);
 // 	System.out.println("confirmCheckoutList.jsp-->maxPage :"+maxPage);
@@ -132,12 +134,15 @@
                 <%
 							if (buyList != null && listCount > 0) {
 								for (int i = 0; i < buyList.size(); i++) {
+									int buy_num=buyList.get(i).getBuy_num();
 						%>
 
                   
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">20190529-000001</a></td>
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">
+                     <%=buy_num %>
+                     </a></td>
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
@@ -149,7 +154,7 @@
                     <td class="price"><%=buyList.get(i).getBuy_total() %></td>
                     
    <%                 
-// 							out.println("buyList.get(i).getBuy_num()"+buyList.get(i).getBuy_num());
+//							out.println("buyList.get(i).getBuy_num():"+buyList.get(i).getBuy_num());
 // 							out.println("buyList.get(i).getBuy_name()"+buyList.get(i).getBuy_name());
 // 							out.println("buyList.get(i).getBuy_count()"+buyList.get(i).getBuy_count());
 // 							out.println("buyList.get(i).getBuy_buydate()"+buyList.get(i).getBuy_buydate());
@@ -251,21 +256,45 @@
 
         </div>
         </div>
-<!--          <div class="row mt-5"> -->
-<!-- 	          <div class="col text-center">  -->
-<!-- 	             <div class="block-27">  -->
-<!-- 	               <ul>  -->
-<!-- 	                <li><a href="#">&lt;</a></li>  -->
-<!-- 	                <li class="active"><span>1</span></li> -->
-<!-- 	                <li><a href="#">2</a></li>  -->
-<!-- 	                <li><a href="#">3</a></li>  -->
-<!-- 	                 <li><a href="#">4</a></li>  -->
-<!-- 	                 <li><a href="#">5</a></li>  -->
-<!-- 	                 <li><a href="#">&gt;</a></li>  -->
-<!-- 	               </ul>  -->
-<!-- 	            </div>  -->
-<!-- 	          </div>  -->
-<!-- 	         </div>  -->
+         <div class="row mt-5">
+	          <div class="col text-center"> 
+	             <div class="block-27"> 
+	               <ul>
+									<%
+										if (nowPage <= 1) {
+									%>
+									<li><a>&lt;</a></li>
+									<%
+										} else {
+									%>
+									<li><a href="confirmCheckoutList.sh?page=<%=nowPage - 1%>">&lt;</a></li>
+									<%
+										}
+										for (int a = startPage; a <= endPage; a++) {
+											if (a == nowPage) {
+									%><li class="active"><span><%=a%></span></li>
+									<%
+										} else {
+									%><li><a href="confirmCheckoutList.sh?page=<%=a%>"><%=a%></a></li>
+									<%
+										}
+										}
+									%>
+									<%
+										if (nowPage >= maxPage) {
+									%>
+									<li><a>&gt;</a></li>
+									<%
+										} else {
+									%>
+									<li><a href="confirmCheckoutList.sh?page=<%=nowPage + 1%>">&gt;</a></li>
+									<%
+										}
+									%>
+								</ul> 
+	            </div> 
+	          </div> 
+	         </div> 
       </div>
       
     </section> 

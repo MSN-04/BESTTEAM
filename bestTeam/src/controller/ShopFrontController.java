@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.CartAction;
+import action.CartDeleteAction;
 import action.CartInsertAction;
+import action.CartUpdateAction;
 import action.CheckoutAction;
 import action.CheckoutFormAction;
 import action.CheckoutProAction;
@@ -70,14 +72,14 @@ public class ShopFrontController extends HttpServlet{
 		
 		else if(command.equals("/cart.sh")) { 
 			System.out.println("cart 컨트롤러 시작");
-			forward = new ActionForward();
-			forward.setPath("./shop/cart.jsp");
-//			action = new CartAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
+//			forward = new ActionForward();
+//			forward.setPath("./shop/cart.jsp");
+			action = new CartAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			System.out.println("cart 컨트롤러 종료");
 		}
 		else if(command.equals("/cartInsert.sh")) { 
@@ -90,7 +92,26 @@ public class ShopFrontController extends HttpServlet{
 			}
 			System.out.println("cartInsert 컨트롤러 종료");
 		}
-		
+		else if(command.equals("/cartUpdate.sh")) { 
+			System.out.println("cartUpdate 컨트롤러 시작");
+			action = new CartUpdateAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("cartUpdate 컨트롤러 종료");
+		}
+		else if(command.equals("/cartDelete.sh")) { 
+			System.out.println("cartDelete 컨트롤러 시작");
+			action = new CartDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("cartDelete 컨트롤러 종료");
+		}
 		
 		// 영비
 		else if(command.equals("/confirmCheckoutListProAction.sh")) {
@@ -138,6 +159,7 @@ public class ShopFrontController extends HttpServlet{
 		
 		if (forward != null) {
 			if (forward.isRedirect()) { // Redirect
+				System.out.println("forward.getPath() :: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else { // Dispatch
 				RequestDispatcher dispatch = request.getRequestDispatcher(forward.getPath());
