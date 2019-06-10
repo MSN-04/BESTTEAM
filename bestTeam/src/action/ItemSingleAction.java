@@ -6,9 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import svc.ItemSingleService;
+import svc.QnaWriteProService;
 import vo.ActionForward;
 import vo.ItemBean;
 import vo.PageInfo;
+import vo.QnaBean;
 import vo.ReviewBean;
 
 public class ItemSingleAction implements Action {
@@ -52,6 +54,7 @@ public class ItemSingleAction implements Action {
 				reviewList = itemSingleService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 				
 				// 페이지 계산
+				
 				int maxPage = (int)((double)listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)
 				int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1; // 현재 페이지에 표시할 시작 페이지) 번호
 				int endPage = startPage + 10 - 1; // 현재 페이지에 표시할 마지막 페이지 번호
@@ -69,9 +72,48 @@ public class ItemSingleAction implements Action {
 				pageInfo.setListCount(listCount);
 				
 				//--------------------------------------------------
+				request.setAttribute("pageInfo", pageInfo);
+				request.setAttribute("reviewList", reviewList);
+				
+				//qna---------------------------------------------------------------
+				ArrayList<QnaBean> qnaList = new ArrayList<QnaBean>();
+				
+				int page2 = 1;
+				int limit2 = 10;
+				
+				// 페이지 번호 파라미터가 있을 경우 가져오기
+				if(request.getParameter("page2") != null) {
+					page2 = Integer.parseInt(request.getParameter("page2"));
+				}
+				
+				QnaWriteProService qnaWriteProService = new QnaWriteProService();
+				
+				int listCount2 = qnaWriteProService.getListCount(); // 총 게시물 목록 수 가져오기
+				
+				qnaList = qnaWriteProService.getArticleList(page2, limit2, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+				
+				// 페이지 계산
+				
+				int maxPage2 = (int)((double)listCount2 / limit2 + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)
+				int startPage2 = (((int)((double)page2 / 10 + 0.9)) - 1) * 10 + 1; // 현재 페이지에 표시할 시작 페이지) 번호
+				int endPage2 = startPage2 + 10 - 1; // 현재 페이지에 표시할 마지막 페이지 번호
+				
+				if(endPage2 > maxPage2) { // 마지막 페이지 번호가 최대 페이지 번호보다 클 경우
+					endPage2 = maxPage2; // 마지막 페이지 번호를 최대 페이지 번호로 대체
+				}
+				
+				// 페이지 번호 관련 정보를 PageInfo 객체에 저장
+				PageInfo pageInfo2 = new PageInfo();
+				pageInfo2.setPage(page2);
+				pageInfo2.setMaxPage(maxPage2);
+				pageInfo2.setStartPage(startPage2);
+				pageInfo2.setEndPage(endPage2);
+				pageInfo2.setListCount(listCount2);
+				
+				request.setAttribute("pageInfo2", pageInfo2);
+				request.setAttribute("qnaList", qnaList);
 		
-		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("reviewList", reviewList);
+		
 		//---------------------------------------
 		request.setAttribute("itemBean", itemBean);
 			

@@ -9,6 +9,7 @@
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 	StringTokenizer st = new StringTokenizer(myPage.getUser_address(), ":");
+	String user_id=myPage.getUser_id();
 	
 	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
 	
@@ -177,6 +178,9 @@
 								<a href="delete_member.us"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원
 									탈퇴</a>
+									<a href="confirmCheckoutListProAction.sh"
+									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">주문 조회
+								</a>
 							</div>
 						</div>
 				</div>
@@ -286,41 +290,7 @@
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
 
-	<script>
-		$(document).ready(function() {
-
-			var quantitiy = 0;
-			$('.quantity-right-plus').click(function(e) {
-
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				$('#quantity').val(quantity + 1);
-
-				// Increment
-
-			});
-
-			$('.quantity-left-minus').click(function(e) {
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				// Increment
-				if (quantity > 0) {
-					$('#quantity').val(quantity - 1);
-				}
-			});
-
-		});
-	</script>
+	
 
 
 </body>

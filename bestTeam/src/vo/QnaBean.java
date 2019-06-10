@@ -4,11 +4,18 @@ import java.sql.Date;
 
 public class QnaBean {
 	private int qna_num;
+	private int qna_item_num;
 	private String qna_writer;
 	private String qna_subject;
 	private String qna_content;
 	private Date qna_date;
 	
+	public int getQna_item_num() {
+		return qna_item_num;
+	}
+	public void setQna_item_num(int qna_item_num) {
+		this.qna_item_num = qna_item_num;
+	}
 	
 	public int getQna_num() {
 		return qna_num;

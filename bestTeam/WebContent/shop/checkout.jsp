@@ -1,4 +1,5 @@
 <%@page import="java.util.Calendar"%>
+
 <%@page import="vo.BuyItemBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.ItemBean"%>
@@ -7,21 +8,23 @@
 
 <% 
 	ArrayList<BuyItemBean> cartItems = (ArrayList<BuyItemBean>) request.getAttribute("cartItems");
+	System.out.println("cartItems 받아옴");
+	System.out.println();
 %>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- 결제 API 연동 1 -->
+<!-- ===== 결제 API 연동 1 ===== -->
 	<!-- iamport.payment.js : https://docs.iamport.kr/implementation/payment#add-library -->
 	<!-- https://todakandco.tistory.com/10 -->
 	
 <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-<!-- /결제 API 연동 1 -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- ===== 결제 API 연동 1 끝 ===== -->
 
   <head>
     <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
@@ -32,24 +35,24 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
     
     <style type="text/css">
     
@@ -74,19 +77,14 @@
 		    padding: 15px 10px !important;
 		}
     </style>
-  
-<%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-	int cart_count = (int) request.getAttribute("cart_count"); 
-%>
-  
     
   </head>
   
   <body>
   
+  
   <header>
-	<jsp:include page="../inc/header.jsp"/>
+	<jsp:include page="/inc/header.jsp"/>
     <!-- END nav -->
   </header>
   
@@ -95,13 +93,13 @@
     <section class="home-slider owl-carousel">
 
       <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay" style="background-image: url(../images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>        
+		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>        
 		<div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Checkout</h1>
-	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span> 
+	            <p class="breadcrumbs"> <span class="mr-2"><a href="./index.jsp">Home</a></span> 
 	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p>
             </div>
 
@@ -131,43 +129,59 @@
                 <thead class="thead-primary">
                   <tr class="text-center">
                     <th>No</th>
-                    <th>&nbsp;</th>
-                    <th>Product</th>
+                    <th colspan="2">Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Total</th>
+                    <th>Total Price</th>
                   </tr><!-- END TR-->
                 </thead>
                 <tbody>
 
 
 		<%
+			int thisItemTotalPrice = 0;
 			int totalPrice = 0;
 
-			if(cartItems != null) {
+			if(cartItems.size() != 0) {
+				
+				System.out.println("구매리스트 출력 시작");
+				System.out.println(cartItems.get(0).getItem_name());
 				
 				for(int i=0; i<cartItems.size(); i++) {
 					
-					totalPrice += cartItems.get(i).getItem_price() * cartItems.get(i).getItem_count();
+					System.out.println();
+					System.out.println("구매리스트 for문 시작");
+					
+					thisItemTotalPrice = cartItems.get(i).getItem_price() * cartItems.get(i).getItem_count();
+					totalPrice += thisItemTotalPrice;
+					
+					System.out.println("totalPrice = "+totalPrice);
 		%>
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href=""><%=i %></a></td>
-                    <td class="image-prod"><div class="img" style="background-image:<%=cartItems.get(i).getItem_img() %>;"></div></td>
-                    
-                    <td class="product-name">
-                      <h3><%=cartItems.get(i).getItem_name() %></h3>
-                    </td>
-                    
-                    <td class="price"><%=cartItems.get(i).getItem_price() %></td>
-                    
-                    <td class="price"><%=cartItems.get(i).getItem_count() %></td>
-                    
-                    <td class="total"><%=totalPrice %></td>
-                  </tr><!-- END TR-->
-
+	                  <tr class="text-center">
+	                    
+	                     <td class="product-num"><a><%=i +1 %></a> </td>
+	                    
+	                     <td class="image-prod"><a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" class="img"
+														style="background-image: url(./itemUpload/<%=cartItems.get(i).getItem_img() %>);"></a> </td>
+	                    						  
+	                     <td class="product-name">
+	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" ><h3><%=cartItems.get(i).getItem_name() %></h3></a> </td>
+	                    
+	                     <td class="price"><%=cartItems.get(i).getItem_price() %></td>
+	                    
+	                     <td class="price"><%=cartItems.get(i).getItem_count() %></td>
+	                    
+	                     <td class="total"><%=thisItemTotalPrice %></td>
+	                  
+	                  </tr><!-- END TR-->
 		<%			
+		
 				}
+				
+				System.out.println("구매리스트 출력 끝");
+				System.out.println();
+			} else {
+				System.out.println("cartItems.size() == 0");
 			}
 		%>
 
@@ -183,7 +197,7 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-		<form action="checkoutPro.sh">
+		<form id="frm" action="checkoutPro.sh">
 		<div class="billing-form ftco-bg-dark p-3 p-md-5">
 			<h3 class="mb-4 billing-heading">주문자 정보</h3>
 	          	<div class="row align-items-end" >
@@ -357,6 +371,8 @@
 	          </div><!-- END -->
 
 
+
+
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 		
 
@@ -423,9 +439,18 @@
 						<p style="text-align: right;" onclick="checkout()"><a class="btn btn-best py-3 px-4">결제하기</a></p>
 						
 						
-						<script type="text/javascript">
+						<!-- 결제 완료시 submit 할 정보들 -->
+						<input type="hidden" id="impUid" name="impUid" value="null">
+						<input type="hidden" id="paidAmount" name="paidAmount" value="null">
+						<input type="hidden" id="status" name="status" value="null">
+						<input type="hidden" id="orderName" name="orderName" value="null">
+						<input type="hidden" id="buyerPostcode" name="buyerPostcode" value="null">
 						
 						
+						
+				<script type="text/javascript">
+
+
 						
 							function checkout() {
 								
@@ -461,11 +486,11 @@
 // 										alert(paymentName);
 										
 										
-										// 결제 API 연동 2
+										//===== 결제 API 연동 2
 										var IMP = window.IMP; // 생략해도 괜찮습니다.
 										IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
 										
-										// 결제 API 연동 3
+										//===== 결제 API 연동 3
 										// IMP.request_pay(param, callback) 호출
 										// IMP.request_pay(param, callback)을 호출하면 PC 환경에서는 지정한 pg사의 결제모듈 창이 나타남 
 										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
@@ -490,16 +515,25 @@
 											    if (rsp.success) { 
 	// 										    	// 결제 성공 시
 	// 										    	alert("결제 성공");
-	
 													
-	
-													String imp_uid = rsp.imp_uid  // 아임포트에서 부여하는 거래건 당 고유번호
-													String paid_amount = rsp.paid_amount  // 결제금액
-													String status = rsp.status  // 결제상태 - ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패)
-													String name = rsp.name  // 주문명
-													String apply_num = rsp.buyer_postcode  // 신용카드결제시 - 카드사 승인번호
+													// 결제 정보 submit 추가
+													$("#frm").submit(function() {
+														
+														// hidden 으로 submit할 값 저장
+														document.frm.impUid.value = rsp.imp_uid;   // 아임포트에서 부여하는 거래건 당 고유번호
+														document.frm.paidAmount.value = rsp.paid_amount;  // 결제금액
+														document.frm.status.value = rsp.status;  // 결제상태 - ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패)
+														document.frm.orderName.value = rsp.name;  // 주문명
+														
+														if($('#buyerPostcode').val() != "null") {}
+															document.frm.buyerPostcode.value = rsp.buyer_postcode;  // 신용카드결제시 - 카드사 승인번호
+														} else {
+															document.frm.buyerPostcode.value = "신용카드결제아님";
+														}
+														
+													})	
 													
-	
+													
 											    	// jQuery.ajax 로 HTTP 요청
 											        jQuery.ajax({
 											            url: " http://kbinsurebs.co.kr/bestTeam", // 가맹점 서버
@@ -514,6 +548,7 @@
 											        	location.href="confirm_checkout.jsp";
 											       	})
 											       	
+
 											    } else { 
 											    	// 결제 실패 시
 											    	alert("결제 실패 : " +  rsp.error_msg);
@@ -551,7 +586,7 @@
 
 
 	<footer>
-		<jsp:include page="../inc/footer.jsp"/>
+		<jsp:include page="/inc/footer.jsp"/>
 	</footer>    
   
 
@@ -559,23 +594,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="./js/google-map.js"></script>
+  <script src="./js/main.js"></script>
 
   <script>
 		$(document).ready(function(){

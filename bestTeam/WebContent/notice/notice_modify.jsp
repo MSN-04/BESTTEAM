@@ -126,8 +126,7 @@
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Modify</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.jsp">Home</a></span> <span
-								class="mr-2"><a href="notice.jsp">Notice</a></span> <span>Blog
+							<span class="mr-2"><a href="./noticeList.no">Notice</a></span> <span>Blog
 								Single</span>
 						</p>
 					</div>
@@ -152,9 +151,8 @@
 						<td colspan="2" >
 							
 							<input type="submit" class="btn btn-primary py-3 px-4"
-							style="color: black;" onclick="location.href='./noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>'"
-							id="save" value="저장" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="다시쓰기" />
+							style="color: black;" id="save" value="저장" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
 						</td>
 					</tr>
 				</table>

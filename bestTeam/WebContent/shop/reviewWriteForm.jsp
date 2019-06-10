@@ -91,6 +91,11 @@ String id=(String)session.getAttribute("id");
 	
 		
 	<section class="ftco-section" >
+	<div class="col-md-9" id="mail">
+	<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">REVIEW</h2>
+				</div>
+				</div>
 		<div class="container">
 			
 			<form id="frm" action="reviewWritePro.re" method="post" enctype="multipart/form-data">
@@ -103,7 +108,7 @@ String id=(String)session.getAttribute("id");
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
 						<td style="padding-right: 30px;">제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" /></td>
+						<td><input type="text" id="review_subject" name="review_subject" class="form-control" /></td>
 					</tr>
 					
 					<tr>
@@ -114,25 +119,23 @@ String id=(String)session.getAttribute("id");
 					
 					<tr>
 						<td style="padding-right: 30px;">사진등록</td>
-						<td><input type="file" id="review_img" name="review_img" class="frmTitle" /></td>
+						<td><input type="file" id="review_img" name="review_img" class="form-control" /></td>
 					</tr>
-					<tr>
+				<tr style="display: inline-block;">
 						<td style="text-align: center; " colspan="2">
 							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							
-						</td>
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
+					</td> 
 					</tr>
 					
-					
-					
 				</table>
-				
-				     
-					
-				
 			</form>
 		</div>
 	</section>
+
+
+	
+	
 	
 	
 <jsp:include page="../inc/footer.jsp"></jsp:include>

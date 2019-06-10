@@ -15,7 +15,8 @@ public class ForgotAccountProAction implements Action {
 		ActionForward forward = null;
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		System.out.println("action에서: "+phone);
+		System.out.println("action에서 email: "+email);
+		System.out.println("action에서 phone: "+phone);
 		ForgotAccountProService forgotAccountProService = new ForgotAccountProService();
 		String getId = forgotAccountProService.getId(email,phone);
 		request.setAttribute("id", getId);
@@ -30,14 +31,15 @@ public class ForgotAccountProAction implements Action {
 			out.println("</script>");
 			
 		}else {
+			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('일치하는 아이디가 없습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
-			forward = new ActionForward();
-			forward.setPath("ForgotAccount.us");
+//			forward = new ActionForward();
+//			forward.setPath("ForgotAccount.us");
 		}
 		return forward;
 	}

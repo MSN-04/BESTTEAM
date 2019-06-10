@@ -5,77 +5,67 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.w3c.dom.events.MutationEvent;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import svc.BlogWriteProService;
+import svc.ReviewModifyProService;
 import svc.ReviewWriteProService;
 import vo.ActionForward;
 import vo.ReviewBean;
 
-// XXXAction 클래스는 Action 인터페이스를 상속받아 추상메서드로 공통 메서드인 execute() 메서드를 구현한다
-public class reviewWriteProAction implements Action {
+public class ReviewModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
-		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
-		
-		
-		
-		
-		System.out.println("reviewWriteProAction()");
+		System.out.println("ReviewModifyProAction");
 		
 		ActionForward forward = null;
-		ReviewBean reviewBean = null;
+		
+		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		
 		// 파일 업로드를 위한 정보 저장
 		String realFolder = ""; // 실제 경로
 		String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-//		
+		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
+		System.out.println("realFolder : "+realFolder);
+		Path newDirectory = Paths.get(realFolder);
+        
+        try {
+            Path createDirResult = Files.createDirectories(newDirectory);
+            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //		
-//		Path newDirectory = Paths.get(realFolder);
-//        
-//        try {
-//            Path createDirResult = Files.createDirectories(newDirectory);
-//            System.out.println("디렉토리 생성 결과 : " + createDirResult);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
+		ReviewModifyProService reviewModifyProService = new ReviewModifyProService();
+		
+		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		
 		
-		reviewBean = new ReviewBean(); 
+		ReviewBean article = new ReviewBean(); 
 		
-		reviewBean.setReview_subject(multi.getParameter("review_subject"));
-		reviewBean.setReview_content(multi.getParameter("review_content"));
-		reviewBean.setReview_item_num(Integer.parseInt(multi.getParameter("review_item_num")));
-		reviewBean.setReview_user_id(multi.getParameter("review_user_id"));
-//		blogBean.setBlog_file(filename);
+		article.setReview_subject(multi.getParameter("review_subject"));
+		article.setReview_content(multi.getParameter("review_content"));
+		article.setReview_num(review_num);
 		
-		reviewBean.setReview_img(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 		
-//		blogBean.setBlog_file1(filename);
-		// 파일명을 가져오는 방법
+		article.setReview_img(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 		
-		// 실제 비즈니스 로직 처리를 담당할 Service 클래스(XXXAction => XXXService) 인스턴스를 생성하여
-		// 처리 담당 메서드를 호출(매개변수로 BoardBean 객체 전달)
-		ReviewWriteProService reviewWriteProService = new ReviewWriteProService();
-		boolean isWriteSuccess = reviewWriteProService.registArticle(reviewBean);
+
+		
+		boolean isModifySuccess = reviewModifyProService.modifyArticle(article);
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
-		if(!isWriteSuccess) {
+		if(!isModifySuccess) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
@@ -91,10 +81,11 @@ public class reviewWriteProAction implements Action {
 			forward.setRedirect(true);
 		}
 		
+		
 		return forward;
-	}
-
 }
+}
+
 
 
 

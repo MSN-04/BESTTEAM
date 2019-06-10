@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -24,29 +25,22 @@ public class QnaWriteProAction implements Action {
 		
 		ActionForward forward = null;
 		QnaBean qnaBean = null;
+		HttpSession session = request.getSession();
+		UserBean userBean = null;
 		   
-		// 파일 업로드를 위한 정보 저장
-//		String realFolder; // 실제 경로
-//		String saveFolder = "/qnaUpload"; // 톰캣(이클립스) 상의 가상의 경로
-//		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
-//		
-//		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
-//		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-//		
-//		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
-//		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-//		
-		qnaBean = new QnaBean(); // 글 쓰기 데이터를 저장할 qnaBean 객체
+		String name = request.getParameter("qna_writer");
+		String id = session.getAttribute("id").toString();
+		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		
-		qnaBean.setQna_writer(request.getParameter("qna_writer"));
+		userBean = new UserBean();
+		QnaWriteProService qnaWriteProService = new QnaWriteProService();
+		userBean = qnaWriteProService.getUserInfo(name, id);
+		
+		qnaBean = new QnaBean(); // 글 쓰기 데이터를 저장할 qnaBean 객체
+		qnaBean.setQna_item_num(item_num);
+		qnaBean.setQna_writer(userBean.getUser_id());
 		qnaBean.setQna_subject(request.getParameter("qna_subject"));
 		qnaBean.setQna_content(request.getParameter("qna_content"));
-//		QnaBean.setQna_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
-		
-		QnaWriteProService qnaWriteProService = new QnaWriteProService();
-		UserBean userBean = new UserBean();
-		MyPageProService mypageProService = new MyPageProService();
-		userBean = (UserBean) mypageProService.getUserInfo(userBean);
 		
 		
 		boolean isWriteSuccess = qnaWriteProService.registArticle(qnaBean);
@@ -64,8 +58,8 @@ public class QnaWriteProAction implements Action {
 			// => ActionForward 객체 생성, qnaList.bo 서블릿주소 지정, isRedirect 변수 값을 true 로 설정
 			// => qnaList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
-			forward.setPath("./qnaList.qna");
-			forward.setRedirect(true);
+			forward.setPath("itemSingle.em?item_num="+item_num);
+//			forward.setRedirect(true);
 		}
 		
 		return forward;

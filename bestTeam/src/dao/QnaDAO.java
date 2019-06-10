@@ -53,13 +53,14 @@ public class QnaDAO {
 				// 최대 게시물 번호 + 1
 			}
 
-			sql = "INSERT INTO qna VALUES(?,'Tinkervell',?,?,now())";
+			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now())";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-//			pstmt.setString(1, qnaBean.getQna_writer());
-			pstmt.setString(2, qnaBean.getQna_subject());
-			pstmt.setString(3, qnaBean.getQna_content());
+			pstmt.setInt(2, qnaBean.getQna_item_num());
+			pstmt.setString(3, qnaBean.getQna_writer());
+			pstmt.setString(4, qnaBean.getQna_subject());
+			pstmt.setString(5, qnaBean.getQna_content());
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 
@@ -104,7 +105,7 @@ public class QnaDAO {
 	}
 
 	// 글 목록 가져오기
-	public ArrayList<QnaBean> selectArticleList(int page, int limit) {
+	public ArrayList<QnaBean> selectArticleList(int page, int limit, int item_num) {
 		System.out.println("selectArticleList()");
 
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
@@ -112,12 +113,13 @@ public class QnaDAO {
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
 
-		String sql = "SELECT * FROM qna ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
+			pstmt.setInt(1, item_num);
+			pstmt.setInt(2, startRow);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -125,6 +127,7 @@ public class QnaDAO {
 				qnaBean = new QnaBean();
 
 				qnaBean.setQna_num(rs.getInt("qna_num"));
+				qnaBean.setQna_item_num(rs.getInt("qna_item_num"));
 				qnaBean.setQna_writer(rs.getString("qna_writer"));
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
@@ -167,6 +170,7 @@ public class QnaDAO {
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
 				qnaBean.setQna_date(rs.getDate("qna_date"));
+				qnaBean.setQna_item_num(rs.getInt("qan_item_num"));
 			}
 
 		} catch (SQLException e) {
@@ -181,11 +185,11 @@ public class QnaDAO {
 	}
 
 	// 글쓰기 페이지에서 글쓴이 정보 가져오기
-			public ArrayList getUserInfo(String id) {
+			public UserBean getUserInfo(String id) {
 			    
-				ArrayList beans = new ArrayList<>();
+				//ArrayList beans = new ArrayList<>();
 				UserBean userBean = null;
-			    QnaBean qnaBean = null;
+//			    QnaBean qnaBean = null;
 			    
 			    String sql = "select * from user where user_id=?";
 			    try {
@@ -197,25 +201,24 @@ public class QnaDAO {
 			        userBean = new UserBean();
 			        
 			        userBean.setUser_id(rs.getString("user_id"));
-//			        userBean.setUser_pass(rs.getString("user_pass"));
+			        userBean.setUser_pass(rs.getString("user_pass"));
 			        userBean.setUser_name(rs.getString("user_name"));
-//			        userBean.setUser_age(rs.getString("user_age"));
-//			        userBean.setUser_gender(rs.getString("user_gender"));
-//			        userBean.setUser_address(rs.getString("user_address"));
+			        userBean.setUser_age(rs.getString("user_age"));
+			        userBean.setUser_gender(rs.getString("user_gender"));
+			        userBean.setUser_address(rs.getString("user_address"));
 			        userBean.setUser_phone(rs.getString("user_phone"));
 			        userBean.setUser_email(rs.getString("user_email"));
-//			        userBean.setUser_post(rs.getString("user_post"));
+			        userBean.setUser_post(rs.getString("user_post"));
 			        
-			        qnaBean = new QnaBean();
+//			        qnaBean = new QnaBean();
+//			        
+//			        qnaBean.setQna_num(rs.getInt("qna_num"));
+//			        qnaBean.setQna_writer(rs.getString("qna_writer"));
+//			        qnaBean.setQna_subject(rs.getString("qna_subject"));
+//			        qnaBean.setQna_content(rs.getString("qna_content"));
+//			        qnaBean.setQna_date(rs.getDate("qna_date"));
 			        
-			        qnaBean.setQna_num(rs.getInt("qna_num"));
-			        qnaBean.setQna_writer(rs.getString("qna_writer"));
-			        qnaBean.setQna_subject(rs.getString("qna_subject"));
-			        qnaBean.setQna_content(rs.getString("qna_content"));
-			        qnaBean.setQna_date(rs.getDate("qna_date"));
-			        
-			        beans.add(userBean);
-					beans.add(qnaBean);
+					//beans.add(qnaBean);
 			      }
 			    } catch (SQLException e) {
 			      e.printStackTrace();
@@ -223,7 +226,7 @@ public class QnaDAO {
 			      close(rs);
 			      close(pstmt);
 			    }
-			    return beans;
+			    return userBean;
 			  }
 	 //게시물 조회수 업데이트 => 기존 readcount 값을 1 증가시킨 후 결과값을 리턴
 	public int updateReadcount(int qna_num) {

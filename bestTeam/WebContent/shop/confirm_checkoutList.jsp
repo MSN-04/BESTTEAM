@@ -1,3 +1,6 @@
+<%@page import="java.sql.Date"%>
+<%@page import="vo.BuyBean"%>
+<%@page import="vo.BuyItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -58,6 +61,30 @@
   
   <body>
   
+  <%
+  BuyBean buyBean=new BuyBean();
+  
+  String user_id=(String)session.getAttribute("id");  //주문한 본인 아이디
+  int buy_num=(int)session.getAttribute("buy_num");   //상품 주문번호
+  
+  String item_name=buyBean.getBuy_name();  //상품이름
+  
+ int itemSubCount=buyBean.getBuy_count()-1;  //상품이름 외 xx개 
+  
+  Date buy_date=buyBean.getBuy_buydate(); //주문날짜 buydate 로 바꿈.
+  
+  int buy_count=buyBean.getBuy_count(); //총 상품갯수
+  
+  int buy_total=buyBean.getBuy_total();   //총 결제금액
+  
+//---> CheckoutList에 있는정보: 그 전 페이지(myPage)에서 user_id를 가져온다.
+// 주문번호 :buy_num  ==>이걸로 상세페이지 가져옴!
+// 주문상품: buy_name(from BuyBean 첫번째 것만 이름 가져오기) + item_count(from BuyItemBean)갯수 가져오기
+// 주문날짜: buy_orderdate(from BuyBean)
+// 수량: buy_count(from BuyBean)
+// 결제금액: buy_total(from BuyBean)총 결제금액 가져오기
+  %>
+  
   <header>
 	<jsp:include page="../inc/header.jsp"/>
     <!-- END nav -->
@@ -108,10 +135,9 @@
                 <thead class="thead-primary">
                   <tr class="text-center">
                     <th>주문번호</th>
-                    <th>&nbsp;</th>
+<!--                     <th>&nbsp;</th> -->
                     <th>주문 상품</th>
-                    <th>주문 날짜</th>
-                    <th>수량</th>
+                    <th>주문 날짜</th>                 
                     <th>결제 금액</th>
                   </tr>
                 </thead>
@@ -119,80 +145,82 @@
 
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">20190529-000001</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">2019/05/29 19:01</td>
+                    <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">커피 외2개</td>
+                    <td class="price"><%=buy_total %></td>
                     
-                    <td class="total">18,990원</td>
-                  </tr><!-- END TR-->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">20190529-000002</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
+                
+                  </tr>
+                  <!-- END TR-->
+<!--                   <tr class="text-center"> -->
+<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+<!--                      <td class="product-num"><a href="#">20190529-000002</a></td> -->
+<!--                     <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td> --> 
                     
-                    <td class="product-name">
-                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
-                    </td>
+<!--                     <td class="product-name"> -->
+<!--                       <h3>히말라야산 커피빈<br>상품 외 개</h3> -->
+<!--                     </td> -->
                     
-                    <td class="price">2019/05/29 19:01</td>
+<!--                     <td class="price">2019/05/29 19:01</td> -->
                     
-                    <td class="price">커피 외2개</td>
+               
                     
-                    <td class="total">18,990원</td>
-                  </tr><!-- END TR-->
+<!--                     <td class="total">18,990원</td> -->
+<!--                   </tr>END TR -->
  
+                   <tr class="text-center">
+<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+                    
+                    <td class="product-name">
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
+                    </td>
+                    
+                    <td class="price"><%=buy_date %></td>
+                    
+                    <td class="price"><%=buy_total %></td>
+                    
+                
+                  </tr>
+                  <!-- END TR-->
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">20190529-000003</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                       <h3>히말라야산 커피빈<br>외 상품2개</h3>
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">2019/05/29 19:01</td>
+                    <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">커피 외2개</td>
+                    <td class="price"><%=buy_total %></td>
                     
-                    <td class="total">21,000원</td>
+                
                   </tr><!-- END TR-->
                   
+                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="#">20190529-000004</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
+                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
+                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
                     </td>
                     
-                    <td class="price">2019/05/29 19:01</td>
+                    <td class="price"><%=buy_date %></td>
                     
-                    <td class="price">커피 외2개</td>
+                    <td class="price"><%=buy_total %></td>
                     
-                    <td class="total">24,800원</td>
-                  </tr><!-- END TR-->
-                  
-                  <tr class="text-center">
-                     <td class="product-num"><a href="#">20190529-000005</a></td>
-                    
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>히말라야산 커피빈<br>외 상품2개</h3>
-                    </td>
-                    
-                    <td class="price">2019/05/29 19:01</td>
-                    
-                    <td class="price">커피 외2개</td>
-                    
-                    <td class="total">10,600원</td>
+                
                   </tr><!-- END TR-->
                 </tbody>
               </table>
@@ -296,21 +324,21 @@
 
         </div>
         </div>
-         <div class="row mt-5">
-	          <div class="col text-center"> 
-	             <div class="block-27"> 
-	               <ul> 
-	                <li><a href="#">&lt;</a></li> 
-	                <li class="active"><span>1</span></li>
-	                <li><a href="#">2</a></li> 
-	                <li><a href="#">3</a></li> 
-	                 <li><a href="#">4</a></li> 
-	                 <li><a href="#">5</a></li> 
-	                 <li><a href="#">&gt;</a></li> 
-	               </ul> 
-	            </div> 
-	          </div> 
-	         </div> 
+<!--          <div class="row mt-5"> -->
+<!-- 	          <div class="col text-center">  -->
+<!-- 	             <div class="block-27">  -->
+<!-- 	               <ul>  -->
+<!-- 	                <li><a href="#">&lt;</a></li>  -->
+<!-- 	                <li class="active"><span>1</span></li> -->
+<!-- 	                <li><a href="#">2</a></li>  -->
+<!-- 	                <li><a href="#">3</a></li>  -->
+<!-- 	                 <li><a href="#">4</a></li>  -->
+<!-- 	                 <li><a href="#">5</a></li>  -->
+<!-- 	                 <li><a href="#">&gt;</a></li>  -->
+<!-- 	               </ul>  -->
+<!-- 	            </div>  -->
+<!-- 	          </div>  -->
+<!-- 	         </div>  -->
       </div>
       
     </section> <!-- .section -->

@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.CartAction;
+import action.CartInsertAction;
 import action.ItemDeleteProAction;
 import action.ItemModifyFormAction;
 import action.ItemModifyProAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
-import action.confirm_checkoutProAction;
-import action.shopMainAction;
+import action.ConfirmCheckoutProAction;
+import action.ShopMainAction;
 import vo.ActionForward;
 
 @WebServlet("*.em")
@@ -48,7 +48,7 @@ public class ItemFrontController extends HttpServlet {
 		// 주영
 		if(command.equals("/shopMain.em")) { // DB단에 가서 item들을 select 해야 함 Redirect
 //			System.out.println("shopMain.em");
-			action = new shopMainAction();
+			action = new ShopMainAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -131,29 +131,7 @@ public class ItemFrontController extends HttpServlet {
 			
 		}
 		//------------------------- confirm_checkout by yb --------------------
-		else if(command.equals("/confirm_checkoutList.sh")) {
-			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
-			forward = new ActionForward();
-			forward.setPath("./shop/confirm_checkoutList.jsp");
-
-		}else if(command.equals("/confirm_checkoutPro.sh")) {
-			 System.out.println("itemFrontController --> confirm_checkoutPro.sh");
-		      
-		      action = (Action) new confirm_checkoutProAction();
-		      
-		      try {
-		        forward = action.execute(request, response);
-		      } catch (Exception e) {
-		        System.out.println("controller-confirm_checkoutPro 실패"+ e.getMessage());
-		        System.out.println("controller- 에러:"+e);
-		        
-		      }
-			
-		}else if(command.equals("/confirm_checkout.sh")) {
-			System.out.println(" itemFrontController -->confirm_checkout.sh--");
-			forward = new ActionForward();
-			forward.setPath("./shop/confirm_checkout.jsp");
-		}
+		
 		
 		//-----------------------------------------------------------------------
 		

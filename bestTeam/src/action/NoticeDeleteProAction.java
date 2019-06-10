@@ -14,13 +14,13 @@ public class NoticeDeleteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("NoticeDeleteProAction");
 		
-		// ActionForward 인스턴스 생성
 		ActionForward forward = null;
 		
 		// 게시물 번호 파라미터 가져오기
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
-		
+		System.out.println(notice_num);
 		NoticeDeleteProService noticeDeleteProService = new NoticeDeleteProService();
+		
 		boolean isDeleteSuccess = noticeDeleteProService.removeArticle(notice_num);
 		
 		if(!isDeleteSuccess) {
@@ -32,7 +32,7 @@ public class NoticeDeleteProAction implements Action {
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
 				forward = new ActionForward();
-				forward.setPath("noticeList.no?page=" + request.getParameter("page"));
+				forward.setPath("noticeList.no");
 				forward.setRedirect(true);
 			
 		}

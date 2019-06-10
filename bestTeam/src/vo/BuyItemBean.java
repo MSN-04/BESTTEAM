@@ -20,6 +20,8 @@ public class BuyItemBean {
 		this.item_img = item_img;
 	}
 
+	public BuyItemBean() {}
+
 	public int getItem_num() {
 		return item_num;
 	}

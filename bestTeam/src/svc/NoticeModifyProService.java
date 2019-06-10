@@ -10,25 +10,6 @@ import vo.NoticeBean;
 
 public class NoticeModifyProService {
 	
-//	// 게시물 작성자 일치 여부 확인을 위해 게시물 번호와 패스워드를 전달받아 확인 작업 수행
-//	public boolean isArticleWriter(int notice_num, String pass) throws Exception {
-//		System.out.println("noticeModifyProService - isArticleWriter()");
-//		boolean isArticleWriter = false;
-//		
-//		// Connection 객체 가져오기
-//		Connection con = getConnection();
-//		
-//		// noticeDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
-//		noticeDAO NoticeDAO = noticeDAO.getInstance();
-//		NoticeDAO.setConnection(con);
-//
-//		isArticleWriter = NoticeDAO.isArticlenoticeWriter(notice_num, pass); // 본인 확인(패스워드 일치여부 판별)
-//		    
-//		close(con);
-//		
-//		return isArticleWriter;
-//	}
-
 	public boolean modifyArticle(NoticeBean article) {
 		boolean isModifySuccess = false;
 		
@@ -48,7 +29,6 @@ public class NoticeModifyProService {
 			rollback(con);
 		}
 		
-		// DB 접속 해제(Connection 자원 반환)
 		close(con);
 		
 		return isModifySuccess;

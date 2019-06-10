@@ -132,7 +132,13 @@
 													<% } %>
 												
 												</ul>
+												
+												<%
+												String id = (String) session.getAttribute("id");
+												if (id != null && id.equals("admin")) {
+												%>
 												<a href="blogWriteForm.bl" class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+												<%} %>
 											</div>
 										</div>
 									</div>

@@ -16,14 +16,18 @@ public class CheckoutFormService {
 
     //-- cart에 담긴 상품목록 리턴
 	public ArrayList<BuyItemBean> getCartItems(String id) throws Exception {
+		
+		System.out.println();
 		System.out.println("CheckoutFormService - getCartItems() 시작");
+		System.out.println("id = "+id);
 		
 		// 2. DAO 객체 호출, 커넥션 전달 - DB 연결
-		BuyDAO shopDAO = BuyDAO.getInstance();
-		shopDAO.setConnection(con);
+
+		BuyDAO buyDAO = BuyDAO.getInstance();
+		buyDAO.setConnection(con);
 		
 		// 3. 장바구니 아이템들 저장
-		ArrayList<BuyItemBean> cartItems = shopDAO.getCartItems(id);
+		ArrayList<BuyItemBean> cartItems = buyDAO.getCartItems(id);
 		
 		// 4. 커넥션 반환
 		close(con);

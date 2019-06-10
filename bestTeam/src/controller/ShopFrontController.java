@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+
+import action.CartInsertAction;
 import action.CheckoutFormAction;
+import action.CheckoutProAction;
+import action.ConfirmCheckoutListProAction;
+import action.ConfirmCheckoutProAction;
+
 import vo.ActionForward;
 
 
@@ -49,11 +56,99 @@ public class ShopFrontController extends HttpServlet{
 			}
 		}
 		
+		// 주영
+		else if(command.equals("/checkoutPro.sh")) { 
+			System.out.println("checkoutPro");
+			action = new CheckoutProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/cart.sh")) { 
+			System.out.println("cart 컨트롤러 시작");
+			forward = new ActionForward();
+			forward.setPath("./shop/cart.jsp");
+//			action = new CartAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+			System.out.println("cart 컨트롤러 종료");
+		}
+		else if(command.equals("/cartInsert.sh")) { 
+			System.out.println("cartInsert 컨트롤러 시작");
+			action = new CartInsertAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("cartInsert 컨트롤러 종료");
+		}
+		
+		
+		// 영비
+		else if(command.equals("/confirmCheckoutListProAction.sh")) {
+			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
+				action = new ConfirmCheckoutListProAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("controller-confirmCheckoutListPro 실패"+ e.getMessage());
+		        System.out.println("controller- 에러:"+e);
+			}
+		} 
+		else if(command.equals("/confirmCheckoutList.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkoutList.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkoutList.jsp");
+
+		} 
+		
+		// 영비
+		else if(command.equals("/confirmCheckoutPro.sh")) {
+			 System.out.println("itemFrontController --> confirm_checkoutPro.sh");
+		      
+		      action = (Action) new ConfirmCheckoutProAction();
+		      
+		      try {
+		        forward = action.execute(request, response);
+		      } catch (Exception e) {
+		        System.out.println("controller-confirm_checkoutPro 실패"+ e.getMessage());
+		        System.out.println("controller- 에러:"+e);
+		        
+		      }
+			
+		} 
+		
+		// 영비
+		else if(command.equals("/confirmCheckout.sh")) {
+			System.out.println(" itemFrontController -->confirm_checkout.sh--");
+			forward = new ActionForward();
+			forward.setPath("./shop/confirm_checkout.jsp");
+		}
+		
+		
+		if (forward != null) {
+			if (forward.isRedirect()) { // Redirect
+				response.sendRedirect(forward.getPath());
+			} else { // Dispatch
+				RequestDispatcher dispatch = request.getRequestDispatcher(forward.getPath());
+				dispatch.forward(request, response);
+			}
+		}
 	
 
 		
 	}
 	
 
-	}
+}
 
