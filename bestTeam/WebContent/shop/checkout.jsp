@@ -1,4 +1,11 @@
+<%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="sun.util.calendar.CalendarDate"%>
+<%@page import="sun.util.calendar.LocalGregorianCalendar.Date"%>
+<%@page import="java.util.StringTokenizer"%>
+<%@page import="dao.UserDAO"%>
+<%@page import="vo.UserBean"%>
 
 <%@page import="vo.BuyItemBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,8 +14,19 @@
     pageEncoding="UTF-8"%>
 
 <% 
+	// 장바구니 상품 가져옴
 	ArrayList<BuyItemBean> cartItems = (ArrayList<BuyItemBean>) request.getAttribute("cartItems");
 	System.out.println("cartItems 받아옴");
+	System.out.println();
+	
+	// 회원정보 가져옴
+	UserBean userBean =  (UserBean) request.getAttribute("userBean");
+	System.out.println("userBean 받아옴");
+	// 주소 가져와서 주소와 상세주소로 나누기
+	System.out.println(userBean.getUser_address());
+	StringTokenizer st = new StringTokenizer(userBean.getUser_address(), ":");
+	String address1 = st.nextToken();
+	String address2 = st.nextToken();
 	System.out.println();
 %>
 
@@ -92,7 +110,7 @@
   	
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item"  data-stellar-background-ratio="0.5">
 		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>        
 		<div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -165,7 +183,7 @@
 														style="background-image: url(./itemUpload/<%=cartItems.get(i).getItem_img() %>);"></a> </td>
 	                    						  
 	                     <td class="product-name">
-	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" ><h3><%=cartItems.get(i).getItem_name() %></h3></a> </td>
+	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" > <h3><%=cartItems.get(i).getItem_name() %></h3> </a> </td>
 	                    
 	                     <td class="price"><%=cartItems.get(i).getItem_price() %></td>
 	                    
@@ -197,14 +215,14 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-		<form id="frm" action="checkoutPro.sh">
+		<form id="frm" action="/checkoutPro.sh">
 		<div class="billing-form ftco-bg-dark p-3 p-md-5">
 			<h3 class="mb-4 billing-heading">주문자 정보</h3>
 	          	<div class="row align-items-end" >
 	          		<div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="firstname">주문하시는 분 *</label>
-	                  <input type="text" class="form-control" id="name" placeholder="성함" required="required">
+	                  <input type="text" class="form-control" id="name" required="required" value="<%=userBean.getUser_name()%>">
 	                </div>
 	              </div>
 	              <div class="col-md-6">
@@ -221,14 +239,14 @@
 	            <div class="col-md-6">
                 	<div class="form-group">
                 		<label for="phone">연락처 1 *</label>
-                  		<input type="text" class="form-control" id="phone" placeholder="연락처" required="required">
+                  		<input type="text" class="form-control" id="phone" value="<%=userBean.getUser_phone()%>" required="required">
                 	</div>
               	</div>
               
               	<div class="col-md-6">
               		<div class="form-group">
                 		<label for="emailaddress">연락처 2</label>
-                  		<input type="text" class="form-control" id="phone2" placeholder="(선택사항)">
+                  		<input type="text" class="form-control" id="phone2" value="(선택사항)">
                 	</div>
                	</div>
                	
@@ -239,7 +257,7 @@
 		        <div class="col-md-6">
 		        	<div class="form-group">
 		           		<label for="postcodezip">우편번호 *</label>
-	               		<input type="text" class="form-control" id="postcode" placeholder="우편번호를 검색해주세요"  required="required">
+	               		<input type="text" class="form-control" id="postcode" value="<%=userBean.getUser_post()%>"  required="required">
 	              	</div>
 	           	</div>
 
@@ -336,13 +354,13 @@
 				<div class="col-md-6" >
 		          	<div class="form-group">
 	              		<label for="streetaddress">주소 *</label>
-	               		<input type="text" class="form-control" id="address" placeholder="주소">
+	              		<input type="text" class="form-control" id="address" value="<%=address1 %>" >
                 	</div>
 	            </div>
 
 	            <div class="col-md-6">
 	            	<div class="form-group">
-                  		<input type="text" class="form-control" id="detailAddress" placeholder="상세주소를 입력해주세요"  required="required">
+                  		<input type="text" class="form-control" id="detailAddress" value="<%=address2 %>"  required="required">
                 	</div>
 	            </div>
 
@@ -353,7 +371,7 @@
                 <div class="col-md-12">
           		<div class="form-group">
                 		<label for="emailaddress">Email</label>
-                  		<input type="text" class="form-control" id="Email" placeholder="Email을 입력해주세요">
+                  		<input type="text" class="form-control" id="Email" value="<%=userBean.getUser_email()%>" required="required">
                 	</div>
                 </div>
                 
@@ -361,7 +379,7 @@
                 <div class="col-md-12">
                 	<div class="form-group mt-4">
 						<div class="radio" style="text-align: right;">
-							<label class="mr-3"><input type="checkbox" name="optradio"> <span> 회원정보 자동입력</span> </label>
+							<label class="mr-3"><input type="checkbox" name="optradio" onclick="function()"> <span>다른 배송정보 입력</span> </label>
 						</div>
 
 					</div>
@@ -369,8 +387,6 @@
 	          
 	          </div>
 	          </div><!-- END -->
-
-
 
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
@@ -445,17 +461,39 @@
 						<input type="hidden" id="status" name="status" value="null">
 						<input type="hidden" id="orderName" name="orderName" value="null">
 						<input type="hidden" id="buyerPostcode" name="buyerPostcode" value="null">
+					
+						</div>
+		          	</div>
+		          	
+		          	
+		          </div>	
+			</form>		
 						
-						
-						
+
+				<%
 				
-					</div>
-	          	</div>
-	          	
-	          	
-	          </div>
-		</form>
-		    <script type="text/javascript">
+				// 주문번호 생성 : yyyymmdd-HHmmss
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+				Calendar cal = Calendar.getInstance();
+				String orderNum = dateFormat.format(cal.getTime());
+				System.out.println("주문번호 : "+ orderNum);
+				
+				// 주문명 생성 : A상품 외 n개
+				String subCount = Integer.toString(cartItems.size() - 1);
+				String orderName = "'"+ cartItems.get(0).getItem_name()+"'" +" 상품 외 "+ subCount + "개";
+				System.out.println("주문명 : "+ orderName);
+				
+				// 결제금액 생성 : 총 상품금액 + 배송비
+				int orderPrice = totalPrice + 2500;
+				System.out.println("결제금액 : "+ orderPrice);
+				System.out.println();
+				
+				%>
+				
+
+				<script type="text/javascript">
+						
+
 							function checkout() {
 								
 								// 1. 구매동의 체크 여부 확인
@@ -463,8 +501,10 @@
 									var check = confirm("구매진행에 동의해주세요");
 									
 								} else {
-									
-									// 2. 결제방법에 체크한 라디오의 value 값 가져오기 
+
+									<% System.out.println("구매진행 동의함"); %>
+
+								    // 2. 결제방법에 체크한 라디오의 value 값 가져오기 
 									var ckRadio = $('input:radio[name="ckoutRadio"]:checked').val();
 
 								    var payMethod;
@@ -484,12 +524,7 @@
 									
 									// 3. 결제 API 진행
 									if(a){
-										
-<%-- 										String paymentName = <%=Calendar.DATE %>; --%>
-// 										alert(paymentName);
-// 										alert('aa');
-										
-										
+
 										//===== 결제 API 연동 2
 										var IMP = window.IMP; // 생략해도 괜찮습니다.
 										IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
@@ -500,9 +535,9 @@
 										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
 										    pg: "html5_inicis",		// 결제방식
 										    pay_method: payMethod,		// 결제수단
-										    merchant_uid: "201900610-C13",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
-										    name: "원두",	// 주문명
-										    amount: <%=totalPrice %> + 2500,	// 결제 금액
+										    merchant_uid: "<%=orderNum %>",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
+										    name: "<%=orderName %>",	// 주문명
+										    amount: <%=orderPrice %>,	// 결제 금액
 										    buyer_email: $('#Email').val(),	// 구매자 email
 										    buyer_name: $('#name').val(),	// 구매자 이름
 										    buyer_tel: $('#phone').val(),	// 구매자 전화번호
@@ -517,33 +552,7 @@
 										*/
 										}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
 											    if (rsp.success) { 
-	// 										    	// 결제 성공 시
-// 											    	alert("결제 성공1");
-													
-													// 결제 정보 submit 추가
-// 													$("#frm").submit(function() {
-// 														alert("결제 성공2");
-// 														// hidden 으로 submit할 값 저장
-// 														document.frm.impUid.value = rsp.imp_uid;   // 아임포트에서 부여하는 거래건 당 고유번호
-// 														document.frm.paidAmount.value = rsp.paid_amount;  // 결제금액
-// 														document.frm.status.value = rsp.status;  // 결제상태 - ready(미결제), paid(결제완료), cancelled(결제취소, 부분취소포함), failed(결제실패)
-// 														document.frm.orderName.value = rsp.name;  // 주문명
-														
-// 														if($('#buyerPostcode').val() != "null") {
-// 															alert("결제 성공3");
-// 															document.frm.buyerPostcode.value = rsp.buyer_postcode;  // 신용카드결제시 - 카드사 승인번호
-// 														} else {
-// 															alert("결제 성공4");
-// 															document.frm.buyerPostcode.value = "신용카드결제아님";
-// 														}
-														
-// 														return true;
-														
-// 													});	
-													
-// 													alert('ajax시작1');
-											    	// jQuery.ajax 로 HTTP 요청
-											        $.ajax({
+													$.ajax({
 											        	url: "checkoutPro.sh", // 가맹점 서버
 											            method: "get",
 											            headers: { "Content-Type": "application/json" },
@@ -572,12 +581,11 @@
 											            
 											        });
 											       	
-
 											    } else { 
 											    	// 결제 실패 시
 											    	alert("결제 실패 : " +  rsp.error_msg);
 											    	history.back();
-										   		}
+										    	}
 										/*
 											*
 											가맹점 서버에 imp_uid(거래 고유 번호)를 전달하면 아임포트 서버에서 imp_uid로 결제 정보를 조회할 수 있습니다.

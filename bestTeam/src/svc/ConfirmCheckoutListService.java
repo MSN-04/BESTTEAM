@@ -28,8 +28,6 @@ public class ConfirmCheckoutListService {
 	//	buy_num=buydao.selectBuy_num();
 		close(con);
 		
-		
-		
 		return buyList;
 	}
 	

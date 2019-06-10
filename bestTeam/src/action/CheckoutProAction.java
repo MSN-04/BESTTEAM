@@ -56,10 +56,10 @@ public class CheckoutProAction implements Action {
 		String paid_amount = request.getParameter("paid_amount"); // 결제금액
 		String status = request.getParameter("status");
 		String orderName = request.getParameter("orderName");
-		String merchant_uid = request.getParameter("merchant_uid");
+		String orderNum = request.getParameter("merchant_uid");
 		
 		System.out.println("imp_uid :: " + imp_uid);
-		System.out.println("merchant_uid :: " + merchant_uid);
+		System.out.println("merchant_uid :: " + orderNum);
 		System.out.println("paid_amount :: " + paid_amount);
 		System.out.println("status :: " + status);
 		System.out.println("orderName :: " + orderName);
@@ -75,10 +75,10 @@ public class CheckoutProAction implements Action {
 //		String Email = "hongGil@mail.com";
 		String shipnum = "1345121";
 		Date buydate = new Date(System.currentTimeMillis());
-		int total = 50000;
+		int total = Integer.parseInt(paid_amount);
 		
 		BuyBean buyBean = new BuyBean(id, buyer_name, buyer_address + buyer_detailAddress, 
-				buyer_phone, buyer_phone2, buydate, shipnum, buyer_postcode, buyer_Email, total );
+				buyer_phone, buyer_phone2, buydate, shipnum, buyer_postcode, buyer_Email, total, orderNum );
 		
 		CheckoutProService checkoutProService = new CheckoutProService();
 		boolean isInsertSuccess = checkoutProService.insertBuy(buyBean);

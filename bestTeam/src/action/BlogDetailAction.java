@@ -33,15 +33,22 @@ public class BlogDetailAction implements Action {
 		
 		BlogDetailService blogDetailService = new BlogDetailService();
 		BlogBean article = blogDetailService.getArticle(blog_num);
-		ArrayList<BlogCommentBean> article2 = blogDetailService.getCommentList(blog_num);
+		ArrayList<BlogCommentBean> articleList = blogDetailService.getCommentList(blog_num);
+//		UserBean userbean = blogDetailService.getUserInfo(name);
 		
+		HttpSession session = request.getSession();
+		BlogCommentBean blogCommentBean = null;
+		UserBean userBean = null;
+		userBean = new UserBean();
 		// 다른 페이지에서 page 번호를 전달받아 계속 유지하기 위해 request 객체의 setAttribute() 메서드로 전달
 		request.setAttribute("page", page);
 		request.setAttribute("article", article);
-		request.setAttribute("article2", article2);
+		request.setAttribute("articleList", articleList);
+//		request.setAttribute("userbean", userbean);
+		
 		
 		// ------------------------리스트 불러오기
-//		int page0 = 1;
+//		int page = 1;
 //		int limit = 10;
 //		
 //		// 페이지 번호 파라미터가 있을 경우 가져오기
@@ -78,7 +85,6 @@ public class BlogDetailAction implements Action {
 //		request.setAttribute("article2", article2);
 		
 		//------------------------------------
-		
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("./blog/blog-single.jsp"); // 이동할 jsp 페이지 지정
