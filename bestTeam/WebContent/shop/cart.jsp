@@ -1,8 +1,16 @@
+<%@page import="vo.CartBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <%
+  	ArrayList<CartBean> cartList = (ArrayList<CartBean>)request.getAttribute("cartList");
+  	String id = (String)session.getAttribute("id");
+  
+  
+  %>
     <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,25 +19,25 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cart.css">
     <style type="text/css">
     #deleteBtn{position:relative;
 		float: right;
@@ -50,44 +58,122 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-
-        var quantitiy=0;
-           $('.quantity-right-plus').click(function(e){
+    	$('#deleteBtn').on('click',function(){
+   			var list = new Array();
+    		for (var i = 0 ; i < <%=cartList.size() %> ; i++) {
+    			if ($('.cb'+i).is(":checked") == true) {
+// 	    			alert($('.cb'+i).val());
+	    			list.push($('.cb'+i).val());
+    			}
+    		}
+    		list = list + ""; // Object를 String으로 변환
+//    			alert("list의 타입은 "+ typeof list );
+//     		alert(list);
+    		if (list != "") {
+				$.ajax({
+					url : 'cartDelete.sh',
+					type : 'get',
+					data : { // 값 넘길 때 String으로 넘겨야 함.. getParameter로 받기 때문!
+						"list" : list
+					},
+					success : function(data) {
+						if (data == 0){
+							alert('장바구니에 선택하신 상품이 삭제되었습니다.');
+							location.href="cart.sh";
+						} else if (data == 1) {
+							alert('삭제 실패!');
+						}
+					},
+					error :function(request, status, error) {
+						alert('error');
+					}
+				});
+    		} else {
+    			alert('장바구니에 아무것도 없습니다.');
+    		}
+    	});
+    });
+//     $(document).ready(function(){
+		
+//         var quantitiy=0;
+//            $('.quantity-right-plus').click(function(e){
                 
-                var quantity = parseInt($(this).siblings('.quantity').val());
+//                 var quantity = parseInt($(this).siblings('.quantity').val());
 
-                if (quantity>=1) {
-                	quantity = quantity + 1;
-                	$(this).siblings('.quantity').val(quantity);
-                }
+//                 if (quantity>=1) {
+//                 	quantity = quantity + 1;
+//                 	$(this).siblings('.quantity').val(quantity);
+//                 }
                 
-            });
+//             });
 
-             $('.quantity-left-minus').click(function(e){
+//              $('.quantity-left-minus').click(function(e){
 
-            	 var quantity = parseInt($(this).siblings('.quantity').val());
+//             	 var quantity = parseInt($(this).siblings('.quantity').val());
 
-                 if (quantity>1) {
-                 	quantity = quantity - 1;
-                 	$(this).siblings('.quantity').val(quantity);
-                 }
+//                  if (quantity>1) {
+//                  	quantity = quantity - 1;
+//                  	$(this).siblings('.quantity').val(quantity);
+//                  }
                  
-            });
+//             });
+
+//     	$('#deleteBtn').on('click',function(){
+//     		alert('aa');
+<%-- 			if('<%=id %>' != 'null' ) { --%>
+// 				$.ajax({
+// 					url : 'cartDelete.sh',
+// 					type : 'get',
+// 					data : {
+<%-- 						"item_num" : <%=itemBean.getItem_num() %>, --%>
+// 						"quantity" : $('#quantity').val(),
+<%-- 						"item_price" : <%=itemBean.getItem_price() %>, --%>
+<%-- 						"cart_img" : '<%=itemBean.getItem_img() %>', --%>
+<%-- 						"cart_item_name" : '<%=itemBean.getItem_name() %>' --%>
+// 					},
+// 					success : function(data) {
+						
+// 						if (data == 1){
+// 							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
+// 							if (con == true) {
+// 								location.href="cart.sh";
+// 							}
+// 						} else if (data == -1) {
+// 							alert('장바구니 등록에 실패하였습니다.');
+// 						} else if (data == 2) {
+// 							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
+// 							if (con == true) {
+<%-- 								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val(); --%>
+// 							}
+// 						} else {
+// 							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
+// 						}
+						
+// 					},
+// 					error : function(request, status, error) {
+// 					}
+// 				});
+// 			} else {
+// 				alert('로그인 후 이용해주세요.');
+// 			}
+			
+// 		});
              
              
             
-     });
+//      });
+//     }
     </script>
   </head>
   <body>
     <header>
-    <jsp:include page="../inc/header.jsp"/>
+    <jsp:include page="/inc/header.jsp"/>
     </header>
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(../images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -115,92 +201,96 @@
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Total</th>
-                    <th>배송비</th>
+<!--                     <th>Total</th> -->
+<!--                     <th>배송비</th> -->
                   </tr>
                 </thead>
                 <tbody>
                 
                 <!-- 상품시작 -->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                 <td class="product-remove"><input type="checkbox" value="cart_list_num"></td>
-                     <td class="product-num"><a href="#">1</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>Creamy Latte Coffee</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
-                    
-                    <td class="price">$4.90</td>
-                    
-                    <td class="quantity">
-                      <div class="input-group mb-3">
-<!--             <span class="input-group-btn mr-2"> -->
-<!--                   </span> -->
-                  
-                    
-<!--               <span class="input-group-btn ml-2"> -->
-                    <button type="button" class="quantity-left-minus btn input-group-btn" >
-                     	<i class="icon-minus"></i>
-                    </button>&nbsp;
-                   <input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
-                    <button type="button" class="quantity-right-plus btn input-group-btn" >
-                       <i class="icon-plus"></i>
-                   </button>
-<!--                  </span> -->
-                      </div>
-                    </td>
-                    
-                    <td class="total">$4.90</td>
-                    <td>2,500원</td>
-                  </tr>
+                <% 
+                	if (cartList != null) {
+                		if (cartList.size() != 0) {
+	                		for (int i = 0 ; i < cartList.size() ; i++) { %>
+		                  <tr class="text-center">
+		                 	<td class="product-remove">
+		                 		<input type="checkbox" value="<%=cartList.get(i).getCart_item_num() %>" class="cb<%=i %>" >
+		                 	</td>
+		                    <td class="product-num">
+		                    	<a href="#"><%=i+1 %></a>
+		                    </td>
+		                    <td class="image-prod">
+		                    	<div class="img" style="background-image:url(./itemUpload/<%=cartList.get(i).getCart_img() %>);">
+		                    	</div>
+		                    </td>
+		                    <td class="product-name">
+		                      <h3><%=cartList.get(i).getCart_item_name() %></h3>
+	<!-- 	                      <p>Far far away, behind the word mountains, far from the countries</p> -->
+		                    </td>
+		                    
+		                    <td class="price"><%=cartList.get(i).getCart_price() %> 원</td>
+		                    
+		                    <td class="quantity">
+		                    	<div class="input-group mb-3">
+									 <input type="text" name="quantity"  class="quantity form-control input-number" value="<%=cartList.get(i).getCart_count() %>" 
+									 style="border: 0px !important" readonly/>
+		                     	</div>
+		                    </td>
+		                    
+	<!-- 	                    <td class="total">$4.90</td> -->
+	<!-- 	                    <td>2,500원</td> -->
+		                  </tr>
+		                  <% }	
+                		} else {
+                			%>
+                			<tr class="text-center" >
+                				<td class="product-name" colspan="6">
+		                      		<p>장바구니가 비어있습니다.</p>
+		                    	</td>
+                			</tr>
+                			<%
+                		}
+                	}%>
                   <!-- END TR-->
                   <!-- 상품 끝 -->
                   
                   
                   <!-- 상품시작 -->
-                  <tr class="text-center">
-                  <td class="product-remove"><input type="checkbox" value="cart_list_num"></td>
-                     <td class="product-num"><a href="#">2</a></td>
+<!--                   <tr class="text-center"> -->
+<!--                   <td class="product-remove"><input type="checkbox" value="cart_list_num"></td> -->
+<!--                      <td class="product-num"><a href="#">2</a></td> -->
                     
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/dish-2.jpg);"></div></td>
+<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/dish-2.jpg);"></div></td> -->
                     
-                    <td class="product-name">
-                      <h3>Grilled Ribs Beef</h3>
-                      <p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
+<!--                     <td class="product-name"> -->
+<!--                       <h3>Grilled Ribs Beef</h3> -->
+<!--                       <p>Far far away, behind the word mountains, far from the countries</p> -->
+<!--                     </td> -->
                     
-                    <td class="price">$15.70</td>
+<!--                     <td class="price">$15.70</td> -->
                     
-                    <td class="quantity">
-                      <div class="input-group mb-3">
-<!--             <span class="input-group-btn mr-2"> -->
-<!--                   </span> -->
-                  
+<!--                     <td class="quantity"> -->
+<!--                       <div class="input-group mb-3"> -->
+<!--                     <button type="button" class="quantity-left-minus btn input-group-btn" > -->
+<!--                     	<i class="icon-minus"></i> -->
+<!--                     </button>&nbsp; -->
+<!--                    	<input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp; -->
+<!--                     <button type="button" class="quantity-right-plus btn input-group-btn" > -->
+<!--                        <i class="icon-plus"></i> -->
+<!--                    	</button> -->
+<!--                       </div> -->
+<!--                     </td> -->
                     
-<!--               <span class="input-group-btn ml-2"> -->
-                    <button type="button" class="quantity-left-minus btn input-group-btn" >
-                    	<i class="icon-minus"></i>
-                    </button>&nbsp;
-                   	<input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
-                    <button type="button" class="quantity-right-plus btn input-group-btn" >
-                       <i class="icon-plus"></i>
-                   	</button>
-<!--                  </span> -->
-                      </div>
-                    </td>
-                    
-                    <td class="total">$15.70</td>
-                    <td><p>무료</p></td>
-                  </tr><!-- END TR-->
+<!--                     <td class="total">$15.70</td> -->
+<!--                     <td><p>무료</p></td> -->
+<!--                   </tr> -->
+                  <!-- END TR-->
                   <!-- 상품 끝 -->
                   
                 </tbody>
               </table>
-        <a href="checkout.jsp" class="btn btn-primary btn-outline-primary" id="buyAllBtn">전체 주문하기</a>
-        <a href="checkout.jsp" class="btn btn-primary btn-outline-primary" id="deleteBtn">선택상품 삭제하기</a>
+        <a href="checkout.sh" class="btn btn-primary btn-outline-primary" id="buyAllBtn">전체 주문하기</a>
+        <a class="btn btn-primary btn-outline-primary" id="deleteBtn" >선택상품 삭제하기</a>
             </div>
           </div>
         </div>
@@ -262,7 +352,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(../images/menu-1.jpg);"></a>
+              <a href="#" class="img" style="background-image: url(./images/menu-1.jpg);"></a>
               <div class="text text-center pt-4">
                 <h3><a href="#">Coffee Capuccino</a></h3>
                 <p>A small river named Duden flows by their place and supplies</p>
@@ -273,7 +363,7 @@
           </div>
           <div class="col-md-3">
             <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(../images/menu-2.jpg);"></a>
+              <a href="#" class="img" style="background-image: url(./images/menu-2.jpg);"></a>
               <div class="text text-center pt-4">
                 <h3><a href="#">Coffee Capuccino</a></h3>
                 <p>A small river named Duden flows by their place and supplies</p>
@@ -284,7 +374,7 @@
           </div>
           <div class="col-md-3">
             <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(../images/menu-3.jpg);"></a>
+              <a href="#" class="img" style="background-image: url(./images/menu-3.jpg);"></a>
               <div class="text text-center pt-4">
                 <h3><a href="#">Coffee Capuccino</a></h3>
                 <p>A small river named Duden flows by their place and supplies</p>
@@ -295,7 +385,7 @@
           </div>
           <div class="col-md-3">
             <div class="menu-entry">
-              <a href="#" class="img" style="background-image: url(../images/menu-4.jpg);"></a>
+              <a href="#" class="img" style="background-image: url(./images/menu-4.jpg);"></a>
               <div class="text text-center pt-4">
                 <h3><a href="#">Coffee Capuccino</a></h3>
                 <p>A small river named Duden flows by their place and supplies</p>
@@ -309,30 +399,30 @@
     </section>
 
     <footer class="ftco-footer ftco-section img">
-   <jsp:include page="../inc/footer.jsp"></jsp:include>
+   <jsp:include page="/inc/footer.jsp"></jsp:include>
     </footer>
     
   
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="./js/google-map.js"></script>
+  <script src="./js/main.js"></script>
   
   <script>
     $(document).ready(function(){

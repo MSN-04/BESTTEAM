@@ -104,6 +104,7 @@
 							<!-- 							<span class="mr-2"><a href="index.jsp">Home</a></span> -->
 						</p>
 					</div>
+					</div>
 
 					<!-- 				</div> -->
 				</div>
@@ -130,16 +131,40 @@
 		</div>
 	</section>
 	<!-- .section -->
+
+
+<!-- 이전글버튼 ----------------------------->
 	
-	<div style="border-bottom" solid grey; margin-bottom: 30px;>
-	<div class="col-md-4" id="mail">
-	
-		<button type="button" class="quantity-left-minus btn input-group-btn">
-			<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%>
-		</button>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div style="border-bottom" solid white; margin-bottom: 30px;>
+
+			<button type="button" class="quantity-left-minus btn input-group-btn">
+				<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; 
+			</button>
+			</div>
+				<div class="block-21 mb-4 d-flex">
+					<a class="blog-img mr-4"
+						style="background-image: url(../images/image_1.jpg);"></a>
+					<div class="text">
+						<h3 class="heading">
+							<a href="#">
+								<%=article.getNotice_subject()%></a>
+						</h3>
+<!-- 						<div class="meta"> -->
+<!-- 							<div> -->
+<!-- 								<a href="#"><span class="icon-chat"></span> 19</a> -->
+<!-- 							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		</div>
+	</section>
+
 	
+
 	<%
 		String id = (String) session.getAttribute("id");
 		if (id != null && id.equals("admin")) {

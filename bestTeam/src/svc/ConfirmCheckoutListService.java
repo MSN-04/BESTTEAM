@@ -13,7 +13,7 @@ public class ConfirmCheckoutListService {
 	
 	//상품 목록 조회
 	public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id) throws Exception{
-		ArrayList<BuyBean> articleList=null;
+		ArrayList<BuyBean> buyList=null;
 		
 		System.out.println("ConfirmCheckoutListService - selectConfirmCheckoutList");
 		Connection con= getConnection();
@@ -24,13 +24,31 @@ public class ConfirmCheckoutListService {
 		System.out.println("ConfirmCheckoutListService-- user_id:"+user_id);
 		
 		// 매개변수로 마이페이지에 접속한 user_id 와 그 아이디로부터 주문번호 buy_num을 가져온다. 
-		articleList=buydao.selectConfirmCheckoutList(user_id);
+		buyList=buydao.selectConfirmCheckoutList(user_id);
 	//	buy_num=buydao.selectBuy_num();
 		close(con);
 		
+		return buyList;
+	}
+	
+	// ---> 글 목록 개수 구하기
+	public int getBuyListCount() throws Exception{
+		int buyListCount=0;
+		
+		Connection con=getConnection();
+		
+		BuyDAO buyDAO=BuyDAO.getInstance();
+		buyDAO.setConnection(con);
 		
 		
-		return articleList;
+		//dao 에 selectBuyListCount 메서드에서 나온 속성값을 buyListCount에 저장.
+		buyListCount=buyDAO.selectBuyListCount();
+		
+		close(con);
+		
+		
+		return buyListCount;
+		
 	}
 
 }

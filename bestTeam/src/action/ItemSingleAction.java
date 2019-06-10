@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.ItemSingleService;
+import svc.QnaListService;
 import svc.QnaWriteProService;
 import vo.ActionForward;
 import vo.ItemBean;
@@ -27,6 +29,8 @@ public class ItemSingleAction implements Action {
 		System.out.println("ItemSingleAction 시작");
 		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
+		session.getAttribute("id");
 		
 		// 1.
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
@@ -39,7 +43,7 @@ public class ItemSingleAction implements Action {
 		// 3.
 		//--------------------------------------------------
 				ArrayList<ReviewBean> reviewList = new ArrayList<ReviewBean>();
-				
+				System.out.println("ItemSingleAction reviewList시작");
 				int page = 1;
 				int limit = 10;
 				
@@ -86,12 +90,12 @@ public class ItemSingleAction implements Action {
 					page2 = Integer.parseInt(request.getParameter("page2"));
 				}
 				
-				QnaWriteProService qnaWriteProService = new QnaWriteProService();
+				QnaListService qnaListService = new QnaListService();
 				
-				int listCount2 = qnaWriteProService.getListCount(); // 총 게시물 목록 수 가져오기
+				int listCount2 = qnaListService.getListCount(); // 총 게시물 목록 수 가져오기
 				
-				qnaList = qnaWriteProService.getArticleList(page2, limit2, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
-				
+				qnaList = qnaListService.getArticleList(page2, limit2, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+				System.out.println("itemSingleAction qnalist"+ qnaList.size());
 				// 페이지 계산
 				
 				int maxPage2 = (int)((double)listCount2 / limit2 + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)

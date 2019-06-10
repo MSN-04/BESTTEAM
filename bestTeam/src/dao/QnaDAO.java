@@ -53,7 +53,7 @@ public class QnaDAO {
 				// 최대 게시물 번호 + 1
 			}
 
-			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now())";
+			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now(),?,?,?,null)";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
@@ -61,6 +61,9 @@ public class QnaDAO {
 			pstmt.setString(3, qnaBean.getQna_writer());
 			pstmt.setString(4, qnaBean.getQna_subject());
 			pstmt.setString(5, qnaBean.getQna_content());
+			pstmt.setInt(6, num);
+			pstmt.setInt(7, 0);
+			pstmt.setInt(8, 0);
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 
@@ -113,13 +116,15 @@ public class QnaDAO {
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
 
-		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
+//		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, item_num);
-			pstmt.setInt(2, startRow);
+//			pstmt.setInt(2, startRow-1);
+//			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -132,6 +137,9 @@ public class QnaDAO {
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
 				qnaBean.setQna_date(rs.getDate("qna_date"));
+				qnaBean.setQna_re_lev(rs.getInt("qna_re_lev"));
+				qnaBean.setQna_re_ref(rs.getInt("qna_re_ref"));
+				qnaBean.setQna_re_seq(rs.getInt("qna_re_seq"));
 
 				articleList.add(qnaBean); // ArrayList 객체에 레코드 단위로 저장
 
@@ -314,4 +322,51 @@ public class QnaDAO {
 	}
 
 
+	//qna답글 등록 메서드
+	public int insertReply(QnaBean qnaBean) {
+		int result = 0; //리턴할 결과를 저장할 변수
+		
+		//해당 게시물의 기존 답글 순번을 1씩 증가시키는 쿼리(답글간의 순서)
+		
+		String sql = "UPDATE qna SET qna_re_seq = qna_re_seq+1 WHERE qna_re_ref =? AND qna_re_seq > ?";
+		
+		String sql2 = "INSERT INTO qna VALUES(null,?,?,?,?,NOW()?,?,?)";
+		
+		int qna_re_ref = qnaBean.getQna_re_ref();
+		int qna_re_lev = qnaBean.getQna_re_lev();
+		int qna_re_seq = qnaBean.getQna_re_seq();
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, qna_re_ref);
+			pstmt.setInt(2, qna_re_seq);
+			
+			pstmt.executeUpdate();
+   
+			qna_re_seq = qna_re_seq +1;
+			qna_re_lev = qna_re_lev +1;
+			
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setInt(1, qnaBean.getQna_num());
+			pstmt.setString(2, qnaBean.getQna_writer());
+			pstmt.setString(3, qnaBean.getQna_subject());
+			pstmt.setString(4, qnaBean.getQna_content());
+			pstmt.setInt(5, qna_re_ref);
+			pstmt.setInt(6, qna_re_lev);
+			pstmt.setInt(7, qna_re_seq);
+			
+			result = pstmt.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			if(rs != null){ try{ rs.close(); }catch(SQLException se){ } }
+			if(pstmt != null){ try{ pstmt.close(); }catch(SQLException se){ } }
+		}
+
+		return result;
+	}
+	
 }

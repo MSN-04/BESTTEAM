@@ -58,7 +58,7 @@ public class UserDAO {
 	
 	
 	// 회원정보 수정,탈퇴 회원 확인
-	public int isUpdateUser(String id, String pass) {
+	public int isUpdateUser(String id) {
 		int isRightUser = 0;
 		String sql = "SELECT * FROM user WHERE user_id=?";
 		try {
@@ -67,9 +67,7 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				if(pass.equals(rs.getString("user_pass"))) {
 					isRightUser = 1;
-				} 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -140,7 +138,7 @@ public class UserDAO {
 	public boolean userUpdate(UserBean userBean) {
 		boolean isUpdateUser = false;
 		int isUpdate = 0;
-		String sql = " UPDATE coffee.user SET user_pass=?,user_name=?,user_age=?,user_gender=?,user_address=?,user_phone=?,user_email=?,user_post=? WHERE user_id=?";
+		String sql = " UPDATE user SET user_pass=?,user_name=?,user_age=?,user_gender=?,user_address=?,user_phone=?,user_email=?,user_post=? WHERE user_id=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			
@@ -272,6 +270,9 @@ public class UserDAO {
 				 }
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
 			}
 		}else if(email==null && phone !=null) {
 			sql ="SELECT * FROM user WHERE user_phone=?";	
@@ -284,6 +285,9 @@ public class UserDAO {
 					 }
 				} catch (SQLException e) {
 					e.printStackTrace();
+				}finally {
+					close(rs);
+					close(pstmt);
 				}
 		}
 		
