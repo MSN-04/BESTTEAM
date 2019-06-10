@@ -21,7 +21,7 @@ public class ReviewModifyProService {
 		// 싱글톤 디자인 패턴으로 생성된 BoardDAO 인스턴스를 얻어오기
 		ReviewDAO reviewDAO = ReviewDAO.getInstance();
 		reviewDAO.setConnection(con); // Connection 객체를 boardDAO 객체에 전달
-		int updateCount = reviewDAO.updateArticle(article); // 글 수정 처리(결과를 int형으로 전달받음)
+		int updateCount = reviewDAO.updateArticle(article);
 		
 		// insertCount 가 0보다 크면 트랜잭션 Commit, 아니면 트랜잭션 Rollback 수행
 		if(updateCount > 0) {

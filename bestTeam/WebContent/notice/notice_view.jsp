@@ -132,41 +132,30 @@
 	</section>
 	<!-- .section -->
 
+
+<!-- 이전글버튼 ----------------------------->
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
+				<div style="border-bottom" solid white; margin-bottom: 30px;>
+
+			<button type="button" class="quantity-left-minus btn input-group-btn">
+				<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; 
+			</button>
+			</div>
 				<div class="block-21 mb-4 d-flex">
 					<a class="blog-img mr-4"
 						style="background-image: url(../images/image_1.jpg);"></a>
 					<div class="text">
 						<h3 class="heading">
-							<a href="#"><span class="icon-calendar"></span>TINKERVELL의
-								6월호 웹진을 구독해주세요!</a>
+							<a href="#">
+								<%=article.getNotice_subject()%></a>
 						</h3>
-						<div class="meta">
-							<div>
-								<a href="#"><span class="icon-person"></span> Tinkervell</a>
-							</div>
-							<div>
-								<a href="#"><span class="icon-chat"></span> 19</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="block-21 mb-4 d-flex">
-					<a class="blog-img mr-4"
-						style="background-image: url(../images/image_2.jpg);"></a>
-					<div class="text">
-						<h3 class="heading">
-							<a href="#"><span class="icon-calendar"></span>안녕하세요. 관리자입니다.</a>
-						</h3>
-						<div class="meta">
-							<div>
-								<a href="#"><span class="icon-calendar"></span> Tinkervell</a>
-							</div>
-							<div>
-								<a href="#"><span class="icon-chat"></span> 19</a>
-							</div>
+<!-- 						<div class="meta"> -->
+<!-- 							<div> -->
+<!-- 								<a href="#"><span class="icon-chat"></span> 19</a> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 				</div>
@@ -174,15 +163,7 @@
 		</div>
 	</section>
 
-	<!-- 이전글버튼 ----------------------------->
-	<!-- 	<div style="border-bottom" solid grey; margin-bottom: 30px;> -->
-	<!-- 	<div class="col-md-4" id="mail"> -->
-
-	<!-- 		<button type="button" class="quantity-left-minus btn input-group-btn"> -->
-	<%-- 			<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; <%=article.getNotice_subject()%> --%>
-	<!-- 		</button> -->
-	<!-- 		</div> -->
-	<!-- 		</div> -->
+	
 
 	<%
 		String id = (String) session.getAttribute("id");

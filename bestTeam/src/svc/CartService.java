@@ -1,41 +1,30 @@
 package svc;
 
 import java.sql.Connection;
-
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+import java.util.ArrayList;
 
 import dao.BuyDAO;
-import vo.CartBean;
 
 import static db.JdbcUtil.*;
+import vo.CartBean;
 
 public class CartService {
+	
+	private Connection con;
+	private BuyDAO buyDAO;
 
-	public boolean insertCart(CartBean cartBean) {
+	public ArrayList<CartBean> cartList(String id) {
 		
-		
-		boolean isInsertSuccess = false;
-		
-		Connection con = getConnection();
-		
-		BuyDAO buyDAO = BuyDAO.getInstance();
+		ArrayList<CartBean> cartList = null;
+		con = getConnection();
+		buyDAO = BuyDAO.getInstance();
 		buyDAO.setConnection(con);
-		int insertCount = buyDAO.insertCart(cartBean);
 		
-		if(insertCount > 0) {
-			commit(con);
-			isInsertSuccess = true; // 성공 표시
-		} else {
-			rollback(con);
-		}
+		cartList = buyDAO.getCartList(id);
 		
-		// DB 접속 해제(Connection 자원 반환)
 		close(con);
 		
-		return isInsertSuccess;
+		return cartList;
 	}
-	
-	
 
 }

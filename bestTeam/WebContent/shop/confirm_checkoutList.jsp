@@ -1,6 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Date"%>
 <%@page import="vo.BuyBean"%>
 <%@page import="vo.BuyItemBean"%>
+<%@page import="dao.BuyDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,20 +65,30 @@
   <body>
   
   <%
-  BuyBean buyBean=new BuyBean();
+  out.println("jsp---->리스트 전 1");
   
-  String user_id=(String)session.getAttribute("id");  //주문한 본인 아이디
-  int buy_num=(int)session.getAttribute("buy_num");   //상품 주문번호
+   List selectConfirmCheckoutList=(List)request.getAttribute("selectConfirmCheckoutList");
   
-  String item_name=buyBean.getBuy_name();  //상품이름
+   String user_id=(String)session.getAttribute("id"); //주문한 본인 아이디
+    int buy_num=((Integer)request.getAttribute("buy_num"));  //상품 주문번호
   
- int itemSubCount=buyBean.getBuy_count()-1;  //상품이름 외 xx개 
+    String buy_name=(String)request.getAttribute("buy_name");  //상품이름
   
-  Date buy_date=buyBean.getBuy_buydate(); //주문날짜 buydate 로 바꿈.
+   int buySubCount=((Integer)request.getAttribute("buy_count")-1);  //상품이름 외 xx개 
   
-  int buy_count=buyBean.getBuy_count(); //총 상품갯수
+    Date buy_date=(Date)request.getAttribute("buy_date"); //주문날짜 buydate 로 바꿈.
   
-  int buy_total=buyBean.getBuy_total();   //총 결제금액
+    int buy_count=(Integer)request.getAttribute("buy_count"); //총 상품갯수
+  
+    int buy_total=(Integer)request.getAttribute("buy_total");    //총 결제금액
+    
+    out.println("jsp-->user_id:"+user_id);
+    out.println("jsp-->buy_num:"+buy_num);
+    out.println("jsp-->buySubCount:"+buySubCount);
+    out.println("jsp-->buy_date:"+buy_date);
+    out.println("jsp-->buy_count:"+buy_count);
+    out.println("jsp-->buy_total:"+buy_total);
+    
   
 //---> CheckoutList에 있는정보: 그 전 페이지(myPage)에서 user_id를 가져온다.
 // 주문번호 :buy_num  ==>이걸로 상세페이지 가져옴!
@@ -100,7 +113,7 @@
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">주문 목록 </h1>
+            	<h1 class="mb-3 mt-5 bread"><%=user_id %>의 주문 목록 </h1>
 <!-- 	            <p class="breadcrumbs"> <span class="mr-2"><a href="../index.jsp">Home</a></span>  -->
 <!-- 	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p> -->
             </div>
@@ -143,13 +156,14 @@
                 </thead>
                 <tbody>
 
+                  
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
+                     <td class="product-num"><%=buy_num %>20190529-000001</a></td>
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
+                      <h3><%=buy_name %><br> 상품 외<%=buySubCount %>개</h3>
                     </td>
                     
                     <td class="price"><%=buy_date %></td>
@@ -158,6 +172,7 @@
                     
                 
                   </tr>
+                
                   <!-- END TR-->
 <!--                   <tr class="text-center"> -->
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
@@ -175,53 +190,55 @@
 <!--                     <td class="total">18,990원</td> -->
 <!--                   </tr>END TR -->
  
-                   <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
-                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+ 
+ <!-- 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
+<!--                    <tr class="text-center"> -->
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> -->
+<%--                      <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td> --%>
+<!--                      <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
-                    <td class="product-name">
-                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
-                    </td>
+<!--                     <td class="product-name"> -->
+<%--                       <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3> --%>
+<!--                     </td> -->
                     
-                    <td class="price"><%=buy_date %></td>
+<%--                     <td class="price"><%=buy_date %></td> --%>
                     
-                    <td class="price"><%=buy_total %></td>
-                    
-                
-                  </tr>
-                  <!-- END TR-->
-                  <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
-                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
-                    
-                    <td class="product-name">
-                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
-                    </td>
-                    
-                    <td class="price"><%=buy_date %></td>
-                    
-                    <td class="price"><%=buy_total %></td>
+<%--                     <td class="price"><%=buy_total %></td> --%>
                     
                 
-                  </tr><!-- END TR-->
+<!--                   </tr> -->
+<!--                   END TR -->
+<!--                   <tr class="text-center"> -->
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> -->
+<%--                      <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td> --%>
+<!--                      <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+                    
+<!--                     <td class="product-name"> -->
+<%--                       <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3> --%>
+<!--                     </td> -->
+                    
+<%--                     <td class="price"><%=buy_date %></td> --%>
+                    
+<%--                     <td class="price"><%=buy_total %></td> --%>
+                    
+                
+<!--                   </tr>END TR -->
                   
-                   <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td>
-                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
+<!--                    <tr class="text-center"> -->
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> -->
+<%--                      <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buy_num %>">20190529-000001</a></td> --%>
+<!--                      <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
-                    <td class="product-name">
-                      <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3>
-                    </td>
+<!--                     <td class="product-name"> -->
+<%--                       <h3><%=item_name %><br> 상품 외 <%=buy_count %>개</h3> --%>
+<!--                     </td> -->
                     
-                    <td class="price"><%=buy_date %></td>
+<%--                     <td class="price"><%=buy_date %></td> --%>
                     
-                    <td class="price"><%=buy_total %></td>
+<%--                     <td class="price"><%=buy_total %></td> --%>
                     
                 
-                  </tr><!-- END TR-->
+<!--                   </tr>END TR -->
                 </tbody>
               </table>
             </div>
