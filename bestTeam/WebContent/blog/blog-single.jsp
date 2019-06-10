@@ -7,35 +7,35 @@
 	pageEncoding="UTF-8"%>
 <%
 	BlogBean article = (BlogBean) request.getAttribute("article");
-	ArrayList<BlogCommentBean> article2 = (ArrayList<BlogCommentBean>)request.getAttribute("article2");
+	ArrayList<BlogCommentBean> articleList = (ArrayList<BlogCommentBean>) request.getAttribute("articleList");
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
-	
-	UserBean userbean = (UserBean) request.getAttribute("userBean");
 
+	UserBean userbean = (UserBean) request.getAttribute("userBean");
+// 	String userName = userbean.getUser_name();
+	
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
-	
-	
+	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-// 	int listCount = pageInfo.getListCount();
-// 	nowPage = pageInfo.getPage();
-// 	int maxPage = pageInfo.getMaxPage();
-// 	int startPage = pageInfo.getStartPage();
-// 	int endPage = pageInfo.getEndPage();
-// 	int limit = pageInfo.getLimit();
+// 		int listCount = pageInfo.getListCount();
+	// 	nowPage = pageInfo.getPage();
+	// 	int maxPage = pageInfo.getMaxPage();
+	// 	int startPage = pageInfo.getStartPage();
+	// 	int endPage = pageInfo.getEndPage();
+	// 	int limit = pageInfo.getLimit();
 
-// 	int number = 0;
-// 	number = listCount - (nowPage - 1) * (limit);
+	// 	int number = 0;
+	// 	number = listCount - (nowPage - 1) * (limit);
 %>
 
 <script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
-			location.href = "./BlogDeletePro.bl?num=" + num;
+			location.href = "./BlogCommentDeletePro.bl?num=" + num;
 		} else
 			alert("취소되었습니다.");
 		return false;
@@ -391,43 +391,46 @@
 
 
 				<div class="pt-5 mt-5">
+					<!-- 코멘트 i개 -->
 					<h3 class="mb-5">코멘트 1개</h3>
 					<%
-							// if (article2 != null && listCount > 0) { 
-								for (int i = 0; i < article2.size(); i++) {
- 						%> 
+						// if (articleList != null && listCount > 0) { 
+						for (int i = 0; i < articleList.size(); i++) {
+					%>
 					<ul class="comment-list">
 						<li class="comment">
 							<div class="vcard bio">
-								<img src="./images/person_1.png" alt="Image placeholder">
+								<img src="./images/person_2.png" alt="Image placeholder">
 							</div>
 
 							<div class="comment-body">
-								<!-- 								<input type="hidden" name="comment_blog_num" -->
-								<%-- 									value="<%=article2.get(i).getBlog_num() %>" id="comment_blog_num"> --%>
-								<h3><%=article2.get(i).getComment_writer() %></h3>
-								<div class="meta">June 27, 2018 at 2:21pm</div>
-								<p>내용</p>
+							<input type="hidden" name="comment_blog_num"
+								value="<%=articleList.get(i).getComment_num()%>" id="comment_blog_num">
+								
+								<h3>글쓴이</h3>
+								<div class="meta"><%=articleList.get(i).getComment_date()%></div>
+								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
+								<p><%=articleList.get(i).getComment_content()%></p>
 								<div
 									style='display: text-decoration; float: right; width: 1000px'>
 									<%
 										session.getAttribute("id");
-										if (id != null && id.equals("admin")) {
+											if (id != null && id.equals("admin")) {
 									%>
-									<a
-										href="BlogCommentDeletePro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
+									<a href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+										class="reply">Edit</a><a
+										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
 										class="reply"
-										onclick="delCmt(<%=article2.get(i).getComment_num() %>)">Delete</a>
+										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
 									%>
 									<a
-										href="BlogCommentModifyPro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
-										class="edit">Edit</a> <a
-										href="BlogCommentDeletePro.bl?blog_num=<%=article2.get(i).getComment_num() %>"
-										class="
-										delete"
-										onclick="delCmt(<%=article2.get(i).getComment_num() %>)">
+										href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+										class="reply">Edit</a> <a
+										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+										class="reply"
+										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
 										Delete</a>
 									<%
 										}
@@ -438,8 +441,8 @@
 						</li>
 					</ul>
 					<%
-					}
-				%>
+						}
+					%>
 					<!-- END comment-list -->
 
 
@@ -456,7 +459,7 @@
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name" name="name" value="<%=id %>">
+									class="form-control" id="name" name="name" value="<%=id%>">
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>
@@ -471,11 +474,11 @@
 					</div>
 					<%
 						} else if (id == null) {
-						
 					%><br>로그인 후 댓글 작성이 가능합니다.
-					<%}
-// 							}
-						 %>
+					<%
+						}
+						// 							}
+					%>
 				</div>
 			</div>
 		</div>

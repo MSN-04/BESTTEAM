@@ -54,6 +54,23 @@ public class BlogDetailService {
 		return blogBean;
 	}
 
+	public UserBean getUserInfo(String name) {
+		UserBean userBean = new UserBean();
+		
+		Connection con = getConnection();
+		BlogDAO blogDAO = BlogDAO.getInstance();
+		blogDAO.setConnection(con);
+		
+//		userBean = blogDAO.getUserInfo(name);
+		
+		if(userBean !=null && userBean.getUser_name().equals(name)) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		return userBean;
+	}
 	
 	// 댓글 목록 조회 후 리턴
 	public ArrayList<BlogCommentBean> getCommentList(int blog_num) throws Exception {
