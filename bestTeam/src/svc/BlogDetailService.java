@@ -6,13 +6,24 @@ import static db.JdbcUtil.getConnection;
 import static db.JdbcUtil.rollback;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import static db.JdbcUtil.*;
+import dao.BlogCommentDAO;
 import dao.BlogDAO;
+import dao.NoticeDAO;
+import dao.QnaDAO;
 import vo.BlogBean;
+import vo.BlogCommentBean;
+import vo.NoticeBean;
+import vo.UserBean;
 
 
 public class BlogDetailService {
 	
+	private static final BlogCommentBean BlogCommentBean = null;
+
+
 	// 글 번호(board_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
 	public BlogBean getArticle(int blog_num) throws Exception {
 //		System.out.println("BoardDetailService - getArticle()");
@@ -42,17 +53,45 @@ public class BlogDetailService {
 		
 		return blogBean;
 	}
+
+	public UserBean getUserInfo(String name) {
+		UserBean userBean = new UserBean();
+		
+		Connection con = getConnection();
+		BlogDAO blogDAO = BlogDAO.getInstance();
+		blogDAO.setConnection(con);
+		
+//		userBean = blogDAO.getUserInfo(name);
+		
+		if(userBean !=null && userBean.getUser_name().equals(name)) {
+			commit(con);
+		} else {
+			rollback(con);
+		}
+		
+		return userBean;
+	}
+	
+	// 댓글 목록 조회 후 리턴
+	public ArrayList<BlogCommentBean> getCommentList(int blog_num) throws Exception {
+		System.out.println("CommentListService - getArticleList()");
+		
+		ArrayList<BlogCommentBean> articleList = new ArrayList<BlogCommentBean>();
+		Connection con = getConnection();
+		
+		BlogCommentDAO blogCommentDAO = BlogCommentDAO.getInstance();
+		blogCommentDAO.setConnection(con);
+
+		articleList = blogCommentDAO.listComment(blog_num);
+
+		close(con);
+		
+		return articleList;
+		
+	}
+	
+
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

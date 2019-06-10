@@ -15,6 +15,7 @@ import action.QnaDetailAction;
 import action.QnaListAction;
 import action.QnaModifyFormAction;
 import action.QnaModifyProAction;
+import action.QnaReplyProAction;
 import action.QnaWriteFormAction;
 import action.QnaWriteProAction;
 import vo.ActionForward;
@@ -124,6 +125,14 @@ public class QnaFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/qnaDeletePro.qna")) {
 			action = new QnaDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/QnaReplyProAction.qna")) {
+			System.out.println("QnaFrontController");
+			action = new QnaReplyProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
