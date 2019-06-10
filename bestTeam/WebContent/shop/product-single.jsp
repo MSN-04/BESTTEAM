@@ -713,20 +713,8 @@ $( '#rere1' ).click(
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
 								</tr>
-								<div>댓글</div>
-								<tr>
-									<td><a data-toggle="collapse">번호</a></td>
-									<td><a data-toggle="collapse">내용 </a></td>
-									<td><a data-toggle="collapse">작성자</a></td>
-									<td><a data-toggle="collapse">작성일</a></td>
-									</tr>
-									
-								<tr>
-									<td><a data-toggle="collapse">번호</a></td>
-									<td><a data-toggle="collapse">제목 </a></td>
-									<td><a data-toggle="collapse">작성자</a></td>
-									<td><a data-toggle="collapse">작성일</a></td>								
-								</tr>
+								
+							
 								<%
 									}
 									}
