@@ -168,8 +168,8 @@
 		
 		$('#section-counter').waypoint( function( direction ) {
 
-			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-
+			if( direction == 'down' && !$(this.element).hasClass('ftco-animated') ) {
+				
 				var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
 				$('.number').each(function(){
 					var $this = $(this),
@@ -179,7 +179,7 @@
 					  {
 					    number: num,
 					    numberStep: comma_separator_number_step
-					  }, 7000
+					  }, 1000
 					);
 				});
 				

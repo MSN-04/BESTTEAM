@@ -22,7 +22,7 @@ public class UpdateMemberFormService {
 			userBean = userDAO.getUserInfo(id);
 			System.out.println("updateform 성공");
 		
-		
+		close(con);
 		return userBean;
 	}
 
