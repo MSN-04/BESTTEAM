@@ -11,8 +11,8 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
 	UserBean userbean = (UserBean) request.getAttribute("userBean");
-// 	String userName = userbean.getUser_name();
-	
+	// 	String userName = userbean.getUser_name();
+
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
 
@@ -20,7 +20,7 @@
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-// 		int listCount = pageInfo.getListCount();
+	// 		int listCount = pageInfo.getListCount();
 	// 	nowPage = pageInfo.getPage();
 	// 	int maxPage = pageInfo.getMaxPage();
 	// 	int startPage = pageInfo.getStartPage();
@@ -375,10 +375,15 @@
 					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
 				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
+				<%
+					} else {
+				%><a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
 				<%
 					}
-				%><br> <br>
-
+				%>
 				<!-- <---------------- 태그클라우드 --------------->
 				<div class="tag-widget post-tag-container mb-5 mt-5">
 					<div class="tagcloud">
@@ -404,9 +409,10 @@
 							</div>
 
 							<div class="comment-body">
-							<input type="hidden" name="comment_blog_num"
-								value="<%=articleList.get(i).getComment_num()%>" id="comment_blog_num">
-								
+								<input type="hidden" name="comment_blog_num"
+									value="<%=articleList.get(i).getComment_num()%>"
+									id="comment_blog_num">
+
 								<h3>글쓴이</h3>
 								<div class="meta"><%=articleList.get(i).getComment_date()%></div>
 								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
@@ -417,11 +423,16 @@
 										session.getAttribute("id");
 											if (id != null && id.equals("admin")) {
 									%>
-									<a href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+									
+									<input type="text" id="comment_modify" name="comment_modify"
+										style="width: 70%;" />
+									<a
+										href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
 										class="reply">Edit</a><a
 										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
 										class="reply"
 										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
+
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
 									%>
