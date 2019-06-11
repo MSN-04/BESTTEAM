@@ -141,7 +141,7 @@
                   
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
-                     <td class="product-num"><a href="confirmCheckoutPro.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">
+                     <td class="product-num"><a href="confirmCheckout.sh?buy_num=<%=buyList.get(i).getBuy_num() %>">
                      <%=buyList.get(i).getBuy_num() %>
                      </a></td>
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
