@@ -97,15 +97,15 @@ public class BuyDAO {
 	
 	public int insertBuyItem (ArrayList<BuyItemBean> itemList) {
 		int isinsertBuyItemSuccess = 0;
-		int num = 0;
+//		int num = 0;
 		try {
-			sql = "select max(buy_item_num) from buy_item";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				num = rs.getInt(1) + 1;
-			}
+//			sql = "select max(buy_item_num) from buy_item";
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			if (rs.next()) {
+//				num = rs.getInt(1) + 1;
+//			}
 			
 			sql = "insert into buy_item(buy_item_buy_num,buy_item_name,buy_item_price,buy_item_count,buy_item_img,buy_item_item_num) values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
@@ -123,6 +123,7 @@ public class BuyDAO {
 				}
 			}
 			
+			updateItemSold(itemList); // 아이템 판매한 거 업데이트하기
 			
 		} catch (SQLException e) {
 			System.out.println("insertBuyItem 실패! ( " + e.getMessage() + " )");
@@ -134,6 +135,37 @@ public class BuyDAO {
 		return isinsertBuyItemSuccess;
 	}
 
+	public void updateItemSold (ArrayList<BuyItemBean> itemList) {
+		try {
+			// 판매량 더해주기
+			sql = "update item set item_sold = item_sold + ? where item_num = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			for (int i = 0 ; i < itemList.size() ; i++) {
+				pstmt.setInt(1, itemList.get(i).getItem_count());
+				pstmt.setInt(2, itemList.get(i).getItem_num());
+				pstmt.executeUpdate();
+			}
+			
+			// 재고 뺴기
+			sql = "update item set item_amount = item_amount - ? where item_num = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			for (int i = 0 ; i < itemList.size() ; i++) {
+				pstmt.setInt(1, itemList.get(i).getItem_count());
+				pstmt.setInt(2, itemList.get(i).getItem_num());
+				pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("updateItemSold 실패! ( " + e.getMessage() + " )");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+	}
+	
+	
 	public ArrayList<CartBean> getCartList(String id) {
 		ArrayList<CartBean> cartList = new ArrayList<>();
 		CartBean cartBean = null;

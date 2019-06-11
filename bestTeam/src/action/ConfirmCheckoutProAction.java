@@ -45,7 +45,7 @@ public class ConfirmCheckoutProAction implements Action {
 		
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("./shop/confirm_checkout.jsp");
+		forward.setPath("./confirmCheckoutList.sh");
 		return forward;
 	}
 
