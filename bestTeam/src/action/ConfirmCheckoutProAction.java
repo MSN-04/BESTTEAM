@@ -26,7 +26,7 @@ public class ConfirmCheckoutProAction implements Action {
 	
 		ArrayList<BuyItemBean> orderInfoList=new ArrayList<BuyItemBean>();
 		ArrayList<BuyBean> orderPersonList=new ArrayList<BuyBean>();
-		int buy_num=(Integer)request.getAttribute("buy_num");
+		int buy_num=Integer.parseInt(request.getParameter("buy_num"));
 		
 //		session.setAttribute("buy_num", buyBean.getBuy_num());
 //		int buy_num=(int) session.getAttribute("buy_num");  

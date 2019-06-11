@@ -115,7 +115,7 @@ public class ShopFrontController extends HttpServlet{
 		}
 		
 		// 영비
-		else if(command.equals("/confirmCheckoutListProAction.sh")) {
+		else if(command.equals("/confirmCheckoutList.sh")) {
 			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
 				action = new ConfirmCheckoutListProAction();
 			
@@ -123,7 +123,7 @@ public class ShopFrontController extends HttpServlet{
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("controller-confirmCheckoutListPro 실패"+ e.getMessage());
+				System.out.println("controller-confirmCheckoutList 실패"+ e.getMessage());
 		        System.out.println("controller- 에러:"+e);
 			}
 		} 
@@ -135,15 +135,15 @@ public class ShopFrontController extends HttpServlet{
 		} 
 		
 		// 영비
-		else if(command.equals("/confirmCheckoutProAction.sh")) {
-			 System.out.println("itemFrontController --> confirmCheckoutProAction.sh");
+		else if(command.equals("/confirmCheckout.sh")) {
+			 System.out.println("itemFrontController --> confirmCheckout.sh");
 		      
 		      action = (Action) new ConfirmCheckoutProAction();
 		      
 		      try {
 		        forward = action.execute(request, response);
 		      } catch (Exception e) {
-		        System.out.println("controller-confirmCheckoutProAction 실패"+ e.getMessage());
+		        System.out.println("controller-confirmCheckout 실패"+ e.getMessage());
 		        System.out.println("controller- 에러:"+e);
 		        
 		      }

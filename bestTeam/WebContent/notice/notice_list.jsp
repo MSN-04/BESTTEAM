@@ -181,24 +181,24 @@
 		</div>
 	</section>
 
-	<section class="ftco-section">
-		       <div class="row d-flex">
-			<div class="col text-center">
-					<div class="col-md-4 d-flex ftco-animate">
-						<div class="blog-entry align-self-stretch">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<div class="icon">
-									<span class="icon-search"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Search...">
-							</div>
-						</form>
-					</div>
-					</div>
-			</div>
-		</div>
-	</section>
+<!-- 	<section class="ftco-section"> -->
+<!-- 		       <div class="row d-flex"> -->
+<!-- 			<div class="col text-center"> -->
+<!-- 					<div class="col-md-4 d-flex ftco-animate"> -->
+<!-- 						<div class="blog-entry align-self-stretch"> -->
+<!-- 						<form action="#" class="search-form"> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<div class="icon"> -->
+<!-- 									<span class="icon-search"></span> -->
+<!-- 								</div> -->
+<!-- 								<input type="text" class="form-control" placeholder="Search..."> -->
+<!-- 							</div> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+<!-- 					</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
 
 <!-- 	    <section class="ftco-section"> -->
 <!-- 	      <div class="container"> -->

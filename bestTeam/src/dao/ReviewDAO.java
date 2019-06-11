@@ -204,15 +204,15 @@ public class ReviewDAO {
 	
 	
 	// 게시물 조회수 업데이트 => 기존 readcount 값을 1 증가시킨 후 결과값을 리턴
-	public int updateReadcount(int blog_num) {
+	public int updateReadcount(int review_num) {
 		int updateCount = 0;
 		
 		// board_num 에 해당하는 레코드의 board_readcount 값을 1 증가시키기
-		String sql = "UPDATE blog SET blog_readcount=blog_readcount+1 WHERE blog_num=?";
+		String sql = "UPDATE REVIEW SET review_readcount=review_readcount+1 WHERE review_num=?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, blog_num);
+			pstmt.setInt(1, review_num);
 			updateCount = pstmt.executeUpdate();
 //			System.out.println(updateCount);
 		} catch (SQLException e) {
@@ -223,6 +223,7 @@ public class ReviewDAO {
 		
 		return updateCount;
 	}
+	
 	
 	
 	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
