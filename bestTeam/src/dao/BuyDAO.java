@@ -97,15 +97,15 @@ public class BuyDAO {
 	
 	public int insertBuyItem (ArrayList<BuyItemBean> itemList) {
 		int isinsertBuyItemSuccess = 0;
-		int num = 0;
+//		int num = 0;
 		try {
-			sql = "select max(buy_item_num) from buy_item";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				num = rs.getInt(1) + 1;
-			}
+//			sql = "select max(buy_item_num) from buy_item";
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			if (rs.next()) {
+//				num = rs.getInt(1) + 1;
+//			}
 			
 			sql = "insert into buy_item(buy_item_buy_num,buy_item_name,buy_item_price,buy_item_count,buy_item_img,buy_item_item_num) values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
@@ -123,6 +123,7 @@ public class BuyDAO {
 				}
 			}
 			
+			updateItemSold(itemList); // 아이템 판매한 거 업데이트하기
 			
 		} catch (SQLException e) {
 			System.out.println("insertBuyItem 실패! ( " + e.getMessage() + " )");
@@ -134,6 +135,37 @@ public class BuyDAO {
 		return isinsertBuyItemSuccess;
 	}
 
+	public void updateItemSold (ArrayList<BuyItemBean> itemList) {
+		try {
+			// 판매량 더해주기
+			sql = "update item set item_sold = item_sold + ? where item_num = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			for (int i = 0 ; i < itemList.size() ; i++) {
+				pstmt.setInt(1, itemList.get(i).getItem_count());
+				pstmt.setInt(2, itemList.get(i).getItem_num());
+				pstmt.executeUpdate();
+			}
+			
+			// 재고 뺴기
+			sql = "update item set item_amount = item_amount - ? where item_num = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			for (int i = 0 ; i < itemList.size() ; i++) {
+				pstmt.setInt(1, itemList.get(i).getItem_count());
+				pstmt.setInt(2, itemList.get(i).getItem_num());
+				pstmt.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("updateItemSold 실패! ( " + e.getMessage() + " )");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+	}
+	
+	
 	public ArrayList<CartBean> getCartList(String id) {
 		ArrayList<CartBean> cartList = new ArrayList<>();
 		CartBean cartBean = null;
@@ -495,15 +527,17 @@ public class BuyDAO {
 			String sql="select * from buy_item where buy_item_buy_num=?"; 
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,buy_num);
-			rs=pstmt.executeQuery();			
+			rs = pstmt.executeQuery();			
 		
+			while (rs.next()) {
 				BuyItemBean buyItemBean=new BuyItemBean();
-				buyItemBean.setItem_buy_num(rs.getInt("item_buy_num"));
-				buyItemBean.setItem_count(rs.getInt("item_count"));
-				buyItemBean.setItem_img(rs.getString("item_img"));
-				buyItemBean.setItem_name(rs.getString("item_name"));
-				buyItemBean.setItem_price(rs.getInt("item_price"));
+				buyItemBean.setItem_buy_num(rs.getInt("buy_item_buy_num"));
+				buyItemBean.setItem_count(rs.getInt("buy_item_count"));
+				buyItemBean.setItem_img(rs.getString("buy_item_img"));
+				buyItemBean.setItem_name(rs.getString("buy_item_name"));
+				buyItemBean.setItem_price(rs.getInt("buy_item_price"));
 				orderInfoList.add(buyItemBean);
+			}
 			
 			
 		}catch(SQLException e) {
@@ -531,7 +565,7 @@ public class BuyDAO {
 			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 			
-		
+			while(rs.next()) {
 				BuyBean buyBean=new BuyBean();
 				buyBean.setBuy_address(rs.getString("buy_address"));
 				buyBean.setBuy_post(rs.getString("buy_post"));
@@ -539,7 +573,7 @@ public class BuyDAO {
 				buyBean.setBuy_phone(rs.getString("buy_phone"));
 				buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
 				orderPersonList.add(buyBean);
-			
+			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

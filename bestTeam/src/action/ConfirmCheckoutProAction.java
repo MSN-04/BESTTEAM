@@ -21,13 +21,13 @@ public class ConfirmCheckoutProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("ConfirmCheckoutListProAction 시작");
+		System.out.println("ConfirmCheckoutProAction 시작");
 		ActionForward forward=new ActionForward();
 	
 		ArrayList<BuyItemBean> orderInfoList=new ArrayList<BuyItemBean>();
 		ArrayList<BuyBean> orderPersonList=new ArrayList<BuyBean>();
 		int buy_num=Integer.parseInt(request.getParameter("buy_num"));
-		
+
 //		session.setAttribute("buy_num", buyBean.getBuy_num());
 //		int buy_num=(int) session.getAttribute("buy_num");  
 //		int buy_num=buyBean.getBuy_num();     
@@ -64,7 +64,7 @@ public class ConfirmCheckoutProAction implements Action {
 		
 		request.setAttribute("orderInfoList", orderInfoList);
 		request.setAttribute("orderPersonList",orderPersonList);  //buyList에 서비스에서 가져온걸 저장.
-		forward.setPath("./confirm_checkout.sh");
+		forward.setPath("./shop/confirm_checkout.jsp");
 	//	forward.setRedirect(true); // Redirect 방식
 				
 		}
