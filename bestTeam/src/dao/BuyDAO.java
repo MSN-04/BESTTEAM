@@ -61,7 +61,8 @@ public class BuyDAO {
 				count = rs.getInt(1);
 			}
 			
-			sql = "insert into buy(buy_num,buy_user_id,buy_address,buy_phone,buy_phone2,buy_shipnum,buy_post,buy_name,buy_buydate,buy_total,buy_email,buy_count) values("+num+",?,?,?,?,?,?,?,?,?,?,"+count+")";
+			sql = "insert into buy(buy_num,buy_user_id,buy_address,buy_phone,buy_phone2,buy_shipnum,buy_post,buy_name,buy_buydate,buy_total,buy_email,buy_count,buy_ordernum) "
+					+ "values("+num+",?,?,?,?,?,?,?,?,?,?,"+count+",?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id); // id
 			pstmt.setString(2, buyBean.getBuy_address()); // address
@@ -73,6 +74,7 @@ public class BuyDAO {
 			pstmt.setDate(8, buyBean.getBuy_buydate()); // buydate
 			pstmt.setInt(9, buyBean.getBuy_total()); // total
 			pstmt.setString(10, buyBean.getBuy_email()); // email
+			pstmt.setString(11, buyBean.getBuy_ordernum()); // ordernum
 			
 			if (pstmt.executeUpdate() > 0) {
 				itemList = getCartItem(id, num); // 카트내용 가져오기
