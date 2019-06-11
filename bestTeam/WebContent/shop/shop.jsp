@@ -329,11 +329,6 @@
 									</div>
 									<div class="shop-subcategory text text-center mb-5">
 									 	<a>여기에 추천상품...</a>
-<!-- 										<a href="#" class="ss-1"> 뭐를 </a> /  -->
-<!-- 										<a href="#" class="ss-1">넣으면 </a> /  -->
-<!-- 										<a href="#" class="ss-1"> 좋을까 </a> /  -->
-<!-- 										<a href="#" class="ss-1"> 생각중 </a> /  -->
-<!-- 										<a href="#" class="ss-1"> 입니다 </a> -->
 									</div>
 
 
@@ -375,11 +370,6 @@
 														<p class="price">
 															<span><%=itemList.get(i).getItem_price() %>원</span>
 														</p>
-<!-- 														<p> -->
-<!-- 															<a href="cart.html" -->
-<!-- 																class="btn btn-primary btn-outline-primary">Add to -->
-<!-- 																Cart</a> -->
-<!-- 														</p> -->
 													</div>
 												</div>
 											</div>
