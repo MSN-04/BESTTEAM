@@ -178,7 +178,7 @@
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원
 									탈퇴</a>
 									
-									<a href="confirmCheckoutListProAction.sh"
+									<a href="confirmCheckoutList.sh"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회
 								</a>
 								
