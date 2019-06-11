@@ -65,14 +65,16 @@
   <%
 	  ArrayList<BuyItemBean> orderInfoList = (ArrayList<BuyItemBean>) request.getAttribute("orderInfoList");
 	  ArrayList<BuyBean> orderPersonList = (ArrayList<BuyBean>) request.getAttribute("orderPersonList");
+
 	//  PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
    // int listCount = pageInfo.getListCount();
 	int buy_num = Integer.parseInt(request.getParameter("buy_num")); 
 	//out.println("buy_num:"+buy_num);
 //	out.print("orderPersonList.get(0)-->"+orderPersonList.get(0).getBuy_address());
-	
-	
+
+	  PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+
   %>
   
   <header>
@@ -84,7 +86,8 @@
   	
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+<!--       <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">  -->
+       <div class="slider-item" data-stellar-background-ratio="0.5"> 
       	<div class="overlay"  style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -97,7 +100,7 @@
 
           </div>
         </div>
-      </div>
+       </div>
     </section>
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
@@ -138,14 +141,15 @@
 								for (int i = 0; i < orderInfoList.size(); i++) {
 								//	int buy_num=buyList.get(i).getBuy_num();
 								//System.out.println("orderInfoList.size():"+orderInfoList.size());
-								
 						%>
                 
 
                   <tr class="text-center">
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
+
                      <td class="product-num"><%=i +1%></td>
                     <td class="image-prod"><div class="img" style="background-image:url('./itemUpload/<%=orderInfoList.get(i).getItem_img() %>')"></div></td>
+
                     
                     <td class="product-name">
                       <h3><%=orderInfoList.get(i).getItem_name() %></h3></td>
@@ -156,6 +160,7 @@
                     
                     <td class="total"><%=orderInfoList.get(i).getItem_price()*orderInfoList.get(i).getItem_count() %></td>
                   </tr>
+
                    <%
                    	}
 								}
@@ -164,6 +169,11 @@
                   
 <!--                   <tr class="text-center"> -->
 <!--                      <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
+                  
+<!--                   <tr class="text-center"> -->
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
 <!--                      <td class="product-num"><a href="#">2</a></td> -->
 <!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
                     
@@ -179,7 +189,11 @@
 <!--                   </tr>END TR -->
  
 <!--                   <tr class="text-center"> -->
+
 <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
 <!--                      <td class="product-num"><a href="#">3</a></td> -->
 <!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
                     
@@ -193,8 +207,11 @@
                     
 <!--                     <td class="total">10,000원</td> -->
 <!--                   </tr>END TR -->
-                  
+
 <!--                      <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
+<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
+
 <!--                      <td class="product-num"><a href="#">4</a></td> -->
 <!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
                     
@@ -245,7 +262,10 @@
 		            <div class="form-group">
 		              	<table>
 		            		<tr> <td width="100px"><label for="firstname">주문번호</label></td>
+
 		            			 <td><label><span><%=orderPersonList.get(0).getBuy_ordernum() %></span></label></td> </tr>
+
+
 		            	</table>
 		            </div>
                 </div>	  
