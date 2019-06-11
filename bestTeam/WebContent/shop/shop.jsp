@@ -344,7 +344,7 @@
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
 										%>
-											<div class="col-md-3" style="margin-bottom: 45px;" onmouseover="this.style.padding='1rem'; this.style.border='1px solid #c49b63';" onmouseout="this.style.padding='0 15px'; this.style.border='0px';">
+											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';">
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>

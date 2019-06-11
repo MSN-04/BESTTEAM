@@ -538,6 +538,7 @@
 										    merchant_uid: "<%=orderNum %>",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
 										    name: "<%=orderName %>",	// 주문명
 										    amount: <%=orderPrice %>,	// 결제 금액
+// 										    amount: 100,	// 결제 금액
 										    buyer_email: $('#Email').val(),	// 구매자 email
 										    buyer_name: $('#name').val(),	// 구매자 이름
 										    buyer_tel: $('#phone').val(),	// 구매자 전화번호
