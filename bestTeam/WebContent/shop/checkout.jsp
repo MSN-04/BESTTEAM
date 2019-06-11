@@ -95,7 +95,7 @@
 		    padding: 15px 10px !important;
 		}
     </style>
-    
+
   </head>
   
   <body>
@@ -487,11 +487,10 @@
 				
 				// 주문번호 생성 : yyyymmdd-HHmmss
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
-				
+
 				Calendar cal = Calendar.getInstance();
-				
+
 				String orderNum = dateFormat.format(cal.getTime());
-				
 				System.out.println("주문번호 : "+ orderNum);
 				
 				// 주문명 생성 : A상품 외 n개
@@ -509,6 +508,7 @@
 
 				<script type="text/javascript">
 						
+
 							function checkout() {
 								
 								// 1. 구매동의 체크 여부 확인
@@ -516,6 +516,7 @@
 									var check = confirm("구매진행에 동의해주세요");
 									
 								} else {
+
 									<% System.out.println("구매진행 동의함"); %>
 
 								    // 2. 결제방법에 체크한 라디오의 value 값 가져오기 
@@ -538,6 +539,7 @@
 									
 									// 3. 결제 API 진행
 									if(a){
+
 										//===== 결제 API 연동 2
 										var IMP = window.IMP; // 생략해도 괜찮습니다.
 										IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
@@ -548,9 +550,10 @@
 										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
 										    pg: "html5_inicis",		// 결제방식
 										    pay_method: payMethod,		// 결제수단
-										    merchant_uid: <%=orderNum %>,	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
-										    name: <%=orderName %>,	// 주문명
+										    merchant_uid: "<%=orderNum %>",	// * 주문번호, (필수항목) 결제가 된 적이 있는 merchant_uid로는 재결제 불가
+										    name: "<%=orderName %>",	// 주문명
 										    amount: <%=orderPrice %>,	// 결제 금액
+// 										    amount: 100,	// 결제 금액
 										    buyer_email: $('#Email').val(),	// 구매자 email
 										    buyer_name: $('#name').val(),	// 구매자 이름
 										    buyer_tel: $('#phone').val(),	// 구매자 전화번호
@@ -565,13 +568,6 @@
 										*/
 										}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
 											    if (rsp.success) { 
-// 											    	// 결제 성공 시
-// 											    	alert("결제 성공");
-														
-													})	
-													
-													
-											    	// jQuery.ajax 로 HTTP 요청
 													$.ajax({
 											        	url: "checkoutPro.sh", // 가맹점 서버
 											            method: "get",
@@ -613,14 +609,16 @@
 											조회한 정보들을 통해 결제 위변조 여부를 검증하고, 서비스의 데이터베이스에 저장할 수 있습니다.
 										*/
 										});
+										
 									}else{
 										history.back();
 									}
+								
+								    
 								}
 							}
 						</script>
           </div> <!-- .col-md-8 -->
-		
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 

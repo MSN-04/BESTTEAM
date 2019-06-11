@@ -13,6 +13,7 @@ public class BuyBean {
 	private String buy_shipnum;
 	private String buy_post;
 	private String buy_email;
+	private String buy_ordernum;
 	private int buy_total;
 	private int buy_count;
  
@@ -21,7 +22,7 @@ public class BuyBean {
 	
 
 	public BuyBean(String buy_user_id, String buy_name, String buy_address, String buy_phone, String buy_phone2,
-			Date buy_buydate, String buy_shipnum, String buy_post, String buy_email, int buy_total) {
+			Date buy_buydate, String buy_shipnum, String buy_post, String buy_email, int buy_total, String buy_ordernum) {
 		this.buy_user_id = buy_user_id;
 		this.buy_name = buy_name;
 		this.buy_address = buy_address;
@@ -32,9 +33,18 @@ public class BuyBean {
 		this.buy_post = buy_post;
 		this.buy_email = buy_email;
 		this.buy_total = buy_total;
+		this.buy_ordernum = buy_ordernum;
 	}
 
 	
+
+	public String getBuy_ordernum() {
+		return buy_ordernum;
+	}
+
+	public void setBuy_ordernum(String buy_ordernum) {
+		this.buy_ordernum = buy_ordernum;
+	}
 
 	public int getBuy_count() {
 		return buy_count;

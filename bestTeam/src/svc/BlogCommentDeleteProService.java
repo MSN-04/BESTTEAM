@@ -30,7 +30,7 @@ public class BlogCommentDeleteProService {
 		}
 		close(con);
 		
-		return isRemoveSuccess;
+		return isRemoveSuccess;   
 	}
 
 }

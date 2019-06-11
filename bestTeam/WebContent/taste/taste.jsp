@@ -36,26 +36,13 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
 <link rel="stylesheet" href="./css/agency.min.css">
-<script type="text/javascript">
-// $(document).ready(function() {
-// 	$('input[name="COFFEE_AROMA"]').change(function() {
-// 	    var checked = $(this).prop('checked');  // checked 상태 (true, false)
-// 	    var currentPage = $('section.taste-01');
-// 	    var $nextTaste = $('section.taste-02');            // find a label element
-	 
-// 	    if(checked){
-// 	    	$currentPage.css('opacity', '0');
-// 	    	$nextTaste.css('opacity', '1');     
-// 	    	location.href='#taste-02';
-// 	    }else{
-// 	    	$nextTaste.css('opacity', '0');    
-// 	    }
-// 	});
-
-// }
-
-</script>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+<style type="text/css">
+.taste {
+  scroll-behavior: smooth;
+}
+</style>
 
 
 </head>
@@ -88,6 +75,7 @@
 	<div id="aroma-1">
         <div class="row">
             <div class="col-lg-12 text-center">
+            <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Aroma</h2>
                 <h3 class="section-subheading text-muted">커피추출시 발산되는 가스, 커피향기를 의미합니다</h3>
             </div>
@@ -95,7 +83,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste1_1.png" alt=""></a>
+                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste1_1.png" alt=""></a>
                     <h4>향 1</h4>
                  
                     
@@ -103,35 +91,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste1_2.png" alt=""></a>
+                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste1_2.png" alt=""></a>
                     <h4>향 2</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste1_3.png" alt=""></a>
+                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste1_3.png" alt=""></a>
                     <h4>향 3</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste1_4.png" alt=""></a>
+                  <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste1_4.png" alt=""></a>
                     <h4>향 4</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste1_5.png" alt=""></a>
+                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste1_5.png" alt=""></a>
                     <h4>향 5</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-02" onclick="document.frm.COFFEE_AROMA.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -154,6 +142,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
+            <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Acidity</h2>
                 <h3 class="section-subheading text-muted">커피추출시 발산되는 가스, 커피향기를 의미합니다</h3>
             </div>
@@ -161,7 +150,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste2_1.png" alt=""></a>
+                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste2_1.png" alt=""></a>
                     <h4>신맛 없음</h4>
                  
                     
@@ -169,35 +158,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste2_2.png" alt=""></a>
+                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste2_2.png" alt=""></a>
                     <h4>약한 신맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste2_3.png" alt=""></a>
+                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste2_3.png" alt=""></a>
                     <h4>중간 신맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste2_4.png" alt=""></a>
+                  <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste2_4.png" alt=""></a>
                     <h4>강한 신맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste2_5.png" alt=""></a>
+                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste2_5.png" alt=""></a>
                     <h4>식초</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-03" onclick="document.frm.COFFEE_ACID.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -218,6 +207,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
+            <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Sweetness</h2>
                 <h3 class="section-subheading text-muted">원두의 달달한 맛을 의미합니다</h3>
             </div>
@@ -225,7 +215,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste3_1.png" alt=""></a>
+                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste3_1.png" alt=""></a>
                     <h4>단맛 없음</h4>
                  
                     
@@ -233,35 +223,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste3_2.png" alt=""></a>
+                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste3_2.png" alt=""></a>
                     <h4>약한 단맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste3_3.png" alt=""></a>
+                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste3_3.png" alt=""></a>
                     <h4>중간 단맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste3_4.png" alt=""></a>
+                  <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste3_4.png" alt=""></a>
                     <h4>강한 단맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste3_5.png" alt=""></a>
+                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste3_5.png" alt=""></a>
                     <h4> 설탕 </h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-04" onclick="document.frm.COFFEE_SWEET.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -282,6 +272,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
+            <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Bitterness</h2>
                 <h3 class="section-subheading text-muted">원두의 약간 쓰거나 불맛나는 향을 의미합니다</h3>
             </div>
@@ -289,7 +280,7 @@
         <div class="row">
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste4_1.png" alt=""></a>
+                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 1;"><img class="mx-auto rounded-circle" src="./images/taste4_1.png" alt=""></a>
                     <h4>쓴맛 없음</h4>
                  
                     
@@ -297,35 +288,35 @@
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste4_2.png" alt=""></a>
+                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 2;"><img class="mx-auto rounded-circle" src="./images/taste4_2.png" alt=""></a>
                     <h4>약한 쓴맛</h4>
                     
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste4_3.png" alt=""></a>
+                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 3;"><img class="mx-auto rounded-circle" src="./images/taste4_3.png" alt=""></a>
                     <h4>중간 쓴맛</h4>
                   
                 </div>
             </div>
             <div class="col-sm-400">
                 <div class="team-member0">
-                  <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste4_4.png" alt=""></a>
+                  <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 4;"><img class="mx-auto rounded-circle" src="./images/taste4_4.png" alt=""></a>
                     <h4>강한 쓴맛</h4>
                   
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste4_5.png" alt=""></a>
+                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste4_5.png" alt=""></a>
                     <h4>매우 강한 쓴맛</h4>
                     
                 </div>
             </div>
              <div class="col-sm-400">
                 <div class="team-member0">
-                    <a href="#taste-05" onclick="document.frm.COFFEE_BITTER.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
+                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
                     <h4>선택안함</h4>
                   
                 </div>
@@ -346,6 +337,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
+            <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Body / Texture</h2>
                 <h3 class="section-subheading text-muted">커피를 머금었을때 느껴지는 밀도와 무게감을 뜻합니다</h3>
             </div>

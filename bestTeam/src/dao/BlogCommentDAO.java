@@ -93,14 +93,14 @@ public class BlogCommentDAO {
 			}
 			
 	// 댓글 수정 메소드
-	public int updateComment(BlogCommentBean commentBean) {
+	public int updateComment(BlogCommentBean blogCommentBean) {
 		int updateCount = 0;
 
 		String sql = "UPDATE comment_blog SET comment_content=? WHERE comment_num=?";
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, commentBean.getComment_content());
-			pstmt.setInt(2, commentBean.getComment_num());
+			pstmt.setString(1, blogCommentBean.getComment_content());
+			pstmt.setInt(2, blogCommentBean.getComment_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -147,23 +147,23 @@ public class BlogCommentDAO {
 	// 댓글 목록 가져오기
 	public ArrayList<BlogCommentBean> listComment(int blog_num) throws SQLException {
 		ArrayList<BlogCommentBean> articleList = new ArrayList<>();
-		String sql = "SELECT * FROM blog_comment WHERE comment_blog_num=? ORDER BY comment_num ASC";
+		String sql = "SELECT comment_content,comment_writer,DATE_FORMAT('2017-05-04 20:23:01', '%Y.%m.%d.'),comment_date FROM blog_comment WHERE comment_blog_num=? ORDER BY comment_num ASC";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, blog_num);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
 			BlogCommentBean commentBean = new BlogCommentBean();
-			commentBean.setComment_num(rs.getInt("comment_num"));
+//			commentBean.setComment_num(rs.getInt("comment_num"));
 			commentBean.setComment_content(rs.getString("comment_content"));
 			commentBean.setComment_writer(rs.getString("comment_writer"));
 			commentBean.setComment_date(rs.getDate("comment_date"));
-			commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
+//			commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
 			articleList.add(commentBean);
 		}
 		close(pstmt);
 		return articleList;
 	}
-
+	
 	// 댓글 목록 갯수 구하기
 	public int selectListCount() {
 		System.out.println("selectListCount()");
