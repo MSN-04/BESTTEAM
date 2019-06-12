@@ -379,7 +379,7 @@
                 <div class="col-md-12">
                 	<div class="form-group mt-4">
 						<div class="radio" style="text-align: right;">
-							<label class="mr-3"><input type="checkbox" name="optradio" onclick="function()"> <span>다른 배송정보 입력</span> </label>
+						    <p onclick="reset()"><a class="btn btn-best py-3 px-4" >새로 입력</a></p>
 						</div>
 
 					</div>
@@ -387,6 +387,19 @@
 	          
 	          </div>
 	          </div><!-- END -->
+	          
+	          <script type="text/javascript">
+		          function reset() {
+		        	  $('#name').val("성함을 입력해주세요");
+		        	  $('#phone').val("배송시 연락받을 번호를 입력해주세요");
+		        	  $('#phone2').val("(선택항목)");
+		        	  $('#postcode').val("우편번호를 검색해주세요");
+		        	  $('#address').val("우편번호 검색시 주소를 선택할 수 있습니다");
+		        	  $('#detailAddress').val("상세주소를 입력해주세요");
+		        	  $('#Email').val("(선택항목)");
+				  }
+	          
+	          </script>
 
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
@@ -474,7 +487,9 @@
 				
 				// 주문번호 생성 : yyyymmdd-HHmmss
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd-HHmmss");
+
 				Calendar cal = Calendar.getInstance();
+
 				String orderNum = dateFormat.format(cal.getTime());
 				System.out.println("주문번호 : "+ orderNum);
 				

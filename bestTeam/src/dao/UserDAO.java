@@ -7,13 +7,15 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
+
 import static db.JdbcUtil.*;
 import vo.UserBean;
 
 public class UserDAO {
 	
 	private Connection con;
-	private PreparedStatement pstmt =null;
+	private PreparedStatement pstmt;
 	private ResultSet rs;
 
 	private UserDAO() {}
@@ -342,6 +344,72 @@ public class UserDAO {
 		
 		return re;
 	}
+
+	public int allUserCount() {
+
+		int listCount = 0;
+		
+		String sql = "SELECT count(*) FROM qna";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				listCount = rs.getInt(1); 
+			}
+
+		} catch (SQLException e) {
+			System.out.println("allUserListCount() 실패! : " + e.getMessage());
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return listCount;
+	}
+	
+	public ArrayList<UserBean> getAllUserList(int page, int limit) {
+		ArrayList<UserBean> articleList = new ArrayList<UserBean>();
+		UserBean userBean = null;
+
+		int startRow = (page - 1) * 10; 
+
+		String sql = "SELECT * FROM user ORDER BY user_num desc limit ?, ?";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, limit);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				userBean = new UserBean();
+
+				userBean.setUser_num(rs.getInt("user_num"));
+				userBean.setUser_id(rs.getString("user_id"));
+				userBean.setUser_pass(rs.getString("user_pass"));
+				userBean.setUser_name(rs.getString("user_name"));
+				userBean.setUser_age(rs.getString("user_age"));
+				userBean.setUser_gender(rs.getString("user_gender"));
+				userBean.setUser_address(rs.getString("user_address"));
+				userBean.setUser_phone(rs.getString("user_phone"));
+				userBean.setUser_email(rs.getString("user_email"));
+				userBean.setUser_post(rs.getString("user_post"));
+				articleList.add(userBean); 
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return articleList;
+	}
+
+
 	
 	
 }

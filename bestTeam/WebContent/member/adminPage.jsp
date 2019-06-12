@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.Rserve_C"%>
 <%@page import="vo.FavorBean"%>
@@ -8,16 +9,17 @@
 	
 	<%
 	String id = session.getAttribute("id").toString();
-	Rserve_C rc = new Rserve_C();
-	String s = rc.returnRClass();
-	System.out.println(s);
+// 	Rserve_C rc = (Rserve_C)session.getAttribute("rs");
+// 	String s = rc.returnRClass();
+// 	System.out.println(s);
 	
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	int listCount = 0;
-	int nowPage = 0;
-	int maxPage = 0;
-	int startPage = 0;
-	int endPage = 0;
+	ArrayList<UserBean> allUserList = (ArrayList<UserBean>)request.getAttribute("allUserList");
+	PageInfo adminPageInfo = (PageInfo)request.getAttribute("adminPageInfo");
+	int listCount = adminPageInfo.getListCount();
+	int nowPage = adminPageInfo.getPage();
+	int maxPage = adminPageInfo.getMaxPage();
+	int startPage = adminPageInfo.getStartPage();
+	int endPage = adminPageInfo.getEndPage();
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +57,38 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+
+<script type="text/javascript">
+// function getParams (kind, val) {
+	
+// 	var params = location.search.substr(location.search.indexOf("?") + 1);
+// 	var QuestionIndex = location.href.indexOf("?");
+// 	var url = "";
+	
+// 	if (QuestionIndex == -1 ) {
+// 		url = location.href.substring();
+// 	} else {
+// 		url = location.href.substring(0, QuestionIndex);
+// 	} 
+	
+// 	var param = "";
+// 	var paramUrl = "?";
+	
+// 	params = params.split("&");
+// 	for (var i = 0 ; i < params.length ; i++) {
+// 		param = params[i].split("=");
+// 		if (param[0] != kind && param[0] != "") {
+// 			paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
+// 		} else {
+// 			continue;
+// 		}
+// 	}
+	
+// 	paramUrl = paramUrl + kind + '=' + val;
+// 	location.href = url + paramUrl;
+// }
+</script>
+
 </head>
 <body>
 	<header>
@@ -133,21 +167,27 @@
                   </tr>
                 </thead>
                 <tbody>
-
+                <%	
+                	if(allUserList != null && listCount > 0) {
+	                	for(int i = 0; i < allUserList.size(); i++){
+	            %>    		
+	                		
                   <tr class="text-center">
-                     <td class="product-num"><a href="#">1</a></td>
-                    <td class="image-prod"><div class="img" style="background-image:url(../images/menu-2.jpg);"></div></td>
-                    
-                    <td class="product-name">
-                      <h3>SWEETNESS<br>CoffeeBean</h3>
-                    </td>
-                    
-                    <td class="price">10,000원</td>
-                    
-                    <td class="price">1개</td>
-                    
-                    <td class="total">10,000원</td>
+                    <td><%=allUserList.get(i).getUser_num() %></td>
+                    <td><%=allUserList.get(i).getUser_id() %></td>
+                    <td><%=allUserList.get(i).getUser_name() %></td>
+                    <td><%=allUserList.get(i).getUser_age() %></td>
+                    <td><%=allUserList.get(i).getUser_gender() %></td>
+                    <td><%=allUserList.get(i).getUser_address() %></td>
+                    <td><%=allUserList.get(i).getUser_phone() %></td>
+                    <td><%=allUserList.get(i).getUser_email() %></td>
                   </tr><!-- END TR-->
+				
+				<%		
+						}
+                		
+                	}
+                %>
                 </tbody>
               </table>
             </div>
