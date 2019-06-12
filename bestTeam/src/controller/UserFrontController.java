@@ -147,7 +147,10 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}	
+		} else if (command.equals("/adminPageShop.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/adminPageShop.jsp");
+		}
 		
 		
 		

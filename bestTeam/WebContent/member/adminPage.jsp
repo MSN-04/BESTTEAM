@@ -188,6 +188,7 @@
                 		
                 	}
                 %>
+>>>>>>> refs/remotes/origin/master
                 </tbody>
               </table>
             </div>

@@ -57,7 +57,7 @@
 <style type="text/css">
 	.display_none { display: none; }
 	.coffeeInfo td {
-		text-align: left;
+		text-align: center;
 	}
 /* 	#v-pills-1-tab:hover { */
 /* 		border: 1px solid red; */
@@ -347,26 +347,26 @@
 														<h3>
 															<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><%=itemList.get(i).getItem_name() %></a>
 														</h3>
-														<p> 
-															<table class="coffeeInfo">
+<!-- 														<p>  -->
+															<table class="coffeeInfo" style="margin: auto;">
 																<tr>
-																	<td>Acidity : </td>
+																	<td>&nbsp;신맛:</td>
 																	<td><%=itemList.get(i).getItem_favor_acidity() %></td>
-																	<td>Aroma : </td>
-																	<td><%=itemList.get(i).getItem_favor_aroma() %></td>
-																</tr>
-																<tr>
-																	<td>Bitterness : </td>
-																	<td><%=itemList.get(i).getItem_favor_bitterness() %>&nbsp;</td>
-																	<td>Sweetness : </td>
+																	<td>&nbsp;단맛:</td>
 																	<td><%=itemList.get(i).getItem_favor_sweetness() %></td>
+																	<td>&nbsp;쓴맛:</td>
+																	<td><%=itemList.get(i).getItem_favor_bitterness() %></td>
 																</tr>
+															</table>
+															<table class="coffeeInfo" style="margin: auto;">
 																<tr>
-																	<td>Body : </td>
+																	<td>&nbsp;아로마:</td>
+																	<td><%=itemList.get(i).getItem_favor_aroma() %></td>
+																	<td>&nbsp;바디감:</td>
 																	<td><%=itemList.get(i).getItem_favor_body() %></td>
 																</tr>
 															</table>
-														</p>
+<!-- 														</p> -->
 														<p class="price">
 															<span><%=itemList.get(i).getItem_price() %>원</span>
 														</p>
