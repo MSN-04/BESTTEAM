@@ -14,14 +14,12 @@ public class QnaListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("QnaListAction");
 		
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
 		
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		int page = 1;
 		int limit = 5;
-		System.out.println("action에서 limit: "+limit);
 		// 페이지 번호 파라미터가 있을 경우 가져오기
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));

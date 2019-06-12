@@ -8,6 +8,7 @@
 <%@page import="vo.FavorBean"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="vo.UserBean"%>
+<%@page import="com.google.gson.JsonObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -31,7 +32,6 @@
 	Gson gsonObj = new Gson();
 	Map<Object,Object> map = null;
 	List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
-	
 	for(int i = 0; i < ageList.size(); i++){
 		map = new HashMap<Object,Object>(); 
 		map.put("label", i*10 +"대(" + i*10 + "~" + ((i*10)+9) + "세" ); 
@@ -51,6 +51,26 @@
 		map2 = new HashMap<Object,Object>(); map2.put("label", "여" ); map2.put("y", (((double)(listCount-maleList))/(double)listCount)*100); list2.add(map2);
 	String dataPoints2 = gsonObj2.toJson(list2);
 	//성별 전체 회원 분포 그래프
+	
+	//연령별 구매수량
+	ArrayList<Integer> ageBuyList = (ArrayList<Integer>)request.getAttribute("ageBuyList");
+	
+	Gson gsonObj3 = new Gson();
+	Map<Object,Object> map3 = null;
+	List<Map<Object,Object>> list3 = new ArrayList<Map<Object,Object>>();
+	for(int i = 0; i < ageBuyList.size(); i++){
+		map3 = new HashMap<Object,Object>(); 
+		map3.put("label", i*10 +"대"); 
+		map3.put("y", (ageBuyList.get(i))); 
+		list3.add(map3);
+	}
+	String dataPoints3 = gsonObj3.toJson(list3);
+	
+	//연령별 구매수량 끝
+	
+	//성별 취향
+	ArrayList<Integer> genderFavor = (ArrayList<Integer>)request.getAttribute("genderFavor");
+	// 성별 취향 끝
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,6 +158,99 @@ window.onload = function() {
 		} ]
 	});
 	chart2.render();
+	
+	// 그래프 3
+	var chart3 = new CanvasJS.Chart("chartContainer3", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "column",
+			showInLegend : true,
+			indexLabel : "{y}개",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}개",
+			toolTipContent : "<b>{label}</b>: {y}개",
+			dataPoints :
+			<%out.print(dataPoints3);%>
+		} ]
+	});
+	chart3.render();
+	
+	// 그래프 4
+	var chart4 = new CanvasJS.Chart("chartContainer4", {
+		exportEnabled: true,
+		animationEnabled: true,
+		title:{
+		},
+		subtitles: [{
+		}], 
+		axisX: {
+		},
+		axisY: {
+			title: "남자",
+			titleFontColor: "#4F81BC",
+			lineColor: "#4F81BC",
+			labelFontColor: "#4F81BC",
+			tickColor: "#4F81BC"
+		},
+		axisY2: {
+			title: "여자",
+			titleFontColor: "#C0504E",
+			lineColor: "#C0504E",
+			labelFontColor: "#C0504E",
+			tickColor: "#C0504E"
+		},
+		toolTip: {
+			shared: true
+		},
+		legend: {
+			cursor: "pointer",
+			itemclick: toggleDataSeries
+		},
+		data: [{
+			type: "column",
+			name: "남자",
+			showInLegend: true,      
+			yValueFormatString: "#,##0.#",
+			dataPoints: [
+				{ label: "AROMA",  y: <%=genderFavor.get(0) %> },
+				{ label: "ACIDITY", y: <%=genderFavor.get(1) %> },
+				{ label: "SWEETNESS", y: <%=genderFavor.get(2) %> },
+				{ label: "BITTERNESS",  y: <%=genderFavor.get(3) %> },
+				{ label: "BODY",  y: <%=genderFavor.get(4) %> }
+			]
+		},
+		{
+			type: "column",
+			name: "여자",
+			axisYType: "secondary",
+			showInLegend: true,
+			yValueFormatString: "#,##0.#",
+			dataPoints: [
+				{ label: "AROMA", y: <%=genderFavor.get(5) %> },
+				{ label: "ACIDITY", y: <%=genderFavor.get(6) %> },
+				{ label: "SWEETNESS", y: <%=genderFavor.get(7) %> },
+				{ label: "BITTERNESS", y: <%=genderFavor.get(8) %> },
+				{ label: "BODY", y: <%=genderFavor.get(9) %> }
+			]
+		}]
+	});
+	chart4.render();
+	
+	function toggleDataSeries(e) {
+		if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		} else {
+			e.dataSeries.visible = true;
+		}
+		e.chart.render();
+	}
+	
 }
 </script>
 
@@ -180,11 +293,11 @@ window.onload = function() {
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
 
-								<a class="nav-link" id="v-pills-0-tab" href="shopMain.em?taste=all" 
+								<a class="nav-link" id="v-pills-0-tab" href="adminPage.us" 
 								role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" 
 								onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" aria-selected="true">
 								전체 회원 정보</a> 
-								<a class="nav-link" id="v-pills-1-tab" href="shopMain.em?taste=item_favor_aroma" 
+								<a class="nav-link" id="v-pills-1-tab" href="adminPageShop.us" 
 								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
 								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
 								전체 상품 정보</a>
@@ -275,7 +388,7 @@ window.onload = function() {
 		<br><br>
 		
 	          
-	      <!-- 통계 그래프 -->
+	      <!-- 연령별 전체 회원 분포  그래프1-->
 	       <div class="row mt-5 pt-3 d-flex" >
 	          
 	         <div class="col-md-6 d-flex">
@@ -284,74 +397,37 @@ window.onload = function() {
 	          				<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-          <!-- 통계 그래프 끝 -->
-	      <!-- 통계 차트 -->
+          <!-- 연령별 전체 회원 분포 끝 -->
+	      <!-- 성별 전체 회원 분포 그래프2 -->
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
 	          			<h3 class="billing-heading mb-4">성별 전체 회원 분포</h3>
 	          				<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-	       <!-- 통계 차트 끝 -->
+	       <!-- 성별 전체 회원 분포 끝 -->
 	       
 	            </div>
           </div> 
 	       
-	       <!-- 통계 그래프 -->
+	       <!-- 연령별 구매 수량  그래프3-->
 	       <div class="row mt-5 pt-3 d-flex" >
 	          
 	         <div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
 	          			<h3 class="billing-heading mb-4">연령별 구매 수량</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-	          					<p class="d-flex">
-		    						<span>상품 합계</span>
-		    						<span class="money">41,000 원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>배송비 합계</span>
-		    						<span class="money">2,500원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>할인금액 합계</span>
-		    						<span class="money">0 원</span>
-		    					</p>
-		    					<hr>
-		    					<p class="d-flex total-price">
-		    						<span>총 결제금액</span>
-		    						<span class="money">43,500 원</span>
-		    					</p>
-		    				</div>
-		    				</div>
+	          				<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-          <!-- 통계 그래프 끝 -->
-	      <!-- 통계 차트 -->
+          <!-- 연령별 구매 수량 끝 -->
+	      <!-- 성별 구매 수량 그래프4 -->
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">성별 구매 수량</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-		            			<p class="d-flex">
-		    						<span>(무통장 입금)</span>
-		    						<span></span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>신한은행</span>
-		    						<span>110-1111-11111</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>결제일자</span>
-		    						<span>2019.05.01</span>
-		    					</p>
-		    				</div>
-		    				</div>
+	          			<h3 class="billing-heading mb-4">성별 취향 정보</h3>
+	          				<div id="chartContainer4" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-	       <!-- 통계 차트 끝 -->
+	       <!-- 성별 구매 수량 끝 -->
 	          	
 	     
 

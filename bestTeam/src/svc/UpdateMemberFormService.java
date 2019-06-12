@@ -9,18 +9,13 @@ import vo.UserBean;
 public class UpdateMemberFormService {
 
 	public UserBean getUpdateForm(String id) throws Exception{
-		System.out.println("getupdateForm");
 		UserBean userBean = null;
 		
 		Connection con = getConnection();
 		UserDAO userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		
-		
-		
-			userBean = userDAO.getUserInfo(id);
-			System.out.println("updateform 성공");
+		userBean = userDAO.getUserInfo(id);
 		
 		close(con);
 		return userBean;

@@ -56,7 +56,6 @@ public class QnaDAO {
 			sql = "INSERT INTO qna VALUES(null,?,?,?,?,now(),?,?,?,null)";
 
 			pstmt = con.prepareStatement(sql);
-//			pstmt.setInt(1, num);
 			pstmt.setInt(1, qnaBean.getQna_item_num());
 			pstmt.setString(2, qnaBean.getQna_writer());
 			pstmt.setString(3, qnaBean.getQna_subject());
@@ -81,7 +80,6 @@ public class QnaDAO {
 
 	// 글 목록 갯수 구하기 (파라미터 item_num)
 	public int selectListCount(int item_num) {
-		System.out.println("selectListCount()");
 
 		int listCount = 0;
 
@@ -112,7 +110,6 @@ public class QnaDAO {
 	
 	// 글 목록 갯수 구하기
 		public int selectListCount() {
-			System.out.println("selectListCount()");
 
 			int listCount = 0;
 
@@ -143,14 +140,11 @@ public class QnaDAO {
 
 	// 글 목록 가져오기
 	public ArrayList<QnaBean> selectArticleList(int page, int limit, int item_num) {
-		System.out.println("selectArticleList()");
 
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
 		QnaBean qnaBean = null;
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-		System.out.println("dao에서 limit: "+limit);
-//		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
 		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC LIMIT ?,? ";
 		// => 지정 row 번호부터 10개 조회
 
@@ -177,10 +171,8 @@ public class QnaDAO {
 
 				articleList.add(qnaBean); // ArrayList 객체에 레코드 단위로 저장
 
-//				System.out.println(rs.getInt("qna_num"));
 			}
 		} catch (SQLException e) {
-//			e.printStackTrace();
 			System.out.println("selectArticleList() 실패! : " + e.getMessage());
 		} finally {
 			close(rs);
@@ -199,9 +191,6 @@ public class QnaDAO {
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, qna_num);
-//			pstmt.setString(2, Qna_subject);
-//			pstmt.setString(3, Qna_content);
-//			pstmt.setInt(4, x);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -216,7 +205,6 @@ public class QnaDAO {
 			}
 
 		} catch (SQLException e) {
-//			e.printStackTrace();
 			System.out.println("selectArticle() 실패! : " + e.getMessage());
 		} finally {
 			close(rs);
@@ -229,9 +217,7 @@ public class QnaDAO {
 	// 글쓰기 페이지에서 글쓴이 정보 가져오기
 			public UserBean getUserInfo(String id) {
 			    
-				//ArrayList beans = new ArrayList<>();
 				UserBean userBean = null;
-//			    QnaBean qnaBean = null;
 			    
 			    String sql = "select * from user where user_id=?";
 			    try {
@@ -252,15 +238,6 @@ public class QnaDAO {
 			        userBean.setUser_email(rs.getString("user_email"));
 			        userBean.setUser_post(rs.getString("user_post"));
 			        
-//			        qnaBean = new QnaBean();
-//			        
-//			        qnaBean.setQna_num(rs.getInt("qna_num"));
-//			        qnaBean.setQna_writer(rs.getString("qna_writer"));
-//			        qnaBean.setQna_subject(rs.getString("qna_subject"));
-//			        qnaBean.setQna_content(rs.getString("qna_content"));
-//			        qnaBean.setQna_date(rs.getDate("qna_date"));
-			        
-					//beans.add(qnaBean);
 			      }
 			    } catch (SQLException e) {
 			      e.printStackTrace();
@@ -281,7 +258,6 @@ public class QnaDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, qna_num);
 			updateCount = pstmt.executeUpdate();
-//			System.out.println(updateCount);
 		} catch (SQLException e) {
 			System.out.println("selectArticle() 실패! : " + e.getMessage());
 		} finally {
@@ -293,7 +269,6 @@ public class QnaDAO {
 
 	// 게시물 작성자 본인 확인 - 게시물 번호와 입력된 패스워드를 읽어와서 확인 후 true/false 리턴
 	public boolean isArticleqnaWriter(int qna_num) {
-//		System.out.println("QnaDAO - isArticleqnaWriter");
 		// 전체 레코드에서 글번호(qna_num) 이 일치하는 레코드 찾기
 		// => 조회된 레코드에서 패스워드(qna_pass) 가 전달받은 패스워드와 일치하면 isWriter 변수를 true 변경
 		boolean isWriter = false;

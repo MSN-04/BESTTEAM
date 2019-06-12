@@ -41,9 +41,6 @@ public class QnaReplyDAO {
 			
 			String sql1 = "INSERT INTO qna VALUES(null,?,?,?,?,NOW(),?,1,1,'admin')";
 			
-//			int qna_re_ref = qnaBean.getQna_re_ref();
-//			int qna_re_lev = qnaBean.getQna_re_lev();
-//			int qna_re_seq = qnaBean.getQna_re_seq();
 			
 			try {
 //				pstmt = con.prepareStatement(sql);
