@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.AdminPageService;
-import svc.ShopMainService;
 import vo.ActionForward;
-import vo.ItemBean;
 import vo.PageInfo;
 import vo.UserBean;
 
@@ -19,7 +18,7 @@ public class AdminPageProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
-		ArrayList<UserBean> allUserList = new ArrayList<>(); 
+		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
 		int page = 1;
 		int limit = 8;
 		String id = "";
@@ -27,27 +26,26 @@ public class AdminPageProAction implements Action {
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}		
-		
-//		id = (String)request.getAttribute("id");
-//		
+		HttpSession session = request.getSession();
+		id = session.getAttribute("id").toString();
 //		System.out.println(id);
-//		
-//		if(id.equals("")) {
-//			response.setContentType("text/html;charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>");
-//			out.println("alert('로그인하세요!')");
-//			out.println("location.href='history.back()'");
-//			out.println("</script>");
-//		}else if(!id.equals("admin")) {
-//			response.setContentType("text/html;charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>");
-//			out.println("alert('권한이 없습니다!')");
-//			out.println("location.href='history.back()'");
-//			out.println("</script>");
-//
-//		}
+		
+		if(id.equals("")) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인하세요!')");
+			out.println("location.href='history.back()'");
+			out.println("</script>");
+		}else if(!id.equals("admin")) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('권한이 없습니다!')");
+			out.println("location.href='history.back()'");
+			out.println("</script>");
+
+		}
 		
 		// 리스트 개수
 		AdminPageService adminPageService = new AdminPageService();

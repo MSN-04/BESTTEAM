@@ -41,7 +41,7 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-//		System.out.println(requestURI + " " + contextPath +  " " + command);
+		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
 		Action action = null;
 		ActionForward forward = null;

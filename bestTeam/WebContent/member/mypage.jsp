@@ -176,7 +176,7 @@
 								    <a href="delete_member.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원탈퇴</a>
 									<a href="confirmCheckoutListProAction.sh" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회</a>
 									<%if(id.equals("admin")){%>
-									<a href="adminPage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >관리자 페이지로 이동</a>
+									<a href="adminPage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">관리자 페이지로 이동</a>
 									<%}	%>
 								
 							</div>

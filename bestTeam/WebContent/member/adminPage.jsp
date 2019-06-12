@@ -8,7 +8,7 @@
 	pageEncoding="UTF-8"%>
 	
 	<%
-	String id = session.getAttribute("id").toString();
+// 	String id = session.getAttribute("id").toString();
 // 	Rserve_C rc = (Rserve_C)session.getAttribute("rs");
 // 	String s = rc.returnRClass();
 // 	System.out.println(s);
