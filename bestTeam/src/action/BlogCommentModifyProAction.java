@@ -20,12 +20,12 @@ public class BlogCommentModifyProAction implements Action {
 		ActionForward forward = new ActionForward();
 
 		int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+		System.out.println("comment_num :: " + request.getParameter("comment_num"));
 		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
-
 		BlogCommentModifyProService blogCommentModifyProService = new BlogCommentModifyProService();
 
 		BlogCommentBean blogCommentBean = new BlogCommentBean();
-		blogCommentBean.setComment_num(comment_num);
+//		blogCommentBean.setComment_num(request.getParameter("comment_num"));
 		blogCommentBean.setComment_content(request.getParameter("comment_content"));
 
 		boolean isModifySuccess = blogCommentModifyProService.modifyComment(blogCommentBean);

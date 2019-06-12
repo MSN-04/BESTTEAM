@@ -19,6 +19,7 @@ import action.BlogModifyFormAction;
 import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import action.ReviewProAction;
+import action.ReviewViewAction;
 import action.ReviewWriteProAction;
 import vo.ActionForward;
 
@@ -111,6 +112,18 @@ public class ReviewFrontController extends HttpServlet {
 			// 수정글 저장하기 - BoardModifyProAction 클래스로 이동
 			action = new ReviewModifyProAction();
 			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if (command.equals("/reviewRead.re")) {
+			System.out.println("reviewRead controller");
+			forward = new ActionForward();
+			forward.setPath("/shop/reviewRead.jsp");
+		}else if (command.equals("/review_view.re")) {
+			action = new ReviewViewAction();
+
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
