@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.rosuda.REngine.REXP;
+
 import svc.AdminPageService;
 import vo.ActionForward;
 import vo.PageInfo;
@@ -19,6 +21,8 @@ public class AdminPageProAction implements Action {
 		ActionForward forward = null;
 		
 		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		int maleList = 0;
 		int page = 1;
 		int limit = 8;
 		String id = "";
@@ -69,10 +73,15 @@ public class AdminPageProAction implements Action {
 		adminPageInfo.setPage(page);
 		adminPageInfo.setStartPage(startPage);
 		
-//		adminPageService.getRData();
+//		REXP rexp = adminPageService.getRData();
+		
+		ageList = adminPageService.getAgeList();
+		maleList = adminPageService.getMaleList();
 		
 		request.setAttribute("adminPageInfo", adminPageInfo);
 		request.setAttribute("allUserList", allUserList);
+		request.setAttribute("ageList", ageList);
+		request.setAttribute("maleList", maleList);
 		
 		forward = new ActionForward();
 		forward.setPath("/member/adminPage.jsp");

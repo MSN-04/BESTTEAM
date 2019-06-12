@@ -1,3 +1,7 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.Rserve_C"%>
@@ -20,6 +24,33 @@
 	int maxPage = adminPageInfo.getMaxPage();
 	int startPage = adminPageInfo.getStartPage();
 	int endPage = adminPageInfo.getEndPage();
+	System.out.println(listCount);
+	//연령별 전체 회원 분포 그래프
+	ArrayList<Integer> ageList = (ArrayList<Integer>)request.getAttribute("ageList");
+	
+	Gson gsonObj = new Gson();
+	Map<Object,Object> map = null;
+	List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+	
+	for(int i = 0; i < ageList.size(); i++){
+		map = new HashMap<Object,Object>(); 
+		map.put("label", i*10 +"대(" + i*10 + "~" + ((i*10)+9) + "세" ); 
+		map.put("y", ((double)ageList.get(i)/(double)listCount)*100); 
+		list.add(map);
+	}
+	String dataPoints = gsonObj.toJson(list);
+	//연령별 전체 회원 분포 그래프
+	
+	//성별 전체 회원 분포 그래프
+	int maleList = Integer.parseInt(request.getAttribute("maleList").toString());
+	
+	Gson gsonObj2 = new Gson();
+	Map<Object,Object> map2 = null;
+	List<Map<Object,Object>> list2 = new ArrayList<Map<Object,Object>>();
+		map2 = new HashMap<Object,Object>(); map2.put("label", "남" ); map2.put("y", ((double)(maleList)/(double)listCount)*100); list2.add(map2);
+		map2 = new HashMap<Object,Object>(); map2.put("label", "여" ); map2.put("y", (((double)(listCount-maleList))/(double)listCount)*100); list2.add(map2);
+	String dataPoints2 = gsonObj2.toJson(list2);
+	//성별 전체 회원 분포 그래프
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,35 +89,56 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
 
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
-// function getParams (kind, val) {
-	
-// 	var params = location.search.substr(location.search.indexOf("?") + 1);
-// 	var QuestionIndex = location.href.indexOf("?");
-// 	var url = "";
-	
-// 	if (QuestionIndex == -1 ) {
-// 		url = location.href.substring();
-// 	} else {
-// 		url = location.href.substring(0, QuestionIndex);
-// 	} 
-	
-// 	var param = "";
-// 	var paramUrl = "?";
-	
-// 	params = params.split("&");
-// 	for (var i = 0 ; i < params.length ; i++) {
-// 		param = params[i].split("=");
-// 		if (param[0] != kind && param[0] != "") {
-// 			paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
-// 		} else {
-// 			continue;
-// 		}
-// 	}
-	
-// 	paramUrl = paramUrl + kind + '=' + val;
-// 	location.href = url + paramUrl;
-// }
+// 페이지 넘김
+
+
+// 그래프
+window.onload = function() {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "pie",
+			showInLegend : true,
+			indexLabel : "{y}%",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}%",
+			toolTipContent : "<b>{label}</b>: {y}%",
+			dataPoints :
+			<%out.print(dataPoints);%>
+		} ]
+	});
+	chart.render();
+
+// 그래프 2
+	var chart2 = new CanvasJS.Chart("chartContainer2", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "pie",
+			showInLegend : true,
+			indexLabel : "{y}%",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}%",
+			toolTipContent : "<b>{label}</b>: {y}%",
+			dataPoints :
+			<%out.print(dataPoints2);%>
+		} ]
+	});
+	chart2.render();
+}
 </script>
 
 </head>
@@ -188,7 +240,6 @@
                 		
                 	}
                 %>
->>>>>>> refs/remotes/origin/master
                 </tbody>
               </table>
             </div>
@@ -201,20 +252,20 @@
 							<% if(nowPage <= 1) { %>
 							<li><a>&lt;</a></li>
 							<% } else { %>
-							<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
+							<li><a href= "adminPage.us?page=<%=nowPage-1 %>">&lt;</a></li>
 							<% } 
 							for (int a = startPage ; a <= endPage; a++) {
 								if(a == nowPage) {
 									%><li class="active"><span><%=a %></span></li><%
 								} else {
-									%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
+									%><li><a href="adminPage.us?page=<%=a %>"><%=a %></a></li><%
 								}
 							}
 							%>
 							<% if(nowPage >= maxPage) { %>
 							<li><a>&gt;</a></li>
 							<% } else { %>
-							<li><a href="javascript:getParams ('page', <%=nowPage+1 %>);">&gt;</a></li>
+							<li><a href="adminPage.us?page=<%=nowPage+1 %>">&gt;</a></li>
 							<% } %>
 						</ul>
 					</div>
@@ -223,96 +274,35 @@
 		<!-- 리스트 끝 -->
 		<br><br>
 		
-		<!-- 통계표 -->
-		<form class="billing-form ftco-bg-dark p-3 p-md-5" >
-			<h3 class="mb-4 billing-heading">통계 표</h3>
-			
-			
-	          <div class="row align-items-end confirmCheckout">
-
-	          	<!-- 1st line -->
-	          	<div class="col-md-12">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문번호</label></td>
-		            			 <td><label><span>20190430-A01</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	  
-                 
-		            
-		      	<!-- 2nd line -->
-		      	<div class="col-md-6">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문자</label></td>
-		            			 <td><label><span>뷰쏭</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	   
-	          
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문일자</label></td>
-		            			 <td><label><span>2019.04.30</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 3rd line -->
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 1</label></td>
-		            			 <td><label><span>010-1111-2222</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 2</label></td>
-		            			 <td><label><span>051-333-4444</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 4th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">우편번호</label></td>
-		            			 <td><label><span>47246</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<!-- 5th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">배송지</label></td>
-		            			 <td><label><span>부산 부산진구 동천로 109 삼한골든게이트 7층 </span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-
-			
-	          
-	          </div>
-	      </form>
-	      <!-- 통계표 끝 -->
 	          
 	      <!-- 통계 그래프 -->
 	       <div class="row mt-5 pt-3 d-flex" >
 	          
 	         <div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">통계그래프</h3>
+	          			<h3 class="billing-heading mb-4">연령별 전체 회원 분포</h3>
+	          				<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+					</div>
+	          	</div>
+          <!-- 통계 그래프 끝 -->
+	      <!-- 통계 차트 -->
+	          	<div class="col-md-6 d-flex">
+	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">성별 전체 회원 분포</h3>
+	          				<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+					</div>
+	          	</div>
+	       <!-- 통계 차트 끝 -->
+	       
+	            </div>
+          </div> 
+	       
+	       <!-- 통계 그래프 -->
+	       <div class="row mt-5 pt-3 d-flex" >
+	          
+	         <div class="col-md-6 d-flex">
+	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">연령별 구매 수량</h3>
 	          			
 	          				<div class="col-md-12 confirmCheckout2">
 		            		<div class="form-group">
@@ -337,10 +327,11 @@
 		    				</div>
 					</div>
 	          	</div>
-	          	<!-- 통계 차트 -->
+          <!-- 통계 그래프 끝 -->
+	      <!-- 통계 차트 -->
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">통계 차트</h3>
+	          			<h3 class="billing-heading mb-4">성별 구매 수량</h3>
 	          			
 	          				<div class="col-md-12 confirmCheckout2">
 		            		<div class="form-group">
@@ -360,11 +351,9 @@
 		    				</div>
 					</div>
 	          	</div>
+	       <!-- 통계 차트 끝 -->
 	          	
-	          	
-	          </div>
-          </div> 
-          <!-- 통계 그래프 끝 -->
+	     
 
 
 								</div>
@@ -373,7 +362,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<footer class="ftco-footer ftco-section img">
