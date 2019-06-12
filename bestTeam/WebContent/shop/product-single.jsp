@@ -611,29 +611,29 @@ $( '#rere1' ).click(
                   
                 <tr>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
-                  <td  ><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" onclick="read();"><%=reviewList.get(i).getReview_subject() %> </a>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
                   
-                  <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>">
+<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
                   
-                    <div id="collapse<%=i %>" class="panel-collapse collapse in">
-                      <div class="panel-body">
-                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
-                        <section class="ftco=section" id="ac1">
-                          <div class="container">
-                            <div class="col-md-8 ftco-animate div0525">
-                              <a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num()%>&item_num=<%=itemBean.getItem_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a> 
-                              <a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num()%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">삭제</a>
-                              <a href="#" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">답글</a>
-                            </div>
-                          </div>
-                        </section>
-                      </div>
-                    </div>
+                    
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
                 </tr>
+                
+                <tr><td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="5">
+                <div id="trtr" >
+                      <div class="panel-body">
+                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
+                        
+                      </div>
+                    </div>
+                    
+                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >상세보기</a> 
+                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
+                            
+                </td></tr>
                 
                 
                 <%
