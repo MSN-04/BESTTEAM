@@ -349,7 +349,7 @@ public class UserDAO {
 
 		int listCount = 0;
 		
-		String sql = "SELECT count(*) FROM qna";
+		String sql = "SELECT count(*) FROM user";
 
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -408,6 +408,57 @@ public class UserDAO {
 
 		return articleList;
 	}
+
+	public ArrayList<Integer> getAgeList() {
+		int listCount = 0;
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_age >= ? AND user_age <= ?";
+		try {
+			for(int i = 0; i < 10; i++) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, i*10);
+				pstmt.setInt(2, (i*10)+9);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					listCount = rs.getInt(1); 
+				}
+				ageList.add(listCount);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return ageList;
+	}
+
+	public int getMaleList() {
+		int maleList = 0;
+		ArrayList<Integer> genderList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_gender = '남'";
+		try {
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					maleList = rs.getInt(1); 
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return maleList;
+	}
+	
+	
 
 
 	

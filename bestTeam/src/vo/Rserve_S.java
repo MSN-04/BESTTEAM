@@ -1,11 +1,5 @@
 package vo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.OutputStreamWriter;
-
 import org.rosuda.REngine.REXP;
 import org.rosuda.REngine.REXPMismatchException;
 import org.rosuda.REngine.REngineException;
@@ -72,53 +66,55 @@ public class Rserve_S {
 
 	public byte[] returnRImg() throws REngineException, REXPMismatchException {
 
-		RConnection r = new RConnection();
+		c = new RConnection();
 
 		String device = "jpeg";
-		x = r.parseAndEval("try(" + device + "('test.jpg',quality=90))");
+		x = c.parseAndEval("try(" + device + "('test.jpg',quality=90))");
 		System.out.println("1");
 
 		// ok, so the device should be fine - let's plot - replace this by any plotting
 		// code you desire ...
 
-//		r.parseAndEval("x <- mtcars$mpg ");
+//		c.parseAndEval("x <- mtcars$mpg ");
 //		System.out.println("2");
 //
-//		r.parseAndEval(
+//		c.parseAndEval(
 //				"h<-hist(x, breaks=10, col=\"yellow\", xlab=\"Miles Per Gallon\", main=\"Histogram with Normal Curve\")");
 //		System.out.println("3");
 //
-//		r.parseAndEval("xfit<-seq(min(x),max(x),length=40)");
+//		c.parseAndEval("xfit<-seq(min(x),max(x),length=40)");
 //		System.out.println("4");
 //
-//		r.parseAndEval("yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))");
+//		c.parseAndEval("yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))");
 //		System.out.println("5");
 //
-//		r.parseAndEval("yfit <- yfit*diff(h$mids[1:2])*length(x)");
+//		c.parseAndEval("yfit <- yfit*diff(h$mids[1:2])*length(x)");
 //		System.out.println("6");
 //
-//		r.parseAndEval("lines(xfit, yfit, col=\"blue\", lwd=2)");
+//		c.parseAndEval("lines(xfit, yfit, col=\"blue\", lwd=2)");
 //		System.out.println("7");
-		r.parseAndEval("exam <- read.csv(\"D:/RTest/csv_exam.csv\")");
-//		r.parseAndEval("");
-		r.parseAndEval("exam$sum <- exam$math + exam$english + exam$science");
-		r.parseAndEval("exam$mean <- exam$sum / 3");
-		r.parseAndEval("hist(exam$mean)");
+		c.parseAndEval("exam <- read.csv(\"D:/RTest/csv_exam.csv\")");
+//		c.parseAndEval("");
+		c.parseAndEval("exam$sum <- exam$math + exam$english + exam$science");
+		c.parseAndEval("exam$mean <- exam$sum / 3");
+		c.parseAndEval("hist(exam$mean)");
 
 
 		// graphics off
-		r.parseAndEval("graphics.off()");
+		c.parseAndEval("graphics.off()");
 		System.out.println("8");
 
 		// There is no I/O API in REngine because it's actually more efficient to use R
 		// for this
 		// we limit the file size to 1MB which should be sufficient and we delete the
 		// file as well
-		x = r.parseAndEval("r=readBin('test.jpg','raw',1024*1024); unlink('test.jpg'); r");
+		x = c.parseAndEval("r=readBin('test.jpg','raw',1024*1024); unlink('test.jpg'); r");
 		System.out.println("9");
 
 		return x.asBytes();// img;
 	}
+	
+	
 	
 	
 	
