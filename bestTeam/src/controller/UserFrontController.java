@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminPageProAction;
 import action.DeleteMemberProAction;
 import action.FavorProAction;
 import action.ForgotAccountProAction;
@@ -138,13 +139,18 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/adminPage.us")) {
-			forward = new ActionForward();
-			forward.setPath("/member/adminPage.jsp");
+		} else if(command.equals("/adminPage.us")) {
+			System.out.println("adminPage controller");
+			action = new AdminPageProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if (command.equals("/adminPageShop.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/adminPageShop.jsp");
-		}	
+		}
 		
 		
 		
