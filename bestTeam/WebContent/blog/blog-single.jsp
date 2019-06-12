@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="vo.PageInfo"%>
@@ -18,18 +19,11 @@
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
-// 	int comment_num = Integer.parseInt(request.getParameter("comment_num"));
-	
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
-	// 	Date comment_date = request.getParameter("comment_date");
+	// 	Timestamp comment_date = request.get("comment_date");
 
 	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
-
-	//-------------------------------------------------------- 날짜형식
-	// 	String from = "2013-04-08 10:10:10";
-	// 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	// 	Date to = transFormat.parse(from);
 
 	// 	int listCount = pageInfo.getListCount();
 	// 	nowPage = pageInfo.getPage();
@@ -409,6 +403,7 @@
 					<%
 						// if (articleList != null && listCount > 0) { 
 						for (int i = 0; i < articleList.size(); i++) {
+							
 					%>
 					<ul class="comment-list">
 						<li class="comment">
@@ -430,23 +425,35 @@
 									<%
 										session.getAttribute("id");
 											if (id != null && id.equals("admin")) {
+
+												System.out.println(articleList.get(i).getComment_blog_num());
+												System.out.println(articleList.get(i).getComment_content());
 									%>
 
-
+									<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
 									<div class="con_inner">
 										<div class="sir_singo_msg">
 											<a href="#"
-												onclick="SirenFunction('SirenDiv'); return false;"
+												onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
 												class="blind_view">수정</a>
 										</div>
-										<div class="singo_view" id="SirenDiv">
-											<input type="text" id="comment_modify" name="comment_modify"
-												style="width: 70%;"
-												value=<%=articleList.get(i).getComment_content()%>>
+										<div class="singo_view" id="SirenDiv<%=i%>">
+											<form action="BlogCommentModifyPro.bl" method="post">
+
+												<input type="text" id="comment_modify" name="comment_modify"
+													style="width: 70%;"
+													value=<%=articleList.get(i).getComment_content()%>>
+												<input type="hidden" name="comment_num"
+													value="<%=articleList.get(i).getComment_num()%>"> <input
+													type="hidden" name="comment_blog_num"
+													value="<%=articleList.get(i).getComment_blog_num()%>">
+												<input type="submit" class="reply" value="Submit">
+												<%-- 												<a href="BlogCommentModifyPro.bl?comment_num=<%=articleList.get(i).getComment_num() %>&blog_num=<%=articleList.get(i).getComment_blog_num() %>" --%>
+												<!-- 													class="reply">Submit</a>  -->
+
+											</form>
 											<a
-												 href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num() %>"
-												class="reply">Submit</a> <a
-												href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+												href="BlogCommentDeletePro.bl?comment_num=<%=articleList.get(i).getComment_num()%>"
 												class="reply"
 												onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
 										</div>
@@ -473,21 +480,22 @@
 					<%
 						}
 					%>
-					<!-- END comment-list -->
-
+					<!-------------------------------- END comment-list ----------------------------------->
 
 					<%
 						session.getAttribute("id");
 						if (id != null) {
 					%>
 					<div class="comment-form-wrap pt-5">
-						<h3 class="mb-5">코멘트 남기기</h3>
+						<h3 class="mb-5">코멘트 남기기<%=article.getBlog_num()%></h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
 							<input type="hidden" name="blog_num"
-								value="<%=article.getBlog_num()%>" id="blog_num">
-<%-- 							<input type="hidden" name="comment_num" value="<%=articleList.getComment_blog_num() %>" id="comment_num"> --%>
-								
+								value="<%=article.getBlog_num()%>" id="blog_num"> 
+<!-- 								<input -->
+<!-- 								type="hidden" name="comment_num" -->
+<%-- 								value="<%=blog_num%>" id="comment_num"> --%>
+
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"

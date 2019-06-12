@@ -1,12 +1,12 @@
 package vo;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BlogCommentBean {
 int comment_num;
 String comment_content;
 String comment_writer;
-Date comment_date;
+Timestamp comment_date;
 int comment_blog_num;
 
 
@@ -34,12 +34,13 @@ public String getComment_writer() {
 public void setComment_writer(String comment_writer) {
 	this.comment_writer = comment_writer;
 }
-public Date getComment_date() {
+public Timestamp getComment_date() {
 	return comment_date;
 }
-public void setComment_date(Date comment_date) {
+public void setComment_date(Timestamp comment_date) {
 	this.comment_date = comment_date;
 }
+
 
 
 
