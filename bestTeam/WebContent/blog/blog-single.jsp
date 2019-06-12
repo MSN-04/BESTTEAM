@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.UserBean"%>
@@ -14,13 +16,22 @@
 	// 	String userName = userbean.getUser_name();
 
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+// 	int comment_num = Integer.parseInt(request.getParameter("comment_num"));
+	
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
+	// 	Date comment_date = request.getParameter("comment_date");
 
-	// 		int listCount = pageInfo.getListCount();
+	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+
+	//-------------------------------------------------------- 날짜형식
+	// 	String from = "2013-04-08 10:10:10";
+	// 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	// 	Date to = transFormat.parse(from);
+
+	// 	int listCount = pageInfo.getListCount();
 	// 	nowPage = pageInfo.getPage();
 	// 	int maxPage = pageInfo.getMaxPage();
 	// 	int startPage = pageInfo.getStartPage();
@@ -41,31 +52,14 @@
 		return false;
 	}
 
-	// 	// 댓글 등록
-	// 	function writeCmt(commnet_num) {
-	// 		var form = document.getElementById("writeCommentForm");
-
-	// 		var board = form.comment_blog_num.value
-	// 		var writer = form.comment_writer.value
-	// 		var content = form.comment_content.value;
-
-	// 		if (!content) {
-	// 			alert("내용을 입력하세요.");
-	// 			return false;
-	// 		} else {
-	// 			var param = "comment_blog_num=" + blog_num + "&comment_writer=" + writer
-	// 					+ "&comment_content=" + content;
-
-	// 			httpRequest = getXMLHttpRequest();
-	// 			httpRequest.onreadystatechange = checkFunc;
-	// 			httpRequest.open("POST", "BlogCommentWriteProAction.co", true);
-	// 			httpRequest.setRequestHeader('Content-Type',
-	// 					'application/x-www-form-urlencoded;charset=EUC-KR');
-	// 			httpRequest.send(param);
-	// 		}
-	// 	}
-
-	// 댓글삭제
+	// 댓글창 숨기기
+	function SirenFunction(idMyDiv){
+	     var objDiv = document.getElementById(idMyDiv);
+	     if(objDiv.style.display=="block"){ objDiv.style.display = "none"; }
+	      else{ objDiv.style.display = "block"; }
+	}
+	
+	// 댓글 삭제
 	function delCmt(comment_num) {
 		var message = confirm("이 댓글을 삭제하시겠습니까?");
 		if (message == true) {
@@ -117,6 +111,32 @@
 	flex: auto;
 	margin: auto;
 	max-width: 80%;
+}
+
+.sir_singo_msg {
+	color: #934545;
+	margin-bottom: 30px
+}
+
+.sir_singo_msg button {
+	cursor: pointer;
+	font-family: Arial, '돋움', Dotum;
+	border: none;
+	padding: 0;
+	background: #fff;
+	outline: 0
+}
+
+.sir_singo_msg .blind_view {
+	font-size: 1.14em;
+	font-weight: bold;
+	color: #ffffff;
+	margin-top: -3px;
+	text-decoration: underline
+}
+
+.singo_view {
+	display: none;
 }
 
 /*     	.col-md-8 { background-color: #000; } */
@@ -318,17 +338,6 @@
 						</span>
 					</button>
 				</li>
-				<!-- 				<li> -->
-				<!-- 					<button> -->
-				<!-- 						<span> -->
-				<!-- 							<svg width="29" height="29" > -->
-				<!-- 								<g> -->
-				<!-- 									<path d="M19.385 4h-9.77A2.623 2.623 0 0 0 7 6.615V23.01a1.022 1.022 0 0 0 1.595.847l5.905-4.004 5.905 4.004A1.022 1.022 0 0 0 22 23.011V6.62A2.625 2.625 0 0 0 19.385 4zM21 23l-5.91-3.955-.148-.107a.751.751 0 0 0-.884 0l-.147.107L8 23V6.615C8 5.725 8.725 5 9.615 5h9.77C20.275 5 21 5.725 21 6.615V23z"></path> -->
-				<!-- 								</g> -->
-				<!-- 							</svg> -->
-				<!-- 						</span> -->
-				<!-- 					</button> -->
-				<!-- 				</li> -->
 				<li>
 					<!-- 트위터 -->
 					<button>
@@ -365,7 +374,6 @@
 			<div class="col-md-8 ftco-animate">
 				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
 				<p><%=article.getBlog_content()%></p>
-
 
 				<%
 					String id = (String) session.getAttribute("id");
@@ -423,15 +431,26 @@
 										session.getAttribute("id");
 											if (id != null && id.equals("admin")) {
 									%>
-									
-									<input type="text" id="comment_modify" name="comment_modify"
-										style="width: 70%;" />
-									<a
-										href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply">Edit</a><a
-										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply"
-										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
+
+
+									<div class="con_inner">
+										<div class="sir_singo_msg">
+											<a href="#"
+												onclick="SirenFunction('SirenDiv'); return false;"
+												class="blind_view">수정</a>
+										</div>
+										<div class="singo_view" id="SirenDiv">
+											<input type="text" id="comment_modify" name="comment_modify"
+												style="width: 70%;"
+												value=<%=articleList.get(i).getComment_content()%>>
+											<a
+												 href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num() %>"
+												class="reply">Submit</a> <a
+												href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
+												class="reply"
+												onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
+										</div>
+									</div>
 
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
@@ -465,8 +484,10 @@
 						<h3 class="mb-5">코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
-							<input type="hidden" name="comment_blog_num"
-								value="<%=article.getBlog_num()%>" id="comment_blog_num">
+							<input type="hidden" name="blog_num"
+								value="<%=article.getBlog_num()%>" id="blog_num">
+<%-- 							<input type="hidden" name="comment_num" value="<%=articleList.getComment_blog_num() %>" id="comment_num"> --%>
+								
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"

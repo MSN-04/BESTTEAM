@@ -41,7 +41,6 @@ public class LoginProAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			
-			forward.setRedirect(true);
 			forward.setPath("index.in");
 		}
 		

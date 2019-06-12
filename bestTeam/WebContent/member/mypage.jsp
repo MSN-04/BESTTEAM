@@ -14,6 +14,7 @@
 	FavorBean fb = (FavorBean)request.getAttribute("favorBean");
 	System.out.println("acidity"+fb.getUser_favor_acidity());
 	
+	String id = session.getAttribute("id").toString();
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,6 +172,7 @@
 							<div class="w-100"></div>
 							<div class="col-md-12">
 								<div class="form-group mt-4">
+
 									<a href="#"
 										class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a>
 
@@ -184,6 +186,14 @@
 									<a href="confirmCheckoutList.sh"
 									class="btn btn-primary p-3 px-xl-4 py-xl-3" >주문 조회
 								</a>
+
+<!-- 									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a> -->
+<!-- 								    <a href="delete_member.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원탈퇴</a> -->
+<!-- 									<a href="confirmCheckoutList.sh" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회</a> -->
+									<%if(id.equals("admin")){%>
+									<a href="adminPage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">관리자 페이지로 이동</a>
+									<%}	%>
+
 								
 							</div>
 						</div>

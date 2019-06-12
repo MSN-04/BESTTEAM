@@ -7,13 +7,15 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
+
 import static db.JdbcUtil.*;
 import vo.UserBean;
 
 public class UserDAO {
 	
 	private Connection con;
-	private PreparedStatement pstmt =null;
+	private PreparedStatement pstmt;
 	private ResultSet rs;
 
 	private UserDAO() {}
@@ -342,6 +344,123 @@ public class UserDAO {
 		
 		return re;
 	}
+
+	public int allUserCount() {
+
+		int listCount = 0;
+		
+		String sql = "SELECT count(*) FROM user";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				listCount = rs.getInt(1); 
+			}
+
+		} catch (SQLException e) {
+			System.out.println("allUserListCount() 실패! : " + e.getMessage());
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return listCount;
+	}
+	
+	public ArrayList<UserBean> getAllUserList(int page, int limit) {
+		ArrayList<UserBean> articleList = new ArrayList<UserBean>();
+		UserBean userBean = null;
+
+		int startRow = (page - 1) * 10; 
+
+		String sql = "SELECT * FROM user ORDER BY user_num desc limit ?, ?";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, limit);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				userBean = new UserBean();
+
+				userBean.setUser_num(rs.getInt("user_num"));
+				userBean.setUser_id(rs.getString("user_id"));
+				userBean.setUser_pass(rs.getString("user_pass"));
+				userBean.setUser_name(rs.getString("user_name"));
+				userBean.setUser_age(rs.getString("user_age"));
+				userBean.setUser_gender(rs.getString("user_gender"));
+				userBean.setUser_address(rs.getString("user_address"));
+				userBean.setUser_phone(rs.getString("user_phone"));
+				userBean.setUser_email(rs.getString("user_email"));
+				userBean.setUser_post(rs.getString("user_post"));
+				articleList.add(userBean); 
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return articleList;
+	}
+
+	public ArrayList<Integer> getAgeList() {
+		int listCount = 0;
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_age >= ? AND user_age <= ?";
+		try {
+			for(int i = 0; i < 10; i++) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, i*10);
+				pstmt.setInt(2, (i*10)+9);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					listCount = rs.getInt(1); 
+				}
+				ageList.add(listCount);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return ageList;
+	}
+
+	public int getMaleList() {
+		int maleList = 0;
+		ArrayList<Integer> genderList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_gender = '남'";
+		try {
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					maleList = rs.getInt(1); 
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return maleList;
+	}
+	
+	
+
+
 	
 	
 }

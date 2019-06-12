@@ -64,7 +64,7 @@ public class ConfirmCheckoutProAction implements Action {
 		
 		request.setAttribute("orderInfoList", orderInfoList);
 		request.setAttribute("orderPersonList",orderPersonList);  //buyList에 서비스에서 가져온걸 저장.
-		forward.setPath("./shop/confirm_checkout.jsp");
+		forward.setPath("/shop/confirm_checkout.jsp");
 	//	forward.setRedirect(true); // Redirect 방식
 				
 		}

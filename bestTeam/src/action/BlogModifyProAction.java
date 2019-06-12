@@ -24,21 +24,6 @@ public class BlogModifyProAction implements Action {
 		// BoardModifyProService 인스턴스 생성 후 isArticleWriter() 메서드를 통해 본인 확인(매개변수로 글번호, 입력받은 패스워드 전달)
 		BlogModifyProService blogModifyProService = new BlogModifyProService();
 				
-		
-		// 패스워드 일치 여부 판별		
-//		if(!isRightUser) {
-//			// 패스워드가 일치하지 않을 경우
-//			// 자바스크립트를 사용하여 "수정할 권한이 없습니다." 출력 후 이전 페이지로 이동
-//			response.setContentType("text/html;charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>"); // 자바스크립트 시작 태그
-//			out.println("alert('수정할 권한이 없습니다.')"); // 오류 메세지 다이얼로그 표시
-//			out.println("history.back()"); // 이전 페이지로 돌아가기
-//			out.println("</script>"); // 자바스크립트 종료 태그
-//		} else {
-			// 패스워드가 일치할 경우
-			// BoardBean 객체 생성 후 글번호, 글제목, 글내용 저장
-			// BoardModifyService 클래스의 modifyArticle() 메서드를 호출하여 글 수정 작업 수행(매개변수로 BoardBean 객체 전달) - boolean 타입 리턴
 			BlogBean article = new BlogBean();
 			article.setBlog_num(blog_num);
 			article.setBlog_subject(request.getParameter("blog_subject"));
@@ -48,8 +33,6 @@ public class BlogModifyProAction implements Action {
 			article.setBlog_content(request.getParameter("blog_content"));
 			
 			boolean isModifySuccess = blogModifyProService.modifyArticle(article);
-			
-			
 			
 			// 글 수정 성공 여부 판별
 			if(!isModifySuccess) {
