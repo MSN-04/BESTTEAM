@@ -27,7 +27,7 @@
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
 
-	//qna
+// 	qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
 	QnaBean qnabean = new QnaBean();
@@ -45,7 +45,8 @@
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 %>
 
 	
@@ -706,21 +707,23 @@ $( '#rere1' ).click(
 									<%
 										if (qnaList != null && listCount2 > 0) {
 											for (int i = 0; i < qnaList.size(); i++) {
-												
+												System.out.println("싱글페이지:"+ qnaList.size());
 												System.out.println(qnaList.get(i).getQna_re_lev());
 									%>
 									
 								<tr>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
 									<% 
+									int wid = 0;
 										if(qnaList.get(i).getQna_re_lev()>0){
 											System.out.println(qnaList.get(i).getQna_re_lev());
-										
+										wid = qnaList.get(i).getQna_re_lev()*10;
 											%>
-											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>">&nbsp;&nbsp;Re :  <%=qnaList.get(i).getQna_subject() %> </a></td>
-									<%	}
+											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
 									%>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%} %>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
 								</tr>
@@ -837,29 +840,33 @@ $( '#rere1' ).click(
 							<div class="block-27">
 								<ul>
 							<% 
-							//실제 페이지수를 endPage로 변경
-							if(endPage2>pageCount2){
-								endPage2=pageCount2;
-							}
+// 							for(int a = startPage2; a<=endPage2;a++){
+						
 							
-							if(startPage2>pageCount2){
+							if(startPage<1){
 								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2-pageBlock %>'>&lt;</a></li>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage-1 %>'>&lt;</a></li>
 							<%
 							}
 							
 							for(int i = startPage2; i<=endPage2;i++){ 
+								if(i==nowPage2){%>
+								<li class="active"><a><%=i %></a></li>
+								<%
+							}else{
 								%>
 							
-									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
 									
 									<%} 
 									
-							if(endPage2<pageCount2){
+							if(endPage2 < maxPage2){
 								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2+pageSize %>'>&gt;</a></li>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
 							<%
 							}
+// 							
+						}
 							%>
 								</ul>
 				</div>

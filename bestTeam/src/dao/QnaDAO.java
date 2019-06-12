@@ -53,17 +53,17 @@ public class QnaDAO {
 				// 최대 게시물 번호 + 1
 			}
 
-			sql = "INSERT INTO qna VALUES(?,?,?,?,?,now(),?,?,?,null)";
+			sql = "INSERT INTO qna VALUES(null,?,?,?,?,now(),?,?,?,null)";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			pstmt.setInt(2, qnaBean.getQna_item_num());
-			pstmt.setString(3, qnaBean.getQna_writer());
-			pstmt.setString(4, qnaBean.getQna_subject());
-			pstmt.setString(5, qnaBean.getQna_content());
-			pstmt.setInt(6, num);
+//			pstmt.setInt(1, num);
+			pstmt.setInt(1, qnaBean.getQna_item_num());
+			pstmt.setString(2, qnaBean.getQna_writer());
+			pstmt.setString(3, qnaBean.getQna_subject());
+			pstmt.setString(4, qnaBean.getQna_content());
+			pstmt.setInt(5, num);
+			pstmt.setInt(6, 0);
 			pstmt.setInt(7, 0);
-			pstmt.setInt(8, 0);
 			insertCount = pstmt.executeUpdate();
 			// INSERT 실행 결과를 int 타입으로 리턴 받음
 
@@ -79,17 +79,20 @@ public class QnaDAO {
 
 	}
 
-	// 글 목록 갯수 구하기
-	public int selectListCount() {
+	// 글 목록 갯수 구하기 (파라미터 item_num)
+	public int selectListCount(int item_num) {
 		System.out.println("selectListCount()");
 
 		int listCount = 0;
 
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
-		String sql = "SELECT count(*) FROM qna";
+//		String sql = "SELECT count(*) FROM qna";
+		String sql = "SELECT count(*) FROM qna WHERE qna_item_num=?";
+		
 
 		try {
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, item_num);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -106,6 +109,37 @@ public class QnaDAO {
 
 		return listCount;
 	}
+	
+	// 글 목록 갯수 구하기
+		public int selectListCount() {
+			System.out.println("selectListCount()");
+
+			int listCount = 0;
+
+			// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
+//			String sql = "SELECT count(*) FROM qna";
+			String sql = "SELECT count(*) FROM qna WHERE qna_item_num=?";
+			
+
+			try {
+				pstmt = con.prepareStatement(sql);
+			
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					listCount = rs.getInt(1); // 조회된 목록 갯수 저장
+				}
+
+			} catch (SQLException e) {
+//				e.printStackTrace();
+				System.out.println("selectListCount() 실패! : " + e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+
+			return listCount;
+		}
 
 	// 글 목록 가져오기
 	public ArrayList<QnaBean> selectArticleList(int page, int limit, int item_num) {
@@ -115,16 +149,16 @@ public class QnaDAO {
 		QnaBean qnaBean = null;
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-
+		System.out.println("dao에서 limit: "+limit);
 //		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_num DESC,qna_num ASC LIMIT ?,10 ";
-		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC ";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC LIMIT ?,? ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, item_num);
-//			pstmt.setInt(2, startRow-1);
-//			pstmt.setInt(3, limit);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -322,51 +356,4 @@ public class QnaDAO {
 	}
 
 
-	//qna답글 등록 메서드
-	public int insertReply(QnaBean qnaBean) {
-		int result = 0; //리턴할 결과를 저장할 변수
-		
-		//해당 게시물의 기존 답글 순번을 1씩 증가시키는 쿼리(답글간의 순서)
-		
-		String sql = "UPDATE qna SET qna_re_seq = qna_re_seq+1 WHERE qna_re_ref =? AND qna_re_seq > ?";
-		
-		String sql2 = "INSERT INTO qna VALUES(null,?,?,?,?,NOW()?,?,?)";
-		
-		int qna_re_ref = qnaBean.getQna_re_ref();
-		int qna_re_lev = qnaBean.getQna_re_lev();
-		int qna_re_seq = qnaBean.getQna_re_seq();
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, qna_re_ref);
-			pstmt.setInt(2, qna_re_seq);
-			
-			pstmt.executeUpdate();
-   
-			qna_re_seq = qna_re_seq +1;
-			qna_re_lev = qna_re_lev +1;
-			
-			pstmt = con.prepareStatement(sql2);
-			pstmt.setInt(1, qnaBean.getQna_num());
-			pstmt.setString(2, qnaBean.getQna_writer());
-			pstmt.setString(3, qnaBean.getQna_subject());
-			pstmt.setString(4, qnaBean.getQna_content());
-			pstmt.setInt(5, qna_re_ref);
-			pstmt.setInt(6, qna_re_lev);
-			pstmt.setInt(7, qna_re_seq);
-			
-			result = pstmt.executeUpdate();
-
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			if(rs != null){ try{ rs.close(); }catch(SQLException se){ } }
-			if(pstmt != null){ try{ pstmt.close(); }catch(SQLException se){ } }
-		}
-
-		return result;
-	}
-	
 }

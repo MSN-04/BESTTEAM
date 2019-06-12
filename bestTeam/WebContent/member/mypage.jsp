@@ -174,12 +174,15 @@
 									<a href="#"
 										class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a>
 
-								<a href="delete_member.us"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원
+<!-- 								<a href="delete_member.us" -->
+<!-- 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원 -->
+<!-- 									탈퇴</a> -->
+									<a href="delete_member.us"
+									class="btn btn-primary p-3 px-xl-4 py-xl-3">회원
 									탈퇴</a>
 									
 									<a href="confirmCheckoutList.sh"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회
+									class="btn btn-primary p-3 px-xl-4 py-xl-3" >주문 조회
 								</a>
 								
 							</div>
