@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminPageProAction;
 import action.DeleteMemberProAction;
 import action.FavorProAction;
 import action.ForgotAccountProAction;
@@ -40,7 +41,7 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-//		System.out.println(requestURI + " " + contextPath +  " " + command);
+		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
 		Action action = null;
 		ActionForward forward = null;
@@ -138,10 +139,18 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/adminPage.us")) {
+		} else if(command.equals("/adminPage.us")) {
+			System.out.println("adminPage controller");
+			action = new AdminPageProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageShop.us")) {
 			forward = new ActionForward();
-			forward.setPath("/member/adminPage.jsp");
-		}	
+			forward.setPath("/member/adminPageShop.jsp");
+		}
 		
 		
 		
