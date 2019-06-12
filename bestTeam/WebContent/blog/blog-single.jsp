@@ -16,13 +16,17 @@
 	// 	String userName = userbean.getUser_name();
 
 	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+// 	int comment_num = Integer.parseInt(request.getParameter("comment_num"));
+	
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 	// 	Date comment_date = request.getParameter("comment_date");
 
+	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+
+	//-------------------------------------------------------- 날짜형식
 	// 	String from = "2013-04-08 10:10:10";
 	// 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	// 	Date to = transFormat.parse(from);
@@ -480,8 +484,10 @@
 						<h3 class="mb-5">코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
-							<input type="hidden" name="comment_blog_num"
-								value="<%=article.getBlog_num()%>" id="comment_blog_num">
+							<input type="hidden" name="blog_num"
+								value="<%=article.getBlog_num()%>" id="blog_num">
+<%-- 							<input type="hidden" name="comment_num" value="<%=articleList.getComment_blog_num() %>" id="comment_num"> --%>
+								
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
