@@ -15,7 +15,6 @@ public class QnaWriteFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("QnaWriteFormAction");
 		
 		ActionForward forward = new ActionForward();
 		UserBean userBean = new UserBean();
@@ -24,7 +23,6 @@ public class QnaWriteFormAction implements Action {
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		 
 		
-		System.out.println(item_num);
 		if(session.getAttribute("id")==null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -38,7 +36,6 @@ public class QnaWriteFormAction implements Action {
 		
 		QnaWriteFormService qnaWriteFormService = new QnaWriteFormService();
 		userBean = qnaWriteFormService.getUserInfo(id);
-		System.out.println("userBean 받음");
 		if(userBean == null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -50,7 +47,6 @@ public class QnaWriteFormAction implements Action {
 			request.setAttribute("userBean", userBean);
 			forward = new ActionForward();
 			forward.setPath("/shop/qna_write2.jsp?item_num="+item_num);
-//			forward.setRedirect(true);
 		}
 		
 		return forward;

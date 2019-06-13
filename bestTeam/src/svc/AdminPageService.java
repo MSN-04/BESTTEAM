@@ -76,12 +76,34 @@ public class AdminPageService {
 		return maleList;
 	}
 
-//	public byte[] getRData() {
-//		
-//		Rserve_S rServe = Rserve_S.getInstance();
-//		byte[] img = rServe.returnRImg();
-//		return img;
-//	}
+	public ArrayList<Integer> getAgeBuyList() {
+		ArrayList<Integer> ageBuyLists = new ArrayList<Integer>();;
+		
+		Connection con = getConnection();
+		UserDAO userDAO = UserDAO.getInstance();
+		userDAO.setConnection(con);
+		
+		ageBuyLists = userDAO.getAgeBuyList();
+		
+		close(con);
+		
+		return ageBuyLists;
+	}
+
+	public ArrayList<Integer> getGenderFavor() {
+		ArrayList<Integer> genderFavor = new ArrayList<Integer>();;
+		
+		Connection con = getConnection();
+		UserDAO userDAO = UserDAO.getInstance();
+		userDAO.setConnection(con);
+		
+		genderFavor = userDAO.getGenderFavor();
+		
+		close(con);
+		
+		return genderFavor;
+	}
+
 
 	
 

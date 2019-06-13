@@ -21,32 +21,28 @@ public class AdminPageProAction implements Action {
 		ActionForward forward = null;
 		
 		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
-		ArrayList<Integer> ageList = new ArrayList<Integer>();
-		int maleList = 0;
 		int page = 1;
 		int limit = 8;
-		String id = "";
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}		
 		HttpSession session = request.getSession();
-		id = session.getAttribute("id").toString();
-//		System.out.println(id);
+		String id = session.getAttribute("id").toString();
 		
-		if(id.equals("")) {
+		if(id==null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인하세요!')");
-			out.println("location.href='history.back()'");
+			out.println("location.href='history.back();'");
 			out.println("</script>");
 		}else if(!id.equals("admin")) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('권한이 없습니다!')");
-			out.println("location.href='history.back()'");
+			out.println("location.href='history.back();'");
 			out.println("</script>");
 
 		}
@@ -73,15 +69,24 @@ public class AdminPageProAction implements Action {
 		adminPageInfo.setPage(page);
 		adminPageInfo.setStartPage(startPage);
 		
-//		REXP rexp = adminPageService.getRData();
-		
+		// 데이터 분석
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
 		ageList = adminPageService.getAgeList();
-		maleList = adminPageService.getMaleList();
+		
+		int maleList = adminPageService.getMaleList();
+		
+		ArrayList<Integer> ageBuyList = new ArrayList<Integer>();
+		ageBuyList = adminPageService.getAgeBuyList();
+		
+		ArrayList<Integer> genderFavor = new ArrayList<Integer>();
+		genderFavor = adminPageService.getGenderFavor();
 		
 		request.setAttribute("adminPageInfo", adminPageInfo);
 		request.setAttribute("allUserList", allUserList);
 		request.setAttribute("ageList", ageList);
 		request.setAttribute("maleList", maleList);
+		request.setAttribute("ageBuyList", ageBuyList);
+		request.setAttribute("genderFavor", genderFavor);
 		
 		forward = new ActionForward();
 		forward.setPath("/member/adminPage.jsp");
