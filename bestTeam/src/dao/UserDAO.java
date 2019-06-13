@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
 
@@ -409,7 +412,65 @@ public class UserDAO {
 		return articleList;
 	}
 
-
+	public List<Map<String, Integer>> getSalesDayList(String month) {
+		List<Map<String, Integer>> salesList = new ArrayList<Map<String, Integer>>();
+		
+		try {
+			String sql="select sum(bi.buy_item_price * bi.buy_item_count) as Total, b.buy_buydate " + 
+					"from buy_item bi, buy b " + 
+					"where bi.buy_item_buy_num = b.buy_num and MONTH(b.buy_buydate) = "+ month +" " + 
+					"group by b.buy_buydate " + 
+					"order by b.buy_buydate asc;"; 
+			
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put(rs.getString("b.buy_buydate"), rs.getInt("Total"));
+				salesList.add(map);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getSalesDayList 실패! ( " + e.getMessage() + " )");
+		}finally {
+			close(rs);
+			close(pstmt);
+		}		
+		
+		return salesList;
+	}
+	
+	public List<Map<String, Integer>> getSalesMonthList(String year) {
+		List<Map<String, Integer>> salesList = new ArrayList<Map<String, Integer>>();
+		
+		try {
+			String sql="select sum(bi.buy_item_price * bi.buy_item_count) as Total, MONTH(b.buy_buydate) as Month " + 
+					"from buy_item bi, buy b " + 
+					"where bi.buy_item_buy_num = b.buy_num and YEAR(b.buy_buydate) = "+ year +" " + 
+					"group by MONTH(b.buy_buydate) " + 
+					"order by b.buy_buydate asc;";
+			
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				map.put(rs.getString("Month"), rs.getInt("Total"));
+				salesList.add(map);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("getSalesMonthList 실패! ( " + e.getMessage() + " )");
+		}finally {
+			close(rs);
+			close(pstmt);
+		}		
+		
+		return salesList;
+	}
 	
 	
 }
