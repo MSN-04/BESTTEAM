@@ -3,6 +3,7 @@
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="com.google.gson.JsonObject"%>
 
+
 <%
 	Gson gsonObj = new Gson();
 	Map<Object, Object> map = null;
@@ -36,6 +37,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- <link rel="stylesheet" href="./css/style.css"> -->
+
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <script type="text/javascript">
@@ -76,21 +80,24 @@
 </script>
 </head>
 <body>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
-	<select id="month">
-	<% if (month != null) {
-		int mint = Integer.parseInt(month);
-		for(int i = 1 ; i <= 12 ; i++) {
-			if(mint == i) {
-				%><option selected="selected"><%=i %></option><%
-			} else {
-			%><option><%=i %></option><%
-			}
-		}
-	} %>
-	</select>
-	<input type="button" id="show" value="선택" onclick="showChart();">
+	<div style="padding: 1rem; background: white; text-align: center; ">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<div style="margin: 20px 0;">
+			<select id="month">
+			<% if (month != null) {
+				int mint = Integer.parseInt(month);
+				for(int i = 1 ; i <= 12 ; i++) {
+					if(mint == i) {
+						%><option selected="selected"><%=i %></option><%
+					} else {
+					%><option><%=i %></option><%
+					}
+				}
+			} %>
+			</select>월
+			<input type="button" id="show" value="보기" onclick="showChart();">
+		</div>
+	</div>
 	
 </body>
 </html>            

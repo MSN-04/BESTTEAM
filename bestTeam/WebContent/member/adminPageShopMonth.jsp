@@ -78,20 +78,22 @@
 </script>
 </head>
 <body>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
-	<select id="year">
-	<%
-		for(int i = nowYear ; i >= nowYear-2 ; i--) {
-			if (iYear == i) {
-				%><option selected="selected"><%=i %></option><%
-			} else {
-				%><option><%=i %></option><%
-			}
-		}
-	%>
-	</select>
-	<input type="button" id="show" value="선택" onclick="showChart();">
-	
+	<div style="padding: 1rem; background: white; text-align: center;">
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<div style="margin: 20px 0;">
+			<select id="year">
+			<%
+				for(int i = nowYear ; i >= nowYear-2 ; i--) {
+					if (iYear == i) {
+						%><option selected="selected"><%=i %></option><%
+					} else {
+						%><option><%=i %></option><%
+					}
+				}
+			%>
+			</select>년
+			<input type="button" id="show" value="선택" onclick="showChart();">
+		</div>
+	</div>
 </body>
 </html>            
