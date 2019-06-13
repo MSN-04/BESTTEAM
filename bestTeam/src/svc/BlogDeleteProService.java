@@ -14,7 +14,6 @@ public class BlogDeleteProService {
 		
 		Connection con = getConnection();
 		
-		// BoardDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
 		BlogDAO blogDAO = BlogDAO.getInstance();
 		blogDAO.setConnection(con);
 

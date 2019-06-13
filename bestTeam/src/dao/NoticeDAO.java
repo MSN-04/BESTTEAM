@@ -170,7 +170,6 @@ public class NoticeDAO {
 			}
 
 		} catch (SQLException e) {
-//			e.printStackTrace();
 			System.out.println("selectArticle() 실패! : " + e.getMessage());
 		} finally {
 			close(rs);

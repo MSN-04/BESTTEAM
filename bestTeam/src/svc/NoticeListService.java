@@ -13,7 +13,6 @@ public class NoticeListService {
 	
 	// 글 목록 갯수 구해서 리턴
 	public int getListCount() throws Exception {
-//		System.out.println("noticeListService - getListCount()");
 		
 		int listCount = 0; // 글 목록 갯수
 		
@@ -35,7 +34,6 @@ public class NoticeListService {
 	
 	// 글 목록 조회 후 리턴
 	public ArrayList<NoticeBean> getArticleList(int page, int limit) throws Exception {
-//		System.out.println("noticeListService - getArticleList()");
 		
 		ArrayList<NoticeBean> articleList = null;
 		

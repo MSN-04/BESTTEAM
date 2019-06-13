@@ -104,11 +104,11 @@
 							<!-- 							<span class="mr-2"><a href="index.jsp">Home</a></span> -->
 						</p>
 					</div>
-					</div>
-
-					<!-- 				</div> -->
 				</div>
+
+				<!-- 				</div> -->
 			</div>
+		</div>
 	</section>
 
 	<section class="ftco-section">
@@ -133,37 +133,40 @@
 	<!-- .section -->
 
 
-<!-- 이전글버튼 ----------------------------->
-	
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row">
-				<div style="border-bottom" solid white; margin-bottom: 30px;>
+	<!-- 이전글버튼 ----------------------------->
 
-			<button type="button" class="quantity-left-minus btn input-group-btn">
-				<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; 
-			</button>
-			</div>
+	<section class="ftco-section">
+		<div class="row" style="margin-left: 430px; margin-bottom: 10px;">
+			<div style="" solidwhite; margin-bottom: 30px;>
+				<%
+					int rre = article.getNotice_num() - 1;
+				%>
+				<button type="button"
+					class="quantity-left-minus btn input-group-btn"
+					style="text-align: center;">
+					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp;
+				</button>
 				<div class="block-21 mb-4 d-flex">
 					<a class="blog-img mr-4"
 						style="background-image: url(../images/image_1.jpg);"></a>
 					<div class="text">
 						<h3 class="heading">
-							<a href="#">
-								<%=article.getNotice_subject()%></a>
+							<a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
 						</h3>
-<!-- 						<div class="meta"> -->
-<!-- 							<div> -->
-<!-- 								<a href="#"><span class="icon-chat"></span> 19</a> -->
-<!-- 							</div> -->
-						</div>
 					</div>
 				</div>
 			</div>
+			<!-- 다음글 -->
+			<!-- 				<div style="border-bottom" solid white; margin-bottom: 30px;> -->
+			<%-- 				<%int rree=article.getNotice_num()+1; %> --%>
+			<!-- 			<button type="button" class="quantity-left-minus btn input-group-btn" style="text-align: center;"  -->
+			<%-- 			onclick = "location.href = 'noticeDetail.no?notice_num=<%=rree%>' "> --%>
+			<!-- 				<i class="icon-minus"></i>&nbsp;&nbsp;다음글 &nbsp;  -->
+			<!-- 			</button> -->
+			<!-- 			</div> -->
 		</div>
 	</section>
 
-	
 
 	<%
 		String id = (String) session.getAttribute("id");
@@ -269,10 +272,6 @@
 	<!--                 <a href="#" class="tag-cloud-link">desserts</a> -->
 	<!--                 <a href="#" class="tag-cloud-link">drinks</a> -->
 	<!--               </div> -->
-	<!--             </div> -->
-	<!--             <div class="sidebar-box ftco-animate"> -->
-	<!--               <h3>Paragraph</h3> -->
-	<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
 	<!--             </div> -->
 	<!--           </div> -->
 

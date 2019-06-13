@@ -161,16 +161,8 @@
 				<i class="icon-minus"></i>&nbsp;&nbsp;다음글 &nbsp; 
 			</button>
 			</div>
-					
- 						
-						
-					
 				</div>
 				
-					
-			
-
-	
 
 	<%
 		String id = (String) session.getAttribute("id");
