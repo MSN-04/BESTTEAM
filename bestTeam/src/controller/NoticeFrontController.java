@@ -120,6 +120,11 @@ public class NoticeFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if(command.equals("/faq.no")) {
+			// 글 쓰기 페이지 요청은 비즈니스 로직 없이 JSP 페이지(notice 디렉토리 내의 qna_notice_write.jsp 파일)로 바로 연결
+			// ActionForward 클래스의 인스턴스를 생성하여 path 변수에 해당 jsp 파일 위치 저장
+			forward = new ActionForward();
+			forward.setPath("./notice/faq.jsp");
 		}
 		
 		

@@ -74,8 +74,7 @@
 					</div></li>
 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>
 				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li>
-				<li class="nav-item"><a href="./contact/contact.jsp"
-					class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="./contact.et" class="nav-link">Contact</a></li>
 
 				<%
 					if (session.getAttribute("id") == null) {

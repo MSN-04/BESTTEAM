@@ -354,7 +354,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
-                    class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone">
                 </div>
               </div>
               <div class="w-100"></div>

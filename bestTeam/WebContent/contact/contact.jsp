@@ -11,28 +11,26 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
     
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="./css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="./css/aos.css">
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="../css/agency.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/flaticon.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/agency.min.css" rel="stylesheet">
     
-<!--     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad86d5356285065db2653bab5c5d0e4c"></script> -->
-<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script> -->
   </head>
   <body>
    <header>
@@ -68,7 +66,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -78,7 +76,7 @@
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -88,7 +86,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -98,7 +96,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -108,7 +106,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/arahansa.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/arahansa.jpg" alt="">
                     <h4>arahansa</h4>
                     <p class="text-muted">Advisor</p>
                     <p class="text-muted">Universe</p>
@@ -117,7 +115,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/bbang.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/bbang.jpg" alt="">
                     <h4>빵형(youtube)</h4>
                     <p class="text-muted">Advisor</p>
                     <p class="text-muted">Seoul</p>
@@ -126,7 +124,7 @@
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -136,7 +134,7 @@
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="../images/moon.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>moon</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
@@ -260,23 +258,21 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
-<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-<!--   <script src="js/google-map.js"></script> -->
-  <script src="../js/main.js"></script>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.easing.1.3.js"></script>
+  <script src="./js/jquery.waypoints.min.js"></script>
+  <script src="./js/jquery.stellar.min.js"></script>
+  <script src="./js/owl.carousel.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/aos.js"></script>
+  <script src="./js/jquery.animateNumber.min.js"></script>
+  <script src="./js/bootstrap-datepicker.js"></script>
+  <script src="./js/jquery.timepicker.min.js"></script>
+  <script src="./js/scrollax.min.js"></script>
+  <script src="./js/main.js"></script>
     
   </body>
 </html>
