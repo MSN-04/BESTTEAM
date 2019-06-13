@@ -11,17 +11,16 @@
 <%
 	BlogBean article = (BlogBean) request.getAttribute("article");
 	ArrayList<BlogCommentBean> articleList = (ArrayList<BlogCommentBean>) request.getAttribute("articleList");
+	
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String nowPage = (String) request.getAttribute("page"); 
 
 	UserBean userbean = (UserBean) request.getAttribute("userBean");
 	// 	String userName = userbean.getUser_name();
 
-	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
-	// 	Timestamp comment_date = request.get("comment_date");
 
 	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
 
@@ -455,10 +454,6 @@
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
 												<input type="submit" class="reply" value="submit" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
-												<!-- 											<a -->
-												<%-- 												href="BlogCommentDeletePro.bl?comment_num=<%=articleList.get(i).getComment_num()%>" --%>
-												<!-- 												class="reply" -->
-												<%-- 												onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a> --%>
 											</form>
 										</div>
 									</div>
@@ -497,9 +492,6 @@
 							method="post">
 							<input type="hidden" name="blog_num"
 								value="<%=article.getBlog_num()%>" id="blog_num">
-							<!-- 								<input -->
-							<!-- 								type="hidden" name="comment_num" -->
-							<%-- 								value="<%=blog_num%>" id="comment_num"> --%>
 
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">

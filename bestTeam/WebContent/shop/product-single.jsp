@@ -550,7 +550,7 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill" href="qna_list.jsp" target="_self" id="btn3"
+								<a class="nav-link"  data-toggle="pill"   id="btn3"
 									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
 							<%  String sessionId = (String) session.getAttribute("id");
@@ -686,7 +686,7 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-	<iframe id="iframe" name="iframe"></iframe>
+<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
 <section>
 		<div class="container" >
 			<div class="row" >
