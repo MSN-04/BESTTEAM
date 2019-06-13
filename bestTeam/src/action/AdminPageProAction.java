@@ -22,29 +22,30 @@ public class AdminPageProAction implements Action {
 		
 		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
 		int page = 1;
-		int limit = 10;
+		int limit = 8;
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}		
 		HttpSession session = request.getSession();
-		String id = session.getAttribute("id").toString();
+		String id = (String)session.getAttribute("id");
 		
 		if(id==null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인하세요!')");
-			out.println("location.href='history.back();'");
+			out.println("history.back();");
 			out.println("</script>");
+			return null;
 		}else if(!id.equals("admin")) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('권한이 없습니다!')");
-			out.println("location.href='history.back();'");
+			out.println("history.back();");
 			out.println("</script>");
-
+			return null;
 		}
 		
 		// 리스트 개수
