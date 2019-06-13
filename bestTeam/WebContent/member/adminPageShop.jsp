@@ -40,7 +40,17 @@
 <link rel="stylesheet" href="./css/shop.css">
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+<%
+	String id = (String)session.getAttribute("id");
+	if (id == null || !id.equals("admin")) {
+		%>
+		<script type="text/javascript">
+			alert('잘못된 접근입니다.');
+			location.href="index.in";
+		</script>
+		<%
+	}
+%>
 </head>
 <body>
 	<header>
