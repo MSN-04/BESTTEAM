@@ -22,7 +22,7 @@ public class AdminPageProAction implements Action {
 		
 		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
 		int page = 1;
-		int limit = 8;
+		int limit = 10;
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));

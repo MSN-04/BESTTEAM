@@ -37,9 +37,9 @@ public class ETCFrontController extends HttpServlet {
 		if(command.equals("/fest.et")) {
 			forward = new ActionForward();
 			forward.setPath("./fest/fest.jsp");
-		} else if(command.equals("/faq.no")){
-			forward=new ActionForward();
-			forward.setPath("./notice/faq.jsp");
+		} else if(command.equals("/contact.et")) {
+			forward = new ActionForward();
+			forward.setPath("./contact/contact.jsp");
 		}
 		
 		if(forward != null) {

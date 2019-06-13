@@ -103,7 +103,7 @@
 		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
 			<h3 class="mb-4 billing-heading">매출 현황</h3>
 			
-			 <div class="cart-list">
+			 <div class="cart-list" style="text-align: center;">
 				<nav style="font-size: 22px; text-align: center; margin-bottom: 10px;">
 					<a href="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" target="ifbox01" 
 						style="width:461px;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
@@ -112,9 +112,10 @@
 				</nav>
 				<iframe id="if01" name="ifbox01" width="950px" src="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" height="500px" style="margin: auto; border: 0px;">
 				</iframe>
+				<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart"  href="itemRegister.em" style="font-weight: bold; width:934px;"
+					role="tab" aria-controls="v-pills-3" aria-selected="false">상품 등록</a>
     
             </div>
-            
 		</form>
 			<div class="row mt-5">
 				<div class="col text-center">
@@ -125,48 +126,7 @@
 			</div>
 		<!-- 리스트 끝 -->
 		<br><br>
-		
-	          
-<!-- 	      연령별 전체 회원 분포  그래프1 -->
-<!-- 	       <div class="row mt-5 pt-3 d-flex" > -->
-	          
-<!-- 	         <div class="col-md-6 d-flex"> -->
-<!-- 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          			<h3 class="billing-heading mb-4">연령별 전체 회원 분포</h3> -->
-<!-- 	          				<div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
-<!-- 					</div> -->
-<!-- 	          	</div> -->
-<!--           연령별 전체 회원 분포 끝 -->
-<!-- 	      성별 전체 회원 분포 그래프2 -->
-<!-- 	          	<div class="col-md-6 d-flex"> -->
-<!-- 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          			<h3 class="billing-heading mb-4">성별 전체 회원 분포</h3> -->
-<!-- 	          				<div id="chartContainer2" style="height: 370px; width: 100%;"></div> -->
-<!-- 					</div> -->
-<!-- 	          	</div> -->
-<!-- 	       성별 전체 회원 분포 끝 -->
-	       
-<!-- 	            </div> -->
-<!--           </div>  -->
-	       
-<!-- 	       연령별 구매 수량  그래프3 -->
-<!-- 	       <div class="row mt-5 pt-3 d-flex" > -->
-	          
-<!-- 	         <div class="col-md-6 d-flex"> -->
-<!-- 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          			<h3 class="billing-heading mb-4">연령별 구매 수량</h3> -->
-<!-- 	          				<div id="chartContainer3" style="height: 370px; width: 100%;"></div> -->
-<!-- 					</div> -->
-<!-- 	          	</div> -->
-<!--           연령별 구매 수량 끝 -->
-<!-- 	      성별 구매 수량 그래프4 -->
-<!-- 	          	<div class="col-md-6 d-flex"> -->
-<!-- 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          			<h3 class="billing-heading mb-4">성별 취향 정보</h3> -->
-<!-- 	          				<div id="chartContainer4" style="height: 370px; width: 100%;"></div> -->
-<!-- 					</div> -->
-<!-- 	          	</div> -->
-<!-- 	       성별 구매 수량 끝 -->
+
 	          	
 	     
 
