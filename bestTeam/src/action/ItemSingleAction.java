@@ -125,7 +125,7 @@ public class ItemSingleAction implements Action {
 		request.setAttribute("itemBean", itemBean);
 			
 		// 4.
-		forward.setPath("/shop/product-single.jsp");
+		forward.setPath("/shop/qna_list.jsp");
 		
 		System.out.println("ItemSingleAction 끝");
 		

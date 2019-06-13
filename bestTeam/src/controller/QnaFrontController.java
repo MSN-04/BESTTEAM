@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.ItemSingleAction;
 import action.QnaDeleteProAction;
 import action.QnaDetailAction;
 import action.QnaListAction;
@@ -76,9 +77,9 @@ public class QnaFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/qnaList.qna")) {
+		} else if(command.equals("/qna_List.qna")) {
 			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
-			action = new QnaListAction();
+			action = new ItemSingleAction();
 			
 			try {
 				forward = action.execute(request, response);

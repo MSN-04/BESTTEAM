@@ -1,3 +1,4 @@
+<%@page import="vo.ItemBean"%>
 <%@page import="vo.UserBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,25 +16,34 @@
 	}
 </script>
 <%
-	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
-	QnaBean qnabean = new QnaBean();
-// 	UserBean userbean = new UserBean();
-	int qnaNum = qnabean.getQna_num();
-	String qnaSubject = qnabean.getQna_subject();
-	String qnaWriter = qnabean.getQna_writer();
-	
-	
+request.setCharacterEncoding("utf-8");
+String id=(String)session.getAttribute("id");
+System.out.println(id);
+//	qna
+// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
+QnaBean qnabean = new QnaBean();
+//	UserBean userbean = new UserBean();
+int qnaNum = qnabean.getQna_num();
+String qnaSubject = qnabean.getQna_subject();
+String qnaWriter = qnabean.getQna_writer();
 
-	ArrayList<QnaBean> articleList = (ArrayList<QnaBean>) request.getAttribute("articleList");
-	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
-	System.out.println("jsp에서 article.size: " + articleList.size());
-	int listCount = pageInfo.getListCount();
-	int nowwPage = pageInfo.getPage();
-	int maxPage = pageInfo.getMaxPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
+ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
+PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
+//	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
+int listCount2 = pageInfo2.getListCount();
+int nowPage2 = pageInfo2.getPage();
+int maxPage2 = pageInfo2.getMaxPage();
+int startPage2 = pageInfo2.getStartPage();
+int endPage2 = pageInfo2.getEndPage();
+int pageSize = 5;
+int pageBlock =3;
+int pageCount = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+//	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+
+	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,131 +156,110 @@ b {
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-	<header>
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-	</header>
-	<!-- END nav -->
-
-	<section class="home-slider owl-carousel">
-
-		<div class="slider-item"
-			style="background-image: url(images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
-
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Qna</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="notice.jsp">Notice</a></span> <span><a
-								href="qna.jsp">Q&A</a></span>
-						</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco=section">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
-
-					<!--     <p class="breadcrumbs">  -->
-					<!-- 					<span class="mr-2"><a href="faq.jsp"><b>배송 관련</b> </a></span>| <span><a  -->
-					<!-- 							href="faq2.jsp"> 결제 관련 </a></span>|<span><a href="faq3.jsp"> 교환/환불 관련 </a></span>  -->
-					<!--  					</p> -->
-					<section class="ftco-menu mb-5 pb-5">
-						<div class="nav ftco-animate nav-pills justify-content-left"
-							id="v-pills-tab" role="tablist" aria-orientation="vertical"
-							style="margin-top: -100px;">
-
-							<a class="nav-link active" data-toggle="pill" href="#v-pills-0"
-								role="tab" aria-controls="v-pills-0" id="btn1"
-								aria-selected="true" style="width: 200px; text-align: center;">배송관련</a>
-							<a class="nav-link" data-toggle="pill" href="#v-pills-1"
-								id="btn2" role="tab" aria-controls="v-pills-1"
-								aria-selected="false" style="width: 200px; text-align: center;">결제/환불
-								관련</a> <a class="nav-link" data-toggle="pill" href="#v-pills-2"
-								role="tab" aria-controls="v-pills-2" id="btn3"
-								aria-selected="false" style="width: 200px; text-align: center;">교환/반품
-								관련</a>
-
-						</div>
-					</section>
-
-
-					<section class="ftco=section" id="ac1">
-						<%
-							request.setCharacterEncoding("utf-8");
-						%>
+	<section class="ftco=section" id="ac1">
 						<div class="container">
 							<table class="table thead-light" id="ac1">
-							<tr>
-								<td><a data-toggle="collapse"
-										href="#collapse1">번호</a></td>
-									<td><a data-toggle="collapse"
-										href="#collapse1">제목 </a>
-										<div id="collapse1" class="panel-collapse collapse in">
-											<div class="panel-body">
-												<br> <b>A</b> &nbsp;&nbsp;
-												<%-- 												<%=articleList.get(i).getQna_content()%> --%>
-												<section class="ftco=section" id="ac1">
-													<div class="container">
-														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;">수정</a> <a
-																href="QnaDeletePro.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;"
-																onclick="delconfirm('<%=qnaNum%>')">삭제</a>
-														</div>
-													</div>
-												</section>
-											</div></td>
-											<td><a data-toggle="collapse" 
-										href="#collapse1">작성자</a></td>
-											<td><a data-toggle="collapse"
-										href="#collapse1">작성일</a></td>
-								</tr>
-								<%
-									if (articleList != null && listCount > 0) {
-										for (int i = 0; i < 3; i++) {
-											// articleList.size() ?
-								%>
-								
 								<tr>
-								<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1">24</a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=qnaSubject %> </a>
-										<div id="collapse1" class="panel-collapse collapse in">
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									<%
+										if (qnaList != null && listCount2 > 0) {
+											for (int i = 0; i < qnaList.size(); i++) {
+												System.out.println("싱글페이지:"+ qnaList.size());
+												System.out.println(qnaList.get(i).getQna_re_lev());
+									%>
+									
+								<tr>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
+									<% 
+									int wid = 0;
+										if(qnaList.get(i).getQna_re_lev()>0){
+											System.out.println(qnaList.get(i).getQna_re_lev());
+										wid = qnaList.get(i).getQna_re_lev()*10;
+											%>
+											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
+									%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%} %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<tr>
+								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
 											<div class="panel-body">
-												<br> <b>A</b> &nbsp;&nbsp;
-												<%-- 												<%=articleList.get(i).getQna_content()%> --%>
+												<b><%=qnaList.get(i).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525">
-															<a href="QnaModifyForm.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;">수정</a> <a
-																href="QnaDeletePro.qna?qna_num=<%=qnaNum%>"
-																class="btn btn-primary btn-outline-primary"
-																style="float: right;"
-																onclick="delconfirm('<%=qnaNum%>')">삭제</a>
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
-											</div></td>
-											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1"><%=qnaWriter %></a></td>
-											<td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1">2019-05-31</a></td>
+												
+												<%
+												if(id.equals("admin")){
+													%>
+													<section class="ftco-section">
+		<div class="col-md-5" id="mail">
+			<form id="frm" action="QnaReplyProAction.qna" method="post"
+				class="contact-form" style="width: 100%;">
+				<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
+								name="qna_reply_subject" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
+								name="qna_num" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
+								name="qna_item_num" id="qna_reply_subject" required="required">
+					
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">QNA 답글</h2>
+				</div>
+				<table style="width: 100%; text-align: left;">
+					<div class="row">
+					<tr>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" value="<%=id %>"
+								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+						</div>
+						<!-- 						</div> -->
+
+					</tr>
+				</table>
+				<table style="width: 100%; text-align: center;">
+					
+							
+					<tr>
+						<td> <div class="form-group">
+                <textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div></td>
+					</tr>
+					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+					<tr style="display: inline-block;">
+						<td colspan="2"><input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> <input type="submit"
+							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+							value="등록" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+													<%
+													
+												}
+												
+												%>
+											</div>
+										</td>
 								</tr>
+								
+								
 								<%
 									}
 									}
@@ -278,256 +267,72 @@ b {
 							</table>
 						</div>
 					</section>
+<!-- 					<br> -->
+<!-- 					<br> -->
+<!-- 					<table class="table thead-light"> -->
+<!-- 					<tr>Q & A</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th>번호</th> -->
+<!-- 							<th>제목</th> -->
+<!-- 							<th>날짜</th> -->
+<!-- 							<th>글쓴이</th> -->
+<!-- 							<th>조회수</th> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>2</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>3</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>1</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>21</td> -->
+<!-- 						</tr> -->
 
-
-
-					<!-- 					<section class="ftco=section" id="ac2"> -->
-					<!-- 						<div class="container"> -->
-					<!-- 							<table class="table thead-light" id="ac2"> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse8">Q -->
-					<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;배송중에 결제취소가 가능한가요? </a> -->
-					<!-- 										<div id="collapse8" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse9">Q -->
-					<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;결제취소 내역은 어디에서 확인하나요 </a> -->
-					<!-- 										<div id="collapse9" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse10">Q -->
-					<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문 한 상품을 취소하고싶어요 </a> -->
-					<!-- 										<div id="collapse10" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse11">Q -->
-					<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환불을 받지않고 그 금액으로 다른 상품을 -->
-					<!-- 											구매할 수 있나요 </a> -->
-					<!-- 										<div id="collapse11" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse12">Q -->
-					<!-- 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환불받을 계좌를 변경하고싶어요</a> -->
-					<!-- 										<div id="collapse12" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-
-					<!-- 							</table> -->
-					<!-- 						</div> -->
-					<!-- 					</section> -->
-					<!-- 					<section class="ftco=section" id="ac3"> -->
-					<!-- 						<div class="container"> -->
-					<!-- 							<table class="table thead-light" id="ac3"> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse14">Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;반품신청을 -->
-					<!-- 											했는데 반품 안하고 상품을 다시 사용하고 싶어요 </a> -->
-					<!-- 										<div id="collapse14" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse15">Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상품을 -->
-					<!-- 											교환하고 싶어요 </a> -->
-					<!-- 										<div id="collapse15" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-					<!-- 								<tr> -->
-					<!-- 									<td><a data-toggle="collapse" data-parent="#accordian" -->
-					<!-- 										href="#collapse17">Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;반품/교환이 -->
-					<!-- 											불가한 경우가 있나요 </a> -->
-					<!-- 										<div id="collapse17" class="panel-collapse collapse in"> -->
-					<!-- 											<div class="panel-body"> -->
-					<!-- 												<br> <b>A</b> &nbsp;&nbsp; A small river named Duden -->
-					<!-- 												flows by their place<br> and supplies it with the -->
-					<!-- 												necessary regelialia. -->
-
-					<!-- 											</div> -->
-					<!-- 										</div></td> -->
-					<!-- 								</tr> -->
-
-					<!-- 							</table> -->
-					<!-- 						</div> -->
-					<!-- 					</section> -->
-
-					<!-- 				</div> -->
-					<!-- 	</section> -->
-
-					<!--     <section class="ftco-section"> -->
-					<!--       <div class="container"> -->
-					<!--         <div class="row d-flex"> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_1.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_2.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_3.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_4.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_5.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-					<!--           	<div class="blog-entry align-self-stretch"> -->
-					<!--               <a href="blog-single.html" class="block-20" style="background-image: url('../images/image_6.jpg');"> -->
-					<!--               </a> -->
-					<!--               <div class="text py-4 d-block"> -->
-					<!--               	<div class="meta"> -->
-					<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-					<!--                   <div><a href="#">Admin</a></div> -->
-					<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-					<!--                 </div> -->
-					<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-					<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-					<!--               </div> -->
-					<!--             </div> -->
-					<!--           </div> -->
-					<!--         </div> -->
-
-
+<!-- 					</table> -->
+					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+							<% 
+// 							for(int a = startPage2; a<=endPage2;a++){
+						
+							
+							if(startPage2<1){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage2-1 %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage2; i<=endPage2;i++){ 
+								if(i==nowPage2){%>
+								<li class="active"><a><%=i %></a></li>
+								<%
+							}else{
+								%>
+							
+<%-- 									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>#v-pills-2'><%=i %></a></li> --%>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									<%} 
+									
+							if(endPage2 < maxPage2){
+								%>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage2+1 %>'>&gt;</a></li>
+							<%
+							}
+// 							
+						}
+							%>
 								</ul>
-							</div>
-						</div>
-					</div>
 				</div>
-	</section>
-
-
-	<footer>
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
-	</footer>
-
-
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
-	</div>
+			</div>
+		</div>
 
 
 	<script src="./js/jquery.min.js"></script>
