@@ -22,7 +22,7 @@ public class AdminPageProAction implements Action {
 		
 		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
 		int page = 1;
-		int limit = 8;
+		int limit = 10;
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -51,13 +51,13 @@ public class AdminPageProAction implements Action {
 		AdminPageService adminPageService = new AdminPageService();
 		int listCount = adminPageService.getListCount();
 
+		// 리스트 받아옴
+		allUserList = adminPageService.getUserList(page, limit);
 		
 		int maxPage = (int)((double)listCount / limit+0.95);
 		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1;
 		int endPage = startPage + 10 - 1;
 		
-		// 리스트 받아옴
-		allUserList = adminPageService.getUserList(startPage, endPage);
 		if (endPage > maxPage) {
 			endPage = maxPage;
 		}
