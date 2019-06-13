@@ -14,14 +14,12 @@ public class QnaListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("QnaListAction");
 		
 		ArrayList<QnaBean> articleList = new ArrayList<QnaBean>();
 		
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		int page = 1;
 		int limit = 5;
-		
 		// 페이지 번호 파라미터가 있을 경우 가져오기
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -29,7 +27,7 @@ public class QnaListAction implements Action {
 		
 		QnaListService qnaListService = new QnaListService();
 		
-		int listCount = qnaListService.getListCount(); // 총 게시물 목록 수 가져오기
+		int listCount = qnaListService.getListCount(item_num); // 총 게시물 목록 수 가져오기
 		
 		articleList = qnaListService.getArticleList(page, limit, item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 		

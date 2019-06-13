@@ -14,7 +14,6 @@ public class JoinProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("JoinProAction");
 		ActionForward forward = null;
 		boolean isJoinSuccess = false;
 		UserBean userBean = new UserBean();

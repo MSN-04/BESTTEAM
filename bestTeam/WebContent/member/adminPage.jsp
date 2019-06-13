@@ -1,14 +1,19 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.Rserve_C"%>
 <%@page import="vo.FavorBean"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="vo.UserBean"%>
+<%@page import="com.google.gson.JsonObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 	<%
-	String id = session.getAttribute("id").toString();
+// 	String id = session.getAttribute("id").toString();
 // 	Rserve_C rc = (Rserve_C)session.getAttribute("rs");
 // 	String s = rc.returnRClass();
 // 	System.out.println(s);
@@ -20,6 +25,52 @@
 	int maxPage = adminPageInfo.getMaxPage();
 	int startPage = adminPageInfo.getStartPage();
 	int endPage = adminPageInfo.getEndPage();
+	System.out.println(listCount);
+	//연령별 전체 회원 분포 그래프
+	ArrayList<Integer> ageList = (ArrayList<Integer>)request.getAttribute("ageList");
+	
+	Gson gsonObj = new Gson();
+	Map<Object,Object> map = null;
+	List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+	for(int i = 0; i < ageList.size(); i++){
+		map = new HashMap<Object,Object>(); 
+		map.put("label", i*10 +"대(" + i*10 + "~" + ((i*10)+9) + "세" ); 
+		map.put("y", ((double)ageList.get(i)/(double)listCount)*100); 
+		list.add(map);
+	}
+	String dataPoints = gsonObj.toJson(list);
+	//연령별 전체 회원 분포 그래프
+	
+	//성별 전체 회원 분포 그래프
+	int maleList = Integer.parseInt(request.getAttribute("maleList").toString());
+	
+	Gson gsonObj2 = new Gson();
+	Map<Object,Object> map2 = null;
+	List<Map<Object,Object>> list2 = new ArrayList<Map<Object,Object>>();
+		map2 = new HashMap<Object,Object>(); map2.put("label", "남" ); map2.put("y", ((double)(maleList)/(double)listCount)*100); list2.add(map2);
+		map2 = new HashMap<Object,Object>(); map2.put("label", "여" ); map2.put("y", (((double)(listCount-maleList))/(double)listCount)*100); list2.add(map2);
+	String dataPoints2 = gsonObj2.toJson(list2);
+	//성별 전체 회원 분포 그래프
+	
+	//연령별 구매수량
+	ArrayList<Integer> ageBuyList = (ArrayList<Integer>)request.getAttribute("ageBuyList");
+	
+	Gson gsonObj3 = new Gson();
+	Map<Object,Object> map3 = null;
+	List<Map<Object,Object>> list3 = new ArrayList<Map<Object,Object>>();
+	for(int i = 0; i < ageBuyList.size(); i++){
+		map3 = new HashMap<Object,Object>(); 
+		map3.put("label", i*10 +"대"); 
+		map3.put("y", (ageBuyList.get(i))); 
+		list3.add(map3);
+	}
+	String dataPoints3 = gsonObj3.toJson(list3);
+	
+	//연령별 구매수량 끝
+	
+	//성별 취향
+	ArrayList<Integer> genderFavor = (ArrayList<Integer>)request.getAttribute("genderFavor");
+	// 성별 취향 끝
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,35 +109,149 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
 
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
-// function getParams (kind, val) {
+// 페이지 넘김
+
+
+// 그래프
+window.onload = function() {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "pie",
+			showInLegend : true,
+			indexLabel : "{y}%",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}%",
+			toolTipContent : "<b>{label}</b>: {y}%",
+			dataPoints :
+			<%out.print(dataPoints);%>
+		} ]
+	});
+	chart.render();
+
+// 그래프 2
+	var chart2 = new CanvasJS.Chart("chartContainer2", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "pie",
+			showInLegend : true,
+			indexLabel : "{y}%",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}%",
+			toolTipContent : "<b>{label}</b>: {y}%",
+			dataPoints :
+			<%out.print(dataPoints2);%>
+		} ]
+	});
+	chart2.render();
 	
-// 	var params = location.search.substr(location.search.indexOf("?") + 1);
-// 	var QuestionIndex = location.href.indexOf("?");
-// 	var url = "";
+	// 그래프 3
+	var chart3 = new CanvasJS.Chart("chartContainer3", {
+		animationEnabled : true,
+		title : {
+		},
+		legend : {
+			verticalAlign : "center",
+			horizontalAlign : "right"
+		},
+		data : [ {
+			type : "column",
+			showInLegend : true,
+			indexLabel : "{y}개",
+			indexLabelPlacement : "inside",
+			legendText : "{label}: {y}개",
+			toolTipContent : "<b>{label}</b>: {y}개",
+			dataPoints :
+			<%out.print(dataPoints3);%>
+		} ]
+	});
+	chart3.render();
 	
-// 	if (QuestionIndex == -1 ) {
-// 		url = location.href.substring();
-// 	} else {
-// 		url = location.href.substring(0, QuestionIndex);
-// 	} 
+	// 그래프 4
+	var chart4 = new CanvasJS.Chart("chartContainer4", {
+		exportEnabled: true,
+		animationEnabled: true,
+		title:{
+		},
+		subtitles: [{
+		}], 
+		axisX: {
+		},
+		axisY: {
+			title: "남자",
+			titleFontColor: "#4F81BC",
+			lineColor: "#4F81BC",
+			labelFontColor: "#4F81BC",
+			tickColor: "#4F81BC"
+		},
+		axisY2: {
+			title: "여자",
+			titleFontColor: "#C0504E",
+			lineColor: "#C0504E",
+			labelFontColor: "#C0504E",
+			tickColor: "#C0504E"
+		},
+		toolTip: {
+			shared: true
+		},
+		legend: {
+			cursor: "pointer",
+			itemclick: toggleDataSeries
+		},
+		data: [{
+			type: "column",
+			name: "남자",
+			showInLegend: true,      
+			yValueFormatString: "#,##0.#",
+			dataPoints: [
+				{ label: "AROMA",  y: <%=genderFavor.get(0) %> },
+				{ label: "ACIDITY", y: <%=genderFavor.get(1) %> },
+				{ label: "SWEETNESS", y: <%=genderFavor.get(2) %> },
+				{ label: "BITTERNESS",  y: <%=genderFavor.get(3) %> },
+				{ label: "BODY",  y: <%=genderFavor.get(4) %> }
+			]
+		},
+		{
+			type: "column",
+			name: "여자",
+			axisYType: "secondary",
+			showInLegend: true,
+			yValueFormatString: "#,##0.#",
+			dataPoints: [
+				{ label: "AROMA", y: <%=genderFavor.get(5) %> },
+				{ label: "ACIDITY", y: <%=genderFavor.get(6) %> },
+				{ label: "SWEETNESS", y: <%=genderFavor.get(7) %> },
+				{ label: "BITTERNESS", y: <%=genderFavor.get(8) %> },
+				{ label: "BODY", y: <%=genderFavor.get(9) %> }
+			]
+		}]
+	});
+	chart4.render();
 	
-// 	var param = "";
-// 	var paramUrl = "?";
+	function toggleDataSeries(e) {
+		if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		} else {
+			e.dataSeries.visible = true;
+		}
+		e.chart.render();
+	}
 	
-// 	params = params.split("&");
-// 	for (var i = 0 ; i < params.length ; i++) {
-// 		param = params[i].split("=");
-// 		if (param[0] != kind && param[0] != "") {
-// 			paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
-// 		} else {
-// 			continue;
-// 		}
-// 	}
-	
-// 	paramUrl = paramUrl + kind + '=' + val;
-// 	location.href = url + paramUrl;
-// }
+}
 </script>
 
 </head>
@@ -128,11 +293,11 @@
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
 
-								<a class="nav-link" id="v-pills-0-tab" href="shopMain.em?taste=all" 
+								<a class="nav-link" id="v-pills-0-tab" href="adminPage.us" 
 								role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" 
 								onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" aria-selected="true">
 								전체 회원 정보</a> 
-								<a class="nav-link" id="v-pills-1-tab" href="shopMain.em?taste=item_favor_aroma" 
+								<a class="nav-link" id="v-pills-1-tab" href="adminPageShop.us" 
 								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
 								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
 								전체 상품 정보</a>
@@ -188,7 +353,6 @@
                 		
                 	}
                 %>
->>>>>>> refs/remotes/origin/master
                 </tbody>
               </table>
             </div>
@@ -201,20 +365,20 @@
 							<% if(nowPage <= 1) { %>
 							<li><a>&lt;</a></li>
 							<% } else { %>
-							<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
+							<li><a href= "adminPage.us?page=<%=nowPage-1 %>">&lt;</a></li>
 							<% } 
 							for (int a = startPage ; a <= endPage; a++) {
 								if(a == nowPage) {
 									%><li class="active"><span><%=a %></span></li><%
 								} else {
-									%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
+									%><li><a href="adminPage.us?page=<%=a %>"><%=a %></a></li><%
 								}
 							}
 							%>
 							<% if(nowPage >= maxPage) { %>
 							<li><a>&gt;</a></li>
 							<% } else { %>
-							<li><a href="javascript:getParams ('page', <%=nowPage+1 %>);">&gt;</a></li>
+							<li><a href="adminPage.us?page=<%=nowPage+1 %>">&gt;</a></li>
 							<% } %>
 						</ul>
 					</div>
@@ -223,148 +387,49 @@
 		<!-- 리스트 끝 -->
 		<br><br>
 		
-		<!-- 통계표 -->
-		<form class="billing-form ftco-bg-dark p-3 p-md-5" >
-			<h3 class="mb-4 billing-heading">통계 표</h3>
-			
-			
-	          <div class="row align-items-end confirmCheckout">
-
-	          	<!-- 1st line -->
-	          	<div class="col-md-12">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문번호</label></td>
-		            			 <td><label><span>20190430-A01</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	  
-                 
-		            
-		      	<!-- 2nd line -->
-		      	<div class="col-md-6">
-		            <div class="form-group">
-		              	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문자</label></td>
-		            			 <td><label><span>뷰쏭</span></label></td> </tr>
-		            	</table>
-		            </div>
-                </div>	   
 	          
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">주문일자</label></td>
-		            			 <td><label><span>2019.04.30</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 3rd line -->
-	          	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 1</label></td>
-		            			 <td><label><span>010-1111-2222</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<div class="col-md-6">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">연락처 2</label></td>
-		            			 <td><label><span>051-333-4444</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	
-	           	<!-- 4th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">우편번호</label></td>
-		            			 <td><label><span>47246</span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-	           	
-	           	<!-- 5th line -->
-	           	<div class="col-md-12">
-		            <div class="form-group">
-		            	<table>
-		            		<tr> <td width="100px"><label for="firstname">배송지</label></td>
-		            			 <td><label><span>부산 부산진구 동천로 109 삼한골든게이트 7층 </span></label></td> </tr>
-		            	</table>
-		            </div>
-	           	</div>
-
-			
-	          
-	          </div>
-	      </form>
-	      <!-- 통계표 끝 -->
-	          
-	      <!-- 통계 그래프 -->
+	      <!-- 연령별 전체 회원 분포  그래프1-->
 	       <div class="row mt-5 pt-3 d-flex" >
 	          
 	         <div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">통계그래프</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-	          					<p class="d-flex">
-		    						<span>상품 합계</span>
-		    						<span class="money">41,000 원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>배송비 합계</span>
-		    						<span class="money">2,500원</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>할인금액 합계</span>
-		    						<span class="money">0 원</span>
-		    					</p>
-		    					<hr>
-		    					<p class="d-flex total-price">
-		    						<span>총 결제금액</span>
-		    						<span class="money">43,500 원</span>
-		    					</p>
-		    				</div>
-		    				</div>
+	          			<h3 class="billing-heading mb-4">연령별 전체 회원 분포</h3>
+	          				<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-	          	<!-- 통계 차트 -->
+          <!-- 연령별 전체 회원 분포 끝 -->
+	      <!-- 성별 전체 회원 분포 그래프2 -->
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">통계 차트</h3>
-	          			
-	          				<div class="col-md-12 confirmCheckout2">
-		            		<div class="form-group">
-		            			<p class="d-flex">
-		    						<span>(무통장 입금)</span>
-		    						<span></span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>신한은행</span>
-		    						<span>110-1111-11111</span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>결제일자</span>
-		    						<span>2019.05.01</span>
-		    					</p>
-		    				</div>
-		    				</div>
+	          			<h3 class="billing-heading mb-4">성별 전체 회원 분포</h3>
+	          				<div id="chartContainer2" style="height: 370px; width: 100%;"></div>
 					</div>
 	          	</div>
-	          	
-	          	
-	          </div>
+	       <!-- 성별 전체 회원 분포 끝 -->
+	       
+	            </div>
           </div> 
-          <!-- 통계 그래프 끝 -->
+	       
+	       <!-- 연령별 구매 수량  그래프3-->
+	       <div class="row mt-5 pt-3 d-flex" >
+	          
+	         <div class="col-md-6 d-flex">
+	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">연령별 구매 수량</h3>
+	          				<div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+					</div>
+	          	</div>
+          <!-- 연령별 구매 수량 끝 -->
+	      <!-- 성별 구매 수량 그래프4 -->
+	          	<div class="col-md-6 d-flex">
+	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">성별 취향 정보</h3>
+	          				<div id="chartContainer4" style="height: 370px; width: 100%;"></div>
+					</div>
+	          	</div>
+	       <!-- 성별 구매 수량 끝 -->
+	          	
+	     
 
 
 								</div>
@@ -373,7 +438,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<footer class="ftco-footer ftco-section img">

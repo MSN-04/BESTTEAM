@@ -12,7 +12,7 @@ import vo.QnaBean;
 public class QnaListService {
 	
 	// 글 목록 갯수 구해서 리턴
-	public int getListCount() throws Exception {
+	public int getListCount(int item_num) throws Exception {
 //		System.out.println("qnaListService - getListCount()");
 		
 		int listCount = 0; // 글 목록 갯수
@@ -25,7 +25,7 @@ public class QnaListService {
 		qnaDAO.setConnection(con);
 		
 		// qnaDAO 클래스의 selectListCount() 메서드를 호출하여 글 목록 갯수 얻어와서 변수에 저장
-		listCount = qnaDAO.selectListCount();
+		listCount = qnaDAO.selectListCount(item_num);
 		   
 		System.out.println("qna게시물 갯수 : " + listCount);
 		
@@ -45,7 +45,7 @@ public class QnaListService {
 		// qnaDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
 		QnaDAO qnaDAO = QnaDAO.getInstance();
 		qnaDAO.setConnection(con);
-
+		System.out.println("service에서 limit: "+limit);
 		// qnaDAO 클래스의 selectArticleList() 메서드를 호출하여 글 목록 가져와서 ArrayList 객체에 저장
 		// => 매개변수로 page, limit 전달
 		articleList = qnaDAO.selectArticleList(page, limit, item_num);

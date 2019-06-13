@@ -5,11 +5,12 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.rosuda.REngine.REXP;
 
 import svc.AdminPageService;
-import svc.ShopMainService;
 import vo.ActionForward;
-import vo.ItemBean;
 import vo.PageInfo;
 import vo.UserBean;
 
@@ -19,35 +20,32 @@ public class AdminPageProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
-		ArrayList<UserBean> allUserList = new ArrayList<>(); 
+		ArrayList<UserBean> allUserList = new ArrayList<UserBean>(); 
 		int page = 1;
 		int limit = 8;
-		String id = "";
 		
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}		
+		HttpSession session = request.getSession();
+		String id = session.getAttribute("id").toString();
 		
-//		id = (String)request.getAttribute("id");
-//		
-//		System.out.println(id);
-//		
-//		if(id.equals("")) {
-//			response.setContentType("text/html;charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>");
-//			out.println("alert('로그인하세요!')");
-//			out.println("location.href='history.back()'");
-//			out.println("</script>");
-//		}else if(!id.equals("admin")) {
-//			response.setContentType("text/html;charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>");
-//			out.println("alert('권한이 없습니다!')");
-//			out.println("location.href='history.back()'");
-//			out.println("</script>");
-//
-//		}
+		if(id==null) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인하세요!')");
+			out.println("location.href='history.back();'");
+			out.println("</script>");
+		}else if(!id.equals("admin")) {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('권한이 없습니다!')");
+			out.println("location.href='history.back();'");
+			out.println("</script>");
+
+		}
 		
 		// 리스트 개수
 		AdminPageService adminPageService = new AdminPageService();
@@ -71,10 +69,24 @@ public class AdminPageProAction implements Action {
 		adminPageInfo.setPage(page);
 		adminPageInfo.setStartPage(startPage);
 		
-//		adminPageService.getRData();
+		// 데이터 분석
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		ageList = adminPageService.getAgeList();
+		
+		int maleList = adminPageService.getMaleList();
+		
+		ArrayList<Integer> ageBuyList = new ArrayList<Integer>();
+		ageBuyList = adminPageService.getAgeBuyList();
+		
+		ArrayList<Integer> genderFavor = new ArrayList<Integer>();
+		genderFavor = adminPageService.getGenderFavor();
 		
 		request.setAttribute("adminPageInfo", adminPageInfo);
 		request.setAttribute("allUserList", allUserList);
+		request.setAttribute("ageList", ageList);
+		request.setAttribute("maleList", maleList);
+		request.setAttribute("ageBuyList", ageBuyList);
+		request.setAttribute("genderFavor", genderFavor);
 		
 		forward = new ActionForward();
 		forward.setPath("/member/adminPage.jsp");

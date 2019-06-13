@@ -37,7 +37,7 @@ public class BlogCommentDAO {
 	public int insertComment(BlogCommentBean blogCommentBean) {
 		int insertCount = 0;
 
-		String sql = "INSERT INTO blog_comment VALUES (null,?,?,now(),?)";
+		String sql = "INSERT INTO blog_comment(comment_content,comment_writer,comment_date,comment_blog_num) VALUES (?,?,now(),?)";
 
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -95,19 +95,20 @@ public class BlogCommentDAO {
 	// 댓글 수정 메소드
 	public int updateComment(BlogCommentBean blogCommentBean) {
 		int updateCount = 0;
-
-		String sql = "UPDATE comment_blog SET comment_content=? WHERE comment_num=?";
+		System.out.println("BlogCommentDAO.java - updateComment()");
+		String sql = "UPDATE blog_comment SET comment_content=? WHERE comment_num=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, blogCommentBean.getComment_content());
 			pstmt.setInt(2, blogCommentBean.getComment_num());
+			System.out.println("updateComment - pstmt : "+pstmt);
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-
+		System.out.println("updateComment - updateCount : "+updateCount);
 		return updateCount;
 	}
 
@@ -115,7 +116,7 @@ public class BlogCommentDAO {
 	public int deleteComment(int comment_num) {
 		int deleteCount = 0;
 
-		String sql = "DELETE FROM comment_blog WHERE comment_num=?";
+		String sql = "DELETE FROM blog_comment WHERE comment_num=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, comment_num);
@@ -132,7 +133,7 @@ public class BlogCommentDAO {
 	public int countComment(int comment_blog_num) throws SQLException {
 		int count = 0;
 
-		String sql = "SELECT COUNT(*) FROM comment_blog WHERE comment_blog_num=?";
+		String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, comment_blog_num);
 		rs = pstmt.executeQuery();
@@ -159,7 +160,7 @@ public class BlogCommentDAO {
 			commentBean.setComment_num(rs.getInt("comment_num"));
 			commentBean.setComment_content(rs.getString("comment_content"));
 			commentBean.setComment_writer(rs.getString("comment_writer"));
-			commentBean.setComment_date(rs.getDate("comment_date"));
+			commentBean.setComment_date(rs.getTimestamp("comment_date"));
 			commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
 			articleList.add(commentBean);
 		}
@@ -218,7 +219,7 @@ public class BlogCommentDAO {
 				blogCommentBean.setComment_num(rs.getInt("comment_num"));
 				blogCommentBean.setComment_content(rs.getString("comment_content"));
 				blogCommentBean.setComment_writer(rs.getString("comment_writer"));
-				blogCommentBean.setComment_date(rs.getDate("comment_date"));
+				blogCommentBean.setComment_date(rs.getTimestamp("comment_date"));
 				blogCommentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
 
 				article2.add(blogCommentBean); // ArrayList 객체에 레코드 단위로 저장

@@ -182,7 +182,6 @@ public class UserDAO {
 				pstmt.setString(1, buf);
 				pstmt.setString(2, email);
 				result = pstmt.executeUpdate(); //update된 행의 갯수 반환
-				System.out.println("비번수정");
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -260,8 +259,6 @@ public class UserDAO {
 	
 	//아이디 찾기
 	public String findId(String email,String phone) {
-		System.out.println("DAO에서 email"+email);
-		System.out.println("DAO에서 phone"+phone);
 		String id=null;
 		String sql;
 		if(email!=null &&phone ==null) {
@@ -352,7 +349,7 @@ public class UserDAO {
 
 		int listCount = 0;
 		
-		String sql = "SELECT count(*) FROM qna";
+		String sql = "SELECT count(*) FROM user";
 
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -363,7 +360,6 @@ public class UserDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("allUserListCount() 실패! : " + e.getMessage());
 		} finally {
 			close(rs);
 			close(pstmt);
@@ -471,6 +467,115 @@ public class UserDAO {
 		
 		return salesList;
 	}
+	public ArrayList<Integer> getAgeList() {
+		int listCount = 0;
+		ArrayList<Integer> ageList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_age >= ? AND user_age <= ?";
+		try {
+			for(int i = 0; i < 10; i++) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, i*10);
+				pstmt.setInt(2, (i*10)+9);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					listCount = rs.getInt(1); 
+				}
+				ageList.add(listCount);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return ageList;
+	}
+
+	public int getMaleList() {
+		int maleList = 0;
+		ArrayList<Integer> genderList = new ArrayList<Integer>();
+		
+		String sql = "select count(*) from user where user_gender = '남'";
+		try {
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					maleList = rs.getInt(1); 
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return maleList;
+	}
+
+	public ArrayList<Integer> getAgeBuyList() {
+		int ageBuyList = 0;
+		ArrayList<Integer> ageBuyLists = new ArrayList<Integer>();
+		
+		String sql = "select sum(b.buy_count) from buy b join user u on (b.buy_user_id = u.user_id) where u.user_age between ? and ?";
+		try {
+			for(int i = 0; i < 10; i++) {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, i*10);
+				pstmt.setInt(2, (i*10)+9);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					ageBuyList = rs.getInt(1); 
+				}
+				ageBuyLists.add(ageBuyList);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return ageBuyLists;
+	}
+
+	public ArrayList<Integer> getGenderFavor() {
+		int genderFavor = 0;
+		ArrayList<Integer> genderFavors = new ArrayList<Integer>();
+		String[] sql = {
+		"select sum(f.user_favor_aroma) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '남'",
+		"select sum(f.user_favor_acidity) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '남'",
+		"select sum(f.user_favor_sweetness) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '남'",
+		"select sum(f.user_favor_bitterness) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '남'",
+		"select sum(f.user_favor_body) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '남'",
+		"select sum(f.user_favor_aroma) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '여'",
+		"select sum(f.user_favor_acidity) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '여'",
+		"select sum(f.user_favor_sweetness) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '여'",
+		"select sum(f.user_favor_bitterness) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '여'",
+		"select sum(f.user_favor_body) from user_favor f join user u on (f.user_favor_user_id = u.user_id) where u.user_gender = '여'"};
+		try {
+			for(int i = 0; i < sql.length; i++) {
+				pstmt = con.prepareStatement(sql[i]);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					genderFavor = rs.getInt(1);
+				}
+				genderFavors.add(genderFavor);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return genderFavors;
+	}
+	
+	
+
+
 	
 	
 }
