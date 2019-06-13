@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.AdminPageProAction;
+import action.AdminPageShopDayAction;
+import action.AdminPageShopMonthAction;
 import action.DeleteMemberProAction;
 import action.FavorProAction;
 import action.ForgotAccountProAction;
@@ -143,7 +145,27 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
+		} else if (command.equals("/adminPageShop.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/adminPageShop.jsp");
+		} else if (command.equals("/adminPageShopDay.us")) {
+			System.out.println("adminPageShopDay Controller");
+			action = new AdminPageShopDayAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageShopMonth.us")) {
+			System.out.println("adminPageShopMonth Controller");
+			action = new AdminPageShopMonthAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		
 		
 		

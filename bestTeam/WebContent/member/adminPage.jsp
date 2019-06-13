@@ -20,11 +20,11 @@
 	
 	ArrayList<UserBean> allUserList = (ArrayList<UserBean>)request.getAttribute("allUserList");
 	PageInfo adminPageInfo = (PageInfo)request.getAttribute("adminPageInfo");
-	int listCount = adminPageInfo.getListCount();
-	int nowPage = adminPageInfo.getPage();
-	int maxPage = adminPageInfo.getMaxPage();
-	int startPage = adminPageInfo.getStartPage();
-	int endPage = adminPageInfo.getEndPage();
+	int listCount = adminPageInfo.getListCount(); //전체 회원 수
+	int nowPage = adminPageInfo.getPage(); // 현재 페이지
+	int maxPage = adminPageInfo.getMaxPage(); // 페이지 수
+	int startPage = adminPageInfo.getStartPage(); // 현재 페이지 첫번째 행 번호
+	int endPage = adminPageInfo.getEndPage(); // 현재 페이지 마지막행 번호
 	System.out.println(listCount);
 	//연령별 전체 회원 분포 그래프
 	ArrayList<Integer> ageList = (ArrayList<Integer>)request.getAttribute("ageList");

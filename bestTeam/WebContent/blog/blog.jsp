@@ -75,9 +75,6 @@
 
 					<div class="col-md-700 col-sm-52 text-center ftco-animate">
 						<h1 class="mb-8 mt-7 bread">Blog</h1>
-						<!-- 	            <p class="breadcrumbs"><span class="mr-2"> -->
-						<!-- 	            <a href="../index/index.jsp">Home</a> -->
-						<!-- 	            </span> <span><a href="../blog/blog.jsp">Blog</a></span></p> -->
 					</div>
 				</div>
 			</div>
@@ -118,12 +115,14 @@
 								</div>
 								<div>
 									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-										3</a>
+3										
+										
+										</a>
 								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-										3</a>
-								</div>
+<!-- 								<div> -->
+<!-- 									<a href="#" class="meta-chat"><span class="icon-chat"></span> -->
+<!-- 										3</a> -->
+<!-- 								</div> -->
 							</div>
 
 						</div>
@@ -189,12 +188,9 @@
 		</div>
 	</section>
 	
-	
-	
 	<footer>
 		<jsp:include page="../inc/footer.jsp"></jsp:include>
 	</footer>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -204,7 +200,6 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
-
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
