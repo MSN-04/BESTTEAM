@@ -94,6 +94,7 @@
  var regId = /^[a-zA-Z0-9]{8,12}$/ ;
  var regPass = /^[a-zA-Z0-9]{8,12}$/;
  var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+ var regPhone;
 
  
  // 비밀번호 일치 확인
