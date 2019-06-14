@@ -177,6 +177,7 @@
 					
 					thisItemTotalPrice = cartItems.get(i).getItem_price() * cartItems.get(i).getItem_count();
 					totalPrice += thisItemTotalPrice;
+					
 		%>
 	                  <tr class="text-center">
 	                    
@@ -188,11 +189,11 @@
 	                     <td class="product-name">
 	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" > <h3><%=cartItems.get(i).getItem_name() %></h3> </a> </td>
 	                    
-	                     <td class="price"><%=cartItems.get(i).getItem_price() %></td>
+	                     <td class="price"><%=cartItems.get(i).getItem_price() %> 원</td>
 	                    
-	                     <td class="price"><%=cartItems.get(i).getItem_count() %></td>
+	                     <td class="price"><%=cartItems.get(i).getItem_count() %> 개</td>
 	                    
-	                     <td class="total"><%=thisItemTotalPrice %></td>
+	                     <td class="total"><%=thisItemTotalPrice %> 원</td>
 	                  
 	                  </tr><!-- END TR-->
 		<%			
@@ -301,7 +302,7 @@
                 <div class="col-md-12">
                 	<div class="form-group mt-4">
 						<div class="radio" style="text-align: right;">
-						    <p onclick="reset()"><a class="btn btn-best py-3 px-4" >새로 입력</a></p>
+						    <p onclick="resetInfo()"><a class="btn btn-best py-3 px-4" id="resetInfo">새로 입력</a></p>
 						</div>
 					</div>
                 </div>
@@ -393,7 +394,7 @@
 	          
 	    <!-- ================= 배송 정보 '새로 입력' 클릭 시 ================= -->  
 	          <script type="text/javascript">
-		          function reset() {
+		          function resetInfo() {
 		        	  $('#name').val("");
 		        	  $('#phone').val("");
 		        	  $('#phone2').val("");
@@ -415,22 +416,15 @@
                      if(reg.test(what)) {
                          return true;
                      } else {
-//                      alert(message);
-//                      what.value = what.value;
-//                      what.focus();
                      return false;
                      }
               	}
                 
                 function verifyPhone() {
 
-							
 				// 연락처1 제어
-// 				$("#phone").change(function(){
 						
 				    var phone = frm.phone.value;
-				    
-// 				    alert("연락처 제어 "+ phone);
 				    
 				    var phone2 = $('#phone2').val();
 				    var Email = $('#Email').val();

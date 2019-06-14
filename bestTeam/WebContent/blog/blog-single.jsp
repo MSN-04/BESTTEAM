@@ -269,14 +269,11 @@
 </script>
 </head>
 <body>
+	
 	<header>
-		<jsp:include page="/inc/header.jsp" />
+		<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
 	<!-- END nav -->
-
-	<!-- 맨 위로 -->
-	<a href="#" class="up-button w-inline-block" id="goTop"
-		style="display: block; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;"></a>
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
@@ -287,14 +284,9 @@
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="blog.jsp">Blog</a></span> <span>Blog
-								Details</span>
-						</p>
+					<div class="col-md-700 col-sm-52 text-center ftco-animate">
+						<h1 class="mb-8 mt-7 bread">Blog Detail</h1>
 					</div>
-
 				</div>
 			</div>
 		</div>
