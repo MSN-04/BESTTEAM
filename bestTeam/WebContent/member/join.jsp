@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 <style type="text/css">
 .money {
@@ -94,6 +96,7 @@
  var regId = /^[a-zA-Z0-9]{8,12}$/ ;
  var regPass = /^[a-zA-Z0-9]{8,12}$/;
  var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+ var regPhone;
 
  
  // 비밀번호 일치 확인
@@ -101,6 +104,7 @@
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   var pass = document.getElementById("pass");
+  
   if(check(regPass,pass)){
 	  if(pw1!=pw2){
 	   document.getElementById('checkPwd').style.color = "#ff4d4d";
@@ -265,8 +269,7 @@ function check(reg, what) {
   <section class="home-slider owl-carousel">
 
     <div class="slider-item"
-      style="background-image: url(./images/bg_3.jpg);"
-      data-stellar-background-ratio="0.5">
+      style="background-image: url(./images/bg_3.jpg);" >
       <div class="overlay"></div>
       <div class="container">
         <div
@@ -283,6 +286,10 @@ function check(reg, what) {
       </div>
     </div>
   </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 
 <section class="ftco-section">

@@ -54,6 +54,7 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 <style type="style/css">
     .ftco-section {
@@ -85,6 +86,11 @@
 			</div>
 		</div>
 	</section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->	
+	
 	<br>
 	<br>
 	<br>
@@ -158,8 +164,6 @@
 										}
 									%>
 								</ul>
-
-
 
 								<%
 									String id = (String) session.getAttribute("id");
@@ -316,7 +320,6 @@
 	<footer>
 		<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</footer>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

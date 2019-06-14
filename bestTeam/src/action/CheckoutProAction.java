@@ -39,6 +39,7 @@ public class CheckoutProAction implements Action {
 		String buyer_address = request.getParameter("buyer_address");
 		String buyer_detailAddress = request.getParameter("buyer_detailAddress");
 		String buyer_Email = request.getParameter("buyer_Email");
+		
 //		String shipnum = "123"; // 아직 구현되지 않음
 //		Date buydate = new Date(System.currentTimeMillis()); // 고민중..
 //		int total = Integer.parseInt(request.getParameter("total"));

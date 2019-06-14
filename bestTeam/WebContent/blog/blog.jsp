@@ -14,12 +14,6 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-	System.out.println("listCount : " + listCount);
-	System.out.println("nowPage : " + nowPage);
-	System.out.println("maxPage : " + maxPage);
-	System.out.println("startPage : " + startPage);
-	System.out.println("endPage : " + endPage);
-	System.out.println("articleList.size() : " + articleList.size());
 	
 %>
 <!DOCTYPE html>
@@ -56,6 +50,8 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 </head>
 <body>
@@ -75,14 +71,15 @@
 
 					<div class="col-md-700 col-sm-52 text-center ftco-animate">
 						<h1 class="mb-8 mt-7 bread">Blog</h1>
-						<!-- 	            <p class="breadcrumbs"><span class="mr-2"> -->
-						<!-- 	            <a href="../index/index.jsp">Home</a> -->
-						<!-- 	            </span> <span><a href="../blog/blog.jsp">Blog</a></span></p> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section class="ftco-section">
 		<div class="container">
@@ -115,10 +112,6 @@
 								</div>
 								<div>
 									<a href="#"><%=articleList.get(i).getBlog_date()%></a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-										3</a>
 								</div>
 								<div>
 									<a href="#" class="meta-chat"><span class="icon-chat"></span>
@@ -189,12 +182,9 @@
 		</div>
 	</section>
 	
-	
-	
 	<footer>
 		<jsp:include page="../inc/footer.jsp"></jsp:include>
 	</footer>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
@@ -204,7 +194,6 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
-
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
