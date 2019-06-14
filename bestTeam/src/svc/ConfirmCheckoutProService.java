@@ -23,7 +23,7 @@ public class ConfirmCheckoutProService {
 		BuyDAO buydao=BuyDAO.getInstance();   //buydao의 인스턴스 가져 옴
 		buydao.setConnection(con);
 		//System.out.println("ConfirmCheckoutListService-- buy_num:"+buy_num);
-		System.out.println("ConfirmCheckoutProService-- buy_num:"+buy_num);
+	//	System.out.println("ConfirmCheckoutProService-- buy_num:"+buy_num);
 		
 		// 매개변수로 마이페이지에 접속한 user_id 와 그 아이디로부터 주문번호 buy_num을 가져온다. 
 		orderInfoList=buydao.getOrderInfoList(buy_num);
@@ -46,7 +46,7 @@ public class ConfirmCheckoutProService {
 		BuyDAO buydao=BuyDAO.getInstance();   //buydao의 인스턴스 가져 옴
 		buydao.setConnection(con);
 		//System.out.println("ConfirmCheckoutListService-- buy_num:"+buy_num);
-		System.out.println("ConfirmCheckoutProService-- id:"+id);
+	//	System.out.println("ConfirmCheckoutProService-- id:"+id);
 		
 		// 매개변수로 마이페이지에 접속한 user_id 와 그 아이디로부터 주문번호 buy_num을 가져온다. 
 		orderPersonList=buydao.getOrderPersonList(id);

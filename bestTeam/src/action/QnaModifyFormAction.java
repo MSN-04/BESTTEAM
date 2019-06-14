@@ -11,14 +11,11 @@ public class QnaModifyFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("QnaModifyFormAction");
 		
 		ActionForward forward = new ActionForward();
 		
 		// URL 에 전달된 qna_num 파라미터 가져와서 int 타입 변수 qna_num 에 저장 => String -> int 형변환 필요
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
-		
-		System.out.println("ModifyFormAction qna_num"+qna_num);
 		
 		// qnaDetailService 클래스의 getArticle() 메서드를 사용하여 원본글 가져와서 qnaBean 에 저장
 		QnaViewService qnaDetailService = new QnaViewService();

@@ -31,16 +31,15 @@ public class ETCFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-//		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
 		ActionForward forward = null;
 		
 		if(command.equals("/fest.et")) {
 			forward = new ActionForward();
 			forward.setPath("./fest/fest.jsp");
-		} else if(command.equals("/faq.no")){
-			forward=new ActionForward();
-			forward.setPath("./notice/faq.jsp");
+		} else if(command.equals("/contact.et")) {
+			forward = new ActionForward();
+			forward.setPath("./contact/contact.jsp");
 		}
 		
 		if(forward != null) {

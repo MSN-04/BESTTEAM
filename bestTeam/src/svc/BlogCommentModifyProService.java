@@ -17,7 +17,6 @@ public class BlogCommentModifyProService {
 		Connection con = getConnection();
 		
 		BlogCommentDAO blogCommentDAO = BlogCommentDAO.getInstance();
-//		BlogCommentBean bcBean = new BlogCommentBean();
 		blogCommentDAO.setConnection(con); 
 		int updateCount = blogCommentDAO.updateComment(blogCommentBean); // 글 수정 처리(결과를 int형으로 전달받음)
 		

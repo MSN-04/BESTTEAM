@@ -452,34 +452,7 @@
 				
 
 
-					
-					
-					
-// 					    if(! regPhone.test($('#phone').val())) {
-// 					        alert('전화번호 형식이 잘못되었습니다.\n숫자로 입력해주세요.');
-// 					        phone.focus();
-// 					        return false;
-// 					    }
-// 					}
-					        
-// 					// 연락처2 제어
-// 					if(phone2.val() != ''){
-// 						if(! regPhone.test(phone2.val())) {
-// 					    	alert('전화번호 형식이 잘못되었습니다.\n숫자로 입력해주세요.');
-// 					        phone2.focus();
-// 					        return false;
-// 					    }
-// 					}
-					     	
-// 					// 이메일 제어
-// 					if(Email.val() != '') {
-// 						if(! regEmail.test(Email.val())) {
-// 							alert('이메일 형식이 잘못되었습니다.\n다시 확인해주세요.');
-// 							Email.focus();
-// 							return false;
-// 						}
-// 					}
-                
+
 				</script>     
 			<!-- ============================================================= -->
 

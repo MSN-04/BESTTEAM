@@ -145,7 +145,8 @@
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
 							<input type="submit" id="save" value="저장" /> 
-							<input type="button" value="취소" />
+							<input type="button" value="취소" OnClick="javascript:history.back(-1)"/>
+							
 						</td>
 					</tr>
 				</table>

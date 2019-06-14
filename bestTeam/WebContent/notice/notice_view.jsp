@@ -104,11 +104,11 @@
 							<!-- 							<span class="mr-2"><a href="index.jsp">Home</a></span> -->
 						</p>
 					</div>
-					</div>
-
-					<!-- 				</div> -->
 				</div>
+
+				<!-- 				</div> -->
 			</div>
+		</div>
 	</section>
 
 	<section class="ftco-section">
@@ -121,10 +121,7 @@
 					%>
 					<div
 						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 50px; font-weight: 300; font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
-
 					<div style="margin: auto;"><%=article.getNotice_content()%></div>
-
-
 				</div>
 
 			</div>
@@ -133,37 +130,40 @@
 	<!-- .section -->
 
 
-<!-- 이전글버튼 ----------------------------->
-	
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row">
-				<div style="border-bottom" solid white; margin-bottom: 30px;>
+	<!-- 이전글버튼 ----------------------------->
 
-			<button type="button" class="quantity-left-minus btn input-group-btn">
-				<i class="icon-minus"></i>&nbsp;&nbsp;이전글 &nbsp; 
-			</button>
-			</div>
+	<section class="ftco-section">
+		<div class="row" style="margin-left: 430px; margin-bottom: 10px;">
+			<div style="" solidwhite; margin-bottom: 30px;>
+				<%
+					int rre = article.getNotice_num() - 1;
+				%>
+				<button type="button"
+					class="quantity-left-minus btn input-group-btn"
+					style="text-align: center;">
+					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp;
+				</button>
 				<div class="block-21 mb-4 d-flex">
 					<a class="blog-img mr-4"
 						style="background-image: url(../images/image_1.jpg);"></a>
 					<div class="text">
 						<h3 class="heading">
-							<a href="#">
-								<%=article.getNotice_subject()%></a>
+							<a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
 						</h3>
-<!-- 						<div class="meta"> -->
-<!-- 							<div> -->
-<!-- 								<a href="#"><span class="icon-chat"></span> 19</a> -->
-<!-- 							</div> -->
-						</div>
 					</div>
 				</div>
 			</div>
+			<!-- 다음글 -->
+			<!-- 				<div style="border-bottom" solid white; margin-bottom: 30px;> -->
+			<%-- 				<%int rree=article.getNotice_num()+1; %> --%>
+			<!-- 			<button type="button" class="quantity-left-minus btn input-group-btn" style="text-align: center;"  -->
+			<%-- 			onclick = "location.href = 'noticeDetail.no?notice_num=<%=rree%>' "> --%>
+			<!-- 				<i class="icon-minus"></i>&nbsp;&nbsp;다음글 &nbsp;  -->
+			<!-- 			</button> -->
+			<!-- 			</div> -->
 		</div>
 	</section>
 
-	
 
 	<%
 		String id = (String) session.getAttribute("id");
@@ -193,7 +193,6 @@
 		</div>
 	</div>
 
-
 	<br>
 	<br>
 	<!--           <div class="col-md-4 sidebar ftco-animate"> -->
@@ -207,78 +206,6 @@
 	<!--                 </div> -->
 	<!--               </form> -->
 	<!--             </div> -->
-
-
-	<!--             <div class="sidebar-box ftco-animate"> -->
-	<!--               <div class="categories"> -->
-	<!--                 <h3>Categories</h3> -->
-	<!--                 <li><a href="#">Tour <span>(12)</span></a></li> -->
-	<!--                 <li><a href="#">Hotel <span>(22)</span></a></li> -->
-	<!--                 <li><a href="#">Coffee <span>(37)</span></a></li> -->
-	<!--                 <li><a href="#">Drinks <span>(42)</span></a></li> -->
-	<!--                 <li><a href="#">Foods <span>(14)</span></a></li> -->
-	<!--                 <li><a href="#">Travel <span>(140)</span></a></li> -->
-	<!--               </div> -->
-	<!--             </div> -->
-
-	<!--             <div class="sidebar-box ftco-animate"> -->
-	<!--               <h3>Recent Blog</h3> -->
-	<!--               <div class="block-21 mb-4 d-flex"> -->
-	<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_1.jpg);"></a> -->
-	<!--                 <div class="text"> -->
-	<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-	<!--                   <div class="meta"> -->
-	<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-	<!--                   </div> -->
-	<!--                 </div> -->
-	<!--               </div> -->
-	<!--               <div class="block-21 mb-4 d-flex"> -->
-	<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_2.jpg);"></a> -->
-	<!--                 <div class="text"> -->
-	<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-	<!--                   <div class="meta"> -->
-	<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-	<!--                   </div> -->
-	<!--                 </div> -->
-	<!--               </div> -->
-	<!--               <div class="block-21 mb-4 d-flex"> -->
-	<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_3.jpg);"></a> -->
-	<!--                 <div class="text"> -->
-	<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-	<!--                   <div class="meta"> -->
-	<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-	<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-	<!--                   </div> -->
-	<!--                 </div> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--             <div class="sidebar-box ftco-animate"> -->
-	<!--               <h3>Tag Cloud</h3> -->
-	<!--               <div class="tagcloud"> -->
-	<!--                 <a href="#" class="tag-cloud-link">dish</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">menu</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">food</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">sweet</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">tasty</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">delicious</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">desserts</a> -->
-	<!--                 <a href="#" class="tag-cloud-link">drinks</a> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--             <div class="sidebar-box ftco-animate"> -->
-	<!--               <h3>Paragraph</h3> -->
-	<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
-	<!--             </div> -->
-	<!--           </div> -->
-
-	<!--         </div> -->
-
-
 
 	<footer>
 		<jsp:include page="../inc/footer.jsp" />

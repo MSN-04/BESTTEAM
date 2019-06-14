@@ -1,3 +1,6 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="vo.UserBean"%>
@@ -8,19 +11,20 @@
 <%
 	BlogBean article = (BlogBean) request.getAttribute("article");
 	ArrayList<BlogCommentBean> articleList = (ArrayList<BlogCommentBean>) request.getAttribute("articleList");
+	
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String nowPage = (String) request.getAttribute("page"); 
 
 	UserBean userbean = (UserBean) request.getAttribute("userBean");
 	// 	String userName = userbean.getUser_name();
-
-	String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
 
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-	// 		int listCount = pageInfo.getListCount();
+	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+
+	// 	int listCount = pageInfo.getListCount();
 	// 	nowPage = pageInfo.getPage();
 	// 	int maxPage = pageInfo.getMaxPage();
 	// 	int startPage = pageInfo.getStartPage();
@@ -41,31 +45,14 @@
 		return false;
 	}
 
-	// 	// 댓글 등록
-	// 	function writeCmt(commnet_num) {
-	// 		var form = document.getElementById("writeCommentForm");
-
-	// 		var board = form.comment_blog_num.value
-	// 		var writer = form.comment_writer.value
-	// 		var content = form.comment_content.value;
-
-	// 		if (!content) {
-	// 			alert("내용을 입력하세요.");
-	// 			return false;
-	// 		} else {
-	// 			var param = "comment_blog_num=" + blog_num + "&comment_writer=" + writer
-	// 					+ "&comment_content=" + content;
-
-	// 			httpRequest = getXMLHttpRequest();
-	// 			httpRequest.onreadystatechange = checkFunc;
-	// 			httpRequest.open("POST", "BlogCommentWriteProAction.co", true);
-	// 			httpRequest.setRequestHeader('Content-Type',
-	// 					'application/x-www-form-urlencoded;charset=EUC-KR');
-	// 			httpRequest.send(param);
-	// 		}
-	// 	}
-
-	// 댓글삭제
+	// 댓글창 숨기기
+	function SirenFunction(idMyDiv){
+	     var objDiv = document.getElementById(idMyDiv);
+	     if(objDiv.style.display=="block"){ objDiv.style.display = "none"; }
+	      else{ objDiv.style.display = "block"; }
+	}
+	
+	// 댓글 삭제
 	function delCmt(comment_num) {
 		var message = confirm("이 댓글을 삭제하시겠습니까?");
 		if (message == true) {
@@ -111,15 +98,43 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
+
+
 <style type="text/css">
-/*      	.col-md-8 { border: 1px solid aqua; }  */
 .col-md-8 {
 	flex: auto;
 	margin: auto;
 	max-width: 80%;
 }
 
-/*     	.col-md-8 { background-color: #000; } */
+.sir_singo_msg {
+	color: #934545;
+	margin-bottom: 30px
+}
+
+.sir_singo_msg button {
+	cursor: pointer;
+	font-family: Arial, '돋움', Dotum;
+	border: none;
+	padding: 0;
+	background: #fff;
+	outline: 0
+}
+
+.sir_singo_msg .blind_view {
+	font-size: 1.14em;
+	font-weight: bold;
+	color: #ffffff;
+	margin-top: -3px;
+	text-decoration: underline
+}
+
+.singo_view {
+	display: none;
+}
+
 .col-md-8 img {
 	width: 100%;
 } /* 폼에 들어가는 사진 크기 조정(반드시 필요) */
@@ -285,6 +300,10 @@
 		</div>
 	</section>
 
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
+
 	<section class="ftco-section">
 		<div class="container">
 			<!-- 			<div class="row"> -->
@@ -301,34 +320,23 @@
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
-				<li style="margin-bottom: 6px;">
+<!-- 				<li style="margin-bottom: 6px;"> -->
 					<!-- 박수 -->
-					<button>
-						<span> <svg
-								style="width: 29px; height: 29px; vertical-align: bottom;">
-								<g>
-									<path d="M13.739 1l.761 2.966L15.261 1z"></path>
-									<path d="M16.815 4.776l1.84-2.551-1.43-.471z"></path>
-									<path d="M10.378 2.224l1.84 2.551-.408-3.022z"></path>
-									<path
-									d="M22.382 22.622c-1.04 1.04-2.115 1.507-3.166 1.608.168-.14.332-.29.492-.45 2.885-2.886 3.456-5.982 1.69-9.211l-1.101-1.937-.955-2.02c-.315-.676-.235-1.185.245-1.556a.836.836 0 0 1 .66-.16c.342.056.66.28.879.605l2.856 5.023c1.179 1.962 1.379 5.119-1.6 8.098m-13.29-.528l-5.02-5.02a1 1 0 0 1 .707-1.701c.255 0 .512.098.707.292l2.607 2.607a.442.442 0 0 0 .624-.624L6.11 15.04l-1.75-1.75a.998.998 0 1 1 1.41-1.413l4.154 4.156a.44.44 0 0 0 .624 0 .44.44 0 0 0 0-.624l-4.152-4.153-1.172-1.171a.998.998 0 0 1 0-1.41 1.018 1.018 0 0 1 1.41 0l1.172 1.17 4.153 4.152a.437.437 0 0 0 .624 0 .442.442 0 0 0 0-.624L8.43 9.222a.988.988 0 0 1-.291-.705.99.99 0 0 1 .29-.706 1 1 0 0 1 1.412 0l6.992 6.993a.443.443 0 0 0 .71-.501l-1.35-2.856c-.315-.676-.235-1.185.246-1.557a.85.85 0 0 1 .66-.16c.342.056.659.28.879.606L20.628 15c1.573 2.876 1.067 5.545-1.544 8.156-1.396 1.397-3.144 1.966-5.063 1.652-1.713-.286-3.463-1.248-4.928-2.714zM12.99 6.976l2.562 2.562c-.497.607-.563 1.414-.155 2.284l.265.562-4.257-4.257a.98.98 0 0 1-.117-.445c0-.267.104-.517.292-.706a1.023 1.023 0 0 1 1.41 0zm8.887 2.06c-.375-.557-.902-.916-1.486-1.011a1.738 1.738 0 0 0-1.342.332c-.376.29-.61.656-.712 1.065a2.1 2.1 0 0 0-1.095-.562 1.776 1.776 0 0 0-.992.128l-2.636-2.636a1.883 1.883 0 0 0-2.658 0 1.862 1.862 0 0 0-.478.847 1.886 1.886 0 0 0-2.671-.012 1.867 1.867 0 0 0-.503.909c-.754-.754-1.992-.754-2.703-.044a1.881 1.881 0 0 0 0 2.658c-.288.12-.605.288-.864.547a1.884 1.884 0 0 0 0 2.659l.624.622a1.879 1.879 0 0 0-.91 3.16l5.019 5.02c1.595 1.594 3.515 2.645 5.408 2.959a7.16 7.16 0 0 0 1.173.098c1.026 0 1.997-.24 2.892-.7.279.04.555.065.828.065 1.53 0 2.969-.628 4.236-1.894 3.338-3.338 3.083-6.928 1.738-9.166l-2.868-5.043z"></path>
-								</g>
-							</svg> <span style="vertical-align: bottom; margin-left: 8px;">
-								1 </span>
-						</span>
-					</button>
-				</li>
-				<!-- 				<li> -->
-				<!-- 					<button> -->
-				<!-- 						<span> -->
-				<!-- 							<svg width="29" height="29" > -->
-				<!-- 								<g> -->
-				<!-- 									<path d="M19.385 4h-9.77A2.623 2.623 0 0 0 7 6.615V23.01a1.022 1.022 0 0 0 1.595.847l5.905-4.004 5.905 4.004A1.022 1.022 0 0 0 22 23.011V6.62A2.625 2.625 0 0 0 19.385 4zM21 23l-5.91-3.955-.148-.107a.751.751 0 0 0-.884 0l-.147.107L8 23V6.615C8 5.725 8.725 5 9.615 5h9.77C20.275 5 21 5.725 21 6.615V23z"></path> -->
-				<!-- 								</g> -->
-				<!-- 							</svg> -->
-				<!-- 						</span> -->
-				<!-- 					</button> -->
-				<!-- 				</li> -->
+<!-- 					<button> -->
+<!-- 						<span> <svg -->
+<!-- 								style="width: 29px; height: 29px; vertical-align: bottom;"> -->
+<!-- 								<g> -->
+<!-- 									<path d="M13.739 1l.761 2.966L15.261 1z"></path> -->
+<!-- 									<path d="M16.815 4.776l1.84-2.551-1.43-.471z"></path> -->
+<!-- 									<path d="M10.378 2.224l1.84 2.551-.408-3.022z"></path> -->
+<!-- 									<path -->
+<!-- 									d="M22.382 22.622c-1.04 1.04-2.115 1.507-3.166 1.608.168-.14.332-.29.492-.45 2.885-2.886 3.456-5.982 1.69-9.211l-1.101-1.937-.955-2.02c-.315-.676-.235-1.185.245-1.556a.836.836 0 0 1 .66-.16c.342.056.66.28.879.605l2.856 5.023c1.179 1.962 1.379 5.119-1.6 8.098m-13.29-.528l-5.02-5.02a1 1 0 0 1 .707-1.701c.255 0 .512.098.707.292l2.607 2.607a.442.442 0 0 0 .624-.624L6.11 15.04l-1.75-1.75a.998.998 0 1 1 1.41-1.413l4.154 4.156a.44.44 0 0 0 .624 0 .44.44 0 0 0 0-.624l-4.152-4.153-1.172-1.171a.998.998 0 0 1 0-1.41 1.018 1.018 0 0 1 1.41 0l1.172 1.17 4.153 4.152a.437.437 0 0 0 .624 0 .442.442 0 0 0 0-.624L8.43 9.222a.988.988 0 0 1-.291-.705.99.99 0 0 1 .29-.706 1 1 0 0 1 1.412 0l6.992 6.993a.443.443 0 0 0 .71-.501l-1.35-2.856c-.315-.676-.235-1.185.246-1.557a.85.85 0 0 1 .66-.16c.342.056.659.28.879.606L20.628 15c1.573 2.876 1.067 5.545-1.544 8.156-1.396 1.397-3.144 1.966-5.063 1.652-1.713-.286-3.463-1.248-4.928-2.714zM12.99 6.976l2.562 2.562c-.497.607-.563 1.414-.155 2.284l.265.562-4.257-4.257a.98.98 0 0 1-.117-.445c0-.267.104-.517.292-.706a1.023 1.023 0 0 1 1.41 0zm8.887 2.06c-.375-.557-.902-.916-1.486-1.011a1.738 1.738 0 0 0-1.342.332c-.376.29-.61.656-.712 1.065a2.1 2.1 0 0 0-1.095-.562 1.776 1.776 0 0 0-.992.128l-2.636-2.636a1.883 1.883 0 0 0-2.658 0 1.862 1.862 0 0 0-.478.847 1.886 1.886 0 0 0-2.671-.012 1.867 1.867 0 0 0-.503.909c-.754-.754-1.992-.754-2.703-.044a1.881 1.881 0 0 0 0 2.658c-.288.12-.605.288-.864.547a1.884 1.884 0 0 0 0 2.659l.624.622a1.879 1.879 0 0 0-.91 3.16l5.019 5.02c1.595 1.594 3.515 2.645 5.408 2.959a7.16 7.16 0 0 0 1.173.098c1.026 0 1.997-.24 2.892-.7.279.04.555.065.828.065 1.53 0 2.969-.628 4.236-1.894 3.338-3.338 3.083-6.928 1.738-9.166l-2.868-5.043z"></path> -->
+<!-- 								</g> -->
+<!-- 							</svg> <span style="vertical-align: bottom; margin-left: 8px;"> -->
+<!-- 								1 </span> -->
+<!-- 						</span> -->
+<!-- 					</button> -->
+<!-- 				</li> -->
 				<li>
 					<!-- 트위터 -->
 					<button>
@@ -365,7 +373,6 @@
 			<div class="col-md-8 ftco-animate">
 				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
 				<p><%=article.getBlog_content()%></p>
-
 
 				<%
 					String id = (String) session.getAttribute("id");
@@ -422,16 +429,42 @@
 									<%
 										session.getAttribute("id");
 											if (id != null && id.equals("admin")) {
+
+												System.out.println(articleList.get(i).getComment_blog_num());
+												System.out.println(articleList.get(i).getComment_content());
 									%>
-									
-									<input type="text" id="comment_modify" name="comment_modify"
-										style="width: 70%;" />
-									<a
-										href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply">Edit</a><a
-										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply"
-										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">Delete</a>
+
+									<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
+									<div class="con_inner">
+										<div class="sir_singo_msg">
+											<a href="#"
+												onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
+												class="blind_view">수정</a>
+										</div>
+										<div class="singo_view" id="SirenDiv<%=i%>">
+											<form action="BlogCommentModifyPro.bl" method="post">
+
+												<input type="text" id="comment_modify" name="comment_modify"
+													style="width: 70%;"
+													value=<%=articleList.get(i).getComment_content()%>>
+												<input type="hidden" name="comment_num"
+													value="<%=articleList.get(i).getComment_num()%>"> <input
+													type="hidden" name="comment_blog_num"
+													value="<%=articleList.get(i).getComment_blog_num()%>">
+												<input type="submit" class="reply" value="Submit">
+												<%-- 												<a href="BlogCommentModifyPro.bl?comment_num=<%=articleList.get(i).getComment_num() %>&blog_num=<%=articleList.get(i).getComment_blog_num() %>" --%>
+												<!-- 													class="reply">Submit</a>  -->
+
+											</form>
+											<form action="BlogCommentDeletePro.bl" method="post">
+												<input type="hidden" name="comment_num"
+													value="<%=articleList.get(i).getComment_num()%>"> <input
+													type="hidden" name="comment_blog_num"
+													value="<%=articleList.get(i).getComment_blog_num()%>">
+												<input type="submit" class="reply" value="submit" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+											</form>
+										</div>
+									</div>
 
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
@@ -454,19 +487,20 @@
 					<%
 						}
 					%>
-					<!-- END comment-list -->
-
-
+					<!-------------------------------- END comment-list ----------------------------------->
+					<!-- ----------------------------- Comment Write ----------------------------------- -->
 					<%
 						session.getAttribute("id");
 						if (id != null) {
 					%>
 					<div class="comment-form-wrap pt-5">
-						<h3 class="mb-5">코멘트 남기기</h3>
+						<h3 class="mb-5">
+							코멘트 남기기<%=article.getBlog_num()%></h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
-							<input type="hidden" name="comment_blog_num"
-								value="<%=article.getBlog_num()%>" id="comment_blog_num">
+							<input type="hidden" name="blog_num"
+								value="<%=article.getBlog_num()%>" id="blog_num">
+
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
@@ -494,7 +528,7 @@
 			</div>
 		</div>
 	</section>
-
+	<!-------------------------------- END comment-Write ----------------------------------->
 	<!-- .section -->
 	<footer>
 		<jsp:include page="/inc/footer.jsp" />

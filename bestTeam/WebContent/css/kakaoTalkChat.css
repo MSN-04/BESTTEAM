@@ -2,15 +2,15 @@
 
 #kakaoChat {
 	 position: fixed;
-	 bottom: 30px;
-	 right: 30px;
+	 bottom: 70px;
+	 right: 15px;
 	 z-index: 999; 
 	 width: 60px;
  }
 	 
 #plusfriend-chat-button {
 	position: fixed; 
-	bottom: 25px; 
-	right: 25px; 
+	bottom: 25PX; 
+	RIGHT: 25px; 
 	z-index: 999;
 }	 

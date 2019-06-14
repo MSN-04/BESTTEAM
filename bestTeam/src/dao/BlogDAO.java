@@ -115,8 +115,6 @@ public class BlogDAO {
 		ArrayList<BlogBean> articleList = new ArrayList<BlogBean>();
 		BlogBean blogBean = null;
 		
-		
-		
 		String sql = "SELECT * FROM blog ORDER BY blog_num desc limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
@@ -318,9 +316,37 @@ public class BlogDAO {
 		
 		return deleteCount;
 	}
-	
-	
 }
+
+
+//	public int selectCommentCount() {
+////		System.out.println("selectCommentCount()");
+//		
+//		int commentCount = 0;
+//		
+//		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
+//		String sql = "SELECT title, contents, (SELECT COUNT(*) AS comment_num FROM blog_comment WHERE parent.seq = BOARD.seq) as CommentTotalCnt FROM blog;
+//		
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				commentCount = rs.getInt("count(*)"); // 조회된 목록 갯수 저장
+//			}
+//			
+//		} catch (SQLException e) {
+//			System.out.println("selectCommentCount() 실패! : " + e.getMessage());
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		
+//		return listCount;
+//	}
+//	}
+	
+	
 
 
 

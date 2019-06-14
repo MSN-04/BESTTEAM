@@ -64,6 +64,11 @@
 				<li class="nav-item active"><a href="./index.in"
 					class="nav-link">Home</a></li>
 				<li class="nav-item"><a href="./shopMain.em" class="nav-link">Shop</a></li>
+				
+				
+				
+				
+				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="./notice/notice.jsp"
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
@@ -72,10 +77,20 @@
 						<a class="dropdown-item" href="./noticeList.no">공지사항</a> <a
 							class="dropdown-item" href="./faq.no">FAQ</a>
 					</div></li>
-				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li>
-				<li class="nav-item"><a href="./contact/contact.jsp"
-					class="nav-link">Contact</a></li>
+					
+<!-- 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li> -->
+<!-- 				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li> -->
+				
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="./blog/blog.jsp"
+					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Blog</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown04">
+						<a class="dropdown-item" href="./blog.bl">블로그</a> <a
+							class="dropdown-item" href="./fest.et">Festival</a>
+					</div></li>
+				
+				<li class="nav-item"><a href="./contact.et" class="nav-link">Contact</a></li>
 
 				<%
 					if (session.getAttribute("id") == null) {

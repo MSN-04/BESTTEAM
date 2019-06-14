@@ -130,14 +130,7 @@ public class ItemFrontController extends HttpServlet {
 			forward.setPath("./shop/product-delete.jsp");
 			
 		}
-		//------------------------- confirm_checkout by yb --------------------
-		
-		
-		//-----------------------------------------------------------------------
-		
-
-		
-		
+	
 		if(forward != null) {
 			if(forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());

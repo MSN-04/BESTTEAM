@@ -33,7 +33,6 @@ public class QnaModifyProAction implements Action {
 		String name = request.getParameter("qna_writer");
 		String qna_subject = request.getParameter("qna_subject");
 		String qna_content = request.getParameter("qna_content");
-//		int qna_num = (Integer) request.getAttribute("qna_num");
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		System.out.println(qna_num);
 		int qna_item_num = Integer.parseInt(request.getParameter("item_num"));
@@ -48,11 +47,6 @@ public class QnaModifyProAction implements Action {
 		qnaBean.setQna_writer(id);
 		qnaBean.setQna_subject(qna_subject);
 		qnaBean.setQna_content(qna_content);
-//		QnaBean.setQna_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
-		
-		
-//		MyPageProService mypageProService = new MyPageProService();
-//		userBean = (UserBean) mypageProService.getUserInfo(userBean);
 		
 		
 		boolean isModifySuccess = qnaModifyProService.modifyArticle(qnaBean);
@@ -71,7 +65,6 @@ public class QnaModifyProAction implements Action {
 			// => qnaList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
 			forward.setPath("itemSingle.em?item_num="+qna_item_num);
-//			forward.setRedirect(true);
 		}
 		
 		return forward;

@@ -282,13 +282,6 @@
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Bitterness</a>
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
-								<% 
-									String id = (String)session.getAttribute("id");
-									if (id != null && id.equals("admin")) {
-								%>
-								<a class="nav-link" id="v-pills-5-tab" href="itemRegister.em" style="font-weight: bold;"
-									role="tab" aria-controls="v-pills-3" aria-selected="false">상품 등록</a>
-								<% } %>
 							</div>
 
 							<div class="nav ftco-animate nav-pills justify-content-center" 

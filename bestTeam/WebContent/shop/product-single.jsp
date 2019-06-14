@@ -27,7 +27,7 @@
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
 
-	//qna
+// 	qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
 	QnaBean qnabean = new QnaBean();
@@ -45,7 +45,8 @@
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 %>
 
 	
@@ -534,10 +535,10 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill" href="#v-pills-2" id="btn3"
-									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;">상품Q&A</a>  
+								<a class="nav-link"  data-toggle="pill"   id="btn3"
+									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
-								<%  String sessionId = (String) session.getAttribute("id");
+							<%  String sessionId = (String) session.getAttribute("id");
 							
 									if(sessionId != null) {
 										if(sessionId.equals("admin")) { %>
@@ -596,29 +597,29 @@ $( '#rere1' ).click(
                   
                 <tr>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
-                  <td  ><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" onclick="read();"><%=reviewList.get(i).getReview_subject() %> </a>
+                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
                   
-                  <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>">
+<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
                   
-                    <div id="collapse<%=i %>" class="panel-collapse collapse in">
-                      <div class="panel-body">
-                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
-                        <section class="ftco=section" id="ac1">
-                          <div class="container">
-                            <div class="col-md-8 ftco-animate div0525">
-                              <a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num()%>&item_num=<%=itemBean.getItem_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >수정</a> 
-                              <a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num()%>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">삭제</a>
-                              <a href="#" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>')">답글</a>
-                            </div>
-                          </div>
-                        </section>
-                      </div>
-                    </div>
+                    
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
                 </tr>
+                
+                <tr><td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="5">
+                <div id="trtr" >
+                      <div class="panel-body">
+                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
+                        
+                      </div>
+                    </div>
+                    
+                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >상세보기</a> 
+                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
+                            
+                </td></tr>
                 
                 
                 <%
@@ -670,190 +671,7 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-	<section class="ftco=section" id="ft3">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch" style="margin: auto;">
-					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
-							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
-							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
-							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-					 	</p>
-					<section class="ftco=section" id="ac1">
-						<div class="container">
-							<table class="table thead-light" id="ac1">
-								<tr>
-									<td><a data-toggle="collapse">번호</a></td>
-									<td><a data-toggle="collapse">제목 </a></td>
-									<td><a data-toggle="collapse">작성자</a></td>
-									<td><a data-toggle="collapse">작성일</a></td>
-									</tr>
-									<%
-										if (qnaList != null && listCount2 > 0) {
-											for (int i = 0; i < qnaList.size(); i++) {
-												
-												System.out.println(qnaList.get(i).getQna_re_lev());
-									%>
-									
-								<tr>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
-									<% 
-										if(qnaList.get(i).getQna_re_lev()>0){
-											System.out.println(qnaList.get(i).getQna_re_lev());
-										
-											%>
-											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>">&nbsp;&nbsp;Re :  <%=qnaList.get(i).getQna_subject() %> </a></td>
-									<%	}
-									%>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
-								</tr>
-								<tr>
-								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<div class="panel-body">
-												<b><%=qnaList.get(i).getQna_content() %></b>
-												<section class="ftco=section" id="ac1">
-													<div class="container">
-														<div class="col-md-8 ftco-animate div0525">
-															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
-														</div>
-													</div>
-												</section>
-												
-												<%
-												if(id.equals("admin")){
-													%>
-													<section class="ftco-section">
-		<div class="col-md-5" id="mail">
-			<form id="frm" action="QnaReplyProAction.qna" method="post"
-				class="contact-form" style="width: 100%;">
-				<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
-								name="qna_reply_subject" id="qna_reply_subject" required="required">
-								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
-								name="qna_num" id="qna_reply_subject" required="required">
-								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
-								name="qna_item_num" id="qna_reply_subject" required="required">
-					
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">QNA 답글</h2>
-				</div>
-				<table style="width: 100%; text-align: left;">
-					<div class="row">
-					<tr>
-						<!-- 						<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="<%=id %>"
-								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
-						</div>
-						<!-- 						</div> -->
-
-					</tr>
-				</table>
-				<table style="width: 100%; text-align: center;">
-					
-							
-					<tr>
-						<td> <div class="form-group">
-                <textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div></td>
-					</tr>
-					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
-					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /> <input type="submit"
-							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="등록" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</section>
-													<%
-													
-												}
-												
-												%>
-											</div>
-										</td>
-								</tr>
-								
-								
-								<%
-									}
-									}
-								%>
-							</table>
-						</div>
-					</section>
-<!-- 					<br> -->
-<!-- 					<br> -->
-<!-- 					<table class="table thead-light"> -->
-<!-- 					<tr>Q & A</tr> -->
-<!-- 						<tr> -->
-<!-- 							<th>번호</th> -->
-<!-- 							<th>제목</th> -->
-<!-- 							<th>날짜</th> -->
-<!-- 							<th>글쓴이</th> -->
-<!-- 							<th>조회수</th> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>2</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>3</td> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>1</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>21</td> -->
-<!-- 						</tr> -->
-
-<!-- 					</table> -->
-					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-			
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-							<% 
-							//실제 페이지수를 endPage로 변경
-							if(endPage2>pageCount2){
-								endPage2=pageCount2;
-							}
-							
-							if(startPage2>pageCount2){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2-pageBlock %>'>&lt;</a></li>
-							<%
-							}
-							
-							for(int i = startPage2; i<=endPage2;i++){ 
-								%>
-							
-									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
-									
-									<%} 
-									
-							if(endPage2<pageCount2){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage2+pageSize %>'>&gt;</a></li>
-							<%
-							}
-							%>
-								</ul>
-				</div>
-			</div>
-		</div>
-		</div>
-		</div>
-		</div>
-	</section>
+<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
 <section>
 		<div class="container" >
 			<div class="row" >

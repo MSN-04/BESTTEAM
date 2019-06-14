@@ -75,7 +75,7 @@
     </style>
     
     
-    <!-- ========== 상품 삭제 버튼 ========== -->
+<!-- 상품 삭제 버튼 Start -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
     
@@ -149,7 +149,7 @@
     });
 
     </script>
-    <!-- ====================================== -->
+<!-- 상품 삭제 버튼 End -->
     
   </head>
   <body>
@@ -194,7 +194,7 @@
                 </thead>
                 <tbody>
                 
-                <!-- 상품시작 -->
+                <!-- 상품 시작 -->
                 <% 
                 	int total = 0;
                 	if (cartList != null) {
@@ -234,19 +234,15 @@
                 				<td class="product-name" colspan="6">
 		                      		<p>장바구니가 비어 있습니다.</p>
 		                    	</td>
-                			</tr>
+                			</tr><!-- END TR-->
                 			<%
                 		}
                 	}%>
-                  <!-- END TR-->
                   <!-- 상품 끝 -->
-                  
-                  
-                  
-                  
-                  
                 </tbody>
               </table>
+
+
 		<% if (cartList.size() != 0) { %>
 				<a class="btn btn-primary btn-outline-primary" id="deleteBtn1st" style="font-size: 17px;" >삭제할 상품 선택하기</a>
 		        <a class="btn btn-best btn-outline-primary" id="deleteBtn2nd" style="font-size: 17px;">선택한 상품 삭제</a>
@@ -269,8 +265,7 @@
 		        <li>배송, 결제 등에 관한 문의는 카카오톡 1:1상담으로 문의가능합니다.</li>
 	        </ul>
         </div>
-        
-        
+
         
         <% if (cartList.size() != 0) { %>
         
@@ -294,7 +289,6 @@
 	            
 	          	  <p style="text-align: right;" ><a href="checkout.sh" class="btn btn-primary" style="font-size: 17px;" >전체 상품 주문</a></p>
 	            
-	            
 	          	</div>
 	          </div>
           
@@ -308,7 +302,6 @@
    <jsp:include page="/inc/footer.jsp"></jsp:include>
     </footer>
     
-  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -340,14 +333,8 @@
             e.preventDefault();
             // Get the field name
             var quantity = parseInt($('#quantity').val());
-            
             // If is not undefined
-                
                 $('#quantity').val(quantity + 1);
-
-              
-                // Increment
-            
         });
 
          $('.quantity-left-minus').click(function(e){
@@ -355,10 +342,8 @@
             e.preventDefault();
             // Get the field name
             var quantity = parseInt($('#quantity').val());
-            
-            // If is not undefined
-          
-                // Increment
+
+            	// Increment
                 if(quantity>0){
                 $('#quantity').val(quantity - 1);
                 }

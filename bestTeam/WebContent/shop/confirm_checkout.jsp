@@ -72,7 +72,6 @@
 	int buy_num = Integer.parseInt(request.getParameter("buy_num")); 
 	//out.println("buy_num:"+buy_num);
 //	out.print("orderPersonList.get(0)-->"+orderPersonList.get(0).getBuy_address());
-
 	  PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 
   %>
@@ -263,7 +262,7 @@
 		              	<table>
 		            		<tr> <td width="100px"><label for="firstname">주문번호</label></td>
 
-		            			 <td><label><span><%=orderPersonList.get(0).getBuy_ordernum() %></span></label></td> </tr>
+		            			 <td><label><span><%=request.getParameter("buy_ordernum") %></span></label></td> </tr>
 
 
 		            	</table>

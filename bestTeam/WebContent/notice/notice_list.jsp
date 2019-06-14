@@ -159,8 +159,6 @@
 									%>
 								</ul>
 
-
-
 								<%
 									String id = (String) session.getAttribute("id");
 									if (id != null && id.equals("admin")) {
@@ -316,7 +314,6 @@
 	<footer>
 		<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</footer>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

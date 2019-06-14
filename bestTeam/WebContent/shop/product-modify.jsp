@@ -72,7 +72,7 @@
 		});
 		
 		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+			if (confirm("정말 다시 쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
 				$("#ir1").reset();
 			} else {
 				return;

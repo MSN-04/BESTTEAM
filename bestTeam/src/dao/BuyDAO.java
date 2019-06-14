@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static db.JdbcUtil.*;
 
 import vo.BuyBean;
@@ -472,6 +476,7 @@ public class BuyDAO {
 							buyBean.setBuy_name(rs.getString("buy_name"));
 							buyBean.setBuy_total(rs.getInt("buy_total"));
 							buyBean.setBuy_user_id(user_id);
+							buyBean.setBuy_ordernum(rs.getString("buy_ordernum"));
 							buyList.add(buyBean);
 						}
 						
@@ -519,7 +524,7 @@ public class BuyDAO {
 	// 주문상품조회: cart에서 가져오기-->상품 이미지(buy_item_img)/상품이름(buy_item_name)
 	// 가격 (buy_item_price)/ 갯수(buy_item_count) / 가격(buy_item_price)
 	public ArrayList<BuyItemBean> getOrderInfoList(int buy_num){
-		System.out.println("BuyDAO --getOrderInfoList ");
+		//System.out.println("BuyDAO --getOrderInfoList ");
 		
 		ArrayList<BuyItemBean> orderInfoList=new ArrayList<>();
 		
@@ -542,7 +547,7 @@ public class BuyDAO {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("getOrderInfoList 에러:"+e);
+			System.out.println("dao - getOrderInfoList 에러:"+e);
 		}finally {
 			close(rs);
 			close(pstmt);
@@ -555,7 +560,7 @@ public class BuyDAO {
 	//주문자 정보: buy 에서 가져오기--> 주문번호(buy_num) / 주문자 (buy_user_id)/ 
 	//주문일자(buy_buydate) / 연락처1(buy_phone)/연락처2(buy_phone2)/우편번호(buy_post)/배송지(buy_address)
 	public ArrayList<BuyBean> getOrderPersonList(String id){
-		System.out.println("BuyDAO --getOrderPersonList ");
+		//System.out.println("BuyDAO --getOrderPersonList ");
 		
 		ArrayList<BuyBean> orderPersonList=new ArrayList<>();
 		
@@ -572,12 +577,14 @@ public class BuyDAO {
 				buyBean.setBuy_phone2(rs.getString("buy_phone2"));
 				buyBean.setBuy_phone(rs.getString("buy_phone"));
 				buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
+				buyBean.setBuy_ordernum(rs.getString("buy_ordernum"));	
+				buyBean.setBuy_user_id(rs.getString("buy_user_id"));
 				orderPersonList.add(buyBean);
 			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("getOrderPersonList 에러:"+e);
+			System.out.println("dao - getOrderPersonList 에러:"+e);
 		}finally {
 			close(rs);
 			close(pstmt);
@@ -585,6 +592,8 @@ public class BuyDAO {
 		return orderPersonList;
 		
 	}
+
+	
 	
 
 

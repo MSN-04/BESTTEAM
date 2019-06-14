@@ -15,7 +15,6 @@ public class UpdateMemberFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("updateFormAction");
 		ActionForward forward = null;
 		UserBean userBean = null;
 		
