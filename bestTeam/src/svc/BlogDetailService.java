@@ -75,7 +75,7 @@ public class BlogDetailService {
 	// 댓글 목록 조회 후 리턴
 	public ArrayList<BlogCommentBean> getCommentList(int blog_num) throws Exception {
 		System.out.println("CommentListService - getArticleList()");
-		
+		System.out.println(blog_num);
 		ArrayList<BlogCommentBean> articleList = new ArrayList<BlogCommentBean>();
 		Connection con = getConnection();
 		

@@ -151,20 +151,27 @@ public class BlogCommentDAO {
 		// * 에서 날짜형식 때문에 수정함
 //		String sql = "SELECT comment_num,comment_content,comment_writer,DATE_FORMAT(comment_date, '%Y/%m/%d %H:%i:%s'),comment_blog_num from blog_comment WHERE comment_blog_num=? ORDER BY comment_num ASC";
 		String sql = "SELECT * from blog_comment WHERE comment_blog_num=? ORDER BY comment_num ASC";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, blog_num);
-		
-		rs = pstmt.executeQuery();
-		while (rs.next()) {
-			BlogCommentBean commentBean = new BlogCommentBean();
-			commentBean.setComment_num(rs.getInt("comment_num"));
-			commentBean.setComment_content(rs.getString("comment_content"));
-			commentBean.setComment_writer(rs.getString("comment_writer"));
-			commentBean.setComment_date(rs.getTimestamp("comment_date"));
-			commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
-			articleList.add(commentBean);
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, blog_num);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				BlogCommentBean commentBean = new BlogCommentBean();
+				commentBean.setComment_num(rs.getInt("comment_num"));
+				commentBean.setComment_content(rs.getString("comment_content"));
+				commentBean.setComment_writer(rs.getString("comment_writer"));
+				commentBean.setComment_date(rs.getTimestamp("comment_date"));
+				commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
+				articleList.add(commentBean);
+				System.out.println(commentBean.getComment_num());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
 		}
-		close(pstmt);
 		return articleList;
 	}
 	

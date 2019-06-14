@@ -5260,7 +5260,7 @@ button.bg-dark:focus {
     display: block;
     content: ""; }
   .embed-responsive .embed-responsive-item,
-  .embed-responsive iframe,
+  .niframe,
   .embed-responsive embed,
   .embed-responsive object,
   .embed-responsive video {

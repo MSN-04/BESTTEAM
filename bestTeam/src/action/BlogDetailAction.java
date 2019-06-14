@@ -35,8 +35,8 @@ public class BlogDetailAction implements Action {
 		BlogBean article = blogDetailService.getArticle(blog_num);
 		ArrayList<BlogCommentBean> articleList = blogDetailService.getCommentList(blog_num);
 //		UserBean userbean = blogDetailService.getUserInfo(name);
-		System.out.println("getComment_num :: " + articleList.get(0).getComment_num());
-		System.out.println("getComment_content :: " + articleList.get(0).getComment_content());
+		System.out.println("getComment_num :: " + articleList.isEmpty());
+//		System.out.println("getComment_content :: " + articleList.get(0).getComment_content());
 		HttpSession session = request.getSession();
 		BlogCommentBean blogCommentBean = null;
 		UserBean userBean = null;
