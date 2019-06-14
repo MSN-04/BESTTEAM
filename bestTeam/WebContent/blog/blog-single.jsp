@@ -434,37 +434,36 @@
 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
-									<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
-									<div class="con_inner">
+			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
+									
 										<div class="sir_singo_msg">
-											<a href="#"
+											<a href="#" style="margin-left: 220px; font-size: 12px;"
 												onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
 												class="blind_view">수정</a>
 										</div>
 										<div class="singo_view" id="SirenDiv<%=i%>">
-											<form action="BlogCommentModifyPro.bl" method="post">
-
+											<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
+												<!-- text -->
 												<input type="text" id="comment_modify" name="comment_modify"
-													style="width: 70%;"
+													style="width: 50%; margin-left: 150px;"
 													value=<%=articleList.get(i).getComment_content()%>>
+													
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="Submit">
-												<%-- 												<a href="BlogCommentModifyPro.bl?comment_num=<%=articleList.get(i).getComment_num() %>&blog_num=<%=articleList.get(i).getComment_blog_num() %>" --%>
-												<!-- 													class="reply">Submit</a>  -->
+												<input type="submit" class="reply" value="수정">
 
 											</form>
-											<form action="BlogCommentDeletePro.bl" method="post">
+											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="submit" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
 											</form>
 										</div>
-									</div>
+									
 
 									<%
 										} else if (id != null && id.equals(session.getAttribute("id"))) {
@@ -495,7 +494,7 @@
 					%>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
-							코멘트 남기기<%=article.getBlog_num()%></h3>
+							코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
 							<input type="hidden" name="blog_num"
