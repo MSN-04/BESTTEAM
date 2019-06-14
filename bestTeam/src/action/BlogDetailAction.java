@@ -34,13 +34,16 @@ public class BlogDetailAction implements Action {
 		BlogDetailService blogDetailService = new BlogDetailService();
 		BlogBean article = blogDetailService.getArticle(blog_num);
 		ArrayList<BlogCommentBean> articleList = blogDetailService.getCommentList(blog_num);
+		
 //		UserBean userbean = blogDetailService.getUserInfo(name);
-		System.out.println("getComment_num :: " + articleList.get(0).getComment_num());
-		System.out.println("getComment_content :: " + articleList.get(0).getComment_content());
+//		System.out.println("getComment_num :: " + articleList.get(0).getComment_num());
+//		System.out.println("getComment_content :: " + articleList.get(0).getComment_content());
+		
 		HttpSession session = request.getSession();
 		BlogCommentBean blogCommentBean = null;
 		UserBean userBean = null;
 		userBean = new UserBean();
+		
 		// 다른 페이지에서 page 번호를 전달받아 계속 유지하기 위해 request 객체의 setAttribute() 메서드로 전달
 		request.setAttribute("page", page);
 		request.setAttribute("article", article);
