@@ -54,13 +54,6 @@
 
 	});
 	
-	
-// 	$(document).ready(function() {
-// 		if (session.getAttribute("id") == null) {
-// 			$("#numOfCartItems").hide(); //숨기기
-// 		} 
-// 	}
-	
 </script>
 
 <nav
