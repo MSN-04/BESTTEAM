@@ -132,9 +132,9 @@
 
 	<!-- 이전글버튼 ----------------------------->
 
-	<section class="ftco-section">
-		<div class="row" style="margin-left: 430px; margin-bottom: 10px;">
-			<div style="" solidwhite; margin-bottom: 30px;>
+	
+		<div class="row" style="margin-left: 430px; margin-bottom: 0px;">
+			<div style="solidwhite; margin-left: 400px;" >
 				<%
 					int rre = article.getNotice_num() - 1;
 				%>
@@ -142,16 +142,8 @@
 					class="quantity-left-minus btn input-group-btn"
 					style="text-align: center;">
 					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp;
-				</button>
-				<div class="block-21 mb-4 d-flex">
-					<a class="blog-img mr-4"
-						style="background-image: url(../images/image_1.jpg);"></a>
-					<div class="text">
-						<h3 class="heading">
-							<a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
-						</h3>
-					</div>
-				</div>
+				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
+				
 			</div>
 			<!-- 다음글 -->
 			<!-- 				<div style="border-bottom" solid white; margin-bottom: 30px;> -->
@@ -162,7 +154,7 @@
 			<!-- 			</button> -->
 			<!-- 			</div> -->
 		</div>
-	</section>
+	
 
 
 	<%
@@ -171,7 +163,7 @@
 	%>
 	<div class="row mt-5">
 		<div class="col text-center">
-			<div class="block-27">
+			<div class="block-27" style="margin-bottom: 50px;">
 				<a
 					href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
 					class="btn btn-primary btn-outline-primary">글수정</a> <a
