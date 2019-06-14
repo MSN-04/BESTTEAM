@@ -93,8 +93,8 @@
 //아이디, 패스워드, 메일 적합한지 검사할 정규식
  var regId = /^[a-zA-Z0-9]{8,12}$/ ;
  var regPass = /^[a-zA-Z0-9]{8,12}$/;
- var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
- var regPhone;
+ var regMail = /^[a-zA-Z0-9]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+ var regPhone = /^[0-9]{8,11}$/;
 
  
  // 비밀번호 일치 확인
@@ -326,14 +326,14 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">주민 등록 번호</label> <input type="text"
-                    class="form-control" placeholder="6자리 입력하세요" name="jumin1">
+                    class="form-control" placeholder="6자리 입력하세요" name="jumin1" required="required">
                 </div>
               </div>
               
               <div class="col-md-6">
                 <div class="form-group">
                    <input type="password" class="form-control" placeholder="7자리 입력하세요"
-                    name="jumin2">
+                    name="jumin2" required="required" size="7">
                 </div>
               </div>
               <div class="w-100"></div>
@@ -356,7 +356,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
-                    class="form-control" placeholder="숫자만 입력하세요" name="phone">
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone" required="required">
                 </div>
               </div>
               <div class="w-100"></div>
