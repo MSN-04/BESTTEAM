@@ -1,3 +1,4 @@
+<%@page import="java.util.SimpleTimeZone"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -21,21 +22,19 @@
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
+// 	Timestamp comment_date = request.getParameter("comment_date");
 
-	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+	Date today = new Date();
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+	SimpleDateFormat time = new SimpleDateFormat("k:mm");
+// 	June 27, 2018 at 2:21pm
 
-	// 	int listCount = pageInfo.getListCount();
-	// 	nowPage = pageInfo.getPage();
-	// 	int maxPage = pageInfo.getMaxPage();
-	// 	int startPage = pageInfo.getStartPage();
-	// 	int endPage = pageInfo.getEndPage();
-	// 	int limit = pageInfo.getLimit();
-
-	// 	int number = 0;
-	// 	number = listCount - (nowPage - 1) * (limit);
+	System.out.println("오늘 날짜는 " + sdf.format(today));
+	System.out.println("현재 시간은 " + time.format(today));
 %>
 
-<script language="javascript">
+	<script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
@@ -270,13 +269,9 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/inc/header.jsp" />
+		<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
 	<!-- END nav -->
-
-	<!-- 맨 위로 -->
-	<a href="#" class="up-button w-inline-block" id="goTop"
-		style="display: block; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;"></a>
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
@@ -287,14 +282,9 @@
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="blog.jsp">Blog</a></span> <span>Blog
-								Details</span>
-						</p>
+					<div class="col-md-700 col-sm-52 text-center ftco-animate">
+						<h1 class="mb-8 mt-7 bread">Blog</h1>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -421,7 +411,9 @@
 									id="comment_blog_num">
 
 								<h3><%=articleList.get(i).getComment_writer() %></h3>
-								<div class="meta"><%=articleList.get(i).getComment_date()%></div>
+
+<%-- 								<div class="meta"><%=articleList.get(i).getComment_date()%></div> --%>
+								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
 								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
 								<p><%=articleList.get(i).getComment_content()%></p>
 								<div

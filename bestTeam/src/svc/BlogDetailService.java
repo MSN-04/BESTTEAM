@@ -31,7 +31,6 @@ public class BlogDetailService {
 		
 		Connection con = getConnection();
 		
-		// BoardDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
 		BlogDAO blogDAO = BlogDAO.getInstance();
 		blogDAO.setConnection(con);
 		
@@ -75,7 +74,7 @@ public class BlogDetailService {
 	// 댓글 목록 조회 후 리턴
 	public ArrayList<BlogCommentBean> getCommentList(int blog_num) throws Exception {
 		System.out.println("CommentListService - getArticleList()");
-		
+		System.out.println(blog_num);
 		ArrayList<BlogCommentBean> articleList = new ArrayList<BlogCommentBean>();
 		Connection con = getConnection();
 		

@@ -51,20 +51,6 @@ public class BlogWriteProAction implements Action {
 		System.out.println(realFolder);
 //		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-//		
-//		
-//		
-////		System.out.println("multi.getFileNames().toString() : " + multi.getFileNames().toString());
-//		Enumeration files=multi.getFileNames();
-////		System.out.println("files.nextElement() : " + files.nextElement());
-//		
-//		String blog_file = (String)files.nextElement();
-//		String filename = multi.getFilesystemName(blog_file);
-//		System.out.println(filename);
-//		
-//		String blog_file1 = (String)files.nextElement();
-//		String filename1 = multi.getFilesystemName(blog_file1);
-//		System.out.println(filename1);
 		
 		blogBean = new BlogBean(); // 글 쓰기 데이터를 저장할 BlogBean 객체
 		// 파일명을 제외한 나머지 데이터는 multi.getParameter() 메서드를 사용

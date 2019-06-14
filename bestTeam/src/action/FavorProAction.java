@@ -69,7 +69,7 @@ public class FavorProAction implements Action {
 			} else {
 				forward = new ActionForward();
 				
-				forward.setPath("index.in");
+				forward.setPath("Mypage.us");
 			}
 		}
 		
