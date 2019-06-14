@@ -14,12 +14,6 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
-	System.out.println("listCount : " + listCount);
-	System.out.println("nowPage : " + nowPage);
-	System.out.println("maxPage : " + maxPage);
-	System.out.println("startPage : " + startPage);
-	System.out.println("endPage : " + endPage);
-	System.out.println("articleList.size() : " + articleList.size());
 	
 %>
 <!DOCTYPE html>
@@ -115,14 +109,8 @@
 								</div>
 								<div>
 									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-3										
-										
-										</a>
+										3</a>
 								</div>
-<!-- 								<div> -->
-<!-- 									<a href="#" class="meta-chat"><span class="icon-chat"></span> -->
-<!-- 										3</a> -->
-<!-- 								</div> -->
 							</div>
 
 						</div>

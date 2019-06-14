@@ -16,7 +16,6 @@ public class BlogListService {
 		
 		int listCount = 0; // 글 목록 갯수
 		
-		// Connection 객체 가져오기
 		Connection con = getConnection();
 		
 		// BoardDAO 인스턴스 얻어오기 => setConnection() 메서드를 호출하여 Connection 객체 전달
@@ -57,11 +56,29 @@ public class BlogListService {
 		return articleList;
 		
 	}
+//}
+
+//댓글 목록 갯수 구해서 리턴
+//	public int getCommentCount() throws Exception {
+//		System.out.println("BlogListService - getCommentCount()");
+//		
+//		int commentCount = 0; // 댓글  갯수
+//		
+//		Connection con = getConnection();
+//		
+//		BlogDAO blogDAO = BlogDAO.getInstance();
+//		blogDAO.setConnection(con);
+//		
+//		commentCount = blogDAO.selectCommentCount();
+//		
+//		System.out.println("게시물 갯수 : " + commentCount);
+//		
+//		close(con);
+//		
+//		return commentCount;
+//	}
+
 }
-
-
-
-
 
 
 

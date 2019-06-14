@@ -14,7 +14,7 @@ public class BlogListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		System.out.println("BoardListAction");
+		System.out.println("BoardListAction");
 		
 		ArrayList<BlogBean> articleList = new ArrayList<BlogBean>();
 		
@@ -31,6 +31,8 @@ public class BlogListAction implements Action {
 		int listCount = blogListService.getListCount(); // 총 게시물 목록 수 가져오기
 		
 		articleList = blogListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+		// 댓글 갯수 계산
+		//		articleList = blogListService.getCommentCount;
 		
 		// 페이지 계산
 		int maxPage = (int)((double)listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)

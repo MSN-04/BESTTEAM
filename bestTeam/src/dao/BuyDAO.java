@@ -577,6 +577,8 @@ public class BuyDAO {
 				buyBean.setBuy_phone2(rs.getString("buy_phone2"));
 				buyBean.setBuy_phone(rs.getString("buy_phone"));
 				buyBean.setBuy_buydate(rs.getDate("buy_buydate"));
+				buyBean.setBuy_ordernum(rs.getString("buy_ordernum"));	
+				buyBean.setBuy_user_id(rs.getString("buy_user_id"));
 				orderPersonList.add(buyBean);
 			}
 			
