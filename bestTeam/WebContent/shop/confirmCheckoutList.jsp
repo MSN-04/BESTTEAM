@@ -147,7 +147,7 @@
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3><%=buyList.get(i).getBuy_name() %><br> 상품 외<%=buyList.get(i).getBuy_count()-1 %>개</h3>
+                      <h3><%=buyList.get(i).getBuy_name() %><br> 상품 외 <%=buyList.get(i).getBuy_count()-1 %>개</h3>
                     </td>
                     
                     <td class="price"><%=buyList.get(i).getBuy_buydate() %></td>
