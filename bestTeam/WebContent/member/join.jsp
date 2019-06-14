@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 <style type="text/css">
 .money {
@@ -267,8 +269,7 @@ function check(reg, what) {
   <section class="home-slider owl-carousel">
 
     <div class="slider-item"
-      style="background-image: url(./images/bg_3.jpg);"
-      data-stellar-background-ratio="0.5">
+      style="background-image: url(./images/bg_3.jpg);" >
       <div class="overlay"></div>
       <div class="container">
         <div
@@ -285,6 +286,10 @@ function check(reg, what) {
       </div>
     </div>
   </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 
 <section class="ftco-section">

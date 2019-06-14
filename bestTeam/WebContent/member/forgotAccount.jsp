@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
+    
     <style type="text/css">
     .btn btn-primary py-3 px-4{text-align: right}
     .billing-form{padding: 10px !important;
@@ -61,7 +64,7 @@
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -106,6 +109,10 @@
         </div>
       </div>
     </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
    <section class="ftco-section" id="login">
 		<div class="container">

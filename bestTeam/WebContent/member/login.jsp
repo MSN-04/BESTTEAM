@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
     <style type="text/css">
     .btn btn-primary py-3 px-4{text-align: right}
     </style>
@@ -90,12 +92,16 @@
       </div>
     </section>
 
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
+
    <section class="ftco-section" id="login">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate">
 					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
-						<h3 class="mb-4 billing-heading">회원가입</h3>
+						<h3 class="mb-4 billing-heading">로그인</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">

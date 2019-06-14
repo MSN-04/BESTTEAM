@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="./css/flaticon.css">
     <link rel="stylesheet" href="./css/icomoon.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
     
 
     <style type="text/css">
@@ -101,6 +103,10 @@
         </div>
        </div>
     </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
@@ -360,7 +366,7 @@
 			//System.out.println("orderInfoList.size():"+orderInfoList.size());
 			
 		%>
-	          				<div class="col-md-12 confirmCheckout2">
+	          				<div class="col-md-12 confirmCheckout2" style="padding-top: 40px;">
 		            		<div class="form-group">
 	          					<p class="d-flex">
 		    						<span>상품 합계</span>
@@ -375,7 +381,6 @@
 		    						<span>총 결제금액</span>
 		    						<span class="money"><%=total+2500 %></span>
 		    					</p>
-		    					<hr>
 		    				</div>
 		    				</div>
 	          	<%

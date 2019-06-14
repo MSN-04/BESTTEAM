@@ -86,10 +86,12 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
+
 
 <script type="text/javascript">
 //삭제 확인메세지
@@ -416,6 +418,7 @@ $( '#rere1' ).click(
 				<div
 					class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
+
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
@@ -425,6 +428,10 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
+	
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 	
 	<section class="ftco-section">
 		<div class="container">
