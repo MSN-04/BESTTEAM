@@ -44,8 +44,12 @@ public class ConfirmCheckoutListProAction implements Action {
 		//System.out.println("action ->user_id:"+user_id);
 		
 		
-		int page=1;
-		int limit=10;
+		String pageS= request.getParameter("page");
+		int page = 1;
+		if (pageS != null) {
+			page = Integer.parseInt(pageS);
+		}
+		int limit = 5;
 
 				
 		if(user_id==null){ //id 가 없을 때,
@@ -59,37 +63,36 @@ public class ConfirmCheckoutListProAction implements Action {
 			
 		}else {
 		
-		
 			buyBean.setBuy_user_id(user_id);
 		
-		//	System.out.println("buyBean에 user_id 저장-->"+user_id);
-		ConfirmCheckoutListService confirmCheckoutListService=new ConfirmCheckoutListService();
-		buyList=confirmCheckoutListService.selectConfirmCheckoutList(user_id);
-	
-		int listCount= confirmCheckoutListService.getBuyListCount();
+			//	System.out.println("buyBean에 user_id 저장-->"+user_id);
+			ConfirmCheckoutListService confirmCheckoutListService=new ConfirmCheckoutListService();
+			buyList=confirmCheckoutListService.selectConfirmCheckoutList(user_id, page, limit);
 		
-		// 페이지 계산
-		int maxPage = (int)((double)listCount / limit + 0.95); 
-		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1; 
-		int endPage = startPage + 10 - 1; 
-		
-		if(endPage > maxPage) {
-			endPage = maxPage; 
-		}
-		
-		// 페이지 번호 관련 정보를 PageInfo 객체에 저장
-		PageInfo pageInfo = new PageInfo();
-		pageInfo.setPage(page);
-		pageInfo.setMaxPage(maxPage);
-		pageInfo.setStartPage(startPage);
-		pageInfo.setEndPage(endPage);
-		pageInfo.setListCount(listCount);
-		pageInfo.setLimit(limit);
-		
-		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("buyList",buyList);  //buyList에 서비스에서 가져온걸 저장.
-		forward.setPath("/shop/confirmCheckoutList.jsp");
-	//	forward.setRedirect(true); // Redirect 방식
+			int listCount= confirmCheckoutListService.getBuyListCount(user_id);
+			
+			// 페이지 계산
+			int maxPage = (int)((double)listCount / limit + 0.95); 
+			int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1; 
+			int endPage = startPage + 10 - 1; 
+			
+			if(endPage > maxPage) {
+				endPage = maxPage; 
+			}
+			
+			// 페이지 번호 관련 정보를 PageInfo 객체에 저장
+			PageInfo pageInfo = new PageInfo();
+			pageInfo.setPage(page);
+			pageInfo.setMaxPage(maxPage);
+			pageInfo.setStartPage(startPage);
+			pageInfo.setEndPage(endPage);
+			pageInfo.setListCount(listCount);
+			pageInfo.setLimit(limit);
+			
+			request.setAttribute("pageInfo", pageInfo);
+			request.setAttribute("buyList",buyList);  //buyList에 서비스에서 가져온걸 저장.
+			forward.setPath("/shop/confirmCheckoutList.jsp");
+		//	forward.setRedirect(true); // Redirect 방식
 				
 		}
 		return forward;
