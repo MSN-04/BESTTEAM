@@ -128,7 +128,7 @@
 	  }
   } else {
 	  document.getElementById('checkPwd').style.color = "#ff4d4d";
-	   document.getElementById('checkPwd').innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력"; 
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~12자의 영문 대소문자와 숫자로만 입력"; 
   }
   
  }

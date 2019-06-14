@@ -39,7 +39,17 @@ public class LoginProAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			
-			forward.setPath("index.in");
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('로그인 되었습니다')");
+			out.println("location.href = document.referrer;");
+			out.println("</script>");
+			
+//			forward.setPath("index.in");
+//			forward.setRedirect(true);
+			
+			
 		}
 		
 		return forward;

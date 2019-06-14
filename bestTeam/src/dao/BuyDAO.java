@@ -385,6 +385,27 @@ public class BuyDAO {
 		return isDeleteCart;
 	}
 	
+	public int getCartCount (String id) {
+		int cartCount = 0;
+		sql = "select count(*) from cart where cart_user_id = ?";
+		try {
+			pstmt = con.prepareStatement(sql);		
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				cartCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("selectCartCount 실패! ( " + e.getMessage() + " )");
+		} finally {
+			close(pstmt);
+		}
+		
+		return cartCount;
+	}
+	
 	/*-------------------------------------- 미송 ---------------------------------------*/
 	
 		//-- 장바구니의 아이템들 리턴

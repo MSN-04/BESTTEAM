@@ -8,11 +8,9 @@
 .jumbotron {
 	opacity: 0.87;
 }
-
 .one-half {
 	margin: 8% 0 0 2.7%;
 }
-
 .slider-item {
 	margin: 0 5% 0 5%;
 }
@@ -56,7 +54,7 @@
 		<!-- END nav -->
 	</header>
 	<section class="ftco-about d-md-flex">
-		<div class="one-half img" style="background-image: url(concert.jpg);"></div>
+		<div class="one-half img" style="background-image: url(fest/concert.jpg);"></div>
 		<div class="one-half ftco-animate">
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
@@ -109,7 +107,7 @@
 
 	<section class="home-slider owl-carousel">
 
-		<div class="slider-item" style="background-image: url(busanfest.JPG);">
+		<div class="slider-item" style="background-image: url(fest/busanfest.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -140,7 +138,7 @@
 			</div>
 		</div>
 
-		<div class="slider-item" style="background-image: url(jeju8.jpg);">
+		<div class="slider-item" style="background-image: url(fest/jeju8.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -169,7 +167,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="slider-item" style="background-image: url(busanfest.JPG);">
+		<div class="slider-item" style="background-image: url(fest/busanfest.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -198,7 +196,7 @@
 			</div>
 		</div>
 
-		<div class="slider-item" style="background-image: url(jeju8.jpg);">
+		<div class="slider-item" style="background-image: url(fest/jeju8.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -407,148 +405,148 @@
 	<br>
 	<br>
 	<br>
-<!-- 	<div class="heading-section ftco-animate " style="text-align: center;"> -->
-<!-- 		<span class="subheading">Festival in Global</span><br> -->
-<!-- 		<h2 class="mb-4" style="text-align: center;"> -->
-<!-- 			<i>해외 커피 행사</i> -->
-<!-- 		</h2> -->
-<!-- 	</div> -->
-<!-- 	<div style="text-align: center;"> -->
-<!-- 		<p> -->
-<!-- 			<b>해외에서 다양하게 열리는 행사를 소개합니다.</b> -->
-<!-- 		</p> -->
-<!-- 	</div> -->
-<!-- 	<section class="home-slider owl-carousel"> -->
-<!-- 		<div class="slider-item" style="background-image: url(kona.jpg);"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center" -->
-<!-- 					data-scrollax-parent="true"> -->
-<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
+	<div class="heading-section ftco-animate " style="text-align: center;">
+		<span class="subheading">Festival in Global</span><br>
+		<h2 class="mb-4" style="text-align: center;">
+			<i>해외 커피 행사</i>
+		</h2>
+	</div>
+	<div style="text-align: center;">
+		<p>
+			<b>해외에서 다양하게 열리는 행사를 소개합니다.</b>
+		</p>
+	</div>
+	<section class="home-slider owl-carousel">
+		<div class="slider-item" style="background-image: url(fest/kona.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
 
-<!-- 						<div class="jumbotron" style="background-color: #000000;"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<span class="subheading"> H a w a i i </span> -->
-<!-- 								<h2>Kona Coffee Cultural Festival</h2> -->
-<!-- 								<h5 style="color: orange;"> -->
-<!-- 									<i>2019.11.01 ~ 11.10</i> -->
-<!-- 								</h5> -->
-<!-- 								<p>There are about 650 farms cultivating coffee in the Kona -->
-<!-- 									district. The typical size of a Kona coffee farm is 3 acres. -->
-<!-- 									Kona coffee represents approximately 95% of the coffees -->
-<!-- 									produced on the island. There are about 3,500 acres of land -->
-<!-- 									utilized in Kona coffee farming, producing about 3.8 million -->
-<!-- 									pounds a year, valued at about $14 million. There are working -->
-<!-- 									coffee farms and mills along the Kona coffee belt that open -->
-<!-- 									their farms to visitors. Plan a visit and you’ll meet farmers -->
-<!-- 									who have a story to tell, millers and roasters and Kona coffee -->
-<!-- 									pickers who pick each ripe cherry by hand.</p> -->
+						<div class="jumbotron" style="background-color: #000000;">
+							<div class="container">
+								<span class="subheading"> H a w a i i </span>
+								<h2>Kona Coffee Cultural Festival</h2>
+								<h5 style="color: orange;">
+									<i>2019.11.01 ~ 11.10</i>
+								</h5>
+								<p>There are about 650 farms cultivating coffee in the Kona
+									district. The typical size of a Kona coffee farm is 3 acres.
+									Kona coffee represents approximately 95% of the coffees
+									produced on the island. There are about 3,500 acres of land
+									utilized in Kona coffee farming, producing about 3.8 million
+									pounds a year, valued at about $14 million. There are working
+									coffee farms and mills along the Kona coffee belt that open
+									their farms to visitors. Plan a visit and you’ll meet farmers
+									who have a story to tell, millers and roasters and Kona coffee
+									pickers who pick each ripe cherry by hand.</p>
 
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<!-- 		<div class="slider-item" style="background-image: url(london4.jpg);"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center" -->
-<!-- 					data-scrollax-parent="true"> -->
+		<div class="slider-item" style="background-image: url(fest/london4.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
 
-<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<div class="jumbotron" style="background-color: #000000;"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<span class="subheading"> L o n d o n </span> -->
-<!-- 								<h2>The London Coffee Festival</h2> -->
-<!-- 								<h5 style="color: orange;"> -->
-<!-- 									<i>2020.04.02 ~ 04.05</i> -->
-<!-- 								</h5> -->
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
+						<div class="jumbotron" style="background-color: #000000;">
+							<div class="container">
+								<span class="subheading"> L o n d o n </span>
+								<h2>The London Coffee Festival</h2>
+								<h5 style="color: orange;">
+									<i>2020.04.02 ~ 04.05</i>
+								</h5>
 
-<!-- 								<p>There are about 650 farms cultivating coffee in the Kona -->
-<!-- 									district. The typical size of a Kona coffee farm is 3 acres. -->
-<!-- 									Kona coffee represents approximately 95% of the coffees -->
-<!-- 									produced on the island. There are about 3,500 acres of land -->
-<!-- 									utilized in Kona coffee farming, producing about 3.8 million -->
-<!-- 									pounds a year, valued at about $14 million. There are working -->
-<!-- 									coffee farms and mills along the Kona coffee belt that open -->
-<!-- 									their farms to visitors. Plan a visit and you’ll meet farmers -->
-<!-- 									who have a story to tell, millers and roasters and Kona coffee -->
-<!-- 									pickers who pick each ripe cherry by hand.</p> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+								<p>There are about 650 farms cultivating coffee in the Kona
+									district. The typical size of a Kona coffee farm is 3 acres.
+									Kona coffee represents approximately 95% of the coffees
+									produced on the island. There are about 3,500 acres of land
+									utilized in Kona coffee farming, producing about 3.8 million
+									pounds a year, valued at about $14 million. There are working
+									coffee farms and mills along the Kona coffee belt that open
+									their farms to visitors. Plan a visit and you’ll meet farmers
+									who have a story to tell, millers and roasters and Kona coffee
+									pickers who pick each ripe cherry by hand.</p>
+							</div>
+						</div>
+					</div>
 
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 		<div class="slider-item" style="background-image: url(kona.jpg);"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center" -->
-<!-- 					data-scrollax-parent="true"> -->
-<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
+				</div>
+			</div>
+		</div>
+		<div class="slider-item" style="background-image: url(fest/kona.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
 
-<!-- 						<div class="jumbotron" style="background-color: #000000;"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<span class="subheading"> H a w a i i </span> -->
-<!-- 								<h2>Kona Coffee Cultural Festival</h2> -->
-<!-- 								<h5 style="color: orange;"> -->
-<!-- 									<i>2019.11.01 ~ 11.10</i> -->
-<!-- 								</h5> -->
-<!-- 								<p>There are about 650 farms cultivating coffee in the Kona -->
-<!-- 									district. The typical size of a Kona coffee farm is 3 acres. -->
-<!-- 									Kona coffee represents approximately 95% of the coffees -->
-<!-- 									produced on the island. There are about 3,500 acres of land -->
-<!-- 									utilized in Kona coffee farming, producing about 3.8 million -->
-<!-- 									pounds a year, valued at about $14 million. There are working -->
-<!-- 									coffee farms and mills along the Kona coffee belt that open -->
-<!-- 									their farms to visitors. Plan a visit and you’ll meet farmers -->
-<!-- 									who have a story to tell, millers and roasters and Kona coffee -->
-<!-- 									pickers who pick each ripe cherry by hand.</p> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+						<div class="jumbotron" style="background-color: #000000;">
+							<div class="container">
+								<span class="subheading"> H a w a i i </span>
+								<h2>Kona Coffee Cultural Festival</h2>
+								<h5 style="color: orange;">
+									<i>2019.11.01 ~ 11.10</i>
+								</h5>
+								<p>There are about 650 farms cultivating coffee in the Kona
+									district. The typical size of a Kona coffee farm is 3 acres.
+									Kona coffee represents approximately 95% of the coffees
+									produced on the island. There are about 3,500 acres of land
+									utilized in Kona coffee farming, producing about 3.8 million
+									pounds a year, valued at about $14 million. There are working
+									coffee farms and mills along the Kona coffee belt that open
+									their farms to visitors. Plan a visit and you’ll meet farmers
+									who have a story to tell, millers and roasters and Kona coffee
+									pickers who pick each ripe cherry by hand.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<!-- 		<div class="slider-item" style="background-image: url(london4.jpg);"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center" -->
-<!-- 					data-scrollax-parent="true"> -->
+		<div class="slider-item" style="background-image: url(fest/london4.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
 
-<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<div class="jumbotron" style="background-color: #000000;"> -->
-<!-- 							<div class="container"> -->
-<!-- 								<span class="subheading"> L o n d o n </span> -->
-<!-- 								<h2>The London Coffee Festival</h2> -->
-<!-- 								<h5 style="color: orange;"> -->
-<!-- 									<i>2020.04.02 ~ 04.05</i> -->
-<!-- 								</h5> -->
-<!-- 								<p>There are about 650 farms cultivating coffee in the Kona -->
-<!-- 									district. The typical size of a Kona coffee farm is 3 acres. -->
-<!-- 									Kona coffee represents approximately 95% of the coffees -->
-<!-- 									produced on the island. There are about 3,500 acres of land -->
-<!-- 									utilized in Kona coffee farming, producing about 3.8 million -->
-<!-- 									pounds a year, valued at about $14 million. There are working -->
-<!-- 									coffee farms and mills along the Kona coffee belt that open -->
-<!-- 									their farms to visitors. Plan a visit and you’ll meet farmers -->
-<!-- 									who have a story to tell, millers and roasters and Kona coffee -->
-<!-- 									pickers who pick each ripe cherry by hand.</p> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
+						<div class="jumbotron" style="background-color: #000000;">
+							<div class="container">
+								<span class="subheading"> L o n d o n </span>
+								<h2>The London Coffee Festival</h2>
+								<h5 style="color: orange;">
+									<i>2020.04.02 ~ 04.05</i>
+								</h5>
+								<p>There are about 650 farms cultivating coffee in the Kona
+									district. The typical size of a Kona coffee farm is 3 acres.
+									Kona coffee represents approximately 95% of the coffees
+									produced on the island. There are about 3,500 acres of land
+									utilized in Kona coffee farming, producing about 3.8 million
+									pounds a year, valued at about $14 million. There are working
+									coffee farms and mills along the Kona coffee belt that open
+									their farms to visitors. Plan a visit and you’ll meet farmers
+									who have a story to tell, millers and roasters and Kona coffee
+									pickers who pick each ripe cherry by hand.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<br>
 	<br>
 
@@ -647,110 +645,110 @@
 
 
 
-	<section class="ftco-section img" id="ftco-testimony"
-		style="background-image: url(../images/bg_1.jpg);"
-		data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center mb-5">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Barista</span><br>
-					<h2 class="mb-4">커피 페스티발 후기</h2>
-					<p>국내외 커피 박람회 후기입니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="container-wrap">
-			<div class="row d-flex no-gutters">
-				<div class="col-lg align-self-sm-end ftco-animate">
-					<div class="testimony">
-						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life One day
-								however a small.&rdquo;</p>
-						</blockquote>
-						<div class="author d-flex mt-4">
-							<div class="image mr-3 align-self-center">
-								<img src="../images/person_1.jpg" alt="">
-							</div>
-							<div class="name align-self-center">
-								Louise Kelly <span class="position">Illustrator Designer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg align-self-sm-end">
-					<div class="testimony overlay">
-						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life One day
-								however a small line of blind text by the name of Lorem Ipsum
-								decided to leave for the far World of Grammar.&rdquo;</p>
-						</blockquote>
-						<div class="author d-flex mt-4">
-							<div class="image mr-3 align-self-center">
-								<img src="../images/person_2.jpg" alt="">
-							</div>
-							<div class="name align-self-center">
-								Louise Kelly <span class="position">Illustrator Designer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg align-self-sm-end ftco-animate">
-					<div class="testimony">
-						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life One day
-								however a small line of blind text by the name. &rdquo;</p>
-						</blockquote>
-						<div class="author d-flex mt-4">
-							<div class="image mr-3 align-self-center">
-								<img src="../images/person_3.jpg" alt="">
-							</div>
-							<div class="name align-self-center">
-								Louise Kelly <span class="position">Illustrator Designer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg align-self-sm-end">
-					<div class="testimony overlay">
-						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life One day
-								however.&rdquo;</p>
-						</blockquote>
-						<div class="author d-flex mt-4">
-							<div class="image mr-3 align-self-center">
-								<img src="../images/person_2.jpg" alt="">
-							</div>
-							<div class="name align-self-center">
-								Louise Kelly <span class="position">Illustrator Designer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg align-self-sm-end ftco-animate">
-					<div class="testimony">
-						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about
-								the blind texts it is an almost unorthographic life One day
-								however a small line of blind text by the name. &rdquo;</p>
-						</blockquote>
-						<div class="author d-flex mt-4">
-							<div class="image mr-3 align-self-center">
-								<img src="../images/person_3.jpg" alt="">
-							</div>
-							<div class="name align-self-center">
-								Louise Kelly <span class="position">Illustrator Designer</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- 	<section class="ftco-section img" id="ftco-testimony" -->
+<!-- 		style="background-image: url(../images/bg_1.jpg);" -->
+<!-- 		data-stellar-background-ratio="0.5"> -->
+<!-- 		<div class="overlay"></div> -->
+<!-- 		<div class="container"> -->
+<!-- 			<div class="row justify-content-center mb-5"> -->
+<!-- 				<div class="col-md-7 heading-section text-center ftco-animate"> -->
+<!-- 					<span class="subheading">Barista</span><br> -->
+<!-- 					<h2 class="mb-4">커피 페스티발 후기</h2> -->
+<!-- 					<p>국내외 커피 박람회 후기입니다</p> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div class="container-wrap"> -->
+<!-- 			<div class="row d-flex no-gutters"> -->
+<!-- 				<div class="col-lg align-self-sm-end ftco-animate"> -->
+<!-- 					<div class="testimony"> -->
+<!-- 						<blockquote> -->
+<!-- 							<p>&ldquo;Even the all-powerful Pointing has no control about -->
+<!-- 								the blind texts it is an almost unorthographic life One day -->
+<!-- 								however a small.&rdquo;</p> -->
+<!-- 						</blockquote> -->
+<!-- 						<div class="author d-flex mt-4"> -->
+<!-- 							<div class="image mr-3 align-self-center"> -->
+<!-- 								<img src="../images/person_1.jpg" alt=""> -->
+<!-- 							</div> -->
+<!-- 							<div class="name align-self-center"> -->
+<!-- 								Louise Kelly <span class="position">Illustrator Designer</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-lg align-self-sm-end"> -->
+<!-- 					<div class="testimony overlay"> -->
+<!-- 						<blockquote> -->
+<!-- 							<p>&ldquo;Even the all-powerful Pointing has no control about -->
+<!-- 								the blind texts it is an almost unorthographic life One day -->
+<!-- 								however a small line of blind text by the name of Lorem Ipsum -->
+<!-- 								decided to leave for the far World of Grammar.&rdquo;</p> -->
+<!-- 						</blockquote> -->
+<!-- 						<div class="author d-flex mt-4"> -->
+<!-- 							<div class="image mr-3 align-self-center"> -->
+<!-- 								<img src="../images/person_2.jpg" alt=""> -->
+<!-- 							</div> -->
+<!-- 							<div class="name align-self-center"> -->
+<!-- 								Louise Kelly <span class="position">Illustrator Designer</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-lg align-self-sm-end ftco-animate"> -->
+<!-- 					<div class="testimony"> -->
+<!-- 						<blockquote> -->
+<!-- 							<p>&ldquo;Even the all-powerful Pointing has no control about -->
+<!-- 								the blind texts it is an almost unorthographic life One day -->
+<!-- 								however a small line of blind text by the name. &rdquo;</p> -->
+<!-- 						</blockquote> -->
+<!-- 						<div class="author d-flex mt-4"> -->
+<!-- 							<div class="image mr-3 align-self-center"> -->
+<!-- 								<img src="../images/person_3.jpg" alt=""> -->
+<!-- 							</div> -->
+<!-- 							<div class="name align-self-center"> -->
+<!-- 								Louise Kelly <span class="position">Illustrator Designer</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-lg align-self-sm-end"> -->
+<!-- 					<div class="testimony overlay"> -->
+<!-- 						<blockquote> -->
+<!-- 							<p>&ldquo;Even the all-powerful Pointing has no control about -->
+<!-- 								the blind texts it is an almost unorthographic life One day -->
+<!-- 								however.&rdquo;</p> -->
+<!-- 						</blockquote> -->
+<!-- 						<div class="author d-flex mt-4"> -->
+<!-- 							<div class="image mr-3 align-self-center"> -->
+<!-- 								<img src="../images/person_2.jpg" alt=""> -->
+<!-- 							</div> -->
+<!-- 							<div class="name align-self-center"> -->
+<!-- 								Louise Kelly <span class="position">Illustrator Designer</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-lg align-self-sm-end ftco-animate"> -->
+<!-- 					<div class="testimony"> -->
+<!-- 						<blockquote> -->
+<!-- 							<p>&ldquo;Even the all-powerful Pointing has no control about -->
+<!-- 								the blind texts it is an almost unorthographic life One day -->
+<!-- 								however a small line of blind text by the name. &rdquo;</p> -->
+<!-- 						</blockquote> -->
+<!-- 						<div class="author d-flex mt-4"> -->
+<!-- 							<div class="image mr-3 align-self-center"> -->
+<!-- 								<img src="../images/person_3.jpg" alt=""> -->
+<!-- 							</div> -->
+<!-- 							<div class="name align-self-center"> -->
+<!-- 								Louise Kelly <span class="position">Illustrator Designer</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
 
 	<!-- <div class="heading-section ftco-animate " style="text-align: center;"> -->
 	<!-- 		<span class="subheading">Statistic about Coffee</span><br> -->
@@ -875,6 +873,73 @@
 	<!--         </div> -->
 	<!--       </div> -->
 	<!--     </section> -->
+	
+	<br><br><br><br><br>
+<div class="heading-section ftco-animate " style="text-align: center;">
+		<span class="subheading">Statistic about Coffee</span><br>
+		<h2 class="mb-4" style="text-align: center;">
+			<i>커피와 통계</i>
+		</h2>
+	</div>
+	<section class="ftco-counter ftco-bg-dark img" id="section-counter"
+		style="background-image: url(../images/bg_2.jpg);"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+		
+			<div class="row justify-content-center">
+				<div class="col-md-10">
+					<div class="row">
+						<div
+							class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon">
+										<span class="flaticon-coffee-cup"></span>
+									</div>
+									<strong class="number" data-number="77211">0</strong>개 <span>국내
+										커피 가맹점 수</span>
+								</div>
+							</div>
+						</div>
+						<div
+							class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon">
+										<span class="flaticon-coffee-cup"></span>
+									</div>
+									<strong class="number" data-number="1896">0</strong><b>년</b> <span>우리나라에 커피가 도입 된 년도</span>
+								</div>
+							</div>
+						</div>
+						<div
+							class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon">
+										<span class="flaticon-coffee-cup"></span>
+									</div>
+									<strong class="number" data-number="512">0</strong><b>잔</b> <span>한국의 1인당 연 커피 소비량 </span>
+								</div>
+							</div>
+						</div>
+						<div
+							class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+							<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon">
+										<span class="flaticon-coffee-cup"></span>
+									</div>
+									<strong class="number" data-number="1636">0</strong> 원 <span>국내 커피 한잔당 평균 지불 가격</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
 	<!-- 		<section class="ftco-appointment"> -->
