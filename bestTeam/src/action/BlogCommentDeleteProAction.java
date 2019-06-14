@@ -14,11 +14,12 @@ public class BlogCommentDeleteProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("BlogCommentDeleteProAction");
-		
 		ActionForward forward = null;
 		
+		System.out.println("blog_num :: " + request.getParameter("comment_blog_num"));
+		System.out.println("comment_num :: " + request.getParameter("comment_num"));
 		// 게시물 번호 파라미터 가져오기
-		int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+		int blog_num = Integer.parseInt(request.getParameter("comment_blog_num"));
 		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
 		
 		BlogCommentDeleteProService blogCommentDeleteProService = new BlogCommentDeleteProService();

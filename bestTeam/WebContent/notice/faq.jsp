@@ -96,24 +96,28 @@ b{
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="./css/animate.css">
 
-<link rel="stylesheet" href="../css/owl.carousel.min.css">
-<link rel="stylesheet" href="../css/owl.theme.default.min.css">
-<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./css/magnific-popup.css">
 
-<link rel="stylesheet" href="../css/aos.css">
+<link rel="stylesheet" href="./css/aos.css">
 
-<link rel="stylesheet" href="../css/ionicons.min.css">
+<link rel="stylesheet" href="./css/ionicons.min.css">
 
-<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="../css/jquery.timepicker.css">
+<link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="../css/flaticon.css">
-<link rel="stylesheet" href="../css/icomoon.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="./css/flaticon.css">
+<link rel="stylesheet" href="./css/icomoon.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
+
+
 </head>
 <body>
 <%   
@@ -144,6 +148,10 @@ b{
 			</div>
 		</div>
 	</section>
+	
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section class="ftco=section">
     <div class="container">
@@ -175,8 +183,7 @@ b{
  	<div class="container">			
    <table class="table thead-light" id="ac1">
    <tr><td><a data-toggle="collapse" data-parent="#accordian"
-										href="#collapse1">Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문한 상품이 언제 도착하는지 알고싶어요  </a>
-										<div id="collapse1" class="panel-collapse collapse in">
+										href="#collapse1">Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문한 상품이 언제 도착하는지 알고싶어요  </a><div id="collapse1" class="panel-collapse collapse in">
 								<div class="panel-body"><br>
 									<b>A</b> &nbsp;&nbsp; 로그인하셔서 주문조회를 하시면 송장번호로  배송추적이 가능합니다.
 											보통 일반택배사 기준 주말제외 3~5일정도 소요됩니다.

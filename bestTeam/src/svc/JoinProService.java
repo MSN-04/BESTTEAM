@@ -9,7 +9,6 @@ import vo.UserBean;
 public class JoinProService {
 
 	public boolean setJoin(UserBean userBean) throws Exception {
-		System.out.println("JoinProService");
 		boolean isJoinSuccess = false;
 		
 		Connection con = getConnection();

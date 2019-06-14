@@ -16,7 +16,6 @@ public class QnaReplyProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("QnaReplyProAction");
 		QnaBean qnaBean = new QnaBean();
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
@@ -26,7 +25,6 @@ public class QnaReplyProAction implements Action {
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
 		QnaReplyProService qnaReplyInsertProService = new QnaReplyProService();
-		System.out.println(writer);
 		
 		qnaBean.setQna_item_num(qna_item_num);
 		qnaBean.setQna_writer(writer);
@@ -49,7 +47,6 @@ public class QnaReplyProAction implements Action {
 			// => qnaList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
 			forward.setPath("itemSingle.em?item_num="+qna_item_num);
-//			forward.setRedirect(true);
 		}
 		
 		return forward;

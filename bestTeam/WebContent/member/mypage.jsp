@@ -52,6 +52,8 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 <style type="text/css">
  .btn btn-primary py-3 px-4 { 
  	text-align: right 
@@ -101,6 +103,10 @@
 			</div>
 		</div>
 	</section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section class="ftco-section" id="information">
 		<div class="container">
@@ -172,12 +178,28 @@
 							<div class="w-100"></div>
 							<div class="col-md-12">
 								<div class="form-group mt-4">
-									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a>
-								    <a href="delete_member.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원탈퇴</a>
-									<a href="confirmCheckoutListProAction.sh" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회</a>
+
+									<a href="#"
+										class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a>
+
+<!-- 								<a href="delete_member.us" -->
+<!-- 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원 -->
+<!-- 									탈퇴</a> -->
+									<a href="delete_member.us"
+									class="btn btn-primary p-3 px-xl-4 py-xl-3">회원
+									탈퇴</a>
+									
+									<a href="confirmCheckoutList.sh"
+									class="btn btn-primary p-3 px-xl-4 py-xl-3" >주문 조회
+								</a>
+
+<!-- 									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a> -->
+<!-- 								    <a href="delete_member.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">회원탈퇴</a> -->
+<!-- 									<a href="confirmCheckoutList.sh" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >주문 조회</a> -->
 									<%if(id.equals("admin")){%>
-									<a href="adminPage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" >관리자 페이지로 이동</a>
+									<a href="adminPage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">관리자 페이지로 이동</a>
 									<%}	%>
+
 								
 							</div>
 						</div>

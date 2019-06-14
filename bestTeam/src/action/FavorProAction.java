@@ -15,7 +15,6 @@ public class FavorProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
-		System.out.println("tasteactionforward");
 		
 		FavorBean favorBean = new FavorBean();
 		favorBean.setUser_favor_aroma(Integer.parseInt(request.getParameter("COFFEE_AROMA")));

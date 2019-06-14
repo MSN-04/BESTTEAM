@@ -41,7 +41,7 @@ public class ConfirmCheckoutListProAction implements Action {
 		HttpSession session = request.getSession();
 		String user_id=(String) session.getAttribute("id");		
 		
-		System.out.println("action ->user_id:"+user_id);
+		//System.out.println("action ->user_id:"+user_id);
 		
 		
 		int page=1;
@@ -62,7 +62,7 @@ public class ConfirmCheckoutListProAction implements Action {
 		
 			buyBean.setBuy_user_id(user_id);
 		
-			System.out.println("buyBean에 user_id 저장-->"+user_id);
+		//	System.out.println("buyBean에 user_id 저장-->"+user_id);
 		ConfirmCheckoutListService confirmCheckoutListService=new ConfirmCheckoutListService();
 		buyList=confirmCheckoutListService.selectConfirmCheckoutList(user_id);
 	
@@ -88,7 +88,7 @@ public class ConfirmCheckoutListProAction implements Action {
 		
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("buyList",buyList);  //buyList에 서비스에서 가져온걸 저장.
-		forward.setPath("./shop/confirmCheckoutList.jsp");
+		forward.setPath("/shop/confirmCheckoutList.jsp");
 	//	forward.setRedirect(true); // Redirect 방식
 				
 		}

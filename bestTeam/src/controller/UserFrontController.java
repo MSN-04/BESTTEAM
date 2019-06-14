@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminPageProAction;
+import action.AdminPageShopDayAction;
+import action.AdminPageShopMonthAction;
 import action.DeleteMemberProAction;
 import action.FavorProAction;
 import action.ForgotAccountProAction;
@@ -40,13 +43,11 @@ public class UserFrontController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-//		System.out.println(requestURI + " " + contextPath +  " " + command);
 		
 		Action action = null;
 		ActionForward forward = null;
 		
 		if(command.equals("/login.us")) {
-//			System.out.println("controll login");
 			forward = new ActionForward();
 			forward.setPath("/member/login.jsp");
 		} else if (command.equals("/update_member.us")) {
@@ -59,11 +60,9 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/member/delete_member.jsp");
 		} else if (command.equals("/id_check.us")) {
-//			System.out.println("idcheck controller");
 			forward = new ActionForward();
 			forward.setPath("/member/id_check.jsp");
 		} else if (command.equals("/mail_check.us")) {
-//			System.out.println("idcheck controller");
 			forward = new ActionForward();
 			forward.setPath("/member/mail_check.jsp");
 		} else if (command.equals("/ForgotAccount.us")) {
@@ -72,8 +71,10 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/taste.us")) {
 			forward = new ActionForward();
 			forward.setPath("/taste/taste.jsp");
+		} else if (command.equals("/adminPageShop.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/adminPageShop.jsp");
 		} else if(command.equals("/LoginProAction.us")) {
-//			System.out.println("controll loginPro");
 			action = new LoginProAction();
 			try {
 				forward = action.execute(request, response);
@@ -131,17 +132,40 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if(command.equals("/TasteProAction.us")) {
-			System.out.println("tasteProAction controller");
 			action = new FavorProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (command.equals("/adminPage.us")) {
+		} else if(command.equals("/adminPage.us")) {
+			action = new AdminPageProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageShop.us")) {
 			forward = new ActionForward();
-			forward.setPath("/member/adminPage.jsp");
-		}	
+			forward.setPath("/member/adminPageShop.jsp");
+		} else if (command.equals("/adminPageShopDay.us")) {
+			System.out.println("adminPageShopDay Controller");
+			action = new AdminPageShopDayAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageShopMonth.us")) {
+			System.out.println("adminPageShopMonth Controller");
+			action = new AdminPageShopMonthAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		
 		
 		

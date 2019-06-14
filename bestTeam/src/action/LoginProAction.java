@@ -14,8 +14,6 @@ public class LoginProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("LogionProAtion()");
-		
 		ActionForward forward = null;
 		UserBean userBean = new UserBean();
 		
@@ -41,7 +39,6 @@ public class LoginProAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			
-			forward.setRedirect(true);
 			forward.setPath("index.in");
 		}
 		

@@ -44,16 +44,10 @@ public class BlogFrontController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); // POST 방식 요청에 대한 한글 처리
 
-		// 요청 URL 에 대한 서블릿 주소 판별을 위해 주소 분리
 		String requestURI = request.getRequestURI(); // => URL 중 "http://도메인네임:포트번호" 부분을 제외한 나머지 URI 부분 가져오기
 		String contextPath = request.getContextPath(); // => URL 중 프로젝트명 부분 가져오기
 		String command = requestURI.substring(contextPath.length());
-		// => requestURI 에서 contextPath 부분을 제외한 나머지(서블릿 주소)를 추출하기 위해 substring() 메서드 사용
-//		System.out.println("requestURI : " + requestURI);
-//		System.out.println("contextPath : " + contextPath);
-//		System.out.println("command : " + command);
 
-		// 서블릿 요청에 대한 포워딩 처리 및 Action 클래스의 인스턴스 생성을 위한 변수 선언
 		Action action = null;
 		ActionForward forward = null;
 

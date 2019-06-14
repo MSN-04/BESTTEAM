@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 <style type="text/css">
 .money {
@@ -94,6 +96,7 @@
  var regId = /^[a-zA-Z0-9]{8,12}$/ ;
  var regPass = /^[a-zA-Z0-9]{8,12}$/;
  var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+ var regPhone;
 
  
  // 비밀번호 일치 확인
@@ -113,7 +116,7 @@
 	  }
   } else {
 	  document.getElementById('checkPwd').style.color = "#ff4d4d";
-	   document.getElementById('checkPwd').innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력"; 
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자와 숫자로만 입력"; 
   }
   
  }
@@ -167,7 +170,7 @@ document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
 	    }
 		
 	} else {
-		listView.innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력";
+		listView.innerHTML = "아이디는 8~20자의 영문 대소문자와 숫자로만 입력";
 	     listView.style.color = "#ff4d4d";
 	}
    } else {
@@ -285,6 +288,10 @@ function check(reg, what) {
     </div>
   </section>
 
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
+
 
 <section class="ftco-section">
     <div class="container">
@@ -350,12 +357,12 @@ function check(reg, what) {
                   </p>
                 </div>
               </div>
-              <div id="checkMail">E-MAIL 중복확인 하세요</div>
+             	<div id="checkMail" style="left:">E-MAIL 중복확인 하세요</div>
               <div class="w-100"></div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
-                    class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone">
                 </div>
               </div>
               <div class="w-100"></div>

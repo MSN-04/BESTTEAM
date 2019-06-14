@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/shop.css">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
     <style type="text/css">
     .btn btn-primary py-3 px-4{text-align: right}
     </style>
@@ -89,6 +91,10 @@
         </div>
       </div>
     </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
    <section class="ftco-section" id="login">
 		<div class="container">

@@ -12,13 +12,11 @@ public class NoticeDeleteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("NoticeDeleteProAction");
 		
 		ActionForward forward = null;
 		
 		// 게시물 번호 파라미터 가져오기
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
-		System.out.println(notice_num);
 		NoticeDeleteProService noticeDeleteProService = new NoticeDeleteProService();
 		
 		boolean isDeleteSuccess = noticeDeleteProService.removeArticle(notice_num);

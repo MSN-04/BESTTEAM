@@ -28,7 +28,7 @@ public class BlogCommentWriteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BlogCommentDeleteProAction()");
+		System.out.println("BlogCommentWriteProAction()");
 		
 		HttpSession session = request.getSession();
 		ActionForward forward = null;
@@ -40,10 +40,12 @@ public class BlogCommentWriteProAction implements Action {
 		
 		blogCommentBean = new BlogCommentBean(); 
 		userBean = new UserBean();
+		System.out.println("blog_num :: " + request.getParameter("blog_num"));
 		
-		blogCommentBean.setComment_writer(userBean.getUser_name());
-		blogCommentBean.setComment_blog_num(Integer.parseInt(request.getParameter("comment_blog_num")));
 		blogCommentBean.setComment_content(request.getParameter("comment_content"));
+		blogCommentBean.setComment_writer(userBean.getUser_name());
+		blogCommentBean.setComment_blog_num(Integer.parseInt(request.getParameter("blog_num")));
+		
 		
 		BlogCommentWriteProService blogCommentWriteProService = new BlogCommentWriteProService();
 		userBean = blogCommentWriteProService.getUserInfo(name, id);
