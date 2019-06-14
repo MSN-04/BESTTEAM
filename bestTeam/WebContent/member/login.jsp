@@ -101,7 +101,7 @@
 			<div class="row">
 				<div class="col-xl-8 ftco-animate">
 					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
-						<h3 class="mb-4 billing-heading">회원가입</h3>
+						<h3 class="mb-4 billing-heading">로그인</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">

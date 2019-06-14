@@ -297,8 +297,7 @@ function check(reg, what) {
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -375,7 +374,8 @@ function check(reg, what) {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email</label> <input type="text"
-										class="form-control" placeholder="이메일을 입력해주세요." name="email" id="email" value=<%=updatePage.getUser_email() %>>
+										class="form-control" placeholder="이메일을 입력해주세요." name="email" id="email" value=<%=updatePage.getUser_email() %>
+										required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -392,7 +392,7 @@ function check(reg, what) {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">연락처</label> <input type="text"
-										class="form-control" placeholder="폰번호를 입력해주세요." name="phone">
+										class="form-control" placeholder="폰번호를 입력해주세요." name="phone" required="required">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -490,7 +490,7 @@ function check(reg, what) {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address" placeholder="주소" name="address1" value=<%=st.nextToken() %>>
+										class="form-control" id="address" placeholder="주소" name="address1" value=<%=st.nextToken() %> required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
