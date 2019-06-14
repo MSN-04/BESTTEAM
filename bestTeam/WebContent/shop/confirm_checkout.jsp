@@ -360,7 +360,7 @@
 			//System.out.println("orderInfoList.size():"+orderInfoList.size());
 			
 		%>
-	          				<div class="col-md-12 confirmCheckout2">
+	          				<div class="col-md-12 confirmCheckout2" style="padding-top: 40px;">
 		            		<div class="form-group">
 	          					<p class="d-flex">
 		    						<span>상품 합계</span>
@@ -375,7 +375,6 @@
 		    						<span>총 결제금액</span>
 		    						<span class="money"><%=total+2500 %></span>
 		    					</p>
-		    					<hr>
 		    				</div>
 		    				</div>
 	          	<%
