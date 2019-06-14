@@ -51,6 +51,8 @@
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/shop.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 <style type="text/css">
 .money {
@@ -126,7 +128,7 @@
 	  }
   } else {
 	  document.getElementById('checkPwd').style.color = "#ff4d4d";
-	   document.getElementById('checkPwd').innerHTML = "패스워드는 4~12자의 영문 대소문자와 숫자로만 입력"; 
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~12자의 영문 대소문자와 숫자로만 입력"; 
   }
   
  }
@@ -314,6 +316,10 @@ function check(reg, what) {
 			</div>
 		</div>
 	</section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section class="ftco-section">
 		<div class="container">

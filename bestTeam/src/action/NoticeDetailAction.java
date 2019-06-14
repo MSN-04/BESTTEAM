@@ -1,13 +1,7 @@
 package action;
 
-import java.io.PrintWriter;
-
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import svc.NoticeViewService;
 import vo.ActionForward;

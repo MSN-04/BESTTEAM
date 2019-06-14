@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="./css/icomoon.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href="./css/agency.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
   </head>
   <body>
    <header>
@@ -54,6 +55,10 @@
         </div>
       </div>
     </section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section id="crew">
     <div class="container">
