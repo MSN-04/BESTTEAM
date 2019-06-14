@@ -86,10 +86,12 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
+
 
 <script type="text/javascript">
 //삭제 확인메세지
@@ -359,19 +361,19 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('#cart').on('click',function(){
-			if('<%=id %>' != 'null' ) {
+			if('<%=id%>' != 'null' ) {
 				$.ajax({
 					url : 'cartInsert.sh',
 					type : 'get',
 					data : {
-						"item_num" : <%=itemBean.getItem_num() %>,
+						"item_num" : <%=itemBean.getItem_num()%>,
 						"quantity" : $('#quantity').val(),
-						"item_price" : <%=itemBean.getItem_price() %>,
-						"cart_img" : '<%=itemBean.getItem_img() %>',
-						"cart_item_name" : '<%=itemBean.getItem_name() %>'
+						"item_price" : <%=itemBean.getItem_price()%>,
+						"cart_img" : '<%=itemBean.getItem_img()%>',
+						"cart_item_name" : '<%=itemBean.getItem_name()%>'
 					},
 					success : function(data) {
 						
@@ -401,6 +403,52 @@ $( '#rere1' ).click(
 			}
 			
 		});
+		
+		$('#buy').on('click',function(){ 
+			if('<%=id%>' != 'null' ) {
+				$.ajax({
+					url : 'cartCheck.sh',
+					type : 'get',
+					success : function(data) {
+						if (data < 0){
+							alert('장바구니에 담겨있는 상품도 함께 주문됩니다.\n원치 않으실 경우 장바구니를 비워주세요.');
+						} else {
+<%-- 							location.href="cartInsert.sh?item_num=<%=itemBean.getItem_num()%>&quantity="+ $('#quantity').val() +"&item_price=<%=itemBean.getItem_price()%>&cart_img=<%=itemBean.getItem_img()%>&cart_item_name=<%=itemBean.getItem_name()%>"; --%>
+							$.ajax({
+								url : 'cartInsert.sh',
+								type : 'get',
+								data : {
+									"item_num" : <%=itemBean.getItem_num()%>,
+									"quantity" : $('#quantity').val(),
+									"item_price" : <%=itemBean.getItem_price()%>,
+									"cart_img" : '<%=itemBean.getItem_img()%>',
+									"cart_item_name" : '<%=itemBean.getItem_name()%>'
+								},
+								success : function(data) {
+									
+									if (data == 1){
+										alert('해당상품이 주문됩니다.');
+										location.href="checkout.sh";
+									} else {
+										alert('알 수 없는 오류가 발생하였습니다.\n오류가 지속된다면 문의부탁바랍니다.');
+									}
+									
+								},
+								error : function(request, status, error) {
+							//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+								}
+							});
+						
+						}
+					},
+					error : function(request, status, error) {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			} else {
+				alert('로그인 후 이용해주세요.');
+			}
+		});
 	});
 </script>
 </head>
@@ -416,6 +464,7 @@ $( '#rere1' ).click(
 				<div
 					class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
+
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
@@ -425,6 +474,10 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
+	
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 	
 	<section class="ftco-section">
 		<div class="container">
@@ -500,7 +553,7 @@ $( '#rere1' ).click(
 					<p>
 					
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
-						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">BUY</a>
 						
 		
 						

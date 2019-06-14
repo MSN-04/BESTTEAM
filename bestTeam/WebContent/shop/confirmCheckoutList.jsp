@@ -19,7 +19,9 @@
 	
 	int number = 0;
 	
-	
+// 	System.out.println("nowPage :: " + nowPage);
+// 	System.out.println("startPage :: " + startPage);
+// 	System.out.println("endPage :: " + endPage);
 	
 	number = listCount - (nowPage - 1) * (limit);
 	
@@ -74,6 +76,8 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 </head>
 <body>
 
@@ -84,8 +88,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -100,6 +103,10 @@
 			</div>
 		</div>
 	</section>
+
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 	<br>
 	<br>
 	<br>
@@ -135,7 +142,7 @@
 							if (buyList != null && listCount > 0) {
 								for (int i = 0; i < buyList.size(); i++) {
 								//	int buy_num=buyList.get(i).getBuy_num();
-								System.out.println("buyList.size():"+buyList.size());
+// 								System.out.println("buyList.size():"+buyList.size());
 						%>
 
                   
@@ -147,7 +154,12 @@
                    <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
-                      <h3><%=buyList.get(i).getBuy_name() %><br> 상품 외<%=buyList.get(i).getBuy_count()-1 %>개</h3>
+                    	<% if (buyList.get(i).getBuy_count() == 1)  {
+                    		%><h3><%=buyList.get(i).getBuy_name() %></h3><%
+                    	} else {
+                    		%><h3><%=buyList.get(i).getBuy_name() %><br> 상품 외 <%=buyList.get(i).getBuy_count()-1 %>개</h3><%
+                    	}
+                    	%>
                     </td>
                     
                     <td class="price"><%=buyList.get(i).getBuy_buydate() %></td>
@@ -163,6 +175,14 @@
 	%>
                   </tr>
                   <%}
+								} else {
+									%>
+									<tr class="text-center" >
+                				<td class="product-name" colspan="4">
+		                      		<p>주문하신 상품이 없습니다.</p>
+		                    	</td>
+                			</tr>
+									<%
 								}
 								
 								%>

@@ -50,6 +50,8 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
+
 
 </head>
 <body>
@@ -74,6 +76,10 @@
 			</div>
 		</div>
 	</section>
+	
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
 
 	<section class="ftco-section">
 		<div class="container">
@@ -134,7 +140,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="shopMain.em?page=<%=nowPage - 1%>">&lt;</a></li>
+							<li><a href="blog_bl?page=<%=nowPage - 1%>">&lt;</a></li>
 							<%
 								}
 								for (int a = startPage; a <= endPage; a++) {
@@ -142,7 +148,7 @@
 							%><li class="active"><span><%=a%></span></li>
 							<%
 								} else {
-							%><li><a href="shopMain.em?page=<%=a%>"><%=a%></a></li>
+							%><li><a href="blog_bl?page=<%=a%>"><%=a%></a></li>
 							<%
 								}
 								}
@@ -154,7 +160,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="shopMain.em?page=<%=nowPage + 1%>">&gt;</a></li>
+							<li><a href="blog_bl?page=<%=nowPage + 1%>">&gt;</a></li>
 							<%
 								}
 							%>

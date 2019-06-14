@@ -1,6 +1,6 @@
 package action;
 
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,27 +8,29 @@ import javax.servlet.http.HttpSession;
 
 import svc.CartService;
 import vo.ActionForward;
-import vo.CartBean;
 
-public class CartAction implements Action {
+public class CartCheckAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = null;
-		System.out.println("CartAction");
-		ArrayList<CartBean> cartList = new ArrayList<>();
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
 		CartService cartService = new CartService();
-		cartList = cartService.cartList(id);
+		int cartCount = cartService.getCartCount(id);
 		
-		request.setAttribute("cartList", cartList);
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		
-		forward = new ActionForward();
-		forward.setPath("/shop/cart.jsp");
+		if (cartCount == 0) {
+			out.println(0);
+		} else {
+			out.println(-1);
+		}
 		
 		return forward;
 	}

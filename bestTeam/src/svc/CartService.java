@@ -26,5 +26,17 @@ public class CartService {
 		
 		return cartList;
 	}
-
+	
+	public int getCartCount (String id) {
+		int cartCount = 0;
+		con = getConnection();
+		buyDAO = BuyDAO.getInstance();
+		buyDAO.setConnection(con);
+		
+		cartCount = buyDAO.getCartCount(id);
+		
+		close(con);
+		
+		return cartCount;
+	}
 }
