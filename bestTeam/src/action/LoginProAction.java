@@ -43,7 +43,7 @@ public class LoginProAction implements Action {
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인 되었습니다')");
-			out.println("history.back()");
+			out.println("location.href = document.referrer;");
 			out.println("</script>");
 			
 //			forward.setPath("index.in");
