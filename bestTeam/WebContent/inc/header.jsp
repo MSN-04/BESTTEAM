@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="svc.CartService"%>
+<%@page import="vo.CartBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,7 +11,9 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$('a.login-window').click(function() {
 
@@ -46,13 +51,22 @@
 
 		// When clicking on the button close or the mask layer the popup closed
 		return false;
+
 	});
+	
+	
+// 	$(document).ready(function() {
+// 		if (session.getAttribute("id") == null) {
+// 			$("#numOfCartItems").hide(); //숨기기
+// 		} 
+// 	}
+	
 </script>
+
 <nav
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
 	<div class="container">
-		<!-- 		<a class="navbar-brand" href="./index/index.jsp">Coffee<small>Blend</small></a> -->
 		<a href="./index.in"><img src="./images/untitled.png"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#ftco-nav" aria-controls="ftco-nav"
@@ -66,9 +80,6 @@
 				<li class="nav-item"><a href="./shopMain.em" class="nav-link">Shop</a></li>
 				
 				
-				
-				
-				
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="./notice/notice.jsp"
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
@@ -77,10 +88,7 @@
 						<a class="dropdown-item" href="./noticeList.no">공지사항</a> <a
 							class="dropdown-item" href="./faq.no">FAQ</a>
 					</div></li>
-					
-<!-- 				<li class="nav-item"><a href="./blog.bl" class="nav-link">Blog</a></li> -->
-<!-- 				<li class="nav-item"><a href="./fest.et" class="nav-link">Festival</a></li> -->
-				
+
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="./blog/blog.jsp"
 					id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
@@ -107,10 +115,21 @@
 				<%
 					}
 				%>
-
+			
 				<li class="nav-item cart"><a href="./cart.sh" class="nav-link">
-						<span class="icon icon-shopping_cart"></span> <span
-						class="bag d-flex justify-content-center align-items-center"><small>1</small></span>
+						<span class="icon icon-shopping_cart"></span> 
+						<!-- 상단 장바구니아이콘에 담은 개수 표시 -->
+						<% if (session.getAttribute("id") != null) {
+							String idForCartNum = (String) session.getAttribute("id");
+							CartService cartScvForNum = new CartService();
+							ArrayList<CartBean> cartListForCartNum = cartScvForNum.cartList(idForCartNum);
+							
+							int intForCartNum = cartListForCartNum.size();
+							
+							if (intForCartNum > 0) {	%>
+								<span class="bag d-flex justify-content-center align-items-center" id="numOfCartItems"><small><%=intForCartNum %></small></span>
+						<% 	}
+						}%>
 				</a></li>
 			</ul>
 		</div>
@@ -132,6 +151,8 @@
 					<button class="submit button btn btn-primary" type="submit">LOGIN</button>
 				</fieldset>
 			</form>
+			
+			<!-- 카카오톡 로그인 -->
 			<div>
 				<a id="kakao-login-btn"></a> <a
 					href="http://developers.kakao.com/logout"></a>
@@ -152,6 +173,7 @@
 					//]]>
 				</script>
 			</div>
+			<!-- 카카오톡 로그인 End -->
 			<div class="form-group fgdiv">
 				<a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 			</div>
