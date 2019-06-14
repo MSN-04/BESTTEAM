@@ -147,7 +147,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="shopMain.em?page=<%=nowPage - 1%>">&lt;</a></li>
+							<li><a href="blog_bl?page=<%=nowPage - 1%>">&lt;</a></li>
 							<%
 								}
 								for (int a = startPage; a <= endPage; a++) {
@@ -155,7 +155,7 @@
 							%><li class="active"><span><%=a%></span></li>
 							<%
 								} else {
-							%><li><a href="shopMain.em?page=<%=a%>"><%=a%></a></li>
+							%><li><a href="blog_bl?page=<%=a%>"><%=a%></a></li>
 							<%
 								}
 								}
@@ -167,7 +167,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="shopMain.em?page=<%=nowPage + 1%>">&gt;</a></li>
+							<li><a href="blog_bl?page=<%=nowPage + 1%>">&gt;</a></li>
 							<%
 								}
 							%>
