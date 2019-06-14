@@ -41,9 +41,7 @@ public class BlogCommentDAO {
 
 		try {
 			pstmt = con.prepareStatement(sql);
-//			con.setAutoCommit(false);
 			
-//			pstmt.setInt(1, blogCommentBean.getComment_num());
 			pstmt.setString(1, blogCommentBean.getComment_content());
 			pstmt.setString(2, blogCommentBean.getComment_writer());
 			pstmt.setInt(3, blogCommentBean.getComment_blog_num());
