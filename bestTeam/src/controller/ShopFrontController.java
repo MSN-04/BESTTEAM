@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 
 import action.CartAction;
+import action.CartCheckAction;
 import action.CartDeleteAction;
 import action.CartInsertAction;
 import action.CartUpdateAction;
@@ -112,6 +113,16 @@ public class ShopFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 //			System.out.println("cartDelete 컨트롤러 종료");
+		}
+		else if(command.equals("/cartCheck.sh")) { 
+			System.out.println("cartCheck 컨트롤러 시작");
+			action = new CartCheckAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("cartCheck 컨트롤러 종료");
 		}
 		
 		// 영비
