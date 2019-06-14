@@ -38,132 +38,119 @@
     <link rel="stylesheet" href="./css/icomoon.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/cart.css">
+    
     <style type="text/css">
-    #deleteBtn{position:relative;
-		float: right;
-/*           right:550px; */
+    .money { text-align: right; }
+    
+    #checkAll {
+    	color: white;
     }
+    
+    #deleteBtn1st, #deleteBtn2nd {position:relative;
+		float: right;
+    }
+    
     #buyAllBtn{
     position:relative;
     float: right;
-/*     left:250px; */
     }
     #total{
     position:relative;
-/*     top:50px; */
     }
     
-  
+
+	.btn-best { 
+	   	background-color: #C49B63 !important;
+	   	border: 1px solid #C49B63 !important;
+	   	color: black !important; }
+	    	
+	.btn-best:hover { 
+	   	background-color: black !important;
+	   	border: 1px solid #C49B63 !important;
+	   	color: #C49B63 !important; }
+	    	
+	.btn-best:active { 
+	   	background-color: #C49B63 !important;
+	   	color: black !important; }  
     </style>
+    
+    
+<!-- 상품 삭제 버튼 Start -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    
     <script type="text/javascript">
+    
     $(document).ready(function(){
-    	$('#deleteBtn').on('click',function(){
-   			var list = new Array();
-    		for (var i = 0 ; i < <%=cartList.size() %> ; i++) {
-    			if ($('.cb'+i).is(":checked") == true) {
-// 	    			alert($('.cb'+i).val());
-	    			list.push($('.cb'+i).val());
+    	$("#deleteBtn2nd").hide(); //숨기기
+    	$(".checkDelete").hide();
+    	
+    	
+    	$('#deleteBtn1st').on('click' , function(){
+    		$("#deleteBtn1st").hide(); //숨기기
+    		$("#deleteBtn2nd").show(); //보이기
+    		$(".checkDelete").show();
+    		
+    	});
+    	
+    	$(function(){
+    	    //전체선택 체크박스 클릭
+    		$("#checkAll").click(function(){
+    			//만약 전체 선택 체크박스가 체크된상태일경우
+    			if($("#checkAll").prop("checked")) {
+    				//해당화면에 전체 checkbox들을 체크해준다
+    				$("input[type=checkbox]").prop("checked",true);
+    			// 전체선택 체크박스가 해제된 경우
+    			} else {
+    				//해당화면에 모든 checkbox들의 체크를해제시킨다.
+    				$("input[type=checkbox]").prop("checked",false);
     			}
-    		}
-    		list = list + ""; // Object를 String으로 변환
-//    			alert("list의 타입은 "+ typeof list );
-//     		alert(list);
-    		if (list != "") {
-				$.ajax({
-					url : 'cartDelete.sh',
-					type : 'get',
-					data : { // 값 넘길 때 String으로 넘겨야 함.. getParameter로 받기 때문!
-						"list" : list
-					},
-					success : function(data) {
-						if (data == 0){
-							alert('장바구니에 선택하신 상품이 삭제되었습니다.');
-							location.href="cart.sh";
-						} else if (data == 1) {
-							alert('삭제 실패!');
+    		})
+    	})
+    	$('#deleteBtn2nd').on('click',function(){
+    		
+    		var a = confirm("선택하신 상품을 장바구니에서 삭제하시겠습니까?");
+    		
+    		if(a) {
+	   			var list = new Array();
+	    		for (var i = 0 ; i < <%=cartList.size() %> ; i++) {
+	    			if ($('.cb'+i).is(":checked") == true) {
+		    			list.push($('.cb'+i).val());
+	    			}
+	    		}
+	    		
+	    		list = list + ""; // Object를 String으로 변환
+	    		if (list != "") {
+					$.ajax({
+						url : 'cartDelete.sh',
+						type : 'get',
+						data : { // 값 넘길 때 String으로 넘겨야 함.. getParameter로 받기 때문!
+							"list" : list
+						},
+						success : function(data) {
+							if (data == 0){
+								alert('선택하신 상품이 장바구니에서 삭제되었습니다.');
+								location.href="cart.sh";
+							} else if (data == 1) {
+								alert('삭제 실패!');
+							}
+						},
+						error :function(request, status, error) {
+							alert('error');
 						}
-					},
-					error :function(request, status, error) {
-						alert('error');
-					}
-				});
-    		} else {
-    			alert('장바구니에 아무것도 없습니다.');
+					});
+	    		} else {
+	    			alert('선택된 상품이 없습니다.');
+	    		}
     		}
     	});
+    	
+    	
     });
-//     $(document).ready(function(){
-		
-//         var quantitiy=0;
-//            $('.quantity-right-plus').click(function(e){
-                
-//                 var quantity = parseInt($(this).siblings('.quantity').val());
 
-//                 if (quantity>=1) {
-//                 	quantity = quantity + 1;
-//                 	$(this).siblings('.quantity').val(quantity);
-//                 }
-                
-//             });
-
-//              $('.quantity-left-minus').click(function(e){
-
-//             	 var quantity = parseInt($(this).siblings('.quantity').val());
-
-//                  if (quantity>1) {
-//                  	quantity = quantity - 1;
-//                  	$(this).siblings('.quantity').val(quantity);
-//                  }
-                 
-//             });
-
-//     	$('#deleteBtn').on('click',function(){
-//     		alert('aa');
-<%-- 			if('<%=id %>' != 'null' ) { --%>
-// 				$.ajax({
-// 					url : 'cartDelete.sh',
-// 					type : 'get',
-// 					data : {
-<%-- 						"item_num" : <%=itemBean.getItem_num() %>, --%>
-// 						"quantity" : $('#quantity').val(),
-<%-- 						"item_price" : <%=itemBean.getItem_price() %>, --%>
-<%-- 						"cart_img" : '<%=itemBean.getItem_img() %>', --%>
-<%-- 						"cart_item_name" : '<%=itemBean.getItem_name() %>' --%>
-// 					},
-// 					success : function(data) {
-						
-// 						if (data == 1){
-// 							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
-// 							if (con == true) {
-// 								location.href="cart.sh";
-// 							}
-// 						} else if (data == -1) {
-// 							alert('장바구니 등록에 실패하였습니다.');
-// 						} else if (data == 2) {
-// 							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
-// 							if (con == true) {
-<%-- 								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val(); --%>
-// 							}
-// 						} else {
-// 							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
-// 						}
-						
-// 					},
-// 					error : function(request, status, error) {
-// 					}
-// 				});
-// 			} else {
-// 				alert('로그인 후 이용해주세요.');
-// 			}
-			
-// 		});
-             
-             
-            
-//      });
-//     }
     </script>
+<!-- 상품 삭제 버튼 End -->
+    
   </head>
   <body>
     <header>
@@ -195,19 +182,19 @@
               <table class="table">
                 <thead class="thead-primary">
                   <tr class="text-center">
-                    <th>Select</th>
-                    <th>No</th>
-                    <th>&nbsp;</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th><input class="checkDelete" type="checkbox" id="checkAll" ></th>
+                    <th>번호</th>
+                    <th>사진</th>
+                    <th>상품명</th>
+                    <th>상품 가격</th>
+                    <th>수량</th>
 <!--                     <th>Total</th> -->
 <!--                     <th>배송비</th> -->
                   </tr>
                 </thead>
                 <tbody>
                 
-                <!-- 상품시작 -->
+                <!-- 상품 시작 -->
                 <% 
                 	int total = 0;
                 	if (cartList != null) {
@@ -215,201 +202,106 @@
 	                		for (int i = 0 ; i < cartList.size() ; i++) { 
 	                			total += cartList.get(i).getCart_price();
 	                		%>
-		                  <tr class="text-center">
-		                 	<td class="product-remove">
-		                 		<input type="checkbox" value="<%=cartList.get(i).getCart_item_num() %>" class="cb<%=i %>" >
-		                 	</td>
-		                    <td class="product-num">
-		                    	<a href="#"><%=i+1 %></a>
-		                    </td>
-		                    <td class="image-prod">
-		                    	<div class="img" style="background-image:url(./itemUpload/<%=cartList.get(i).getCart_img() %>);">
-		                    	</div>
-		                    </td>
-		                    <td class="product-name">
-		                      <h3><%=cartList.get(i).getCart_item_name() %></h3>
-	<!-- 	                      <p>Far far away, behind the word mountains, far from the countries</p> -->
-		                    </td>
-		                    
-		                    <td class="price"><%=cartList.get(i).getCart_price() %> 원</td>
-		                    
-		                    <td class="quantity">
-		                    	<div class="input-group mb-3">
-									 <input type="text" name="quantity"  class="quantity form-control input-number" value="<%=cartList.get(i).getCart_count() %>" 
-									 style="border: 0px !important" readonly/>
-		                     	</div>
-		                    </td>
-		                    
-	<!-- 	                    <td class="total">$4.90</td> -->
-	<!-- 	                    <td>2,500원</td> -->
-		                  </tr>
+			                  <tr class="text-center">
+			                 	<td class="product-remove">
+			                 		<input type="checkbox" value="<%=cartList.get(i).getCart_item_num() %>" class="checkDelete cb<%=i %>" name="checkOne">
+			                 	</td>
+			                    <td class="product-num">
+			                    	<a><%=i+1 %></a>
+			                    </td>
+			                    <td class="image-prod">
+			                    	<a href="itemSingle.em?item_num=<%=cartList.get(i).getCart_item_num() %>" >
+			                    		<div class="img" style="background-image:url(./itemUpload/<%=cartList.get(i).getCart_img() %>);"></div>
+			                    	</a>
+			                    </td>
+			                    <td class="product-name">
+			                      <a href="itemSingle.em?item_num=<%=cartList.get(i).getCart_item_num() %>" ><h3><%=cartList.get(i).getCart_item_name() %></h3></a>
+			                    </td>
+			                    
+			                    <td class="price"><%=cartList.get(i).getCart_price() %> 원</td>
+			                    
+			                    <td class="quantity">
+			                    	<div class="input-group mb-3">
+										 <input type="text" name="quantity"  class="quantity form-control input-number" value="<%=cartList.get(i).getCart_count() %>" 
+										 style="border: 0px !important" readonly/>
+			                     	</div>
+			                    </td>
+			                    
+			                  </tr>
 		                  <% }	
-                		} else {
-                			%>
+                		} else { %>
                 			<tr class="text-center" >
                 				<td class="product-name" colspan="6">
-		                      		<p>장바구니가 비어있습니다.</p>
+		                      		<p>장바구니가 비어 있습니다.</p>
 		                    	</td>
-                			</tr>
+                			</tr><!-- END TR-->
                 			<%
                 		}
                 	}%>
-                  <!-- END TR-->
                   <!-- 상품 끝 -->
-                  
-                  
-                  <!-- 상품시작 -->
-<!--                   <tr class="text-center"> -->
-<!--                   <td class="product-remove"><input type="checkbox" value="cart_list_num"></td> -->
-<!--                      <td class="product-num"><a href="#">2</a></td> -->
-                    
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/dish-2.jpg);"></div></td> -->
-                    
-<!--                     <td class="product-name"> -->
-<!--                       <h3>Grilled Ribs Beef</h3> -->
-<!--                       <p>Far far away, behind the word mountains, far from the countries</p> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="price">$15.70</td> -->
-                    
-<!--                     <td class="quantity"> -->
-<!--                       <div class="input-group mb-3"> -->
-<!--                     <button type="button" class="quantity-left-minus btn input-group-btn" > -->
-<!--                     	<i class="icon-minus"></i> -->
-<!--                     </button>&nbsp; -->
-<!--                    	<input type="text" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp; -->
-<!--                     <button type="button" class="quantity-right-plus btn input-group-btn" > -->
-<!--                        <i class="icon-plus"></i> -->
-<!--                    	</button> -->
-<!--                       </div> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="total">$15.70</td> -->
-<!--                     <td><p>무료</p></td> -->
-<!--                   </tr> -->
-                  <!-- END TR-->
-                  <!-- 상품 끝 -->
-                  
                 </tbody>
               </table>
-<!--         <a href="checkout.sh" class="btn btn-primary btn-outline-primary" id="buyAllBtn">전체 주문하기</a> -->
+
+
 		<% if (cartList.size() != 0) { %>
-        <a class="btn btn-primary btn-outline-primary" id="deleteBtn" >선택상품 삭제하기</a>
+				<a class="btn btn-primary btn-outline-primary" id="deleteBtn1st" style="font-size: 17px;" >삭제할 상품 선택하기</a>
+		        <a class="btn btn-best btn-outline-primary" id="deleteBtn2nd" style="font-size: 17px;">선택한 상품 삭제</a>
         <% } %>
+        
+        
             </div>
           </div>
         </div>
         <div class="row justify-content-end" >
         <div>
         </div>
-        <div class="col mt-5 cart-wrap ftco-animate">
-        <ul>
-        <li>구매 가능 수량이 1개로 제한된 상품은 주문 취소 시, 24시간 내 가상계좌 재주문이 불가합니다.</li>
-      <li>무신사는 기본적으로 전 상품 무료 배송입니다.</li>
-      <li>해외배송 상품은 배송료가 추가로 발생될 수 있습니다.</li>
-      <li>2개 이상 브랜드를 주문하신 경우, 각각 개별 배송됩니다.</li>
-      <li>장바구니에 담은 시점과 현재의 판매 가격이 달라질 수 있습니다.</li>
-      <li>결제 시 각종 할인 적용이 달라질 수 있습니다.</li>
-      <li>수량 제한 상품의 경우, 가상계좌를 통한 주문은 최대 2건까지만 가능합니다.(미입금 주문 기준, 기존 주문 합산)</li>
-        </ul>
+        <div class="col mt-5 ftco-animate" style="padding: 50px 0px !important;">
+	        <ul style="line-height: 2em;">
+		        <li>기본 배송료는 2,500원입니다.</li>
+		        <li>해외배송시 배송료가 추가로 발생될 수 있습니다.</li>
+		        <li>장바구니에 담은 시점과 현재의 판매 가격이 달라질 수 있습니다.</li>
+		        <li>궁금하신 점이 있으시면 Notice - 공지사항 / FAQ 를 참고해주세요.</li>
+		        <li>상품에 관한 문의는 상품상세페이지의 상품Q&A에서 문의가능합니다.</li>
+		        <li>배송, 결제 등에 관한 문의는 카카오톡 1:1상담으로 문의가능합니다.</li>
+	        </ul>
         </div>
-        
+
         
         <% if (cartList.size() != 0) { %>
-          <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate" id="total">
-            <div class="cart-total mb-3" >
-              <h3>Cart Totals</h3>
-              <p class="d-flex">
-                <span>Subtotal</span>
-                <span><%=total %></span>
-              </p>
-              <p class="d-flex">
-                <span>Delivery</span>
-                <span>2500</span>
-              </p>
-<!--               <p class="d-flex"> -->
-<!--                 <span>Discount</span> -->
-<!--                 <span>$3.00</span> -->
-<!--               </p> -->
-              <hr>
-              <p class="d-flex total-price">
-                <span>Total</span>
-                <span><%=total + 2500 %> 원</span>
-              </p>
-            
-            
-          	  <span><a href="checkout.sh" class="btn btn-primary py-3 px-4">주문하기</a></span>
-            
-            
-          	</div>
-          </div>
+        
+	          <div class="col mt-5 ftco-animate" id="total">
+	            <div class="cart-total mb-3" style="padding: 40px 60px !important;" >
+	              <h3>주문 확인</h3>
+	              <p class="d-flex">
+	                <span>상품 합계</span>
+	                <span class="money"><%=total %> 원</span>
+	              </p>
+	              <p class="d-flex">
+	                <span>배송비 합계</span>
+	                <span class="money">2500 원</span>
+	              </p>
+	
+	              <hr>
+	              <p class="d-flex total-price">
+	                <span>결제예정 금액</span>
+	                <span class="money"><%=total + 2500 %> 원</span>
+	              </p>
+	            
+	          	  <p style="text-align: right;" ><a href="checkout.sh" class="btn btn-primary" style="font-size: 17px;" >전체 상품 주문</a></p>
+	            
+	          	</div>
+	          </div>
+          
          <% } %> 
         </div>
       </div>
     </section>
-<!--     <section class="ftco-section"> -->
-<!--       <div class="container"> -->
-<!--         <div class="row justify-content-center mb-5 pb-3"> -->
-<!--           <div class="col-md-7 heading-section ftco-animate text-center"> -->
-<!--             <span class="subheading">Discover</span> -->
-<!--             <h2 class="mb-4">Related products</h2> -->
-<!--             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--         <div class="row"> -->
-<!--           <div class="col-md-3"> -->
-<!--             <div class="menu-entry"> -->
-<!--               <a href="#" class="img" style="background-image: url(./images/menu-1.jpg);"></a> -->
-<!--               <div class="text text-center pt-4"> -->
-<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
-<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
-<!--                 <p class="price"><span>$5.90</span></p> -->
-<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--           <div class="col-md-3"> -->
-<!--             <div class="menu-entry"> -->
-<!--               <a href="#" class="img" style="background-image: url(./images/menu-2.jpg);"></a> -->
-<!--               <div class="text text-center pt-4"> -->
-<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
-<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
-<!--                 <p class="price"><span>$5.90</span></p> -->
-<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--           <div class="col-md-3"> -->
-<!--             <div class="menu-entry"> -->
-<!--               <a href="#" class="img" style="background-image: url(./images/menu-3.jpg);"></a> -->
-<!--               <div class="text text-center pt-4"> -->
-<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
-<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
-<!--                 <p class="price"><span>$5.90</span></p> -->
-<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--           <div class="col-md-3"> -->
-<!--             <div class="menu-entry"> -->
-<!--               <a href="#" class="img" style="background-image: url(./images/menu-4.jpg);"></a> -->
-<!--               <div class="text text-center pt-4"> -->
-<!--                 <h3><a href="#">Coffee Capuccino</a></h3> -->
-<!--                 <p>A small river named Duden flows by their place and supplies</p> -->
-<!--                 <p class="price"><span>$5.90</span></p> -->
-<!--                 <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </section> -->
+
 
     <footer class="ftco-footer ftco-section img">
    <jsp:include page="/inc/footer.jsp"></jsp:include>
     </footer>
     
-  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -441,14 +333,8 @@
             e.preventDefault();
             // Get the field name
             var quantity = parseInt($('#quantity').val());
-            
             // If is not undefined
-                
                 $('#quantity').val(quantity + 1);
-
-              
-                // Increment
-            
         });
 
          $('.quantity-left-minus').click(function(e){
@@ -456,10 +342,8 @@
             e.preventDefault();
             // Get the field name
             var quantity = parseInt($('#quantity').val());
-            
-            // If is not undefined
-          
-                // Increment
+
+            	// Increment
                 if(quantity>0){
                 $('#quantity').val(quantity - 1);
                 }

@@ -102,6 +102,7 @@
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   var pass = document.getElementById("pass");
+  
   if(check(regPass,pass)){
 	  if(pw1!=pw2){
 	   document.getElementById('checkPwd').style.color = "#ff4d4d";

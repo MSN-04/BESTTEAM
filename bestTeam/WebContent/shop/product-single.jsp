@@ -383,7 +383,7 @@ $( '#rere1' ).click(
 						} else if (data == -1) {
 							alert('장바구니 등록에 실패하였습니다.');
 						} else if (data == 2) {
-							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
+							var con = confirm('장바구니에 동일한 상품이 있습니다.\n상품 수량을 변경하시겠습니까?');
 							if (con == true) {
 								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val();
 							}
@@ -481,23 +481,8 @@ $( '#rere1' ).click(
 						</div>
 						<div class="w-100"></div>
 						<div class="input-group col-md-6 d-flex mb-3">
-<!-- 							<span class="input-group-btn mr-2"> -->
-<!-- 								<button type="button" class="quantity-left-minus btn" -->
-<!-- 									data-type="minus" data-field=""> -->
-<!-- 									<i class="icon-minus"></i> -->
-<!-- 								</button> -->
-<!-- 							</span> <input type="text" id="quantity" name="quantity" -->
-<!-- 								class="quantity form-control input-number" value="1" min="1" max="100" -->
-<!-- 								style="width: 10px; height: 10px;"> <span -->
-<!-- 								class="input-group-btn ml-2"> -->
-<!-- 								<button type="button" class="quantity-right-plus btn" -->
-<!-- 									data-type="plus" data-field=""> -->
-<!-- 									<i class="icon-plus"></i> -->
-<!-- 								</button> -->
-<!-- 							</span> -->
+
 							<div class="input-group mb-3">
-<!--             <span class="input-group-btn mr-2"> -->
-<!--                   </span> -->
                   
                     
 <!--               <span class="input-group-btn ml-2"> -->

@@ -29,7 +29,7 @@ public class CheckoutFormAction implements Action {
 		// 1. 결제화면에 띄워줄 상품, user 정보 - DAO에서 받아오기
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("id") == null) {
+		if(session.getAttribute("id") == null) { 
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
