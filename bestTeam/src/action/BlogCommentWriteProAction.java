@@ -37,13 +37,15 @@ public class BlogCommentWriteProAction implements Action {
 		
 		String name = request.getParameter("comment_writer");
 		String id = session.getAttribute("id").toString();
+		int blog_num = Integer.parseInt(request.getParameter("blog_num").toString());
+//		System.out.println(blog_num);
 		
 		blogCommentBean = new BlogCommentBean(); 
 		userBean = new UserBean();
 		System.out.println("blog_num :: " + request.getParameter("blog_num"));
 		
 		blogCommentBean.setComment_content(request.getParameter("comment_content"));
-		blogCommentBean.setComment_writer(userBean.getUser_name());
+		blogCommentBean.setComment_writer(id);
 		blogCommentBean.setComment_blog_num(Integer.parseInt(request.getParameter("blog_num")));
 		
 		
@@ -62,7 +64,7 @@ public class BlogCommentWriteProAction implements Action {
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
 			forward = new ActionForward();
-			forward.setPath("blog.bl");
+			forward.setPath("blog-single.bl?blog_num="+blog_num+"&page=1");
 			forward.setRedirect(true);
 		}
 		
