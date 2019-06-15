@@ -16,19 +16,20 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	String nowPage = (String) request.getAttribute("page"); 
 
-	UserBean userbean = (UserBean) request.getAttribute("userBean");
-	// 	String userName = userbean.getUser_name();
-
+// 	UserBean userbean = (UserBean)request.getAttribute("userBean");
+// 	String userName = userbean.getUser_name();
+// 	String userId = userbean.getUser_id();
+// 	String id = session.getAttribute("id").toString();
+	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
-// 	Timestamp comment_date = request.getParameter("comment_date");
 
+	// 댓글에 있는 날짜 포맷 변환
 	Date today = new Date();
-	
 	SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
 	SimpleDateFormat time = new SimpleDateFormat("k:mm");
-// 	June 27, 2018 at 2:21pm
+// 	June 27, 2018 at 2:21pm 형식
 
 	System.out.println("오늘 날짜는 " + sdf.format(today));
 	System.out.println("현재 시간은 " + time.format(today));
@@ -65,7 +66,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Blog ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -302,11 +303,11 @@
 				<li>
 					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
 					<div
-						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Writer</div>
+						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
 					<div>
 						<p
-							style="font-weight: bold; margin-bottom: 1px; line-height: 10px;">Moon</p>
-						<p>Team Leader</p>
+							style="font-weight: bold; margin-bottom: 1px; line-height: 10px; font-size: 23px;">to get more</p>
+						<p>Follow Us</p>
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
@@ -368,12 +369,13 @@
 					String id = (String) session.getAttribute("id");
 					if (id != null && id.equals("admin")) {
 				%>
+				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
 				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
 				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
-				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
-					style="float: right;">글목록</a>
+				
 				<%
 					} else {
 				%><a href="./blog.bl" class="btn btn-primary btn-outline-primary"
@@ -412,7 +414,6 @@
 
 								<h3><%=articleList.get(i).getComment_writer() %></h3>
 
-<%-- 								<div class="meta"><%=articleList.get(i).getComment_date()%></div> --%>
 								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
 								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
 								<p><%=articleList.get(i).getComment_content()%></p>
@@ -509,11 +510,11 @@
 							method="post">
 							<input type="hidden" name="blog_num"
 								value="<%=article.getBlog_num()%>" id="blog_num">
-
+											
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
 								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name" name="name" value="<%=id%>">
+									class="form-control" id="name" name="name" value="<%=id %>">
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>

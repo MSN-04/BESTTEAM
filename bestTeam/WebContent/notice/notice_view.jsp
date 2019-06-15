@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Notice ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,13 +101,10 @@
 						<h1 class="mb-3 mt-5 bread">Notice Details</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="./noticeList.no">Notice</a></span>
-							<!-- 							<span class="mr-2">><a href="faq.jsp">FAQ</a></span> -->
-							<!-- 							<span class="mr-2"><a href="index.jsp">Home</a></span> -->
 						</p>
 					</div>
 				</div>
 
-				<!-- 				</div> -->
 			</div>
 		</div>
 	</section>
@@ -150,14 +147,6 @@
 				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
 				
 			</div>
-			<!-- 다음글 -->
-			<!-- 				<div style="border-bottom" solid white; margin-bottom: 30px;> -->
-			<%-- 				<%int rree=article.getNotice_num()+1; %> --%>
-			<!-- 			<button type="button" class="quantity-left-minus btn input-group-btn" style="text-align: center;"  -->
-			<%-- 			onclick = "location.href = 'noticeDetail.no?notice_num=<%=rree%>' "> --%>
-			<!-- 				<i class="icon-minus"></i>&nbsp;&nbsp;다음글 &nbsp;  -->
-			<!-- 			</button> -->
-			<!-- 			</div> -->
 		</div>
 	
 
@@ -171,10 +160,10 @@
 			<div class="block-27" style="margin-bottom: 50px;">
 				<a
 					href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
-					class="btn btn-primary btn-outline-primary">글수정</a> <a
+					class="btn btn-primary btn-outline-primary">수정</a> <a
 					href="./noticeDeletePro.no?notice_num=<%=notice_num%>"
 					class="btn btn-primary btn-outline-primary"
-					onclick="delconfirm('<%=article.getNotice_num()%>')">글삭제</a> <a
+					onclick="delconfirm('<%=article.getNotice_num()%>')">삭제</a> <a
 					href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
 				<%
 					} else {
@@ -192,17 +181,6 @@
 
 	<br>
 	<br>
-	<!--           <div class="col-md-4 sidebar ftco-animate"> -->
-	<!--             <div class="sidebar-box"> -->
-	<!--               <form action="#" class="search-form"> -->
-	<!--                 <div class="form-group"> -->
-	<!--                 	<div class="icon"> -->
-	<!-- 	                  <span class="icon-search"></span> -->
-	<!--                   </div> -->
-	<!--                   <input type="text" class="form-control" placeholder="Search..."> -->
-	<!--                 </div> -->
-	<!--               </form> -->
-	<!--             </div> -->
 
 	<footer>
 		<jsp:include page="../inc/footer.jsp" />

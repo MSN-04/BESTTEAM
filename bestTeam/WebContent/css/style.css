@@ -7824,7 +7824,8 @@ h1, h2, h3, h4, h5,
 
 .ftco-services {
   color: #1d150b;
-  background: #c49b63; }
+  background: #c49b63;
+   }
   .ftco-services .heading-section h2 {
     color: black; }
 
@@ -8501,7 +8502,7 @@ textarea.form-control {
   font-size: 24px; }
 
 .ftco-section {
-  padding: 7em 0;
+  padding: 5em 0;
   position: relative; }
   @media (max-width: 767.98px) {
     .ftco-section {

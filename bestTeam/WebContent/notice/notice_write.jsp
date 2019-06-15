@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Notice ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -104,7 +104,6 @@
 <body>
 	<%
 	String notice_writer = "admin";
-// 	String notice_writer = request.getParameter("user_id");
 	%>
 
 	<header>
@@ -148,7 +147,7 @@
 					<tr style="display:inline-block; ">
 						<td colspan="2" >
 							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" OnClick="javascript:history.back(-1)"/>
 						</td>
 					</tr>
 				</table>

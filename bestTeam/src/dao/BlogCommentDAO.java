@@ -128,21 +128,37 @@ public class BlogCommentDAO {
 	}
 
 	// 댓글 갯수 매소드
-	public int countComment(int comment_blog_num) throws SQLException {
-		int count = 0;
+//	public int countComment(int comment_blog_num) throws SQLException {
+//		int count = 0;
+//
+//		String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
+//		pstmt = con.prepareStatement(sql);
+//		pstmt.setInt(1, comment_blog_num);
+//		rs = pstmt.executeQuery();
+//
+//		if (rs.next()) {
+//			count = rs.getInt(1);
+//		}
+//		close(pstmt);
+//		return count;
+//	}
 
-		String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, comment_blog_num);
-		rs = pstmt.executeQuery();
-
-		if (rs.next()) {
-			count = rs.getInt(1);
-		}
-		close(pstmt);
-		return count;
-	}
-
+	//댓글 갯수 매소드
+//		public int countComment(int comment_blog_num) throws SQLException {
+//			int count = 0;
+//
+//			String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setInt(1, comment_blog_num);
+//			rs = pstmt.executeQuery();
+//
+//			if (rs.next()) {
+//				count = rs.getInt(1);
+//			}
+//			close(pstmt);
+//			return count;
+//		}
+		
 	// 댓글 목록 가져오기
 	public ArrayList<BlogCommentBean> listComment(int blog_num) throws SQLException {
 		ArrayList<BlogCommentBean> articleList = new ArrayList<>();
@@ -173,31 +189,31 @@ public class BlogCommentDAO {
 		return articleList;
 	}
 	
-	// 댓글 목록 갯수 구하기
-	public int selectListCount() {
-		System.out.println("selectListCount()");
-		int listCount = 0;
-
-		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
-		String sql = "SELECT count(*) FROM blog_comment";
-
-		try {
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				listCount = rs.getInt(1); // 조회된 목록 갯수 저장
-			}
-
-		} catch (SQLException e) {
-			System.out.println("selectListCount() 실패! : " + e.getMessage());
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-
-		return listCount;
-	}
+//	// 댓글 목록 갯수 구하기
+//	public int selectListCount() {
+//		System.out.println("selectListCount()");
+//		int listCount = 0;
+//
+//		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
+//		String sql = "SELECT count(*) FROM blog_comment";
+//
+//		try {
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//
+//			if (rs.next()) {
+//				listCount = rs.getInt(1); // 조회된 목록 갯수 저장
+//			}
+//
+//		} catch (SQLException e) {
+//			System.out.println("selectListCount() 실패! : " + e.getMessage());
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//
+//		return listCount;
+//	}
 
 	public ArrayList<BlogCommentBean> selectArticleList(int page, int limit) {
 		System.out.println("selectArticleList()");
