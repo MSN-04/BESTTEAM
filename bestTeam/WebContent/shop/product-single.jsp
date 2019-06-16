@@ -54,7 +54,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shop ─ Cafe Tinkervell</title>
+<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,12 +86,10 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
-
 
 <script type="text/javascript">
 //삭제 확인메세지
@@ -361,19 +359,19 @@ $( '#rere1' ).click(
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
-<script type="text/javascript">
+ <script type="text/javascript">
 	$(document).ready(function(){
 		$('#cart').on('click',function(){
-			if('<%=id%>' != 'null' ) {
+			if('<%=id %>' != 'null' ) {
 				$.ajax({
 					url : 'cartInsert.sh',
 					type : 'get',
 					data : {
-						"item_num" : <%=itemBean.getItem_num()%>,
+						"item_num" : <%=itemBean.getItem_num() %>,
 						"quantity" : $('#quantity').val(),
-						"item_price" : <%=itemBean.getItem_price()%>,
-						"cart_img" : '<%=itemBean.getItem_img()%>',
-						"cart_item_name" : '<%=itemBean.getItem_name()%>'
+						"item_price" : <%=itemBean.getItem_price() %>,
+						"cart_img" : '<%=itemBean.getItem_img() %>',
+						"cart_item_name" : '<%=itemBean.getItem_name() %>'
 					},
 					success : function(data) {
 						
@@ -385,7 +383,7 @@ $( '#rere1' ).click(
 						} else if (data == -1) {
 							alert('장바구니 등록에 실패하였습니다.');
 						} else if (data == 2) {
-							var con = confirm('장바구니에 동일한 상품이 있습니다.\n상품 수량을 변경하시겠습니까?');
+							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
 							if (con == true) {
 								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val();
 							}
@@ -403,52 +401,6 @@ $( '#rere1' ).click(
 			}
 			
 		});
-		
-		$('#buy').on('click',function(){ 
-			if('<%=id%>' != 'null' ) {
-				$.ajax({
-					url : 'cartCheck.sh',
-					type : 'get',
-					success : function(data) {
-						if (data < 0){
-							alert('장바구니에 담겨있는 상품도 함께 주문됩니다.\n원치 않으실 경우 장바구니를 비워주세요.');
-						} else {
-<%-- 							location.href="cartInsert.sh?item_num=<%=itemBean.getItem_num()%>&quantity="+ $('#quantity').val() +"&item_price=<%=itemBean.getItem_price()%>&cart_img=<%=itemBean.getItem_img()%>&cart_item_name=<%=itemBean.getItem_name()%>"; --%>
-							$.ajax({
-								url : 'cartInsert.sh',
-								type : 'get',
-								data : {
-									"item_num" : <%=itemBean.getItem_num()%>,
-									"quantity" : $('#quantity').val(),
-									"item_price" : <%=itemBean.getItem_price()%>,
-									"cart_img" : '<%=itemBean.getItem_img()%>',
-									"cart_item_name" : '<%=itemBean.getItem_name()%>'
-								},
-								success : function(data) {
-									
-									if (data == 1){
-										alert('해당상품이 주문됩니다.');
-										location.href="checkout.sh";
-									} else {
-										alert('알 수 없는 오류가 발생하였습니다.\n오류가 지속된다면 문의부탁바랍니다.');
-									}
-									
-								},
-								error : function(request, status, error) {
-							//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-								}
-							});
-						
-						}
-					},
-					error : function(request, status, error) {
-						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					}
-				});
-			} else {
-				alert('로그인 후 이용해주세요.');
-			}
-		});
 	});
 </script>
 </head>
@@ -464,7 +416,6 @@ $( '#rere1' ).click(
 				<div
 					class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
@@ -474,10 +425,6 @@ $( '#rere1' ).click(
 			</div>
 		</div>
 	</section>
-	
-<!-- 카카오톡 상담 -->
-<jsp:include page="../inc/kakaoChat.jsp"/>
-<!-- 카카오톡 상담 End -->
 	
 	<section class="ftco-section">
 		<div class="container">
@@ -534,8 +481,23 @@ $( '#rere1' ).click(
 						</div>
 						<div class="w-100"></div>
 						<div class="input-group col-md-6 d-flex mb-3">
-
+<!-- 							<span class="input-group-btn mr-2"> -->
+<!-- 								<button type="button" class="quantity-left-minus btn" -->
+<!-- 									data-type="minus" data-field=""> -->
+<!-- 									<i class="icon-minus"></i> -->
+<!-- 								</button> -->
+<!-- 							</span> <input type="text" id="quantity" name="quantity" -->
+<!-- 								class="quantity form-control input-number" value="1" min="1" max="100" -->
+<!-- 								style="width: 10px; height: 10px;"> <span -->
+<!-- 								class="input-group-btn ml-2"> -->
+<!-- 								<button type="button" class="quantity-right-plus btn" -->
+<!-- 									data-type="plus" data-field=""> -->
+<!-- 									<i class="icon-plus"></i> -->
+<!-- 								</button> -->
+<!-- 							</span> -->
 							<div class="input-group mb-3">
+<!--             <span class="input-group-btn mr-2"> -->
+<!--                   </span> -->
                   
                     
 <!--               <span class="input-group-btn ml-2"> -->
@@ -553,30 +515,30 @@ $( '#rere1' ).click(
 					<p>
 					
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
-						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">BUY</a>
+						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
 						
 		
 						
 								
-		<div class="row1">
+<!-- 		<div class="row1"> -->
 					
-   <div class="row1">
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
-    </div>
-    <div class="column"> 
-      <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt="">
-    </div>
+<!--    <div class="row1"> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column">  -->
+<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
+<!--     </div> -->
     
-  </div>
+<!--   </div> -->
 					
-				</div>
+<!-- 				</div> -->
 			</div>
 		</div>
 	</section>
@@ -588,10 +550,10 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill"   id="btn3"
-									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
+								<a class="nav-link"  data-toggle="pill" href="#v-pills-2" id="btn3"
+									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;">상품Q&A</a>  
 								
-							<%  String sessionId = (String) session.getAttribute("id");
+								<%  String sessionId = (String) session.getAttribute("id");
 							
 									if(sessionId != null) {
 										if(sessionId.equals("admin")) { %>
@@ -724,7 +686,196 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
+	<section class="ftco=section" id="ft3">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="blog-entry align-self-stretch" style="margin: auto;">
+					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
+							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
+							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
+					 	</p>
+					<section class="ftco=section" id="ac1">
+						<div class="container">
+							<table class="table thead-light" id="ac1">
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									<%
+										if (qnaList != null && listCount2 > 0) {
+											for (int i = 0; i < qnaList.size(); i++) {
+												System.out.println("싱글페이지:"+ qnaList.size());
+												System.out.println(qnaList.get(i).getQna_re_lev());
+									%>
+									
+								<tr>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
+									<% 
+									int wid = 0;
+										if(qnaList.get(i).getQna_re_lev()>0){
+											System.out.println(qnaList.get(i).getQna_re_lev());
+										wid = qnaList.get(i).getQna_re_lev()*10;
+											%>
+											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
+									%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%} %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<tr>
+								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
+											<div class="panel-body">
+												<b><%=qnaList.get(i).getQna_content() %></b>
+												<section class="ftco=section" id="ac1">
+													<div class="container">
+														<div class="col-md-8 ftco-animate div0525">
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
+														</div>
+													</div>
+												</section>
+												
+												<%
+												if(id.equals("admin")){
+													%>
+													<section class="ftco-section">
+		<div class="col-md-5" id="mail">
+			<form id="frm" action="QnaReplyProAction.qna" method="post"
+				class="contact-form" style="width: 100%;">
+				<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
+								name="qna_reply_subject" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
+								name="qna_num" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
+								name="qna_item_num" id="qna_reply_subject" required="required">
+					
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">QNA 답글</h2>
+				</div>
+				<table style="width: 100%; text-align: left;">
+					<div class="row">
+					<tr>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" value="<%=id %>"
+								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+						</div>
+						<!-- 						</div> -->
+
+					</tr>
+				</table>
+				<table style="width: 100%; text-align: center;">
+					
+							
+					<tr>
+						<td> <div class="form-group">
+                <textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div></td>
+					</tr>
+					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+					<tr style="display: inline-block;">
+						<td colspan="2"><input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> <input type="submit"
+							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+							value="등록" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+													<%
+													
+												}
+												
+												%>
+											</div>
+										</td>
+								</tr>
+								
+								
+								<%
+									}
+									}
+								%>
+							</table>
+						</div>
+					</section>
+<!-- 					<br> -->
+<!-- 					<br> -->
+<!-- 					<table class="table thead-light"> -->
+<!-- 					<tr>Q & A</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th>번호</th> -->
+<!-- 							<th>제목</th> -->
+<!-- 							<th>날짜</th> -->
+<!-- 							<th>글쓴이</th> -->
+<!-- 							<th>조회수</th> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>2</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>3</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>1</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>21</td> -->
+<!-- 						</tr> -->
+
+<!-- 					</table> -->
+					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<ul>
+							<% 
+// 							for(int a = startPage2; a<=endPage2;a++){
+						
+							
+							if(startPage<1){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage-1 %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage2; i<=endPage2;i++){ 
+								if(i==nowPage2){%>
+								<li class="active"><a><%=i %></a></li>
+								<%
+							}else{
+								%>
+							
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
+									
+									<%} 
+									
+							if(endPage2 < maxPage2){
+								%>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
+							<%
+							}
+// 							
+						}
+							%>
+								</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</section>
 <section>
 		<div class="container" >
 			<div class="row" >
