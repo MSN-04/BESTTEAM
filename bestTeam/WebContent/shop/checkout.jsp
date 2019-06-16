@@ -401,6 +401,8 @@
 		        	  $('#Email').val("");
 		        	  document.getElementById('checkPhone').style.color = "#B70000";
 					  document.getElementById('checkPhone').innerHTML =  "숫자만 입력해주세요";
+					  document.getElementById('checkPhone2').innerHTML =  "&nbsp;";
+					  document.getElementById('checkEmail').innerHTML =  "&nbsp;";
 				  }
 	     		<!-- 배송 정보 '직접 입력' 클릭 End --> 
 	      
