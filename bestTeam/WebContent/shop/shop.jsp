@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.ItemBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -361,7 +362,7 @@
 															</table>
 <!-- 														</p> -->
 														<p class="price">
-															<span><%=itemList.get(i).getItem_price() %>원</span>
+															<span><%=NumberFormat.getInstance().format(itemList.get(i).getItem_price()) %> 원</span>
 														</p>
 													</div>
 												</div>
