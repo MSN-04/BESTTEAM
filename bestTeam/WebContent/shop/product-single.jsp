@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
@@ -6,7 +7,6 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -28,22 +28,18 @@
 
 // 	qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
 	QnaBean qnabean = new QnaBean();
-// 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
 	String qnaSubject = qnabean.getQna_subject();
 	String qnaWriter = qnabean.getQna_writer();
 	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 %>
 
@@ -98,7 +94,6 @@ function delconfirm(num,item_num) {
 	return false;
 }
 	 
-// $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
 showSlides(slideIndex);
 // Next/previous controls
@@ -165,14 +160,6 @@ function showSlides(n) {
 
 <script type="text/javascript">
 // 상세정보, 리뷰, qna 버튼 작동 자바스크립트
-	//  		$(document).ready(function(index){
-	//  			$('#btn1').click(function(){
-	//  				$('.ftco-section').show();
-	//  	 		    $('.ftco-section').focus();
-	//  	 		  $('.ftco=section').hide();
-	//  				});
-	//  			});
-	//  		});
 	$(document).ready(function(index) {
 		
 			 // 파라미터가 담길 배열
@@ -202,9 +189,6 @@ function showSlides(n) {
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
-			// 					$('#btn1').css('color','#c29963');
-			// 					$('#btn1').css('background-color','#101012');
-			// 					$('#btn1').css('border-color','#c29963');
 			$('#btn2').css('color', '#c29963');
 			$('#btn2').css('background-color', '#101012');
 			$('#btn2').css('border-color', '#c29963');
@@ -212,7 +196,6 @@ function showSlides(n) {
 			$('#btn3').css('background-color', '#101012');
 			$('#btn3').css('border-color', '#c29963');
 			
-//	 			document.write(param['pageNum']);
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
@@ -313,15 +296,10 @@ function showSlides(n) {
                  	quantity = quantity - 1;
                  	$(this).siblings('.quantity').val(quantity);
                  }
-                 
             });
-             
-             
-            
      });
 	
 	// review 조회수
-	
 	function read() {
 		var keyword = reviewhidden.value;
 		var params = "review_num="+keyword;
@@ -368,35 +346,6 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
-
-<!-- <style type="text/css"> -->
-<!--  b {  -->
-<!--  	font-size: 25px;  -->
-<!--  	font-color: gold;  -->
-<!--  }  -->
-<!--  .nav-link {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .nav-link active {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .ftco-menu {  -->
-<!--  	padding-top: 12em !important;  -->
-<!--  }  -->
-<!--  .pb-5, .py-5 {  -->
-<!--  	padding-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .mb-5, .my-5 {  -->
-<!--  	margin-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .table tbody tr td {  -->
-<!--  	text-align: left !important;  -->
-<!--  }  -->
-<!--  .div0525 {  -->
-<!--  	float: right !important;  -->
-<!--  }  -->
-<!-- </style>  -->
-	
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
@@ -434,7 +383,6 @@ $( '#rere1' ).click(
 						
 					},
 					error : function(request, status, error) {
-// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 			} else {
@@ -451,24 +399,6 @@ $( '#rere1' ).click(
 	</header>
 	
 	<br><br><br><br><br>
-<!-- 	<section class="home-slider owl-carousel"> -->
-<!-- 		<div class="slider-item" -->
-<!-- 			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center"> -->
-<!-- 					<div class="col-md-7 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<h1 class="mb-3 mt-5 bread">Product Detail</h1> -->
-<!-- 						<p class="breadcrumbs"> -->
-<!-- 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span> -->
-<!-- 						</p> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -492,21 +422,16 @@ $( '#rere1' ).click(
       <img src="./images/tt5.jpg"  id="sd">
   </div>
   
-  <!-- Next and previous buttons -->
-<!--   <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
-<!--   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-  <!-- Image text -->
   <div class="caption-container">
     <p id="caption"></p>
   </div>
-  <!-- Thumbnail images -->
   
 </div>
 				
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3><%=itemBean.getItem_name() %></h3>
 					<p class="price">
-						<span><%=itemBean.getItem_price() %> 원</span>
+						<span><%=NumberFormat.getInstance().format(itemBean.getItem_price()) %> 원</span>
 					</p>
 					<p><%=itemBean.getItem_info() %></p>
 					<div class="col-md-12 mb-3">
@@ -524,26 +449,7 @@ $( '#rere1' ).click(
 						</div>
 						<div class="w-100"></div>
 						<div class="input-group col-md-6 d-flex mb-3">
-<!-- 							<span class="input-group-btn mr-2"> -->
-<!-- 								<button type="button" class="quantity-left-minus btn" -->
-<!-- 									data-type="minus" data-field=""> -->
-<!-- 									<i class="icon-minus"></i> -->
-<!-- 								</button> -->
-<!-- 							</span> <input type="text" id="quantity" name="quantity" -->
-<!-- 								class="quantity form-control input-number" value="1" min="1" max="100" -->
-<!-- 								style="width: 10px; height: 10px;"> <span -->
-<!-- 								class="input-group-btn ml-2"> -->
-<!-- 								<button type="button" class="quantity-right-plus btn" -->
-<!-- 									data-type="plus" data-field=""> -->
-<!-- 									<i class="icon-plus"></i> -->
-<!-- 								</button> -->
-<!-- 							</span> -->
 							<div class="input-group mb-3">
-<!--             <span class="input-group-btn mr-2"> -->
-<!--                   </span> -->
-                  
-                    
-<!--               <span class="input-group-btn ml-2"> -->
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
@@ -551,7 +457,6 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
-<!--                  </span> -->
                       </div>
 						</div>
 					</div>
@@ -559,29 +464,6 @@ $( '#rere1' ).click(
 					
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
 						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
-						
-		
-						
-								
-<!-- 		<div class="row1"> -->
-					
-<!--    <div class="row1"> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column">  -->
-<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
-<!--     </div> -->
-    
-<!--   </div> -->
-					
-<!-- 				</div> -->
 			</div>
 		</div>
 	</section>
@@ -653,8 +535,6 @@ $( '#rere1' ).click(
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
                   <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
                   
-<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
-                    
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
@@ -844,33 +724,6 @@ $( '#rere1' ).click(
 							</table>
 						</div>
 					</section>
-<!-- 					<br> -->
-<!-- 					<br> -->
-<!-- 					<table class="table thead-light"> -->
-<!-- 					<tr>Q & A</tr> -->
-<!-- 						<tr> -->
-<!-- 							<th>번호</th> -->
-<!-- 							<th>제목</th> -->
-<!-- 							<th>날짜</th> -->
-<!-- 							<th>글쓴이</th> -->
-<!-- 							<th>조회수</th> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>2</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>3</td> -->
-<!-- 						</tr> -->
-<!-- 						<tr> -->
-<!-- 							<td>1</td> -->
-<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
-<!-- 							<td>19.04.23</td> -->
-<!-- 							<td>admin</td> -->
-<!-- 							<td>21</td> -->
-<!-- 						</tr> -->
-
-<!-- 					</table> -->
 					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
 			
 					<div class="row mt-5">
@@ -878,9 +731,6 @@ $( '#rere1' ).click(
 							<div class="block-27">
 								<ul>
 							<% 
-// 							for(int a = startPage2; a<=endPage2;a++){
-						
-							
 							if(startPage<1){
 								%>
 								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage-1 %>'>&lt;</a></li>
@@ -903,7 +753,6 @@ $( '#rere1' ).click(
 								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
 							<%
 							}
-// 							
 						}
 							%>
 								</ul>
