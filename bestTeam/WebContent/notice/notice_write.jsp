@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Notice ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+   
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
 	rel="stylesheet">
@@ -43,10 +43,9 @@
 <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="<%=ctx%>/se2/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
-<script type="text/javascript"
-	src="<%=ctx%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
+<script type="text/javascript" src="<%=ctx%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
 	charset="utf-8"></script>
-
+	
 <!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
@@ -78,34 +77,37 @@
 				return;
 			}
 		});
+        
+		
 	});
 	 
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>
-	/itemUpload/' + filepath
-				+ '" style="max-width: 100%; height: auto; margin: 10px;">';
-		oEditors.getById["ir1"].exec("PASTE_HTML", [ sHTML ]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
+	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
-
-	// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
+	
+// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
+	
 </script>
 <!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
-
 <style type="text/css">
-.frmTitle {
-	border: 0.1px solid #ccc;
-	padding: 5px;
-	color: white;
-	background: rgba(0, 0, 0, 0);
-	width: 100%;
-}
+	.frmTitle {
+		border: 0.1px solid #ccc;
+		padding: 5px;
+		color: white;
+		background: rgba(0,0,0,0);
+		width: 100%;
+	}
 </style>
 </head>
 <body>
+	<%
+	String notice_writer = "admin";
+	%>
 
 	<header>
-		<jsp:include page="/inc/header.jsp"></jsp:include>
+	<jsp:include page="/inc/header.jsp"></jsp:include>
 	</header>
 	<!-- END nav -->
 
@@ -122,8 +124,7 @@
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Write</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><span class="mr-2"><a
-									href="./noticeList.no">Notice</a></span><a href="blog.html">FAQ</a></span>
+							<span class="mr-2"><span class="mr-2"><a href="./noticeList.no">Notice</a></span><a href="blog.html">FAQ</a></span> 
 						</p>
 					</div>
 
@@ -137,28 +138,26 @@
 			<form id="frm" action="noticeWritePro.no" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
-						<td><input type="text" id="title" name="notice_subject"
-							class="frmTitle" /></td>
+						<td><input type="text" id="title" name="notice_subject" class="frmTitle" /></td>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1"
-								name="notice_content" style="width: 100%; height: 650px;"></textarea></td>
+						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 
+								style="width: 100%; height: 650px;" ></textarea></td>
 					</tr>
-					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="저장" /> <input type="button"
-							OnClick="javascript:history.back(-1)"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="cancel" value="취소" /></td>
+					<tr style="display:inline-block; ">
+						<td colspan="2" >
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="저장" /> 
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" OnClick="javascript:history.back(-1)"/>
+						</td>
 					</tr>
 				</table>
 			</form>
 		</div>
 	</section>
 	<!-- .section -->
+	
+<jsp:include page="/inc/footer.jsp"></jsp:include>
 
-	<jsp:include page="/inc/footer.jsp"></jsp:include>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

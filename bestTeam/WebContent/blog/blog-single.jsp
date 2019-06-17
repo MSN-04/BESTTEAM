@@ -1,3 +1,4 @@
+<%@page import="java.util.SimpleTimeZone"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -15,27 +16,26 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	String nowPage = (String) request.getAttribute("page"); 
 
-	UserBean userbean = (UserBean) request.getAttribute("userBean");
-	// 	String userName = userbean.getUser_name();
-
+// 	UserBean userbean = (UserBean)request.getAttribute("userBean");
+// 	String userName = userbean.getUser_name();
+// 	String userId = userbean.getUser_id();
+// 	String id = session.getAttribute("id").toString();
+	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-	// 	int nowPage = Integer.parseInt(request.getAttribute("page"));
+	// 댓글에 있는 날짜 포맷 변환
+	Date today = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+	SimpleDateFormat time = new SimpleDateFormat("k:mm");
+// 	June 27, 2018 at 2:21pm 형식
 
-	// 	int listCount = pageInfo.getListCount();
-	// 	nowPage = pageInfo.getPage();
-	// 	int maxPage = pageInfo.getMaxPage();
-	// 	int startPage = pageInfo.getStartPage();
-	// 	int endPage = pageInfo.getEndPage();
-	// 	int limit = pageInfo.getLimit();
-
-	// 	int number = 0;
-	// 	number = listCount - (nowPage - 1) * (limit);
+	System.out.println("오늘 날짜는 " + sdf.format(today));
+	System.out.println("현재 시간은 " + time.format(today));
 %>
 
-<script language="javascript">
+	<script language="javascript">
 	function delconfirm(num) {
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
@@ -66,7 +66,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Blog ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -270,13 +270,9 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/inc/header.jsp" />
+		<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
 	<!-- END nav -->
-
-	<!-- 맨 위로 -->
-	<a href="#" class="up-button w-inline-block" id="goTop"
-		style="display: block; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d; opacity: 1;"></a>
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
@@ -287,14 +283,9 @@
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="blog.jsp">Blog</a></span> <span>Blog
-								Details</span>
-						</p>
+					<div class="col-md-700 col-sm-52 text-center ftco-animate">
+						<h1 class="mb-8 mt-7 bread">Blog</h1>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -312,11 +303,11 @@
 				<li>
 					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
 					<div
-						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Writer</div>
+						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
 					<div>
 						<p
-							style="font-weight: bold; margin-bottom: 1px; line-height: 10px;">Moon</p>
-						<p>Team Leader</p>
+							style="font-weight: bold; margin-bottom: 1px; line-height: 10px; font-size: 23px;">to get more</p>
+						<p>Follow Us</p>
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
@@ -378,12 +369,13 @@
 					String id = (String) session.getAttribute("id");
 					if (id != null && id.equals("admin")) {
 				%>
+				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
 				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
 				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
-				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
-					style="float: right;">글목록</a>
+				
 				<%
 					} else {
 				%><a href="./blog.bl" class="btn btn-primary btn-outline-primary"
@@ -420,62 +412,81 @@
 									value="<%=articleList.get(i).getComment_num()%>"
 									id="comment_blog_num">
 
-								<h3>글쓴이</h3>
-								<div class="meta"><%=articleList.get(i).getComment_date()%></div>
+								<h3><%=articleList.get(i).getComment_writer() %></h3>
+
+								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
 								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
 								<p><%=articleList.get(i).getComment_content()%></p>
 								<div
 									style='display: text-decoration; float: right; width: 1000px'>
 									<%
-										session.getAttribute("id");
 											if (id != null && id.equals("admin")) {
 
 												System.out.println(articleList.get(i).getComment_blog_num());
 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
-									<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
-									<div class="con_inner">
+			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
+									
 										<div class="sir_singo_msg">
-											<a href="#"
+											<a href="#" style="margin-left: 220px; font-size: 12px;"
 												onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
 												class="blind_view">수정</a>
 										</div>
 										<div class="singo_view" id="SirenDiv<%=i%>">
-											<form action="BlogCommentModifyPro.bl" method="post">
-
+											<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
+												<!-- text -->
 												<input type="text" id="comment_modify" name="comment_modify"
-													style="width: 70%;"
+													style="width: 50%; margin-left: 150px;"
 													value=<%=articleList.get(i).getComment_content()%>>
+													
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="Submit">
-												<%-- 												<a href="BlogCommentModifyPro.bl?comment_num=<%=articleList.get(i).getComment_num() %>&blog_num=<%=articleList.get(i).getComment_blog_num() %>" --%>
-												<!-- 													class="reply">Submit</a>  -->
+												<input type="submit" class="reply" value="수정">
 
 											</form>
-											<form action="BlogCommentDeletePro.bl" method="post">
+											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="submit" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
 											</form>
 										</div>
-									</div>
+									
 
 									<%
-										} else if (id != null && id.equals(session.getAttribute("id"))) {
+										} else if (id != null && id.equals(articleList.get(i).getComment_writer())) {
 									%>
-									<a
-										href="BlogCommentModifyPro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply">Edit</a> <a
-										href="BlogCommentDeletePro.bl?blog_num=<%=articleList.get(i).getComment_num()%>"
-										class="reply"
-										onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
-										Delete</a>
+											<div class="sir_singo_msg">
+												<a href="#" style="margin-left: 220px; font-size: 12px;"
+													onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
+													class="blind_view">수정</a>
+											</div>
+											<div class="singo_view" id="SirenDiv<%=i%>">
+												<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
+													<!-- text -->
+													<input type="text" id="comment_modify" name="comment_modify"
+														style="width: 50%; margin-left: 150px;"
+														value=<%=articleList.get(i).getComment_content()%>>
+														
+													<input type="hidden" name="comment_num"
+														value="<%=articleList.get(i).getComment_num()%>"> <input
+														type="hidden" name="comment_blog_num"
+														value="<%=articleList.get(i).getComment_blog_num()%>">
+													<input type="submit" class="reply" value="수정">
+	
+												</form>
+												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
+													<input type="hidden" name="comment_num"
+														value="<%=articleList.get(i).getComment_num()%>"> <input
+														type="hidden" name="comment_blog_num"
+														value="<%=articleList.get(i).getComment_blog_num()%>">
+													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+												</form>
+											</div>
 									<%
 										}
 									%>
@@ -490,21 +501,20 @@
 					<!-------------------------------- END comment-list ----------------------------------->
 					<!-- ----------------------------- Comment Write ----------------------------------- -->
 					<%
-						session.getAttribute("id");
 						if (id != null) {
 					%>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
-							코멘트 남기기<%=article.getBlog_num()%></h3>
+							코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
 							<input type="hidden" name="blog_num"
 								value="<%=article.getBlog_num()%>" id="blog_num">
-
+											
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
-								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name" name="name" value="<%=id%>">
+								<label for="name">아이디</label> <input type="text"
+									class="form-control" id="name" name="name" value="<%=id %>" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>

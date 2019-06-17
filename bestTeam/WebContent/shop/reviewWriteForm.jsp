@@ -44,6 +44,58 @@
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
+<!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
+<script type="text/javascript" src="<%=ctx%>/se2/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="<%=ctx%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js"
+	charset="utf-8"></script>
+
+<!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+
+<script type="text/javascript">
+	var oEditors = [];
+	
+	$(function(){
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
+		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
+		    fCreator: "createSEditor2",
+// 		    fOnAppLoad : function(){
+// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
+// 		    }
+		});
+	
+		//저장버튼 클릭시 form 전송
+		$("#save").click(function() {
+			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
+		});
+		
+		$("#reset").click(function() {
+			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+				$("#ir1").reset();
+			} else {
+				return;
+			}
+		});
+        
+		
+	});
+	 
+	// textArea에 이미지 첨부
+	function pasteHTML(filepath){
+		var sHTML = '<img src="<%=ctx%>/img_upload/' + filepath
+				+ '" style="max-width: 100%; height: auto; margin: 10px;">';
+		oEditors.getById["ir1"].exec("PASTE_HTML", [ sHTML ]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+	}
+
+	// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
+</script>
+<!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
 <%
 String id=(String)session.getAttribute("id");
 %>
@@ -107,25 +159,25 @@ String id=(String)session.getAttribute("id");
 					<tr>
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
-						<td style="padding-right: 30px;">제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="form-control" /></td>
+						<td style="padding-right: 10px;">제목</td>
+						<td><input type="text" id="review_subject" name="review_subject" class="form-control" style="border-bottom: 1px solid silver !important;"/></td>
 					</tr>
-					
+					<br>
 					<tr>
-						<td style="padding-right: 30px;">후기작성</td>
+						<td style="padding-right: 10px;">내용</td>
 						<td><textarea rows="10" cols="30" name="review_content" 
-								style="width: 1015px; height: 200px;" ></textarea></td>
+								style="width: 100%; height: 650px;" required="required"
+								class="frmTitle"></textarea></td>
 					</tr>
 					
 					<tr>
-						<td style="padding-right: 30px;">사진등록</td>
+						<td style="padding-right: 10px;">사진등록</td>
 						<td><input type="file" id="review_img" name="review_img" class="form-control" /></td>
 					</tr>
-				<tr style="display: inline-block;">
-						<td style="text-align: center; " colspan="2">
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
-					</td> 
+				<tr style="display: inline-block; position:relative; left:500px; text-align: center !important; margin-top:20px; ">
+						<td colspan="2">
+						<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" /></td>
 					</tr>
 					
 				</table>

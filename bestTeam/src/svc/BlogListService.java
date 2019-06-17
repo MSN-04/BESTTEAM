@@ -3,8 +3,10 @@ package svc;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import dao.BlogCommentDAO;
 import dao.BlogDAO;
 import vo.BlogBean;
+import vo.BlogCommentBean;
 
 import static db.JdbcUtil.*;
 
@@ -61,37 +63,25 @@ public class BlogListService {
 //댓글 목록 갯수 구해서 리턴
 //	public int getCommentCount() throws Exception {
 //		System.out.println("BlogListService - getCommentCount()");
+//		ArrayList<BlogCommentBean> articleList2 = new ArrayList<BlogCommentBean>();
 //		
 //		int commentCount = 0; // 댓글  갯수
+//		int comment_blog_num = 0;
 //		
 //		Connection con = getConnection();
+//		BlogCommentDAO blogCommentDAO = BlogCommentDAO.getInstance();
+//		blogCommentDAO.setConnection(con);
 //		
-//		BlogDAO blogDAO = BlogDAO.getInstance();
-//		blogDAO.setConnection(con);
+////		commentCount = blogCommentDAO.countComment(comment_blog_num);
 //		
-//		commentCount = blogDAO.selectCommentCount();
-//		
-//		System.out.println("게시물 갯수 : " + commentCount);
+//		System.out.println("댓글 갯수 : " + commentCount);
 //		
 //		close(con);
 //		
 //		return commentCount;
+//		
 //	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

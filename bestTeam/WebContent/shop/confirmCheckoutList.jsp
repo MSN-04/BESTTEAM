@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.BuyBean"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -164,15 +165,8 @@
                     
                     <td class="price"><%=buyList.get(i).getBuy_buydate() %></td>
                     
-                    <td class="price"><%=buyList.get(i).getBuy_total()+2500 %>&nbsp;원</td>
-                    
-   <%                 
-//							out.println("buyList.get(i).getBuy_num():"+buyList.get(i).getBuy_num());
-// 							out.println("buyList.get(i).getBuy_name()"+buyList.get(i).getBuy_name());
-// 							out.println("buyList.get(i).getBuy_count()"+buyList.get(i).getBuy_count());
-// 							out.println("buyList.get(i).getBuy_buydate()"+buyList.get(i).getBuy_buydate());
-// 							out.println("buyList.get(i).getBuy_total()"+buyList.get(i).getBuy_total());
-	%>
+                    <td class="price"><%=NumberFormat.getInstance().format(buyList.get(i).getBuy_total()+2500) %>&nbsp;원</td>
+
                   </tr>
                   <%}
 								} else {
@@ -200,80 +194,6 @@
 
       
 
-
-<!--   ------------------------------------------------------------------------------------------------------------------------ -->
-
-
-	          
-
-<!--   ------------------------------------------------------------------------------------------------------------------------ -->
-
-
-
-<!--           <div class="col-xl-4 sidebar ftco-animate"> -->
-          
-            
-            
-            
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <h3>최근 본 상품</h3> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--             </div> -->
-            
-            
-
-
-          
-<!--             <div class="sidebar-box"> -->
-<!--               <form action="#" class="search-form"> -->
-<!--                 <div class="form-group"> -->
-<!--                 	<div class="icon"> -->
-<!-- 	                  <span class="icon-search"></span> -->
-<!--                   	</div> -->
-<!--                   	<input type="text" class="form-control" placeholder="Search..."> -->
-<!--                	</div> -->
-<!--               </form> -->
-<!--             </div> -->
-
-
-
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <h3>Paragraph</h3> -->
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
-<!--             </div> -->
-<!--           </div> -->
 
         </div>
         </div>
@@ -320,117 +240,6 @@
       
     </section> 
 
-	<!--     <section class="ftco-section"> -->
-	<!--       <div class="container"> -->
-	<!--         <div class="row d-flex"> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_1.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_2.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_3.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_4.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_5.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--           <div class="col-md-4 d-flex ftco-animate"> -->
-	<!--           	<div class="blog-entry align-self-stretch"> -->
-	<!--               <a href="blog-single.html" class="block-20" style="background-image: url('./images/image_6.jpg');"> -->
-	<!--               </a> -->
-	<!--               <div class="text py-4 d-block"> -->
-	<!--               	<div class="meta"> -->
-	<!--                   <div><a href="#">Sept 28, 2018</a></div> -->
-	<!--                   <div><a href="#">Admin</a></div> -->
-	<!--                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
-	<!--                 </div> -->
-	<!--                 <h3 class="heading mt-2"><a href="#">Coffee Testing Day</a></h3> -->
-	<!--                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-	<!--               </div> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--         </div> -->
-	<!--         <div class="row mt-5"> -->
-	<!--           <div class="col text-center"> -->
-	<!--             <div class="block-27"> -->
-	<!--               <ul> -->
-	<!--                 <li><a href="#">&lt;</a></li> -->
-	<!--                 <li class="active"><span>1</span></li> -->
-	<!--                 <li><a href="#">2</a></li> -->
-	<!--                 <li><a href="#">3</a></li> -->
-	<!--                 <li><a href="#">4</a></li> -->
-	<!--                 <li><a href="#">5</a></li> -->
-	<!--                 <li><a href="#">&gt;</a></li> -->
-	<!--               </ul> -->
-	<!--             </div> -->
-	<!--           </div> -->
-	<!--         </div> -->
-	<!--       </div> -->
-	<!--     </section> -->
 
 	<jsp:include page="/inc/footer.jsp"></jsp:include>
 

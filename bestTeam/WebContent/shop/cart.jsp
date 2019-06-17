@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -224,26 +225,29 @@
 			                      <a href="itemSingle.em?item_num=<%=cartList.get(i).getCart_item_num() %>" ><h3><%=cartList.get(i).getCart_item_name() %></h3></a>
 			                    </td>
 			                    
-			                    <td class="price"><%=cartList.get(i).getCart_price() %> 원</td>
+			                    <td class="price"><%=NumberFormat.getInstance().format(cartList.get(i).getCart_price()) %> 원</td>
 			                    
-			                    <td class="quantity">
+			                    <td>
 			                    	<div class="input-group mb-3">
-										 <input type="text" name="quantity"  class="quantity form-control input-number" value="<%=cartList.get(i).getCart_count() %>" 
-										 style="border: 0px !important" readonly/>
+										 <input type="text" name="quantity"  class="form-control input-number" value="<%=cartList.get(i).getCart_count() %> 개" style="border: 0px !important" readonly/>
 			                     	</div>
 			                    </td>
 			                    
 			                  </tr>
 		                  <% }	
                 		} else { %>
-                			<tr class="text-center" >
-                				<td class="product-name" colspan="6">
-		                      		<p>장바구니가 비어 있습니다.</p>
-		                    	</td>
-                			</tr><!-- END TR-->
-                			<%
-                		}
-                	}%>
+	                		<tr class="text-center" >
+	                			<td class="product-name" colspan="6">
+                		
+	                		<%	if(id != null) { %>
+				                	<p>장바구니가 비어 있습니다.</p>
+	                		<%  } else {  %>
+	                				<p>로그인 후 장바구니에 담긴 상품을 볼 수 있습니다.</p>
+	                		<%	}
+	                		} %>
+			                    	</td>
+	                			</tr><!-- END TR-->
+                <% }%>
                   <!-- 상품 끝 -->
                 </tbody>
               </table>
@@ -280,17 +284,17 @@
 	              <h3>주문 확인</h3>
 	              <p class="d-flex">
 	                <span>상품 합계</span>
-	                <span class="money"><%=total %> 원</span>
+	                <span class="money"><%=NumberFormat.getInstance().format(total) %> 원</span>
 	              </p>
 	              <p class="d-flex">
 	                <span>배송비 합계</span>
-	                <span class="money">2500 원</span>
+	                <span class="money">2,500 원</span>
 	              </p>
 	
 	              <hr>
 	              <p class="d-flex total-price">
 	                <span>결제예정 금액</span>
-	                <span class="money"><%=total + 2500 %> 원</span>
+	                <span class="money"><%=NumberFormat.getInstance().format(total + 2500) %> 원</span>
 	              </p>
 	            
 	          	  <p style="text-align: right;" ><a href="checkout.sh" class="btn btn-primary" style="font-size: 17px;" >전체 상품 주문</a></p>

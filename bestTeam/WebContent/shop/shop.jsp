@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.ItemBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,7 +21,7 @@
 %>
 <!DOCTYPE html>
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Shop ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -152,25 +153,25 @@
 	</header>
 	<!-- END nav -->
 
-	<section class="home-slider owl-carousel">
+<!-- 	<section class="home-slider owl-carousel"> -->
 
-		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" >
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
+<!-- 		<div class="slider-item" -->
+<!-- 			style="background-image: url(./images/bg_3.jpg);" > -->
+<!-- 			<div class="overlay"></div> -->
+<!-- 			<div class="container"> -->
+<!-- 				<div -->
+<!-- 					class="row slider-text justify-content-center align-items-center"> -->
 
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Order Online</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="./index.jsp">Home</a></span> <span>Shop</span>
-						</p>
-					</div>
+<!-- 					<div class="col-md-7 col-sm-12 text-center ftco-animate"> -->
+<!-- 						<h1 class="mb-3 mt-5 bread">Order Online</h1> -->
+<!-- 						<p class="breadcrumbs"> -->
+<!-- 							<span class="mr-2"><a href="./index.jsp">Home</a></span> <span>Shop</span> -->
+<!-- 						</p> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
-		</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</section>
 
 
@@ -353,15 +354,15 @@
 															</table>
 															<table class="coffeeInfo" style="margin: auto;">
 																<tr>
-																	<td>&nbsp;아로마:</td>
+																	<td>&nbsp;향:</td>
 																	<td><%=itemList.get(i).getItem_favor_aroma() %></td>
-																	<td>&nbsp;바디감:</td>
+																	<td>&nbsp;묵직함:</td>
 																	<td><%=itemList.get(i).getItem_favor_body() %></td>
 																</tr>
 															</table>
 <!-- 														</p> -->
 														<p class="price">
-															<span><%=itemList.get(i).getItem_price() %>원</span>
+															<span><%=NumberFormat.getInstance().format(itemList.get(i).getItem_price()) %> 원</span>
 														</p>
 													</div>
 												</div>

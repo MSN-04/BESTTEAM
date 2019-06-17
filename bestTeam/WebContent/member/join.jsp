@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Sign Up ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -95,7 +95,7 @@
 //아이디, 패스워드, 메일 적합한지 검사할 정규식
  var regId = /^[a-zA-Z0-9]{8,12}$/ ;
  var regPass = /^[a-zA-Z0-9]{8,12}$/;
- var regMail = /^[a-zA-Z0-9]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+ var regMail = /^[a-zA-Z0-9]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
  var regPhone = /^[0-9]{8,11}$/;
 
  

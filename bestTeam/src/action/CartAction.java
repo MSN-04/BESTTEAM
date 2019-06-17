@@ -21,7 +21,6 @@ public class CartAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		System.out.println("id :: " + id);
 		
 		CartService cartService = new CartService();
 		cartList = cartService.cartList(id);

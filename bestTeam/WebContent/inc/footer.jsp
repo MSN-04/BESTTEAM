@@ -1,6 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    
  <footer class="ftco-footer ftco-section img">
+ 
+ 
+ <section class="ftco-section ftco-services">
+		<div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 ftco-animate"></div>
+					<div class="col-md-8 ftco-animate">
+						<div class="media d-block text-center block-10 services"></div>
+						<div class="col-md-8 col-sm-10 text-center ftco-animate">
+							<h1 class="heading">Get Your Own Taste.</h1>
+							<p>
+								<a href="#"
+									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order
+									Now</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 ftco-animate"></div>
+			</div>
+		</div>
+	</section>
+	<br><br>
+	
+	
     	<div class="overlay"></div>
       <div class="container">
         <div class="row mb-5">

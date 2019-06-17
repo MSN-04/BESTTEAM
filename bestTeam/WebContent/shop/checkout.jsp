@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="com.sun.xml.internal.txw2.Document"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -16,14 +17,11 @@
 <% 
 	// 장바구니 상품 가져옴
 	ArrayList<BuyItemBean> cartItems = (ArrayList<BuyItemBean>) request.getAttribute("cartItems");
-	System.out.println("cartItems 받아옴\n");
-	
+
 	// 회원정보 가져옴
 	UserBean userBean =  (UserBean) request.getAttribute("userBean");
-	System.out.println("userBean 받아옴");
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
-	System.out.println(userBean.getUser_address());
 	System.out.println("주소에 : 없으면 StringTokenizer 에러나서 페이지 안넘어감\n");
 	StringTokenizer st = new StringTokenizer(userBean.getUser_address(), ":");
 	String address1 = st.nextToken();
@@ -169,14 +167,11 @@
 
 			if(cartItems.size() != 0) {
 				
-				System.out.println("구매리스트 출력 시작");
-				
 				for(int i=0; i<cartItems.size(); i++) {
-					
-					System.out.println("구매리스트 for문 시작");
 					
 					thisItemTotalPrice = cartItems.get(i).getItem_price() * cartItems.get(i).getItem_count();
 					totalPrice += thisItemTotalPrice;
+					
 		%>
 	                  <tr class="text-center">
 	                    
@@ -188,34 +183,30 @@
 	                     <td class="product-name">
 	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" > <h3><%=cartItems.get(i).getItem_name() %></h3> </a> </td>
 	                    
-	                     <td class="price"><%=cartItems.get(i).getItem_price() %></td>
+	                     <td class="price"><%=NumberFormat.getInstance().format(cartItems.get(i).getItem_price()) %> 원</td>
 	                    
-	                     <td class="price"><%=cartItems.get(i).getItem_count() %></td>
+	                     <td class="price"><%=cartItems.get(i).getItem_count() %> 개</td>
 	                    
-	                     <td class="total"><%=thisItemTotalPrice %></td>
+	                     <td class="total"><%=NumberFormat.getInstance().format(thisItemTotalPrice) %> 원</td>
 	                  
 	                  </tr><!-- END TR-->
 		<%			
 		
 				}
-				
-				System.out.println("구매리스트 출력 끝\n");
-			} else {
-				System.out.println("cartItems.size() == 0");
-			}
+			} else { %>
+				<script>
+					alert("결제할 상품이 없습니다.");
+				</script>
+		<%	}
 		%>
-
                 </tbody>
               </table>
             </div>
             
-            
 		</form>
 		<br><br>
 		
-
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
-
 
 		<form id="frm" action="/checkoutPro.sh">
 		<div class="billing-form ftco-bg-dark p-3 p-md-5">
@@ -224,10 +215,11 @@
 	          	
 	         <!-- 1st line -->
 	            <div class="col-md-6">
-	              <div class="form-group">
-	              	<label for="firstname">주문하시는 분 *</label>
-	              	<input type="text" class="form-control" id="name" value="<%=userBean.getUser_name() %>" placeholder="이름" required="required">
-	              </div>
+	              	<div class="form-group">
+		              	<label for="firstname">주문하시는 분 *</label>
+		              	<input type="text" class="form-control" name="1" id="name" value="<%=userBean.getUser_name() %>" placeholder="이름" required="required">
+		              	<div>&nbsp;</div>
+	              	</div>
 	            </div>
 	            
 	            <div class="col-md-6">
@@ -242,15 +234,16 @@
 	            <div class="col-md-6">
                 	<div class="form-group">
                 		<label for="phone">연락처 1 *</label>
-                  		<input type="text" class="form-control" id="phone" value="<%=userBean.getUser_phone()%>" placeholder="배송시 연락받을 연락처" required="required" onkeyup="verifyPhone()">
-                  		<div id="checkPhone">Check Phone Number</div>
+                  		<input type="text" class="form-control" name="2" id="phone" value="<%=userBean.getUser_phone() %>" placeholder="배송시 연락받을 번호" onkeyup="verifyPhone()" required="required">
+                  		<div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 	</div>
               	</div>
               
               	<div class="col-md-6">
               		<div class="form-group">
                 		<label for="emailaddress">연락처 2</label>
-                  		<input type="text" class="form-control" id="phone2" placeholder="(선택사항)" onchange="regCheck()">
+                		<input type="text" class="form-control" id="phone2" placeholder="(선택항목)" onkeyup="verifyPhone2()">
+                  		<div id="checkPhone2" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 	</div>
                 </div>	
                 
@@ -260,7 +253,7 @@
 		        <div class="col-md-6">
 		        	<div class="form-group">
 		           		<label for="postcodezip">우편번호 *</label>
-	               		<input type="text" class="form-control" id="postcode" value="<%=userBean.getUser_post()%>" placeholder="우편번호를 검색해주세요" required="required">
+	               		<input type="text" class="form-control" name="3" id="postcode" value="<%=userBean.getUser_post()%>" placeholder="우편번호를 검색해주세요" required="required" readonly="readonly">
 	              	</div>
 	           	</div>
 
@@ -277,31 +270,34 @@
 				<div class="col-md-6" >
 		          	<div class="form-group">
 	              		<label for="streetaddress">주소 *</label>
-	              		<input type="text" class="form-control" id="address" value="<%=address1 %>" placeholder="우편번호 검색시 주소를 선택할 수 있습니다" >
+	              		<input type="text" class="form-control" name="4" id="address" value="<%=address1 %>" placeholder="우편번호 검색시 주소를 선택할 수 있습니다" readonly="readonly">
                 	</div>
 	            </div>
 
 	            <div class="col-md-6">
 	            	<div class="form-group">
-                  		<input type="text" class="form-control" id="detailAddress" value="<%=address2 %>" placeholder="상세주소" required="required">
+                  		<input type="text" class="form-control" name="5" id="detailAddress" value="<%=address2 %>" placeholder="상세주소" required="required">
                 	</div>
 	            </div>
                
                 <div class="w-100"></div>
+                <div>&nbsp;</div>
 
 			  <!-- 5th line -->
                 <div class="col-md-12">
           		<div class="form-group">
                 		<label for="emailaddress">Email</label>
-                  		<input type="text" class="form-control" id="Email" value="<%=userBean.getUser_email()%>" placeholder="(선택항목)" onchange="regCheck()">
+                  		<input type="text" class="form-control" id="Email" value="<%=userBean.getUser_email()%>" placeholder="(선택항목)" onkeyup="verifyEmail()">
+                  		<div id="checkEmail" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 	</div>
                 </div>
                 
               <!-- 6th line -->  
                 <div class="col-md-12">
                 	<div class="form-group mt-4">
-						<div class="radio" style="text-align: right;">
-						    <p onclick="reset()"><a class="btn btn-best py-3 px-4" >새로 입력</a></p>
+						<div class="radio" style="text-align: right; padding-bottom: 20px;">
+						    <a class="btn btn-best py-3 px-4" id="resetInfo" onclick="resetInfo()">직접 입력</a> &nbsp;
+						    <a class="btn btn-best py-3 px-4" id="enterInfo" onclick="enterInfo()">회원정보 입력</a>
 						</div>
 					</div>
                 </div>
@@ -311,7 +307,7 @@
 	        </div><!-- END -->
 	          
 
-		<!-- ================= 우편번호 검색 API ================= -->
+		<!-- 우편번호 검색 -->
 				
 				<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 				<script>
@@ -362,6 +358,7 @@
 				                document.getElementById('postcode').value = data.zonecode;
 				                document.getElementById("address").value = addr;
 				                // 커서를 상세주소 필드로 이동한다.
+				                document.getElementById("detailAddress").value = "";
 				                document.getElementById("detailAddress").focus();
 				            },
 				            
@@ -388,79 +385,120 @@
 				    }
 				</script>
  
-		<!-- ================= 우편번호 검색 API 끝 ================= -->
+		<!-- 우편번호 검색 End -->
 	          
 	          
-	    <!-- ================= 배송 정보 '새로 입력' 클릭 시 ================= -->  
 	          <script type="text/javascript">
-		          function reset() {
+			    <!-- 배송 정보 '직접 입력' 클릭 -->  
+		          function resetInfo() {
 		        	  $('#name').val("");
+		        	  $('#name').focus();
 		        	  $('#phone').val("");
 		        	  $('#phone2').val("");
 		        	  $('#postcode').val("");
 		        	  $('#address').val("");
 		        	  $('#detailAddress').val("");
 		        	  $('#Email').val("");
+		        	  document.getElementById('checkPhone').style.color = "#B70000";
+					  document.getElementById('checkPhone').innerHTML =  "숫자만 입력해주세요";
+					  document.getElementById('checkPhone2').innerHTML =  "&nbsp;";
+					  document.getElementById('checkEmail').innerHTML =  "&nbsp;";
 				  }
-	          </script>
-	     <!-- ============================================================= --> 
+	     		<!-- 배송 정보 '직접 입력' 클릭 End --> 
 	      
+	     		<!-- 배송 정보 '회원정보 입력' 클릭 -->
+			      function enterInfo() {
+			    	  $('#name').val("<%=userBean.getUser_name() %>");
+		        	  $('#phone').val("<%=userBean.getUser_phone() %>");
+		        	  $('#phone2').val("");
+		        	  $('#postcode').val("<%=userBean.getUser_post()%>");
+		        	  $('#address').val("<%=address1 %>");
+		        	  $('#detailAddress').val("<%=address2 %>");
+		        	  $('#Email').val("<%=userBean.getUser_email()%>");
+		        	  document.getElementById('checkPhone').innerHTML = "&nbsp;";
+		        	  document.getElementById('checkPhone2').innerHTML = "&nbsp;";
+		        	  document.getElementById('checkEmail').innerHTML = "&nbsp;";
+			      }
+	    	 	<!-- 배송 정보 '회원정보 입력' 클릭 End --> 
+			 </script>
 	     
-	     <!-- =================== 전화번호 형식 제어 ==================== --> 
+	     
+	     <!-- 전화번호, 이메일 형식 제어 --> 
                 
-                <script type='text/javaScript'>
+            <script type='text/javaScript'>
+		    		
                 
               	//검사수행 함수
                 function check(reg, what) {
                      if(reg.test(what)) {
                          return true;
                      } else {
-//                      alert(message);
-//                      what.value = what.value;
-//                      what.focus();
-                     return false;
+                     	return false;
                      }
               	}
                 
+				// --- 연락처1 제어
                 function verifyPhone() {
-
-							
-				// 연락처1 제어
-// 				$("#phone").change(function(){
-						
 				    var phone = frm.phone.value;
-				    
-// 				    alert("연락처 제어 "+ phone);
-				    
-				    var phone2 = $('#phone2').val();
-				    var Email = $('#Email').val();
-				    
-// 					정규식 - 전화번호 유효성 검사
-					var regPhone = /^[0-9]{8,10}$/;
-// 					var regEmain = /^d{2,3}[-\s]?\d{3,4}[-\s]?\d{4}$;
+					var regPhone = /^[0-9]{8,11}$/;
 						
 					if(phone == ''){
-						document.getElementById('checkPhone').style.color = "#ff4d4d";
-						document.getElementById('checkPhone').innerHTML =  "숫자만 입력해주세요a";
-					} else if (phone != ''){
-					
-						if(check(regPhone, phone)) {
-							document.getElementById('checkPhone').style.color = "#4d79ff";
-				    	    document.getElementById('checkPhone').innerHTML = "올바른 형식입니다";
-						} else {
-							document.getElementById('checkPhone').style.color = "#ff4d4d";
-							document.getElementById('checkPhone').innerHTML =  "숫자만 입력해주세요b";
-						}
+						document.getElementById('checkPhone').style.color = "#B70000";
+						document.getElementById('checkPhone').innerHTML =  "숫자만 입력해주세요";
 						
+					} else if (phone != ''){
+						if(check(regPhone, phone)) {
+							document.getElementById('checkPhone').style.color = "#c49b63";
+				    	    document.getElementById('checkPhone').innerHTML = "올바른 형식입니다";
+				    	    
+						} else {
+							document.getElementById('checkPhone').style.color = "#B70000";
+							document.getElementById('checkPhone').innerHTML =  "올바른 형식이 아닙니다";
+						}
                 	} 
                 }
+                
+				// --- 연락처2 제어
+                function verifyPhone2() {
+				    var phone = frm.phone2.value;
+					var regPhone = /^[0-9]{8,11}$/;
 						
-				
-
-
-
-				</script>     
-			<!-- ============================================================= -->
+					if(phone == ''){
+						document.getElementById('checkPhone2').innerHTML = "&nbsp;" ;
+					} else if (phone != ''){
+						if(check(regPhone, phone)) {
+							document.getElementById('checkPhone2').style.color = "#c49b63";
+				    	    document.getElementById('checkPhone2').innerHTML = "올바른 형식입니다";
+				    	    
+						} else {
+							document.getElementById('checkPhone2').style.color = "#B70000";
+							document.getElementById('checkPhone2').innerHTML =  "올바른 형식이 아닙니다";
+						}
+                	} 
+                }
+                
+				// --- 이메일 제어
+                function verifyEmail() {
+                	var Email = frm.Email.value;
+					var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+						
+					if(Email == ''){
+						document.getElementById('checkEmail').innerHTML =  "&nbsp;";
+						
+					} else if (Email != ''){
+						if(check(regEmail, Email)) {
+							document.getElementById('checkEmail').style.color = "#c49b63";
+				    	    document.getElementById('checkEmail').innerHTML = "올바른 형식입니다";
+				    	    
+						} else {
+							document.getElementById('checkEmail').style.color = "#B70000";
+							document.getElementById('checkEmail').innerHTML =  "올바른 형식이 아닙니다";
+						}
+                	}
+                }
+                
+			</script>     
+		 <!-- 전화번호, 이메일 형식 제어 End -->
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 		
@@ -472,7 +510,7 @@
 	          			<h3 class="billing-heading mb-4">주문 확인</h3>
 	          					<p class="d-flex">
 		    						<span>상품 합계</span>
-		    						<span class="money"><%=totalPrice %> 원</span>
+		    						<span class="money"><%=NumberFormat.getInstance().format(totalPrice) %> 원</span>
 		    					</p>
 		    					<p class="d-flex">
 		    						<span>배송비 합계</span>
@@ -481,7 +519,7 @@
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>결제예정 금액</span>
-		    						<span class="money"><%=totalPrice + 2500 %> 원</span>
+		    						<span class="money"><%=NumberFormat.getInstance().format(totalPrice + 2500) %> 원</span>
 		    					</p>
 					</div>
 	          	</div>
@@ -539,7 +577,7 @@
 		          	
 		          </div>	
 			</form>		
-						
+
 
 				<%
 				
@@ -567,13 +605,11 @@
 				int orderPrice = totalPrice + 2500;
 				System.out.println("결제금액 : "+ orderPrice);
 				System.out.println();
-				
+					
 				%>
-				
 
-				<script type="text/javascript">
-						
-
+						<script type='text/javaScript'>
+			            
 							function checkout() {
 								
 								// 1. 구매동의 체크 여부 확인
@@ -606,12 +642,10 @@
 									if(a){
 
 										//===== 결제 API 연동 2
-										var IMP = window.IMP; // 생략해도 괜찮습니다.
-										IMP.init("imp29951450");  //발급받은 "가맹점 식별코드"를 삽입하고 웹사이트의 결제 페이지에서 호출합니다.
+										var IMP = window.IMP; // 생략 가능
+										IMP.init("imp29951450");  //발급받은 가맹점 식별코드
 										
 										//===== 결제 API 연동 3
-										// IMP.request_pay(param, callback) 호출
-										// IMP.request_pay(param, callback)을 호출하면 PC 환경에서는 지정한 pg사의 결제모듈 창이 나타남 
 										IMP.request_pay({ // (1) param : 결제요청에 필요한 정보를 담는 객체
 										    pg: "html5_inicis",		// 결제방식
 										    pay_method: payMethod,		// 결제수단
@@ -623,14 +657,8 @@
 										    buyer_tel: $('#phone').val(),	// 구매자 전화번호
 										    buyer_addr: $('#address').val() + " " + $('#detailAddress').val() ,	// 구매자 주소
 										    buyer_postcode: $('#postcode').val()	// 구매자 우편번호
-										/*
-										    * 주문번호(merchant_uid) 생성하기 
-											IMP.request_pay를 호출하기 전에 여러분의 서버에 주문 정보를 전달(데이터베이스에 주문정보 INSERT)하고 
-											서버가 생성한 주문 번호를 param의 merchant_uid속성에 지정하기를 권장드립니다. 
-											결제 완료 후 결제 위변조 여부를 검증하는 단계에서 신뢰도있는 검증을 위해 
-											여러분의 서버에서 주문정보를 조회해야 하기 때문입니다.
-										*/
-										}, function (rsp) { // (2) callback : 고객이 결제를 완료한 후 결제 성공/정보/에러 등의 결제정보를 담음
+
+										}, function (rsp) { // (2) callback : 결제완료 후 결제정보를 담음
 											    if (rsp.success) { 
 													$.ajax({
 											        	url: "checkoutPro.sh", // 가맹점 서버
@@ -658,27 +686,16 @@
 														error :function(request, status, error) {
 															alert('결제 실패! ' + error);
 														}
-											            
 											        });
-											       	
 											    } else { 
 											    	// 결제 실패 시
 											    	alert("결제 실패 : " +  rsp.error_msg);
 											    	history.back();
 										    	}
-										/*
-											*
-											가맹점 서버에 imp_uid(거래 고유 번호)를 전달하면 아임포트 서버에서 imp_uid로 결제 정보를 조회할 수 있습니다.
-											또, 가맹점에서 관리하는 주문번호인 merchant_uid로 가맹점의 데이터베이스에서 주문 정보를 조회합니다.
-											조회한 정보들을 통해 결제 위변조 여부를 검증하고, 서비스의 데이터베이스에 저장할 수 있습니다.
-										*/
 										});
-										
 									}else{
 										history.back();
 									}
-								
-								    
 								}
 							}
 						</script>

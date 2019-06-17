@@ -1,283 +1,371 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-  <head>
-    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+<head>
+<title>Cafe Tinkervell</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="./css/animate.css">
-    
-    <link rel="stylesheet" href="./css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="./css/magnific-popup.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes"
+	rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/aos.css">
+<link rel="stylesheet" href="./css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="./css/animate.css">
 
-    <link rel="stylesheet" href="./css/ionicons.min.css">
+<link rel="stylesheet" href="./css/owl.carousel.min.css">
+<link rel="stylesheet" href="./css/owl.theme.default.min.css">
+<link rel="stylesheet" href="./css/magnific-popup.css">
 
-    <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="./css/jquery.timepicker.css">
+<link rel="stylesheet" href="./css/aos.css">
 
-    
+<link rel="stylesheet" href="./css/ionicons.min.css">
 
-    <link rel="stylesheet" href="./css/flaticon.css">
-    <link rel="stylesheet" href="./css/icomoon.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/kakaoTalkChat.css">
-    
-  </head>
+<link rel="stylesheet" href="./css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="./css/jquery.timepicker.css">
 
-  <body>
-  <header>
-<jsp:include page="../inc/header.jsp"/>
-    <!-- END nav -->
-  </header>
 
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image: url(./images/bg_1.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-            <div class="col-md-8 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Welcome</span>
-              <h1 class="mb-4">SHOPPING</h1>
-<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-              <p>
-<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
-              <a href="shopMain.em" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a>
-              </p>
-            </div>
+<link rel="stylesheet" href="./css/flaticon.css">
+<link rel="stylesheet" href="./css/icomoon.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
-          </div>
-        </div>
-      </div>
+</head>
 
-      <div class="slider-item" style="background-image: url(./images/bg_2.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+<body>
+<style>
+ .h1{
+color: #c49b63 !important;
+}
 
-            <div class="col-md-8 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Welcome</span>
-              <h1 class="mb-4">CHOOSE YOUR TASTE</h1>
-<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
-              <p>
-<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
-              <a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">GO!</a></p>
-            </div>
+</style>
+	<header>
+		<jsp:include page="../inc/header.jsp" />
+		<!-- END nav -->
+	</header>
 
-          </div>
-        </div>
-      </div>
+	<section class="home-slider owl-carousel">
+		<div class="slider-item"
+			style="background-image: url(./images/bg_1.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
+						<span class="subheading">Café Tinkervell</span>
+						<h1 class="mb-4">Explore New Flavors</h1>
+						<h4 class="mb-4">새로운 맛을 탐험해보세요</h4>
+						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p>
+							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
+							<a href="join.us"
+								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Join
+								Now</a>
+						</p>
+					</div>
 
-            <div class="col-md-8 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Welcome</span>
-              <h1 class="mb-4">CHOOSE YOUR TASTE</h1>
-              <p>
-              <a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">GO!</a></p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-    
-<br>
-<!-- 카카오톡 상담 -->
-<jsp:include page="../inc/kakaoChat.jsp"/>
-<!-- 카카오톡 상담 End -->
-
-<br>
-<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Home Coffee Roasting</h2>
-			<p>The most awarded coffee roaster.
-			Tinkerbell lets you custom roast
-				fresh beans, explore new flavors, reduce waste.
-				Tinkerbell helps to unlock the advantages of
-				home coffee roasting for
-				even the most novice coffee drinker.</p>
+				</div>
+			</div>
 		</div>
-         </div>
 
-    <section class="ftco-about d-md-flex">
-    	<div class="one-half0 img0"><img class="img_main" src="./images/about.jpg" ></div>
-    	<div class="one-half ftco-animate">
-    		<div class="overlap" >
-	        <div class="heading-section ftco-animate">
-	          <h3 class="mb-4">Think Coffee's Value</h3>
-	        </div>
-	        <div>
-	  				<p> made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their. made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their. made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-	  			</div>
-  			</div>
-    	</div>
-    </section>
-    
-    <section class="ftco-about d-md-flex">
-    
-    	<div class="one-half0 img0 ftco-animate">
-    		<div class="overlap">
-	        <div class="heading-section ftco-animate ">
-	          <h3 class="mb-4">Roast with confidence</h3>
-	        </div>
-	        <div>
-	  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-	  			</div>
-  			</div>
-    	</div>
-    	
-    	<div class="one-half img" style="background-image: url(./images/coffee2.jpg);"></div>
-    </section>
-    
-    <section class="ftco-about d-md-flex">
-    	<div class="one-half img" style="background-image: url(./images/coffee3.jpg);"></div>
-    	<div class="one-half ftco-animate">
-    		<div class="overlap">
-	        <div class="heading-section ftco-animate ">
-	          <h3 class="mb-4">Explore New Flavors</h3>
-	        </div>
-	        <div>
-	  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-	  			</div>
-  			</div>
-    	</div>
-    </section>
-    
-    <section class="ftco-about d-md-flex">
-    	<div class="one-half img0" style="background-image: url(./images/coffee4.jpg);"></div>
-    	<div class="one-half ftco-animate">
-    		<div class="overlap">
-	        <div class="heading-section ftco-animate ">
-	          <h3 class="mb-4">Meet Elegant Flavor</h3>
-	        </div>
-	        <div>
-	  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-	  			</div>
-  			</div>
-    	</div>
-    </section>
+		<div class="slider-item"
+			style="background-image: url(./images/bg_2.jpg);">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center"
+					data-scrollax-parent="true">
+
+					<div class="col-md-8 col-sm-12 text-center ftco-animate">
+						<span class="subheading">Café Tinkervell</span>
+						<h1 class="mb-4">Pick Your Favorite</h1>
+						<h4 class="mb-4">당신의 취향을 골라보세요</h4>
+						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+						<p>
+							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
+							<a href="taste.us"
+								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Start
+								Now</a>
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+<!-- 		<div class="slider-item" -->
+<!-- 			style="background-image: url(./images/bg_3.jpg);"> -->
+<!-- 			<div class="overlay"></div> -->
+<!-- 			<div class="container"> -->
+<!-- 				<div -->
+<!-- 					class="row slider-text justify-content-center align-items-center" -->
+<!-- 					data-scrollax-parent="true"> -->
+
+<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
+<!-- 						<span class="subheading">Welcome</span> -->
+<!-- 						<h1 class="mb-3">ENJOY LIFE WITH COFFEE</h1> -->
+<!-- 						<p> -->
+<!-- 							<a href="taste.us" -->
+<!-- 								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Show -->
+<!-- 								Detail</a> -->
+<!-- 						</p> -->
+<!-- 					</div> -->
+
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+	</section>
+
+	<br>
+	<!-- 카카오톡 상담 -->
+	<jsp:include page="../inc/kakaoChat.jsp" />
+	<!-- 카카오톡 상담 End -->
+
+	<br><br><br><br><br><br>
+	<div class="row justify-content-center mb-5 pb-3">
+		<div class="col-md-7 heading-section ftco-animate text-center">
+			<h2 class="mb-4">We Think Coffee's Value</h2>
+			<p> <h3>커피의 가치를 생각하는 카페 팅커벨</h3>
+			팅커벨은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br>
+			팅커벨은 국내 커피 역사를 이끌어 온 정통성과 세계적인 기술력, 커피전문가의 노하우로 고품질의 커피 본연의 맛과 향을 즐길 수 있는 좋은 커피입니다. <br>
+			팅커벨은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
+			마음과 마음이 이어지는 순간 팅커벨은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TinkerVell - </p>
+		</div>
+	</div><br><br><br><br><br><br>
+
+	<section class="ftco-about d-md-flex">
+		<div class="one-half0 img0">
+			<img class="img_main" src="./images/about.jpg">
+		</div>
+		<div class="one-half ftco-animate">
+			<div class="overlap">
+				<div class="heading-section ftco-animate">
+					<h3 class="mb-4">Experience Freshness</h3>
+				</div>
+				<div>
+					<p>On her way she met a copy. The copy warned the Little Blind
+						Text, that where it came from it would have been rewritten a
+						thousand times and everything that was left from its origin would
+						be the word "and" and the Little Blind Text should turn around and
+						return to its own, safe country. But nothing the copy said could
+						convince her and so it didn’t take long until a few insidious Copy
+						Writers ambushed her, made her drunk with Longe and Parole and
+						dragged her into their agency, where they abused her for their.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br><br><br><br><br><br>
+
+	<section class="ftco-about d-md-flex">
+
+		<div class="one-half0 img0 ftco-animate">
+			<div class="overlap">
+				<div class="heading-section ftco-animate ">
+					<h3 class="mb-4">Roast with confidence</h3>
+				</div>
+				<div>
+					<p>Try new types of beans, styles, and intensities of roasts.
+						And blend them. Kelvin is the first home coffee roasting system
+						that also provides a curated selection of green coffee beans
+						delivered straight to you. By putting the entire process into your
+						hands, you have the control and range to experiment with multiple
+						bean origins, roasting times, blends, and flavors to experience a
+						new side of coffee from first crack to French roast.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="one-half img"
+			style="background-image: url(./images/coffee2.jpg);"></div>
+	</section>
+<br><br><br><br><br><br>
+	<section class="ftco-about d-md-flex">
+		<div class="one-half img"
+			style="background-image: url(./images/coffee3.jpg);"></div>
+		<div class="one-half ftco-animate">
+			<div class="overlap">
+				<div class="heading-section ftco-animate ">
+					<h3 class="mb-4">Meet Elegant Flavor</h3>
+				</div>
+				<div>
+					<p>On her way she met a copy. The copy warned the Little Blind
+						Text, that where it came from it would have been rewritten a
+						thousand times and everything that was left from its origin would
+						be the word "and" and the Little Blind Text should turn around and
+						return to its own, safe country. But nothing the copy said could
+						convince her and so it didn’t take long until a few insidious Copy
+						Writers ambushed her, made her drunk with Longe and Parole and
+						dragged her into their agency, where they abused her for their.</p>
+				</div>
+			</div>
+		</div>
+	</section><br><br><br><br><br><br>
+
+	<section class="ftco-about d-md-flex">
+
+		<div class="one-half0 img0 ftco-animate">
+			<div class="overlap">
+				<div class="heading-section ftco-animate ">
+					<h3 class="mb-4">Why Tinkervell</h3>
+				</div>
+				<div>
+					<p>Try new types of beans, styles, and intensities of roasts.
+						And blend them. Kelvin is the first home coffee roasting system
+						that also provides a curated selection of green coffee beans
+						delivered straight to you. By putting the entire process into your
+						hands, you have the control and range to experiment with multiple
+						bean origins, roasting times, blends, and flavors to experience a
+						new side of coffee from first crack to French roast.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="one-half img"
+			style="background-image: url(./images/coffee2.jpg);"></div>
+	</section>
+
+<br><br><br><br><br><br><hr>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section ftco-animate text-center">
+					<span class="subheading">Best Quality!</span>
+					<h2 class="mb-4">Tinkervell's <br>Best Seller</h2>
+					<p>커피 팅커벨이 보장하는 퀄리티의 추천상품입니다</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="menu-entry">
+						<a href="#" class="img"
+							style="background-image: url(./images/menu-1.jpg);"></a>
+						<div class="text text-center pt-4">
+							<h3>
+								<a href="#">Coffee Capuccino</a>
+							</h3>
+							<p>A small river named Duden flows by their place and
+								supplies</p>
+							<p class="price">
+								<span>$5.90</span>
+							</p>
+							<p>
+								<a href="#" class="btn btn-primary btn-outline-primary">Add
+									to Cart</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="menu-entry">
+						<a href="#" class="img"
+							style="background-image: url(./images/menu-2.jpg);"></a>
+						<div class="text text-center pt-4">
+							<h3>
+								<a href="#">Coffee Capuccino</a>
+							</h3>
+							<p>A small river named Duden flows by their place and
+								supplies</p>
+							<p class="price">
+								<span>$5.90</span>
+							</p>
+							<p>
+								<a href="#" class="btn btn-primary btn-outline-primary">Add
+									to Cart</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="menu-entry">
+						<a href="#" class="img"
+							style="background-image: url(./images/menu-3.jpg);"></a>
+						<div class="text text-center pt-4">
+							<h3>
+								<a href="#">Coffee Capuccino</a>
+							</h3>
+							<p>A small river named Duden flows by their place and
+								supplies</p>
+							<p class="price">
+								<span>$5.90</span>
+							</p>
+							<p>
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
+									to Cart</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="menu-entry">
+						<a href="#" class="img"
+							style="background-image: url(./images/menu-4.jpg);"></a>
+						<div class="text text-center pt-4">
+							<h3>
+								<a href="#">Coffee Capuccino</a>
+							</h3>
+							<p>A small river named Duden flows by their place and
+								supplies</p>
+							<p class="price">
+								<span>$5.90</span>
+							</p>
+							<p>
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
+									to Cart</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+	
+
+	<jsp:include page="../inc/footer.jsp" />
 
 
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-          	<span class="subheading">Discover</span>
-            <h2 class="mb-4">Best Coffee Sellers</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-md-3">
-        		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(./images/menu-1.jpg);"></a>
-    					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-    					</div>
-    				</div>
-        	</div>
-        	<div class="col-md-3">
-        		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(./images/menu-2.jpg);"></a>
-    					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-    					</div>
-    				</div>
-        	</div>
-        	<div class="col-md-3">
-        		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(./images/menu-3.jpg);"></a>
-    					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-    					</div>
-    				</div>
-        	</div>
-        	<div class="col-md-3">
-        		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(./images/menu-4.jpg);"></a>
-    					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-    					</div>
-    				</div>
-        	</div>
-        </div>
-    	</div>
-    </section>
 
-		<section class="ftco-section ftco-services">
-		<div>
-    	<div class="container">
-    		<div class="row">
-          <div class="col-md-4 ftco-animate">
-          </div>
-          <div class="col-md-8 ftco-animate">
-            <div class="media d-block text-center block-10 services">
-              </div>
-              <div class="col-md-8 col-sm-10 text-center ftco-animate">
-                <h1 class="heading">Get Your Own Taste.</h1>
-                <p>
-              <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a>
-              </p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 ftco-animate">
-          </div>
-        </div>
-    	</div>
-    </section>
-
-<jsp:include page="../inc/footer.jsp"/>
-    
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
 
 
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="./js/popper.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
-  <script src="./js/jquery.easing.1.3.js"></script>
-  <script src="./js/jquery.waypoints.min.js"></script>
-  <script src="./js/jquery.stellar.min.js"></script>
-  <script src="./js/owl.carousel.min.js"></script>
-  <script src="./js/jquery.magnific-popup.min.js"></script>
-  <script src="./js/aos.js"></script>
-  <script src="./js/jquery.animateNumber.min.js"></script>
-  <script src="./js/bootstrap-datepicker.js"></script>
-  <script src="./js/jquery.timepicker.min.js"></script>
-  <script src="./js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="./js/google-map.js"></script>
-  <script src="./js/main.js"></script>
-    
-  </body>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.waypoints.min.js"></script>
+	<script src="./js/jquery.stellar.min.js"></script>
+	<script src="./js/owl.carousel.min.js"></script>
+	<script src="./js/jquery.magnific-popup.min.js"></script>
+	<script src="./js/aos.js"></script>
+	<script src="./js/jquery.animateNumber.min.js"></script>
+	<script src="./js/bootstrap-datepicker.js"></script>
+	<script src="./js/jquery.timepicker.min.js"></script>
+	<script src="./js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="./js/google-map.js"></script>
+	<script src="./js/main.js"></script>
+
+</body>
 </html>
