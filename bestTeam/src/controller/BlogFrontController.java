@@ -16,6 +16,7 @@ import action.BlogCommentWriteProAction;
 import action.BlogDeleteProAction;
 import action.BlogDetailAction;
 import action.BlogListAction;
+import action.BlogListSearchAction;
 import action.BlogModifyFormAction;
 import action.BlogModifyProAction;
 import action.BlogWriteProAction;
@@ -139,6 +140,19 @@ public class BlogFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/BlogListSearch.bl")) {
+//			String keyword = request.getParameter("keyword");
+//			String option = request.getParameter("option");
+//			request.setAttribute("option", option);
+//			request.setAttribute("keyword", keyword);
+			
+			action = new BlogListSearchAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 		// 각 Action 클래스 객체로부터 리턴받은 ActionForward 객체를 사용하여 포워딩 처리
