@@ -198,6 +198,7 @@ function showSlides(n) {
 		 
 		        param[key] = value;
 		    }
+		    //qna페이징처리
 		    if(param['pageNum']==null){
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
@@ -230,6 +231,44 @@ function showSlides(n) {
 				$('#ft1').hide();
 				$('#ft2').hide();
 				var offset = $('#btn3').offset();
+				$('body,html').animate({
+					scrollTop : offset.top
+				}, 300);
+			}
+		    
+		    //review 페이징처리
+		    if(param['page']==null){
+			$('#btn1').css('color', '#212529');
+			$('#btn1').css('background-color', '#c29963');
+			$('#btn1').css('border-color', '#c29963');
+			// 					$('#btn1').css('color','#c29963');
+			// 					$('#btn1').css('background-color','#101012');
+			// 					$('#btn1').css('border-color','#c29963');
+			$('#btn2').css('color', '#c29963');
+			$('#btn2').css('background-color', '#101012');
+			$('#btn2').css('border-color', '#c29963');
+			$('#btn3').css('color', '#c29963');
+			$('#btn3').css('background-color', '#101012');
+			$('#btn3').css('border-color', '#c29963');
+			
+//	 			document.write(param['pageNum']);
+			$('#ft1').show();
+			$('#ft2').hide();
+			$('#ft3').hide();
+			}else {
+				$('#btn2').css('color', '#212529');
+				$('#btn2').css('background-color', '#c29963');
+				$('#btn2').css('border-color', '#c29963');
+				$('#btn1').css('color', '#c29963');
+				$('#btn1').css('background-color', '#101012');
+				$('#btn1').css('border-color', '#c29963');
+				$('#btn3').css('color', '#c29963');
+				$('#btn3').css('background-color', '#101012');
+				$('#btn3').css('border-color', '#c29963');
+				$('#ft2').show();
+				$('#ft1').hide();
+				$('#ft3').hide();
+				var offset = $('#btn2').offset();
 				$('body,html').animate({
 					scrollTop : offset.top
 				}, 300);
@@ -768,6 +807,7 @@ $( '#rere1' ).click(
 								<tr>
 								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
 											<div class="panel-body">
+											<% if(id.equals(qnaList.get(i).getQna_writer())||id.equals("admin")){ %>
 												<b><%=qnaList.get(i).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
@@ -806,6 +846,8 @@ $( '#rere1' ).click(
 						<!-- 						</div> -->
 
 					</tr>
+					
+					</div>
 				</table>
 				<table style="width: 100%; text-align: center;">
 					
@@ -827,11 +869,15 @@ $( '#rere1' ).click(
 			</form>
 		</div>
 	</section>
-													<%
-													
-												}
+	<%}
+											}else{%>
+				<div class="panel-body">
+				<b>작성자만 볼 수 있습니다.</b>
+				</div>
+				<%	
+				}
+				%>		
 												
-												%>
 											</div>
 										</td>
 								</tr>
@@ -839,7 +885,7 @@ $( '#rere1' ).click(
 								
 								<%
 									}
-									}
+										}
 								%>
 							</table>
 						</div>
@@ -903,7 +949,7 @@ $( '#rere1' ).click(
 								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
 							<%
 							}
-// 							
+							
 						}
 							%>
 								</ul>
