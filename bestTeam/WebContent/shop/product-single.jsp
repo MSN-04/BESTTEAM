@@ -180,82 +180,127 @@ function showSlides(n) {
 	//  			});
 	//  		});
 	$(document).ready(function(index) {
-		$('#btn1').css('color', '#212529');
-		$('#btn1').css('background-color', '#c29963');
-		$('#btn1').css('border-color', '#c29963');
-		// 					$('#btn1').css('color','#c29963');
-		// 					$('#btn1').css('background-color','#101012');
-		// 					$('#btn1').css('border-color','#c29963');
-		$('#btn2').css('color', '#c29963');
-		$('#btn2').css('background-color', '#101012');
-		$('#btn2').css('border-color', '#c29963');
-		$('#btn3').css('color', '#c29963');
-		$('#btn3').css('background-color', '#101012');
-		$('#btn3').css('border-color', '#c29963');
-		$('#ft1').show();
-		$('#ft2').hide();
-		$('#ft3').hide();
-	});
-	$(document).ready(function(index) {
-		$('#btn1').click(function() {
+		
+			 // 파라미터가 담길 배열
+		    var param = new Array();
+		 
+		    // 현재 페이지의 url
+		    var url = decodeURIComponent(location.href);
+		    // url이 encodeURIComponent 로 인코딩 되었을때는 다시 디코딩 해준다.
+		    url = decodeURIComponent(url);
+		 
+		    var params;
+		    // url에서 '?' 문자 이후의 파라미터 문자열까지 자르기
+		    params = url.substring( url.indexOf('?')+1, url.length );
+		    // 파라미터 구분자("&") 로 분리
+		    params = params.split("&");
+		 
+		    // params 배열을 다시 "=" 구분자로 분리하여 param 배열에 key = value 로 담는다.
+		    var size = params.length;
+		    var key, value;
+		    for(var i=0 ; i < size ; i++) {
+		        key = params[i].split("=")[0];
+		        value = params[i].split("=")[1];
+		 
+		        param[key] = value;
+		    }
+		    if(param['pageNum']==null){
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
+			// 					$('#btn1').css('color','#c29963');
+			// 					$('#btn1').css('background-color','#101012');
+			// 					$('#btn1').css('border-color','#c29963');
 			$('#btn2').css('color', '#c29963');
 			$('#btn2').css('background-color', '#101012');
 			$('#btn2').css('border-color', '#c29963');
 			$('#btn3').css('color', '#c29963');
 			$('#btn3').css('background-color', '#101012');
 			$('#btn3').css('border-color', '#c29963');
+			
+//	 			document.write(param['pageNum']);
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
-			var offset = $('#btn1').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
+			}else {
+				$('#btn3').css('color', '#212529');
+				$('#btn3').css('background-color', '#c29963');
+				$('#btn3').css('border-color', '#c29963');
+				$('#btn1').css('color', '#c29963');
+				$('#btn1').css('background-color', '#101012');
+				$('#btn1').css('border-color', '#c29963');
+				$('#btn2').css('color', '#c29963');
+				$('#btn2').css('background-color', '#101012');
+				$('#btn2').css('border-color', '#c29963');
+				$('#ft3').show();
+				$('#ft1').hide();
+				$('#ft2').hide();
+				var offset = $('#btn3').offset();
+				$('body,html').animate({
+					scrollTop : offset.top
+				}, 300);
+			}
+		
+		
+			$('#btn1').click(function() {
+				$('#btn1').css('color', '#212529');
+				$('#btn1').css('background-color', '#c29963');
+				$('#btn1').css('border-color', '#c29963');
+				$('#btn2').css('color', '#c29963');
+				$('#btn2').css('background-color', '#101012');
+				$('#btn2').css('border-color', '#c29963');
+				$('#btn3').css('color', '#c29963');
+				$('#btn3').css('background-color', '#101012');
+				$('#btn3').css('border-color', '#c29963');
+				$('#ft1').show();
+				$('#ft2').hide();
+				$('#ft3').hide();
+				var offset = $('#btn1').offset();
+				$('body,html').animate({
+					scrollTop : offset.top
+				}, 300);
+			});
+		
+		$(document).ready(function(index) {
+			$('#btn2').click(function() {
+				$('#btn2').css('color', '#212529');
+				$('#btn2').css('background-color', '#c29963');
+				$('#btn2').css('border-color', '#c29963');
+				$('#btn1').css('color', '#c29963');
+				$('#btn1').css('background-color', '#101012');
+				$('#btn1').css('border-color', '#c29963');
+				$('#btn3').css('color', '#c29963');
+				$('#btn3').css('background-color', '#101012');
+				$('#btn3').css('border-color', '#c29963');
+				$('#ft2').show();
+				$('#ft1').hide();
+				$('#ft3').hide();
+				var offset = $('#btn2').offset();
+				$('body,html').animate({
+					scrollTop : offset.top
+				}, 300);
+			});
 		});
-	});
-	$(document).ready(function(index) {
-		$('#btn2').click(function() {
-			$('#btn2').css('color', '#212529');
-			$('#btn2').css('background-color', '#c29963');
-			$('#btn2').css('border-color', '#c29963');
-			$('#btn1').css('color', '#c29963');
-			$('#btn1').css('background-color', '#101012');
-			$('#btn1').css('border-color', '#c29963');
-			$('#btn3').css('color', '#c29963');
-			$('#btn3').css('background-color', '#101012');
-			$('#btn3').css('border-color', '#c29963');
-			$('#ft2').show();
-			$('#ft1').hide();
-			$('#ft3').hide();
-			var offset = $('#btn2').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
+		
+			$('#btn3').click(function() {
+				$('#btn3').css('color', '#212529');
+				$('#btn3').css('background-color', '#c29963');
+				$('#btn3').css('border-color', '#c29963');
+				$('#btn1').css('color', '#c29963');
+				$('#btn1').css('background-color', '#101012');
+				$('#btn1').css('border-color', '#c29963');
+				$('#btn2').css('color', '#c29963');
+				$('#btn2').css('background-color', '#101012');
+				$('#btn2').css('border-color', '#c29963');
+				$('#ft3').show();
+				$('#ft1').hide();
+				$('#ft2').hide();
+				var offset = $('#btn3').offset();
+				$('body,html').animate({
+					scrollTop : offset.top
+				}, 300);
+			});
 		});
-	});
-	$(document).ready(function(index) {
-		$('#btn3').click(function() {
-			$('#btn3').css('color', '#212529');
-			$('#btn3').css('background-color', '#c29963');
-			$('#btn3').css('border-color', '#c29963');
-			$('#btn1').css('color', '#c29963');
-			$('#btn1').css('background-color', '#101012');
-			$('#btn1').css('border-color', '#c29963');
-			$('#btn2').css('color', '#c29963');
-			$('#btn2').css('background-color', '#101012');
-			$('#btn2').css('border-color', '#c29963');
-			$('#ft3').show();
-			$('#ft1').hide();
-			$('#ft2').hide();
-			var offset = $('#btn3').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
-		});
-	});
 	
 	$(document).ready(function(){
         var quantitiy=0;
@@ -588,7 +633,7 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill"   id="btn3"
+								<a class="nav-link"  data-toggle="pill"  href="#v-pills-2" id="btn3"
 									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
 							<%  String sessionId = (String) session.getAttribute("id");
@@ -603,7 +648,6 @@ $( '#rere1' ).click(
 								<%  	} 
 									} %>
 					
-								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
 							
 							</div>
 						
@@ -724,7 +768,197 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
+<section class="ftco=section" id="ft3">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="blog-entry align-self-stretch" style="margin: auto;">
+					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
+							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
+							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
+					 	</p>
+<section class="ftco=section" id="ac1">
+						<div class="container">
+							<table class="table thead-light" id="ac1">
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									<%
+										if (qnaList != null && listCount2 > 0) {
+											for (int i = 0; i < qnaList.size(); i++) {
+												System.out.println("싱글페이지:"+ qnaList.size());
+												System.out.println(qnaList.get(i).getQna_re_lev());
+									%>
+									
+								<tr>
+<%-- 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td> --%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size()-((nowPage2-1)*10)-i %></a></td>
+									<% 
+									int wid = 0;
+										if(qnaList.get(i).getQna_re_lev()>0){
+											System.out.println(qnaList.get(i).getQna_re_lev());
+										wid = qnaList.get(i).getQna_re_lev()*10;
+											%>
+											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
+									%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%} %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<tr>
+								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
+											<div class="panel-body">
+												<b><%=qnaList.get(i).getQna_content() %></b>
+												<section class="ftco=section" id="ac1">
+													<div class="container">
+														<div class="col-md-8 ftco-animate div0525">
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
+														</div>
+													</div>
+												</section>
+												
+												<%
+												if(id.equals("admin")){
+													%>
+													<section class="ftco-section">
+		<div class="col-md-5" id="mail">
+			<form id="frm" action="QnaReplyProAction.qna" method="post"
+				class="contact-form" style="width: 100%;">
+				<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
+								name="qna_reply_subject" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
+								name="qna_num" id="qna_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
+								name="qna_item_num" id="qna_reply_subject" required="required">
+					
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">QNA 답글</h2>
+				</div>
+				<table style="width: 100%; text-align: left;">
+					<div class="row">
+					<tr>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" value="<%=id %>"
+								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+						</div>
+						<!-- 						</div> -->
+
+					</tr>
+				</table>
+				<table style="width: 100%; text-align: center;">
+					
+							
+					<tr>
+						<td> <div class="form-group">
+                <textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div></td>
+					</tr>
+					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+					<tr style="display: inline-block;">
+						<td colspan="2"><input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> <input type="submit"
+							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+							value="등록" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+													<%
+													
+												}
+												
+												%>
+											</div>
+										</td>
+								</tr>
+								
+								
+								<%
+									}
+									}
+								%>
+							</table>
+						</div>
+					</section>
+<!-- 					<br> -->
+<!-- 					<br> -->
+<!-- 					<table class="table thead-light"> -->
+<!-- 					<tr>Q & A</tr> -->
+<!-- 						<tr> -->
+<!-- 							<th>번호</th> -->
+<!-- 							<th>제목</th> -->
+<!-- 							<th>날짜</th> -->
+<!-- 							<th>글쓴이</th> -->
+<!-- 							<th>조회수</th> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>2</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>3</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>1</td> -->
+<!-- 							<td><a href="#"><img alt="key" src="./images/zzzz.png"  id="imim">상품 관련 문의입니다.</a></td> -->
+<!-- 							<td>19.04.23</td> -->
+<!-- 							<td>admin</td> -->
+<!-- 							<td>21</td> -->
+<!-- 						</tr> -->
+
+<!-- 					</table> -->
+					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<ul>
+							<% 
+// 							for(int a = startPage2; a<=endPage2;a++){
+						
+							
+							if(startPage2<1){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage2-1 %>'>&lt;</a></li>
+							<%
+							}
+							
+							for(int i = startPage2; i<=endPage2;i++){ 
+								if(i==nowPage2){%>
+								<li class="active"><a><%=i %></a></li>
+								<%
+							}else{
+								%>
+							
+<%-- 									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>#v-pills-2'><%=i %></a></li> --%>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									<%} 
+									
+							if(endPage2 < maxPage2){
+								%>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage2+1 %>'>&gt;</a></li>
+							<%
+							}
+// 							
+						}
+							%>
+								</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</section>
 <section>
 		<div class="container" >
 			<div class="row" >
