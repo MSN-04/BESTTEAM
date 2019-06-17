@@ -16,9 +16,7 @@
 						<div class="col-md-8 col-sm-10 text-center ftco-animate">
 							<h1 class="heading">Get Your Own Taste.</h1>
 							<p>
-								<a href="#"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order
-									Now</a>
+								<a href="shopMain.em" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a>
 							</p>
 						</div>
 					</div>
