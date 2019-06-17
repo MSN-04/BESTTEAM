@@ -46,6 +46,10 @@
 color: #c49b63 !important;
 }
 
+ .menu-entry .img{
+ width:200px; 
+}
+
 </style>
 	<header>
 		<jsp:include page="../inc/header.jsp" />
@@ -63,8 +67,8 @@ color: #c49b63 !important;
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate">
 						<span class="subheading">Café Tinkervell</span>
-						<h1 class="mb-4">Explore New Flavors</h1>
-						<h4 class="mb-4">새로운 맛을 탐험해보세요</h4>
+						<h1 class="mb-4">Explore Flavors</h1>
+						<h4 class="mb-4">새로운 맛을 탐험하세요</h4>
 						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
 						<p>
 							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
@@ -88,8 +92,8 @@ color: #c49b63 !important;
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate">
 						<span class="subheading">Café Tinkervell</span>
-						<h1 class="mb-4">Pick Your Favorite</h1>
-						<h4 class="mb-4">당신의 취향을 골라보세요</h4>
+						<h1 class="mb-4">Pick Your Favorites</h1>
+						<h4 class="mb-4">어떤 원두에 가장 끌리세요?</h4>
 						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
 						<p>
 							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
@@ -146,22 +150,18 @@ color: #c49b63 !important;
 
 	<section class="ftco-about d-md-flex">
 		<div class="one-half0 img0">
-			<img class="img_main" src="./images/about.jpg">
+			<img class="img_main" src="./images/coffeeperson.jpg">
 		</div>
 		<div class="one-half ftco-animate">
 			<div class="overlap">
-				<div class="heading-section ftco-animate">
-					<h3 class="mb-4">Experience Freshness</h3>
+				<div class="heading-section ftco-animate">				
+					<span class="subheading"><i>Experience Freshness</i></span><br>
+					<h4 class="mb-4"><i>커피 이상의 특별한 경험을 소개합니다 </i></h4>
+					
 				</div>
 				<div>
-					<p>On her way she met a copy. The copy warned the Little Blind
-						Text, that where it came from it would have been rewritten a
-						thousand times and everything that was left from its origin would
-						be the word "and" and the Little Blind Text should turn around and
-						return to its own, safe country. But nothing the copy said could
-						convince her and so it didn’t take long until a few insidious Copy
-						Writers ambushed her, made her drunk with Longe and Parole and
-						dragged her into their agency, where they abused her for their.</p>
+					<p>세계인들의 생활속에 스며들어 전 세계의 커피문화를 선도하고 있는 커피팅커벨이<br>
+					일상을 풍요롭게하는 제3의 공간으로서, 어디에서도 고객과 함께하며 새로운 커피문화를 정착시키려 노력하고 있습니다.</p>
 				</div>
 			</div>
 		</div>
@@ -173,7 +173,9 @@ color: #c49b63 !important;
 		<div class="one-half0 img0 ftco-animate">
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
-					<h3 class="mb-4">Roast with confidence</h3>
+					
+					<span class="subheading"><i>Roast with confidence</i></span><br>
+					<h4 class="mb-4"><i>로스팅의 자신감 </i></h4>
 				</div>
 				<div>
 					<p>Try new types of beans, styles, and intensities of roasts.
@@ -197,7 +199,8 @@ color: #c49b63 !important;
 		<div class="one-half ftco-animate">
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
-					<h3 class="mb-4">Meet Elegant Flavor</h3>
+				<span class="subheading"><i>Meet Elegant Flavor</i></span><br>
+					<h4 class="mb-4"><i>우아한 맛을 만나보세요 </i></h4>
 				</div>
 				<div>
 					<p>On her way she met a copy. The copy warned the Little Blind
@@ -218,7 +221,8 @@ color: #c49b63 !important;
 		<div class="one-half0 img0 ftco-animate">
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
-					<h3 class="mb-4">Why Tinkervell</h3>
+					<span class="subheading"><i>Choice Your Taste!</i></span><br>
+					<h4 class="mb-4"><i>당신의 입맛을 골라보세요</i></h4>
 				</div>
 				<div>
 					<p>Try new types of beans, styles, and intensities of roasts.
@@ -249,19 +253,18 @@ color: #c49b63 !important;
 			<div class="row">
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a href="#" class="img"
-							style="background-image: url(./images/menu-1.jpg);"></a>
+						<a href="itemSingle.em?item_num=52" class="img"
+							style="background-image: url(./itemUpload/lesamants.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
-								<a href="#">Coffee Capuccino</a>
+							Les amants
 							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies</p>
+<!-- 							<p>자스민, 캐모마일, 얼그레이 홍차에서 느낄 수 있는 다양한 플로럴 향미가 라임 같은 산뜻한 산미와 잘 어우러져 기분좋은 목넘김을 만들어줌</p> -->
 							<p class="price">
-								<span>$5.90</span>
+								<span>14,300원</span>
 							</p>
 							<p>
-								<a href="#" class="btn btn-primary btn-outline-primary">Add
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
 									to Cart</a>
 							</p>
 						</div>
@@ -269,19 +272,18 @@ color: #c49b63 !important;
 				</div>
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a href="#" class="img"
-							style="background-image: url(./images/menu-2.jpg);"></a>
+						<a href="itemSingle.em?item_num=45" class="img"
+							style="background-image: url(./itemUpload/chocolat.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
-								<a href="#">Coffee Capuccino</a>
+								에스쇼콜라 블렌딩 커피
 							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies</p>
+<!-- 							<p>밀크초콜릿과 달콤 쌉싸래함이 크리미한 촉감과 함께 라운드하게 느껴지고, 풍부하고 밀도 높은 바디감은 물론, 깊은 단맛이 오래동안 여운으로 남는 커피</p> -->
 							<p class="price">
-								<span>$5.90</span>
+								<span>12,000원</span>
 							</p>
 							<p>
-								<a href="#" class="btn btn-primary btn-outline-primary">Add
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
 									to Cart</a>
 							</p>
 						</div>
@@ -289,16 +291,15 @@ color: #c49b63 !important;
 				</div>
 				<div class="col-md-3">
 					<div class="menu-entry">
-						<a href="#" class="img"
-							style="background-image: url(./images/menu-3.jpg);"></a>
+						<a href="itemSingle.em?item_num=48" class="img"
+							style="background-image: url(./itemUpload/seoul.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
-								<a href="#">Coffee Capuccino</a>
+								커피 서울 
 							</h3>
-							<p>A small river named Duden flows by their place and
-								supplies</p>
+							
 							<p class="price">
-								<span>$5.90</span>
+								<span>15,400원</span>
 							</p>
 							<p>
 								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
@@ -369,3 +370,4 @@ color: #c49b63 !important;
 
 </body>
 </html>
+
