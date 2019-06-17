@@ -41,6 +41,12 @@
 </head>
 
 <body>
+<style>
+ .h1{
+color: #c49b63 !important;
+}
+
+</style>
 	<header>
 		<jsp:include page="../inc/header.jsp" />
 		<!-- END nav -->
@@ -56,13 +62,14 @@
 					data-scrollax-parent="true">
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
+						<span class="subheading">Café Tinkervell</span>
 						<h1 class="mb-4">Explore New Flavors</h1>
+						<h4 class="mb-4">새로운 맛을 탐험해보세요</h4>
 						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
 						<p>
 							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
-							<a href="shopMain.em"
-								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order
+							<a href="join.us"
+								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Join
 								Now</a>
 						</p>
 					</div>
@@ -80,8 +87,9 @@
 					data-scrollax-parent="true">
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
+						<span class="subheading">Café Tinkervell</span>
 						<h1 class="mb-4">Pick Your Favorite</h1>
+						<h4 class="mb-4">당신의 취향을 골라보세요</h4>
 						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
 						<p>
 							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
@@ -95,27 +103,27 @@
 			</div>
 		</div>
 
-		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center"
-					data-scrollax-parent="true">
+<!-- 		<div class="slider-item" -->
+<!-- 			style="background-image: url(./images/bg_3.jpg);"> -->
+<!-- 			<div class="overlay"></div> -->
+<!-- 			<div class="container"> -->
+<!-- 				<div -->
+<!-- 					class="row slider-text justify-content-center align-items-center" -->
+<!-- 					data-scrollax-parent="true"> -->
 
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
-						<h1 class="mb-3">ENJOY LIFE WITH COFFEE</h1>
-						<p>
-							<a href="taste.us"
-								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Show
-								Detail</a>
-						</p>
-					</div>
+<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
+<!-- 						<span class="subheading">Welcome</span> -->
+<!-- 						<h1 class="mb-3">ENJOY LIFE WITH COFFEE</h1> -->
+<!-- 						<p> -->
+<!-- 							<a href="taste.us" -->
+<!-- 								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Show -->
+<!-- 								Detail</a> -->
+<!-- 						</p> -->
+<!-- 					</div> -->
 
-				</div>
-			</div>
-		</div>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</section>
 
 	<br>
@@ -123,16 +131,18 @@
 	<jsp:include page="../inc/kakaoChat.jsp" />
 	<!-- 카카오톡 상담 End -->
 
-	<br>
+	<br><br><br><br><br><br>
 	<div class="row justify-content-center mb-5 pb-3">
 		<div class="col-md-7 heading-section ftco-animate text-center">
-			<h2 class="mb-4">Think Coffee's Value</h2>
-			<p>The most awarded coffee roaster. Tinkerbell lets you custom
-				roast fresh beans, explore new flavors, reduce waste. Tinkerbell
-				helps to unlock the advantages of home coffee roasting for even the
-				most novice coffee drinker.</p>
+			<h2 class="mb-4">We Think Coffee's Value</h2>
+			<p> <h3>커피의 가치를 생각하는 카페 팅커벨</h3>
+			팅커벨은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br>
+			팅커벨은 국내 커피 역사를 이끌어 온 정통성과 세계적인 기술력, 커피전문가의 노하우로 고품질의 커피 본연의 맛과 향을 즐길 수 있는 좋은 커피입니다. <br>
+			팅커벨은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
+			마음과 마음이 이어지는 순간 팅커벨은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TinkerVell - </p>
 		</div>
-	</div>
+	</div><br><br><br><br><br><br>
 
 	<section class="ftco-about d-md-flex">
 		<div class="one-half0 img0">
@@ -156,6 +166,7 @@
 			</div>
 		</div>
 	</section>
+	<br><br><br><br><br><br>
 
 	<section class="ftco-about d-md-flex">
 
@@ -179,32 +190,10 @@
 		<div class="one-half img"
 			style="background-image: url(./images/coffee2.jpg);"></div>
 	</section>
-
+<br><br><br><br><br><br>
 	<section class="ftco-about d-md-flex">
 		<div class="one-half img"
 			style="background-image: url(./images/coffee3.jpg);"></div>
-		<div class="one-half ftco-animate">
-			<div class="overlap">
-				<div class="heading-section ftco-animate ">
-					<h3 class="mb-4">Explore New Flavors</h3>
-				</div>
-				<div>
-					<p>On her way she met a copy. The copy warned the Little Blind
-						Text, that where it came from it would have been rewritten a
-						thousand times and everything that was left from its origin would
-						be the word "and" and the Little Blind Text should turn around and
-						return to its own, safe country. But nothing the copy said could
-						convince her and so it didn’t take long until a few insidious Copy
-						Writers ambushed her, made her drunk with Longe and Parole and
-						dragged her into their agency, where they abused her for their.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-about d-md-flex">
-		<div class="one-half img0"
-			style="background-image: url(./images/coffee4.jpg);"></div>
 		<div class="one-half ftco-animate">
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
@@ -222,17 +211,39 @@
 				</div>
 			</div>
 		</div>
+	</section><br><br><br><br><br><br>
+
+	<section class="ftco-about d-md-flex">
+
+		<div class="one-half0 img0 ftco-animate">
+			<div class="overlap">
+				<div class="heading-section ftco-animate ">
+					<h3 class="mb-4">Why Tinkervell</h3>
+				</div>
+				<div>
+					<p>Try new types of beans, styles, and intensities of roasts.
+						And blend them. Kelvin is the first home coffee roasting system
+						that also provides a curated selection of green coffee beans
+						delivered straight to you. By putting the entire process into your
+						hands, you have the control and range to experiment with multiple
+						bean origins, roasting times, blends, and flavors to experience a
+						new side of coffee from first crack to French roast.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="one-half img"
+			style="background-image: url(./images/coffee2.jpg);"></div>
 	</section>
 
-
+<br><br><br><br><br><br><hr>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
-					<span class="subheading">Discover</span>
-					<h2 class="mb-4">Best Coffee Sellers</h2>
-					<p>Far far away, behind the word mountains, far from the
-						countries Vokalia and Consonantia, there live the blind texts.</p>
+					<span class="subheading">Best Quality!</span>
+					<h2 class="mb-4">Tinkervell's <br>Best Seller</h2>
+					<p>커피 팅커벨이 보장하는 퀄리티의 추천상품입니다</p>
 				</div>
 			</div>
 			<div class="row">
@@ -290,7 +301,7 @@
 								<span>$5.90</span>
 							</p>
 							<p>
-								<a href="#" class="btn btn-primary btn-outline-primary">Add
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
 									to Cart</a>
 							</p>
 						</div>
@@ -310,7 +321,7 @@
 								<span>$5.90</span>
 							</p>
 							<p>
-								<a href="#" class="btn btn-primary btn-outline-primary">Add
+								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
 									to Cart</a>
 							</p>
 						</div>
@@ -319,6 +330,7 @@
 			</div>
 		</div>
 	</section>
+	
 
 	
 
