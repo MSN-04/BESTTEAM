@@ -1,4 +1,3 @@
-<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
@@ -7,6 +6,8 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
+
 
 <%
 	request.setCharacterEncoding("utf-8");
@@ -28,25 +29,32 @@
 
 // 	qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
+	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
 	QnaBean qnabean = new QnaBean();
+// 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
 	String qnaSubject = qnabean.getQna_subject();
 	String qnaWriter = qnabean.getQna_writer();
 	
+	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
+// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
+// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 %>
 
+	
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shop ─ Cafe Tinkervell</title>
+<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -78,10 +86,12 @@
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="jquery.bxslider/jquery.bxslider.js"></script>
+
 
 <script type="text/javascript">
 //삭제 확인메세지
@@ -94,6 +104,7 @@ function delconfirm(num,item_num) {
 	return false;
 }
 	 
+// $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
 showSlides(slideIndex);
 // Next/previous controls
@@ -160,33 +171,33 @@ function showSlides(n) {
 
 <script type="text/javascript">
 // 상세정보, 리뷰, qna 버튼 작동 자바스크립트
+	//  		$(document).ready(function(index){
+	//  			$('#btn1').click(function(){
+	//  				$('.ftco-section').show();
+	//  	 		    $('.ftco-section').focus();
+	//  	 		  $('.ftco=section').hide();
+	//  				});
+	//  			});
+	//  		});
 	$(document).ready(function(index) {
-		
-			 // 파라미터가 담길 배열
-		    var param = new Array();
-		 
-		    // 현재 페이지의 url
-		    var url = decodeURIComponent(location.href);
-		    // url이 encodeURIComponent 로 인코딩 되었을때는 다시 디코딩 해준다.
-		    url = decodeURIComponent(url);
-		 
-		    var params;
-		    // url에서 '?' 문자 이후의 파라미터 문자열까지 자르기
-		    params = url.substring( url.indexOf('?')+1, url.length );
-		    // 파라미터 구분자("&") 로 분리
-		    params = params.split("&");
-		 
-		    // params 배열을 다시 "=" 구분자로 분리하여 param 배열에 key = value 로 담는다.
-		    var size = params.length;
-		    var key, value;
-		    for(var i=0 ; i < size ; i++) {
-		        key = params[i].split("=")[0];
-		        value = params[i].split("=")[1];
-		 
-		        param[key] = value;
-		    }
-		    //qna페이징처리
-		    if(param['pageNum']==null){
+		$('#btn1').css('color', '#212529');
+		$('#btn1').css('background-color', '#c29963');
+		$('#btn1').css('border-color', '#c29963');
+		// 					$('#btn1').css('color','#c29963');
+		// 					$('#btn1').css('background-color','#101012');
+		// 					$('#btn1').css('border-color','#c29963');
+		$('#btn2').css('color', '#c29963');
+		$('#btn2').css('background-color', '#101012');
+		$('#btn2').css('border-color', '#c29963');
+		$('#btn3').css('color', '#c29963');
+		$('#btn3').css('background-color', '#101012');
+		$('#btn3').css('border-color', '#c29963');
+		$('#ft1').show();
+		$('#ft2').hide();
+		$('#ft3').hide();
+	});
+	$(document).ready(function(index) {
+		$('#btn1').click(function() {
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
@@ -196,127 +207,55 @@ function showSlides(n) {
 			$('#btn3').css('color', '#c29963');
 			$('#btn3').css('background-color', '#101012');
 			$('#btn3').css('border-color', '#c29963');
-			
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
-			}else {
-				$('#btn3').css('color', '#212529');
-				$('#btn3').css('background-color', '#c29963');
-				$('#btn3').css('border-color', '#c29963');
-				$('#btn1').css('color', '#c29963');
-				$('#btn1').css('background-color', '#101012');
-				$('#btn1').css('border-color', '#c29963');
-				$('#btn2').css('color', '#c29963');
-				$('#btn2').css('background-color', '#101012');
-				$('#btn2').css('border-color', '#c29963');
-				$('#ft3').show();
-				$('#ft1').hide();
-				$('#ft2').hide();
-				var offset = $('#btn3').offset();
-				$('body,html').animate({
-					scrollTop : offset.top
-				}, 300);
-			}
-		    
-		    //review 페이징처리
-		    if(param['page']==null){
-			$('#btn1').css('color', '#212529');
-			$('#btn1').css('background-color', '#c29963');
-			$('#btn1').css('border-color', '#c29963');
-			// 					$('#btn1').css('color','#c29963');
-			// 					$('#btn1').css('background-color','#101012');
-			// 					$('#btn1').css('border-color','#c29963');
-			$('#btn2').css('color', '#c29963');
-			$('#btn2').css('background-color', '#101012');
+			var offset = $('#btn1').offset();
+			$('body,html').animate({
+				scrollTop : offset.top
+			}, 300);
+		});
+	});
+	$(document).ready(function(index) {
+		$('#btn2').click(function() {
+			$('#btn2').css('color', '#212529');
+			$('#btn2').css('background-color', '#c29963');
 			$('#btn2').css('border-color', '#c29963');
+			$('#btn1').css('color', '#c29963');
+			$('#btn1').css('background-color', '#101012');
+			$('#btn1').css('border-color', '#c29963');
 			$('#btn3').css('color', '#c29963');
 			$('#btn3').css('background-color', '#101012');
 			$('#btn3').css('border-color', '#c29963');
-			
-//	 			document.write(param['pageNum']);
-			$('#ft1').show();
-			$('#ft2').hide();
+			$('#ft2').show();
+			$('#ft1').hide();
 			$('#ft3').hide();
-			}else {
-				$('#btn2').css('color', '#212529');
-				$('#btn2').css('background-color', '#c29963');
-				$('#btn2').css('border-color', '#c29963');
-				$('#btn1').css('color', '#c29963');
-				$('#btn1').css('background-color', '#101012');
-				$('#btn1').css('border-color', '#c29963');
-				$('#btn3').css('color', '#c29963');
-				$('#btn3').css('background-color', '#101012');
-				$('#btn3').css('border-color', '#c29963');
-				$('#ft2').show();
-				$('#ft1').hide();
-				$('#ft3').hide();
-				var offset = $('#btn2').offset();
-				$('body,html').animate({
-					scrollTop : offset.top
-				}, 300);
-			}
-		
-		
-			$('#btn1').click(function() {
-				$('#btn1').css('color', '#212529');
-				$('#btn1').css('background-color', '#c29963');
-				$('#btn1').css('border-color', '#c29963');
-				$('#btn2').css('color', '#c29963');
-				$('#btn2').css('background-color', '#101012');
-				$('#btn2').css('border-color', '#c29963');
-				$('#btn3').css('color', '#c29963');
-				$('#btn3').css('background-color', '#101012');
-				$('#btn3').css('border-color', '#c29963');
-				$('#ft1').show();
-				$('#ft2').hide();
-				$('#ft3').hide();
-				var offset = $('#btn1').offset();
-				$('body,html').animate({
-					scrollTop : offset.top
-				}, 300);
-			});
-		
-		$(document).ready(function(index) {
-			$('#btn2').click(function() {
-				$('#btn2').css('color', '#212529');
-				$('#btn2').css('background-color', '#c29963');
-				$('#btn2').css('border-color', '#c29963');
-				$('#btn1').css('color', '#c29963');
-				$('#btn1').css('background-color', '#101012');
-				$('#btn1').css('border-color', '#c29963');
-				$('#btn3').css('color', '#c29963');
-				$('#btn3').css('background-color', '#101012');
-				$('#btn3').css('border-color', '#c29963');
-				$('#ft2').show();
-				$('#ft1').hide();
-				$('#ft3').hide();
-				var offset = $('#btn2').offset();
-				$('body,html').animate({
-					scrollTop : offset.top
-				}, 300);
-			});
+			var offset = $('#btn2').offset();
+			$('body,html').animate({
+				scrollTop : offset.top
+			}, 300);
 		});
-		
-			$('#btn3').click(function() {
-				$('#btn3').css('color', '#212529');
-				$('#btn3').css('background-color', '#c29963');
-				$('#btn3').css('border-color', '#c29963');
-				$('#btn1').css('color', '#c29963');
-				$('#btn1').css('background-color', '#101012');
-				$('#btn1').css('border-color', '#c29963');
-				$('#btn2').css('color', '#c29963');
-				$('#btn2').css('background-color', '#101012');
-				$('#btn2').css('border-color', '#c29963');
-				$('#ft3').show();
-				$('#ft1').hide();
-				$('#ft2').hide();
-				var offset = $('#btn3').offset();
-				$('body,html').animate({
-					scrollTop : offset.top
-				}, 300);
-			});
+	});
+	$(document).ready(function(index) {
+		$('#btn3').click(function() {
+			$('#btn3').css('color', '#212529');
+			$('#btn3').css('background-color', '#c29963');
+			$('#btn3').css('border-color', '#c29963');
+			$('#btn1').css('color', '#c29963');
+			$('#btn1').css('background-color', '#101012');
+			$('#btn1').css('border-color', '#c29963');
+			$('#btn2').css('color', '#c29963');
+			$('#btn2').css('background-color', '#101012');
+			$('#btn2').css('border-color', '#c29963');
+			$('#ft3').show();
+			$('#ft1').hide();
+			$('#ft2').hide();
+			var offset = $('#btn3').offset();
+			$('body,html').animate({
+				scrollTop : offset.top
+			}, 300);
 		});
+	});
 	
 	$(document).ready(function(){
         var quantitiy=0;
@@ -335,10 +274,15 @@ function showSlides(n) {
                  	quantity = quantity - 1;
                  	$(this).siblings('.quantity').val(quantity);
                  }
+                 
             });
+             
+             
+            
      });
 	
 	// review 조회수
+	
 	function read() {
 		var keyword = reviewhidden.value;
 		var params = "review_num="+keyword;
@@ -385,22 +329,51 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
+
+<!-- <style type="text/css"> -->
+<!--  b {  -->
+<!--  	font-size: 25px;  -->
+<!--  	font-color: gold;  -->
+<!--  }  -->
+<!--  .nav-link {  -->
+<!--  	backgound-color: #c49B63;  -->
+<!--  }  -->
+<!--  .nav-link active {  -->
+<!--  	backgound-color: #c49B63;  -->
+<!--  }  -->
+<!--  .ftco-menu {  -->
+<!--  	padding-top: 12em !important;  -->
+<!--  }  -->
+<!--  .pb-5, .py-5 {  -->
+<!--  	padding-bottom: 0 !important;  -->
+<!--  }  -->
+<!--  .mb-5, .my-5 {  -->
+<!--  	margin-bottom: 0 !important;  -->
+<!--  }  -->
+<!--  .table tbody tr td {  -->
+<!--  	text-align: left !important;  -->
+<!--  }  -->
+<!--  .div0525 {  -->
+<!--  	float: right !important;  -->
+<!--  }  -->
+<!-- </style>  -->
+	
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
 %>
- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('#cart').on('click',function(){
-			if('<%=id %>' != 'null' ) {
+			if('<%=id%>' != 'null' ) {
 				$.ajax({
 					url : 'cartInsert.sh',
 					type : 'get',
 					data : {
-						"item_num" : <%=itemBean.getItem_num() %>,
+						"item_num" : <%=itemBean.getItem_num()%>,
 						"quantity" : $('#quantity').val(),
-						"item_price" : <%=itemBean.getItem_price() %>,
-						"cart_img" : '<%=itemBean.getItem_img() %>',
-						"cart_item_name" : '<%=itemBean.getItem_name() %>'
+						"item_price" : <%=itemBean.getItem_price()%>,
+						"cart_img" : '<%=itemBean.getItem_img()%>',
+						"cart_item_name" : '<%=itemBean.getItem_name()%>'
 					},
 					success : function(data) {
 						
@@ -412,7 +385,7 @@ $( '#rere1' ).click(
 						} else if (data == -1) {
 							alert('장바구니 등록에 실패하였습니다.');
 						} else if (data == 2) {
-							var con = confirm('장바구니에 동일한 상품이 있습니다.\n변경하시겠습니까?');
+							var con = confirm('장바구니에 동일한 상품이 있습니다.\n상품 수량을 변경하시겠습니까?');
 							if (con == true) {
 								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val();
 							}
@@ -422,12 +395,59 @@ $( '#rere1' ).click(
 						
 					},
 					error : function(request, status, error) {
+// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 			} else {
 				alert('로그인 후 이용해주세요.');
 			}
 			
+		});
+		
+		$('#buy').on('click',function(){ 
+			if('<%=id%>' != 'null' ) {
+				$.ajax({
+					url : 'cartCheck.sh',
+					type : 'get',
+					success : function(data) {
+						if (data < 0){
+							alert('장바구니에 담겨있는 상품도 함께 주문됩니다.\n원치 않으실 경우 장바구니를 비워주세요.');
+						} else {
+<%-- 							location.href="cartInsert.sh?item_num=<%=itemBean.getItem_num()%>&quantity="+ $('#quantity').val() +"&item_price=<%=itemBean.getItem_price()%>&cart_img=<%=itemBean.getItem_img()%>&cart_item_name=<%=itemBean.getItem_name()%>"; --%>
+							$.ajax({
+								url : 'cartInsert.sh',
+								type : 'get',
+								data : {
+									"item_num" : <%=itemBean.getItem_num()%>,
+									"quantity" : $('#quantity').val(),
+									"item_price" : <%=itemBean.getItem_price()%>,
+									"cart_img" : '<%=itemBean.getItem_img()%>',
+									"cart_item_name" : '<%=itemBean.getItem_name()%>'
+								},
+								success : function(data) {
+									
+									if (data == 1){
+										alert('해당상품이 주문됩니다.');
+										location.href="checkout.sh";
+									} else {
+										alert('알 수 없는 오류가 발생하였습니다.\n오류가 지속된다면 문의부탁바랍니다.');
+									}
+									
+								},
+								error : function(request, status, error) {
+							//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+								}
+							});
+						
+						}
+					},
+					error : function(request, status, error) {
+						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				});
+			} else {
+				alert('로그인 후 이용해주세요.');
+			}
 		});
 	});
 </script>
@@ -436,8 +456,29 @@ $( '#rere1' ).click(
 	<header>
 		<jsp:include page="/inc/header.jsp" />
 	</header>
+	<section class="home-slider owl-carousel">
+		<div class="slider-item"
+			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div
+					class="row slider-text justify-content-center align-items-center">
+					<div class="col-md-7 col-sm-12 text-center ftco-animate">
+
+						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
+						<p class="breadcrumbs">
+							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	
-	<br><br><br><br><br>
+<!-- 카카오톡 상담 -->
+<jsp:include page="../inc/kakaoChat.jsp"/>
+<!-- 카카오톡 상담 End -->
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -461,16 +502,21 @@ $( '#rere1' ).click(
       <img src="./images/tt5.jpg"  id="sd">
   </div>
   
+  <!-- Next and previous buttons -->
+<!--   <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
+<!--   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+  <!-- Image text -->
   <div class="caption-container">
     <p id="caption"></p>
   </div>
+  <!-- Thumbnail images -->
   
 </div>
 				
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3><%=itemBean.getItem_name() %></h3>
 					<p class="price">
-						<span><%=NumberFormat.getInstance().format(itemBean.getItem_price()) %> 원</span>
+						<span><%=itemBean.getItem_price() %> 원</span>
 					</p>
 					<p><%=itemBean.getItem_info() %></p>
 					<div class="col-md-12 mb-3">
@@ -488,7 +534,11 @@ $( '#rere1' ).click(
 						</div>
 						<div class="w-100"></div>
 						<div class="input-group col-md-6 d-flex mb-3">
+
 							<div class="input-group mb-3">
+                  
+                    
+<!--               <span class="input-group-btn ml-2"> -->
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
@@ -496,13 +546,37 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
+<!--                  </span> -->
                       </div>
 						</div>
 					</div>
 					<p>
 					
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
-						<a href="cart.html" class="btn btn-primary py-3 px-5">BUY</a>
+						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">BUY</a>
+						
+		
+						
+								
+		<div class="row1">
+					
+   <div class="row1">
+    <div class="column">
+      <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
+    </div>
+    <div class="column"> 
+      <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt="">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt="">
+    </div>
+    <div class="column">
+      <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt="">
+    </div>
+    
+  </div>
+					
+				</div>
 			</div>
 		</div>
 	</section>
@@ -514,11 +588,10 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-
-								<a class="nav-link"  data-toggle="pill" href="#v-pills-2" id="btn3"
-									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;">상품Q&A</a>  
+								<a class="nav-link"  data-toggle="pill"   id="btn3"
+									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
-								<%  String sessionId = (String) session.getAttribute("id");
+							<%  String sessionId = (String) session.getAttribute("id");
 							
 									if(sessionId != null) {
 										if(sessionId.equals("admin")) { %>
@@ -530,6 +603,7 @@ $( '#rere1' ).click(
 								<%  	} 
 									} %>
 					
+								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
 							
 							</div>
 						
@@ -554,6 +628,9 @@ $( '#rere1' ).click(
 		<div class="container">
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch">
+				
+					
+ 					
 					<table class="table thead-light" id="ac1">
                 <tr>
                   <td><a data-toggle="collapse">번호</a></td>
@@ -561,6 +638,7 @@ $( '#rere1' ).click(
                   <td><a data-toggle="collapse">작성일</a></td>
                   <td><a data-toggle="collapse">작성자</a></td>
                   <td><a data-toggle="collapse">조회수</a></td>
+                  
                   
                   </tr>
                   <%
@@ -574,6 +652,9 @@ $( '#rere1' ).click(
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
                   <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
                   
+<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
+                  
+                    
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
@@ -592,6 +673,7 @@ $( '#rere1' ).click(
                               <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
                             
                 </td></tr>
+                
                 
                 <%
                       }
@@ -642,175 +724,7 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-
-	<section class="ftco=section" id="ft3">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch" style="margin: auto;">
-					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
-							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
-							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
-							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-					 	</p>
-					<section class="ftco=section" id="ac1">
-						<div class="container">
-							<table class="table thead-light" id="ac1">
-								<tr>
-									<td><a data-toggle="collapse">번호</a></td>
-									<td><a data-toggle="collapse">제목 </a></td>
-									<td><a data-toggle="collapse">작성자</a></td>
-									<td><a data-toggle="collapse">작성일</a></td>
-									</tr>
-									<%
-										if (qnaList != null && listCount2 > 0) {
-											for (int i = 0; i < qnaList.size(); i++) {
-												System.out.println("싱글페이지:"+ qnaList.size());
-												System.out.println(qnaList.get(i).getQna_re_lev());
-									%>
-									
-								<tr>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
-									<% 
-									int wid = 0;
-										if(qnaList.get(i).getQna_re_lev()>0){
-											System.out.println(qnaList.get(i).getQna_re_lev());
-										wid = qnaList.get(i).getQna_re_lev()*10;
-											%>
-											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
-									<%	}else{
-									%>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
-									<%} %>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
-								</tr>
-								<tr>
-								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<div class="panel-body">
-											<% if(id.equals(qnaList.get(i).getQna_writer())||id.equals("admin")){ %>
-												<b><%=qnaList.get(i).getQna_content() %></b>
-												<section class="ftco=section" id="ac1">
-													<div class="container">
-														<div class="col-md-8 ftco-animate div0525">
-															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
-														</div>
-													</div>
-												</section>
-												
-												<%
-												if(id.equals("admin")){
-													%>
-													<section class="ftco-section">
-		<div class="col-md-5" id="mail">
-			<form id="frm" action="QnaReplyProAction.qna" method="post"
-				class="contact-form" style="width: 100%;">
-				<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
-								name="qna_reply_subject" id="qna_reply_subject" required="required">
-								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
-								name="qna_num" id="qna_reply_subject" required="required">
-								<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
-								name="qna_item_num" id="qna_reply_subject" required="required">
-					
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">QNA 답글</h2>
-				</div>
-				<table style="width: 100%; text-align: left;">
-					<div class="row">
-					<tr>
-						<!-- 						<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" value="<%=id %>"
-								name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
-						</div>
-						<!-- 						</div> -->
-
-					</tr>
-					
-					</div>
-				</table>
-				<table style="width: 100%; text-align: center;">
-					
-							
-					<tr>
-						<td> <div class="form-group">
-                <textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div></td>
-					</tr>
-					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
-					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /> <input type="submit"
-							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="등록" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</section>
-	<%}
-											}else{%>
-				<div class="panel-body">
-				<b>작성자만 볼 수 있습니다.</b>
-				</div>
-				<%	
-				}
-				%>		
-												
-											</div>
-										</td>
-								</tr>
-								
-								
-								<%
-									}
-										}
-								%>
-							</table>
-						</div>
-					</section>
-					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-			
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-							<% 
-							if(startPage<1){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage-1 %>'>&lt;</a></li>
-							<%
-							}
-							
-							for(int i = startPage2; i<=endPage2;i++){ 
-								if(i==nowPage2){%>
-								<li class="active"><a><%=i %></a></li>
-								<%
-							}else{
-								%>
-							
-									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
-									
-									<%} 
-									
-							if(endPage2 < maxPage2){
-								%>
-								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
-							<%
-							}
-
-						}
-							%>
-								</ul>
-				</div>
-			</div>
-		</div>
-		</div>
-		</div>
-		</div>
-	</section>
-	
+<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
 <section>
 		<div class="container" >
 			<div class="row" >
