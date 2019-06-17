@@ -1,60 +1,72 @@
-<%@page import="vo.CartBean"%>
-<%@page import="vo.QnaBean"%>
+<%@page import="java.util.SimpleTimeZone"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="vo.PageInfo"%>
-<%@page import="vo.ReviewBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="vo.ItemBean"%>
+<%@page import="vo.UserBean"%>
+<%@page import="vo.BlogCommentBean"%>
+<%@page import="vo.BlogBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
-
-
 <%
-	request.setCharacterEncoding("utf-8");
-	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
-	// request.getAttribute() 메서드로 가져오기
-	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-	String id=(String)session.getAttribute("id");
-	System.out.println(id);
-	int listCount = pageInfo.getListCount();
-	int nowPage = pageInfo.getPage();
-	int maxPage = pageInfo.getMaxPage();
-	int startPage = pageInfo.getStartPage();
-	int endPage = pageInfo.getEndPage();
+	BlogBean article = (BlogBean) request.getAttribute("article");
+	ArrayList<BlogCommentBean> articleList = (ArrayList<BlogCommentBean>) request.getAttribute("articleList");
 	
-	int pageSize = 5;
-	int pageBlock =3;
-	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
+	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String nowPage = (String) request.getAttribute("page"); 
 
-// 	qna
-	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
-	QnaBean qnabean = new QnaBean();
-// 	UserBean userbean = new UserBean();
-	int qnaNum = qnabean.getQna_num();
-	String qnaSubject = qnabean.getQna_subject();
-	String qnaWriter = qnabean.getQna_writer();
+// 	UserBean userbean = (UserBean)request.getAttribute("userBean");
+// 	String userName = userbean.getUser_name();
+// 	String userId = userbean.getUser_id();
+// 	String id = session.getAttribute("id").toString();
 	
-	
-	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
-	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
-	int listCount2 = pageInfo2.getListCount();
-	int nowPage2 = pageInfo2.getPage();
-	int maxPage2 = pageInfo2.getMaxPage();
-	int startPage2 = pageInfo2.getStartPage();
-	int endPage2 = pageInfo2.getEndPage();
-// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
-	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
+	String comment_writer = request.getParameter("comment_writer");
+	String comment_content = request.getParameter("comment_content");
+
+	// 댓글에 있는 날짜 포맷 변환
+	Date today = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+	SimpleDateFormat time = new SimpleDateFormat("k:mm");
+// 	June 27, 2018 at 2:21pm 형식
+
+	System.out.println("오늘 날짜는 " + sdf.format(today));
+	System.out.println("현재 시간은 " + time.format(today));
 %>
 
+	<script language="javascript">
+	function delconfirm(num) {
+		var message = confirm("이 게시글을 삭제하시겠습니까?");
+		if (message == true) {
+			location.href = "./BlogCommentDeletePro.bl?num=" + num;
+		} else
+			alert("취소되었습니다.");
+		return false;
+	}
+
+	// 댓글창 숨기기
+	function SirenFunction(idMyDiv){
+	     var objDiv = document.getElementById(idMyDiv);
+	     if(objDiv.style.display=="block"){ objDiv.style.display = "none"; }
+	      else{ objDiv.style.display = "block"; }
+	}
 	
- 
+	// 댓글 삭제
+	function delCmt(comment_num) {
+		var message = confirm("이 댓글을 삭제하시겠습니까?");
+		if (message == true) {
+			location.href = "./BlogCommentDeletePro.bl?comment_num="
+					+ comment_num;
+		} else
+			alert("취소되었습니다.");
+		return false;
+	}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Blog ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,693 +93,466 @@
 
 <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="./css/jquery.timepicker.css">
-<link rel="stylesheet" href="./css/product-single.css">
+
 
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
-<link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="jquery.bxslider/jquery.bxslider.js"></script>
 
 
-<script type="text/javascript">
-//삭제 확인메세지
-function delconfirm(num,item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까?"+item_num);
-	if (message == true) {
-		location.href = "./qnaDeletePro.qna?qan_num=" + num+"&item_num="+item_num;
-	} else
-		alert("취소되었습니다");
-	return false;
+<style type="text/css">
+.col-md-8 {
+	flex: auto;
+	margin: auto;
+	max-width: 80%;
 }
-	 
-// $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
-var slideIndex = 1;
-showSlides(slideIndex);
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-		
-</script>
-<script src="./js/jquery-3.3.1.js"></script>
-<script  type="text/javascript" src="./js/httpRequest.js"></script>
-<script type="text/javascript">
-// qna 안  카테고리 버튼 작동 자바스크립트
- 	$(document).ready(function(index) {
- 		$('#ac1').show();
- 		$('#ac2').hide();
- 		$('#ac3').hide();
- 	});
- 	$(document).ready(function(index) {
- 		$('#btn1_1').click(function() {
- 			$('#ac1').show();
- 			$('#ac2').hide();
- 			$('#ac3').hide();
- 			var offset = $('#btn1_1').offset();
- 		});
- 	});
- 	$(document).ready(function(index) {
- 		$('#btn2_1').click(function() {
- 			$('#ac1').hide();
- 			$('#ac2').show();
- 			$('#ac3').hide();
- 			var offset = $('#btn2_1').offset();
- 		});
- 	});
- 	$(document).ready(function(index) {
- 		$('#btn3_1').click(function() {
- 			$('#ac1').hide();
- 			$('#ac2').hide();
- 			$('#ac3').show();
- 			var offset = $('#btn3_1').offset();
- 		});
- 	});
-</script> 
 
-<script type="text/javascript">
-// 상세정보, 리뷰, qna 버튼 작동 자바스크립트
-	//  		$(document).ready(function(index){
-	//  			$('#btn1').click(function(){
-	//  				$('.ftco-section').show();
-	//  	 		    $('.ftco-section').focus();
-	//  	 		  $('.ftco=section').hide();
-	//  				});
-	//  			});
-	//  		});
-	$(document).ready(function(index) {
-		$('#btn1').css('color', '#212529');
-		$('#btn1').css('background-color', '#c29963');
-		$('#btn1').css('border-color', '#c29963');
-		// 					$('#btn1').css('color','#c29963');
-		// 					$('#btn1').css('background-color','#101012');
-		// 					$('#btn1').css('border-color','#c29963');
-		$('#btn2').css('color', '#c29963');
-		$('#btn2').css('background-color', '#101012');
-		$('#btn2').css('border-color', '#c29963');
-		$('#btn3').css('color', '#c29963');
-		$('#btn3').css('background-color', '#101012');
-		$('#btn3').css('border-color', '#c29963');
-		$('#ft1').show();
-		$('#ft2').hide();
-		$('#ft3').hide();
-	});
-	$(document).ready(function(index) {
-		$('#btn1').click(function() {
-			$('#btn1').css('color', '#212529');
-			$('#btn1').css('background-color', '#c29963');
-			$('#btn1').css('border-color', '#c29963');
-			$('#btn2').css('color', '#c29963');
-			$('#btn2').css('background-color', '#101012');
-			$('#btn2').css('border-color', '#c29963');
-			$('#btn3').css('color', '#c29963');
-			$('#btn3').css('background-color', '#101012');
-			$('#btn3').css('border-color', '#c29963');
-			$('#ft1').show();
-			$('#ft2').hide();
-			$('#ft3').hide();
-			var offset = $('#btn1').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
-		});
-	});
-	$(document).ready(function(index) {
-		$('#btn2').click(function() {
-			$('#btn2').css('color', '#212529');
-			$('#btn2').css('background-color', '#c29963');
-			$('#btn2').css('border-color', '#c29963');
-			$('#btn1').css('color', '#c29963');
-			$('#btn1').css('background-color', '#101012');
-			$('#btn1').css('border-color', '#c29963');
-			$('#btn3').css('color', '#c29963');
-			$('#btn3').css('background-color', '#101012');
-			$('#btn3').css('border-color', '#c29963');
-			$('#ft2').show();
-			$('#ft1').hide();
-			$('#ft3').hide();
-			var offset = $('#btn2').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
-		});
-	});
-	$(document).ready(function(index) {
-		$('#btn3').click(function() {
-			$('#btn3').css('color', '#212529');
-			$('#btn3').css('background-color', '#c29963');
-			$('#btn3').css('border-color', '#c29963');
-			$('#btn1').css('color', '#c29963');
-			$('#btn1').css('background-color', '#101012');
-			$('#btn1').css('border-color', '#c29963');
-			$('#btn2').css('color', '#c29963');
-			$('#btn2').css('background-color', '#101012');
-			$('#btn2').css('border-color', '#c29963');
-			$('#ft3').show();
-			$('#ft1').hide();
-			$('#ft2').hide();
-			var offset = $('#btn3').offset();
-			$('body,html').animate({
-				scrollTop : offset.top
-			}, 300);
-		});
-	});
-	
-	$(document).ready(function(){
-        var quantitiy=0;
-           $('.quantity-right-plus').click(function(e){
-                
-                var quantity = parseInt($(this).siblings('.quantity').val());
-                if (quantity>=1) {
-                	quantity = quantity + 1;
-                	$(this).siblings('.quantity').val(quantity);
-                }
-                
-            });
-             $('.quantity-left-minus').click(function(e){
-            	 var quantity = parseInt($(this).siblings('.quantity').val());
-                 if (quantity>1) {
-                 	quantity = quantity - 1;
-                 	$(this).siblings('.quantity').val(quantity);
-                 }
-                 
-            });
-             
-             
-            
-     });
-	
-	// review 조회수
-	
-	function read() {
-		var keyword = reviewhidden.value;
-		var params = "review_num="+keyword;
-	      sendRequest("reviewRead.re", params, displayResult, 'POST');
-	}
-</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"> 
-<script src="https://code.jquery.com/jquery-1.11.3.js"></script> 
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
-<script> 
-var j = $.noConflict(true); // $.noConflict(true) 를 사용해서 $ -> 변수로 선언한 j로 바꾸니 해결!
-j(document).ready(function(){ 
-    var main = j('.bxslider').bxSlider({ 
-    mode: 'fade', 
-    auto: true,	//자동으로 슬라이드 
-    controls : true,	//좌우 화살표	
-    autoControls: true,	//stop,play 
-    pager:true,	//페이징 
-    pause: 3000, 
-    autoDelay: 0,	
-    slideWidth: 800, 
-    speed: 300, 
-    stopAutoOnclick:true 
-}); 
-j(".bx-stop").click(function(){	// 중지버튼 눌렀을때 
-    main.stopAuto(); 
-    j(".bx-stop").hide(); 
-    j(".bx-start").show(); 
-    return false; 
-}); 
-j(".bx-start").click(function(){	//시작버튼 눌렀을때 
-    main.startAuto(); 
-    j(".bx-start").hide(); 
-    j(".bx-stop").show(); 
-    return false; 
-}); 
-j(".bx-start").hide();	//onload시 시작버튼 숨김. 
-}); 
-$(document).ready(function(){
-	$("#rere").hide();
-$( '#rere1' ).click(
-	    function() {
-	        $( '#rere' ).toggle();
-	    }
-	);
- </script> 
+.sir_singo_msg {
+	color: #934545;
+	margin-bottom: 30px
+}
 
-<!-- <style type="text/css"> -->
-<!--  b {  -->
-<!--  	font-size: 25px;  -->
-<!--  	font-color: gold;  -->
-<!--  }  -->
-<!--  .nav-link {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .nav-link active {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .ftco-menu {  -->
-<!--  	padding-top: 12em !important;  -->
-<!--  }  -->
-<!--  .pb-5, .py-5 {  -->
-<!--  	padding-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .mb-5, .my-5 {  -->
-<!--  	margin-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .table tbody tr td {  -->
-<!--  	text-align: left !important;  -->
-<!--  }  -->
-<!--  .div0525 {  -->
-<!--  	float: right !important;  -->
-<!--  }  -->
-<!-- </style>  -->
-	
-<%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-%>
+.sir_singo_msg button {
+	cursor: pointer;
+	font-family: Arial, '돋움', Dotum;
+	border: none;
+	padding: 0;
+	background: #fff;
+	outline: 0
+}
+
+.sir_singo_msg .blind_view {
+	font-size: 1.14em;
+	font-weight: bold;
+	color: #ffffff;
+	margin-top: -3px;
+	text-decoration: underline
+}
+
+.singo_view {
+	display: none;
+}
+
+.col-md-8 img {
+	width: 100%;
+} /* 폼에 들어가는 사진 크기 조정(반드시 필요) */
+.col-md-8 p { /* 자동 개행 */
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.row {
+	flex-wrap: nowrap;
+}
+
+/*     	@media screen and (max-width: 991px) */
+.hide-menu {
+	display: none;
+}
+
+.side-small-menu {
+	position: fixed;
+}
+
+.side-small-menu path {
+	border: 1px solid white;
+	fill: rgb(190, 190, 190);
+}
+
+.side-small-menu {
+	padding: 0;
+	list-style: none;
+	list-style-image: none;
+	top: 155px;
+	transform: translateY(-35px) translateX(-20px);
+}
+
+.side-small-menu>li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+
+.side-small-menu button {
+	-webkit-tap-highlight-color: transparent;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+	box-sizing: border-box;
+	border-style: outset;
+	border-width: 0;
+}
+
+.fadeIn {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s 0s, opacity .3s 0s;
+}
+
+.fadeOut {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s .3s, opacity .3s 0s;
+}
+
+.up-button {
+	position: fixed;
+	right: 16px;
+	bottom: 16px;
+	z-index: 50;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #242424;
+	background-image:
+		url("https://assets.website-files.com/5c330a4a121342bde4045c5d/5c35885e1c5d6080565a921c_chevrons-up-white.svg");
+	background-position: 50% 46%;
+	background-size: 20px;
+	background-repeat: no-repeat;
+	transition: all 400ms cubic-bezier(.215, .61, .355, 1);
+}
+
+.w-inline-block {
+	max-width: 100%;
+}
+</style>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#cart').on('click',function(){
-			if('<%=id%>' != 'null' ) {
-				$.ajax({
-					url : 'cartInsert.sh',
-					type : 'get',
-					data : {
-						"item_num" : <%=itemBean.getItem_num()%>,
-						"quantity" : $('#quantity').val(),
-						"item_price" : <%=itemBean.getItem_price()%>,
-						"cart_img" : '<%=itemBean.getItem_img()%>',
-						"cart_item_name" : '<%=itemBean.getItem_name()%>'
-					},
-					success : function(data) {
-						
-						if (data == 1){
-							var con = confirm('장바구니에 등록되었습니다.\n장바구니로 이동하시겠습니까?');
-							if (con == true) {
-								location.href="cart.sh";
+	$(document)
+			.ready(
+					function() {
+						$(window)
+								.scroll(
+										function() { //스크롤하면 아래 코드 실행
+											var num = $(this).scrollTop(); // 스크롤값
+											if (num >= 700) { // 스크롤을 36이상 했을 때
+												$('.side-small-menu')
+														.removeClass('fadeOut')
+														.addClass('fadeIn');
+												$('#goTop')
+														.css(
+																{
+																	'transform' : 'translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
+																	'opacity' : '1'
+																});
+											} else {
+												$('.side-small-menu')
+														.removeClass('fadeIn')
+														.addClass('fadeOut');
+												$('#goTop')
+														.css(
+																{
+																	'transform' : 'translate3d(0px, 0px, 0px) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)',
+																	'opacity' : '0'
+																});
+											}
+										});
+
+						$(window).resize(function() {
+							if ($(window).width() < 1210) {
+								$('.side-small-menu').addClass('hide-menu');
+							} else {
+								$('.side-small-menu').removeClass('hide-menu');
 							}
-						} else if (data == -1) {
-							alert('장바구니 등록에 실패하였습니다.');
-						} else if (data == 2) {
-							var con = confirm('장바구니에 동일한 상품이 있습니다.\n상품 수량을 변경하시겠습니까?');
-							if (con == true) {
-								location.href="cartUpdate.sh?item_num=<%=itemBean.getItem_num() %>&cart_count=" + $('#quantity').val();
-							}
-						} else {
-							alert('알 수 없는 오류 발생!\n오류가 지속된다면 문의부탁바랍니다.');
-						}
-						
-					},
-					error : function(request, status, error) {
-// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					}
-				});
-			} else {
-				alert('로그인 후 이용해주세요.');
-			} 
-			
-		});
-		
-		$('#buy').on('click',function(){ 
-			if('<%=id%>' != 'null' ) {
-				$.ajax({
-					url : 'cartCheck.sh',
-					type : 'get',
-					success : function(data) {
-						if (data < 0){
-							alert('장바구니에 담겨있는 상품도 함께 주문됩니다.\n원치 않으실 경우 장바구니를 비워주세요.');
-						} else {
-<%-- 							location.href="cartInsert.sh?item_num=<%=itemBean.getItem_num()%>&quantity="+ $('#quantity').val() +"&item_price=<%=itemBean.getItem_price()%>&cart_img=<%=itemBean.getItem_img()%>&cart_item_name=<%=itemBean.getItem_name()%>"; --%>
-							$.ajax({
-								url : 'cartInsert.sh',
-								type : 'get',
-								data : {
-									"item_num" : <%=itemBean.getItem_num()%>,
-									"quantity" : $('#quantity').val(),
-									"item_price" : <%=itemBean.getItem_price()%>,
-									"cart_img" : '<%=itemBean.getItem_img()%>',
-									"cart_item_name" : '<%=itemBean.getItem_name()%>'
-								},
-								success : function(data) {
-									
-									if (data == 1){
-										alert('해당상품이 주문됩니다.');
-										location.href="checkout.sh";
-									} else {
-										alert('알 수 없는 오류가 발생하였습니다.\n오류가 지속된다면 문의부탁바랍니다.');
-									}
-									
-								},
-								error : function(request, status, error) {
-							//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-								}
-							});
-						
-						}
-					},
-					error : function(request, status, error) {
-						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					}
-				});
-			} else {
-				alert('로그인 후 이용해주세요.');
-			}
-		});
-	});
+						});
+
+						$('#goTop').click(function() {
+							$('html, body').animate({
+								scrollTop : 750
+							}, 400, "swing");
+							return false;
+						});
+
+					});
 </script>
 </head>
 <body>
 	<header>
-		<jsp:include page="/inc/header.jsp" />
+		<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
+	<!-- END nav -->
+
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);"
+			data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 
-						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
-						</p>
+					<div class="col-md-700 col-sm-52 text-center ftco-animate">
+						<h1 class="mb-8 mt-7 bread">Blog</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	
+
 <!-- 카카오톡 상담 -->
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- 카카오톡 상담 End -->
-	
+
 	<section class="ftco-section">
 		<div class="container">
-			<div class="row">
-<div class="container1">
-	<span id="sd"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 500px; height: 500px;"></span>
-  <!-- Full-width images with number text -->
-  <div class="mySlides">
-    <div class="numbertext"></div>
-      <img src="./images/tt.jpg"  id="sd">
-  </div>
-  <div class="mySlides">
-    <div class="numbertext"></div>
-      <img src="./images/tt3.jpg"  id="sd">
-  </div>
-  <div class="mySlides">
-    <div class="numbertext"></div>
-      <img src="./images/tt4.jpg"  id="sd">
-  </div>
-  <div class="mySlides">
-    <div class="numbertext"></div>
-      <img src="./images/tt5.jpg"  id="sd">
-  </div>
-  
-  <!-- Next and previous buttons -->
-<!--   <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
-<!--   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-  <!-- Image text -->
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
-  <!-- Thumbnail images -->
-  
-</div>
-				
-				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-					<h3><%=itemBean.getItem_name() %></h3>
-					<p class="price">
-						<span><%=itemBean.getItem_price() %> 원</span>
-					</p>
-					<p><%=itemBean.getItem_info() %></p>
-					<div class="col-md-12 mb-3">
-						<div class="tagcloud">
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_acidity() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_aroma() %></a> 
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_bitterness() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_body() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_sweetness() %></a>
-						</div>
+			<!-- 			<div class="row"> -->
+			<!-- 왼쪽 작은 메뉴 시작 -->
+			<ul class="side-small-menu">
+				<li>
+					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
+					<div
+						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
+					<div>
+						<p
+							style="font-weight: bold; margin-bottom: 1px; line-height: 10px; font-size: 23px;">to get more</p>
+						<p>Follow Us</p>
 					</div>
-					<div class="row mt-4">
-						<div class="col-md-6">
-							<div class="form-group d-flex"></div>
-						</div>
-						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3">
+				</li>
+				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
+<!-- 				<li style="margin-bottom: 6px;"> -->
+					<!-- 박수 -->
+<!-- 					<button> -->
+<!-- 						<span> <svg -->
+<!-- 								style="width: 29px; height: 29px; vertical-align: bottom;"> -->
+<!-- 								<g> -->
+<!-- 									<path d="M13.739 1l.761 2.966L15.261 1z"></path> -->
+<!-- 									<path d="M16.815 4.776l1.84-2.551-1.43-.471z"></path> -->
+<!-- 									<path d="M10.378 2.224l1.84 2.551-.408-3.022z"></path> -->
+<!-- 									<path -->
+<!-- 									d="M22.382 22.622c-1.04 1.04-2.115 1.507-3.166 1.608.168-.14.332-.29.492-.45 2.885-2.886 3.456-5.982 1.69-9.211l-1.101-1.937-.955-2.02c-.315-.676-.235-1.185.245-1.556a.836.836 0 0 1 .66-.16c.342.056.66.28.879.605l2.856 5.023c1.179 1.962 1.379 5.119-1.6 8.098m-13.29-.528l-5.02-5.02a1 1 0 0 1 .707-1.701c.255 0 .512.098.707.292l2.607 2.607a.442.442 0 0 0 .624-.624L6.11 15.04l-1.75-1.75a.998.998 0 1 1 1.41-1.413l4.154 4.156a.44.44 0 0 0 .624 0 .44.44 0 0 0 0-.624l-4.152-4.153-1.172-1.171a.998.998 0 0 1 0-1.41 1.018 1.018 0 0 1 1.41 0l1.172 1.17 4.153 4.152a.437.437 0 0 0 .624 0 .442.442 0 0 0 0-.624L8.43 9.222a.988.988 0 0 1-.291-.705.99.99 0 0 1 .29-.706 1 1 0 0 1 1.412 0l6.992 6.993a.443.443 0 0 0 .71-.501l-1.35-2.856c-.315-.676-.235-1.185.246-1.557a.85.85 0 0 1 .66-.16c.342.056.659.28.879.606L20.628 15c1.573 2.876 1.067 5.545-1.544 8.156-1.396 1.397-3.144 1.966-5.063 1.652-1.713-.286-3.463-1.248-4.928-2.714zM12.99 6.976l2.562 2.562c-.497.607-.563 1.414-.155 2.284l.265.562-4.257-4.257a.98.98 0 0 1-.117-.445c0-.267.104-.517.292-.706a1.023 1.023 0 0 1 1.41 0zm8.887 2.06c-.375-.557-.902-.916-1.486-1.011a1.738 1.738 0 0 0-1.342.332c-.376.29-.61.656-.712 1.065a2.1 2.1 0 0 0-1.095-.562 1.776 1.776 0 0 0-.992.128l-2.636-2.636a1.883 1.883 0 0 0-2.658 0 1.862 1.862 0 0 0-.478.847 1.886 1.886 0 0 0-2.671-.012 1.867 1.867 0 0 0-.503.909c-.754-.754-1.992-.754-2.703-.044a1.881 1.881 0 0 0 0 2.658c-.288.12-.605.288-.864.547a1.884 1.884 0 0 0 0 2.659l.624.622a1.879 1.879 0 0 0-.91 3.16l5.019 5.02c1.595 1.594 3.515 2.645 5.408 2.959a7.16 7.16 0 0 0 1.173.098c1.026 0 1.997-.24 2.892-.7.279.04.555.065.828.065 1.53 0 2.969-.628 4.236-1.894 3.338-3.338 3.083-6.928 1.738-9.166l-2.868-5.043z"></path> -->
+<!-- 								</g> -->
+<!-- 							</svg> <span style="vertical-align: bottom; margin-left: 8px;"> -->
+<!-- 								1 </span> -->
+<!-- 						</span> -->
+<!-- 					</button> -->
+<!-- 				</li> -->
+				<li>
+					<!-- 트위터 -->
+					<button>
+					<script type="text/javascript">
+						$(document).ready(function(){
+							function twitterShare (this) {
+								alert('a');
+// 								alert(this.attr('href'));
+							}
+// 							alert('http://twitter.com/share?url=&text=Cafe%20ThinkerBell%20에서의%20포스팅을%20확인해보세요');
+// 							alert(window.location.host + window.location.pathname);
+						});
+					</script>
+						<span> <a
+							href="javascript:twitterShare(this);" target="_blank"> <svg width="29" height="29">
+									<g>
+										<path
+										d="M22.053 7.54a4.474 4.474 0 0 0-3.31-1.455 4.526 4.526 0 0 0-4.526 4.524c0 .35.04.7.082 1.05a12.9 12.9 0 0 1-9.3-4.77c-.39.69-.61 1.46-.65 2.26.03 1.6.83 2.99 2.02 3.79-.72-.02-1.41-.22-2.02-.57-.01.02-.01.04 0 .08-.01 2.17 1.55 4 3.63 4.44-.39.08-.79.13-1.21.16-.28-.03-.57-.05-.81-.08.54 1.77 2.21 3.08 4.2 3.15a9.564 9.564 0 0 1-5.66 1.94c-.34-.03-.7-.06-1.05-.08 2 1.27 4.38 2.02 6.94 2.02 8.31 0 12.86-6.9 12.84-12.85.02-.24.01-.43 0-.65.89-.62 1.65-1.42 2.26-2.34-.82.38-1.69.62-2.59.72a4.37 4.37 0 0 0 1.94-2.51c-.84.53-1.81.9-2.83 1.13z"></path>
+									</g>
+								</svg>
+						</a>
+						</span>
+					</button>
+				</li>
+				<li>
+					<!-- 페이스북 -->
+					<button>
+						<span> <a
+							href="http://www.facebook.com/share.php?u=<%=request.getRequestURL()%>"
+							target="_blank"> <svg width="29" height="29">
+									<g>
+										<path
+										d="M23.209 5H5.792A.792.792 0 0 0 5 5.791V23.21c0 .437.354.791.792.791h9.303v-7.125H12.72v-2.968h2.375v-2.375c0-2.455 1.553-3.662 3.741-3.662 1.049 0 1.95.078 2.213.112v2.565h-1.517c-1.192 0-1.469.567-1.469 1.397v1.963h2.969l-.594 2.968h-2.375L18.11 24h5.099a.791.791 0 0 0 .791-.791V5.79a.791.791 0 0 0-.791-.79"></path>
+									</g>
+								</svg>
+						</a>
+						</span>
+					</button>
+				</li>
+			</ul>
+			<!-- 왼쪽 작은 메뉴 끝 -->
 
-							<div class="input-group mb-3">
-                  
-                    
-<!--               <span class="input-group-btn ml-2"> -->
-                    <button type="button" class="quantity-left-minus btn input-group-btn" >
-                     	<i class="icon-minus"></i>
-                    </button>&nbsp;
-                   <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
-                    <button type="button" class="quantity-right-plus btn input-group-btn" >
-                       <i class="icon-plus"></i>
-                   </button>
-<!--                  </span> -->
-                      </div>
-						</div>
+			<div class="col-md-8 ftco-animate">
+				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
+				<p><%=article.getBlog_content()%></p>
+
+				<%
+					String id = (String) session.getAttribute("id");
+					if (id != null && id.equals("admin")) {
+				%>
+				<a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
+				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
+					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
+				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
+					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+				
+				<%
+					} else {
+				%><a href="./blog.bl" class="btn btn-primary btn-outline-primary"
+					style="float: right;">글목록</a>
+				<%
+					}
+				%>
+				<!-- <---------------- 태그클라우드 --------------->
+				<div class="tag-widget post-tag-container mb-5 mt-5">
+					<div class="tagcloud">
+						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
+							class="tag-cloud-link">핸드드립</a> <a href="#"
+							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a>
 					</div>
-					<p>
-					
-						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
-						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">BUY</a>
-						
-		
-						
-								
-		<div class="row1">
-					
-   <div class="row1">
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
-    </div>
-    <div class="column"> 
-      <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt="">
-    </div>
-    
-  </div>
-					
 				</div>
-			</div>
-		</div>
-	</section>
-						<section class="ftco-menu mb-5 pb-5" >
-							<div class="nav ftco-animate nav-pills justify-content-center"
-								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">
-								<a class="nav-link active"  data-toggle="pill"
-									href="#v-pills-0" role="tab" aria-controls="v-pills-0" id="btn1"
-									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
-								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
-									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill"   id="btn3"
-									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
-								
-							<%  String sessionId = (String) session.getAttribute("id");
-							
-									if(sessionId != null) {
-										if(sessionId.equals("admin")) { %>
-											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
-												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정 및 삭제</a>
-												
-											
-								<%  	} 
-									} %>
-					
-								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
-							
+				<!-- <---------------- 태그클라우드 끝 --------------->
+
+
+				<div class="pt-5 mt-5">
+					<!-- 코멘트 i개 -->
+					<h3 class="mb-5">코멘트 1개</h3>
+					<%
+						// if (articleList != null && listCount > 0) { 
+						for (int i = 0; i < articleList.size(); i++) {
+					%>
+					<ul class="comment-list">
+						<li class="comment">
+							<div class="vcard bio">
+								<img src="./images/person_2.png" alt="Image placeholder">
 							</div>
-						
-						
-						</section>
-							
-	<section class="ftco-section" id="ft1">
-		<div class="row rows" >
-			<div class="col-md-12 ftco-animate">
-					
-					<table class="table">
-						<tr>
-							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-	</section>
+
+							<div class="comment-body">
+								<input type="hidden" name="comment_blog_num"
+									value="<%=articleList.get(i).getComment_num()%>"
+									id="comment_blog_num">
+
+								<h3><%=articleList.get(i).getComment_writer() %></h3>
+
+								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
+								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
+								<p><%=articleList.get(i).getComment_content()%></p>
+								<div
+									style='display: text-decoration; float: right; width: 1000px'>
+									<%
+											if (id != null && id.equals("admin")) {
+
+// 												System.out.println(articleList.get(i).getComment_blog_num());
+// 												System.out.println(articleList.get(i).getComment_content());
+									%>
+
+			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
+									
+										<div class="sir_singo_msg">
+											<a href="#" style="margin-left: 220px; font-size: 12px;"
+												onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
+												class="blind_view">수정</a>
+										</div>
+										<div class="singo_view" id="SirenDiv<%=i%>">
+											<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
+												<!-- text -->
+												<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
+													
+												<input type="hidden" name="comment_num"
+													value="<%=articleList.get(i).getComment_num()%>"> <input
+													type="hidden" name="comment_blog_num"
+													value="<%=articleList.get(i).getComment_blog_num()%>">
+												<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
+
+											</form>
+											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
+												<input type="hidden" name="comment_num"
+													value="<%=articleList.get(i).getComment_num()%>"> <input
+													type="hidden" name="comment_blog_num"
+													value="<%=articleList.get(i).getComment_blog_num()%>">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
+											</form>
+										</div>
+									
+
+									<%
+										} else if (id != null && id.equals(articleList.get(i).getComment_writer())) {
+									%>
+											<div class="sir_singo_msg">
+												<a href="#" style="margin-left: 220px; font-size: 12px;"
+													onclick="SirenFunction('SirenDiv<%=i%>'); return false;"
+													class="blind_view">수정</a>
+											</div>
+											<div class="singo_view" id="SirenDiv<%=i%>">
+												<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
+													<!-- text -->
+													<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
+														
+													<input type="hidden" name="comment_num"
+														value="<%=articleList.get(i).getComment_num()%>"> <input
+														type="hidden" name="comment_blog_num"
+														value="<%=articleList.get(i).getComment_blog_num()%>">
+													<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
 	
-<!-- review -->
-	<section class="ftco=section" id="ft2">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
-				
-					
- 					
-					<table class="table thead-light" id="ac1">
-                <tr>
-                  <td><a data-toggle="collapse">번호</a></td>
-                  <td><a data-toggle="collapse">제목 </a></td>
-                  <td><a data-toggle="collapse">작성일</a></td>
-                  <td><a data-toggle="collapse">작성자</a></td>
-                  <td><a data-toggle="collapse">조회수</a></td>
-                  
-                  
-                  </tr>
-                  <%
-                    if (reviewList != null && listCount > 0) {
-                      for (int i = 0; i < reviewList.size(); i++) {
-                    	  if(reviewList.get(i).getReview_item_num()==itemBean.getItem_num()){
-                    		  
-                  %>
-                  
-                <tr>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
-                  
-<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
-                  
-                    
-                  </td>
-                  <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
-                </tr>
-                
-                <tr><td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="5">
-                <div id="trtr" >
-                      <div class="panel-body">
-                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
-                        
-                      </div>
-                    </div>
-                    
-                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >상세보기</a> 
-                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
-                            
-                </td></tr>
-                
-                
-                <%
-                      }
-                  }
-                  }
-                %>
-              </table>
-					
-					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-					
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-							<% 
-							//실제 페이지수를 endPage로 변경
-							if(endPage>pageCount){
-								endPage=pageCount;
-							}
-							
-							if(startPage>pageCount){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
-							<%
-							}
-							
-							for(int i = startPage; i<=endPage;i++){ 
-								%>
-							
-									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
-									
-									<%} 
-									
-							if(endPage<pageCount){
-								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
-							<%
-							}
-							%>
-								</ul>
-								
+												</form>
+												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
+													<input type="hidden" name="comment_num"
+														value="<%=articleList.get(i).getComment_num()%>"> <input
+														type="hidden" name="comment_blog_num"
+														value="<%=articleList.get(i).getComment_blog_num()%>">
+													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
+												</form>
+											</div>
+									<%
+										}
+									%>
+
+								</div>
 							</div>
-						</div>
+						</li>
+					</ul>
+					<%
+						}
+					%>
+					<!-------------------------------- END comment-list ----------------------------------->
+					<!-- ----------------------------- Comment Write ----------------------------------- -->
+					<%
+						if (id != null) {
+					%>
+					<script type="text/javascript">
+
+					</script>
+					<div class="comment-form-wrap pt-5">
+						<h3 class="mb-5">
+							코멘트 남기기</h3>
+						<form id="frm_comment" action="BlogCommentWritePro.bl"
+							method="post">
+							<input type="hidden" name="blog_num"
+								value="<%=article.getBlog_num()%>" id="blog_num">
+											
+							<!-- 블로그 게시글 번호   -->
+							<div class="form-group">
+								<label for="name">아이디</label> <input type="text"
+									class="form-control" id="name" name="name" value="<%=id %>" readonly="readonly">
+							</div>
+							<div class="form-group">
+								<label for="message">내용</label>
+								<textarea name="comment_content" id="comment_content" cols="30" maxlength="200"
+									rows="4" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="작성 완료"
+									class="btn py-3 px-4 btn-primary">
+							</div>
+						</form>
 					</div>
+					<%
+						} else if (id == null) {
+					%><br>로그인 후 댓글 작성이 가능합니다.
+					<%
+						}
+						// 							}
+					%>
 				</div>
 			</div>
 		</div>
 	</section>
-				
-<!-- QNA -->
-<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
-<section>
-		<div class="container" >
-			<div class="row" >
-				<div class="col-md-4" style="margin-top: 30px; width: 80%;">
-					<div class="media d-block text-center block-6 services" >
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-5" style="border: 1px solid #FAFAFA;">
-							<span class="flaticon-choices" style="color: #FAFAFA;"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading" style="color: #FAFAFA;">Easy to Order</h3>
-							
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4" style="margin-top: 30px; width: 80%;">
-					<div class="media d-block text-center block-6 services">
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-5" style="border: 1px solid #FAFAFA;">
-							<span class="flaticon-delivery-truck" style="color: #FAFAFA;"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading" style="color: #FAFAFA;">Fastest Delivery</h3>
-							
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4" style="margin-top: 30px; width: 80%;">
-					<div class="media d-block text-center block-6 services">
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-5" style="border: 1px solid #FAFAFA;">
-							<span class="flaticon-coffee-bean" style="color: #FAFAFA;"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading" style="color: #FAFAFA;">Quality Coffee</h3>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<footer class="ftco-footer ftco-section img">
+	<!-------------------------------- END comment-Write ----------------------------------->
+	<!-- .section -->
+	<footer>
 		<jsp:include page="/inc/footer.jsp" />
 	</footer>
 	<!-- loader -->
@@ -778,6 +563,7 @@ $( '#rere1' ).click(
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
+
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="./js/popper.min.js"></script>
@@ -792,9 +578,10 @@ $( '#rere1' ).click(
 	<script src="./js/bootstrap-datepicker.js"></script>
 	<script src="./js/jquery.timepicker.min.js"></script>
 	<script src="./js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="./js/google-map.js"></script>
 	<script src="./js/main.js"></script>
-	<script src="./js/jquery.bxslider.min.js"></script>
+
 </body>
 </html>
