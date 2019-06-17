@@ -242,7 +242,7 @@
 	                		<%	if(id != null) { %>
 				                	<p>장바구니가 비어 있습니다.</p>
 	                		<%  } else {  %>
-	                				<p>로그인 후 장바구니에 담긴 상품을 볼 수 있습니다.</p>
+	                				<p>로그인 후 장바구니를 이용할 수 있습니다.</p>
 	                		<%	}
 	                		} %>
 			                    	</td>
@@ -252,8 +252,8 @@
                 </tbody>
               </table>
 
-
 		<% if (cartList.size() != 0) { %>
+				<span style="font-size: 17px; padding-left: 20px;"> [ 상품 수량 변경 ]&nbsp; 상품을 클릭하시면 상세보기페이지에서 수량을 변경할 수 있습니다.</span>
 				<a class="btn btn-primary btn-outline-primary" id="deleteBtn1st" style="font-size: 17px;" >삭제할 상품 선택하기</a>
 		        <a class="btn btn-best btn-outline-primary" id="deleteBtn2nd" style="font-size: 17px;">선택한 상품 삭제</a>
         <% } %>
@@ -265,14 +265,14 @@
         <div class="row justify-content-end" >
         <div>
         </div>
-        <div class="col mt-5 ftco-animate" style="padding: 50px 0px !important;">
+        <div class="col mt-5 ftco-animate" style="padding: 50px 0px !important; font-size: 17px;">
 	        <ul style="line-height: 2em;">
 		        <li>기본 배송료는 2,500원입니다.</li>
 		        <li>해외배송시 배송료가 추가로 발생될 수 있습니다.</li>
 		        <li>장바구니에 담은 시점과 현재의 판매 가격이 달라질 수 있습니다.</li>
 		        <li>궁금하신 점이 있으시면 Notice - 공지사항 / FAQ 를 참고해주세요.</li>
-		        <li>상품에 관한 문의는 상품상세페이지의 상품Q&A에서 문의가능합니다.</li>
-		        <li>배송, 결제 등에 관한 문의는 카카오톡 1:1상담으로 문의가능합니다.</li>
+		        <li>상품에 관한 문의는 상품상세페이지 - 상품Q&A에서 가능합니다.</li>
+		        <li>그 외의 문의는 카카오톡 1:1상담으로 문의가능합니다.</li>
 	        </ul>
         </div>
 

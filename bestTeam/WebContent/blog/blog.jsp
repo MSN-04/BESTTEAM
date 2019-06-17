@@ -62,8 +62,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -94,14 +93,14 @@
 						<a
 							href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>"
 							class="block-20"
-							style="background-image: url('./img_upload/<%=articleList.get(i).getBlog_file()%>')">
+							style="width: 900px; margin-left: 100px; text-align: center; background-image: url('./img_upload/<%=articleList.get(i).getBlog_file()%>')">
 						</a>
-						<h2 class="heading mt-2">
+						<h2 class="heading mt-2" style="margin-left: 100px;">
 							<a
 								href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>"><%=articleList.get(i).getBlog_subject()%></a>
 						</h2>
-						<div class="text py-4 d-block">
-							<div class="meta">
+						<div class="text py-4 d-block" style="margin-left: 100px;">
+							<div class="meta" style="width: 900px;">
 								<div>
 									<a href="#"><%=articleList.get(i).getBlog_content1()%></a>
 								</div>
@@ -160,7 +159,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="blog_bl?page=<%=nowPage + 1%>">&gt;</a></li>
+							<li><a href="blog.bl?page=<%=nowPage + 1%>">&gt;</a></li>
 							<%
 								}
 							%>
@@ -179,6 +178,20 @@
 					</div>
 				</div>
 			</div>
+			<form action="BlogListSearch.bl" method="post" class="search-form">
+                <div class="form-group"style="margin-left: 90px;">
+                <select name = "option" class="category-select">
+  					<option class="sop-01" value="blog_subject">제목</option>
+  					<option class="sop-01" value="blog_content1">내용</option>
+  					<option class="sop-01" value="blog_writer">작성자</option>
+				</select>
+                	<div class="icon" >
+	                  <span class="icon-search"><input type="submit" value="" onFocus="idclear();"  style="margin-right: 540px; margin-top: 30px; border: none; background: transparent;" /></span> 
+					
+                  </div>
+                  <input type="text" name="keyword" placeholder="검색어를 입력해주세요." class="form-control" style="width:40%;">
+                </div>
+              </form>
 		</div>
 	</section>
 	

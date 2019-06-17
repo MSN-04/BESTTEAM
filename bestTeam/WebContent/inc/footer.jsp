@@ -3,8 +3,24 @@
     
     
     
- <footer class="ftco-footer ftco-section img">
+ <style>
+
+ .ftco-section{
+ padding:3em 0 2.5em 0!important; 
+ margin-top: 10px; 
+ font-size: 17px;
+ }
  
+ .heading{
+ padding:0 50px 0 0;
+ }
+ 
+ .btn.btn-white.btn-outline-white{
+ margin:0 6em 0 0; }
+ 
+ 
+ </style>
+ <footer class="ftco-footer ftco-section img">
  
  <section class="ftco-section ftco-services">
 		<div>
@@ -16,9 +32,9 @@
 						<div class="col-md-8 col-sm-10 text-center ftco-animate">
 							<h1 class="heading">Get Your Own Taste.</h1>
 							<p>
-								<a href="#"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order
-									Now</a>
+
+								<a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3"">Get Now</a>
+
 							</p>
 						</div>
 					</div>
