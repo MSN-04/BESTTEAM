@@ -48,12 +48,21 @@ color: #c49b63 !important;
 
  .menu-entry .img{
  width:200px; 
+ margin:0  20px  0 20px;
 }
 
 .pick{
 font-size:30px;
 color:#C49B63;
 }
+.col-md-7 heading-section ftco-animate text-center .mb-4{
+color:#C49B63;
+}
+
+.menu-entry .text h3{
+text-transform:none !important;
+}
+
 
 </style>
 	<header>
@@ -143,8 +152,8 @@ color:#C49B63;
 	<br><br><br><br>
 	<div class="row justify-content-center mb-5 pb-3">
 		<div class="col-md-7 heading-section ftco-animate text-center">
-			<h2 class="mb-4">We Think Coffee's Value</h2>
-			<p> <h3>커피의 가치를 생각하는 카페 팅커벨</h3>
+			<h2 class="mb-4" style="color:#C49B63;">We Think Coffee's Value</h2>
+			<p> <h4>커피의 가치를 생각하는 카페 팅커벨</h4>
 			팅커벨은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br>
 			팅커벨은 국내 커피 역사를 이끌어 온 정통성과 세계적인 기술력, 커피전문가의 노하우로 고품질의 커피 본연의 맛과 향을 즐길 수 있는 좋은 커피입니다. <br>
 			팅커벨은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
@@ -226,14 +235,14 @@ color:#C49B63;
 				</div>
 				<div>
 					<p>카페 팅커벨은 한 분, 한 분 취향에 맞는 원두를 추천 해 줍니다
-					지금 당신의 취향에 맞는 원두를 골라보세요!<br>
-					<a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">
+					지금 당신의 취향에 맞는 원두를 골라보세요!<br><br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">
 					Pick Now</a>
 					</p>
 				</div>
 			</div>
 		</div>
-
+<hr>
 		<div class="one-half img"
 			style="background-image: url(./images/coffeeman.jpg);"></div>
 	</section>
@@ -244,7 +253,7 @@ color:#C49B63;
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
 					<span class="subheading">Best Quality!</span>
-					<h2 class="mb-4"><i>Tinkervell's <br>Best Seller</h2></i>
+					<h2 class="mb-4"><i>Best Seller</i></h2>
 					<p>커피 팅커벨이 보장하는 퀄리티의 추천상품입니다</p>
 					
 				</div>
@@ -254,18 +263,18 @@ color:#C49B63;
 				<div class="col-md-3">
 					<div class="menu-entry">
 						<a href="itemSingle.em?item_num=52" class="img"
-							style="background-image: url(./itemUpload/lesamants.jpg);"></a>
+							style="background-image: url(./itemUpload/les Amants.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
-							Les amants
+							Les Amants
 							</h3>
 <!-- 							<p>자스민, 캐모마일, 얼그레이 홍차에서 느낄 수 있는 다양한 플로럴 향미가 라임 같은 산뜻한 산미와 잘 어우러져 기분좋은 목넘김을 만들어줌</p> -->
 							<p class="price">
 								<span>14,300원</span>
 							</p>
 							<p>
-								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
-									to Cart</a>
+								<a href="itemSingle.em?item_num=52" class="btn btn-primary btn-outline-primary">GO
+									</a>
 							</p>
 						</div>
 					</div>
@@ -273,7 +282,7 @@ color:#C49B63;
 				<div class="col-md-3">
 					<div class="menu-entry">
 						<a href="itemSingle.em?item_num=45" class="img"
-							style="background-image: url(./itemUpload/chocolat.jpg);"></a>
+							style="background-image: url(./itemUpload/모모스커피 에스쇼콜라 블렌딩 커피.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
 								에스쇼콜라 블렌딩 커피
@@ -283,8 +292,8 @@ color:#C49B63;
 								<span>12,000원</span>
 							</p>
 							<p>
-								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
-									to Cart</a>
+								<a href="itemSingle.em?item_num=45" class="btn btn-primary btn-outline-primary">GO
+									</a>
 							</p>
 						</div>
 					</div>
@@ -292,7 +301,7 @@ color:#C49B63;
 				<div class="col-md-3">
 					<div class="menu-entry">
 						<a href="itemSingle.em?item_num=48" class="img"
-							style="background-image: url(./itemUpload/seoul.jpg);"></a>
+							style="background-image: url(./itemUpload/서울.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
 								커피 서울 
@@ -302,8 +311,8 @@ color:#C49B63;
 								<span>15,400원</span>
 							</p>
 							<p>
-								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
-									to Cart</a>
+								<a href="itemSingle.em?item_num=48" class="btn btn-primary btn-outline-primary">GO
+									</a>
 							</p>
 						</div>
 					</div>
@@ -311,7 +320,7 @@ color:#C49B63;
 				<div class="col-md-3">
 					<div class="menu-entry">
 						<a href="itemSingle.em?item_num=37" class="img"
-							style="background-image: url(./itemUpload/cream.jpg);"></a>
+							style="background-image: url(./itemUpload/Cream of the Crop.jpg);"></a>
 						<div class="text text-center pt-4">
 							<h3>
 								<a href="#">Cream Of The Crop</a>
@@ -320,8 +329,8 @@ color:#C49B63;
 								<span>14,000원</span>
 							</p>
 							<p>
-								<a href="cart.sh" class="btn btn-primary btn-outline-primary">Add
-									to Cart</a>
+								<a href="itemSingle.em?item_num=37" class="btn btn-primary btn-outline-primary">GO
+									</a>
 							</p>
 						</div>
 					</div>
@@ -368,4 +377,3 @@ color:#C49B63;
 
 </body>
 </html>
-
