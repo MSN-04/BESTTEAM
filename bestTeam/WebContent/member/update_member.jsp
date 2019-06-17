@@ -504,7 +504,7 @@ function check(reg, what) {
 							<div class="col-md-12">
 								<div class="form-group mt-4">
 									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a> 
-									<a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
+									<a href="Mypage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
 										</div>
 								</div>
 							</div>	

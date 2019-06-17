@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Shop ─ Cafe Tinkervell</title>
 </head>
 <body>
-<h1> delete</h1>
+<h1>delete</h1>
 <%
 //item_num파라미터 가져오기
 //ItemDAO idao=new ItemDAO();

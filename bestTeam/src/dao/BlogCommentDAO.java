@@ -128,21 +128,37 @@ public class BlogCommentDAO {
 	}
 
 	// 댓글 갯수 매소드
-	public int countComment(int comment_blog_num) throws SQLException {
-		int count = 0;
+//	public int countComment(int comment_blog_num) throws SQLException {
+//		int count = 0;
+//
+//		String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
+//		pstmt = con.prepareStatement(sql);
+//		pstmt.setInt(1, comment_blog_num);
+//		rs = pstmt.executeQuery();
+//
+//		if (rs.next()) {
+//			count = rs.getInt(1);
+//		}
+//		close(pstmt);
+//		return count;
+//	}
 
-		String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
-		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, comment_blog_num);
-		rs = pstmt.executeQuery();
-
-		if (rs.next()) {
-			count = rs.getInt(1);
-		}
-		close(pstmt);
-		return count;
-	}
-
+	//댓글 갯수 매소드
+//		public int countComment(int comment_blog_num) throws SQLException {
+//			int count = 0;
+//
+//			String sql = "SELECT COUNT(*) FROM blog_comment WHERE comment_blog_num=?";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setInt(1, comment_blog_num);
+//			rs = pstmt.executeQuery();
+//
+//			if (rs.next()) {
+//				count = rs.getInt(1);
+//			}
+//			close(pstmt);
+//			return count;
+//		}
+		
 	// 댓글 목록 가져오기
 	public ArrayList<BlogCommentBean> listComment(int blog_num) throws SQLException {
 		ArrayList<BlogCommentBean> articleList = new ArrayList<>();

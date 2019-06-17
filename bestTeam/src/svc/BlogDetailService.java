@@ -26,7 +26,7 @@ public class BlogDetailService {
 
 	// 글 번호(board_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
 	public BlogBean getArticle(int blog_num) throws Exception {
-//		System.out.println("BoardDetailService - getArticle()");
+		System.out.println("BlogDetailService - getArticle()");
 		BlogBean blogBean = null;
 		
 		Connection con = getConnection();
@@ -53,19 +53,19 @@ public class BlogDetailService {
 		return blogBean;
 	}
 
-	public UserBean getUserInfo(String name) {
+	public UserBean getUserInfo(String id) {
 		UserBean userBean = new UserBean();
 		
 		Connection con = getConnection();
 		BlogDAO blogDAO = BlogDAO.getInstance();
 		blogDAO.setConnection(con);
 		
-//		userBean = blogDAO.getUserInfo(name);
+		userBean = blogDAO.getUserInfo(id);
 		
-		if(userBean !=null && userBean.getUser_name().equals(name)) {
-			commit(con);
-		} else {
+		if(userBean==null) {
 			rollback(con);
+		} else {
+			commit(con);
 		}
 		
 		return userBean;
@@ -82,7 +82,6 @@ public class BlogDetailService {
 		blogCommentDAO.setConnection(con);
 
 		articleList = blogCommentDAO.listComment(blog_num);
-
 		close(con);
 		
 		return articleList;

@@ -155,38 +155,36 @@ public class BlogDAO {
 		return articleList;
 	}
 
-//	// 댓글쓰기 창에서 유저정보 가져오기
-//		public UserBean getUserInfo(String id) {
-//			UserBean userBean = null;
-//		    
-//		    String sql = "select * from user where user_id=?";
-//		    try {
-//		      pstmt = con.prepareStatement(sql);
-//		      pstmt.setString(1, id);
-//		      rs = pstmt.executeQuery();
-//		      
-//		      if(rs.next()) {
-//		        userBean = new UserBean();
-//		        
-//		        userBean.setUser_id(rs.getString("user_id"));
-//		        userBean.setUser_pass(rs.getString("user_pass"));
-//		        userBean.setUser_name(rs.getString("user_name"));
-//		        userBean.setUser_age(rs.getString("user_age"));
-//		        userBean.setUser_gender(rs.getString("user_gender"));
-//		        userBean.setUser_address(rs.getString("user_address"));
-//		        userBean.setUser_phone(rs.getString("user_phone"));
-//		        userBean.setUser_email(rs.getString("user_email"));
-//		        userBean.setUser_post(rs.getString("user_post"));
-//		        
-//		      }
-//		    } catch (SQLException e) {
-//		      e.printStackTrace();
-//		    } finally {
-//		      close(rs);
-//		      close(pstmt);
-//		    }
-//		    return userBean;
-//		}
+	// 댓글쓰기 창에서 유저정보 가져오기
+		public UserBean getUserInfo(String id) {
+			UserBean userBean = null;
+		    
+		    String sql = "select * from user where user_id=?";
+		    try {
+		      pstmt = con.prepareStatement(sql);
+		      pstmt.setString(1, id);
+		      rs = pstmt.executeQuery();
+		      
+		      if(rs.next()) {
+		        userBean = new UserBean();
+		        userBean.setUser_id(rs.getString("user_id"));
+		        userBean.setUser_pass(rs.getString("user_pass"));
+		        userBean.setUser_name(rs.getString("user_name"));
+		        userBean.setUser_age(rs.getString("user_age"));
+		        userBean.setUser_gender(rs.getString("user_gender"));
+		        userBean.setUser_address(rs.getString("user_address"));
+		        userBean.setUser_phone(rs.getString("user_phone"));
+		        userBean.setUser_email(rs.getString("user_email"));
+		        userBean.setUser_post(rs.getString("user_post"));
+		      }
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		    } finally {
+		      close(rs);
+		      close(pstmt);
+		    }
+		    return userBean;
+		}
 		
 	// 글번호(board_num) 에 해당하는 레코드 정보 조회 => BoardBean 객체에 저장하여 리턴
 	public BlogBean selectArticle(int blog_num) {
@@ -319,51 +317,5 @@ public class BlogDAO {
 }
 
 
-//	public int selectCommentCount() {
-////		System.out.println("selectCommentCount()");
-//		
-//		int commentCount = 0;
-//		
-//		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
-//		String sql = "SELECT title, contents, (SELECT COUNT(*) AS comment_num FROM blog_comment WHERE parent.seq = BOARD.seq) as CommentTotalCnt FROM blog;
-//		
-//		try {
-//			pstmt = con.prepareStatement(sql);
-//			rs = pstmt.executeQuery();
-//			
-//			if(rs.next()) {
-//				commentCount = rs.getInt("count(*)"); // 조회된 목록 갯수 저장
-//			}
-//			
-//		} catch (SQLException e) {
-//			System.out.println("selectCommentCount() 실패! : " + e.getMessage());
-//		} finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		
-//		return listCount;
-//	}
-//	}
+
 	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

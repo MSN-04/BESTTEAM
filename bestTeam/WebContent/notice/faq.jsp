@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>FAQ ─ Cafe Tinkervell</title>
 <style type="text/css">
 b{
 	font-size:25px;

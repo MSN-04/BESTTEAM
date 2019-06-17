@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.PageInfo"%>
 <%@page import="vo.BuyBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -132,25 +133,22 @@
               <table class="table">
                 <thead class="thead-primary">
                   <tr class="text-center">
-                    <th>No</th>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                    <th>번호</th>
+                    <th>사진</th>
+                    <th>상품명</th>
+                    <th>상품 가격</th>
+                    <th>수량</th>
+                    <th>상품</th>
                   </tr>
                 </thead>
                 <tbody>
                 <%
 							if (orderInfoList != null) {
 								for (int i = 0; i < orderInfoList.size(); i++) {
-								//	int buy_num=buyList.get(i).getBuy_num();
-								//System.out.println("orderInfoList.size():"+orderInfoList.size());
 						%>
                 
 
                   <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
 
                      <td class="product-num"><%=i +1%></td>
                     <td class="image-prod"><div class="img" style="background-image:url('./itemUpload/<%=orderInfoList.get(i).getItem_img() %>')"></div></td>
@@ -159,11 +157,11 @@
                     <td class="product-name">
                       <h3><%=orderInfoList.get(i).getItem_name() %></h3></td>
                     
-                    <td class="price"><%=orderInfoList.get(i).getItem_price() %></td>
+                    <td class="price"><%=NumberFormat.getInstance().format(orderInfoList.get(i).getItem_price()) %> 원</td> 
                     
-                    <td class="price"><%=orderInfoList.get(i).getItem_count() %></td>
+                    <td class="price"><%=NumberFormat.getInstance().format(orderInfoList.get(i).getItem_count()) %> 개</td>
                     
-                    <td class="total"><%=orderInfoList.get(i).getItem_price()*orderInfoList.get(i).getItem_count() %></td>
+                    <td class="total"><%=NumberFormat.getInstance().format(orderInfoList.get(i).getItem_price()*orderInfoList.get(i).getItem_count()) %> 원</td>
                   </tr>
 
                    <%
@@ -172,80 +170,6 @@
 								
 								%>
                   
-<!--                   <tr class="text-center"> -->
-<!--                      <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-                  
-<!--                   <tr class="text-center"> -->
-<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-<!--                      <td class="product-num"><a href="#">2</a></td> -->
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
-                    
-<!--                     <td class="product-name"> -->
-<!--                       <h3>AROMA<br>CoffeeBean</h3> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="price">10,000원</td> -->
-                    
-<!--                     <td class="price">1개</td> -->
-                    
-<!--                     <td class="total">10,000원</td> -->
-<!--                   </tr>END TR -->
- 
-<!--                   <tr class="text-center"> -->
-
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-<!--                      <td class="product-num"><a href="#">3</a></td> -->
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
-                    
-<!--                     <td class="product-name"> -->
-<!--                       <h3>ACIDITY<br>CoffeeBean</h3> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="price">10,000원</td> -->
-                    
-<!--                     <td class="price">1개</td> -->
-                    
-<!--                     <td class="total">10,000원</td> -->
-<!--                   </tr>END TR -->
-
-<!--                      <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-<!-- <!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> --> 
-
-<!--                      <td class="product-num"><a href="#">4</a></td> -->
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
-                    
-<!--                     <td class="product-name"> -->
-<!--                       <h3>BITTERNESS<br>CoffeBean</h3> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="price">10,000원</td> -->
-                    
-<!--                     <td class="price">1개</td> -->
-                    
-<!--                     <td class="total">10,000원</td> -->
-<!--                   </tr>END TR -->
-                  
-<!--                   <tr class="text-center"> -->
-<!--                      <td class="product-num"><a href="#">5</a></td> -->
-                    
-<!--                     <td class="image-prod"><div class="img" style="background-image:url(./images/menu-2.jpg);"></div></td> -->
-                    
-<!--                     <td class="product-name"> -->
-<!--                       <h3>BODY / TEXTURE<br>CoffeBean</h3> -->
-<!--                     </td> -->
-                    
-<!--                     <td class="price">10,000원</td> -->
-                    
-<!--                     <td class="price">1개</td> -->
-                    
-<!--                     <td class="total">10,000원</td> -->
-<!--                   </tr>END TR -->
                 </tbody>
               </table>
             </div>
@@ -345,41 +269,31 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 	
   <form class="billing-form ftco-bg-dark p-3 p-md-5" >
-<!-- 	          <div class="row mt-5 pt-3 d-flex" > -->
-	          
-<!-- 	          <div class="row align-items-end confirmCheckout"> -->
-	          
-	 
-<!-- 	          	<div class="col-md-6 d-flex"> -->
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-3" >
 	          			<h3 class="billing-heading mb-4">결제 정보</h3>
 	          			
-		            		         	<%
+	<%
  		if (orderInfoList != null) {
  			int total = 0;
 			for (int i = 0; i < orderInfoList.size(); i++) {
 				total += orderInfoList.get(i).getItem_price()*orderInfoList.get(i).getItem_count();
 		   }
-		
-			
-			//	int buy_num=buyList.get(i).getBuy_num();
-			//System.out.println("orderInfoList.size():"+orderInfoList.size());
 			
 		%>
 	          				<div class="col-md-12 confirmCheckout2" style="padding-top: 40px;">
 		            		<div class="form-group">
 	          					<p class="d-flex">
 		    						<span>상품 합계</span>
-		    						<span class="money"><%=total %> 원</span>
+		    						<span class="money"><%=NumberFormat.getInstance().format(total) %> 원</span>
 		    					</p>
 		    					<p class="d-flex">
 		    						<span>배송비 합계</span>
-		    						<span class="money">2500원</span>
+		    						<span class="money">2,500 원</span>
 		    					</p>
 		    					<hr>
 		    					<p class="d-flex total-price">
 		    						<span>총 결제금액</span>
-		    						<span class="money"><%=total+2500 %></span>
+		    						<span class="money"><%=NumberFormat.getInstance().format(total+2500) %> 원</span>
 		    					</p>
 		    				</div>
 		    				</div>
@@ -387,135 +301,24 @@
  		}
  	          	%> 
 					</div>
-<!-- 	          	</div> -->
-<!-- 	          	<div class="col-md-6"> -->
-<!-- 	          		<div class="cart-detail ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          	<div class="col-md-6 d-flex"> -->
-<!-- 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4"> -->
-<!-- 	          			<h3 class="billing-heading mb-4">결제 수단</h3> -->
-	          			
-<!-- 	          				<div class="col-md-12 confirmCheckout2"> -->
-<!-- 		            		<div class="form-group"> -->
-<!-- 		            			<p class="d-flex"> -->
-<!-- 		    						<span>(무통장 입금)</span> -->
-<!-- 		    						<span></span> -->
-<!-- 		    					</p> -->
-<!-- 		    					<p class="d-flex"> -->
-<!-- 		    						<span>신한은행</span> -->
-<!-- 		    						<span>110-1111-11111</span> -->
-<!-- 		    					</p> -->
-<!-- 		    					<p class="d-flex"> -->
-<!-- 		    						<span>결제일자</span> -->
-<!-- 		    						<span>2019.05.01</span> -->
-<!-- 		    					</p> -->
-<!-- 		    				</div> -->
-<!-- 		    				</div> -->
-<!-- 					</div> -->
-<!-- 	          	</div> -->
-	          	
-	          	
-<!-- 	          </div> -->
+
 	          </form>
           </div> <!-- .col-md-8 -->
 
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 
-
-<!--           <div class="col-xl-4 sidebar ftco-animate"> -->
-          
-            
-            
-            
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <h3>최근 본 상품</h3> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--               <div class="block-21 mb-4 d-flex"> -->
-<!--                 <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a> -->
-<!--                 <div class="text"> -->
-<!--                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3> -->
-<!--                   <div class="meta"> -->
-<!--                     <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div> -->
-<!--                     <div><a href="#"><span class="icon-person"></span> Admin</a></div> -->
-<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-<!--                   </div> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--             </div> -->
-            
-            
-
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <div class="categories"> -->
-<!--                 <h3>카테고리<h3> -->
-<!--                 <li><a href="#">Tour <span>(12)</span></a></li> -->
-<!--                 <li><a href="#">Hotel <span>(22)</span></a></li> -->
-<!--                 <li><a href="#">Coffee <span>(37)</span></a></li> -->
-<!--                 <li><a href="#">Drinks <span>(42)</span></a></li> -->
-<!--                 <li><a href="#">Foods <span>(14)</span></a></li> -->
-<!--                 <li><a href="#">Travel <span>(140)</span></a></li> -->
-<!--               </div> -->
-<!--             </div> -->
-
-
-
-          
-<!--             <div class="sidebar-box"> -->
-<!--               <form action="#" class="search-form"> -->
-<!--                 <div class="form-group"> -->
-<!--                 	<div class="icon"> -->
-<!-- 	                  <span class="icon-search"></span> -->
-<!--                   	</div> -->
-<!--                   	<input type="text" class="form-control" placeholder="Search..."> -->
-<!--                	</div> -->
-<!--               </form> -->
-<!--             </div> -->
-
-
-
-<!--             <div class="sidebar-box ftco-animate"> -->
-<!--               <h3>Paragraph</h3> -->
-<!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p> -->
-<!--             </div> -->
-<!--           </div> -->
-
         </div>
       </div>
     </section> <!-- .section -->
     
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
-
-
-
 	<footer>
 		<jsp:include page="/inc/footer.jsp"/>
 	</footer>    
-  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
 
   <script src="./js/jquery.min.js"></script>
   <script src="./js/jquery-migrate-3.0.1.min.js"></script>
@@ -549,10 +352,6 @@
 		        // If is not undefined
 		            
 		            $('#quantity').val(quantity + 1);
-
-		          
-		            // Increment
-		        
 		    });
 
 		     $('.quantity-left-minus').click(function(e){
@@ -560,15 +359,11 @@
 		        e.preventDefault();
 		        // Get the field name
 		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
 		            // Increment
 		            if(quantity>0){
 		            $('#quantity').val(quantity - 1);
 		            }
 		    });
-		    
 		});
 	</script>
 
