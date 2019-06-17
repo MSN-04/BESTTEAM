@@ -8,7 +8,6 @@
 	pageEncoding="UTF-8"%>
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
 
-
 <%
 	request.setCharacterEncoding("utf-8");
 	// 조회된 게시물 정보를 담은 ArrayList 객체(articleList)와 페이지 정보를 담은 PageInfo 객체(pageInfo)를
@@ -36,7 +35,6 @@
 	String qnaSubject = qnabean.getQna_subject();
 	String qnaWriter = qnabean.getQna_writer();
 	
-	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
 // 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
@@ -49,12 +47,10 @@
 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 %>
 
-	
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Shop ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -408,23 +404,25 @@ $( '#rere1' ).click(
 	<header>
 		<jsp:include page="/inc/header.jsp" />
 	</header>
-	<section class="home-slider owl-carousel">
-		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	
+	<br><br><br><br><br>
+<!-- 	<section class="home-slider owl-carousel"> -->
+<!-- 		<div class="slider-item" -->
+<!-- 			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5"> -->
+<!-- 			<div class="overlay"></div> -->
+<!-- 			<div class="container"> -->
+<!-- 				<div -->
+<!-- 					class="row slider-text justify-content-center align-items-center"> -->
+<!-- 					<div class="col-md-7 col-sm-12 text-center ftco-animate"> -->
+<!-- 						<h1 class="mb-3 mt-5 bread">Product Detail</h1> -->
+<!-- 						<p class="breadcrumbs"> -->
+<!-- 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span> -->
+<!-- 						</p> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</section> -->
 	
 	<section class="ftco-section">
 		<div class="container">
@@ -590,9 +588,6 @@ $( '#rere1' ).click(
 		<div class="container">
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch">
-				
-					
- 					
 					<table class="table thead-light" id="ac1">
                 <tr>
                   <td><a data-toggle="collapse">번호</a></td>
@@ -600,7 +595,6 @@ $( '#rere1' ).click(
                   <td><a data-toggle="collapse">작성일</a></td>
                   <td><a data-toggle="collapse">작성자</a></td>
                   <td><a data-toggle="collapse">조회수</a></td>
-                  
                   
                   </tr>
                   <%
@@ -615,7 +609,6 @@ $( '#rere1' ).click(
                   <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
                   
 <%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
-                  
                     
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
@@ -635,7 +628,6 @@ $( '#rere1' ).click(
                               <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
                             
                 </td></tr>
-                
                 
                 <%
                       }

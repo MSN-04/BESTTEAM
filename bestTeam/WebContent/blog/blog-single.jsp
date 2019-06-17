@@ -513,8 +513,8 @@
 											
 							<!-- 블로그 게시글 번호   -->
 							<div class="form-group">
-								<label for="name">이름 *</label> <input type="text"
-									class="form-control" id="name" name="name" value="<%=id %>">
+								<label for="name">아이디</label> <input type="text"
+									class="form-control" id="name" name="name" value="<%=id %>" readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>
