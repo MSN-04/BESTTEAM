@@ -26,7 +26,7 @@ public class BlogDetailService {
 
 	// 글 번호(board_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
 	public BlogBean getArticle(int blog_num) throws Exception {
-		System.out.println("BlogDetailService - getArticle()");
+//		System.out.println("BlogDetailService - getArticle()");
 		BlogBean blogBean = null;
 		
 		Connection con = getConnection();
@@ -74,7 +74,7 @@ public class BlogDetailService {
 	// 댓글 목록 조회 후 리턴
 	public ArrayList<BlogCommentBean> getCommentList(int blog_num) throws Exception {
 		System.out.println("CommentListService - getArticleList()");
-		System.out.println(blog_num);
+//		System.out.println(blog_num);
 		ArrayList<BlogCommentBean> articleList = new ArrayList<BlogCommentBean>();
 		Connection con = getConnection();
 		

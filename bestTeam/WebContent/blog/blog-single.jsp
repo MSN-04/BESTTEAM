@@ -422,8 +422,8 @@
 									<%
 											if (id != null && id.equals("admin")) {
 
-												System.out.println(articleList.get(i).getComment_blog_num());
-												System.out.println(articleList.get(i).getComment_content());
+// 												System.out.println(articleList.get(i).getComment_blog_num());
+// 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
 			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
@@ -436,15 +436,15 @@
 										<div class="singo_view" id="SirenDiv<%=i%>">
 											<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
 												<!-- text -->
-												<input type="text" id="comment_modify" name="comment_modify"
-													style="width: 50%; margin-left: 150px;"
-													value=<%=articleList.get(i).getComment_content()%>>
+												<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
 													
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="수정">
+												<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
 
 											</form>
 											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -452,7 +452,7 @@
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
 											</form>
 										</div>
 									
@@ -468,15 +468,15 @@
 											<div class="singo_view" id="SirenDiv<%=i%>">
 												<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
 													<!-- text -->
-													<input type="text" id="comment_modify" name="comment_modify"
-														style="width: 50%; margin-left: 150px;"
-														value=<%=articleList.get(i).getComment_content()%>>
+													<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
 														
 													<input type="hidden" name="comment_num"
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="수정">
+													<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
 	
 												</form>
 												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -484,7 +484,7 @@
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
 												</form>
 											</div>
 									<%
@@ -503,6 +503,9 @@
 					<%
 						if (id != null) {
 					%>
+					<script type="text/javascript">
+
+					</script>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
 							코멘트 남기기</h3>
@@ -518,8 +521,8 @@
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>
-								<textarea name="comment_content" id="comment_content" cols="30"
-									rows="2" class="form-control"></textarea>
+								<textarea name="comment_content" id="comment_content" cols="30" maxlength="200"
+									rows="3" class="form-control"></textarea>
 							</div>
 							<div class="form-group">
 								<input type="submit" value="작성 완료"
