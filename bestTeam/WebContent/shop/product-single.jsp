@@ -515,7 +515,7 @@ $( '#rere1' ).click(
 							<a><%=itemBean.getItem_favor_sweetness() %></a>
 						</div>
 					</div>
-					<div class="row mt-4">
+					<div class="mt-4" style="margin-left; 0 !important; padding-left: 0 !important;">
 						<div class="col-md-6">
 							<div class="form-group d-flex"></div>
 						</div>
@@ -525,7 +525,7 @@ $( '#rere1' ).click(
 							<div class="input-group mb-3">
                     
 <!--               <span class="input-group-btn ml-2"> -->
-                    <button type="button" class="quantity-left-minus btn input-group-btn" >
+                    <button type="button" class="quantity-left-minus btn input-group-btn">
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
                    <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
@@ -543,6 +543,21 @@ $( '#rere1' ).click(
 						
 					</p>
 		<div class="row1">
+		
+<!--   <div class="row1"> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column">  -->
+<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
+<!--     </div> -->
+<!--   </div>	 -->
 					
 				</div>
 			</div>
@@ -681,7 +696,6 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-<<<<<<< HEAD
 
 	<section class="ftco=section" id="ft3">
 		<div class="container">

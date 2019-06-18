@@ -265,7 +265,7 @@
         <div class="row justify-content-end" >
         <div>
         </div>
-        <div class="col mt-5 ftco-animate" style="padding: 50px 0px !important; font-size: 17px;">
+        <div class="col mt-5 ftco-animate" style="padding: 10px 0px !important; font-size: 16px;">
 	        <ul style="line-height: 2em;">
 		        <li>기본 배송료는 2,500원입니다.</li>
 		        <li>해외배송시 배송료가 추가로 발생될 수 있습니다.</li>
@@ -280,7 +280,7 @@
         <% if (cartList.size() != 0) { %>
         
 	          <div class="col mt-5 ftco-animate" id="total">
-	            <div class="cart-total mb-3" style="padding: 40px 60px !important;" >
+	            <div class="cart-total" style="padding: 40px !important;" >
 	              <h3>주문 확인</h3>
 	              <p class="d-flex">
 	                <span>상품 합계</span>

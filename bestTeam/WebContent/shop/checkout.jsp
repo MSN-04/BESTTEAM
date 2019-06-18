@@ -87,7 +87,7 @@
 	    .p-best { padding: 50px !important; }
     	
     	.table tbody tr td {
-		    padding: 15px 10px !important;
+		    padding: 15px 5px !important;
 		}
     </style>
 
@@ -96,10 +96,10 @@
   <body>
   
   
-  <header>
-	<jsp:include page="/inc/header.jsp"/>
-    <!-- END nav -->
-  </header>
+<!--   <header> -->
+<%-- 	<jsp:include page="/inc/header.jsp"/> --%>
+<!--     END nav -->
+<!--   </header> -->
   
   
     <section class="home-slider owl-carousel">
@@ -135,13 +135,13 @@
 
 		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
 			<h3 class="mb-4 billing-heading">주문상품 정보</h3>
-<!-- 			<div class="row align-items-end" > -->
-			
+
+
 			  <div class="cart-list">
 
               <table class="table">
                 <thead class="thead-primary">
-                  <tr class="text-center">
+                  <tr class="text-center" style="font-size: 16px;">
                     <th>번호</th>
                     <th>사진</th>
                     <th>상품명</th>
@@ -170,8 +170,8 @@
 	                     <td class="image-prod"><a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=cartItems.get(i).getItem_img() %>);"></a> </td>
 	                    						  
-	                     <td class="product-name">
-	                         <a href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" > <h3><%=cartItems.get(i).getItem_name() %></h3> </a> </td>
+	                     <td class="price">
+	                         <a style="color: white;" href="itemSingle.em?item_num=<%=cartItems.get(i).getItem_num() %>" ><%=cartItems.get(i).getItem_name() %></a> </td>
 	                    
 	                     <td class="price"><%=NumberFormat.getInstance().format(cartItems.get(i).getItem_price()) %> 원</td>
 	                    
@@ -475,7 +475,7 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 		
 
-	          <div class="row mt-5 pt-3 d-flex" >
+	          <div class="row mt-5 pt-3 d-flex">
 	          
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-best">
@@ -701,7 +701,7 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 	<footer>
-		<jsp:include page="/inc/footer.jsp"/>
+<%-- 		<jsp:include page="/inc/footer.jsp"/> --%>
 	</footer>    
   
 
