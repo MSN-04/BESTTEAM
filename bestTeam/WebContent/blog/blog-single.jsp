@@ -306,8 +306,8 @@
 						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
 					<div>
 						<p
-							style="font-weight: bold; margin-bottom: 1px; line-height: 10px; font-size: 23px;">to get more</p>
-						<p>Follow Us</p>
+							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p>
+						<p>@Tinkervell</p>
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>

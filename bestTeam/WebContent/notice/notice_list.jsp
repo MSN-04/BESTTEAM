@@ -148,7 +148,7 @@
 									%><li class="active"><span><%=a%></span></li>
 									<%
 										} else {
-									%><li><a href="noticeList.no?page=<%=a%>"><%=a%></a></li>
+									%><li><a href="noticeList.no?page=<%=nowPage + 1%>"><%=a%></a></li>
 									<%
 										}
 										}
