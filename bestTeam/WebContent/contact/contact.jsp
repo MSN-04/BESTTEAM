@@ -140,16 +140,7 @@
                   
                 </div>
             </div>
-             <div class="col-sm-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
-                    <h4>이기홍</h4>
-                    <p class="text-muted">바지 팀장</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
-                    
-                </div>
-            </div>
+          
         </div> 
 
         <div class="row">
