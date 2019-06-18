@@ -21,11 +21,11 @@
 			var loginBox = $(this).attr('href');
 
 			//Fade in the Popup and add close button
-			$(loginBox).fadeIn(300);
+			$(loginBox).fadeIn(0);
 
 			//Set the center alignment padding + border
-			var popMargTop = ($(loginBox).height() + 24) / 2;
-			var popMargLeft = ($(loginBox).width() + 24) / 2;
+			var popMargTop = ($(loginBox).height() + 12) / 2;
+			var popMargLeft = ($(loginBox).width() + 12) / 2;
 
 			$(loginBox).css({
 				'margin-top' : -popMargTop,
@@ -135,7 +135,8 @@
 
 				<fieldset class="textbox">
 					<span id="login-logo"><img src="./images/untitled.png"></span>
-					<span> Welcome Back!</span> <label class="username"> <input
+<!-- 					<span> Welcome Back!</span>  -->
+					<label class="username"> <input
 						id="username" name="id" value="" type="text" autocomplete="on"
 						placeholder="Username">
 					</label> <label class="password"> <input id="password"
@@ -145,28 +146,31 @@
 				</fieldset>
 			</form>
 			
-			<!-- 카카오톡 로그인 -->
-			<div>
-				<a id="kakao-login-btn"></a> <a
-					href="http://developers.kakao.com/logout"></a>
-				<script type='text/javascript'>
-					//<![CDATA[
-					// 사용할 앱의 JavaScript 키를 설정해 주세요.
-					Kakao.init('76c44c7c7a9a578e567bd1ffb9bc9b53');
-					// 카카오 로그인 버튼을 생성합니다.
-					Kakao.Auth.createLoginButton({
-						container : '#kakao-login-btn',
-						success : function(authObj) {
-							alert(JSON.stringify(authObj));
-						},
-						fail : function(err) {
-							alert(JSON.stringify(err));
-						}
-					});
-					//]]>
-				</script>
-			</div>
-			<!-- 카카오톡 로그인 End -->
+<<<<<<< HEAD
+=======
+<!-- 			<!-- 카카오톡 로그인 -->
+<!-- 			<div> -->
+<!-- 				<a id="kakao-login-btn"></a> <a -->
+<!-- 					href="http://developers.kakao.com/logout"></a> -->
+<!-- 				<script type='text/javascript'> -->
+<!-- <!-- // 					//<![CDATA[ -->
+<!-- // 					// 사용할 앱의 JavaScript 키를 설정해 주세요. -->
+<!-- // 					Kakao.init('76c44c7c7a9a578e567bd1ffb9bc9b53'); -->
+<!-- // 					// 카카오 로그인 버튼을 생성합니다. -->
+<!-- // 					Kakao.Auth.createLoginButton({
+<!-- // 						container : '#kakao-login-btn', -->
+<!-- // 						success : function(authObj) { -->
+<!-- // 							alert(JSON.stringify(authObj)); -->
+<!-- // 						}, -->
+<!-- // 						fail : function(err) { -->
+<!-- // 							alert(JSON.stringify(err)); -->
+<!-- // 						} -->
+<!-- // 					}); -->
+<!-- // 					//]]> -->
+<!-- 				</script> -->
+<!-- 			</div> -->
+<!-- 			<!-- 카카오톡 로그인 End -->
+>>>>>>> refs/remotes/origin/master
 			<div class="form-group fgdiv">
 				<a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 			</div>

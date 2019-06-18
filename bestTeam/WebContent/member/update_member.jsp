@@ -56,47 +56,48 @@
 
 <style type="text/css">
 .money {
-	text-align: right;
+  text-align: right;
 }
 
 .btn-best {
-	background-color: #C49B63 !important;
-	color: black !important;
+  background-color: #C49B63 !important;
+  color: black !important;
 }
 
 .btn-best:hover {
-	background-color: black !important;
-	border: 1px solid #C49B63 !important;
-	color: #C49B63 !important;
+  background-color: black !important;
+  border: 1px solid #C49B63 !important;
+  color: #C49B63 !important;
 }
 
 .btn-best:active {
-	background-color: #C49B63 !important;
-	color: black !important;
+  background-color: #C49B63 !important;
+  color: black !important;
 }
 
 .p-best {
-	padding: 50px !important;
+  padding: 50px !important;
 }
 
 #checkPwd{
   color : #ff4d4d;
   font-size: 13px;
-  margin-left: 73%;
+  margin-bottom: 5%;
+  margin-left: 5%
 }
 
 #checkMsg{
   color : #ff4d4d;
   font-size: 13px;
   margin-bottom: 5%;
-  margin-left: 27%;
+  margin-left: 5%
 }
 
 #checkMail{
-  color : #4d79ff;
+  color : #c39a63;
   font-size: 13px;
-  margin-bottom: 1%;
-  margin-left: 3%;
+  margin-bottom: 5%;
+  margin-left: 5%
 }
 </style>
 
@@ -107,28 +108,46 @@
  var lastKeyword = '';
  var loopSendKeyword = false;
 //아이디, 패스워드, 메일 적합한지 검사할 정규식
- var regId = /^[a-zA-Z0-9]{8,12}$/ ;
- var regPass = /^[a-zA-Z0-9]{8,12}$/;
- var regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
+  var regId = /^[a-zA-Z0-9]{8,20}$/ ;
+ var regPass = /(?=.*\d{1,20})(?=.*[~`!@#$%\^&*()-+=]{1,20})(?=.*[a-zA-Z]{2,20}).{8,20}$/;;
+ var regMail = /^[a-zA-Z0-9]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+ var regPhone = /^[0-9]{8,11}$/;
  
- // 비밀번호 일치 확인
- function checkPwd(){
+//비밀번호 일치 확인
+ function checkPwd1(){
+	  var pw1 = frm.pass.value;
+	  var pass = document.getElementById("pass");
+	  
+	  if(check(regPass,pass)){
+		   document.getElementById('checkPwd').style.color = "#c39a63";
+		   document.getElementById('checkPwd').innerHTML = "사용할수 있는 암호 입니다"; 
+	  } else if(pw1 == ''){
+		  document.getElementById('checkPwd').style.color = "#c39a63";
+		   document.getElementById('checkPwd').innerHTML = "";
+	  } else {
+		  document.getElementById('checkPwd').style.color = "#ff4d4d";
+		   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자, 숫자, 특수문자 조합"; 
+	  }
+	  
+	 }
+ 
+ function checkPwd2(){
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   var pass = document.getElementById("pass");
+  
   if(check(regPass,pass)){
 	  if(pw1!=pw2){
 	   document.getElementById('checkPwd').style.color = "#ff4d4d";
 	   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
 	  }else{
-	   document.getElementById('checkPwd').style.color = "#4d79ff";
+	   document.getElementById('checkPwd').style.color = "#c39a63";
 	   document.getElementById('checkPwd').innerHTML = "사용할수 있는 암호 입니다"; 
 	   
 	  }
   } else {
 	  document.getElementById('checkPwd').style.color = "#ff4d4d";
-	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~12자의 영문 대소문자와 숫자로만 입력"; 
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자, 숫자, 특수문자 조합"; 
   }
   
  }
@@ -175,7 +194,7 @@ document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
 	if(check(regId,id)){
 	    if(resultText==0){
 	     listView.innerHTML = "사용 할 수 있는 ID 입니다";
-	     listView.style.color = "#4d79ff";
+	     listView.style.color = "#c39a63";
 	    }else{
 	     listView.innerHTML = "이미 등록된 ID 입니다";
 	     listView.style.color = "#ff4d4d";
@@ -243,7 +262,7 @@ function displayResultMail() {
 //    alert(resultText);
 	   if(resultText==0){
 	    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
-	    listView.style.color = "#4d79ff";
+	    listView.style.color = "#c39a63";
 	   }else{
 	    listView.innerHTML = "이미 등록된 MAIL 입니다";
 	    listView.style.color = "#ff4d4d";
@@ -325,7 +344,7 @@ function check(reg, what) {
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate" style="margin: auto;">
-					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post" onsubmit="submit()">
+					<form action="UpdateMemberProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post">
 						<h3 class="mb-4 billing-heading">회원 정보 수정</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
@@ -339,17 +358,16 @@ function check(reg, what) {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="password"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" required="required">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" onkeyup="checkPwd1()" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">비밀번호 확인</label> <input type="password"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()"
-										required="required">
+										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd2()" required="required">
 								</div>
 							</div>
-								<div id="checkPwd">동일한 암호를 입력하세요</div>
+								<div id="checkPwd"></div>
 							<div class="w-100" ></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -382,7 +400,7 @@ function check(reg, what) {
 								<div class="">
 									<label for=""></label>
 									<p>
-										<input type="button" class="btn btn-best py-3 px-4" onclick="checkMail()" value="중복체크">
+										<input type="button" class="btn btn-best py-3 px-4" onclick="checkMail()" value="중복체크" required="required">
 										<input type="hidden" id="check_mail" value=<%=updatePage.getUser_email() %>>
 									</p>
 								</div>
@@ -503,7 +521,7 @@ function check(reg, what) {
 							
 							<div class="col-md-12">
 								<div class="form-group mt-4">
-									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">정보수정</a> 
+									<input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="정보수정"></a> 
 									<a href="Mypage.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
 										</div>
 								</div>

@@ -51,6 +51,11 @@ public class FavorProAction implements Action {
 				out.println("location.href='login.us'");
 				out.println("</script>");
 			} else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('취향설정이 완료되었습니다')");
+				out.println("</script>");
 				forward = new ActionForward();
 				
 				forward.setPath("Mypage.us");
@@ -67,6 +72,11 @@ public class FavorProAction implements Action {
 				out.println("location.href='login.us'");
 				out.println("</script>");
 			} else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('취향설정이 완료되었습니다')");
+				out.println("</script>");
 				forward = new ActionForward();
 				
 				forward.setPath("Mypage.us");
