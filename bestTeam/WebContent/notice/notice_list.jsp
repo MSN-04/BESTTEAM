@@ -101,7 +101,6 @@
 		<div class="container">
 			<div class="row d-flex">
 			<div class="col-md-8 ftco-animate">
-<!-- 				<div class="blog-entry align-self-stretch"> -->
 					<table class="table thead-light">
 						<tr>
 							<th>번호</th>
