@@ -60,6 +60,23 @@
 	.coffeeInfo td {
 		text-align: center;
 	}
+	.shop-subcategory {
+		display: flex;
+		padding: 10px;
+		margin: 0 auto;
+		margin-bottom: 0 !important;
+	}
+	.shop-subcategory>.col-md-3 {
+		display: inline-grid;
+		width: 20%;
+	}
+	.shop-subcategory>.col-md-3>.menu-entry {
+		margin: 0;
+	}
+/* 	.shop-subcategory>.text { */
+/* 		display: inline-grid; */
+/* 	} */
+	
 /* 	#v-pills-1-tab:hover { */
 /* 		border: 1px solid red; */
 		
@@ -262,12 +279,109 @@
 	</div>
 			<!-- 우측 퀵메뉴 끝 -->
 			
+			
+			
+			
+			
+<!-- 			<div class="row justify-content-center mb-5 pb-3"> -->
+				<div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
+					<span class="subheading">Best Quality!</span>
+					<h2 class="mb-4" style="font-size: 37px;"><i>회원님에게 추천드리는 상품</i></h2>
+<%-- 					<p><%=session.getAttribute("id") %>님의 취향에 맞는 원두 추천 리스트</p> --%>
+					
+				</div>
+<!-- 			</div> -->
+				<script type="text/javascript">
+					function setIFrameHeight(obj){
+					    if(obj.contentDocument){
+					        obj.height = obj.contentDocument.body.offsetHeight + 10;
+					    } else {
+					        obj.height = obj.contentWindow.document.body.scrollHeight;
+					    }
+					}
+				</script>
+				<iframe id="if01" name="ifbox01" width="950px" src="recommendList.em" height="auto" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;" >
+				</iframe>
+<!-- 			<div class="shop-subcategory text text-center mb-5"> -->
+									
+									
+									
+									
+<!-- <!-- 									 	<a>여기에 추천상품...</a> --> 
+<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
+<!-- 					<div class="menu-entry"> -->
+<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
+<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px; "></a> -->
+<!-- 						<div class="text text-center pt-4" > -->
+<!-- 							<h3> -->
+<!-- 								에스쇼콜라 블렌딩 커피 -->
+<!-- 							</h3> -->
+<!-- 							<p class="price"> -->
+<!-- 								<span>12,000원</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
+<!-- 					<div class="menu-entry"> -->
+<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
+<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
+<!-- 						<div class="text text-center pt-4" > -->
+<!-- 							<h3> -->
+<!-- 								에스쇼콜라 블렌딩 커피 -->
+<!-- 							</h3> -->
+<!-- 							<p class="price"> -->
+<!-- 								<span>12,000원</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
+<!-- 					<div class="menu-entry"> -->
+<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
+<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
+<!-- 						<div class="text text-center pt-4" > -->
+<!-- 							<h3> -->
+<!-- 								에스쇼콜라 블렌딩 커피 -->
+<!-- 							</h3> -->
+<!-- 							<p class="price"> -->
+<!-- 								<span>12,000원</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
+<!-- 					<div class="menu-entry"> -->
+<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
+<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
+<!-- 						<div class="text text-center pt-4" > -->
+<!-- 							<h3> -->
+<!-- 								서울커피 -->
+<!-- 							</h3> -->
+<!-- 							<p class="price"> -->
+<!-- 								<span>12,000원</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+	
+									 	
+									 	
+<!-- 									</div> -->
+			
+			
+			
+			
+			
+			
+			
+			
 				<div class="col-lg-12 ftco-animate p-md-5">
 
 					<div class="row">
 						<div class="col-md-12 nav-link-wrap mb-5">
 							<div class="nav ftco-animate nav-pills justify-content-center"
-								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
+								id="v-pills-tab" role="tablist" aria-orientation="vertical" >
 
 								<a class="nav-link" id="v-pills-0-tab" 
 									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')"
@@ -284,7 +398,16 @@
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
 							</div>
-
+							
+							<div class="shop-select" style="margin-top: -49px;">
+								<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
+									<option class="sop-01" value="newest">신상품순</option>
+									<option class="sop-01" value="popular">인기상품순</option>
+									<option class="sop-01" value="lowPrice">낮은가격순</option>
+									<option class="sop-01" value="highPrice">높은가격순</option>
+								</select>
+							</div>
+							
 							<div class="nav ftco-animate nav-pills justify-content-center" 
 								id="v-degree-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link" id="v-degree-0-tab" role="tab" 
@@ -313,17 +436,15 @@
 								<div class="tab-pane fade show active" id="v-pills-0"
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
-									<div class="shop-select">
-										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
-											<option class="sop-01" value="newest">신상품순</option>
-											<option class="sop-01" value="popular">인기상품순</option>
-											<option class="sop-01" value="lowPrice">낮은가격순</option>
-											<option class="sop-01" value="highPrice">높은가격순</option>
-										</select>
-									</div>
-									<div class="shop-subcategory text text-center mb-5">
-									 	<a>여기에 추천상품...</a>
-									</div>
+<!-- 									<div class="shop-select"> -->
+<!-- 										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)"> -->
+<!-- 											<option class="sop-01" value="newest">신상품순</option> -->
+<!-- 											<option class="sop-01" value="popular">인기상품순</option> -->
+<!-- 											<option class="sop-01" value="lowPrice">낮은가격순</option> -->
+<!-- 											<option class="sop-01" value="highPrice">높은가격순</option> -->
+<!-- 										</select> -->
+<!-- 									</div> -->
+									
 
 
 
@@ -333,7 +454,7 @@
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
 										%>
-											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';">
+											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" >
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
