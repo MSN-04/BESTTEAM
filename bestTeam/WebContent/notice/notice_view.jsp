@@ -86,24 +86,23 @@
 	<jsp:include page="/inc/header.jsp"></jsp:include>
 	<!-- END nav -->
 
-	<section class="home-slider owl-carousel">
+<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(../images/bg_3.jpg);">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
-
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Notice Details</h1>
+						<h1 class="mb-3 mt-5 bread" >Notice</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="./noticeList.no">Notice</a></span>
+<!-- 							<span class="mr-2"><a href="./noticeList.no">Notice</a></span> -->
 						</p>
 					</div>
-				</div>
 
+				</div>
 			</div>
 		</div>
 	</section>
@@ -111,44 +110,39 @@
 <!-- 카카오톡 상담 -->
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- 카카오톡 상담 End -->
-
+<br>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ftco-animate">
 					<%
-						//제대로 utf-8환경이 아니라 한글 깨짐 그래서 임의로 추가                                                   
 						request.setCharacterEncoding("utf-8");
 					%>
 					<div
-						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 50px; font-weight: 300; font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
+						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 32px; font-weight: 300;
+						font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
 					<div style="margin: auto;"><%=article.getNotice_content()%></div>
 				</div>
 
 			</div>
 		</div>
 	</section>
-	<!-- .section -->
 
 
 	<!-- 이전글버튼 ----------------------------->
-
-	
-		<div class="row" style="margin-left: 430px; margin-bottom: 0px;">
-			<div style="solidwhite; margin-left: 400px;" >
-				<%
-					int rre = article.getNotice_num() - 1;
-				%>
-				<button type="button"
-					class="quantity-left-minus btn input-group-btn"
-					style="text-align: center;">
-					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp;
-				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a>
+<!-- 		<div class="row" style="margin-left: 430px; margin-bottom: 0px;"> -->
+<!-- 			<div style="solidwhite; margin-left: 400px;" > -->
+<%-- 				<% --%>
+<!-- // 					int rre = article.getNotice_num() - 1; -->
+<%-- 				%> --%>
+<!-- 				<button type="button" -->
+<!-- 					class="quantity-left-minus btn input-group-btn" -->
+<!-- 					style="text-align: center;"> -->
+<!-- 					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp; -->
+<%-- 				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a> --%>
 				
-			</div>
-		</div>
-	
-
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 	<%
 		String id = (String) session.getAttribute("id");
@@ -168,8 +162,10 @@
 					} else {
 				%>
 				<div class="col text-center">
+				<div class="block-27" style="margin-bottom: 50px;">
 					<a href="./noticeList.no"
 						class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
+						</div>
 				</div>
 				<%
 					}
