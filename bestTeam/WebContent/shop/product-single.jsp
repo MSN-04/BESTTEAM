@@ -40,7 +40,7 @@
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+	System.out.println("스타트: "+startPage2+"엔드: "+endPage2 +"nowpage: "+nowPage2);
 %>
 
 <!DOCTYPE html>
@@ -186,7 +186,7 @@ function showSlides(n) {
 		        param[key] = value;
 		    }
 		    //qna페이징처리
-		    if(param['pageNum']==null){
+		    if(param['pageNum']==null && param['page']==null){
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
@@ -200,7 +200,7 @@ function showSlides(n) {
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
-			}else {
+			}else if(param['pageNum']!=null && param['page']==null){
 				$('#btn3').css('color', '#212529');
 				$('#btn3').css('background-color', '#c29963');
 				$('#btn3').css('border-color', '#c29963');
@@ -220,7 +220,7 @@ function showSlides(n) {
 			}
 		    
 		    //review 페이징처리
-		    if(param['page']==null){
+		    if(param['page']==null && param['pageNum']==null){
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
@@ -238,7 +238,7 @@ function showSlides(n) {
 			$('#ft1').show();
 			$('#ft2').hide();
 			$('#ft3').hide();
-			}else {
+			}else if(param['pageNum']==null && param['page']!=null){
 				$('#btn2').css('color', '#212529');
 				$('#btn2').css('background-color', '#c29963');
 				$('#btn2').css('border-color', '#c29963');
@@ -431,6 +431,10 @@ $( '#rere1' ).click(
 		});
 	});
 </script>
+<style>
+ .div0525{float:right !important;
+ 			} 
+</style>
 </head>
 <body>
 	<header>
@@ -550,94 +554,168 @@ $( '#rere1' ).click(
 	</section>
 	
 <!-- review -->
-	<section class="ftco=section" id="ft2">
+<section class="ftco=section" id="ft2">
 		<div class="container">
 			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
+			<div class="blog-entry align-self-stretch" style="margin: auto;">
+	<section class="ftco=section" id="ac1">
+		<div class="container">
 					<table class="table thead-light" id="ac1">
                 <tr>
                   <td><a data-toggle="collapse">번호</a></td>
                   <td><a data-toggle="collapse">제목 </a></td>
-                  <td><a data-toggle="collapse">작성일</a></td>
                   <td><a data-toggle="collapse">작성자</a></td>
-                  <td><a data-toggle="collapse">조회수</a></td>
+                  <td><a data-toggle="collapse">작성일</a></td>
                   
                   </tr>
-                  <%
-                    if (reviewList != null && listCount > 0) {
-                      for (int i = 0; i < reviewList.size(); i++) {
-                    	  if(reviewList.get(i).getReview_item_num()==itemBean.getItem_num()){
-                    		  
-                  %>
-                  
-                <tr>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
-                  <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
-                  
-                  </td>
-                  <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
-                  <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_readcount() %></a></td>
-                </tr>
-                
-                <tr><td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="5">
-                <div id="trtr" >
-                      <div class="panel-body">
-                        <br> <b><%=reviewList.get(i).getReview_content() %></b>
-                        
-                      </div>
-                    </div>
-                    
-                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >상세보기</a> 
-                              <a href="review_view.re?review_num=<%=reviewList.get(i).getReview_num()%>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" >답글쓰기</a>
-                            
-                </td></tr>
-                
-                <%
-                      }
-                  }
-                  }
-                %>
-              </table>
+                 <%
+										if (reviewList != null && listCount > 0) {
+											for (int i = 0; i < reviewList.size(); i++) {
+												System.out.println("싱글페이지:"+ reviewList.size());
+												System.out.println(reviewList.get(i).getReview_re_lev());
+									%>
+									
+								<tr>
+<%-- 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td> --%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=(listCount-i)-((nowPage-1)*10) %></a></td>
+									<% 
+									int wid = 0;
+										if(reviewList.get(i).getReview_re_lev()>0){
+											System.out.println(reviewList.get(i).getReview_re_lev());
+										wid = reviewList.get(i).getReview_re_lev()*10;
+											%>
+											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
+									%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_subject() %> </a></td>
+									<%} %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date() %></a></td>
+								</tr>
+								<tr>
+								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
+											<div class="panel-body">
+											<% if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
+												<b><%=reviewList.get(i).getReview_content() %></b>
+												<section class="ftco=section div0525" id="ac1">
+													<div class="container">
+														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
+															<a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" >수정</a> 
+															<a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary"  onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
+														</div>
+													</div>
+												</section>
+												
+												<%
+												if(id.equals("admin")){
+													%>
+													<section class="ftco-section" style="width: 100% !important;">
+		<div class="col-md-5" id="mail" style="max-width: 100% !important;">
+			<form  action="ReviewReplyProAction.re" method="post"
+				class="contact-form" >
+				<input type="hidden" class="form-control"value="<%=reviewList.get(i).getReview_subject() %>"
+								name="review_reply_subject" id="review_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=reviewList.get(i).getReview_num() %>"
+								name="review_num" id="review_reply_subject" required="required">
+								<input type="hidden" class="form-control"value="<%=reviewList.get(i).getReview_item_num() %>"
+								name="review_item_num" id="review_reply_subject" required="required">
 					
-					<a href='reviewPro.re?item_num=<%=itemBean.getItem_num() %>' class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">REVIEW 답글</h2>
+				</div>
+				<table style="width: 100%; text-align: left;">
+					<div class="row">
+					<tr>
+						<!-- 						<div class="col-md-6"> -->
+						<div class="form-group">
+							<input type="text" class="form-control" value="<%=id %>"
+								name="review_reply_writer" id="review_reply_writer" readonly="readonly">
+						</div>
+						<!-- 						</div> -->
+
+					</tr>
 					
+					</div>
+				</table>
+				<table style="width: 100%; text-align: center;">
+					
+							
+					<tr>
+						<td> <div class="form-group">
+                <textarea name="review_reply_content" id="review_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div></td>
+					</tr>
+					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+					<tr style="display: inline-block;">
+						<td colspan="2"><input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> <input type="submit"
+							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+							value="등록" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+	<%}
+											}else{%>
+				<div class="panel-body">
+				<b>작성자만 볼 수 있습니다.</b>
+				</div>
+				<%	
+				}
+				%>		
+												
+											</div>
+										</td>
+								</tr>
+								
+								
+								<%
+									}
+										}
+								%>
+							</table>
+						</div>
+					</section>
+					<a href="reviewWriteForm.re?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
 								<ul>
 							<% 
-							//실제 페이지수를 endPage로 변경
-							if(endPage>pageCount){
-								endPage=pageCount;
-							}
-							
-							if(startPage>pageCount){
+							if(startPage<1){
 								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage-pageBlock %>'>&lt;</a></li>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&page=<%=nowPage-1 %>'>&lt;</a></li>
 							<%
 							}
 							
 							for(int i = startPage; i<=endPage;i++){ 
+								if(i==nowPage){%>
+								<li class="active"><a><%=i %></a></li>
+								<%
+							}else{
 								%>
 							
-									<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&page=<%=i %>'><%=i %></a></li>
 									
 									<%} 
 									
-							if(endPage<pageCount){
+							if(endPage < maxPage){
 								%>
-								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=startPage+pageSize %>'>&gt;</a></li>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&page=<%=nowPage+1 %>'>&gt;</a></li>
 							<%
 							}
+
+						}
 							%>
 								</ul>
-								
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
+		</div>
+		</div>
+		</div>
 		</div>
 	</section>
 				
@@ -669,29 +747,30 @@ $( '#rere1' ).click(
 									%>
 									
 								<tr>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
+<%-- 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td> --%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=(listCount2-i)-((nowPage2-1)*10) %></a></td>
 									<% 
-									int wid = 0;
+									int wid2 = 0;
 										if(qnaList.get(i).getQna_re_lev()>0){
 											System.out.println(qnaList.get(i).getQna_re_lev());
-										wid = qnaList.get(i).getQna_re_lev()*10;
+										wid2 = qnaList.get(i).getQna_re_lev()*10;
 											%>
-											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid2 %> ">[RE]:<%=qnaList.get(i).getQna_subject() %> </a></td>
 									<%	}else{
 									%>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
 									<%} %>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
-									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
 								</tr>
 								<tr>
-								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
+								<td id="collapse1<%=i %>" class="panel-collapse collapse in" colspan="4">
 											<div class="panel-body">
 											<% if(id.equals(qnaList.get(i).getQna_writer())||id.equals("admin")){ %>
 												<b><%=qnaList.get(i).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
-														<div class="col-md-8 ftco-animate div0525">
+														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
 															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
 														</div>
@@ -790,7 +869,7 @@ $( '#rere1' ).click(
 							}else{
 								%>
 							
-									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
 									
 									<%} 
 									

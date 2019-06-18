@@ -16,7 +16,7 @@ public class ReviewBean {
 	private int review_re_ref;
 	private int review_re_lev;
 	private int review_re_seq;
-	private int review_re_writer;
+	private String review_re_writer;
 	
 	
 	public int getReview_re_ref() {
@@ -37,10 +37,10 @@ public class ReviewBean {
 	public void setReview_re_seq(int review_re_seq) {
 		this.review_re_seq = review_re_seq;
 	}
-	public int getReview_re_writer() {
+	public String getReview_re_writer() {
 		return review_re_writer;
 	}
-	public void setReview_re_writer(int review_re_writer) {
+	public void setReview_re_writer(String review_re_writer) {
 		this.review_re_writer = review_re_writer;
 	}
 	public String getReview_subject() {
