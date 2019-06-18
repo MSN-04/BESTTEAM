@@ -743,9 +743,7 @@ $( '#rere1' ).click(
 								<%
 							}else{
 								%>
-							
 									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
-									
 									<%} 
 									
 							if(endPage2 < maxPage2){

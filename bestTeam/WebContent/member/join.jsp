@@ -302,7 +302,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">아이디</label> <input type="text"
-                    class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()" />
+                    class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()"  required="required"/>
                 </div>
               </div>
               <div id="checkMsg">아이디를 입력하세요</div>
@@ -310,13 +310,13 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass">
+                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" required="required">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호 확인</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()" >
+                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()"  required="required">
                 </div>
               </div>
                 <div id="checkPwd">동일한 암호를 입력하세요</div>
@@ -324,7 +324,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">이 름</label> <input type="text"
-                    class="form-control" placeholder="이름을 입력해주세요." name="name">
+                    class="form-control" placeholder="이름을 입력해주세요." name="name"  required="required">
                 </div>
               </div>
               <div class="w-100"></div>
@@ -477,7 +477,7 @@ function check(reg, what) {
 
 
 <!--                   <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a>  -->
-                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기">
+                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기" onclick="selectTaste()">
                   <a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
                     </div>
                 </div>
@@ -488,8 +488,6 @@ function check(reg, what) {
     </div>
 
     <!-- END -->
-
-
 
   </section>
   <!-- .section -->
