@@ -124,12 +124,13 @@ public class ItemFrontController extends HttpServlet {
 		    	 System.out.println("controller- 에러:"+e);
 		     }
 		         
-	    } else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
-			System.out.println("itemDeleteForm--");
-			forward = new ActionForward();
-			forward.setPath("./shop/product-delete.jsp");
-			
-		}
+	    } 
+		//else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
+//			System.out.println("itemDeleteForm--");
+//			forward = new ActionForward();
+//			forward.setPath("./shop/product-delete.jsp");
+//			
+//		}
 	
 		if(forward != null) {
 			if(forward.isRedirect()) {
