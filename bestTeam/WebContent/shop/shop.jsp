@@ -286,7 +286,7 @@
 <!-- 			<div class="row justify-content-center mb-5 pb-3"> -->
 				<div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
 					<span class="subheading">Best Quality!</span>
-					<h2 class="mb-4" style="font-size: 37px;"><i>회원님에게 추천드리는 상품</i></h2>
+					<h2 class="mb-4" style="font-size: 37px;"><i>회원님께 딱 맞는 상품!</i></h2>
 <%-- 					<p><%=session.getAttribute("id") %>님의 취향에 맞는 원두 추천 리스트</p> --%>
 					
 				</div>

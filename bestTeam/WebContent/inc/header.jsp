@@ -146,8 +146,6 @@
 				</fieldset>
 			</form>
 			
-<<<<<<< HEAD
-=======
 <!-- 			<!-- 카카오톡 로그인 -->
 <!-- 			<div> -->
 <!-- 				<a id="kakao-login-btn"></a> <a -->
@@ -170,7 +168,6 @@
 <!-- 				</script> -->
 <!-- 			</div> -->
 <!-- 			<!-- 카카오톡 로그인 End -->
->>>>>>> refs/remotes/origin/master
 			<div class="form-group fgdiv">
 				<a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 			</div>
