@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
@@ -48,6 +49,13 @@
 	int endPage2 = pageInfo2.getEndPage();
 // 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+	
+    ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+    
+	// 쿠키로 상품번호 저장
+	Cookie c = new Cookie("item_num"+itemBean.getItem_num(), URLEncoder.encode(itemBean.getItem_num()+"","utf-8"));
+	c.setMaxAge(60*60*24); // 24시간
+	response.addCookie(c);
 %>
 
 	
@@ -339,9 +347,6 @@ $( '#rere1' ).click(
 		  
 	</style>
 	
-<%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#cart').on('click',function(){
@@ -574,15 +579,13 @@ $( '#rere1' ).click(
 								<a class="nav-link"  data-toggle="pill"   id="btn3"
 									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
-							<%  String sessionId = (String) session.getAttribute("id");
-							
-									if(sessionId != null) {
-										if(sessionId.equals("admin")) { %>
+							<%  
+										if(id != null && id.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 수정 / 삭제</a>
 								<%  	} 
-									} %>
+									%>
 							</div>
 						</section>
 							
@@ -751,7 +754,7 @@ $( '#rere1' ).click(
 													</div>
 												</section>
 												
-										<% if(id.equals("admin")){ %>
+										<% if(id != null && id.equals("admin")){ %>
 												<section class="ftco-section">
 													<div class="col-md-5" id="mail">
 														<form id="frm" action="QnaReplyProAction.qna" method="post"

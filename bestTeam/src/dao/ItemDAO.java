@@ -187,7 +187,37 @@ public class ItemDAO {
 		
 		return list;
 	}
-
+	
+	public ArrayList<ItemBean> getCurrentItems(ArrayList<Integer> itemNumList) {
+	    ArrayList<ItemBean> itemList = new ArrayList<>();
+	    
+	    sql = "select item_num, item_name, item_price, item_img from item where item_num = ?";
+        
+        try {
+            pstmt = con.prepareStatement(sql);
+            
+            for (int i = 0 ; i < itemNumList.size() ; i++) {
+                pstmt.setInt(1, itemNumList.get(i));
+                rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    ItemBean itemBean = new ItemBean();
+                    itemBean.setItem_num(rs.getInt("item_num"));
+                    itemBean.setItem_name(rs.getString("item_name"));
+                    itemBean.setItem_price(rs.getInt("item_price"));
+                    itemBean.setItem_img(rs.getString("item_img"));
+                    itemList.add(itemBean);
+                }
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("getCurrentItems 실패! (" + e.getMessage() + " )");
+        } finally {
+            close(rs);
+            close(pstmt);
+        }
+	    
+	    return itemList;
+    }
 	
 	/*-------------------------------------- 미송 --------------------------------------*/
 
@@ -386,8 +416,6 @@ public class ItemDAO {
 		    
 		  }
 
-		
-		
 		
 	
 }
