@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
 <%@page import="vo.PageInfo"%>
@@ -171,21 +172,10 @@ function showSlides(n) {
 
 <script type="text/javascript">
 // 상세정보, 리뷰, qna 버튼 작동 자바스크립트
-	//  		$(document).ready(function(index){
-	//  			$('#btn1').click(function(){
-	//  				$('.ftco-section').show();
-	//  	 		    $('.ftco-section').focus();
-	//  	 		  $('.ftco=section').hide();
-	//  				});
-	//  			});
-	//  		});
 	$(document).ready(function(index) {
 		$('#btn1').css('color', '#212529');
 		$('#btn1').css('background-color', '#c29963');
 		$('#btn1').css('border-color', '#c29963');
-		// 					$('#btn1').css('color','#c29963');
-		// 					$('#btn1').css('background-color','#101012');
-		// 					$('#btn1').css('border-color','#c29963');
 		$('#btn2').css('color', '#c29963');
 		$('#btn2').css('background-color', '#101012');
 		$('#btn2').css('border-color', '#c29963');
@@ -276,8 +266,6 @@ function showSlides(n) {
                  }
                  
             });
-             
-             
             
      });
 	
@@ -330,33 +318,26 @@ $( '#rere1' ).click(
 	);
  </script> 
 
-<!-- <style type="text/css"> -->
-<!--  b {  -->
-<!--  	font-size: 25px;  -->
-<!--  	font-color: gold;  -->
-<!--  }  -->
-<!--  .nav-link {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .nav-link active {  -->
-<!--  	backgound-color: #c49B63;  -->
-<!--  }  -->
-<!--  .ftco-menu {  -->
-<!--  	padding-top: 12em !important;  -->
-<!--  }  -->
-<!--  .pb-5, .py-5 {  -->
-<!--  	padding-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .mb-5, .my-5 {  -->
-<!--  	margin-bottom: 0 !important;  -->
-<!--  }  -->
-<!--  .table tbody tr td {  -->
-<!--  	text-align: left !important;  -->
-<!--  }  -->
-<!--  .div0525 {  -->
-<!--  	float: right !important;  -->
-<!--  }  -->
-<!-- </style>  -->
+	<style type="text/css">
+	
+		.roundbox {
+		 width: 50px;
+		 text-align: center;
+		 display: inline-block;
+		}
+		
+		.roundbox a {
+		  text-transform: uppercase;
+		  display: inline-block;
+		  width: 35px;
+		  padding: 4px 10px;
+		  margin-bottom: 7px;
+		  border-radius: 4px;
+		  color: #b3b3b3;
+		  border: 1px solid #674c27;
+		  font-size: 14px; }
+		  
+	</style>
 	
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
@@ -395,7 +376,6 @@ $( '#rere1' ).click(
 						
 					},
 					error : function(request, status, error) {
-// 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 					}
 				});
 			} else {
@@ -413,7 +393,6 @@ $( '#rere1' ).click(
 						if (data < 0){
 							alert('장바구니에 담겨있는 상품도 함께 주문됩니다.\n원치 않으실 경우 장바구니를 비워주세요.');
 						} else {
-<%-- 							location.href="cartInsert.sh?item_num=<%=itemBean.getItem_num()%>&quantity="+ $('#quantity').val() +"&item_price=<%=itemBean.getItem_price()%>&cart_img=<%=itemBean.getItem_img()%>&cart_item_name=<%=itemBean.getItem_name()%>"; --%>
 							$.ajax({
 								url : 'cartInsert.sh',
 								type : 'get',
@@ -435,7 +414,6 @@ $( '#rere1' ).click(
 									
 								},
 								error : function(request, status, error) {
-							//			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 								}
 							});
 						
@@ -458,7 +436,7 @@ $( '#rere1' ).click(
 	</header>
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+			style="background-image:  url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -503,29 +481,38 @@ $( '#rere1' ).click(
   </div>
   
   <!-- Next and previous buttons -->
-<!--   <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
-<!--   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-  <!-- Image text -->
   <div class="caption-container">
     <p id="caption"></p>
   </div>
   <!-- Thumbnail images -->
-  
 </div>
 				
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 					<h3><%=itemBean.getItem_name() %></h3>
 					<p class="price">
-						<span><%=itemBean.getItem_price() %> 원</span>
+						<span><%=NumberFormat.getInstance().format(itemBean.getItem_price()) %> 원</span>
 					</p>
 					<p><%=itemBean.getItem_info() %></p>
-					<div class="col-md-12 mb-3">
-						<div class="tagcloud">
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_acidity() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_aroma() %></a> 
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_bitterness() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_body() %></a>
-							<a href="" class="tag-cloud-link"><%=itemBean.getItem_favor_sweetness() %></a>
+					<div class="col-md-12 mb-3" style="padding: 0 !important; margin: 0 !important;">
+						<div class="roundbox"  style="text-align: center;">
+							<span style="font-size: 13px; margin: 0;">아로마</span><br>	
+							<a><%=itemBean.getItem_favor_aroma() %></a> 
+						</div>
+						<div class="roundbox">
+							<span style="font-size: 13px; margin: 0;">산미</span><br>
+							<a><%=itemBean.getItem_favor_acidity() %></a>
+						</div>
+						<div class="roundbox">
+							<span style="font-size: 13px; margin: 0;">씁쓸함</span><br>
+							<a><%=itemBean.getItem_favor_bitterness() %></a>
+						</div>
+						<div class="roundbox">
+							<span style="font-size: 13px; margin: 0;">바디감</span><br>
+							<a><%=itemBean.getItem_favor_body() %></a>
+						</div>
+						<div class="roundbox">
+							<span style="font-size: 13px; margin: 0;">달콤함</span><br>
+							<a><%=itemBean.getItem_favor_sweetness() %></a>
 						</div>
 					</div>
 					<div class="row mt-4">
@@ -536,7 +523,6 @@ $( '#rere1' ).click(
 						<div class="input-group col-md-6 d-flex mb-3">
 
 							<div class="input-group mb-3">
-                  
                     
 <!--               <span class="input-group-btn ml-2"> -->
                     <button type="button" class="quantity-left-minus btn input-group-btn" >
@@ -552,29 +538,26 @@ $( '#rere1' ).click(
 					</div>
 					<p>
 					
-						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart">Add to Cart</a>
-						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">BUY</a>
+						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" style="margin-right: 5px !important;">Add to Cart</a>
+						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin-right: 5px !important;">BUY</a>
 						
-		
-						
-								
+					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
-					
-   <div class="row1">
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt="">
-    </div>
-    <div class="column"> 
-      <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt="">
-    </div>
-    <div class="column">
-      <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt="">
-    </div>
-    
-  </div>
+		
+<!--   <div class="row1"> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column">  -->
+<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
+<!--     </div> -->
+<!--   </div>	 -->
 					
 				</div>
 			</div>
@@ -597,17 +580,10 @@ $( '#rere1' ).click(
 										if(sessionId.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
-												color: white !important;">상품정보 수정 및 삭제</a>
-												
-											
+												color: white !important;">상품정보 수정 / 삭제</a>
 								<%  	} 
 									} %>
-					
-								<!-- 		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a> -->
-							
 							</div>
-						
-						
 						</section>
 							
 	<section class="ftco-section" id="ft1">
@@ -651,10 +627,6 @@ $( '#rere1' ).click(
                 <tr>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.size() - i %></a></td>
                   <td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" ><%=reviewList.get(i).getReview_subject() %> </a>
-                  
-<%--                   <input type="hidden" id="reviewhidden" value="<%=reviewList.get(i).getReview_num()%>"> --%>
-                  
-                    
                   </td>
                   <td style="width: 150px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_date()%></a></td>
                   <td style="width: 100px;"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_user_id()%></a></td>
@@ -724,7 +696,152 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-<!-- 	<iframe id="iframe" name="iframe"></iframe> -->
+
+	<section class="ftco=section" id="ft3">
+		<div class="container">
+			<div class="row d-flex">
+				<div class="blog-entry align-self-stretch" style="margin: auto;">
+					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
+							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
+							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
+							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
+					 	</p>
+					<section class="ftco=section" id="ac1">
+						<div class="container">
+							<table class="table thead-light" id="ac1">
+								<tr>
+									<td><a data-toggle="collapse">번호</a></td>
+									<td><a data-toggle="collapse">제목 </a></td>
+									<td><a data-toggle="collapse">작성자</a></td>
+									<td><a data-toggle="collapse">작성일</a></td>
+									</tr>
+									<%
+										if (qnaList != null && listCount2 > 0) {
+											for (int i = 0; i < qnaList.size(); i++) {
+												System.out.println("싱글페이지:"+ qnaList.size());
+												System.out.println(qnaList.get(i).getQna_re_lev());
+									%>
+									
+								<tr>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td>
+									<% 
+									int wid = 0;
+										if(qnaList.get(i).getQna_re_lev()>0){
+											System.out.println(qnaList.get(i).getQna_re_lev());
+										wid = qnaList.get(i).getQna_re_lev()*10;
+											%>
+											<td><img src="./images/level.gif" width="<%=wid %>" height="10"><img src="./images/re.gif"><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%	}else{
+									%>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_subject() %> </a></td>
+									<%} %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_writer() %></a></td>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.get(i).getQna_date() %></a></td>
+								</tr>
+								<tr>
+								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
+											<div class="panel-body">
+												<b><%=qnaList.get(i).getQna_content() %></b>
+												<section class="ftco=section" id="ac1">
+													<div class="container">
+														<div class="col-md-8 ftco-animate div0525">
+															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(i).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
+															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(i).getQna_num() %>&qna_item_num=<%=qnaList.get(i).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(i).getQna_num() %>','<%=qnaList.get(i).getQna_item_num() %>')">삭제</a>
+														</div>
+													</div>
+												</section>
+												
+										<% if(id.equals("admin")){ %>
+												<section class="ftco-section">
+													<div class="col-md-5" id="mail">
+														<form id="frm" action="QnaReplyProAction.qna" method="post"
+															class="contact-form" style="width: 100%;">
+															<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_subject() %>"
+																			name="qna_reply_subject" id="qna_reply_subject" required="required">
+																			<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_num() %>"
+																			name="qna_num" id="qna_reply_subject" required="required">
+																			<input type="hidden" class="form-control"value="<%=qnaList.get(i).getQna_item_num() %>"
+																			name="qna_item_num" id="qna_reply_subject" required="required">
+																
+															<div class="col-lg-12 text-center">
+																<h2 class="section-heading text-uppercase">QNA 답글</h2>
+															</div>
+															<table style="width: 100%; text-align: left;">
+																<div class="row">
+																<tr>
+																	<!-- 						<div class="col-md-6"> -->
+																	<div class="form-group">
+																		<input type="text" class="form-control" value="<%=id %>"
+																			name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+																	</div>
+																	<!-- 						</div> -->
+											
+																</tr>
+															</table>
+															<table style="width: 100%; text-align: center;">
+																<tr>
+																	<td> <div class="form-group">
+											                			<textarea name="qna_reply_content" id="qna_reply_content" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+											              				</div>
+											              			</td>
+																</tr>
+																<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
+																<tr style="display: inline-block;">
+																	<td colspan="2"><input type="button"
+																		class="btn btn-primary py-3 px-4" style="color: black;"
+																		id="reset" value="취소" /> <input type="submit"
+																		class="btn btn-primary py-3 px-4" style="color: black;" id="save"
+																		value="등록" /></td>
+																</tr>
+															</table>
+														</form>
+													</div>
+												</section>
+											<% } %>
+											</div>
+										</td>
+								</tr>
+							<%	 }
+							 } %>
+							</table>
+						</div>
+					</section>
+					<a href="qnaWriteForm.qna?item_num=<%=itemBean.getItem_num() %>"  class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+			
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<ul>
+							<% 
+							if(startPage<1){
+								%>
+								<li><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage-1 %>'>&lt;</a></li>
+							<% }
+							
+								for(int i = startPage2; i<=endPage2;i++){ 
+									if(i==nowPage2){%>
+									<li class="active"><a><%=i %></a></li>
+							<%
+							 }else{
+								%>
+									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>&v-pills-2'><%=i %></a></li>
+									<%} 
+									
+							if(endPage2 < maxPage2){
+								%>
+								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
+							<%
+							}
+						}
+							%>
+								</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</section>
 <section>
 		<div class="container" >
 			<div class="row" >

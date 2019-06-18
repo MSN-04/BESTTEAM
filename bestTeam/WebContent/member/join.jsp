@@ -259,6 +259,7 @@ function displayResultMail() {
  }
 }
 
+
 //검사수행 함수
 function check(reg, what) {
      if(reg.test(what.value)) {
@@ -301,7 +302,7 @@ function check(reg, what) {
           <div class="col-md-7 col-sm-12 text-center ftco-animate">
             <h1 class="mb-3 mt-5 bread">Sign Up</h1>
             <p class="breadcrumbs">
-              <span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span>SignUp</span>
+              <span class="mr-2"><a href="index.in">Home</a></span> <span><a href="login.us">로그인</a></span>
             </p>
           </div>
 
@@ -347,7 +348,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">이 름</label> <input type="text"
-                    class="form-control" placeholder="이름을 입력해주세요." name="name">
+                    class="form-control" placeholder="이름을 입력해주세요." name="name"  required="required">
                 </div>
               </div>
               <div class="w-100"></div>
@@ -384,7 +385,8 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
-                    class="form-control" placeholder="숫자만 입력하세요" name="phone" required="required" maxlength="11">
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone" id="phone" required="required" maxlength="11">
+                    <div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 </div>
               </div>
               <div class="w-100"></div>
@@ -500,7 +502,7 @@ function check(reg, what) {
 
 
 <!--                   <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a>  -->
-                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기">
+                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기" onclick="selectTaste()">
                   <a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
                     </div>
                 </div>
@@ -512,15 +514,12 @@ function check(reg, what) {
 
     <!-- END -->
 
-
-
   </section>
   <!-- .section -->
 
   <footer class="ftco-footer ftco-section img">
     <jsp:include page="../inc/footer.jsp" />
   </footer>
-
 
 
   <!-- loader -->
@@ -551,9 +550,17 @@ function check(reg, what) {
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="./js/google-map.js"></script>
   <script src="./js/main.js"></script>
+
+  <script type="text/javascript">
+  	function selectTaste() {
+  		alert("가입해주셔서 감사합니다!\n로그인 후 'MYPAGE'에서 커피 취향을 선택하시면\n취향에 맞는 원두상품을 추천해드립니다.")
+  	}
   
+  
+  </script>  
 
   <script>
+  
     $(document).ready(function() {
 
       var quantitiy = 0;

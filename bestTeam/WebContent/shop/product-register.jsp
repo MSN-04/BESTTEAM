@@ -57,31 +57,11 @@ pageEncoding="UTF-8"%>
 	</header>
 	<!-- END nav -->
 
-<!-- 	<section class="home-slider owl-carousel"> -->
 
-<!-- 		<div class="slider-item" -->
-<!-- 			style="background-image: url(./images/bg_3.jpg);" -->
-<!-- 			data-stellar-background-ratio="0.5"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center"> -->
-
-<!-- 					<div class="col-md-7 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<h1 class="mb-3 mt-5 bread">product-register</h1> -->
-<!-- 						<p class="breadcrumbs"> -->
-<!-- 							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a> -->
-<!-- 						</p> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-
-	<section class="ftco-section">
+	<section class="ftco-section" style="margin-top: 100px; margin-bottom: 100px;">
 		<div class="container">
 			<form id="frm" action="itemRegisterPro.em" method="post" enctype="multipart/form-data">
+				<h2 style="margin: 30px 100px;">상품 등록</h2>
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>상품명 : </td>
@@ -128,21 +108,22 @@ pageEncoding="UTF-8"%>
 						<td>Body : </td>
 						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" /></td>
 					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" value="다시쓰기" />
-						</td>
-					</tr>
 				</table>
+					<div style="display: inline-block; float: right; padding: 20px;">
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
+						<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" value="다시쓰기" />
+					</div>
+					
 			</form>
 		</div>
 	</section>
 	<!-- .section -->
 	
-<jsp:include page="../inc/footer.jsp"></jsp:include>
-
-
+	
+	<footer>
+		<jsp:include page="/inc/footer.jsp" />
+	</footer>
+	
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
