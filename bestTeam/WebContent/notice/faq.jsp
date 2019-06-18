@@ -145,9 +145,9 @@ b{
     <div class="container">
     <div class="row d-flex">
     <div class="blog-entry align-self-stretch">
-    <br><br>
-  <h1> &nbsp;&nbsp;&nbsp; F A Q </h1>
-    <br>
+    <br><br><br>
+<!--   <h1> &nbsp;&nbsp;&nbsp; F A Q </h1> -->
+<!--     <br> -->
 <!--     <p class="breadcrumbs">  -->
 <!-- 					<span class="mr-2"><a href="faq.jsp"><b>배송 관련</b> </a></span>| <span><a  -->
 <!-- 							href="faq2.jsp"> 결제 관련 </a></span>|<span><a href="faq3.jsp"> 교환/환불 관련 </a></span>  -->
