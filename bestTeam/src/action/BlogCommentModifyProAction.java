@@ -15,12 +15,12 @@ public class BlogCommentModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BlogCommentModifyProAction excute");
+//		System.out.println("BlogCommentModifyProAction excute");
 		ActionForward forward = new ActionForward();
 		
-		System.out.println("blog_num :: " + request.getParameter("comment_blog_num"));
-		System.out.println("comment_num :: " + request.getParameter("comment_num"));
-		System.out.println("comment_modify :: " + request.getParameter("comment_modify"));
+//		System.out.println("blog_num :: " + request.getParameter("comment_blog_num"));
+//		System.out.println("comment_num :: " + request.getParameter("comment_num"));
+//		System.out.println("comment_modify :: " + request.getParameter("comment_modify"));
 		
 		int blog_num = Integer.parseInt(request.getParameter("comment_blog_num"));
 		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
