@@ -14,7 +14,7 @@ public class NoticeListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("NoticeListAction");
+//		System.out.println("NoticeListAction");
 		
 		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
 		

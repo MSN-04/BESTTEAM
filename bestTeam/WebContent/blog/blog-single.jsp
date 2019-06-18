@@ -58,8 +58,10 @@
 		if (message == true) {
 			location.href = "./BlogCommentDeletePro.bl?comment_num="
 					+ comment_num;
+		
 		} else
 			alert("취소되었습니다.");
+// 			location.href = "history.back()";
 		return false;
 	}
 </script>
@@ -401,6 +403,7 @@
 				<%
 					}
 				%>
+				
 				<!-- <---------------- 태그클라우드 --------------->
 <!-- 				<div class="tag-widget post-tag-container mb-5 mt-5"> -->
 <!-- 					<div class="tagcloud"> -->
@@ -413,10 +416,8 @@
 
 				
 				<div class="pt-5 mt-5">
-					<!-- 코멘트 i개 -->
 					<h3 class="mb-5">코멘트 <%=articleList.size() %>개</h3>
 					<%
-						// if (articleList != null && listCount > 0) { 
 						for (int i = 0; i < articleList.size(); i++) {
 					%>
 					
@@ -434,15 +435,12 @@
 								<h3><%=articleList.get(i).getComment_writer() %></h3>
 
 								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
-								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
 								<p><%=articleList.get(i).getComment_content()%></p>
 								<div
 									style='display: text-decoration; float: right; width: 1000px'>
 									<%
 											if (id != null && id.equals("admin")) {
 
-// 												System.out.println(articleList.get(i).getComment_blog_num());
-// 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
 			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>

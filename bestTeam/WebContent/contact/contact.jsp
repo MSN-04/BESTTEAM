@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 text-center">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>문세웅</h4>
@@ -86,7 +86,7 @@
                     <h4>최영비</h4>
                     <p class="text-muted">최영비</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">cyeongb@gmail.com</p>
                     
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <h4>신미송</h4>
                     <p class="text-muted">신미송</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">fhdgofhdgo@naver.com</p>
                     
                 </div>
             </div>
@@ -116,7 +116,7 @@
                     <h4>권경민</h4>
                     <p class="text-muted">권경민</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">kkmkwon@naver.com</p>
                   
                 </div>
             </div>
@@ -136,20 +136,20 @@
                     <h4>한성민</h4>
                     <p class="text-muted">한성민</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">gkstyd1313@naver.com</p>
                   
                 </div>
             </div>
-<!--              <div class="col-sm-4"> -->
-<!--                 <div class="team-member"> -->
-<!--                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt=""> -->
-<!--                     <h4>moon</h4> -->
-<!--                     <p class="text-muted">바지 팀장</p> -->
-<!--                     <p class="text-muted">WEB,JSP,MYSQL</p> -->
-<!--                     <p class="text-muted">sewoong0409@naver.com</p> -->
+             <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
+                    <h4>이기홍</h4>
+                    <p class="text-muted">바지 팀장</p>
+                    <p class="text-muted">WEB,JSP,MYSQL</p>
+                    <p class="text-muted">sewoong0409@naver.com</p>
                     
-<!--                 </div> -->
-<!--             </div> -->
+                </div>
+            </div>
         </div> 
 
         <div class="row">
@@ -230,6 +230,8 @@
         </div>
       </div>
     </section>
+    
+    <br><br>
     <div class="col-md-6 " id="mail">
  <form action="mailsend" method="post"class="contact-form">
             	<div class="row">
@@ -258,6 +260,9 @@
               </div>
             </form>
             </div>
+
+<br><br>
+
 
     <jsp:include page="../inc/footer.jsp"/>
   
