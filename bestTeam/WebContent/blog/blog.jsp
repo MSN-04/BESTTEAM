@@ -183,6 +183,7 @@
                 <select name = "option" class="category-select">
   					<option class="sop-01" value="blog_subject">제목</option>
   					<option class="sop-01" value="blog_content1">내용</option>
+  					<option class="sop-01" value="blog_content">상세내용</option>
   					<option class="sop-01" value="blog_writer">작성자</option>
 				</select>
                 	<div class="icon" >

@@ -411,14 +411,15 @@
 <!-- 				</div> -->
 				<!-- <---------------- 태그클라우드 끝 --------------->
 
-
+				
 				<div class="pt-5 mt-5">
 					<!-- 코멘트 i개 -->
-					<h3 class="mb-5">코멘트 1개</h3>
+					<h3 class="mb-5">코멘트 <%=articleList.size() %>개</h3>
 					<%
 						// if (articleList != null && listCount > 0) { 
 						for (int i = 0; i < articleList.size(); i++) {
 					%>
+					
 					<ul class="comment-list">
 						<li class="comment">
 							<div class="vcard bio">

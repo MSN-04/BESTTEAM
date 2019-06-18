@@ -50,6 +50,12 @@
 
 </head>
 <body>
+<%
+	if(session.getAttribute("id") != null){
+		response.sendRedirect("index.in");
+	}
+%>
+
 	<header>
 		<jsp:include page="../inc/header.jsp"></jsp:include>
 	</header>
