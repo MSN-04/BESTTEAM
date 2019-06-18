@@ -89,7 +89,7 @@
 <section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -127,7 +127,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- .section -->
 
 
 	<!-- 이전글버튼 ----------------------------->
@@ -144,8 +143,6 @@
 				
 <!-- 			</div> -->
 <!-- 		</div> -->
-	
-
 
 	<%
 		String id = (String) session.getAttribute("id");
@@ -165,8 +162,10 @@
 					} else {
 				%>
 				<div class="col text-center">
+				<div class="block-27" style="margin-bottom: 50px;">
 					<a href="./noticeList.no"
 						class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
+						</div>
 				</div>
 				<%
 					}

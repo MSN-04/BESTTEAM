@@ -71,7 +71,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -95,10 +95,13 @@
 	<br>
 	<br>
 
+
+
 	<section class="ftco=section">
 		<div class="container">
 			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
+			<div class="col-md-8 ftco-animate">
+<!-- 				<div class="blog-entry align-self-stretch"> -->
 					<table class="table thead-light">
 						<tr>
 							<th>번호</th>
