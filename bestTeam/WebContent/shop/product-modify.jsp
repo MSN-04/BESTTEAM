@@ -100,6 +100,15 @@
 		background: rgba(0,0,0,0);
 		width: 100%;
 	}
+	#favor td {
+		text-align: left;
+	}
+	#favor select {
+ 		margin-top: 30px; 
+ 		margin: 0 10px;
+ 		width: 85px; 
+ 		text-align-last: center;
+	}
 </style>
 
 <%
@@ -145,9 +154,10 @@
 <!-- 	</section> -->
 
 
-	<section class="ftco-section">
+	<section class="ftco-section" style="margin-top: 100px; margin-bottom: 100px;">
 		<div class="container">
 			<form id="frm" action="itemModifyPro.em?item_num=<%=itemBean.getItem_num() %>&item_favor_num=<%=itemBean.getItem_favor_num() %>" method="post" enctype="multipart/form-data">
+				<h2 style="margin: 30px 100px;">상품 수정</h2>
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>상품번호 : </td>
@@ -159,7 +169,7 @@
 					</tr>
 					<tr>
 						<td>가격 : </td>
-						<td><input type="text" id="item_price" name="item_price" class="frmTitle" value="<%=itemBean.getItem_price() %>"  required="required"/></td>
+						<td><input type="text" id="item_price" name="item_price" class="frmTitle" value="<%=itemBean.getItem_price() %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required="required"/></td>
 					</tr>
 					<tr>
 						<td>상품 이미지 : </td>
@@ -168,41 +178,68 @@
 					<tr>
 						<td>간단 설명 : </td>
 						<td><textarea rows="10" cols="30" id="item_info" name="item_info"  value="<%=itemBean.getItem_info()%>"
-								style="width: 700px; height: 200px;"  required="required"></textarea></td>
+								style="width: 100%; height: 200px;"  required="required"></textarea></td>
 					</tr>
 					<tr>
 						<td>재고 : </td>
-						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" value="<%=itemBean.getItem_amount() %>"  required="required"/></td>
+						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" value="<%=itemBean.getItem_amount() %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required="required"/></td>
 					</tr>
 					<tr>
 						<td>상세설명 이미지 : </td>
 						<td><input type="file" id="item_content" name="item_content" class="frmTitle" value="<%=itemBean.getItem_content()%>"  required="required"/></td>
 					</tr>
 					<tr>
-					<tr>
-						<td>상품 취향 번호 : </td>
-						<td><input type="text" id="item_favor_num" name="item_favor_num" class="frmTitle" placeholder="<%=itemBean.getItem_favor_num() %>" readonly="readonly"/></td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
-					<tr>
-						<td>Aroma : </td>
-						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" value="<%=itemBean.getItem_favor_aroma() %>"  required="required"/></td>
+					<tr id="favor" style="margin-top: 30px;">
+						<td style="text-align: center; ">상세 선택 : </td>
+						<td>Aroma
+							<select id="item_favor_aroma" name="item_favor_aroma" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Acidity 
+							<select id="item_favor_acidity" name="item_favor_acidity" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Sweetness 
+							<select id="item_favor_sweetness" name="item_favor_sweetness" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Bitterness 
+							<select id="item_favor_bitterness" name="item_favor_bitterness"  >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Body 
+							<select id="item_favor_body" name="item_favor_body"  >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+						</td>
 					</tr>
-					<tr>
-						<td>Acidity : </td>
-						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" value="<%=itemBean.getItem_favor_acidity() %>"  required="required"/></td>
-					</tr>
-					<tr>
-						<td>Sweetness : </td>
-						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" value="<%=itemBean.getItem_favor_sweetness() %>"  required="required"/></td>
-					</tr>
-					<tr>
-						<td>Bitterness : </td>
-						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" value="<%=itemBean.getItem_favor_bitterness() %>"  required="required"/></td>
-					</tr>
-					<tr>
-						<td>Body : </td>
-						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" value="<%=itemBean.getItem_favor_body() %>"  required="required"/></td>
-					</tr>
+<!-- 					<tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>상품 취향 번호 : </td> -->
+<%-- 						<td><input type="text" id="item_favor_num" name="item_favor_num" class="frmTitle" placeholder="<%=itemBean.getItem_favor_num() %>" readonly="readonly"/></td> --%>
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Aroma : </td> -->
+<%-- 						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" value="<%=itemBean.getItem_favor_aroma() %>"  required="required"/></td> --%>
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Acidity : </td> -->
+<%-- 						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" value="<%=itemBean.getItem_favor_acidity() %>"  required="required"/></td> --%>
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Sweetness : </td> -->
+<%-- 						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" value="<%=itemBean.getItem_favor_sweetness() %>"  required="required"/></td> --%>
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Bitterness : </td> -->
+<%-- 						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" value="<%=itemBean.getItem_favor_bitterness() %>"  required="required"/></td> --%>
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Body : </td> -->
+<%-- 						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" value="<%=itemBean.getItem_favor_body() %>"  required="required"/></td> --%>
+<!-- 					</tr> -->
 				</table>
 				<br><br>
 				

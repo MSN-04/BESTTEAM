@@ -110,15 +110,15 @@
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
 		<!-- 리스트 -->
-		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
+		<form class="billing-form ftco-bg-dark p-3 p-md-5" >
 			<h3 class="mb-4 billing-heading">매출 현황</h3>
 			
 			 <div class="cart-list" style="text-align: center;">
 				<nav style="font-size: 22px; text-align: center; margin-bottom: 10px;">
 					<a href="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" target="ifbox01" 
-						style="width:461px;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
+						style="width:461px; margin: 0 !important; " class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
 					<a href="adminPageShopMonth.us?year=<%=Calendar.getInstance().get(Calendar.YEAR) %>" target="ifbox01" 
-						style="width:461px;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
+						style="width:461px; margin: 0 !important;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
 				</nav>
 				<iframe id="if01" name="ifbox01" width="950px" src="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" height="500px" style="margin: auto; border: 0px;">
 				</iframe>

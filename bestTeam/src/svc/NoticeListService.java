@@ -25,7 +25,7 @@ public class NoticeListService {
 		// noticeDAO 클래스의 selectListCount() 메서드를 호출하여 글 목록 갯수 얻어와서 변수에 저장
 		listCount = noticeDAO.selectListCount();
 		   
-		System.out.println("게시물 갯수 : " + listCount);
+//		System.out.println("게시물 갯수 : " + listCount);
 		
 		close(con);
 		

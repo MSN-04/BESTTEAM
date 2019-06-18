@@ -318,15 +318,15 @@ function check(reg, what) {
 
 <section class="ftco-section">
     <div class="container">
-      <div class="row">
-        <div class="col-xl-8 ftco-animate" style="margin: auto;">
+      <div class="row" style="margin: auto;">
+        <div style="margin: auto; width: 900px;">
           <form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post" >
             <h3 class="mb-4 billing-heading">회원 가입</h3>
             <div class="row align-items-end" style="margin: 0 !important;">
-              <div class="col-md-6" style="margin-right: 100%">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">아이디</label> <input type="text"
-                    class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()" required="required"/>
+                    class="form-control" placeholder="아이디를 입력해주세요" name="id" id="id" onkeyup="checkId()" required="required"/>
                 </div>
               </div>
               <div id="checkMsg"></div>
@@ -334,13 +334,13 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" onkeyup="checkPwd1()" required="required">
+                    class="form-control" placeholder="비밀번호를 입력해주세요" name="pass" id="pass" onkeyup="checkPwd1()" required="required">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호 확인</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd2()" required="required">
+                    class="form-control" placeholder="비밀번호를 입력해주세요" name="pass2" id="pass2" onkeyup="checkPwd2()" required="required">
                 </div>
               </div>
                 <div id="checkPwd"></div>
@@ -348,7 +348,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">이 름</label> <input type="text"
-                    class="form-control" placeholder="이름을 입력해주세요." name="name"  required="required">
+                    class="form-control" placeholder="이름을 입력해주세요" name="name"  required="required">
                 </div>
               </div>
               <div class="w-100"></div>
@@ -369,7 +369,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="emailaddress">Email</label> <input type="text"
-                    class="form-control" placeholder="이메일을 입력해주세요." name="email" id="email">
+                    class="form-control" placeholder="이메일을 입력해주세요" name="email" id="email">
                 </div>
               </div>
               <div class="col-md-6">
@@ -385,7 +385,9 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
+
                     class="form-control" placeholder="숫자만 입력하세요" name="phone" id="phone" required="required" maxlength="11" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+
                     <div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 </div>
               </div>
@@ -486,7 +488,7 @@ function check(reg, what) {
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="streetaddress">주소</label> <input type="text"
-                    class="form-control" id="address" placeholder="우편번호 검색 후 주소를 선택할 수 있습니다." name="address1" readonly="readonly">
+                    class="form-control" id="address" placeholder="우편번호 검색시 주소를 선택할 수 있습니다" name="address1" readonly="readonly">
                 </div>
               </div>
               <div class="col-md-6">
@@ -497,16 +499,15 @@ function check(reg, what) {
               </div>
               <div class="w-100"></div>
               
-              <div class="col-md-12">
+              <div class="col-md-12" style="margin-top: 20px;">
+              
+              
                 <div class="form-group mt-4">
-
-
-<!--                   <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a>  -->
-                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기" onclick="selectTaste()">
-                  <a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
-                    </div>
+	                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기" onclick="selectTaste()">
+	                  <a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin: 0 !important;">취소하기</a>
                 </div>
-              </div>  
+              </div>
+            </div>  
           </form>
         </div>
       </div>

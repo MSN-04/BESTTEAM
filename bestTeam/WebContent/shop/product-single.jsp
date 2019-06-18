@@ -436,7 +436,7 @@ $( '#rere1' ).click(
 	</header>
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image:  url(./images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+			style="background-image:  url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -541,7 +541,7 @@ $( '#rere1' ).click(
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" style="margin-right: 5px !important;">Add to Cart</a>
 						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin-right: 5px !important;">BUY</a>
 						
-					</p>
+					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
 		
 <!--   <div class="row1"> -->

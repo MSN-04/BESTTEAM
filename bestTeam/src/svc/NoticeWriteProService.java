@@ -13,7 +13,7 @@ import static db.JdbcUtil.*; // JdbcUtil 클래스의 모든 static 메서드를
 public class NoticeWriteProService {
 	
 	public boolean registArticle(NoticeBean noticeBean) throws Exception {
-		System.out.println("noticeWriteProService");
+//		System.out.println("noticeWriteProService");
 		
 //		System.out.println("getNotice_writer" + NoticeBean.getNotice_writer());
 //		System.out.println("getNotice_num" +NoticeBean.getNotice_num());

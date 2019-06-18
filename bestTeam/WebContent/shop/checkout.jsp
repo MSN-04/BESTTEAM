@@ -96,10 +96,10 @@
   <body>
   
   
-<!--   <header> -->
-<%-- 	<jsp:include page="/inc/header.jsp"/> --%>
-<!--     END nav -->
-<!--   </header> -->
+  <header>
+	<jsp:include page="/inc/header.jsp"/>
+    END nav
+  </header>
   
   
     <section class="home-slider owl-carousel">
@@ -222,7 +222,7 @@
 	            <div class="col-md-6">
                 	<div class="form-group">
                 		<label for="phone">연락처 1 *</label>
-                  		<input type="text" class="form-control" id="phone" value="<%=userBean.getUser_phone() %>" placeholder="배송시 연락받을 번호" onkeyup="verifyPhone()" required="required">
+                  		<input type="text" class="form-control" id="phone" value="<%=userBean.getUser_phone() %>" placeholder="배송시 연락받을 번호" onkeyup="this.value=this.value.replace(/[^0-9]/g,''); verifyPhone();" required="required">
                   		<div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 	</div>
               	</div>
@@ -230,7 +230,7 @@
               	<div class="col-md-6">
               		<div class="form-group">
                 		<label for="emailaddress">연락처 2</label>
-                		<input type="text" class="form-control" id="phone2" placeholder="(선택항목)" onkeyup="verifyPhone2()">
+                		<input type="text" class="form-control" id="phone2" placeholder="(선택항목)" onkeyup="this.value=this.value.replace(/[^0-9]/g,''); verifyPhone2();">
                   		<div id="checkPhone2" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 	</div>
                 </div>	
@@ -495,7 +495,6 @@
 		    					</p>
 					</div>
 	          	</div>
-
 	          	
 	          	<div class="col-md-6 d-flex" >
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-best">
@@ -701,7 +700,7 @@
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
 
 	<footer>
-<%-- 		<jsp:include page="/inc/footer.jsp"/> --%>
+		<jsp:include page="/inc/footer.jsp"/>
 	</footer>    
   
 
