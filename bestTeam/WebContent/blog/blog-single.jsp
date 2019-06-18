@@ -402,13 +402,13 @@
 					}
 				%>
 				<!-- <---------------- 태그클라우드 --------------->
-				<div class="tag-widget post-tag-container mb-5 mt-5">
-					<div class="tagcloud">
-						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
-							class="tag-cloud-link">핸드드립</a> <a href="#"
-							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a>
-					</div>
-				</div>
+<!-- 				<div class="tag-widget post-tag-container mb-5 mt-5"> -->
+<!-- 					<div class="tagcloud"> -->
+<!-- 						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#" -->
+<!-- 							class="tag-cloud-link">핸드드립</a> <a href="#" -->
+<!-- 							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<!-- <---------------- 태그클라우드 끝 --------------->
 
 
