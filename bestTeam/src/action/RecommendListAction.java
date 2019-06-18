@@ -173,8 +173,8 @@ public class RecommendListAction implements Action {
 //			dist.put(list.get(i).getItem_favor_item_num(), sum);
 //		}
 		
-		System.out.println("dist");
-		System.out.println(dist);
+//		System.out.println("dist");
+//		System.out.println(dist);
 		
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////

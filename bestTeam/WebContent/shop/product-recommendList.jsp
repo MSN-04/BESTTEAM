@@ -28,7 +28,7 @@
 
 	<div class="shop-subcategory text text-center mb-5" style="margin-bottom: 0 !important;">
 	<% if (list != null) { 
-		System.out.println("list.size() :: " + list.size());
+// 		System.out.println("list.size() :: " + list.size());
 		for (int i = 0 ; i < list.size() && i < 4 ; i++) {
 	%> 
 

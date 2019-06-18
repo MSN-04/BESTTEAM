@@ -73,24 +73,24 @@ int item_favor_num=Integer.parseInt(request.getParameter("item_favor_num"));
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstname">관리자 아이디</label> <input type="text"
-										class="form-control" placeholder="아이디" name="id">
+										class="form-control" placeholder="아이디" name="user_id">
 								</div>
 							
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="password"
-										class="form-control" placeholder="비밀번호" name="pass">
+										class="form-control" placeholder="비밀번호" name="user_pass">
 								</div>
 								
 								</div>
 								
                 
-	            </div>
+	           			 </div>
 								<div class="col-md-12">
 								<div class="form-group mt-4">
 									<a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('del').submit();">삭제하기</a>
 									</div>
 									</div>
-									</form>
+								</form>
 							</div>
 								
 						
