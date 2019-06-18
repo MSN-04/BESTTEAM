@@ -20,16 +20,16 @@ public class BlogCommentModifyProAction implements Action {
 		
 		System.out.println("blog_num :: " + request.getParameter("comment_blog_num"));
 		System.out.println("comment_num :: " + request.getParameter("comment_num"));
+		System.out.println("comment_modify :: " + request.getParameter("comment_modify"));
+		
 		int blog_num = Integer.parseInt(request.getParameter("comment_blog_num"));
 		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
-		
-		BlogCommentModifyProService blogCommentModifyProService = new BlogCommentModifyProService();
 
 		BlogCommentBean blogCommentBean = new BlogCommentBean();
 		blogCommentBean.setComment_num(comment_num);
 		blogCommentBean.setComment_content(request.getParameter("comment_modify"));
-		System.out.println("comment_modify :: " + request.getParameter("comment_modify"));
 		
+		BlogCommentModifyProService blogCommentModifyProService = new BlogCommentModifyProService();
 		boolean isModifySuccess = blogCommentModifyProService.modifyComment(blogCommentBean);
 
 		// 댓글 수정 성공 여부 판별

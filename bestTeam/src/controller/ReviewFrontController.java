@@ -18,8 +18,10 @@ import action.BlogListAction;
 import action.BlogModifyFormAction;
 import action.BlogModifyProAction;
 import action.BlogWriteProAction;
+import action.ItemSingleAction;
 import action.ReviewProAction;
 import action.ReviewViewAction;
+import action.ReviewWriteFormAction;
 import action.ReviewWriteProAction;
 import vo.ActionForward;
 
@@ -68,10 +70,12 @@ public class ReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/reviewWriteForm.re")) {
-			// 글 쓰기 페이지 요청은 비즈니스 로직 없이 JSP 페이지(board 디렉토리 내의 qna_board_write.jsp 파일)로 바로 연결
-			// ActionForward 클래스의 인스턴스를 생성하여 path 변수에 해당 jsp 파일 위치 저장
-			forward = new ActionForward();
-			forward.setPath("./shop/reviewWriteForm.jsp");
+			action = new ReviewWriteFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}else if(command.equals("/reviewWritePro.re")) {
 			action = new ReviewWriteProAction();
@@ -124,6 +128,15 @@ public class ReviewFrontController extends HttpServlet {
 		}else if (command.equals("/review_view.re")) {
 			action = new ReviewViewAction();
 
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/review_List.qna")) {
+			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
+			action = new ItemSingleAction();
+			
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

@@ -59,9 +59,9 @@
 		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
 		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
 		    fCreator: "createSEditor2",
-// 		    fOnAppLoad : function(){
-// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-// 		    }
+		    fOnAppLoad : function(){
+				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
+		    }
 		});
 	
 		//저장버튼 클릭시 form 전송
@@ -114,7 +114,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
+			style="background-image: url(./images/coffeecup.jpg);"
 			data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">

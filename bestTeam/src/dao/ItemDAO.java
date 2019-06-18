@@ -54,10 +54,8 @@ public class ItemDAO {
 				listCount = rs.getInt("count(*)");
 			}
 
-			System.out.println("ItemDAO - selectItem() 성공");
 
 		} catch (SQLException e) {
-			System.out.println("ItemDAO - selectItem() 오류 " + e.getMessage());
 			System.out.println("selectListCount 실패! (" + e.getMessage() + ")");
 		} finally {
 			close(rs);
@@ -96,7 +94,7 @@ public class ItemDAO {
 			int startRow = (page - 1) * 8;
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, limit);
-			System.out.println("sql : " + sql);
+//			System.out.println("sql : " + sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				itemBean = new ItemBean();
@@ -175,7 +173,7 @@ public class ItemDAO {
 
 	// -- 아이템 수정하고 결과 리턴
 	public int updateItem(ItemBean itemBean) {
-		System.out.println("updateItem() 시작");
+//		System.out.println("updateItem() 시작");
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
 
@@ -187,7 +185,7 @@ public class ItemDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, itemBean.getItem_num());
 			rs = pstmt.executeQuery();
-			System.out.println("SELECT 완료");
+//			System.out.println("SELECT 완료");
 			if (rs.next()) {
 				// item 테이블 UPDATE
 				String sql1 = "UPDATE item SET item_name=?, item_info=?, item_img=?, item_amount=?, item_content=?, item_price=?, item_date=now() WHERE item_num=?";
@@ -205,7 +203,7 @@ public class ItemDAO {
 
 				isUpdateSuccess = 1;
 
-				System.out.println("item 테이블 UPDATE 완료 : " + num1);
+//				System.out.println("item 테이블 UPDATE 완료 : " + num1);
 
 				// item_favor 테이블 UPDATE
 				String sql2 = "UPDATE item_favor SET item_favor_acidity=?, item_favor_bitterness=?, item_favor_body=?, item_favor_sweetness=?, item_favor_aroma=?  WHERE item_favor_num=?";
@@ -220,7 +218,7 @@ public class ItemDAO {
 				pstmt2.setInt(6, itemBean.getItem_favor_num());
 				int num2 = pstmt2.executeUpdate();
 
-				System.out.println("item_favor 테이블 UPDATE 완료 : " + num2);
+//				System.out.println("item_favor 테이블 UPDATE 완료 : " + num2);
 
 				isUpdateSuccess = 2;
 			}
@@ -305,7 +303,7 @@ public class ItemDAO {
 		public int deleteItem(int item_num,int item_favor_num) {
 
 		    int deleteItemCnt=0;
-		    System.out.println("dao시작");
+//		    System.out.println("dao시작");
 		    sql="delete from item where item_num=?";
 		    try {
 		      pstmt = con.prepareStatement(sql);
@@ -318,8 +316,8 @@ public class ItemDAO {
 		    	  deleteItemCnt=pstmt.executeUpdate();
 		      
 		    } catch (SQLException e) {
-		      System.out.println("updateItem() 오류 "+e.getMessage());
-		      System.out.println("deleteItemdao 에서 오류:"+e);
+		      System.out.println("deleteItem() 오류 "+e.getMessage());
+//		      System.out.println("deleteItemdao 에서 오류:"+e);
 		    } finally {
 		      close(pstmt);
 		    }

@@ -45,6 +45,7 @@ public class BlogCommentDAO {
 			pstmt.setString(1, blogCommentBean.getComment_content());
 			pstmt.setString(2, blogCommentBean.getComment_writer());
 			pstmt.setInt(3, blogCommentBean.getComment_blog_num());
+			
 			insertCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("CommentDAO에서 댓글등록 실패!");
@@ -178,7 +179,7 @@ public class BlogCommentDAO {
 				commentBean.setComment_date(rs.getTimestamp("comment_date"));
 				commentBean.setComment_blog_num(rs.getInt("comment_blog_num"));
 				articleList.add(commentBean);
-				System.out.println(commentBean.getComment_num());
+//				System.out.println(commentBean.getComment_num());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

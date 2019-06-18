@@ -306,8 +306,8 @@
 						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
 					<div>
 						<p
-							style="font-weight: bold; margin-bottom: 1px; line-height: 10px; font-size: 23px;">to get more</p>
-						<p>Follow Us</p>
+							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p>
+						<p>@Tinkervell</p>
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
@@ -331,24 +331,42 @@
 				<li>
 					<!-- 트위터 -->
 					<button>
-						<span> <a
-							href="http://twitter.com/share?url=<%=request.getRequestURL()%>&text=Cafe%20ThinkerBell%20에서의%20포스팅을%20확인해보세요"
-							target="_blank"> <svg width="29" height="29">
+					<script type="text/javascript">
+						function shareUrl (e) {
+							// 현재 페이지의 url
+						    var url = decodeURIComponent(location.href);
+						    // url이 encodeURIComponent 로 인코딩 되었을때는 다시 디코딩 해준다.
+						    url = decodeURIComponent(url);
+						 
+						    var params;
+						    // url에서 '?' 문자 이후의 파라미터 문자열까지 자르기
+						    params = url.substring( url.indexOf('?')+1, url.length );
+							
+						    urlShare = location.protocol + '//' + window.location.host + window.location.pathname + '?' + params;
+						    
+						    if (e.getAttribute('id') == 'twit') {
+								url = 'http://twitter.com/share?url=' + urlShare +'&text=Cafe%20ThinkerBell%20에서의%20포스팅을%20확인해보세요';
+								window.open(url, '_blank'); 
+						    } else if (e.getAttribute('id') == 'fb') {
+						    	url = 'http://www.facebook.com/share.php?u=' + urlShare;
+								window.open(url, '_blank'); 
+						    }
+						}
+					</script>
+						<span> <a onclick="shareUrl(this);" target="_blank" id="twit"> <svg width="29" height="29">
 									<g>
 										<path
 										d="M22.053 7.54a4.474 4.474 0 0 0-3.31-1.455 4.526 4.526 0 0 0-4.526 4.524c0 .35.04.7.082 1.05a12.9 12.9 0 0 1-9.3-4.77c-.39.69-.61 1.46-.65 2.26.03 1.6.83 2.99 2.02 3.79-.72-.02-1.41-.22-2.02-.57-.01.02-.01.04 0 .08-.01 2.17 1.55 4 3.63 4.44-.39.08-.79.13-1.21.16-.28-.03-.57-.05-.81-.08.54 1.77 2.21 3.08 4.2 3.15a9.564 9.564 0 0 1-5.66 1.94c-.34-.03-.7-.06-1.05-.08 2 1.27 4.38 2.02 6.94 2.02 8.31 0 12.86-6.9 12.84-12.85.02-.24.01-.43 0-.65.89-.62 1.65-1.42 2.26-2.34-.82.38-1.69.62-2.59.72a4.37 4.37 0 0 0 1.94-2.51c-.84.53-1.81.9-2.83 1.13z"></path>
 									</g>
 								</svg>
-						</a>
+							</a>
 						</span>
 					</button>
 				</li>
 				<li>
 					<!-- 페이스북 -->
 					<button>
-						<span> <a
-							href="http://www.facebook.com/share.php?u=<%=request.getRequestURL()%>"
-							target="_blank"> <svg width="29" height="29">
+						<span> <a onclick="shareUrl(this);" target="_blank" id="fb"> <svg width="29" height="29">
 									<g>
 										<path
 										d="M23.209 5H5.792A.792.792 0 0 0 5 5.791V23.21c0 .437.354.791.792.791h9.303v-7.125H12.72v-2.968h2.375v-2.375c0-2.455 1.553-3.662 3.741-3.662 1.049 0 1.95.078 2.213.112v2.565h-1.517c-1.192 0-1.469.567-1.469 1.397v1.963h2.969l-.594 2.968h-2.375L18.11 24h5.099a.791.791 0 0 0 .791-.791V5.79a.791.791 0 0 0-.791-.79"></path>
@@ -384,13 +402,13 @@
 					}
 				%>
 				<!-- <---------------- 태그클라우드 --------------->
-				<div class="tag-widget post-tag-container mb-5 mt-5">
-					<div class="tagcloud">
-						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#"
-							class="tag-cloud-link">핸드드립</a> <a href="#"
-							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a>
-					</div>
-				</div>
+<!-- 				<div class="tag-widget post-tag-container mb-5 mt-5"> -->
+<!-- 					<div class="tagcloud"> -->
+<!-- 						<a href="#" class="tag-cloud-link">로스팅</a> <a href="#" -->
+<!-- 							class="tag-cloud-link">핸드드립</a> <a href="#" -->
+<!-- 							class="tag-cloud-link">융드립</a> <a href="#" class="tag-cloud-link">에스프레소</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<!-- <---------------- 태그클라우드 끝 --------------->
 
 
@@ -422,8 +440,8 @@
 									<%
 											if (id != null && id.equals("admin")) {
 
-												System.out.println(articleList.get(i).getComment_blog_num());
-												System.out.println(articleList.get(i).getComment_content());
+// 												System.out.println(articleList.get(i).getComment_blog_num());
+// 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
 			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
@@ -436,15 +454,15 @@
 										<div class="singo_view" id="SirenDiv<%=i%>">
 											<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
 												<!-- text -->
-												<input type="text" id="comment_modify" name="comment_modify"
-													style="width: 50%; margin-left: 150px;"
-													value=<%=articleList.get(i).getComment_content()%>>
+												<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
 													
 												<input type="hidden" name="comment_num"
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="수정">
+												<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
 
 											</form>
 											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -452,7 +470,7 @@
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
 											</form>
 										</div>
 									
@@ -468,15 +486,15 @@
 											<div class="singo_view" id="SirenDiv<%=i%>">
 												<form action="BlogCommentModifyPro.bl" method="post" style="display: inline;">
 													<!-- text -->
-													<input type="text" id="comment_modify" name="comment_modify"
-														style="width: 50%; margin-left: 150px;"
-														value=<%=articleList.get(i).getComment_content()%>>
+													<textarea name="comment_modify" id="comment_modify" cols="30" maxlength="200" 
+													rows="4" class="form-control" style="width: 78%; margin-left: 221px; padding: 5px; font-size: 15px;
+													border: 1px solid !important; background: white !important; color: black !important;"><%=articleList.get(i).getComment_content() %></textarea>
 														
 													<input type="hidden" name="comment_num"
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="수정">
+													<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
 	
 												</form>
 												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -484,7 +502,7 @@
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)">
+													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
 												</form>
 											</div>
 									<%
@@ -503,6 +521,9 @@
 					<%
 						if (id != null) {
 					%>
+					<script type="text/javascript">
+
+					</script>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
 							코멘트 남기기</h3>
@@ -518,8 +539,8 @@
 							</div>
 							<div class="form-group">
 								<label for="message">내용</label>
-								<textarea name="comment_content" id="comment_content" cols="30"
-									rows="2" class="form-control"></textarea>
+								<textarea name="comment_content" id="comment_content" cols="30" maxlength="200"
+									rows="4" class="form-control"></textarea>
 							</div>
 							<div class="form-group">
 								<input type="submit" value="작성 완료"

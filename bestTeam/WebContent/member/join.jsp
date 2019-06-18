@@ -278,7 +278,7 @@ function check(reg, what) {
           <div class="col-md-7 col-sm-12 text-center ftco-animate">
             <h1 class="mb-3 mt-5 bread">Sign Up</h1>
             <p class="breadcrumbs">
-              <span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span>SignUp</span>
+              <span class="mr-2"><a href="index.in">Home</a></span> <span><a href="login.us">로그인</a></span>
             </p>
           </div>
 
@@ -497,7 +497,6 @@ function check(reg, what) {
   </footer>
 
 
-
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
@@ -526,9 +525,17 @@ function check(reg, what) {
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="./js/google-map.js"></script>
   <script src="./js/main.js"></script>
+
+  <script type="text/javascript">
+  	function selectTaste() {
+  		alert("가입해주셔서 감사합니다!\n로그인 후 'MYPAGE'에서 커피 취향을 선택하시면\n취향에 맞는 원두상품을 추천해드립니다.")
+  	}
   
+  
+  </script>  
 
   <script>
+  
     $(document).ready(function() {
 
       var quantitiy = 0;

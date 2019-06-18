@@ -71,8 +71,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -96,10 +95,12 @@
 	<br>
 	<br>
 
+
+
 	<section class="ftco=section">
 		<div class="container">
 			<div class="row d-flex">
-				<div class="blog-entry align-self-stretch">
+			<div class="col-md-8 ftco-animate">
 					<table class="table thead-light">
 						<tr>
 							<th>번호</th>
@@ -147,7 +148,7 @@
 									%><li class="active"><span><%=a%></span></li>
 									<%
 										} else {
-									%><li><a href="noticeList.no?page=<%=a%>"><%=a%></a></li>
+									%><li><a href="noticeList.no?page=<%=nowPage + 1%>"><%=a%></a></li>
 									<%
 										}
 										}
