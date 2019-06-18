@@ -135,7 +135,7 @@
 
 				<fieldset class="textbox">
 					<span id="login-logo"><img src="./images/untitled.png"></span>
-					<span> Welcome Back!</span> <label class="username"> <input
+					<span></span> <label class="username"> <input
 						id="username" name="id" value="" type="text" autocomplete="on"
 						placeholder="Username">
 					</label> <label class="password"> <input id="password"
@@ -145,28 +145,6 @@
 				</fieldset>
 			</form>
 			
-			<!-- 카카오톡 로그인 -->
-			<div>
-				<a id="kakao-login-btn"></a> <a
-					href="http://developers.kakao.com/logout"></a>
-				<script type='text/javascript'>
-					//<![CDATA[
-					// 사용할 앱의 JavaScript 키를 설정해 주세요.
-					Kakao.init('76c44c7c7a9a578e567bd1ffb9bc9b53');
-					// 카카오 로그인 버튼을 생성합니다.
-					Kakao.Auth.createLoginButton({
-						container : '#kakao-login-btn',
-						success : function(authObj) {
-							alert(JSON.stringify(authObj));
-						},
-						fail : function(err) {
-							alert(JSON.stringify(err));
-						}
-					});
-					//]]>
-				</script>
-			</div>
-			<!-- 카카오톡 로그인 End -->
 			<div class="form-group fgdiv">
 				<a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 			</div>

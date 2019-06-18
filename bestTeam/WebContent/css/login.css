@@ -12,7 +12,7 @@
 .login-popup{
 	display:none;
 	background: #333;
-	padding: 10px; 	
+	padding: 20px 10px 10px 10px; 	
 /* 	border: 2px solid #c29963; */
 	float: left;
 	font-size: 1.2em;
@@ -31,7 +31,7 @@
 
 img.btn_close {
 	float: right; 
-	margin: -28px -28px 0 0;	
+	margin: -45px -28px 0 0;	
 	border: 0; /* �ͽ��÷����� �ݱ� ��ư �׵θ� ��Ÿ���� ���� �ذ� */
 }
 

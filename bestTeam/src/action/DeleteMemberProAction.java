@@ -32,12 +32,19 @@ public class DeleteMemberProAction implements Action {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('회원탈최 실패!')");
-			out.println("location.href='login.us'");
+			out.println("alert('회원탈퇴 실패!')");
+			out.println("history.back()");
 			out.println("</script>");
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", null);
+			
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('탈퇴되었습니다')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
 			
 			forward = new ActionForward();
 			forward.setPath("index.in");
