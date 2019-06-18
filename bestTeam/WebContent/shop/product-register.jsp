@@ -113,65 +113,31 @@ pageEncoding="UTF-8"%>
 					<tr>
 						<td colspan="2">&nbsp;</td>
 					</tr>
-<!-- 					</table> -->
-<!-- 					<table id="tbl1" style="margin-top: 30px; margin-left: 8px;"> -->
 					<tr id="favor" style="margin-top: 30px;">
 						<td style="text-align: center; ">상세 선택 : </td>
-<!-- 					</tr> -->
-<!-- 					<tr> -->
 						<td>Aroma
-<!-- 						</td> -->
-<!-- 						<td> -->
 							<select id="item_favor_aroma" name="item_favor_aroma" >
 								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
 							</select>
-<!-- 						</td> -->
-<!-- 						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" /></td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td> -->
-						Acidity 
-<!-- 						</td> -->
-<!-- 						<td> -->
+							Acidity 
 							<select id="item_favor_acidity" name="item_favor_acidity" >
 								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
 							</select>
-<!-- 						</td> -->
-<!-- 						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" /></td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td> -->
-						Sweetness 
-<!-- 						</td> -->
-<!-- 						<td> -->
+							Sweetness 
 							<select id="item_favor_sweetness" name="item_favor_sweetness" >
 								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
 							</select>
-<!-- 						</td> -->
-<!-- 						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" /></td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td> -->
-						Bitterness 
-<!-- 						</td> -->
-<!-- 						<td> -->
+							Bitterness 
 							<select id="item_favor_bitterness" name="item_favor_bitterness"  >
 								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
 							</select>
-<!-- 						</td> -->
-<!-- 						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" /></td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td> -->
-						Body 
-<!-- 						</td> -->
-<!-- 						<td> -->
-<!-- 						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" /></td> -->
+							Body 
 							<select id="item_favor_body" name="item_favor_body"  >
 								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
 							</select>
 						</td>
 					</tr>
+					
 				</table>
 					<div style="display: inline-block; float: right; padding: 20px;">
 						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
