@@ -57,7 +57,7 @@ public class ItemFrontController extends HttpServlet {
 			}
 		
 		} else if (command.equals("/recommendList.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
-			System.out.println("recommendList");
+//			System.out.println("recommendList");
 			action = new RecommendListAction();
 			try {
 				forward = action.execute(request, response);
@@ -118,12 +118,12 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 영비
 		} else if(command.equals("/itemDeleteForm.em")) {
-		     System.out.println("itemDeleteForm--");
+//		     System.out.println("itemDeleteForm--");
 		     forward = new ActionForward();
 		     forward.setPath("./shop/product-delete.jsp");
 		// 영비     
 		} else if (command.equals("/itemDeletePro.em")) {
-		     System.out.println("itemDeletePro");
+//		     System.out.println("itemDeletePro");
 		          
 		     action = (Action) new ItemDeleteProAction();
 		          
