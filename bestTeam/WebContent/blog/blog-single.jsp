@@ -27,7 +27,7 @@
 
 	// 댓글에 있는 날짜 포맷 변환
 	Date today = new Date();
-	SimpleDateFormat sdf = new SimpleDateFormat("MMMM dd, yyyy");
+	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 	SimpleDateFormat time = new SimpleDateFormat("k:mm");
 // 	June 27, 2018 at 2:21pm 형식
 
@@ -276,7 +276,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
+			style="background-image: url(./images/coffeecup.jpg);"
 			data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
@@ -303,11 +303,11 @@
 				<li>
 					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
 					<div
-						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Tinkervell</div>
+						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Cafe<br>Tinkervell</div>
 					<div>
-						<p
-							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p>
-						<p>@Tinkervell</p>
+<!-- 						<p -->
+<!-- 							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p> -->
+<!-- 						<p>@Tinkervell</p> -->
 					</div>
 				</li>
 				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
@@ -411,14 +411,15 @@
 <!-- 				</div> -->
 				<!-- <---------------- 태그클라우드 끝 --------------->
 
-
+				
 				<div class="pt-5 mt-5">
 					<!-- 코멘트 i개 -->
-					<h3 class="mb-5">코멘트 1개</h3>
+					<h3 class="mb-5">코멘트 <%=articleList.size() %>개</h3>
 					<%
 						// if (articleList != null && listCount > 0) { 
 						for (int i = 0; i < articleList.size(); i++) {
 					%>
+					
 					<ul class="comment-list">
 						<li class="comment">
 							<div class="vcard bio">

@@ -541,8 +541,23 @@ $( '#rere1' ).click(
 						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" style="margin-right: 5px !important;">Add to Cart</a>
 						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin-right: 5px !important;">BUY</a>
 						
-					</p>
+					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
+		
+<!--   <div class="row1"> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column">  -->
+<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
+<!--     </div> -->
+<!--   </div>	 -->
 					
 				</div>
 			</div>
@@ -681,7 +696,6 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-<<<<<<< HEAD
 
 	<section class="ftco=section" id="ft3">
 		<div class="container">
