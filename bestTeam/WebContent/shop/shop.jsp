@@ -280,17 +280,11 @@
 			<!-- 우측 퀵메뉴 끝 -->
 			
 			
-			
-			
-			
-<!-- 			<div class="row justify-content-center mb-5 pb-3"> -->
 				<div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
 					<span class="subheading">Best Quality!</span>
 					<h2 class="mb-4" style="font-size: 37px;"><i>회원님께 딱 맞는 상품!</i></h2>
-<%-- 					<p><%=session.getAttribute("id") %>님의 취향에 맞는 원두 추천 리스트</p> --%>
-					
 				</div>
-<!-- 			</div> -->
+				
 				<script type="text/javascript">
 					function setIFrameHeight(obj){
 					    if(obj.contentDocument){
@@ -302,78 +296,6 @@
 				</script>
 				<iframe id="if01" name="ifbox01" width="950px" src="recommendList.em" height="auto" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;" >
 				</iframe>
-<!-- 			<div class="shop-subcategory text text-center mb-5"> -->
-									
-									
-									
-									
-<!-- <!-- 									 	<a>여기에 추천상품...</a> --> 
-<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
-<!-- 					<div class="menu-entry"> -->
-<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
-<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px; "></a> -->
-<!-- 						<div class="text text-center pt-4" > -->
-<!-- 							<h3> -->
-<!-- 								에스쇼콜라 블렌딩 커피 -->
-<!-- 							</h3> -->
-<!-- 							<p class="price"> -->
-<!-- 								<span>12,000원</span> -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
-<!-- 					<div class="menu-entry"> -->
-<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
-<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
-<!-- 						<div class="text text-center pt-4" > -->
-<!-- 							<h3> -->
-<!-- 								에스쇼콜라 블렌딩 커피 -->
-<!-- 							</h3> -->
-<!-- 							<p class="price"> -->
-<!-- 								<span>12,000원</span> -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
-<!-- 					<div class="menu-entry"> -->
-<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
-<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
-<!-- 						<div class="text text-center pt-4" > -->
-<!-- 							<h3> -->
-<!-- 								에스쇼콜라 블렌딩 커피 -->
-<!-- 							</h3> -->
-<!-- 							<p class="price"> -->
-<!-- 								<span>12,000원</span> -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-md-3" style="padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';"> -->
-<!-- 					<div class="menu-entry"> -->
-<!-- 						<a href="itemSingle.em?item_num=48" class="img" -->
-<!-- 							style="background-image: url(./itemUpload/부산.jpg); height: 157px;"></a> -->
-<!-- 						<div class="text text-center pt-4" > -->
-<!-- 							<h3> -->
-<!-- 								서울커피 -->
-<!-- 							</h3> -->
-<!-- 							<p class="price"> -->
-<!-- 								<span>12,000원</span> -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-	
-									 	
-									 	
-<!-- 									</div> -->
-			
-			
-			
-			
-			
-			
 			
 			
 				<div class="col-lg-12 ftco-animate p-md-5">
@@ -425,9 +347,6 @@
 							</div>
 						</div>
 						
-<!-- 						<div class="col-md-12 nav-link-wrap mb-5"> -->
-<!-- 							<a href="itemRegister.em" style="padding: 0.3em 0.5em; border-radius: 5px; border: 1px solid; font-weight: bold; color: #c49b63; font-size: 20px;">상품 등록</a> -->
-<!-- 						</div> -->
 
 						<div class="col-md-12 d-flex align-items-center">
 
@@ -435,17 +354,6 @@
 
 								<div class="tab-pane fade show active" id="v-pills-0"
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
-
-<!-- 									<div class="shop-select"> -->
-<!-- 										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)"> -->
-<!-- 											<option class="sop-01" value="newest">신상품순</option> -->
-<!-- 											<option class="sop-01" value="popular">인기상품순</option> -->
-<!-- 											<option class="sop-01" value="lowPrice">낮은가격순</option> -->
-<!-- 											<option class="sop-01" value="highPrice">높은가격순</option> -->
-<!-- 										</select> -->
-<!-- 									</div> -->
-									
-
 
 
 									<div class="row">
@@ -505,11 +413,27 @@
 													<% } else { %>
 													<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
 													<% } 
-													for (int a = startPage ; a <= endPage; a++) {
+													int a = 0;
+													if (nowPage > 3) {
+														%> . . . . <%
+														a = nowPage - 2;
+													}
+													else a = startPage;
+													for (  ; a < endPage - 1 && a <= nowPage + 2; a++) {
 														if(a == nowPage) {
 															%><li class="active"><span><%=a %></span></li><%
 														} else {
 															%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
+														}
+													}
+													if ( a < endPage - 1) {
+														%> . . . . <%
+														%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
+													} else {
+														if(a == nowPage) {
+															%><li class="active"><span><%=a %></span></li><%
+														} else {
+															%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
 														}
 													}
 													%>
