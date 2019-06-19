@@ -181,11 +181,11 @@
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/burger-1.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
                     <h4>이기홍</h4>
                     <p class="text-muted">이기홍</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">gkstyd1313@naver.com</p>
+                    <p class="text-muted">ghlee@imsolutions.co.kr</p>
                   
                 </div>
             </div>
