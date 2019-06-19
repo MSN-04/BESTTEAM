@@ -146,7 +146,7 @@
 			<form id="frm" action="noticeWritePro.no" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
-						<td><input type="text" id="title" name="notice_subject" class="frmTitle" /></td>
+						<td><input type="text" id="title" name="notice_subject" class="frmTitle" maxlength="30" /></td>
 					</tr>
 					<tr>
 						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 

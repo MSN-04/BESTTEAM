@@ -103,7 +103,7 @@
 						<a
 							href="blog-single.bl?blog_num=<%=articleList.get(i).getBlog_num()%>&page=<%=nowPage%>"
 							class="block-20"
-							style="width: 900px; margin-left: 100px; text-align: center; background-image: url('./img_upload/<%=articleList.get(i).getBlog_file()%>')">
+							style="width: 900px; margin-left: 100px; text-align: center; background-image: url('./itemUpload/<%=articleList.get(i).getBlog_file()%>')">
 						</a>
 						<h2 class="heading mt-2" style="margin-left: 100px;">
 							<a
@@ -112,15 +112,15 @@
 						<div class="text py-4 d-block" style="margin-left: 100px;">
 							<div class="meta" style="width: 900px;">
 								<div>
-									<a href="#"><%=articleList.get(i).getBlog_content1()%></a>
+									<a><%=articleList.get(i).getBlog_content1()%></a>
 								</div>
 								<br>
 
 								<div>
-									<a href="#"><%=articleList.get(i).getBlog_writer()%></a>
+									<a><%=articleList.get(i).getBlog_writer()%></a>
 								</div>
 								<div>
-									<a href="#"><%=articleList.get(i).getBlog_date()%></a>
+									<a><%=articleList.get(i).getBlog_date()%></a>
 								</div>
 								
 							</div>
