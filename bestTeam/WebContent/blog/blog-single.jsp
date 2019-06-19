@@ -105,7 +105,7 @@
 
 
 <style type="text/css">
-.col-md-8 {
+.blcs {
 	flex: auto;
 	margin: auto;
 	max-width: 80%;
@@ -137,10 +137,10 @@
 	display: none;
 }
 
-.col-md-8 img {
+.blcs img {
 	width: 100%;
 } /* 폼에 들어가는 사진 크기 조정(반드시 필요) */
-.col-md-8 p { /* 자동 개행 */
+.blcs p { /* 자동 개행 */
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	word-break: break-all;
@@ -278,8 +278,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/coffeecup.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -305,14 +304,14 @@
 				<li>
 					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
 					<div
-						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Cafe<br>Tinkervell</div>
+						style="line-height: 26px; font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Cafe<br>TinkerVell</div>
 					<div>
 <!-- 						<p -->
 <!-- 							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p> -->
 <!-- 						<p>@Tinkervell</p> -->
 					</div>
 				</li>
-				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
+				<li style="border: 1px inset #343a40; margin: 10px 0 10px 0;"></li>
 <!-- 				<li style="margin-bottom: 6px;"> -->
 					<!-- 박수 -->
 <!-- 					<button> -->
@@ -381,7 +380,7 @@
 			</ul>
 			<!-- 왼쪽 작은 메뉴 끝 -->
 
-			<div class="col-md-8 ftco-animate">
+			<div class="col-md-8 ftco-animate blcs">
 				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
 				<p><%=article.getBlog_content()%></p>
 
