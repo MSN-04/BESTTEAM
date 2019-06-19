@@ -199,8 +199,9 @@
                 params = params.split("&");
                 for (var i = 0 ; i < params.length ; i++) {
                     param = params[i].split("=");
-                    if (param[0] != kind && param[0] != "") {
+                    if (param[0] != kind && param[0] != "" && param[0] != 'page') {
                         paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
+//                         alert('paramUrl :: ' + paramUrl);
                     } else {
                         continue;
                     }
@@ -406,45 +407,50 @@
 									<div class="row mt-5">
 										<div class="col text-center">
 											<div class="block-27">
-												<ul>
-													<% if(nowPage <= 1) { %>
-													<li><a>&lt;</a></li>
-													<% } else { %>
-													<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
-													<% } 
-													int a = 0;
-													if (nowPage > 3) {
-													    %><li><a href="javascript:getParams ('page', <%=startPage %>);"><%=startPage %></a></li><%
-														%> . . . . <%
-														a = nowPage - 2;
-													}
-													else a = startPage;
-													for (  ; a < endPage - 1 && a <= nowPage + 2; a++) {
-														if(a == nowPage) {
-															%><li class="active"><span><%=a %></span></li><%
-														} else {
-															%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
-														}
-													}
-													if ( a < endPage - 1) {
-														%> . . . . <%
-														%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
+											
+											<ul>
+												<%
+													if (nowPage <= 1) {
+												%>
+												<li><a>&lt;</a></li>
+												<%
 													} else {
-														if(a == nowPage) {
-															%><li class="active"><span><%=a %></span></li><%
-														} else {
-															%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
-														}
+												%>
+												<li><a href="javascript:getParams ('page', <%=nowPage - 1 %>);">&lt;</a></li>
+												<%
 													}
-													%>
-													<% if(nowPage == maxPage) { %>
-													<li class="active"><span><%=a+1 %></span></li>
-													<li><a>&gt;</a></li>
-													<% } else { %>
-												    <li><a href="javascript:getParams ('page', <%=endPage %>);"><%=endPage %></a></li>
-													<li><a href="javascript:getParams ('page', <%=nowPage+1 %>);">&gt;</a></li>
-													<% } %>
-												</ul>
+													int a = nowPage - 2  > 2 ? nowPage - 2 : startPage;
+													if ( a != startPage ) {
+														%><li><a href="javascript:getParams ('page', <%=1%>);">1</a></li><%
+														%> . . . . <%
+													}
+													for ( ; a <= endPage && a <= nowPage + 2; a++) {
+														if (a == nowPage) {
+												%><li class="active"><span><%=a%></span></li>
+												<%
+													} else {
+												%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a%></a></li>
+												<%
+													}
+													}
+													if ( a <= maxPage ) {
+														%> . . . . <%
+													}
+												%>
+												<%
+													if (nowPage >= maxPage) {
+												%>
+												<li><a>&gt;</a></li>
+												<%
+													} else {
+												%>
+												<li><a href="javascript:getParams ('page', <%=nowPage + 1 %>);">&gt;</a></li>
+												<%
+													}
+												%>
+					
+											</ul>
+										
 											</div>
 										</div>
 									</div>
