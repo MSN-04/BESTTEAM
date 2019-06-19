@@ -16,20 +16,14 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	String nowPage = (String) request.getAttribute("page"); 
 
-// 	UserBean userbean = (UserBean)request.getAttribute("userBean");
-// 	String userName = userbean.getUser_name();
-// 	String userId = userbean.getUser_id();
-// 	String id = session.getAttribute("id").toString();
-	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-	// 댓글에 있는 날짜 포맷 변환
+	// 댓글 날짜 포맷 변환
 	Date today = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 	SimpleDateFormat time = new SimpleDateFormat("k:mm");
-// 	June 27, 2018 at 2:21pm 형식
 
 	System.out.println("오늘 날짜는 " + sdf.format(today));
 	System.out.println("현재 시간은 " + time.format(today));
@@ -298,7 +292,6 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<!-- 			<div class="row"> -->
 			<!-- 왼쪽 작은 메뉴 시작 -->
 			<ul class="side-small-menu">
 				<li>
@@ -415,7 +408,6 @@
 
 				
 				<div class="pt-5 mt-5">
-					<!-- 코멘트 i개 -->
 					<%if(articleList.size()==0){ %>
 					<div class="mb-5" style="text-align: center;">등록된 코멘트가 없습니다.</div>
 					<%} else{ %>
