@@ -717,7 +717,8 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
+											<% if(id!= null){
+											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
 											<div class="panel-body">
 												<b><%=reviewList.get(i).getReview_content() %></b>
 												<section class="ftco=section div0525" id="ac1">
@@ -796,7 +797,10 @@ $( '#rere1' ).click(
 											</div>
 											<%}else{
 												%><b>작성자만 볼 수 있습니다.</b>
-											<% }%>
+											<% }
+											}else{%>
+											<b>로그인 후 이용 가능합니다.</b>
+											<%} %>
 										</td>
 								</tr>
 								
@@ -867,7 +871,7 @@ $( '#rere1' ).click(
 									<td><a data-toggle="collapse">작성자</a></td>
 									<td><a data-toggle="collapse">작성일</a></td>
 									</tr>
-									<%
+									<% 
 										if (qnaList != null && listCount2 > 0) {
 											for (int a = 0; a < qnaList.size(); a++) {
 												System.out.println("싱글페이지:"+ qnaList.size());
@@ -893,7 +897,8 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
+											<% if(id!=null){
+											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
@@ -968,7 +973,10 @@ $( '#rere1' ).click(
 											</div>
 											<%}else{
 												%><b>작성자만 볼 수 있습니다.</b>
-											<% }%>
+											<% }
+											}else{%>
+											<b>로그인 후 이용 가능합니다.</b>
+											<%} %>
 										</td>
 								</tr>
 							<%	 }
