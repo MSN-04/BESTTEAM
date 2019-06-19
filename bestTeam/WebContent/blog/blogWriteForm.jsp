@@ -66,6 +66,24 @@
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+
+			if ( $("#blog_subject").val() == "" ) {
+				alert('제목을 입력하세요.');
+				return false;
+			} else if ($("#blog_content1").val() == "") {
+				alert('요약을 입력하세요.');
+				return false;
+			} else if ($("#blog_writer").val() == "") {
+				alert('글쓴이를 입력하세요.');
+				return false;
+			} else if ($("#ir1").val() == "<br>") {
+				alert('내용을 입력하세요.');
+				return false;
+			} else if ($("#blog_file").val() == "") {
+				alert('대표이미지를 설정해주세요.');
+				return false;
+			}
+			
 			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
@@ -127,7 +145,7 @@
 						<td>글쓴이</td>
 						<td><input type="text" id="blog_writer" name="blog_writer" required="required"
 							style="width: 100%;" /></td>
-						<td style="width: 86px;"><input type="file" id="title" name="blog_file"
+						<td style="width: 86px;"><input type="file" id="blog_file" name="blog_file"
 							style="width: 100%;"required="required" /></td>
 					</tr>
 

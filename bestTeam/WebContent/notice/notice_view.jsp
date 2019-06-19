@@ -60,17 +60,17 @@
 
 <style type="text/css">
 /*      	.col-md-8 { border: 1px solid aqua; }  */
-.col-md-8 {
+.not1 {
 	flex: auto;
 	margin: auto;
 	max-width: 80%;
 }
 
 /*     	.col-md-8 { background-color: #000; } */
-.col-md-8 img {
+.not1 img {
 	width: 100%;
 } /* 폼에 들어가는 사진 크기 조정(반드시 필요) */
-.col-md-8 p { /* 자동 개행 */
+.not1 p { /* 자동 개행 */
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	word-break: break-all;
@@ -114,12 +114,12 @@
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 ftco-animate">
+				<div class="col-md-8 ftco-animate not1">
 					<%
 						request.setCharacterEncoding("utf-8");
 					%>
 					<div
-						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 32px; font-weight: 300;
+						style="border-bottom: 1px solid grey; margin-bottom: 30px; font-size: 32px; font-weight: 400; color: white;
 						font-family: Josefin Sans, Arial, sans-serif;"><%=article.getNotice_subject()%></div>
 					<div style="margin: auto;"><%=article.getNotice_content()%></div>
 				</div>
@@ -144,13 +144,14 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 
+	<div class="row mt-5">
+		<div class="col text-center">
+			<div class="block-27" style="margin-bottom: 50px;">
 	<%
 		String id = (String) session.getAttribute("id");
 		if (id != null && id.equals("admin")) {
 	%>
-	<div class="row mt-5">
-		<div class="col text-center">
-			<div class="block-27" style="margin-bottom: 50px;">
+				<div style="margin-left: 725px;">
 				<a
 					href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
 					class="btn btn-primary btn-outline-primary">수정</a> <a
@@ -158,15 +159,12 @@
 					class="btn btn-primary btn-outline-primary"
 					onclick="delconfirm('<%=article.getNotice_num()%>')">삭제</a> <a
 					href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
+					</div>
 				<%
 					} else {
 				%>
-				<div class="col text-center">
-				<div class="block-27" style="margin-bottom: 50px;">
-					<a href="./noticeList.no"
-						class="btn btn-primary btn-outline-primary" style="float: right;">글목록</a>
-						</div>
-				</div>
+					<a href="./noticeList.no" style="margin-left: 849px;"
+						class="btn btn-primary btn-outline-primary">글목록</a>
 				<%
 					}
 				%>

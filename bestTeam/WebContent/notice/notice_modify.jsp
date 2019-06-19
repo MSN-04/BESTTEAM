@@ -73,6 +73,15 @@
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			
+			if ( $("#notice_subject").val().length == 0 ) {
+				alert('제목을 입력하세요.');
+				return false;
+			} else if ($("#ir1").val() == "<br>") {
+				alert('내용을 입력하세요.');
+				return false;
+			}
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
@@ -89,7 +98,7 @@
 	 
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
+		var sHTML = '<img src="<%=ctx%>/itemUpload/'+filepath+'" style="max-width: 100%; height: auto; margin: 10px;">';
 	    oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
 	
@@ -124,10 +133,6 @@
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Modify</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="./noticeList.no">Notice</a></span> <span>Blog
-								Single</span>
-						</p>
 					</div>
 
 				</div>
