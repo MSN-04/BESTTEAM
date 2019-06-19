@@ -145,7 +145,7 @@ public class QnaDAO {
 		QnaBean qnaBean = null;
 
 		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq ASC LIMIT ?,? ";
+		String sql = "SELECT * FROM qna where qna_item_num=? ORDER BY qna_re_ref DESC, qna_re_seq DESC LIMIT ?,? ";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
@@ -201,7 +201,7 @@ public class QnaDAO {
 				qnaBean.setQna_subject(rs.getString("qna_subject"));
 				qnaBean.setQna_content(rs.getString("qna_content"));
 				qnaBean.setQna_date(rs.getDate("qna_date"));
-				qnaBean.setQna_item_num(rs.getInt("qan_item_num"));
+				qnaBean.setQna_item_num(rs.getInt("qna_item_num"));
 			}
 
 		} catch (SQLException e) {
@@ -312,13 +312,13 @@ public class QnaDAO {
 		return updateCount;
 	}
 
-	public int deleteArticle(int qna_num) {
+	public int deleteArticle(int qna_re_ref) {
 		int deleteCount=0;
 		
-		String sql="delete from qna where qna_num=?";
+		String sql="delete from qna where qna_re_ref=?";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, qna_num);
+			pstmt.setInt(1, qna_re_ref);
 			deleteCount=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("deleteArticle() 실패!"+e.getMessage());

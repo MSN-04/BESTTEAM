@@ -45,6 +45,9 @@ public class ReviewDAO {
 		int insertCount = 0;
 		int user_id=0;
 		
+			
+		
+		
 		String sql="select MAX(review_num) from REVIEW";
 		
 		try {
@@ -93,7 +96,7 @@ public class ReviewDAO {
 		int listCount = 0;
 		
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
-		String sql = "SELECT count(*) FROM REVIEW";
+		String sql = "SELECT count(*) FROM REVIEW ";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -115,8 +118,39 @@ public class ReviewDAO {
 	}
 	
 	
+	// 글 목록 갯수 구하기 (파라미터 item_num)
+		public int selectListCount(int item_num) {
+
+			int listCount = 0;
+
+			// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
+//			String sql = "SELECT count(*) FROM qna";
+			String sql = "SELECT count(*) FROM REVIEW WHERE review_item_num=?";
+			
+
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, item_num);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					listCount = rs.getInt(1); // 조회된 목록 갯수 저장
+				}
+
+			} catch (SQLException e) {
+//				e.printStackTrace();
+				System.out.println("selectListCount() 실패! : " + e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+
+			return listCount;
+		}
+		
+		
 	// 글 목록 가져오기
-	public ArrayList<ReviewBean> selectArticleList(int page, int limit) {
+	public ArrayList<ReviewBean> selectArticleList(int page, int limit, int item_num) {
 //		System.out.println("selectArticleList()");
 		
 		ArrayList<ReviewBean> articleList = new ArrayList<ReviewBean>();
@@ -124,15 +158,16 @@ public class ReviewDAO {
 		
 		
 		
-		String sql = "SELECT * FROM REVIEW ORDER BY review_num desc limit ? , ?";
+		String sql = "SELECT * FROM REVIEW WHERE review_item_num=? ORDER BY review_re_ref DESC, review_re_seq DESC limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, limit);
+			pstmt.setInt(1, item_num);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -282,13 +317,13 @@ public class ReviewDAO {
 	}
 
 
-	public int deleteArticle(int review_num) {
+	public int deleteArticle(int review_re_ref) {
 		int deleteCount=0;
 		
-		String sql="delete from REVIEW where review_num=?";
+		String sql="delete from REVIEW where review_re_ref=?";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, review_num);
+			pstmt.setInt(1, review_re_ref);
 			deleteCount=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("deleteArticle() 실패!"+e.getMessage());
