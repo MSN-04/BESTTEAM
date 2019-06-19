@@ -5,12 +5,14 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import svc.JoinProService;
 import vo.ActionForward;
 import vo.UserBean;
 
 public class JoinProAction implements Action {
+	
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
