@@ -14,6 +14,7 @@ import action.CartInsertAction;
 import action.ItemDeleteProAction;
 import action.ItemModifyFormAction;
 import action.ItemModifyProAction;
+import action.ItemRecentAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
 import action.RecommendListAction;
@@ -65,8 +66,17 @@ public class ItemFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		// 기홍
-		} else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
+		} else if (command.equals("/itemRecent.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
+//          System.out.println("itemRecent.em");
+            action = new ItemRecentAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        // 기홍
+        } else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
 //			System.out.println("itemSingle");
 			action = new ItemSingleAction();
 			try {

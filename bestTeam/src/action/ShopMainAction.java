@@ -39,7 +39,7 @@ public class ShopMainAction implements Action {
 		// 리스트 개수
 		ShopMainService shopMainService = new ShopMainService();
 		int listCount = shopMainService.getListCount(taste, degree);
-//		System.out.println("listCount : " + listCount);
+		System.out.println("listCount : " + listCount);
 
 
 		// 총 리스트 받아옴
@@ -50,7 +50,7 @@ public class ShopMainAction implements Action {
 //		System.out.println("taste : " + taste);
 //		System.out.println("filter : " + filter);
 //		System.out.println("degree : " + degree);
-//		System.out.println("itemList.size() : " + itemList.size());
+		System.out.println("itemList.size() : " + itemList.size());
 
 		int maxPage = (int)((double)listCount / limit+0.95);
 		int startPage = (((int)((double)page / 10 + 0.9)) - 1) * 10 + 1;

@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="vo.CartBean"%>
 <%@page import="vo.QnaBean"%>
@@ -46,7 +47,16 @@
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-	System.out.println("스타트: "+startPage2+"엔드: "+endPage2 +"nowpage: "+nowPage2);
+
+// 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
+	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+	
+    ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+    
+	// 쿠키로 상품번호 저장
+	Cookie c = new Cookie("item_num"+itemBean.getItem_num(), URLEncoder.encode(itemBean.getItem_num()+"","utf-8"));
+	c.setMaxAge(60*60*24); // 24시간
+	response.addCookie(c);
 
 %>
 
@@ -421,9 +431,6 @@ $( '#rere1' ).click(
 		  
 	</style>
 	
-<%
-	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#cart').on('click',function(){
@@ -601,7 +608,7 @@ $( '#rere1' ).click(
 							<a><%=itemBean.getItem_favor_sweetness() %></a>
 						</div>
 					</div>
-					<div class="row mt-4">
+					<div class="mt-4" style="margin-left; 0 !important; padding-left: 0 !important;">
 						<div class="col-md-6">
 							<div class="form-group d-flex"></div>
 						</div>
@@ -611,7 +618,7 @@ $( '#rere1' ).click(
 							<div class="input-group mb-3">
                     
 <!--               <span class="input-group-btn ml-2"> -->
-                    <button type="button" class="quantity-left-minus btn input-group-btn" >
+                    <button type="button" class="quantity-left-minus btn input-group-btn">
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
                    <input type="text" id="quantity" name="quantity"  class="quantity form-control input-number" value="1" min="1" max="100"/>&nbsp;
@@ -660,15 +667,13 @@ $( '#rere1' ).click(
 								<a class="nav-link"  data-toggle="pill"   id="btn3"
 									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
-							<%  String sessionId = (String) session.getAttribute("id");
-							
-									if(sessionId != null) {
-										if(sessionId.equals("admin")) { %>
+							<%  
+										if(id != null && id.equals("admin")) { %>
 											<a class="nav-link"  href="itemModify.em?item_num=<%=itemBean.getItem_num() %>" id="btn4"
 												role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center; 
 												color: white !important;">상품정보 수정 / 삭제</a>
 								<%  	} 
-									} %>
+									%>
 							</div>
 						</section>
 							
@@ -922,10 +927,13 @@ $( '#rere1' ).click(
 													</div>
 												</section>
 												
+
+
 <!-- 												id가 "admin"이고 답글인 경우 답글폼 숨기기 -->
 										<% if(id.equals("admin")){ 
 											if(qnaList.get(a).getQna_re_lev()==0){
 											%>
+
 												<section class="ftco-section">
 													<div class="col-md-5" id="mail" style="max-width: 100% !important;">
 														<form id="frm" action="QnaReplyProAction.qna" method="post"
@@ -1022,9 +1030,10 @@ $( '#rere1' ).click(
 							if(endPage2 < maxPage2){
 								%>
 								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=nowPage+1 %>'>&gt;</a></li>
-							<%}
+							<%
 							}
-						
+							}
+										
 							%>
 								</ul>
 				</div>

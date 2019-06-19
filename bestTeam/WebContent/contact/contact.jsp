@@ -31,6 +31,24 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="./css/agency.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+    
+    <style type="text/css">
+    
+    .btn-best { 
+	    	background-color: #C49B63 !important;
+	    	color: black !important; }
+	    	
+	    .btn-best:hover { 
+	    	background-color: black !important;
+	    	border: 1px solid #C49B63 !important;
+	    	color: #C49B63 !important; }
+	    	
+	    .btn-best:active { 
+	    	background-color: #C49B63 !important;
+	    	color: black !important; }
+	    	
+    </style>
+    
 
   </head>
   <body>
@@ -140,16 +158,7 @@
                   
                 </div>
             </div>
-             <div class="col-sm-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
-                    <h4>이기홍</h4>
-                    <p class="text-muted">바지 팀장</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
-                    
-                </div>
-            </div>
+          
         </div> 
 
         <div class="row">
@@ -233,33 +242,34 @@
     
     <br><br>
     <div class="col-md-6 " id="mail">
- <form action="mailsend" method="post"class="contact-form">
-            	<div class="row">
-            		<div class="col-lg-12 text-center"> 
-                <h2 class="section-heading text-uppercase">Contact Us</h2>
+ 		<form action="mailsend" method="post"class="contact-form">
+            <div class="col-lg-12 text-center"> 
+               	<h2 class="section-heading text-uppercase" style="margin: 20px;">Contact Us</h2>
             </div>
+            
+            <div class="row">
                 <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Your Email" name="sender">
+	                  <input type="text" style="font-size: 16px;" class="form-control" placeholder="Your Email" name="sender">
 	                </div>
-	                </div>
-	                <div class="col-md-6">
+	            </div>
+	            <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Receiver" name="receiver" value="bestTeamEver@Thinkerbell.com">
+	                  <input type="text" style="font-size: 16px;" class="form-control" placeholder="Receiver" name="receiver" value="bestTeamEver@Thinkerbell.com">
 	                </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" name="subject">
-              </div>
-              <div class="form-group">
-                <textarea name="content" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-            </div>
+             </div>
+             <div class="form-group">
+                <input type="text" style="font-size: 16px;" class="form-control" placeholder="Subject" name="subject">
+             </div>
+             <div class="form-group">
+                <textarea name="content" style="font-size: 16px;" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+             </div>
+             <div class="form-group">
+                <input type="submit" style="font-size: 16px;" value="Send Message" class="btn py-3 px-5 btn-best">
+             </div>
+         </form>
+     </div>
 
 <br><br>
 
