@@ -22,7 +22,6 @@ public class AdminPageShopDayService {
 		userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-//		System.out.println("[AdminPageShopDayService] month :: " + month);
 		salesList = userDAO.getSalesDayList(month);
 		
 		close(con);

@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
 
 import static db.JdbcUtil.*;
 import vo.UserBean;
@@ -292,8 +291,6 @@ public class UserDAO {
 					close(pstmt);
 				}
 		}
-		
-		System.out.println(id);
 		return id;
 	}
 
@@ -459,7 +456,6 @@ public class UserDAO {
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("getSalesMonthList 실패! ( " + e.getMessage() + " )");
 		}finally {
 			close(rs);
 			close(pstmt);

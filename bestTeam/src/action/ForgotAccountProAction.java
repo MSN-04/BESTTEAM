@@ -38,8 +38,6 @@ public class ForgotAccountProAction implements Action {
 			out.println("alert('일치하는 아이디가 없습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
-//			forward = new ActionForward();
-//			forward.setPath("ForgotAccount.us");
 		}
 		return forward;
 	}

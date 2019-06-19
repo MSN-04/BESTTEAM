@@ -24,7 +24,6 @@ public class UpdateMemberProAction implements Action {
 		
 		String age = Integer.toString(((Calendar.getInstance().get(Calendar.YEAR)-(Integer.parseInt(request.getParameter("jumin1").substring(0, 2))))+1)%100);
 		String id = session.getAttribute("id").toString();
-//		String pass = request.getParameter("pass");
 		userBean.setUser_id(request.getParameter("id"));
 		userBean.setUser_pass(request.getParameter("pass2"));
 		userBean.setUser_name(request.getParameter("name"));

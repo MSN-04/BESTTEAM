@@ -22,7 +22,6 @@ public class AdminPageShopMonthService {
 		userDAO = UserDAO.getInstance();
 		userDAO.setConnection(con);
 		
-		System.out.println("[AdminPageShopMonthService] month :: " + year);
 		salesList = userDAO.getSalesMonthList(year);
 		
 		close(con);

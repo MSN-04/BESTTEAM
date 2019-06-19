@@ -76,6 +76,8 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/adminPageShop.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/adminPageShop.jsp");
+		} else if(command.equals("/JoinProAction.us")) {
+			action = new JoinProAction();
 		} else if(command.equals("/LoginProAction.us")) {
 			action = new LoginProAction();
 			try {
@@ -90,8 +92,6 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/JoinProAction.us")) {
-			action = new JoinProAction();
 		} else if(command.equals("/Mypage.us")) {
 			action = new MypageProAction();
 			try {
@@ -146,7 +146,6 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/member/adminPageShop.jsp");
 		} else if (command.equals("/adminPageShopDay.us")) {
-//			System.out.println("adminPageShopDay Controller");
 			action = new AdminPageShopDayAction();
 			try {
 				forward = action.execute(request, response);
@@ -154,7 +153,6 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageShopMonth.us")) {
-//			System.out.println("adminPageShopMonth Controller");
 			action = new AdminPageShopMonthAction();
 			try {
 				forward = action.execute(request, response);
@@ -162,7 +160,6 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageItemList.us")) {
-//			System.out.println("adminPageItemList Controller");
 			action = new AdminPageItemListAction();
 			try {
 				forward = action.execute(request, response);
@@ -170,7 +167,6 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageItemListDelete.us")) {
-//			System.out.println("adminPageItemListDelete Controller");
 			action = new AdminPageItemDeleteAction();
 			try {
 				forward = action.execute(request, response);
