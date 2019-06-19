@@ -60,11 +60,7 @@ import vo.ActionForward;
 			request.setCharacterEncoding("UTF-8");
 			String sender = "bestTeamEver@bestTeamEver.com";
 			String receiver = request.getParameter("email");
-			System.out.println(receiver);
-			System.out.println(buf);
-			System.out.println(buf.toString());
 			String subject = "[CAFE THINKERVELL]임시비밀번호 발송";
-//			String content = request.getParameter("content");
 			String content = "임시비밀번호 입니다."+ buf;
 			response.setContentType("text/html;charset=UTF-8");
 			
