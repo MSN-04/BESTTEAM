@@ -82,7 +82,17 @@
 
 	<section class="ftco-section">
 		<div class="container">
+		<%
+							String id = (String) session.getAttribute("id");
+							if (id != null && id.equals("admin")) {
+						%>
+						<a href="blogWriteForm.bl"
+							class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+						<%
+							}
+						%>
 			<div class="row d-flex">
+			
 				<div class="col-md-700 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<%
@@ -130,6 +140,9 @@
 			
 			<div class="row mt-5">
 				<div class="col text-center">
+				
+				
+				
 					<div class="block-27">
 						<ul>
 							<%
@@ -139,7 +152,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="blog_bl?page=<%=nowPage - 1%>">&lt;</a></li>
+							<li><a href="blog.bl?page=<%=nowPage - 1%>">&lt;</a></li>
 							<%
 								}
 								for (int a = startPage; a <= endPage; a++) {
@@ -147,7 +160,7 @@
 							%><li class="active"><span><%=a%></span></li>
 							<%
 								} else {
-							%><li><a href="blog_bl?page=<%=a%>"><%=a%></a></li>
+							%><li><a href="blog.bl?page=<%=a%>"><%=a%></a></li>
 							<%
 								}
 								}
@@ -166,16 +179,12 @@
 
 						</ul>
 
-						<%
-							String id = (String) session.getAttribute("id");
-							if (id != null && id.equals("admin")) {
-						%>
-						<a href="blogWriteForm.bl"
-							class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-						<%
-							}
-						%>
+						
 					</div>
+					
+					
+					
+					
 				</div>
 			</div>
 			<form action="BlogListSearch.bl" method="post" class="search-form">

@@ -121,7 +121,7 @@ public class BlogDAO {
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
+			int startRow = (page - 1) * limit; // 읽기 시작할 row 번호
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, limit);
 			rs = pstmt.executeQuery();

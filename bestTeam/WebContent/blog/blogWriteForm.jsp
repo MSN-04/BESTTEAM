@@ -66,6 +66,7 @@
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
@@ -115,22 +116,22 @@
 	</section>
 
 	<section class="ftco-section">
-		<div class="container" style="border: 1px solid white;">
+		<div class="container" >
 			<form id="frm" action="blogWriteFormPro.bl" method="post" enctype="multipart/form-data">
 				<table width="100%">
 					<tr>
 						<td>제목</td>
-						<td colspan="3"><input type="text" id="title" name="blog_subject"
+						<td colspan="3"><input type="text" id="blog_subject" name="blog_subject" required="required"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="title" name="blog_content1" 
+						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" required="required"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
-						<td><input type="text" id="title" name="blog_writer"
+						<td><input type="text" id="blog_writer" name="blog_writer" required="required"
 							style="width: 100%;" /></td>
 						<td style="width: 86px;"><input type="file" id="title" name="blog_file"
 							style="width: 100%;"required="required" /></td>
@@ -138,7 +139,7 @@
 
 					<tr>
 						<td>내용</td>
-						<td colspan="3"><textarea rows="10" cols="30" id="ir1" name="blog_content" 
+						<td colspan="3"><textarea rows="10" cols="30" id="ir1" name="blog_content"  required="required" 
 								style="width: 100%; height: 650px;" ></textarea></td>
 					</tr>
 					<tr>
