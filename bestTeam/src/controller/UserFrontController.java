@@ -90,11 +90,6 @@ public class UserFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/JoinProAction.us")) {
 			action = new JoinProAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		} else if(command.equals("/Mypage.us")) {
 			action = new MypageProAction();
 			try {

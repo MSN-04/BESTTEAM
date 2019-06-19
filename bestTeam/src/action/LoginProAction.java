@@ -46,13 +46,8 @@ public class LoginProAction implements Action {
 			out.println("location.href = document.referrer;");
 			out.println("</script>");
 			
-//			forward.setPath("index.in");
-//			forward.setRedirect(true);
-			
-			
 		}
-		
-		return forward;
+		return null;
 	}
 
 }
