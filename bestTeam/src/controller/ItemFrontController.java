@@ -16,6 +16,7 @@ import action.ItemModifyFormAction;
 import action.ItemModifyProAction;
 import action.ItemRegisterProAction;
 import action.ItemSingleAction;
+import action.RecommendListAction;
 import action.ConfirmCheckoutProAction;
 import action.ShopMainAction;
 import vo.ActionForward;
@@ -55,7 +56,16 @@ public class ItemFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		
-		// 미송
+		} else if (command.equals("/recommendList.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
+//			System.out.println("recommendList");
+			action = new RecommendListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		// 기홍
 		} else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
 //			System.out.println("itemSingle");
 			action = new ItemSingleAction();
@@ -108,12 +118,12 @@ public class ItemFrontController extends HttpServlet {
 		
 		// 영비
 		} else if(command.equals("/itemDeleteForm.em")) {
-		     System.out.println("itemDeleteForm--");
+//		     System.out.println("itemDeleteForm--");
 		     forward = new ActionForward();
 		     forward.setPath("./shop/product-delete.jsp");
 		// 영비     
 		} else if (command.equals("/itemDeletePro.em")) {
-		     System.out.println("itemDeletePro");
+//		     System.out.println("itemDeletePro");
 		          
 		     action = (Action) new ItemDeleteProAction();
 		          
@@ -124,12 +134,13 @@ public class ItemFrontController extends HttpServlet {
 		    	 System.out.println("controller- 에러:"+e);
 		     }
 		         
-	    } else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
-			System.out.println("itemDeleteForm--");
-			forward = new ActionForward();
-			forward.setPath("./shop/product-delete.jsp");
-			
-		}
+	    } 
+		//else if (command.equals("/itemView.em")) { // 빅데이터 관련한 관리자 페이지 [???]
+//			System.out.println("itemDeleteForm--");
+//			forward = new ActionForward();
+//			forward.setPath("./shop/product-delete.jsp");
+//			
+//		}
 	
 		if(forward != null) {
 			if(forward.isRedirect()) {

@@ -31,7 +31,6 @@ public class ReviewReplyDAO {
 		this.con = con;
 	}
 	
-	
 	//review답글 등록 메서드
 		public int insertReply(ReviewBean reviewBean, int new_review_re_ref) {
 			int result = 0; //리턴할 결과를 저장할 변수

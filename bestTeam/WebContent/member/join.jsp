@@ -68,20 +68,22 @@
 #checkPwd{
   color : #ff4d4d;
   font-size: 13px;
-  margin-left: 73%;
+  margin-bottom: 5%;
+  margin-left: 5%
 }
 
 #checkMsg{
   color : #ff4d4d;
   font-size: 13px;
   margin-bottom: 5%;
-  margin-left: 27%;
+  margin-left: 5%
 }
 
 #checkMail{
   color : #ff4d4d;
   font-size: 13px;
   margin-bottom: 5%;
+  margin-left: 5%
 }
 
 
@@ -93,14 +95,30 @@
  var lastKeyword = '';
  var loopSendKeyword = false;
 //아이디, 패스워드, 메일 적합한지 검사할 정규식
- var regId = /^[a-zA-Z0-9]{8,12}$/ ;
- var regPass = /^[a-zA-Z0-9]{8,12}$/;
+ var regId = /^[a-zA-Z0-9]{8,20}$/ ;
+ var regPass = /(?=.*\d{1,20})(?=.*[~`!@#$%\^&*()-+=]{1,20})(?=.*[a-zA-Z]{2,20}).{8,20}$/;;
  var regMail = /^[a-zA-Z0-9]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
  var regPhone = /^[0-9]{8,11}$/;
 
- 
  // 비밀번호 일치 확인
- function checkPwd(){
+ function checkPwd1(){
+	  var pw1 = frm.pass.value;
+	  var pass = document.getElementById("pass");
+	  
+	  if(check(regPass,pass)){
+		   document.getElementById('checkPwd').style.color = "#c39a63";
+		   document.getElementById('checkPwd').innerHTML = "사용할수 있는 암호 입니다"; 
+	  } else if(pw1 == ''){
+		  document.getElementById('checkPwd').style.color = "#c39a63";
+		   document.getElementById('checkPwd').innerHTML = "";
+	  } else {
+		  document.getElementById('checkPwd').style.color = "#ff4d4d";
+		   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자, 숫자, 특수문자(~`!@#$%\^&*()-+=) 조합"; 
+	  }
+	  
+	 }
+ 
+ function checkPwd2(){
   var pw1 = frm.pass.value;
   var pw2 = frm.pass2.value;
   var pass = document.getElementById("pass");
@@ -110,13 +128,13 @@
 	   document.getElementById('checkPwd').style.color = "#ff4d4d";
 	   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요"; 
 	  }else{
-	   document.getElementById('checkPwd').style.color = "#4d79ff";
+	   document.getElementById('checkPwd').style.color = "#c39a63";
 	   document.getElementById('checkPwd').innerHTML = "사용할수 있는 암호 입니다"; 
 	   
 	  }
   } else {
 	  document.getElementById('checkPwd').style.color = "#ff4d4d";
-	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자와 숫자로만 입력"; 
+	   document.getElementById('checkPwd').innerHTML = "패스워드는 8~20자의 영문 대소문자, 숫자, 특수문자(~`!@#$%\^&*()-+=) 조합"; 
   }
   
  }
@@ -138,8 +156,7 @@
     if (keyword == '') {
      lastKeyword = '';
      document.getElementById('checkMsg').style.color = "#ff4d4d";
-
-document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	 document.getElementById('checkMsg').innerHTML = "";
     } else if (keyword != lastKeyword) {
      lastKeyword = keyword;
      
@@ -163,7 +180,7 @@ document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
 	if(check(regId,id)){
 	    if(resultText==0){
 	     listView.innerHTML = "사용 할 수 있는 ID 입니다";
-	     listView.style.color = "#4d79ff";
+	     listView.style.color = "#c39a63";
 	    }else{
 	     listView.innerHTML = "이미 등록된 ID 입니다";
 	     listView.style.color = "#ff4d4d";
@@ -184,7 +201,7 @@ document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
     if (keyword == '') {
        lastKeyword = '';
        document.getElementById('checkMail').style.color = "#ff4d4d";
-       document.getElementById('checkMail').innerHTML = "메일을 입력하세요.";
+       document.getElementById('checkMail').innerHTML = "";
     } else if (keyword != '') {
     	var mail = document.getElementById("email");
     	if(check(regMail,mail)){
@@ -231,7 +248,7 @@ function displayResultMail() {
 //    alert(resultText);
 	   if(resultText==0){
 	    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
-	    listView.style.color = "#4d79ff";
+	    listView.style.color = "#c39a63";
 	   }else{
 	    listView.innerHTML = "이미 등록된 MAIL 입니다";
 	    listView.style.color = "#ff4d4d";
@@ -241,6 +258,7 @@ function displayResultMail() {
   }
  }
 }
+
 
 //검사수행 함수
 function check(reg, what) {
@@ -261,6 +279,12 @@ function check(reg, what) {
 
 </head>
 <body>
+
+<%
+	if(session.getAttribute("id") != null){
+		response.sendRedirect("index.in");
+	}
+%>
   <header>
     <jsp:include page="../inc/header.jsp" />
     <!-- END nav -->
@@ -278,7 +302,7 @@ function check(reg, what) {
           <div class="col-md-7 col-sm-12 text-center ftco-animate">
             <h1 class="mb-3 mt-5 bread">Sign Up</h1>
             <p class="breadcrumbs">
-              <span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span>SignUp</span>
+              <span class="mr-2"><a href="index.in">Home</a></span> <span><a href="login.us">로그인</a></span>
             </p>
           </div>
 
@@ -299,46 +323,46 @@ function check(reg, what) {
           <form action="JoinProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" id="frm" name="frm" method="post" >
             <h3 class="mb-4 billing-heading">회원 가입</h3>
             <div class="row align-items-end">
-              <div class="col-md-6">
+              <div class="col-md-6" style="margin-right: 100%">
                 <div class="form-group">
                   <label for="firstname">아이디</label> <input type="text"
-                    class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()" />
+                    class="form-control" placeholder="아이디를 입력해주세요." name="id" id="id" onkeyup="checkId()" required="required"/>
                 </div>
               </div>
-              <div id="checkMsg">아이디를 입력하세요</div>
+              <div id="checkMsg"></div>
               <div class="w-100"></div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass">
+                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" onkeyup="checkPwd1()" required="required">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">비밀번호 확인</label> <input type="password"
-                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd()" >
+                    class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd2()" required="required">
                 </div>
               </div>
-                <div id="checkPwd">동일한 암호를 입력하세요</div>
+                <div id="checkPwd"></div>
               <div class="w-100" ></div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">이 름</label> <input type="text"
-                    class="form-control" placeholder="이름을 입력해주세요." name="name">
+                    class="form-control" placeholder="이름을 입력해주세요." name="name"  required="required">
                 </div>
               </div>
               <div class="w-100"></div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="firstname">주민 등록 번호</label> <input type="text"
-                    class="form-control" placeholder="6자리 입력하세요" name="jumin1" required="required">
+                    class="form-control" placeholder="6자리 입력하세요" name="jumin1" required="required" maxlength="6">
                 </div>
               </div>
               
               <div class="col-md-6">
                 <div class="form-group">
                    <input type="password" class="form-control" placeholder="7자리 입력하세요"
-                    name="jumin2" required="required" size="7">
+                    name="jumin2" required="required" maxlength="7">
                 </div>
               </div>
               <div class="w-100"></div>
@@ -356,12 +380,13 @@ function check(reg, what) {
                   </p>
                 </div>
               </div>
-             	<div id="checkMail" style="left:">E-MAIL 중복확인 하세요</div>
+             	<div id="checkMail"></div>
               <div class="w-100"></div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="phone">연락처</label> <input type="text"
-                    class="form-control" placeholder="숫자만 입력하세요" name="phone" required="required">
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone" id="phone" required="required" maxlength="11">
+                    <div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 </div>
               </div>
               <div class="w-100"></div>
@@ -477,7 +502,7 @@ function check(reg, what) {
 
 
 <!--                   <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3" onclick="document.getElementById('frm').submit();">가입하기</a>  -->
-                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기">
+                  <input type="submit" class="btn btn-primary p-3 px-xl-4 py-xl-3" value="가입하기" onclick="selectTaste()">
                   <a href="index.in" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">취소하기</a>
                     </div>
                 </div>
@@ -489,15 +514,12 @@ function check(reg, what) {
 
     <!-- END -->
 
-
-
   </section>
   <!-- .section -->
 
   <footer class="ftco-footer ftco-section img">
     <jsp:include page="../inc/footer.jsp" />
   </footer>
-
 
 
   <!-- loader -->
@@ -528,9 +550,17 @@ function check(reg, what) {
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="./js/google-map.js"></script>
   <script src="./js/main.js"></script>
+
+  <script type="text/javascript">
+  	function selectTaste() {
+  		alert("가입해주셔서 감사합니다!\n로그인 후 'MYPAGE'에서 커피 취향을 선택하시면\n취향에 맞는 원두상품을 추천해드립니다.")
+  	}
   
+  
+  </script>  
 
   <script>
+  
     $(document).ready(function() {
 
       var quantitiy = 0;

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import vo.CartBean;
 import vo.ItemBean;
@@ -127,7 +128,67 @@ public class ItemDAO {
 
 		return itemList;
 	}
+	
+	public ArrayList<ItemBean> productList() {
+		ArrayList<ItemBean> list = new ArrayList<>();
+		sql = "select item_favor_item_num, item_favor_aroma, item_favor_acidity, item_favor_sweetness, item_favor_bitterness, item_favor_body from item_favor";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ItemBean itemBean = new ItemBean();
+				itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
+				itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
+				itemBean.setItem_favor_acidity(rs.getInt("item_favor_acidity"));
+				itemBean.setItem_favor_sweetness(rs.getInt("item_favor_sweetness"));
+				itemBean.setItem_favor_bitterness(rs.getInt("item_favor_bitterness"));
+				itemBean.setItem_favor_body(rs.getInt("item_favor_body"));
+				list.add(itemBean);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("recommendList 실패! (" + e.getMessage() + " )");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
+	public ArrayList<ItemBean> getRecommendList(HashMap<Integer, Integer> productList) {
+		ArrayList<ItemBean> list = new ArrayList<>();
+		sql = "select item_num, item_name, item_price, item_img from item where item_num = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			for ( int key : productList.keySet()) {
+				pstmt.setInt(1, key);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					ItemBean itemBean = new ItemBean();
+					itemBean.setItem_num(rs.getInt("item_num"));
+					itemBean.setItem_name(rs.getString("item_name"));
+					itemBean.setItem_price(rs.getInt("item_price"));
+					itemBean.setItem_img(rs.getString("item_img"));
+					list.add(itemBean);
+				}
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("recommendList 실패! (" + e.getMessage() + " )");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
+	
 	/*-------------------------------------- 미송 --------------------------------------*/
 
 	// -- 아이템 조회해서 ItemBean 리턴
@@ -324,6 +385,9 @@ public class ItemDAO {
 		    return deleteItemCnt;
 		    
 		  }
+
+		
+		
 		
 	
 }

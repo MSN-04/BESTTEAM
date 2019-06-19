@@ -41,14 +41,14 @@
     
     <section class="home-slider owl-carousel" id="teammember">
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
+      <div class="slider-item" style="background-image: url(./images/coffeecup.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Contact Us</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="#crew">Crew</a></span> <span><a href="#mail">Contact</a></span></p>
+<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="#crew">Crew</a></span> <span><a href="#mail">Contact</a></span></p> -->
             </div>
 
           </div>
@@ -64,83 +64,86 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Best Team Ever</h2>
+            <br><br>
+                <h4 class="section-heading text-uppercase">Best Team Ever</h4>
                 <h3 class="section-subheading text-muted">Best Team Ever 운영진들입니다</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 text-center">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
-                    <p class="text-muted">바지 팀장</p>
+                    <h4>문세웅</h4>
+                    <p class="text-muted">문세웅</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
                     <p class="text-muted">sewoong0409@naver.com</p>
+                    
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="./images/choi.jpg" alt="">
+                    <h4>최영비</h4>
+                    <p class="text-muted">최영비</p>
+                    <p class="text-muted">WEB,JSP,MYSQL</p>
+                    <p class="text-muted">cyeongb@gmail.com</p>
                     
                 </div>
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
-                    <p class="text-muted">바지 팀장</p>
+                    <img class="mx-auto rounded-circle" src="./images/ji.jpg" alt="">
+                    <h4>지이듬</h4>
+                    <p class="text-muted">지이듬</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">game9um@gmail.com</p>
                     
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
-                    <p class="text-muted">바지 팀장</p>
+                    <img class="mx-auto rounded-circle" src="./images/shin.jpg" alt="">
+                    <h4>신미송</h4>
+                    <p class="text-muted">신미송</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">fhdgofhdgo@naver.com</p>
                     
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
-                    <p class="text-muted">바지 팀장</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
-                    
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/arahansa.jpg" alt="">
-                    <h4>arahansa</h4>
+                    <img class="mx-auto rounded-circle" src="./images/kwon.jpg" alt="">
+                    <h4>권경민</h4>
+                    <p class="text-muted">권경민</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">Universe</p>
-                  
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/bbang.jpg" alt="">
-                    <h4>빵형(youtube)</h4>
-                    <p class="text-muted">Advisor</p>
-                    <p class="text-muted">Seoul</p>
+                    <p class="text-muted">kkmkwon@naver.com</p>
                   
                 </div>
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
-                    <p class="text-muted">바지 팀장</p>
+                    <img class="mx-auto rounded-circle" src="./images/menu-2.jpg" alt="">
+                    <h4>송주영</h4>
+                    <p class="text-muted">송주영</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
                     <p class="text-muted">sewoong0409@naver.com</p>
                     
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="./images/han.jpg" alt="">
+                    <h4>한성민</h4>
+                    <p class="text-muted">한성민</p>
+                    <p class="text-muted">Advisor</p>
+                    <p class="text-muted">gkstyd1313@naver.com</p>
+                  
+                </div>
+            </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
-                    <h4>moon</h4>
+                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
+                    <h4>이기홍</h4>
                     <p class="text-muted">바지 팀장</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
                     <p class="text-muted">sewoong0409@naver.com</p>
@@ -227,6 +230,8 @@
         </div>
       </div>
     </section>
+    
+    <br><br>
     <div class="col-md-6 " id="mail">
  <form action="mailsend" method="post"class="contact-form">
             	<div class="row">
@@ -255,6 +260,9 @@
               </div>
             </form>
             </div>
+
+<br><br>
+
 
     <jsp:include page="../inc/footer.jsp"/>
   

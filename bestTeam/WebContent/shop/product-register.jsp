@@ -49,6 +49,28 @@ pageEncoding="UTF-8"%>
 		background: rgba(0,0,0,0);
 		width: 100%;
 	}
+	#favor td {
+		text-align: left;
+	}
+	#favor select {
+ 		margin-top: 30px; 
+ 		margin: 0 10px;
+ 		width: 85px; 
+ 		text-align-last: center;
+	}
+/* 	#tbl1 #favor td { */
+/* 		display: inline-block; */
+/* 		margin-top: 30px; */
+/* 		margin: 0 10px; */
+/* 	} */
+/* 	#tbl1 #favor tr { */
+/* 		display: inline-block; */
+/* 	} */
+/* 	#tbl1 #favor select { */
+/* 		width: 85px; */
+/* 		text-align-last: center;  */
+/* 	} */
+
 </style>
 </head>
 <body>
@@ -57,39 +79,19 @@ pageEncoding="UTF-8"%>
 	</header>
 	<!-- END nav -->
 
-<!-- 	<section class="home-slider owl-carousel"> -->
 
-<!-- 		<div class="slider-item" -->
-<!-- 			style="background-image: url(./images/bg_3.jpg);" -->
-<!-- 			data-stellar-background-ratio="0.5"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center"> -->
-
-<!-- 					<div class="col-md-7 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<h1 class="mb-3 mt-5 bread">product-register</h1> -->
-<!-- 						<p class="breadcrumbs"> -->
-<!-- 							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a> -->
-<!-- 						</p> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</section> -->
-
-	<section class="ftco-section">
+	<section class="ftco-section" style="margin-top: 100px; margin-bottom: 100px;">
 		<div class="container">
 			<form id="frm" action="itemRegisterPro.em" method="post" enctype="multipart/form-data">
-				<table style="width: 100%; text-align: center;">
+				<h2 style="margin: 30px 100px;">상품 등록</h2>
+				<table style="width: 100%; text-align: center;" id="tbl1">
 					<tr>
 						<td>상품명 : </td>
 						<td><input type="text" id="item_name" name="item_name" class="frmTitle" /></td>
 					</tr>
 					<tr>
 						<td>가격 : </td>
-						<td><input type="text" id="item_price" name="item_price" class="frmTitle" /></td>
+						<td><input type="text" id="item_price" name="item_price" class="frmTitle" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/></td>
 					</tr>
 					<tr>
 						<td>상품 이미지 : </td>
@@ -98,51 +100,60 @@ pageEncoding="UTF-8"%>
 					<tr>
 						<td>간단 설명 : </td>
 						<td><textarea rows="10" cols="30" name="item_info" 
-								style="width: 700px; height: 200px;" ></textarea></td>
+								style="width: 100%; height: 200px;" ></textarea></td>
 					</tr>
 					<tr>
 						<td>재고 : </td>
-						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" /></td>
+						<td><input type="text" id="item_amount" name="item_amount" class="frmTitle" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/></td>
 					</tr>
 					<tr>
 						<td>상세설명 이미지 : </td>
-						<td><input type="file" id="item_content" name="item_content" class="frmTitle" /></td>
+						<td><input type="file" id="item_content" name="item_content" class="frmTitle"  /></td>
 					</tr>
 					<tr>
-						<td>Aroma : </td>
-						<td><input type="text" id="item_favor_aroma" name="item_favor_aroma" class="frmTitle" /></td>
+						<td colspan="2">&nbsp;</td>
 					</tr>
-					<tr>
-						<td>Acidity : </td>
-						<td><input type="text" id="item_favor_acidity" name="item_favor_acidity" class="frmTitle" /></td>
-					</tr>
-					<tr>
-						<td>Sweetness : </td>
-						<td><input type="text" id="item_favor_sweetness" name="item_favor_sweetness" class="frmTitle" /></td>
-					</tr>
-					<tr>
-						<td>Bitterness : </td>
-						<td><input type="text" id="item_favor_bitterness" name="item_favor_bitterness" class="frmTitle" /></td>
-					</tr>
-					<tr>
-						<td>Body : </td>
-						<td><input type="text" id="item_favor_body" name="item_favor_body" class="frmTitle" /></td>
-					</tr>
-					<tr style="display:inline-block; ">
-						<td colspan="2" >
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" value="다시쓰기" />
+					<tr id="favor" style="margin-top: 30px;">
+						<td style="text-align: center; ">상세 선택 : </td>
+						<td>Aroma
+							<select id="item_favor_aroma" name="item_favor_aroma" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Acidity 
+							<select id="item_favor_acidity" name="item_favor_acidity" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Sweetness 
+							<select id="item_favor_sweetness" name="item_favor_sweetness" >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Bitterness 
+							<select id="item_favor_bitterness" name="item_favor_bitterness"  >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
+							Body 
+							<select id="item_favor_body" name="item_favor_body"  >
+								<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+							</select>
 						</td>
 					</tr>
+					
 				</table>
+					<div style="display: inline-block; float: right; padding: 20px;">
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
+						<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" value="다시쓰기" />
+					</div>
+					
 			</form>
 		</div>
 	</section>
 	<!-- .section -->
 	
-<jsp:include page="../inc/footer.jsp"></jsp:include>
-
-
+	
+	<footer>
+		<jsp:include page="/inc/footer.jsp" />
+	</footer>
+	
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">

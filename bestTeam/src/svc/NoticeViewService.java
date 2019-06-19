@@ -14,7 +14,7 @@ public class NoticeViewService {
 	
 	// 글 번호(notice_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
 	public NoticeBean getArticle(int notice_num) throws Exception {
-		System.out.println("noticeViewService - getArticle()");
+//		System.out.println("noticeViewService - getArticle()");
 		NoticeBean noticeBean = null;
 		
 		Connection con = getConnection();

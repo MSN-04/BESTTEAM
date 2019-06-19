@@ -60,6 +60,23 @@
 	.coffeeInfo td {
 		text-align: center;
 	}
+	.shop-subcategory {
+		display: flex;
+		padding: 10px;
+		margin: 0 auto;
+		margin-bottom: 0 !important;
+	}
+	.shop-subcategory>.col-md-3 {
+		display: inline-grid;
+		width: 20%;
+	}
+	.shop-subcategory>.col-md-3>.menu-entry {
+		margin: 0;
+	}
+/* 	.shop-subcategory>.text { */
+/* 		display: inline-grid; */
+/* 	} */
+	
 /* 	#v-pills-1-tab:hover { */
 /* 		border: 1px solid red; */
 		
@@ -262,12 +279,31 @@
 	</div>
 			<!-- 우측 퀵메뉴 끝 -->
 			
+			
+				<div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
+					<span class="subheading">Best Quality!</span>
+					<h2 class="mb-4" style="font-size: 37px;"><i>회원님께 딱 맞는 상품!</i></h2>
+				</div>
+				
+				<script type="text/javascript">
+					function setIFrameHeight(obj){
+					    if(obj.contentDocument){
+					        obj.height = obj.contentDocument.body.offsetHeight + 10;
+					    } else {
+					        obj.height = obj.contentWindow.document.body.scrollHeight;
+					    }
+					}
+				</script>
+				<iframe id="if01" name="ifbox01" width="950px" src="recommendList.em" height="auto" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;" >
+				</iframe>
+			
+			
 				<div class="col-lg-12 ftco-animate p-md-5">
 
 					<div class="row">
 						<div class="col-md-12 nav-link-wrap mb-5">
 							<div class="nav ftco-animate nav-pills justify-content-center"
-								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
+								id="v-pills-tab" role="tablist" aria-orientation="vertical" >
 
 								<a class="nav-link" id="v-pills-0-tab" 
 									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')"
@@ -284,7 +320,16 @@
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
 							</div>
-
+							
+							<div class="shop-select" style="margin-top: -49px;">
+								<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
+									<option class="sop-01" value="newest">신상품순</option>
+									<option class="sop-01" value="popular">인기상품순</option>
+									<option class="sop-01" value="lowPrice">낮은가격순</option>
+									<option class="sop-01" value="highPrice">높은가격순</option>
+								</select>
+							</div>
+							
 							<div class="nav ftco-animate nav-pills justify-content-center" 
 								id="v-degree-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link" id="v-degree-0-tab" role="tab" 
@@ -302,9 +347,6 @@
 							</div>
 						</div>
 						
-<!-- 						<div class="col-md-12 nav-link-wrap mb-5"> -->
-<!-- 							<a href="itemRegister.em" style="padding: 0.3em 0.5em; border-radius: 5px; border: 1px solid; font-weight: bold; color: #c49b63; font-size: 20px;">상품 등록</a> -->
-<!-- 						</div> -->
 
 						<div class="col-md-12 d-flex align-items-center">
 
@@ -313,19 +355,6 @@
 								<div class="tab-pane fade show active" id="v-pills-0"
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
-									<div class="shop-select">
-										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
-											<option class="sop-01" value="newest">신상품순</option>
-											<option class="sop-01" value="popular">인기상품순</option>
-											<option class="sop-01" value="lowPrice">낮은가격순</option>
-											<option class="sop-01" value="highPrice">높은가격순</option>
-										</select>
-									</div>
-									<div class="shop-subcategory text text-center mb-5">
-									 	<a>여기에 추천상품...</a>
-									</div>
-
-
 
 									<div class="row">
 									
@@ -333,7 +362,7 @@
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
 										%>
-											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';">
+											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" >
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
@@ -384,11 +413,27 @@
 													<% } else { %>
 													<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
 													<% } 
-													for (int a = startPage ; a <= endPage; a++) {
+													int a = 0;
+													if (nowPage > 3) {
+														%> . . . . <%
+														a = nowPage - 2;
+													}
+													else a = startPage;
+													for (  ; a < endPage - 1 && a <= nowPage + 2; a++) {
 														if(a == nowPage) {
 															%><li class="active"><span><%=a %></span></li><%
 														} else {
 															%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
+														}
+													}
+													if ( a < endPage - 1) {
+														%> . . . . <%
+														%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
+													} else {
+														if(a == nowPage) {
+															%><li class="active"><span><%=a %></span></li><%
+														} else {
+															%><li><a href="javascript:getParams ('page', <%=endPage-1 %>);"><%=endPage-1 %></a></li><%
 														}
 													}
 													%>
