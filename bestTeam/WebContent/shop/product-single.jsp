@@ -668,7 +668,7 @@ $( '#rere1' ).click(
 					
 					<table class="table">
 						<tr>
-							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
+							<td><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
 					</table>
 				</div>
@@ -720,6 +720,7 @@ $( '#rere1' ).click(
 											<% if(id!= null){
 											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
 											<div class="panel-body">
+											<p><img src="./img_upload/<%=reviewList.get(i).getReview_img() %>"></p>
 												<b><%=reviewList.get(i).getReview_content() %></b>
 												<section class="ftco=section div0525" id="ac1">
 													<div class="container">
