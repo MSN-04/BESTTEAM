@@ -122,10 +122,7 @@
 								<div>
 									<a href="#"><%=articleList.get(i).getBlog_date()%></a>
 								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-										3</a>
-								</div>
+								
 							</div>
 
 						</div>

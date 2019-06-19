@@ -152,8 +152,8 @@
 	</section>
 
 	<section class="ftco-section">
-		<div class="container" style="border: 1px solid white;">
-			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" >
+		<div class="container" s>
+			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" enctype="multipart/form-data">
 				<table width="100%">
 					<tr>
 						<td>제목</td>
@@ -162,14 +162,14 @@
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>"
+						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" value="<%=article.getBlog_content1() %>"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
-						<td><input type="text" id="title" name="blog_writer" value="<%=article.getBlog_writer() %>"
+						<td><input type="text" id="blog_writer" name="blog_writer" value="<%=article.getBlog_writer() %>"
 							style="width: 100%;" /></td>
-							<td style="width: 86px;"><input type="file" id="title" name="blog_file" 
+							<td style="width: 86px;"><input type="file" id="blog_file" name="blog_file" 
 							style="width: 100%;"required="required" /></td>
 					</tr>
 					<tr>
@@ -181,7 +181,7 @@
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
 							<input type="submit" id="save" value="저장" /> 
-							<input type="button" value="취소" />
+							<input type="reset" value="취소" />
 						</td>
 					</tr>
 				</table>
