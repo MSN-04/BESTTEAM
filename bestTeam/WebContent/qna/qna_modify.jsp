@@ -119,11 +119,10 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Qna Write</h1>
+						<h1 class="mb-3 mt-5 bread">QnA 수정</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span
-								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-								Single</span>
+							<span class="mr-2"><a href="index.in">Home</a></span> 
+							<span class="mr-2"><a href="shopMain.em">Shop</a></span> 
 						</p>
 					</div>
 
@@ -152,37 +151,7 @@
 
 					</tr>
 
-					<tr>
-<!-- 													<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail" /> 이메일로
-							답변 받기
-						</div>
-<!-- 						</div> -->
-					</tr>
-
-
-					<tr>
-						<!-- 						<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly"> <input
-								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
-						</div>
-						</div>
-<!-- 												</div> -->
-					</tr>
-					<tr>
-
-						<div class="col-md-6">
-							<div class="form-group">
-							비밀글 
-								<input type="checkbox" id="secret" name="qna_secret" />
-							</div>
-						</div>
-					</tr>
+					
 				</table>
 				<table style="width: 100%; text-align: center;">
 					<tr>
@@ -199,11 +168,13 @@
 					</tr>
 					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /> <input type="submit"
+						<td colspan="2">
+						<input type="submit"
 							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
-							value="등록" /></td>
+							value="저장" />
+						<input type="button"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /> </td>
 					</tr>
 				</table>
 			</form>

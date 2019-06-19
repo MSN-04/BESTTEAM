@@ -858,11 +858,6 @@ $( '#rere1' ).click(
 		<div class="container">
 			<div class="row d-flex">
 				<div class="blog-entry align-self-stretch" style="margin: auto;">
-					    <p class="breadcrumbs mt-5" style="text-align: center;"> 
-							<span class="mr-2"> <a href="faq.jsp"> <b>배송 관련</b> </a></span>| 
-							<span><a href="faq2.jsp"> 결제 관련 </a></span>|
-							<span><a href="faq3.jsp"> 교환/환불 관련 </a></span> 
-					 	</p>
 					<section class="ftco=section" id="ac1">
 						<div class="container">
 							<table class="table thead-light" id="ac1">
@@ -880,7 +875,6 @@ $( '#rere1' ).click(
 									%>
 									
 								<tr>
-<%-- 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=qnaList.size() - i %></a></td> --%>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=a %>"><%=(listCount2-a)-((nowPage2-1)*10) %></a></td>
 									<% 
 									int wid2 = 0;

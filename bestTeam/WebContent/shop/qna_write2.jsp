@@ -154,63 +154,34 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
 					<tr>
-												<div class="col-md-6">
+												
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="작성자"
 								name="qna_name" readonly="readonly" value="<%=userbean.getUser_name() %>">
 						</div>
-												</div>
+												
 
 					</tr>
 
-					<tr>
-													<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly" value="<%=userbean.getUser_email() %>"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail"/> 이메일로
-							답변 받기
-						</div>
-													</div>
-						</div>
-					</tr>
-
-
-					<tr>
-												<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly" value="<%=userbean.getUser_phone() %>"> <input
-								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
-						</div>
-						</div>
-												</div>
-					</tr>
-					<tr>
-
-						<div class="col-md-6">
-							<div class="form-group">
-							비밀글 
-								<input type="checkbox" id="secret" name="qna_secret" />
-							</div>
-						</div>
-					</tr>
+					
 				</table>
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Subject"
+							<input type="text" class="form-control" placeholder="제목"
 								name="qna_subject" id="subject">
 						</div>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+						<td><textarea rows="10" cols="30" placeholder="내용" name="qna_content"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ></textarea></td>
 					</tr>
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
-						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" /></td>
+						<td colspan="2">
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" />
+						<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
+						</td>
 					</tr>
 				</table>
 			</form>

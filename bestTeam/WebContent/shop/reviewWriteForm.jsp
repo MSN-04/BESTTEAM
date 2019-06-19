@@ -153,7 +153,7 @@ body{text-align: center !important;}
 			
 			<form id="frm" action="reviewWritePro.re" method="post" enctype="multipart/form-data">
 			
-				<table style="width: 100%; text-align: center;">
+				<table style="width: 80%; text-align: center;">
 			<tr>
 			<td></td>
 			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 100px; height: 100px;"><br>
@@ -162,25 +162,26 @@ body{text-align: center !important;}
 					<tr>
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
-						<td >제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="form-control" style="border-bottom: 1px solid silver !important;"/></td>
+						<td style="width: 200px;" >제목</td>
+						<td><input type="text" id="review_subject" name="review_subject" class="form-control" style="border-bottom: 1px solid silver !important; margin-bottom: 5px;"/></td>
 					</tr>
 					<br>
 					<tr>
-						<td style="padding-right: 10px;">내용</td>
-						<td><textarea rows="10" cols="30" name="review_content" 
+						<td style="padding-right: 10px; width: 200px;">내용</td>
+						<td><textarea rows="10" cols="30" name="review_content" id="ir1"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle"></textarea></td>
 					</tr>
 					
 					<tr>
-						<td style="padding-right: 10px;">사진등록</td>
+						<td style="padding-right: 10px; width: 200px;">사진등록</td>
 						<td><input type="file" id="review_img" name="review_img" class="form-control" /></td>
 					</tr>
-				<tr style="display: inline-block; position:relative; left:500px; text-align: center !important; margin-top:20px; ">
+				<tr style="display: inline-block; position:relative; left:450px; text-align: center !important; margin-top:20px; ">
 						<td colspan="2">
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" />
 						<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
-						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" /></td>
+						</td>
 					</tr>
 					
 				</table>
