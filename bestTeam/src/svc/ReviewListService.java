@@ -11,7 +11,7 @@ import vo.ReviewBean;
 
 public class ReviewListService {
 	
-	public int getListCount() throws Exception {
+	public int getListCount(int item_num) throws Exception {
 //		System.out.println("BoardListService - getListCount()");
 		
 		int listCount = 0; // 글 목록 갯수
@@ -24,7 +24,7 @@ public class ReviewListService {
 		reviewDAO.setConnection(con);
 		
 		// BoardDAO 클래스의 selectListCount() 메서드를 호출하여 글 목록 갯수 얻어와서 변수에 저장
-		listCount = reviewDAO.selectListCount();
+		listCount = reviewDAO.selectListCount(item_num);
 		
 		System.out.println("게시물 갯수 : " + listCount);
 		
@@ -35,7 +35,7 @@ public class ReviewListService {
 	}
 	
 	// 글 목록 조회 후 리턴
-	public ArrayList<ReviewBean> getArticleList(int page, int limit) throws Exception {
+	public ArrayList<ReviewBean> getArticleList(int page, int limit, int item_num) throws Exception {
 		System.out.println("ReviewBean - getArticleList()");
 		
 		ArrayList<ReviewBean> reviewList = null;
@@ -49,7 +49,7 @@ public class ReviewListService {
 
 		// BoardDAO 클래스의 selectArticleList() 메서드를 호출하여 글 목록 가져와서 ArrayList 객체에 저장
 		// => 매개변수로 page, limit 전달
-		reviewList = reviewDAO.selectArticleList(page, limit);
+		reviewList = reviewDAO.selectArticleList(page, limit,item_num);
 
 		// Connection 객체 반환
 		close(con);

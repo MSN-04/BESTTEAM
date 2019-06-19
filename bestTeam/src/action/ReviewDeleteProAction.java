@@ -12,20 +12,19 @@ public class ReviewDeleteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BlogDeleteProAction");
 		
 		// ActionForward 인스턴스 생성
 		ActionForward forward = null;
 		
 		// 게시물 번호 파라미터 가져오기
-		int review_num = Integer.parseInt(request.getParameter("review_num"));
-		
+		int review_re_ref = Integer.parseInt(request.getParameter("review_re_ref"));
+		int review_item_num = Integer.parseInt(request.getParameter("review_item_num"));
 		ReviewDeleteProService reviewDeleteProService = new ReviewDeleteProService();
 		
 		
 		// 본인 확인 결과 판별
 		
-			boolean isDeleteSuccess = reviewDeleteProService.removeArticle(review_num);
+			boolean isDeleteSuccess = reviewDeleteProService.removeArticle(review_re_ref);
 			
 			if(!isDeleteSuccess){
 				response.setContentType("text/html;charset=UTF-8");
@@ -36,12 +35,9 @@ public class ReviewDeleteProAction implements Action {
 				out.println("</script>");
 			}else {
 				forward=new ActionForward();
-				forward.setPath("shopMain.em");
+				forward.setPath("itemSingle.em?item_num="+review_item_num);
 				forward.setRedirect(true);
 			}
-			
-			
-		
 		
 		return forward;
 	}

@@ -11,6 +11,8 @@ import vo.ReviewBean;
 //Qna답글DAO
 public class ReviewReplyDAO {
 	
+	
+	
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -37,7 +39,6 @@ public class ReviewReplyDAO {
 			int num = 0;
 			//해당 게시물의 기존 답글 순번을 1씩 증가시키는 쿼리(답글간의 순서)
 			
-//			String sql = "UPDATE qna SET qna_re_seq = qna_re_seq+1 WHERE qna_re_ref =? AND qna_re_seq > ?";
 			
 			String sql="select MAX(review_num) from REVIEW";
 			String sql1 = "INSERT INTO REVIEW VALUES(?,?,?,?,null,NOW(),?,?,1,1,'admin')";

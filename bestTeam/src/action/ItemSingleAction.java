@@ -56,9 +56,9 @@ public class ItemSingleAction implements Action {
 				}
 				
 				
-				int listCount = reviewListService.getListCount(); // 총 게시물 목록 수 가져오기
+				int listCount = reviewListService.getListCount(item_num); // 총 게시물 목록 수 가져오기
 				
-				reviewList = reviewListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
+				reviewList = reviewListService.getArticleList(page, limit,item_num); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 				
 				// 페이지 계산
 				
