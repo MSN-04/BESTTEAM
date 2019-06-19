@@ -4,7 +4,6 @@ import static db.JdbcUtil.getConnection;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.util.Properties;
 import java.util.Random;
 
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import dao.UserDAO;
 import vo.ActionForward;
 
 @WebServlet("/mailsend")
@@ -35,30 +33,10 @@ public class ContactMailSend extends HttpServlet {
 		super();
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		Random r =new Random();
-		StringBuffer buf =new StringBuffer();
-		for(int i=0;i<11;i++){
-		    // rnd.nextBoolean() 는 랜덤으로 true, false 를 리턴. true일 시 랜덤 한 소문자를, false 일 시 랜덤 한 숫자를 StringBuffer 에 append 한다.
-		    if(r.nextBoolean()){
-		        buf.append((char)((int)(r.nextInt(26))+97));
-		    }else{
-		        buf.append((r.nextInt(10)));
-		    }
-		}
-		
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length());
-
-		Action action = null;
-		ActionForward forward = null;
-		
 		request.setCharacterEncoding("UTF-8");
-		String receiver = "bestTeamEver@bestTeamEver.com";
-		String sender = request.getParameter("email");
-		System.out.println(receiver);
-		System.out.println(buf);
-		System.out.println(buf.toString());
+
+		String receiver = "tinkervell0624@gmail.com";
+		String sender = request.getParameter("sender");
 		String subject = "[TINKERVELL 문의] "+request.getParameter("subject");
 		String content = request.getParameter("content");
 		response.setContentType("text/html;charset=UTF-8");
@@ -81,6 +59,12 @@ public class ContactMailSend extends HttpServlet {
 			message.setContent(content,"text/html; charset=UTF-8");
 			message.setSentDate(new java.util.Date());
 			Transport.send(message);
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('메일이 발송 되었습니다')");
+			out.println("history.back()");
+			out.println("</script>");
 		} catch (Exception e) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
