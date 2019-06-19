@@ -264,7 +264,7 @@ window.onload = function() {
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" >
+			style="background-image: url(./images/coffeecup.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -284,7 +284,7 @@ window.onload = function() {
 
 
 	<section class="ftco-menu mb-5 pb-5"  id="go_top">
-		<div class="container8">
+		<div class="containerm8">
 			<div class="row d-md-flex">
 				<div class="col-lg-12 ftco-animate p-md-5">
 
