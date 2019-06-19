@@ -912,7 +912,7 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
+											<% if(id != null && (id.equals("admin")||id.equals(qnaList.get(a).getQna_writer()))){ %>
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
@@ -924,9 +924,8 @@ $( '#rere1' ).click(
 													</div>
 												</section>
 
-
 <!-- 												id가 "admin"이고 답글인 경우 답글폼 숨기기 -->
-										<% if(id.equals("admin")){ 
+										<% if(id != null && id.equals("admin")){ 
 											if(qnaList.get(a).getQna_re_lev()==0){
 											%>
 
