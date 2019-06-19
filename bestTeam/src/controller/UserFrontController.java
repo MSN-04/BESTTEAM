@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminPageItemDeleteAction;
+import action.AdminPageItemListAction;
 import action.AdminPageProAction;
 import action.AdminPageShopDayAction;
 import action.AdminPageShopMonthAction;
@@ -159,6 +161,22 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/adminPageShopMonth.us")) {
 			System.out.println("adminPageShopMonth Controller");
 			action = new AdminPageShopMonthAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageItemList.us")) {
+			System.out.println("adminPageItemList Controller");
+			action = new AdminPageItemListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/adminPageItemListDelete.us")) {
+			System.out.println("adminPageItemListDelete Controller");
+			action = new AdminPageItemDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
