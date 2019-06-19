@@ -19,12 +19,14 @@
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	String id=(String)session.getAttribute("id");
 	System.out.println(id);
+	System.out.println("reviewList: " +reviewList.size());
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	
+	System.out.println("listCount: " +listCount);
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -106,10 +108,19 @@
 
 <script type="text/javascript">
 //삭제 확인메세지
-function delconfirm(num,item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까?"+item_num);
+function delconfirm(qna_re_ref,item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?");
 	if (message == true) {
-		location.href = "./qnaDeletePro.qna?qan_num=" + num+"&item_num="+item_num;
+		location.href = "./qnaDeletePro.qna?qan_re_ref=" + re_ref+"&item_num="+item_num;
+	} else
+		alert("취소되었습니다");
+	return false;
+}
+
+function delconfirm2(review_re_ref,item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?");
+	if (message == true) {
+		location.href = "./reviewDeletePro.re?review_re_ref=" + re_ref+"&item_num="+item_num;
 	} else
 		alert("취소되었습니다");
 	return false;
@@ -650,7 +661,7 @@ $( '#rere1' ).click(
 									aria-selected="true" style="width: 200px; text-align: center;">상세정보</a> 
 								<a class="nav-link"  data-toggle="pill" href="#v-pills-1" id="btn2"
 									role="tab" aria-controls="v-pills-1" aria-selected="false" style="width: 200px; text-align: center;">상품후기</a>
-								<a class="nav-link"  data-toggle="pill"   id="btn3"
+								<a class="nav-link"  data-toggle="pill"   id="btn3" href="#v-pills-2"
 									role="tab" aria-controls="v-pills-2" aria-selected="false" style="width: 200px; text-align: center;" >상품Q&A</a>  
 								
 							<%  
@@ -711,7 +722,7 @@ $( '#rere1' ).click(
 											System.out.println(reviewList.get(i).getReview_re_lev());
 										wid = reviewList.get(i).getReview_re_lev()*10;
 											%>
-											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=qnaList.get(i).getQna_subject() %> </a></td>
+											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=reviewList.get(i).getReview_subject() %> </a></td>
 									<%	}else{
 									%>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>"><%=reviewList.get(i).getReview_subject() %> </a></td>
@@ -728,7 +739,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
 															<a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" >수정</a> 
-															<a href="reviewDeletePro.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary"  onclick="delconfirm('<%=reviewList.get(i).getReview_num() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
+															<a href="reviewDeletePro.re?review_re_ref=<%=reviewList.get(i).getReview_re_ref() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary"  onclick="delconfirm2('<%=reviewList.get(i).getReview_re_ref() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
@@ -908,7 +919,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="qnaDeletePro.qna?qna_num=<%=qnaList.get(a).getQna_num() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_num() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
+															<a href="qnaDeletePro.qna?qna_re_ref=<%=qnaList.get(a).getQna_re_ref() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>

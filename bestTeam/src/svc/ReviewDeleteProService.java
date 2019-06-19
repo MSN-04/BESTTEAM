@@ -10,7 +10,7 @@ import dao.ReviewDAO;
 public class ReviewDeleteProService {
 	
 	
-	public boolean removeArticle(int review_num) {
+	public boolean removeArticle(int review_re_ref) {
 		boolean isRemoveSuccess=false;
 		
 		Connection con = getConnection();
@@ -19,7 +19,7 @@ public class ReviewDeleteProService {
 		ReviewDAO reviewDAO = ReviewDAO.getInstance();
 		reviewDAO.setConnection(con);
 
-		int deleteSuccess=reviewDAO.deleteArticle(review_num);
+		int deleteSuccess=reviewDAO.deleteArticle(review_re_ref);
 		
 		if(deleteSuccess>0) {
 			commit(con);

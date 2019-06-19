@@ -2,6 +2,17 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<%
+	String id = (String) session.getAttribute("id");
+	int isIdNull = 0;	
+
+	if(id == null) {
+		isIdNull = 1;
+	} else {
+		isIdNull = 0;
+	}
+%>
+
 <head>
 <title>Cafe Tinkervell</title>
 <meta charset="utf-8">
@@ -84,7 +95,7 @@ text-transform:none !important;
 						<h1 style="line-height: 1.3em;">Explore<br>New Flavor</h1>
 						<h4 >새로운 맛을 탐험하세요</h4>
 						<p>
-							<a href="shop.sh"
+							<a href="shopMain.em"
 								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3"  style="margin: 10px 0 50px 0 !important;">Order Now</a>
 						</p>
 					</div>
@@ -106,17 +117,24 @@ text-transform:none !important;
 						<h1 style="line-height: 1.3em;">Which Coffee is Attractive</h1>
 						<h4 >어떤 원두에 끌리세요?</h4>
 						<p>
-							<a href="login.us" onclick="startNow()"
+							<a onclick="startNow(<%=isIdNull %>)"
 								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin: 10px 0 50px 0 !important;">Start Now</a>
 						</p>
 					</div>
-
 				</div>
 			</div>
 		</div>
-
-		
 	</section>
+	
+	<script type="text/javascript">
+	function startNow(isIdNull) {
+		if (isIdNull == 1) {
+			location.href = "login.us";
+		} else if (isIdNull == 0) {
+			location.href = "taste.us";
+		}
+	}
+	</script>	
 
 	<br>
 	<!-- 카카오톡 상담 -->
@@ -210,8 +228,8 @@ text-transform:none !important;
 				<div>
 					<p>카페 팅커벨은 한 분, 한 분 취향에 맞는 원두를 추천 해 줍니다
 					지금 당신의 취향에 맞는 원두를 골라보세요!<br><br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="taste.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">
-					Pick Now</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a onclick="startNow(<%=isIdNull %>)" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pick Now</a>
 					</p>
 				</div>
 			</div>
