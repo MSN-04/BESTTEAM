@@ -79,16 +79,13 @@ text-transform:none !important;
 					class="row slider-text justify-content-center align-items-center"
 					data-scrollax-parent="true">
 
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Café Tinkervell</span>
-						<h1 class="mb-4">Explore New Flavor</h1>
-						<h4 class="mb-4">새로운 맛을 탐험하세요</h4>
-						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+					<div class="col-md-8 col-sm-12 text-center ftco-animate" style="margin-top: 70px !important;">
+						<span class="subheading">Café TinkerVell</span>
+						<h1 style="line-height: 1.3em;">Explore<br>New Flavor</h1>
+						<h4 >새로운 맛을 탐험하세요</h4>
 						<p>
-							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
 							<a href="shop.sh"
-								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order
-								Now</a>
+								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3"  style="margin: 10px 0 50px 0 !important;">Order Now</a>
 						</p>
 					</div>
 
@@ -104,16 +101,13 @@ text-transform:none !important;
 					class="row slider-text justify-content-center align-items-center"
 					data-scrollax-parent="true">
 
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Café Tinkervell</span>
-						<h1 class="mb-4">Which Coffee is Attractive</h1>
-						<h4 class="mb-4">어떤 원두에  끌리세요?</h4>
-						<!--               <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
+					<div class="col-md-8 col-sm-12 text-center ftco-animate" style="margin-top: 70px !important;">
+						<span class="subheading">Café TinkervVell</span>
+						<h1 style="line-height: 1.3em;">Which Coffee is Attractive</h1>
+						<h4 >어떤 원두에 끌리세요?</h4>
 						<p>
-							<!--               <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> -->
-							<a href="taste.us"
-								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Start
-								Now</a>
+							<a href="login.us" onclick="startNow()"
+								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin: 10px 0 50px 0 !important;">Start Now</a>
 						</p>
 					</div>
 
@@ -121,27 +115,7 @@ text-transform:none !important;
 			</div>
 		</div>
 
-<!-- 		<div class="slider-item" -->
-<!-- 			style="background-image: url(./images/bg_3.jpg);"> -->
-<!-- 			<div class="overlay"></div> -->
-<!-- 			<div class="container"> -->
-<!-- 				<div -->
-<!-- 					class="row slider-text justify-content-center align-items-center" -->
-<!-- 					data-scrollax-parent="true"> -->
-
-<!-- 					<div class="col-md-8 col-sm-12 text-center ftco-animate"> -->
-<!-- 						<span class="subheading">Welcome</span> -->
-<!-- 						<h1 class="mb-3">ENJOY LIFE WITH COFFEE</h1> -->
-<!-- 						<p> -->
-<!-- 							<a href="taste.us" -->
-<!-- 								class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Show -->
-<!-- 								Detail</a> -->
-<!-- 						</p> -->
-<!-- 					</div> -->
-
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		
 	</section>
 
 	<br>
@@ -268,7 +242,6 @@ text-transform:none !important;
 							<h3>
 							Les Amants
 							</h3>
-<!-- 							<p>자스민, 캐모마일, 얼그레이 홍차에서 느낄 수 있는 다양한 플로럴 향미가 라임 같은 산뜻한 산미와 잘 어우러져 기분좋은 목넘김을 만들어줌</p> -->
 							<p class="price">
 								<span>14,300원</span>
 							</p>
@@ -287,7 +260,6 @@ text-transform:none !important;
 							<h3>
 								에스쇼콜라 블렌딩 커피
 							</h3>
-<!-- 							<p>밀크초콜릿과 달콤 쌉싸래함이 크리미한 촉감과 함께 라운드하게 느껴지고, 풍부하고 밀도 높은 바디감은 물론, 깊은 단맛이 오래동안 여운으로 남는 커피</p> -->
 							<p class="price">
 								<span>12,000원</span>
 							</p>
@@ -340,10 +312,7 @@ text-transform:none !important;
 	</section>
 	
 
-	
-
 	<jsp:include page="../inc/footer.jsp" />
-
 
 
 	<!-- loader -->

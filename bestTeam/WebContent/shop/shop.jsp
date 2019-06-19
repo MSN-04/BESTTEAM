@@ -321,7 +321,7 @@
 							</div>
 							
 							<div class="shop-select" style="margin-top: -49px;">
-								<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
+								<select id="select_id" class="shop-name-select" style="margin-top: 3rem !important;" onchange="getParams ('filter', this.value)">
 									<option class="sop-01" value="newest">신상품순</option>
 									<option class="sop-01" value="popular">인기상품순</option>
 									<option class="sop-01" value="lowPrice">낮은가격순</option>
