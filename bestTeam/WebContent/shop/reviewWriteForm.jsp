@@ -131,9 +131,9 @@ body{text-align: center !important;}
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">product-register</h1>
+						<h1 class="mb-3 mt-5 bread">Review Write</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a>
+							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shopMain.em"><span>Shop</span></a>
 						</p>
 					</div>
 

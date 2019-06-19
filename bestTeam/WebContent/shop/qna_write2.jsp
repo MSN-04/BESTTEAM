@@ -131,11 +131,10 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Qna Write</h1>
+						<h1 class="mb-3 mt-5 bread">QnA Write</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span
-								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-								Single</span>
+							<span class="mr-2"><a href="index.in">Home</a></span> <span
+								class="mr-2"><a href="shopMain.em">Shop</a></span>
 						</p>
 					</div>
 
