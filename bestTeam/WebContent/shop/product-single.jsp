@@ -8,7 +8,6 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
 
 
 <%
@@ -31,8 +30,6 @@
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
 // 	qna
-	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
-	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
 	QnaBean qnabean = new QnaBean();
 // 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
@@ -42,7 +39,6 @@
 	
 	ArrayList<QnaBean> qnaList = (ArrayList<QnaBean>) request.getAttribute("qnaList");
 	PageInfo pageInfo2 = (PageInfo) request.getAttribute("pageInfo2");
-// 	System.out.println("jsp에서 qnaList.size: " + qnaList.size());
 	int listCount2 = pageInfo2.getListCount();
 	int nowPage2 = pageInfo2.getPage();
 	int maxPage2 = pageInfo2.getMaxPage();
@@ -581,7 +577,6 @@ $( '#rere1' ).click(
   <div class="caption-container">
     <p id="caption"></p>
   </div>
-  <!-- Thumbnail images -->
 </div>
 				
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
@@ -640,20 +635,7 @@ $( '#rere1' ).click(
 					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
 		
-<!--   <div class="row1"> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column">  -->
-<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
-<!--     </div> -->
-<!--   </div>	 -->
+
 					
 				</div>
 			</div>
