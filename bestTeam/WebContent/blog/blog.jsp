@@ -187,7 +187,7 @@
 					
 				</div>
 			</div>
-			<form action="BlogListSearch.bl" method="post" class="search-form">
+			<form action="BlogListSearch.bl" method="post" class="search-form" id="hhh">
                 <div class="form-group"style="margin-left: 90px;">
                 <select name = "option" class="category-select">
   					<option class="sop-01" value="blog_subject">제목</option>
@@ -196,7 +196,7 @@
   					<option class="sop-01" value="blog_writer">작성자</option>
 				</select>
                 	<div class="icon" >
-	                  <span class="icon-search"><input type="submit" value="" onFocus="idclear();"  style="margin-right: 540px; margin-top: 30px; border: none; background: transparent;" /></span> 
+	                  <a href="#" class="icon-search" onclick="document.getElementById('hhh').submit()"><input type="submit" value="" onFocus="idclear();"  style="margin-right: 540px; margin-top: 30px; border: none; background: transparent;" /></a> 
 					
                   </div>
                   <input type="text" name="keyword" placeholder="검색어를 입력해주세요." class="form-control" style="width:40%;">

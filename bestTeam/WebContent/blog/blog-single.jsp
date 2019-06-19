@@ -416,7 +416,13 @@
 
 				
 				<div class="pt-5 mt-5">
+					<!-- 코멘트 i개 -->
+					<%if(articleList.size()==0){ %>
+					<div class="mb-5" style="text-align: center;">등록된 코멘트가 없습니다.</div>
+					<%} else{ %>
+
 					<h3 class="mb-5">코멘트 <%=articleList.size() %>개</h3>
+					<%} %>
 					<%
 						for (int i = 0; i < articleList.size(); i++) {
 					%>
@@ -525,6 +531,7 @@
 					</script>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
+						<div style="border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; margin-bottom: 40px;"></div>
 							코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">
