@@ -135,7 +135,7 @@ public class ReviewFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/review_List.qna")) {
+		}else if(command.equals("/review_List.re")) {
 			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
 			action = new ItemSingleAction();
 			

@@ -15,7 +15,7 @@ public class QnaReplyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+System.out.println("QnaReplyProAction");
 		QnaBean qnaBean = new QnaBean();
 		ActionForward forward = null;
 		HttpSession session = request.getSession();

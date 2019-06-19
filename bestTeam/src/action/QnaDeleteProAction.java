@@ -16,10 +16,11 @@ public class QnaDeleteProAction implements Action {
 		ActionForward forward = null;
 		
 		// 게시물 번호 파라미터 가져오기
-		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
+//		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
+		int qna_re_ref = Integer.parseInt(request.getParameter("qna_re_ref"));
 		QnaDeleteProService qnaDeleteProService = new QnaDeleteProService();
-		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_num);
+		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_re_ref);
 		
 		if(!isDeleteSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
