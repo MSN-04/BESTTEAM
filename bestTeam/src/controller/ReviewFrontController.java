@@ -20,6 +20,7 @@ import action.BlogModifyProAction;
 import action.BlogWriteProAction;
 import action.ItemSingleAction;
 import action.ReviewProAction;
+import action.ReviewReplyProAction;
 import action.ReviewViewAction;
 import action.ReviewWriteFormAction;
 import action.ReviewWriteProAction;
@@ -70,6 +71,7 @@ public class ReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/reviewWriteForm.re")) {
+			System.out.println("리뷰롸이트폼 컨트롤러");
 			action = new ReviewWriteFormAction();
 			try {
 				forward = action.execute(request, response);
@@ -136,6 +138,16 @@ public class ReviewFrontController extends HttpServlet {
 		}else if(command.equals("/review_List.qna")) {
 			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
 			action = new ItemSingleAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/ReviewReplyProAction.re")) {
+			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
+			System.out.println("리뷰답글컨트롤러");
+			action = new ReviewReplyProAction();
 			
 			try {
 				forward = action.execute(request, response);
