@@ -113,6 +113,7 @@ public class ItemDAO {
 				itemBean.setItem_favor_item_num(rs.getInt("item_favor_item_num"));
 				itemBean.setItem_favor_sweetness(rs.getInt("item_favor_sweetness"));
 				itemBean.setItem_favor_aroma(rs.getInt("item_favor_aroma"));
+				itemBean.setItem_favor_num(rs.getInt("item_favor_num"));
 				itemList.add(itemBean);
 
 			}
@@ -218,6 +219,41 @@ public class ItemDAO {
 	    
 	    return itemList;
     }
+	
+	public boolean deleteItemList(String[] itemList1, String[] itemList2) {
+
+		boolean isDeleteItemList = false;
+		try {
+			for (int i = 0 ; i < itemList1.length ; i++) {
+				sql = "delete from item where item_num=?";
+				pstmt = con.prepareStatement(sql);		
+				pstmt.setInt(1, Integer.parseInt(itemList1[i]));
+				if (pstmt.executeUpdate() > 0) {
+					isDeleteItemList = true;
+				} else {
+					isDeleteItemList = false;
+					break;
+				}
+				sql="delete from item_favor where item_favor_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1,Integer.parseInt(itemList2[i]));
+				if (pstmt.executeUpdate() > 0) {
+					isDeleteItemList = true;
+				} else {
+					isDeleteItemList = false;
+					break;
+				}
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("deleteItemList 실패! ( " + e.getMessage() + " )");
+		} finally {
+			close(pstmt);
+		}
+		
+		return isDeleteItemList;
+	    
+	  }
 	
 	/*-------------------------------------- 미송 --------------------------------------*/
 
