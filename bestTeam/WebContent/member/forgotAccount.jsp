@@ -68,43 +68,11 @@
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
-
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">아이디/비밀번호 찾기</h1>
 	            <p class="breadcrumbs">
-	            <span class="mr-2">
-	            <div class="container">
-	<div id="content">    
-<!-- 		<div class="post">    	 -->
-<!--         	<div class="btn-sign">				 -->
-<!-- 				<a href="#login-box" class="login-window"><img src="./images/login_bt.gif" alt="로그인 버튼"></a> -->
-<!--         	</div> -->
-<!-- 		</div> -->
-        
-        <div id="login-box" class="login-popup">
-        <a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-          <form method="post" class="signin" action="#">
-                <fieldset class="textbox">
-	            	<label class="username">
-		                <span>이메일로 찾기</span>
-		                <input type="text" id="email" name="email" autocomplete="on" placeholder="회원가입시 입력한 이메일">
-	                </label>	                
-	                <label class="password">
-		                <span>핸드폰번호로 찾기</span>
-		                <input type="text" id="phone" name="phone" placeholder="'-'을 제외한 숫자만 입력 ">
-	                </label>                
-                <button class="submit" type="button">확인</button>                
-                </fieldset>
-          </form>
-		</div>    
-    
-    </div>
-    
-</div>
-</span> 
-<!-- <span><a href="./member/join.jsp">회원가입</a></span></p> -->
+	            <span class="mr-2"></span> 
             </div>
-
           </div>
         </div>
       </div>
@@ -124,40 +92,37 @@
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="email">이메일주소로 찾기</label> <input type="email"
-										class="form-control" placeholder="이메일주소를 입력해주세요." name="email">
+									<label for="email">이메일주소로 찾기</label> 
+									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email">
 								</div>
-							
-								
-								</div>
+							</div>
 								<div class="col-md-6 btn0517">
-								<div class="form-group ">
+									<div class="form-group ">
 										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인">
 									</div>
-                </div>
-	            </div>
-	            </form>
-	            <form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+                				</div>
+	            		</div>
+	           		</form>
+	            	<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<div class="row align-items-end">
 							<div class="col-md-6">
-								
 								<div class="form-group">
 									<label for="phone">핸드폰 번호로 찾기</label> <input type="text"
 										class="form-control" placeholder="핸드폰 번호를 입력해주세요." name="phone">
 								</div>
-								</div>
+							</div>
 								<div class="col-md-6 btn0517">
-								<div class="form-group ">
+									<div class="form-group ">
 										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인">
 									</div>
-                </div>
+                				</div>
+	           			</div>
+	            	</form>
 	            </div>
-	            </form>
-	            </div>
-	            </span>
-	            <span>
+	        </span>
+	        <span>
 	            <div class="col-xl-8 ftco-animate " id="div0522">
-					<form action="../mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+					<form action="mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
 						<h3 class="mb-4 billing-heading">비밀번호 찾기</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
@@ -168,34 +133,19 @@
 							
 								 
 								 
-								</div>
+							</div>
 								<div class="col-md-6 btn0517">
-								<div class="form-group ">
+									<div class="form-group ">
 										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인" >
 									</div>
-                </div>
-	            </div>
-	            </form>
+                				</div>
+	            		</div>
+	            	</form>
 	            
 	            </div>
-	            </span>
-	          
-	          
-								
-						
-							
-							
-                <div class="w-100"></div>
-<!--                 <div class="col-md-12"> -->
-<!--                 	<div class="form-group mt-4"> -->
-<!-- 										 <p class="btn btn-primary py-3 px-4"> <input type="submit" class="btn btn-primary py-3 px-4" value="로그인"></p> -->
-<!-- 									</div> -->
-	            </div>
-                </div>
-<!-- 	             <a href="./member/join.jsp" class="btn btn-primary py-3 px-5" style="margin-right: 20px; margin-left: 15px; margin-top: 80px;">회원가입</a> -->
-						
-<!-- 	            </div> -->
-	          <!-- END -->
+	        </span>
+		</div>
+	</div>
 </section>
 
     <footer class="ftco-footer ftco-section img">

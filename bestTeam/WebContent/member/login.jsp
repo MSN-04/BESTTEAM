@@ -62,29 +62,32 @@
 	            <p class="breadcrumbs">
 	            <span class="mr-2">
 	            <div class="container">
-	<div id="content">    
+				<div id="content">    
+			
+			        
+			        <div id="login-box" class="login-popup">
+			        <a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+			          <form method="post" class="signin" action="#">
+			                <fieldset class="textbox">
+				            	<label class="username">
+					                <span>ID</span>
+					                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+				                </label>	                
+				                <label class="password">
+					                <span>Password</span>
+					                <input id="password" name="password" value="" type="password" placeholder="Password">
+				                </label>                
+			                <button class="submit button" type="button">LOGIN</button>                
+			                </fieldset>
+			          </form>
+					</div>    
+			    </div>
+			</div>
+			</span> 
+            <p class="breadcrumbs">
+              <span class="mr-2"><a href="join.us">회원가입</a></span>
+            </p>
 
-        
-        <div id="login-box" class="login-popup">
-        <a href="#" class="close"><img src="./images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-          <form method="post" class="signin" action="#">
-                <fieldset class="textbox">
-	            	<label class="username">
-		                <span>ID</span>
-		                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
-	                </label>	                
-	                <label class="password">
-		                <span>Password</span>
-		                <input id="password" name="password" value="" type="password" placeholder="Password">
-	                </label>                
-                <button class="submit button" type="button">LOGIN</button>                
-                </fieldset>
-          </form>
-		</div>    
-    </div>
-</div>
-</span> 
-<span><a href="join.us">회원가입</a></span></p>
             </div>
 
           </div>
@@ -98,9 +101,9 @@
 
    <section class="ftco-section" id="login">
 		<div class="container">
-			<div class="row">
-				<div class="col-xl-8 ftco-animate">
-					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+			<div class="row" >
+				<div class="col-xl-8 ftco-animate" style="margin: auto;" >
+					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post" style="padding-left: 100px !important;">
 						<h3 class="mb-4 billing-heading">로그인</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
@@ -123,9 +126,9 @@
 	            </div>
 	            </form>
 	            <div class="form-group fgdiv">
-	             <a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
-									</div>
-							</div>
+	             	<a class="fg" href="ForgotAccount.us" style="font-size: 15px;">아이디/비밀번호 찾기</a>
+				</div>
+				</div>
 								
 						
 							

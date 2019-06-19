@@ -58,7 +58,7 @@ public class ReviewDAO {
 				num=rs.getInt(1)+1;
 			}
 		
-		sql = "INSERT INTO REVIEW VALUES(?,?,?,?,?,?,?,now(),?)";
+		sql = "INSERT INTO REVIEW VALUES(?,?,?,?,?,now(),?,?,?,?,?)";
 		
 			pstmt = con.prepareStatement(sql);
 			
@@ -66,10 +66,12 @@ public class ReviewDAO {
 			pstmt.setInt(2, reviewBean.getReview_item_num());
 			pstmt.setString(3, reviewBean.getReview_user_id());
 			pstmt.setString(4, reviewBean.getReview_content());
-			pstmt.setInt(5, reviewBean.getReview_readcount());
-			pstmt.setFloat(6, reviewBean.getReview_rate());
-			pstmt.setString(7, reviewBean.getReview_img());
-			pstmt.setString(8, reviewBean.getReview_subject());
+			pstmt.setString(5, reviewBean.getReview_img());
+			pstmt.setString(6, reviewBean.getReview_subject());
+			pstmt.setInt(7, num);
+			pstmt.setInt(8, 0);
+			pstmt.setInt(9, 0);
+			pstmt.setString(10, null);
 			insertCount = pstmt.executeUpdate(); // INSERT 실행 결과를 int 타입으로 리턴 받음
 			
 			
@@ -94,7 +96,7 @@ public class ReviewDAO {
 		int listCount = 0;
 		
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
-		String sql = "SELECT count(*) FROM REVIEW";
+		String sql = "SELECT count(*) FROM REVIEW ";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -116,8 +118,39 @@ public class ReviewDAO {
 	}
 	
 	
+	// 글 목록 갯수 구하기 (파라미터 item_num)
+		public int selectListCount(int item_num) {
+
+			int listCount = 0;
+
+			// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
+//			String sql = "SELECT count(*) FROM qna";
+			String sql = "SELECT count(*) FROM REVIEW WHERE review_item_num=?";
+			
+
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, item_num);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					listCount = rs.getInt(1); // 조회된 목록 갯수 저장
+				}
+
+			} catch (SQLException e) {
+//				e.printStackTrace();
+				System.out.println("selectListCount() 실패! : " + e.getMessage());
+			} finally {
+				close(rs);
+				close(pstmt);
+			}
+
+			return listCount;
+		}
+		
+		
 	// 글 목록 가져오기
-	public ArrayList<ReviewBean> selectArticleList(int page, int limit) {
+	public ArrayList<ReviewBean> selectArticleList(int page, int limit, int item_num) {
 //		System.out.println("selectArticleList()");
 		
 		ArrayList<ReviewBean> articleList = new ArrayList<ReviewBean>();
@@ -125,15 +158,16 @@ public class ReviewDAO {
 		
 		
 		
-		String sql = "SELECT * FROM REVIEW ORDER BY review_num desc limit ? , ?";
+		String sql = "SELECT * FROM REVIEW WHERE review_item_num=? ORDER BY review_re_ref DESC, review_re_seq DESC limit ? , ?";
 		// => 참조글번호 내림차순 & 답글순서번호 오름차순 정렬
 		// => 지정 row 번호부터 10개 조회
 		
 		try {
 			pstmt = con.prepareStatement(sql);
 			int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, limit);
+			pstmt.setInt(1, item_num);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -143,11 +177,13 @@ public class ReviewDAO {
 				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
 				reviewBean.setReview_user_id(rs.getString("review_user_id"));
 				reviewBean.setReview_content(rs.getString("review_content"));
-				reviewBean.setReview_readcount(rs.getInt("review_readcount"));
-				reviewBean.setReview_rate(rs.getFloat("review_rate"));
 				reviewBean.setReview_img(rs.getString("review_img"));
 				reviewBean.setReview_date(rs.getDate("review_date"));
 				reviewBean.setReview_subject(rs.getString("review_subject"));
+				reviewBean.setReview_re_ref(rs.getInt("review_re_ref"));
+				reviewBean.setReview_re_lev(rs.getInt("review_re_lev"));
+				reviewBean.setReview_re_seq(rs.getInt("review_re_seq"));
+				reviewBean.setReview_re_writer(rs.getString("review_re_writer"));
 				
 				
 				
@@ -181,15 +217,17 @@ public class ReviewDAO {
 			if(rs.next()) {
 				reviewBean = new ReviewBean();
 				
+				reviewBean.setReview_num(rs.getInt("review_num"));
 				reviewBean.setReview_item_num(rs.getInt("review_item_num"));
 				reviewBean.setReview_user_id(rs.getString("review_user_id"));
 				reviewBean.setReview_content(rs.getString("review_content"));
-				reviewBean.setReview_readcount(rs.getInt("review_readcount"));
-				reviewBean.setReview_rate(rs.getFloat("review_rate"));
 				reviewBean.setReview_img(rs.getString("review_img"));
 				reviewBean.setReview_date(rs.getDate("review_date"));
 				reviewBean.setReview_subject(rs.getString("review_subject"));
-				reviewBean.setReview_num(rs.getInt("review_num"));
+				reviewBean.setReview_re_ref(rs.getInt("review_re_ref"));
+				reviewBean.setReview_re_lev(rs.getInt("review_re_lev"));
+				reviewBean.setReview_re_seq(rs.getInt("review_re_seq"));
+				reviewBean.setReview_re_writer(rs.getString("review_re_writer"));
 			}
 			
 		} catch (SQLException e) {
@@ -205,25 +243,25 @@ public class ReviewDAO {
 	
 	
 	// 게시물 조회수 업데이트 => 기존 readcount 값을 1 증가시킨 후 결과값을 리턴
-	public int updateReadcount(int review_num) {
-		int updateCount = 0;
-		
-		// board_num 에 해당하는 레코드의 board_readcount 값을 1 증가시키기
-		String sql = "UPDATE REVIEW SET review_readcount=review_readcount+1 WHERE review_num=?";
-		
-		try {
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, review_num);
-			updateCount = pstmt.executeUpdate();
-//			System.out.println(updateCount);
-		} catch (SQLException e) {
-			System.out.println("selectArticle() 실패! : " + e.getMessage());
-		} finally {
-			close(pstmt);
+		public int updateReadcount(int review_num) {
+			int updateCount = 0;
+			
+			// board_num 에 해당하는 레코드의 board_readcount 값을 1 증가시키기
+			String sql = "UPDATE REVIEW SET review_readcount=review_readcount+1 WHERE review_num=?";
+			
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, review_num);
+				updateCount = pstmt.executeUpdate();
+//				System.out.println(updateCount);
+			} catch (SQLException e) {
+				System.out.println("selectArticle() 실패! : " + e.getMessage());
+			} finally {
+				close(pstmt);
+			}
+			
+			return updateCount;
 		}
-		
-		return updateCount;
-	}
 	
 	
 	
@@ -279,13 +317,13 @@ public class ReviewDAO {
 	}
 
 
-	public int deleteArticle(int review_num) {
+	public int deleteArticle(int review_re_ref) {
 		int deleteCount=0;
 		
-		String sql="delete from REVIEW where review_num=?";
+		String sql="delete from REVIEW where review_re_ref=?";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, review_num);
+			pstmt.setInt(1, review_re_ref);
 			deleteCount=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("deleteArticle() 실패!"+e.getMessage());

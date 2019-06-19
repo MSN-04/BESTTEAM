@@ -31,6 +31,42 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="./css/agency.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/kakaoTalkChat.css">
+    
+    <style type="text/css">
+    
+    .btn-best { 
+	    	background-color: #C49B63 !important;
+	    	color: black !important; }
+	    	
+	    .btn-best:hover { 
+	    	background-color: black !important;
+	    	border: 1px solid #C49B63 !important;
+	    	color: #C49B63 !important; }
+	    	
+	    .btn-best:active { 
+	    	background-color: #C49B63 !important;
+	    	color: black !important; }
+	    .team-member{
+	    	margin:0 0 50px 50px;}
+	    	
+	    .col-md-12 mb-3 .p{
+	    font-color:#fed136;
+	    }
+	    
+	    #mail{
+	    backgound:#3e3e2422;
+	    border-top:1.5px solid #C49B63 !important; 
+	    }
+	    
+	   section h2.section-heading{
+	   border-bottom:1px solid #c49b63;
+	   }
+	   h1{
+	   font-weight:400 !important;
+	   }
+	    	
+    </style>
+    
 
   </head>
   <body>
@@ -41,7 +77,9 @@
     
     <section class="home-slider owl-carousel" id="teammember">
 
+
       <div class="slider-item" style="background-image: url(./images/coffeecup.jpg);">
+
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -65,12 +103,12 @@
         <div class="row">
             <div class="col-lg-12 text-center">
             <br><br>
-                <h4 class="section-heading text-uppercase">Best Team Ever</h4>
-                <h3 class="section-subheading text-muted">Best Team Ever 운영진들입니다</h3>
+                <h2 class="section-heading text-uppercase">Best Team Ever</h2>
+                <h3 class="section-subheading text-muted">Café TinkerVell 을 만든 사람들</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-4 text-center">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>문세웅</h4>
@@ -86,7 +124,7 @@
                     <h4>최영비</h4>
                     <p class="text-muted">최영비</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">cyeongb@gmail.com</p>
                     
                 </div>
             </div>
@@ -106,7 +144,7 @@
                     <h4>신미송</h4>
                     <p class="text-muted">신미송</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">fhdgofhdgo@naver.com</p>
                     
                 </div>
             </div>
@@ -116,19 +154,20 @@
                     <h4>권경민</h4>
                     <p class="text-muted">권경민</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">kkmkwon@naver.com</p>
                   
                 </div>
             </div>
              <div class="col-sm-4">
                 <div class="team-member">
-                    <img class="mx-auto rounded-circle" src="./images/menu-2.jpg" alt="">
+                    <img class="mx-auto rounded-circle" src="./images/song.jpg" alt="">
                     <h4>송주영</h4>
                     <p class="text-muted">송주영</p>
                     <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">saruru1@naver.com</p>
                     
                 </div>
+       
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
@@ -136,20 +175,21 @@
                     <h4>한성민</h4>
                     <p class="text-muted">한성민</p>
                     <p class="text-muted">Advisor</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted">gkstyd1313@naver.com</p>
                   
                 </div>
             </div>
-<!--              <div class="col-sm-4"> -->
-<!--                 <div class="team-member"> -->
-<!--                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt=""> -->
-<!--                     <h4>moon</h4> -->
-<!--                     <p class="text-muted">바지 팀장</p> -->
-<!--                     <p class="text-muted">WEB,JSP,MYSQL</p> -->
-<!--                     <p class="text-muted">sewoong0409@naver.com</p> -->
-                    
-<!--                 </div> -->
-<!--             </div> -->
+             <div class="col-sm-4">
+                <div class="team-member">
+                    <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
+                    <h4>이기홍</h4>
+                    <p class="text-muted">이기홍</p>
+                    <p class="text-muted">Advisor</p>
+                    <p class="text-muted">ghlee@imsolutions.co.kr</p>
+                  
+                </div>
+            </div>
+          
         </div> 
 
         <div class="row">
@@ -214,50 +254,56 @@
 	              <h2 class="h4">Contact Information</h2>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+	              <p><span>주소:</span> 부산광역시 부산진구 동천로 109 삼한골든게이트빌딩 7층</p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+	              <p><span>전화번호:</span> +82 051-803-0909</p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+	              <p><span>이메일:</span> class@itwillbs.co.kr</p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Website:</span> <a href="#">yoursite.com</a></p>
+	              <p><span>홈페이지:</span> https://itwillbs.co.kr/</p>
 	            </div>
 						</div>
 					</div>
         </div>
       </div>
     </section>
+    
+    <br><br>
     <div class="col-md-6 " id="mail">
- <form action="mailsend" method="post"class="contact-form">
-            	<div class="row">
-            		<div class="col-lg-12 text-center"> 
-                <h2 class="section-heading text-uppercase">Contact Us</h2>
+ 		<form action="mailsend" method="post"class="contact-form">
+            <div class="col-lg-12 text-center"> 
+               	<h2 class="section-heading text-uppercase" style="margin: 20px;">Contact Us</h2>
             </div>
+            
+            <div class="row">
                 <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Your Email" name="sender">
+	                  <input type="email" style="font-size: 16px;" class="form-control" placeholder="보내는 사람" name="sender" required="required">
 	                </div>
-	                </div>
-	                <div class="col-md-6">
+	            </div>
+	            <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Receiver" name="receiver" value="bestTeamEver@Thinkerbell.com">
+	                  <input type="text" style="font-size: 16px;" class="form-control" placeholder="받는 사람" name="receiver" value="tinkervell0624@gmail.com" readonly="readonly">
 	                </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" name="subject">
-              </div>
-              <div class="form-group">
-                <textarea name="content" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </div>
-              <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </div>
-            </form>
-            </div>
+             </div>
+             <div class="form-group">
+                <input type="text" style="font-size: 16px;" class="form-control" placeholder="제목" name="subject" required="required">
+             </div>
+             <div class="form-group">
+                <textarea name="content" style="font-size: 16px;" id="" cols="30" rows="7" class="form-control" placeholder="남기실 말을 적어주세요" required="required"></textarea>
+             </div>
+             <div class="form-group">
+                <input type="submit" style="font-size: 16px;" value="이메일 보내기" class="btn py-3 px-5 btn-best">
+             </div>
+         </form>
+     </div>
+
+<br><br>
+
 
     <jsp:include page="../inc/footer.jsp"/>
   

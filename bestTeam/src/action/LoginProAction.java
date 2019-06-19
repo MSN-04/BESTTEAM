@@ -14,7 +14,6 @@ public class LoginProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ActionForward forward = null;
 		UserBean userBean = new UserBean();
 		
 		String id = request.getParameter("id");
@@ -34,7 +33,6 @@ public class LoginProAction implements Action {
 			out.println("history.back()");
 			out.println("</script>");
 		} else {
-			forward = new ActionForward();
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
@@ -46,13 +44,8 @@ public class LoginProAction implements Action {
 			out.println("location.href = document.referrer;");
 			out.println("</script>");
 			
-//			forward.setPath("index.in");
-//			forward.setRedirect(true);
-			
-			
 		}
-		
-		return forward;
+		return null;
 	}
 
 }

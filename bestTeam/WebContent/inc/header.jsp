@@ -11,47 +11,44 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<style>
+.login-popup{
+box-shadow:none !important;
+opacity:0.77;
+}
 
+
+
+</style>
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		$('a.login-window').click(function() {
-
 			// Getting the variable's value from a link 
 			var loginBox = $(this).attr('href');
-
 			//Fade in the Popup and add close button
 			$(loginBox).fadeIn(0);
-
 			//Set the center alignment padding + border
 			var popMargTop = ($(loginBox).height() + 12) / 2;
 			var popMargLeft = ($(loginBox).width() + 12) / 2;
-
 			$(loginBox).css({
 				'margin-top' : -popMargTop,
 				'margin-left' : -popMargLeft
 			});
-
 			// Add the mask to body
 			$('body').append('<div id="mask"></div>');
 			$('#mask').fadeIn(300);
-
 			$('.login-popup').css({
 				'display' : inline - block
 			})
-
 			return false;
 		});
-
 		$('.close, #mask').click(function() {
 			$('#mask , .login-popup').fadeOut(300, function() {
 				$('#mask').remove();
 			});
 		});
-
 		// When clicking on the button close or the mask layer the popup closed
 		return false;
-
 	});
 	
 </script>
@@ -128,24 +125,22 @@
 		</div>
 
 		<div id="login-box" class="login-popup"
-			style="width: 300px; height: 300px;">
+			style="width: 300px;">
 			<a class="close"><img src="./images/close_pop.png"
 				class="btn_close" title="Close Window" alt="Close" /></a>
 			<form method="post" class="signin" action="LoginProAction.us">
 
 				<fieldset class="textbox">
 					<span id="login-logo"><img src="./images/untitled.png"></span>
-<!-- 					<span> Welcome Back!</span>  -->
 					<label class="username"> <input
 						id="username" name="id" value="" type="text" autocomplete="on"
-						placeholder="Username">
+						placeholder="아이디">
 					</label> <label class="password"> <input id="password"
-						name="password" value="" type="password" placeholder="Password">
+						name="password" value="" type="password" placeholder="비밀번호">
 					</label>
-					<button class="submit button btn btn-primary" type="submit">LOGIN</button>
+					<button class="submit button btn btn-primary" type="submit">L O G I N</button>
 				</fieldset>
 			</form>
-			
 			<div class="form-group fgdiv">
 				<a class="fg" href="ForgotAccount.us">아이디/비밀번호 찾기</a>
 			</div>

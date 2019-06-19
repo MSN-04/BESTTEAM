@@ -107,6 +107,7 @@ String id=(String)session.getAttribute("id");
 		background: rgba(0,0,0,0);
 		width: 100%;
 	}
+body{text-align: center !important;}
 </style>
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
@@ -130,9 +131,9 @@ String id=(String)session.getAttribute("id");
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">product-register</h1>
+						<h1 class="mb-3 mt-5 bread">Review Write</h1>
 						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shop.in"><span>Shop</span></a>
+							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shopMain.em"><span>Shop</span></a>
 						</p>
 					</div>
 
@@ -153,13 +154,15 @@ String id=(String)session.getAttribute("id");
 			<form id="frm" action="reviewWritePro.re" method="post" enctype="multipart/form-data">
 			
 				<table style="width: 100%; text-align: center;">
-			<tr><td></td>
-			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 100px; height: 100px;"><a href="" class="tag-cloud-link"><%=itemBean.getItem_name()%></a><td>
+			<tr>
+			<td></td>
+			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 100px; height: 100px;"><br>
+			<a href="" class="tag-cloud-link"><%=itemBean.getItem_name()%></a><td>
 			</tr>
 					<tr>
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
-						<td style="padding-right: 10px;">제목</td>
+						<td >제목</td>
 						<td><input type="text" id="review_subject" name="review_subject" class="form-control" style="border-bottom: 1px solid silver !important;"/></td>
 					</tr>
 					<br>

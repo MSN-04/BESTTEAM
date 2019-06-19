@@ -16,20 +16,14 @@
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 	String nowPage = (String) request.getAttribute("page"); 
 
-// 	UserBean userbean = (UserBean)request.getAttribute("userBean");
-// 	String userName = userbean.getUser_name();
-// 	String userId = userbean.getUser_id();
-// 	String id = session.getAttribute("id").toString();
-	
 	int blog_num = Integer.parseInt(request.getParameter("blog_num"));
 	String comment_writer = request.getParameter("comment_writer");
 	String comment_content = request.getParameter("comment_content");
 
-	// 댓글에 있는 날짜 포맷 변환
+	// 댓글 날짜 포맷 변환
 	Date today = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 	SimpleDateFormat time = new SimpleDateFormat("k:mm");
-// 	June 27, 2018 at 2:21pm 형식
 
 	System.out.println("오늘 날짜는 " + sdf.format(today));
 	System.out.println("현재 시간은 " + time.format(today));
@@ -58,8 +52,10 @@
 		if (message == true) {
 			location.href = "./BlogCommentDeletePro.bl?comment_num="
 					+ comment_num;
+		
 		} else
 			alert("취소되었습니다.");
+// 			location.href = "history.back()";
 		return false;
 	}
 </script>
@@ -103,7 +99,7 @@
 
 
 <style type="text/css">
-.col-md-8 {
+.blcs {
 	flex: auto;
 	margin: auto;
 	max-width: 80%;
@@ -135,10 +131,10 @@
 	display: none;
 }
 
-.col-md-8 img {
+.blcs img {
 	width: 100%;
 } /* 폼에 들어가는 사진 크기 조정(반드시 필요) */
-.col-md-8 p { /* 자동 개행 */
+.blcs p { /* 자동 개행 */
 	word-wrap: break-word;
 	white-space: pre-wrap;
 	word-break: break-all;
@@ -276,8 +272,7 @@
 
 	<section class="home-slider owl-carousel">
 		<div class="slider-item"
-			style="background-image: url(./images/coffeecup.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -297,20 +292,19 @@
 
 	<section class="ftco-section">
 		<div class="container">
-			<!-- 			<div class="row"> -->
 			<!-- 왼쪽 작은 메뉴 시작 -->
 			<ul class="side-small-menu">
 				<li>
 					<!--     				<div  style="background-size: cover; background-repeat: no-repeat; background-image: url(../images/moon.jpg); width: 80px; height: 80px; margin-bottom: 10px; "></div> -->
 					<div
-						style="font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Cafe<br>Tinkervell</div>
+						style="line-height: 26px; font-size: 23px; font-style: italic; font-family: -webkit-pictograph; margin-bottom: 3px;">Cafe<br>TinkerVell</div>
 					<div>
 <!-- 						<p -->
 <!-- 							style=" margin-bottom: 1px; line-height: 10px; font-size: 19px;">follow Us</p> -->
 <!-- 						<p>@Tinkervell</p> -->
 					</div>
 				</li>
-				<li style="border: 1px inset #343a40; margin: 10px 0 20px 0;"></li>
+				<li style="border: 1px inset #343a40; margin: 10px 0 10px 0;"></li>
 <!-- 				<li style="margin-bottom: 6px;"> -->
 					<!-- 박수 -->
 <!-- 					<button> -->
@@ -379,7 +373,7 @@
 			</ul>
 			<!-- 왼쪽 작은 메뉴 끝 -->
 
-			<div class="col-md-8 ftco-animate">
+			<div class="col-md-8 ftco-animate blcs">
 				<h2 class="mb-3"><%=article.getBlog_subject()%></h2>
 				<p><%=article.getBlog_content()%></p>
 
@@ -401,6 +395,7 @@
 				<%
 					}
 				%>
+				
 				<!-- <---------------- 태그클라우드 --------------->
 <!-- 				<div class="tag-widget post-tag-container mb-5 mt-5"> -->
 <!-- 					<div class="tagcloud"> -->
@@ -413,10 +408,13 @@
 
 				
 				<div class="pt-5 mt-5">
-					<!-- 코멘트 i개 -->
+					<%if(articleList.size()==0){ %>
+					<div class="mb-5" style="text-align: center;">등록된 코멘트가 없습니다.</div>
+					<%} else{ %>
+
 					<h3 class="mb-5">코멘트 <%=articleList.size() %>개</h3>
+					<%} %>
 					<%
-						// if (articleList != null && listCount > 0) { 
 						for (int i = 0; i < articleList.size(); i++) {
 					%>
 					
@@ -434,15 +432,12 @@
 								<h3><%=articleList.get(i).getComment_writer() %></h3>
 
 								<div class="meta"><%=sdf.format(articleList.get(i).getComment_date())%>&nbsp;<%=time.format(articleList.get(i).getComment_date()) %></div>
-								<!-- June 27, 2018 at 2:21pm 형식으로 출력 -->
 								<p><%=articleList.get(i).getComment_content()%></p>
 								<div
 									style='display: text-decoration; float: right; width: 1000px'>
 									<%
 											if (id != null && id.equals("admin")) {
 
-// 												System.out.println(articleList.get(i).getComment_blog_num());
-// 												System.out.println(articleList.get(i).getComment_content());
 									%>
 
 			<!-- ------------------------------------ Start Comment-List  ------------------------------------------>
@@ -463,7 +458,7 @@
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
+												<input type="submit" class="reply" value="수정" style="margin-top: 5px; margin-left:900px; ">
 
 											</form>
 											<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -471,7 +466,7 @@
 													value="<%=articleList.get(i).getComment_num()%>"> <input
 													type="hidden" name="comment_blog_num"
 													value="<%=articleList.get(i).getComment_blog_num()%>">
-												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
+												<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; clear:both; margin-top: 5px;">
 											</form>
 										</div>
 									
@@ -495,7 +490,7 @@
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="수정" style="float: right; margin-top: 5px;">
+													<input type="submit" class="reply" value="수정" style="margin-top: 5px; margin-left:900px; ">
 	
 												</form>
 												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
@@ -503,7 +498,7 @@
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; margin-top: 5px;">
+													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; clear:both; margin-top: 5px;">
 												</form>
 											</div>
 									<%
@@ -527,6 +522,7 @@
 					</script>
 					<div class="comment-form-wrap pt-5">
 						<h3 class="mb-5">
+						<div style="border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; margin-bottom: 40px;"></div>
 							코멘트 남기기</h3>
 						<form id="frm_comment" action="BlogCommentWritePro.bl"
 							method="post">

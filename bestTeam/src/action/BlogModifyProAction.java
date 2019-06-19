@@ -1,9 +1,17 @@
 package action;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import svc.BlogModifyProService;
 import vo.ActionForward;
@@ -23,14 +31,33 @@ public class BlogModifyProAction implements Action {
 		
 		// BoardModifyProService 인스턴스 생성 후 isArticleWriter() 메서드를 통해 본인 확인(매개변수로 글번호, 입력받은 패스워드 전달)
 		BlogModifyProService blogModifyProService = new BlogModifyProService();
+		
+		// 파일 업로드를 위한 정보 저장
+				String realFolder; // 실제 경로
+				String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
+				int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 				
+				ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
+				realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
+				System.out.println("realFolder : "+realFolder);
+				Path newDirectory = Paths.get(realFolder);
+		        
+		        try {
+		            Path createDirResult = Files.createDirectories(newDirectory);
+		            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+		        
+		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
+		
 			BlogBean article = new BlogBean();
 			article.setBlog_num(blog_num);
-			article.setBlog_subject(request.getParameter("blog_subject"));
-			article.setBlog_content1(request.getParameter("blog_content1"));
-			article.setBlog_writer(request.getParameter("blog_writer"));
-			article.setBlog_file(request.getParameter("blog_file"));
-			article.setBlog_content(request.getParameter("blog_content"));
+			article.setBlog_subject(multi.getParameter("blog_subject"));
+			article.setBlog_content1(multi.getParameter("blog_content1"));
+			article.setBlog_writer(multi.getParameter("blog_writer"));
+			article.setBlog_file(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
+			article.setBlog_content(multi.getParameter("blog_content"));
 			
 			boolean isModifySuccess = blogModifyProService.modifyArticle(article);
 			

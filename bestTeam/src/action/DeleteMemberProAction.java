@@ -47,8 +47,8 @@ public class DeleteMemberProAction implements Action {
 			out.println("</script>");
 			
 			forward = new ActionForward();
-			forward.setPath("index.in");
-			forward.setRedirect(true);
+//			forward.setPath("index.in");
+//			forward.setRedirect(true);
 		}
 		
 		

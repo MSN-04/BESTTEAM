@@ -82,7 +82,17 @@
 
 	<section class="ftco-section">
 		<div class="container">
+		<%
+							String id = (String) session.getAttribute("id");
+							if (id != null && id.equals("admin")) {
+						%>
+						<a href="blogWriteForm.bl"
+							class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
+						<%
+							}
+						%>
 			<div class="row d-flex">
+			
 				<div class="col-md-700 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<%
@@ -112,10 +122,7 @@
 								<div>
 									<a href="#"><%=articleList.get(i).getBlog_date()%></a>
 								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span>
-										3</a>
-								</div>
+								
 							</div>
 
 						</div>
@@ -130,6 +137,9 @@
 			
 			<div class="row mt-5">
 				<div class="col text-center">
+				
+				
+				
 					<div class="block-27">
 						<ul>
 							<%
@@ -139,7 +149,7 @@
 							<%
 								} else {
 							%>
-							<li><a href="blog_bl?page=<%=nowPage - 1%>">&lt;</a></li>
+							<li><a href="blog.bl?page=<%=nowPage - 1%>">&lt;</a></li>
 							<%
 								}
 								for (int a = startPage; a <= endPage; a++) {
@@ -147,7 +157,7 @@
 							%><li class="active"><span><%=a%></span></li>
 							<%
 								} else {
-							%><li><a href="blog_bl?page=<%=a%>"><%=a%></a></li>
+							%><li><a href="blog.bl?page=<%=a%>"><%=a%></a></li>
 							<%
 								}
 								}
@@ -166,19 +176,15 @@
 
 						</ul>
 
-						<%
-							String id = (String) session.getAttribute("id");
-							if (id != null && id.equals("admin")) {
-						%>
-						<a href="blogWriteForm.bl"
-							class="btn btn-primary btn-outline-primary" style="float: right;">글쓰기</a>
-						<%
-							}
-						%>
+						
 					</div>
+					
+					
+					
+					
 				</div>
 			</div>
-			<form action="BlogListSearch.bl" method="post" class="search-form">
+			<form action="BlogListSearch.bl" method="post" class="search-form" id="hhh">
                 <div class="form-group"style="margin-left: 90px;">
                 <select name = "option" class="category-select">
   					<option class="sop-01" value="blog_subject">제목</option>
@@ -187,7 +193,7 @@
   					<option class="sop-01" value="blog_writer">작성자</option>
 				</select>
                 	<div class="icon" >
-	                  <span class="icon-search"><input type="submit" value="" onFocus="idclear();"  style="margin-right: 540px; margin-top: 30px; border: none; background: transparent;" /></span> 
+	                  <a href="#" class="icon-search" onclick="document.getElementById('hhh').submit()"><input type="submit" value="" onFocus="idclear();"  style="margin-right: 540px; margin-top: 30px; border: none; background: transparent;" /></a> 
 					
                   </div>
                   <input type="text" name="keyword" placeholder="검색어를 입력해주세요." class="form-control" style="width:40%;">

@@ -51,8 +51,13 @@
 </head>
 <body>
 <%
-	if(session.getAttribute("id") != null){
-		response.sendRedirect("index.in");
+	if(session.getAttribute("id") == null){
+		%>
+		<script type="text/javascript">
+			alert('로그인 후 이용하실 수 있습니다.');
+			history.back();
+		</script>
+		<%
 	}
 %>
 

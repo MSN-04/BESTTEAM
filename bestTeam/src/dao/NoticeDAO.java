@@ -109,14 +109,14 @@ public class NoticeDAO {
 		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
 		NoticeBean noticeBean = null;
 
-		int startRow = (page - 1) * 10; // 읽기 시작할 row 번호
-
-		String sql = "SELECT * FROM notice ORDER BY notice_num DESC,notice_num ASC LIMIT ?,10";
+		String sql = "SELECT * FROM notice ORDER BY notice_num DESC LIMIT ?,?";
 		// => 지정 row 번호부터 10개 조회
 
 		try {
 			pstmt = con.prepareStatement(sql);
+			int startRow = (page - 1) * limit; // 읽기 시작할 row 번호
 			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, limit);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

@@ -40,6 +40,15 @@
 <link rel="stylesheet" href="./css/shop.css">
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+	function setIFrameHeight(obj){
+	    if(obj.contentDocument){
+	        obj.height = obj.contentDocument.body.offsetHeight + 10;
+	    } else {
+	        obj.height = obj.contentWindow.document.body.scrollHeight;
+	    }
+	}
+</script>
 <%
 	String id = (String)session.getAttribute("id");
 	if (id == null || !id.equals("admin")) {
@@ -110,21 +119,26 @@
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
 		<!-- 리스트 -->
-		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
+		<form class="billing-form ftco-bg-dark p-3 p-md-5" >
 			<h3 class="mb-4 billing-heading">매출 현황</h3>
 			
 			 <div class="cart-list" style="text-align: center;">
 				<nav style="font-size: 22px; text-align: center; margin-bottom: 10px;">
 					<a href="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" target="ifbox01" 
-						style="width:461px;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
+						style="width:461px; margin: 0 !important; " class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
 					<a href="adminPageShopMonth.us?year=<%=Calendar.getInstance().get(Calendar.YEAR) %>" target="ifbox01" 
-						style="width:461px;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
+						style="width:461px; margin: 0 !important;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
 				</nav>
 				<iframe id="if01" name="ifbox01" width="950px" src="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" height="500px" style="margin: auto; border: 0px;">
 				</iframe>
-				<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart"  href="itemRegister.em" style="font-weight: bold; width:934px;"
+				<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart"  href="itemRegister.em" style="font-weight: bold; width:952px;"
 					role="tab" aria-controls="v-pills-3" aria-selected="false">상품 등록</a>
-    
+    		</div>
+    		
+    		<h3 class="mb-4 billing-heading" style="padding-top: 3rem;">상품 목록</h3>
+    		<div class="cart-list" style="text-align: center;">
+    			<iframe id="if02" name="ifbox02" width="950px" src="adminPageItemList.us" height="500px" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;">
+				</iframe>
             </div>
 		</form>
 			<div class="row mt-5">

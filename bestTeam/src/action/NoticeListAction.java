@@ -14,12 +14,12 @@ public class NoticeListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("NoticeListAction");
+//		System.out.println("NoticeListAction");
 		
 		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
 		
 		int page = 1;
-		int limit = 7;
+		int limit = 6;
 		
 		// 페이지 번호 파라미터가 있을 경우 가져오기
 		if(request.getParameter("page") != null) {

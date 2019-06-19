@@ -13,11 +13,8 @@ public class BlogCommentDeleteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BlogCommentDeleteProAction");
 		ActionForward forward = null;
 		
-		System.out.println("blog_num :: " + request.getParameter("comment_blog_num"));
-		System.out.println("comment_num :: " + request.getParameter("comment_num"));
 		// 게시물 번호 파라미터 가져오기
 		int blog_num = Integer.parseInt(request.getParameter("comment_blog_num"));
 		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
@@ -26,7 +23,6 @@ public class BlogCommentDeleteProAction implements Action {
 		
 		
 		// 본인 확인 결과 판별
-		
 			boolean isDeleteSuccess = blogCommentDeleteProService.removeArticle(comment_num);
 			
 			if(!isDeleteSuccess){
@@ -38,7 +34,7 @@ public class BlogCommentDeleteProAction implements Action {
 				out.println("</script>");
 			}else {
 				forward=new ActionForward();
-				forward.setPath("blog.bl");
+				forward.setPath("blog-single.bl?blog_num=" + blog_num + "&page=1");
 				forward.setRedirect(true);
 			}
 		

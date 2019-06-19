@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import svc.QnaWriteFormService;
 import svc.QnaWriteProService;
+import svc.ReviewService;
 import svc.ReviewWriteFormService;
 import vo.ActionForward;
+import vo.ItemBean;
 import vo.UserBean;
 
 public class ReviewWriteFormAction implements Action {
@@ -19,6 +21,7 @@ public class ReviewWriteFormAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		UserBean userBean = new UserBean();
+		ItemBean itemBean = new ItemBean();
 		String id = "";
 		HttpSession session = request.getSession();
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
@@ -36,7 +39,9 @@ public class ReviewWriteFormAction implements Action {
 		}
 		
 		ReviewWriteFormService reviewWriteFormService = new ReviewWriteFormService();
+		ReviewService reviewService = new ReviewService();
 		userBean = reviewWriteFormService.getUserInfo(id);
+		itemBean = reviewService.getItem(item_num);
 		if(userBean == null) {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -46,8 +51,10 @@ public class ReviewWriteFormAction implements Action {
 			out.println("</script>");
 		} else {
 			request.setAttribute("userBean", userBean);
+			request.setAttribute("itemBean", itemBean);
 			forward = new ActionForward();
-			forward.setPath("/shop/qna_write2.jsp?item_num="+item_num);
+			forward.setPath("/shop/reviewWriteForm.jsp?item_num="+item_num);
+			System.out.println("리뷰롸이트액션끝");
 		}
 		
 		return forward;

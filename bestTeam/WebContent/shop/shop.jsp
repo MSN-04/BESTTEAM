@@ -13,10 +13,10 @@
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 // 	System.out.println("listCount : " + listCount);
-// 	System.out.println("nowPage : " + nowPage);
-// 	System.out.println("maxPage : " + maxPage);
-// 	System.out.println("startPage : " + startPage);
-// 	System.out.println("endPage : " + endPage);
+	System.out.println("nowPage : " + nowPage);
+	System.out.println("maxPage : " + maxPage);
+	System.out.println("startPage : " + startPage);
+	System.out.println("endPage : " + endPage);
 // 	System.out.println("itemList.size() : " + itemList.size());
 %>
 <!DOCTYPE html>
@@ -60,6 +60,23 @@
 	.coffeeInfo td {
 		text-align: center;
 	}
+	.shop-subcategory {
+		display: flex;
+		padding: 10px;
+		margin: 0 auto;
+		margin-bottom: 0 !important;
+	}
+	.shop-subcategory>.col-md-3 {
+		display: inline-grid;
+		width: 20%;
+	}
+	.shop-subcategory>.col-md-3>.menu-entry {
+		margin: 0;
+	}
+/* 	.shop-subcategory>.text { */
+/* 		display: inline-grid; */
+/* 	} */
+	
 /* 	#v-pills-1-tab:hover { */
 /* 		border: 1px solid red; */
 		
@@ -146,6 +163,56 @@
 		}
 	});
 </script>
+<script>
+            function openPage(pageName,elmnt,color) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablink");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+              }
+              document.getElementById(pageName).style.display = "block";
+              elmnt.style.backgroundColor = color;
+            }
+            
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+            
+            function getParams (kind, val) {
+                
+                var params = location.search.substr(location.search.indexOf("?") + 1);
+                var QuestionIndex = location.href.indexOf("?");
+                var url = "";
+                
+                if (QuestionIndex == -1 ) {
+                    url = location.href.substring();
+                } else {
+                    url = location.href.substring(0, QuestionIndex);
+                } 
+                
+                var param = "";
+                var paramUrl = "?";
+                
+                params = params.split("&");
+                for (var i = 0 ; i < params.length ; i++) {
+                    param = params[i].split("=");
+                    if (param[0] != kind && param[0] != "" && param[0] != 'page') {
+                        paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
+//                         alert('paramUrl :: ' + paramUrl);
+                    } else {
+                        continue;
+                    }
+                }
+                
+                paramUrl = paramUrl + kind + '=' + val;
+                location.href = url + paramUrl;
+                
+            }
+            
+            </script>
 </head>
 <body>
 	<header>
@@ -175,99 +242,68 @@
 	</section>
 
 
-	<section class="ftco-menu mb-5 pb-5"  id="go_top">
+	<section class="ftco-menu mb-5 pb-5"  id="go_top" style="margin-bottom: 0;">
 		<div class="container">
 			<div class="row d-md-flex">
 			
 			<!-- 우측 퀵메뉴 -->
-	<div class="quick">
-		<a href="javascript:void(0)" class="tablink" onclick="openPage('Home', this)" id="defaultOpen"><img alt="recent" src="./images/g_con_1_2.png"></a>
-		<a href="javascript:void(0)" class="tablink" onclick="openPage('News', this)"><img alt="pick" src="./images/g_con_2_1.png"></a>
-		<a href="./shop/cart.jsp" class="tablink"><img alt="cart" src="./images/g_con_3_1.png"></a>
+<!-- 	<div class="quick"> -->
+<!-- 		<a href="javascript:void(0)" class="tablink" onclick="openPage('Home', this)" id="defaultOpen"><img alt="recent" src="./images/g_con_1_2.png"></a> -->
+<!-- 		<a href="javascript:void(0)" class="tablink" onclick="openPage('News', this)"><img alt="pick" src="./images/g_con_2_1.png"></a> -->
+<!-- 		<a href="./shop/cart.jsp" class="tablink"><img alt="cart" src="./images/g_con_3_1.png"></a> -->
 
-			<div id="Home" class="tabcontent">
-				<h6>RECENTLY</h6>
-			  <a href="./shop/product-single.jsp"><img alt="" src="./images/menu-1.jpg"></a>
-			</div>
+<!-- 			<div id="Home" class="tabcontent"> -->
+<!-- 				<h6>RECENTLY</h6> -->
+<!-- 			  <a href="./shop/product-single.jsp"><img alt="" src="./images/menu-1.jpg"></a> -->
+<!-- 			</div> -->
 			
-			<div id="News" class="tabcontent">
-			  <h6>Pick</h6>
-			  <a href="./shop/product-single.jsp"><img alt="" src="./images/menu-2.jpg"></a>
-			</div>
+<!-- 			<div id="News" class="tabcontent"> -->
+<!-- 			  <h6>Pick</h6> -->
+<!-- 			  <a href="./shop/product-single.jsp"><img alt="" src="./images/menu-2.jpg"></a> -->
+<!-- 			</div> -->
 			
-			<script>
-			function openPage(pageName,elmnt,color) {
-			  var i, tabcontent, tablinks;
-			  tabcontent = document.getElementsByClassName("tabcontent");
-			  for (i = 0; i < tabcontent.length; i++) {
-			    tabcontent[i].style.display = "none";
-			  }
-			  tablinks = document.getElementsByClassName("tablink");
-			  for (i = 0; i < tablinks.length; i++) {
-			    tablinks[i].style.backgroundColor = "";
-			  }
-			  document.getElementById(pageName).style.display = "block";
-			  elmnt.style.backgroundColor = color;
-			}
-			
-			// Get the element with id="defaultOpen" and click on it
-			document.getElementById("defaultOpen").click();
-			
-			function getParams (kind, val) {
-				
-				var params = location.search.substr(location.search.indexOf("?") + 1);
-				var QuestionIndex = location.href.indexOf("?");
-				var url = "";
-				
-				if (QuestionIndex == -1 ) {
-					url = location.href.substring();
-				} else {
-					url = location.href.substring(0, QuestionIndex);
-				} 
-				
-				var param = "";
-				var paramUrl = "?";
-				
-				params = params.split("&");
-				for (var i = 0 ; i < params.length ; i++) {
-					param = params[i].split("=");
-					if (param[0] != kind && param[0] != "") {
-						paramUrl = paramUrl + param[0] + '=' + param[1] + '&';
-					} else {
-						continue;
-					}
-				}
-				
-				paramUrl = paramUrl + kind + '=' + val;
-				location.href = url + paramUrl;
-				
-			}
-			
-			</script>
-			
-			<div class="quick_mid"> 
-				<ul class="sec_m">
-					<li><img alt="prev" src="./images/g_con_prev.png"></li>
-					<li>1 / 1</li>
-					<li><img alt="next" src="./images/g_con_next.png"></li>
-				</ul>
-			</div> 
-		<div class="quick_bottom">
-			<ul>
-				<li><a href="javascript:void(0)" onclick="history.go(-1)"><img alt="back" src="./images/back.png"></a></li>
-				<li><a href="#go_top"><img alt="top" src="./images/up_btn.png"></a></li>
-				<li><a href="#go_bottom"><img alt="bottom" src="./images/down_btn.png"></a></li>
-			</ul>
-		</div>
-	</div>
+<!-- 			<div class="quick_mid">  -->
+<!-- 				<ul class="sec_m"> -->
+<!-- 					<li><img alt="prev" src="./images/g_con_prev.png"></li> -->
+<!-- 					<li>1 / 1</li> -->
+<!-- 					<li><img alt="next" src="./images/g_con_next.png"></li> -->
+<!-- 				</ul> -->
+<!-- 			</div>  -->
+<!-- 		<div class="quick_bottom"> -->
+<!-- 			<ul> -->
+<!-- 				<li><a href="javascript:void(0)" onclick="history.go(-1)"><img alt="back" src="./images/back.png"></a></li> -->
+<!-- 				<li><a href="#go_top"><img alt="top" src="./images/up_btn.png"></a></li> -->
+<!-- 				<li><a href="#go_bottom"><img alt="bottom" src="./images/down_btn.png"></a></li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 			<!-- 우측 퀵메뉴 끝 -->
+			
+			
+				<div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
+					<span class="subheading">Best Quality!</span>
+					<h2 class="mb-4" style="font-size: 37px;"><i>회원님께 딱 맞는 상품!</i></h2>
+				</div>
+				
+				<script type="text/javascript">
+					function setIFrameHeight(obj){
+					    if(obj.contentDocument){
+					        obj.height = obj.contentDocument.body.offsetHeight + 10;
+					    } else {
+					        obj.height = obj.contentWindow.document.body.scrollHeight;
+					    }
+					}
+				</script>
+				<iframe id="if01" name="ifbox01" width="950px" src="recommendList.em" height="auto" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;" >
+				</iframe>
+			
 			
 				<div class="col-lg-12 ftco-animate p-md-5">
 
 					<div class="row">
 						<div class="col-md-12 nav-link-wrap mb-5">
 							<div class="nav ftco-animate nav-pills justify-content-center"
-								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
+								id="v-pills-tab" role="tablist" aria-orientation="vertical" >
 
 								<a class="nav-link" id="v-pills-0-tab" 
 									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')"
@@ -284,8 +320,17 @@
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
 							</div>
-
-							<div class="nav ftco-animate nav-pills justify-content-center" 
+							
+							<div class="shop-select" style="margin-top: -49px;">
+								<select id="select_id" class="shop-name-select" style="margin-top: 3rem !important;" onchange="getParams ('filter', this.value)">
+									<option class="sop-01" value="newest">신상품순</option>
+									<option class="sop-01" value="popular">인기상품순</option>
+									<option class="sop-01" value="lowPrice">낮은가격순</option>
+									<option class="sop-01" value="highPrice">높은가격순</option>
+								</select>
+							</div>
+							
+							<div class="nav ftco-animate nav-pills justify-content-center" style="margin-top: 10px;"
 								id="v-degree-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link" id="v-degree-0-tab" role="tab" 
 									aria-controls="v-pills-0" aria-selected="true">진하기</a> 
@@ -302,9 +347,6 @@
 							</div>
 						</div>
 						
-<!-- 						<div class="col-md-12 nav-link-wrap mb-5"> -->
-<!-- 							<a href="itemRegister.em" style="padding: 0.3em 0.5em; border-radius: 5px; border: 1px solid; font-weight: bold; color: #c49b63; font-size: 20px;">상품 등록</a> -->
-<!-- 						</div> -->
 
 						<div class="col-md-12 d-flex align-items-center">
 
@@ -313,19 +355,6 @@
 								<div class="tab-pane fade show active" id="v-pills-0"
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
-									<div class="shop-select">
-										<select id="select_id" class="shop-name-select mb-5" onchange="getParams ('filter', this.value)">
-											<option class="sop-01" value="newest">신상품순</option>
-											<option class="sop-01" value="popular">인기상품순</option>
-											<option class="sop-01" value="lowPrice">낮은가격순</option>
-											<option class="sop-01" value="highPrice">높은가격순</option>
-										</select>
-									</div>
-									<div class="shop-subcategory text text-center mb-5">
-									 	<a>여기에 추천상품...</a>
-									</div>
-
-
 
 									<div class="row">
 									
@@ -333,7 +362,7 @@
 											if (itemList != null && listCount > 0) {
 												for (int i = 0 ; i < itemList.size() ; i++) {
 										%>
-											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" onmouseover="this.style.border='1px solid #c49b63';" onmouseout="this.style.border='0px solid';">
+											<div class="col-md-3" style="margin-bottom: 45px; padding: 1rem;" >
 												<div class="menu-entry">
 													<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
@@ -378,26 +407,50 @@
 									<div class="row mt-5">
 										<div class="col text-center">
 											<div class="block-27">
-												<ul>
-													<% if(nowPage <= 1) { %>
-													<li><a>&lt;</a></li>
-													<% } else { %>
-													<li><a href= "javascript:getParams ('page', <%=nowPage-1 %>);">&lt;</a></li>
-													<% } 
-													for (int a = startPage ; a <= endPage; a++) {
-														if(a == nowPage) {
-															%><li class="active"><span><%=a %></span></li><%
-														} else {
-															%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a %></a></li><%
-														}
+											
+											<ul>
+												<%
+													if (nowPage <= 1) {
+												%>
+												<li><a>&lt;</a></li>
+												<%
+													} else {
+												%>
+												<li><a href="javascript:getParams ('page', <%=nowPage - 1 %>);">&lt;</a></li>
+												<%
 													}
-													%>
-													<% if(nowPage >= maxPage) { %>
-													<li><a>&gt;</a></li>
-													<% } else { %>
-													<li><a href="javascript:getParams ('page', <%=nowPage+1 %>);">&gt;</a></li>
-													<% } %>
-												</ul>
+													int a = nowPage - 2  > 2 ? nowPage - 2 : startPage;
+													if ( a != startPage ) {
+														%><li><a href="javascript:getParams ('page', <%=1%>);">1</a></li><%
+														%> . . . . <%
+													}
+													for ( ; a <= endPage && a <= nowPage + 2; a++) {
+														if (a == nowPage) {
+												%><li class="active"><span><%=a%></span></li>
+												<%
+													} else {
+												%><li><a href="javascript:getParams ('page', <%=a %>);"><%=a%></a></li>
+												<%
+													}
+													}
+													if ( a <= maxPage ) {
+														%> . . . . <%
+													}
+												%>
+												<%
+													if (nowPage >= maxPage) {
+												%>
+												<li><a>&gt;</a></li>
+												<%
+													} else {
+												%>
+												<li><a href="javascript:getParams ('page', <%=nowPage + 1 %>);">&gt;</a></li>
+												<%
+													}
+												%>
+					
+											</ul>
+										
 											</div>
 										</div>
 									</div>
@@ -406,6 +459,17 @@
 						</div>
 					</div>
 				</div>
+				
+				<div style="margin: auto;">
+                    <div class="col-md-7 heading-section ftco-animate text-center" style="margin: 0 auto; margin-top: 31px;">
+                        <span class="subheading" style="margin-bottom: -30px;">Recent</span>
+                        <span class="mb-4" style="font-size: 29px; font-weight: 600;"><i>최근 보신 상품</i></span>
+                    </div>
+                    
+                    <iframe id="if02" name="ifbox02" width="950px" src="itemRecent.em" height="auto" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;" >
+                    </iframe>
+                </div>
+				
 			</div>
 		</div>
 	</section>

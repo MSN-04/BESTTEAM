@@ -11,7 +11,7 @@ public class NoticeModifyFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("NoticeModifyFormAction");
+//		System.out.println("NoticeModifyFormAction");
 		
 		ActionForward forward = new ActionForward();
 		

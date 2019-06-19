@@ -11,6 +11,8 @@ import vo.ReviewBean;
 //Qna답글DAO
 public class ReviewReplyDAO {
 	
+	
+	
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -31,35 +33,31 @@ public class ReviewReplyDAO {
 		this.con = con;
 	}
 	
-	
 	//review답글 등록 메서드
 		public int insertReply(ReviewBean reviewBean, int new_review_re_ref) {
 			int result = 0; //리턴할 결과를 저장할 변수
-			
+			int num = 0;
 			//해당 게시물의 기존 답글 순번을 1씩 증가시키는 쿼리(답글간의 순서)
 			
-//			String sql = "UPDATE qna SET qna_re_seq = qna_re_seq+1 WHERE qna_re_ref =? AND qna_re_seq > ?";
 			
-			String sql1 = "INSERT INTO review VALUES(null,?,?,?,?,NOW(),?,1,1,'admin')";
-			
+			String sql="select MAX(review_num) from REVIEW";
+			String sql1 = "INSERT INTO REVIEW VALUES(?,?,?,?,null,NOW(),?,?,1,1,'admin')";
 			
 			try {
-//				pstmt = con.prepareStatement(sql);
-//				pstmt.setInt(1, qna_re_ref);
-//				pstmt.setInt(2, qna_re_seq);
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
 				
-//				pstmt.executeUpdate();
-	   
-//				qna_re_seq = qna_re_seq +1;
-//				qna_re_lev = qna_re_lev +1;
+				if(rs.next()) {
+					num=rs.getInt(1)+1;
+				}
 				
 				pstmt = con.prepareStatement(sql1);
-//				pstmt.setInt(1, qnaBean.getQna_num());
-				pstmt.setInt(1, reviewBean.getReview_item_num());
-				pstmt.setString(2, reviewBean.getReview_user_id());
-				pstmt.setString(3, reviewBean.getReview_subject());
+				pstmt.setInt(1, num);
+				pstmt.setInt(2, reviewBean.getReview_item_num());
+				pstmt.setString(3, reviewBean.getReview_user_id());
 				pstmt.setString(4, reviewBean.getReview_content());
-				pstmt.setInt(5, new_review_re_ref);
+				pstmt.setString(5, reviewBean.getReview_subject());
+				pstmt.setInt(6, new_review_re_ref);
 //				pstmt.setInt(6, qna_re_lev);
 //				pstmt.setInt(7, qna_re_seq);
 				
@@ -81,7 +79,7 @@ public class ReviewReplyDAO {
 		public int updateReply(ReviewBean reviewBean ) {
 			int updateResult = 0;
 			
-			String sql = "UPDATE review SET qna_content=? WHERE qna_writer=? AND qna_re_ref=?,qna_re_seq=?"; 
+			String sql = "UPDATE REVIEW SET review_content=? WHERE review_user_id=? AND review_re_ref=?,review_re_seq=?"; 
 			try {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, reviewBean.getReview_content());
@@ -99,7 +97,7 @@ public class ReviewReplyDAO {
 		public int deleteReply(int review_reply_num) {
 			int deleteResult = 0;
 			
-			String sql = "DELETE FROM qna WHERE qna_num=?";
+			String sql = "DELETE FROM REVIEW WHERE review_num=?";
 			
 			try {
 				pstmt = con.prepareStatement(sql);

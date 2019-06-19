@@ -313,8 +313,8 @@ window.onload = function() {
 									role="tabpanel" aria-labelledby="v-pills-0-tab">
 
 		<!-- 리스트 -->
-		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
-			<h3 class="mb-4 billing-heading">전체 리스트</h3>
+		<form class="billing-form ftco-bg-dark p-3 p-md-7895" style="overflow: auto;">
+			<h3 class="mb-4 billing-heading" style="text-align: center;">전체 리스트</h3>
 			
 			 <div class="cart-list">
 
