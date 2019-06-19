@@ -151,7 +151,7 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/member/adminPageShop.jsp");
 		} else if (command.equals("/adminPageShopDay.us")) {
-			System.out.println("adminPageShopDay Controller");
+//			System.out.println("adminPageShopDay Controller");
 			action = new AdminPageShopDayAction();
 			try {
 				forward = action.execute(request, response);
@@ -159,7 +159,7 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageShopMonth.us")) {
-			System.out.println("adminPageShopMonth Controller");
+//			System.out.println("adminPageShopMonth Controller");
 			action = new AdminPageShopMonthAction();
 			try {
 				forward = action.execute(request, response);
@@ -167,7 +167,7 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageItemList.us")) {
-			System.out.println("adminPageItemList Controller");
+//			System.out.println("adminPageItemList Controller");
 			action = new AdminPageItemListAction();
 			try {
 				forward = action.execute(request, response);
@@ -175,7 +175,7 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/adminPageItemListDelete.us")) {
-			System.out.println("adminPageItemListDelete Controller");
+//			System.out.println("adminPageItemListDelete Controller");
 			action = new AdminPageItemDeleteAction();
 			try {
 				forward = action.execute(request, response);
