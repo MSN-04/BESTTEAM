@@ -158,7 +158,7 @@
                   
                 </div>
             </div>
-             div class="col-sm-4">
+             <div class="col-sm-4">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/song.jpg" alt="">
                     <h4>송주영</h4>
