@@ -8,7 +8,6 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
 
 
 <%
@@ -680,7 +679,7 @@ $( '#rere1' ).click(
 					
 					<table class="table">
 						<tr>
-							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
+							<td><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
 					</table>
 				</div>
