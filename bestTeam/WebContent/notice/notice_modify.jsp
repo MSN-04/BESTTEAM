@@ -145,7 +145,7 @@
 			<form id="frm" action="noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
-						<td><input type="text" id="notice_subject" name="notice_subject" class="frmTitle" value="<%=article.getNotice_subject()%>"></td>
+						<td><input type="text" id="notice_subject" name="notice_subject" class="frmTitle" value="<%=article.getNotice_subject()%>" maxlength="30"></td>
 					</tr>
 					<tr>
 						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 

@@ -133,17 +133,17 @@
 				<table width="100%">
 					<tr>
 						<td>제목</td>
-						<td colspan="3"><input type="text" id="blog_subject" name="blog_subject" required="required"
+						<td colspan="3"><input type="text" id="blog_subject" name="blog_subject" required="required" maxlength="30"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" required="required"
+						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" required="required" maxlength="300"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
-						<td><input type="text" id="blog_writer" name="blog_writer" required="required"
+						<td><input type="text" id="blog_writer" name="blog_writer" required="required" maxlength="15"
 							style="width: 100%;" /></td>
 						<td style="width: 86px;"><input type="file" id="blog_file" name="blog_file"
 							style="width: 100%;"required="required" /></td>
