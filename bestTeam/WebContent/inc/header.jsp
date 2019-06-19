@@ -14,48 +14,41 @@
 <style>
 .login-popup{
 box-shadow:none !important;
+opacity:0.77;
 }
+
+
+
 </style>
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		$('a.login-window').click(function() {
-
 			// Getting the variable's value from a link 
 			var loginBox = $(this).attr('href');
-
 			//Fade in the Popup and add close button
 			$(loginBox).fadeIn(0);
-
 			//Set the center alignment padding + border
 			var popMargTop = ($(loginBox).height() + 12) / 2;
 			var popMargLeft = ($(loginBox).width() + 12) / 2;
-
 			$(loginBox).css({
 				'margin-top' : -popMargTop,
 				'margin-left' : -popMargLeft
 			});
-
 			// Add the mask to body
 			$('body').append('<div id="mask"></div>');
 			$('#mask').fadeIn(300);
-
 			$('.login-popup').css({
 				'display' : inline - block
 			})
-
 			return false;
 		});
-
 		$('.close, #mask').click(function() {
 			$('#mask , .login-popup').fadeOut(300, function() {
 				$('#mask').remove();
 			});
 		});
-
 		// When clicking on the button close or the mask layer the popup closed
 		return false;
-
 	});
 	
 </script>
@@ -142,11 +135,11 @@ box-shadow:none !important;
 <!-- 					<span> Welcome Back!</span>  -->
 					<label class="username"> <input
 						id="username" name="id" value="" type="text" autocomplete="on"
-						placeholder="Username">
+						placeholder="아이디">
 					</label> <label class="password"> <input id="password"
-						name="password" value="" type="password" placeholder="Password">
+						name="password" value="" type="password" placeholder="비밀번호">
 					</label>
-					<button class="submit button btn btn-primary" type="submit">LOGIN</button>
+					<button class="submit button btn btn-primary" type="submit">L O G I N</button>
 				</fieldset>
 			</form>
 			

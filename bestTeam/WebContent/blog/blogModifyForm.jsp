@@ -71,6 +71,26 @@
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			
+			
+			if ( $("#title").val() == "" ) {
+				alert('제목을 입력하세요.');
+				return false;
+			} else if ($("#blog_content1").val() == "") {
+				alert('요약을 입력하세요.');
+				return false;
+			} else if ($("#blog_writer").val() == "") {
+				alert('글쓴이를 입력하세요.');
+				return false;
+			} else if ($("#ir1").val() == "<br>") {
+				alert('내용을 입력하세요.');
+				return false;
+			} else if ($("#blog_file").val() == "") {
+				alert('대표이미지를 설정해주세요.');
+				return false;
+			}
+			
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
@@ -130,20 +150,14 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/coffeecup.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Blog Details</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span
-								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-								Single</span>
-						</p>
+						<h1 class="mb-3 mt-5 bread">Blog Modify</h1>
 					</div>
 
 				</div>
@@ -152,8 +166,8 @@
 	</section>
 
 	<section class="ftco-section">
-		<div class="container" style="border: 1px solid white;">
-			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" >
+		<div class="container" s>
+			<form id="frm" action="blogModifyPro.bl?blog_num=<%=blog_num %>" method="post" enctype="multipart/form-data">
 				<table width="100%">
 					<tr>
 						<td>제목</td>
@@ -162,14 +176,14 @@
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="title" name="blog_content1" value="<%=article.getBlog_content1() %>"
+						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" value="<%=article.getBlog_content1() %>"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
-						<td><input type="text" id="title" name="blog_writer" value="<%=article.getBlog_writer() %>"
+						<td><input type="text" id="blog_writer" name="blog_writer" value="<%=article.getBlog_writer() %>"
 							style="width: 100%;" /></td>
-							<td style="width: 86px;"><input type="file" id="title" name="blog_file" 
+							<td style="width: 86px;"><input type="file" id="blog_file" name="blog_file" 
 							style="width: 100%;"required="required" /></td>
 					</tr>
 					<tr>
@@ -181,7 +195,7 @@
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
 							<input type="submit" id="save" value="저장" /> 
-							<input type="button" value="취소" />
+							<input type="reset" value="취소" />
 						</td>
 					</tr>
 				</table>

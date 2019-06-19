@@ -59,14 +59,23 @@
 		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
 		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
 		    fCreator: "createSEditor2",
-		    fOnAppLoad : function(){
-				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-		    }
+// 		    fOnAppLoad : function(){
+// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
+// 		    }
 		});
 	
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			
+			if ( $("#title").val().length == 0 ) {
+				alert('제목을 입력하세요.');
+				return false;
+			} else if ($("#ir1").val() == "<br>") {
+				alert('내용을 입력하세요.');
+				return false;
+			}
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
@@ -114,8 +123,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/coffeecup.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -123,9 +131,9 @@
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Notice Write</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><span class="mr-2"><a href="./noticeList.no">Notice</a></span><a href="blog.html">FAQ</a></span> 
-						</p>
+<!-- 						<p class="breadcrumbs"> -->
+<!-- 							<span class="mr-2"><span class="mr-2"><a href="./noticeList.no">Notice</a></span><a href="blog.html">FAQ</a></span>  -->
+<!-- 						</p> -->
 					</div>
 
 				</div>
