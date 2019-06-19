@@ -7,6 +7,7 @@
 	<%
 	ReviewBean article = (ReviewBean)request.getAttribute("article");
 	int review_num = Integer.parseInt(request.getParameter("review_num"));
+	
 	%>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +62,7 @@ String id=(String)session.getAttribute("id");
 </style>
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
+System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_img() );
 %>
 
 </head>
