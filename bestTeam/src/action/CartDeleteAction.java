@@ -18,8 +18,8 @@ public class CartDeleteAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		String list = request.getParameter("list");
-		System.out.println("id :: " + id);
-		System.out.println("list :: " + list);
+//		System.out.println("id :: " + id);
+//		System.out.println("list :: " + list);
 		String[] itemList = list.split(",");
 		
 		response.setCharacterEncoding("UTF-8");
