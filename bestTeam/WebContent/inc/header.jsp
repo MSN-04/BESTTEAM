@@ -11,7 +11,11 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
+<style>
+.login-popup{
+box-shadow:none !important;
+}
+</style>
 <script type="text/javascript">
 
 	$(document).ready(function() {
