@@ -1,12 +1,8 @@
 package mail;
 
-import static db.JdbcUtil.getConnection;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
-import java.util.Random;
-
 import javax.mail.Address;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -20,8 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.Action;
-import vo.ActionForward;
 
 @WebServlet("/mailsend")
 public class ContactMailSend extends HttpServlet {
