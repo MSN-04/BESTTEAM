@@ -81,7 +81,7 @@ text-transform:none !important;
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate" style="margin-top: 70px !important;">
 						<span class="subheading">Café TinkerVell</span>
-						<h1 style="line-height: 1.5em; margin-top: -10px;">Explore<br>New Flavor</h1>
+						<h1 style="line-height: 1.3em;">Explore<br>New Flavor</h1>
 						<h4 >새로운 맛을 탐험하세요</h4>
 						<p>
 							<a href="shop.sh"
@@ -103,7 +103,7 @@ text-transform:none !important;
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate" style="margin-top: 70px !important;">
 						<span class="subheading">Café TinkervVell</span>
-						<h1 style="line-height: 1.5em; margin-top: -10px;">Which Coffee is Attractive</h1>
+						<h1 style="line-height: 1.3em;">Which Coffee is Attractive</h1>
 						<h4 >어떤 원두에 끌리세요?</h4>
 						<p>
 							<a href="login.us" onclick="startNow()"
