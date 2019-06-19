@@ -8,6 +8,7 @@
 <%@page import="vo.ItemBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  --%>
 
 
 <%
@@ -29,7 +30,6 @@
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
-
 // 	qna
 	// String nowPage = (String) request.getAttribute("page"); // String 타입으로 setAttribute() 메서드에 저장했을 경우
 	// ArrayList<NoticeBean> articleList = (ArrayList<NoticeBean>) request.getAttribute("articleList");
@@ -48,7 +48,6 @@
 	int maxPage2 = pageInfo2.getMaxPage();
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
-
 // 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 	
@@ -58,7 +57,6 @@
 	Cookie c = new Cookie("item_num"+itemBean.getItem_num(), URLEncoder.encode(itemBean.getItem_num()+"","utf-8"));
 	c.setMaxAge(60*60*24); // 24시간
 	response.addCookie(c);
-
 %>
 
 	
@@ -115,7 +113,6 @@ function delconfirm(qna_re_ref,item_num) {
 		alert("취소되었습니다");
 	return false;
 }
-
 function delconfirm2(review_re_ref,item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
 	if (message == true) {
@@ -220,7 +217,6 @@ function showSlides(n) {
 		    
 		    //qna페이징처리
 		    if(param['pageNum']==null && param['page']==null){
-
 			$('#btn1').css('color', '#212529');
 			$('#btn1').css('background-color', '#c29963');
 			$('#btn1').css('border-color', '#c29963');
@@ -419,7 +415,6 @@ $( '#rere1' ).click(
 	    }
 	);
  </script> 
-
 	<style type="text/css">
 	
 		.roundbox {
@@ -545,7 +540,6 @@ $( '#rere1' ).click(
 				<div
 					class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
 						<p class="breadcrumbs">
 							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
@@ -623,8 +617,7 @@ $( '#rere1' ).click(
 							<div class="form-group d-flex"></div>
 						</div>
 						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3" style="padding: 0 !important;">
-
+						<div class="input-group col-md-6 d-flex mb-3">
 							<div class="input-group mb-3">
                     
 <!--               <span class="input-group-btn ml-2"> -->
@@ -647,6 +640,20 @@ $( '#rere1' ).click(
 					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
 		
+<!--   <div class="row1"> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column">  -->
+<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
+<!--     </div> -->
+<!--     <div class="column"> -->
+<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
+<!--     </div> -->
+<!--   </div>	 -->
 					
 				</div>
 			</div>
@@ -679,7 +686,7 @@ $( '#rere1' ).click(
 					
 					<table class="table">
 						<tr>
-							<td><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
+							<td><class="img11"><img src="./itemUpload/<%=itemBean.getItem_content() %>"></td>
 						</tr>
 					</table>
 				</div>
@@ -690,11 +697,9 @@ $( '#rere1' ).click(
 <section class="ftco=section" id="ft2">
 		<div class="container">
 			<div class="row d-flex">
-
 			<div class="blog-entry align-self-stretch" style="margin: auto;">
 	<section class="ftco=section" id="ac1">
 		<div class="container">
-
 					<table class="table thead-light" id="ac11">
                 <tr>
                   <td><a data-toggle="collapse">번호</a></td>
@@ -704,7 +709,6 @@ $( '#rere1' ).click(
                   
                   
                   </tr>
-
                  <%
 										if (reviewList != null && listCount > 0) {
 											for (int i = 0; i < reviewList.size(); i++) {
@@ -757,7 +761,6 @@ $( '#rere1' ).click(
 								name="review_num" id="review_reply_subject" required="required">
 								<input type="hidden" class="form-control"value="<%=reviewList.get(i).getReview_item_num() %>"
 								name="review_item_num" id="review_reply_subject" required="required">
-
 					
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-uppercase">REVIEW 답글</h2>
@@ -771,7 +774,6 @@ $( '#rere1' ).click(
 								name="review_reply_writer" id="review_reply_writer" readonly="readonly">
 						</div>
 						<!-- 						</div> -->
-
 					</tr>
 					
 					</div>
@@ -853,7 +855,6 @@ $( '#rere1' ).click(
 								<li class="active"><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&page=<%=nowPage+1 %>'>&gt;</a></li>
 							<%
 							}
-
 						}
 							%>
 								</ul>
@@ -866,7 +867,6 @@ $( '#rere1' ).click(
 	</section>
 				
 <!-- QNA -->
-
 	<section class="ftco=section" id="ft3">
 		<div class="container">
 			<div class="row d-flex">
@@ -911,7 +911,7 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id != null && (id.equals("admin")||id.equals(qnaList.get(a).getQna_writer()))){ %>
+											<% if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
@@ -922,12 +922,10 @@ $( '#rere1' ).click(
 														</div>
 													</div>
 												</section>
-
 <!-- 												id가 "admin"이고 답글인 경우 답글폼 숨기기 -->
-										<% if(id != null && id.equals("admin")){ 
+										<% if(id.equals("admin")){ 
 											if(qnaList.get(a).getQna_re_lev()==0){
 											%>
-
 												<section class="ftco-section">
 													<div class="col-md-5" id="mail" style="max-width: 100% !important;">
 														<form id="frm" action="QnaReplyProAction.qna" method="post"
@@ -1014,11 +1012,9 @@ $( '#rere1' ).click(
 							<%
 							 }else{
 								%>
-
 							
 									<li ><a href='itemSingle.em?item_num=<%=itemBean.getItem_num() %>&pageNum=<%=i %>'><%=i %></a></li>
 									
-
 									<%} 
 									
 							if(endPage2 < maxPage2){
