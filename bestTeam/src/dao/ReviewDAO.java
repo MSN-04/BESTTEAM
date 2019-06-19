@@ -45,9 +45,6 @@ public class ReviewDAO {
 		int insertCount = 0;
 		int user_id=0;
 		
-			
-		
-		
 		String sql="select MAX(review_num) from REVIEW";
 		
 		try {
