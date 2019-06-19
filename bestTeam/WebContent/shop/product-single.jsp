@@ -525,7 +525,7 @@ $( '#rere1' ).click(
 							<div class="form-group d-flex"></div>
 						</div>
 						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3">
+						<div class="input-group col-md-6 d-flex mb-3" style="padding: 0 !important;">
 
 							<div class="input-group mb-3">
                     
@@ -549,20 +549,6 @@ $( '#rere1' ).click(
 					</p>  <!-- <== song 190618 추가 -->
 		<div class="row1">
 		
-<!--   <div class="row1"> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt.jpg"  onclick="currentSlide(1)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column">  -->
-<!--       <img class="demo cursor" id="im" src="./images/tt3.jpg"  onclick="currentSlide(2)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt4.jpg"  onclick="currentSlide(3)" alt=""> -->
-<!--     </div> -->
-<!--     <div class="column"> -->
-<!--       <img class="demo cursor" id="im" src="./images/tt5.jpg"  onclick="currentSlide(4)" alt=""> -->
-<!--     </div> -->
-<!--   </div>	 -->
 					
 				</div>
 			</div>
