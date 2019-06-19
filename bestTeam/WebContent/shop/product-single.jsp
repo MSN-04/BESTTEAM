@@ -926,7 +926,6 @@ $( '#rere1' ).click(
 														</div>
 													</div>
 												</section>
-												
 
 
 <!-- 												id가 "admin"이고 답글인 경우 답글폼 숨기기 -->
