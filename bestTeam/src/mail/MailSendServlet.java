@@ -98,7 +98,7 @@ import vo.ActionForward;
 				}else {
 					con.rollback();
 					out.println("<script>");
-					out.println("alert('오류발생')");
+					out.println("alert('일치하는 회원이 없습니다.')");
 					out.println("history.back()");
 					out.println("</script>");
 				}

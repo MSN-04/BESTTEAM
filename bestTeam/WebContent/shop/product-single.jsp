@@ -718,8 +718,8 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id!= null){
-											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
+											<% 
+											%>
 											<div class="panel-body">
 											<%
 											   if(reviewList.get(i).getReview_img() != null) {
@@ -728,6 +728,8 @@ $( '#rere1' ).click(
 											%>
 											
 												<b><%=reviewList.get(i).getReview_content() %></b>
+												<%if(id!=null){
+												if(id.equals("admin") ||id.equals(reviewList.get(i).getReview_user_id())){ %>
 												<section class="ftco=section div0525" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
@@ -736,9 +738,11 @@ $( '#rere1' ).click(
 														</div>
 													</div>
 												</section>
-												
+												<%}
+												}%>
 <!-- 															id가 "admin"이고 답글인 경우 답글폼 숨기기  -->
-										<% if(id.equals("admin")){ 
+										<%if(id!= null){ 
+										if(id.equals("admin")){ 
 											if(reviewList.get(i).getReview_re_lev()==0){
 											%>
 													<section class="ftco-section" style="width: 100% !important;">
@@ -802,12 +806,11 @@ $( '#rere1' ).click(
 										
 												%>		
 											</div>
-											<%}else{
-												%><b>작성자만 볼 수 있습니다.</b>
-											<% }
-											}else{%>
-											<b>로그인 후 이용 가능합니다.</b>
-											<%} %>
+											<%
+												%>
+											<% 
+											}%>
+											
 										</td>
 								</tr>
 								
