@@ -20,7 +20,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
