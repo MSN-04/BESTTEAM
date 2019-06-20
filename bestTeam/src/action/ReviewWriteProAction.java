@@ -65,7 +65,7 @@ public class ReviewWriteProAction implements Action {
 		// 처리 담당 메서드를 호출(매개변수로 BoardBean 객체 전달)
 		ReviewWriteProService reviewWriteProService = new ReviewWriteProService();
 		boolean isWriteSuccess = reviewWriteProService.registArticle(reviewBean);
-		
+		int review_item_num = Integer.parseInt(multi.getParameter("review_item_num"));
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isWriteSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
@@ -77,7 +77,7 @@ public class ReviewWriteProAction implements Action {
 		} else {
 			// true 이면 ActionForward 객체를 사용하여 이동
 			forward = new ActionForward();
-			forward.setPath("itemSingle.em?item_num="+reviewBean.getReview_item_num());
+			forward.setPath("itemSingle.em?item_num="+review_item_num);
 			forward.setRedirect(true);
 		}
 		

@@ -162,7 +162,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 			<form id="frm" action="qnaModifyPro.qna" method="post"
 				class="contact-form">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">QNA</h2>
+					<h2 class="section-heading text-uppercase">QNA Moidfy</h2>
 				</div>
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
@@ -179,38 +179,6 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 						<!-- 						</div> -->
 
 					</tr>
-
-					<tr>
-<!-- 													<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail" /> 이메일로
-							답변 받기
-						</div>
-<!-- 						</div> -->
-					</tr>
-
-
-					<tr>
-						<!-- 						<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly"> <input
-								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
-						</div>
-						</div>
-<!-- 												</div> -->
-					</tr>
-					<tr>
-
-						<div class="col-md-6">
-							<div class="form-group">
-							비밀글 
-								<input type="checkbox" id="secret" name="qna_secret" />
-							</div>
-						</div>
-					</tr>
 				</table>
 				<table style="width: 100%; text-align: center;">
 					<tr>
@@ -220,7 +188,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 						</div>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+						<td><textarea rows="10" cols="30"  name="qna_content"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ><%=qnaContent %>
 								</textarea></td>

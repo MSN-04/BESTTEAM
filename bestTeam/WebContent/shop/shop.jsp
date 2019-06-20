@@ -307,18 +307,18 @@
 
 								<a class="nav-link" id="v-pills-0-tab" 
 									href="shopMain.em?taste=all" role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')"
-									aria-selected="true">ALL</a> 
+									aria-selected="true">전체보기</a> 
 								<a class="nav-link" id="v-pills-1-tab" href="shopMain.em?taste=item_favor_aroma" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"                 
-									aria-controls="v-pills-1" aria-selected="false" >Aroma</a>
+									aria-controls="v-pills-1" aria-selected="false" >향</a>
 								<a class="nav-link" id="v-pills-2-tab" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
 									href="shopMain.em?taste=item_favor_acidity" role="tab" aria-controls="v-pills-2"
-									aria-selected="false">Acidity</a> 
+									aria-selected="false">신맛</a> 
 								<a class="nav-link" id="v-pills-3-tab" href="shopMain.em?taste=item_favor_sweetness" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
-									role="tab" aria-controls="v-pills-3" aria-selected="false">Sweetness</a>
+									role="tab" aria-controls="v-pills-3" aria-selected="false">단맛</a>
 								<a class="nav-link" id="v-pills-4-tab" href="shopMain.em?taste=item_favor_bitterness" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" 
-									role="tab" aria-controls="v-pills-3" aria-selected="false">Bitterness</a>
+									role="tab" aria-controls="v-pills-3" aria-selected="false">쓴맛</a>
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
-									role="tab" aria-controls="v-pills-3" aria-selected="false">Body</a>
+									role="tab" aria-controls="v-pills-3" aria-selected="false">묵직함</a>
 							</div>
 							
 							<div class="shop-select" style="margin-top: -49px;">
