@@ -146,8 +146,8 @@ text-transform:none !important;
 		<div class="col-md-7 heading-section ftco-animate text-center">
 			<h2 class="mb-4" style="color:#C49B63;">We Think Coffee's Value</h2>
 			<p> <h4>커피의 가치를 생각하는 Café TinkerVell</h4>
-			TinkerVell은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br>
-			TinkerVell은 국내 커피 역사를 이끌어 온 정통성과 세계적인 기술력, 커피전문가의 노하우로 고품질의 커피 본연의 맛과 향을 즐길 수 있는 좋은 커피를 유통합니다. <br>
+<!-- 			TinkerVell은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br> -->
+			TinkerVell은 세계적인 기술력, 커피 전문가의 노하우로 고품질의 본연의 맛과 향을 즐길 수 있는 좋은 커피를 유통합니다. <br>
 			TinkerVell은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
 			마음과 마음이 이어지는 순간 TinkerVell은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Café TinkerVell - </p>
@@ -209,7 +209,7 @@ text-transform:none !important;
 				<div>
 					<p>Café TinkerVell은 최고의 기후조건을 갖춘 각국의 재배지에서 재배된 원두를 가진 점포만을 선별하여<br>
 					Café TinkerVell만의 독자적인 배합비율로 블렌딩 과정을 거칩니다.<br>
-					[현재 판매점포: /Cafe1945 / ILDIO / Fior Di Caffee / Golden Bean / 모모스커피 ] 
+					
 					</p>
 				</div>
 			</div>
