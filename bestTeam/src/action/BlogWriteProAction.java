@@ -26,7 +26,7 @@ public class BlogWriteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
-		System.out.println("BlogWriteProAction()");
+	//	System.out.println("BlogWriteProAction()");
 		
 		ActionForward forward = null;
 		BlogBean blogBean = null;
@@ -38,7 +38,7 @@ public class BlogWriteProAction implements Action {
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-		System.out.println("realFolder : "+realFolder);
+		//System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
@@ -48,7 +48,7 @@ public class BlogWriteProAction implements Action {
             e.printStackTrace();
         }
 		
-		System.out.println(realFolder);
+	//	System.out.println(realFolder);
 //		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		

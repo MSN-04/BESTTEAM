@@ -17,15 +17,15 @@
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	String id=(String)session.getAttribute("id");
-	System.out.println(id);
-	System.out.println("reviewList: " +reviewList.size());
+// 	System.out.println(id);
+// 	System.out.println("reviewList: " +reviewList.size());
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	
-	System.out.println("listCount: " +listCount);
+// 	System.out.println("listCount: " +listCount);
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
@@ -45,7 +45,7 @@
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
 // 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
-	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+// 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 	
     ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
     
@@ -695,8 +695,8 @@ $( '#rere1' ).click(
                  <%
 										if (reviewList != null && listCount > 0) {
 											for (int i = 0; i < reviewList.size(); i++) {
-												System.out.println("싱글페이지:"+ reviewList.size());
-												System.out.println(reviewList.get(i).getReview_re_lev());
+// 												System.out.println("싱글페이지:"+ reviewList.size());
+// 												System.out.println(reviewList.get(i).getReview_re_lev());
 									%>
 									
 								<tr>
@@ -705,7 +705,7 @@ $( '#rere1' ).click(
 									<% 
 									int wid = 0;
 										if(reviewList.get(i).getReview_re_lev()>0){
-											System.out.println(reviewList.get(i).getReview_re_lev());
+// 											System.out.println(reviewList.get(i).getReview_re_lev());
 										wid = reviewList.get(i).getReview_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=reviewList.get(i).getReview_subject() %> </a></td>
@@ -876,8 +876,8 @@ $( '#rere1' ).click(
 									<% 
 										if (qnaList != null && listCount2 > 0) {
 											for (int a = 0; a < qnaList.size(); a++) {
-												System.out.println("싱글페이지:"+ qnaList.size());
-												System.out.println(qnaList.get(a).getQna_re_lev());
+// 												System.out.println("싱글페이지:"+ qnaList.size());
+// 												System.out.println(qnaList.get(a).getQna_re_lev());
 									%>
 									
 								<tr>
@@ -885,7 +885,7 @@ $( '#rere1' ).click(
 									<% 
 									int wid2 = 0;
 										if(qnaList.get(a).getQna_re_lev()>0){
-											System.out.println(qnaList.get(a).getQna_re_lev());
+// 											System.out.println(qnaList.get(a).getQna_re_lev());
 										wid2 = qnaList.get(a).getQna_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>" style="width=<%=wid2 %> ">[RE]:<%=qnaList.get(a).getQna_subject() %> </a></td>
@@ -904,7 +904,7 @@ $( '#rere1' ).click(
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
-														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important;">
+														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important; z-index: 999;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
 															<a href="qnaDeletePro.qna?qna_re_ref=<%=qnaList.get(a).getQna_re_ref() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>

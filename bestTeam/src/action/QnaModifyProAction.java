@@ -23,7 +23,7 @@ public class QnaModifyProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
-		System.out.println("QnaModifyProAction");
+		//System.out.println("QnaModifyProAction");
 		ActionForward forward = null;
 		QnaBean qnaBean = null;
 		HttpSession session = request.getSession();
@@ -34,7 +34,7 @@ public class QnaModifyProAction implements Action {
 		String qna_subject = request.getParameter("qna_subject");
 		String qna_content = request.getParameter("qna_content");
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
-		System.out.println(qna_num);
+	//	System.out.println(qna_num);
 		int qna_item_num = Integer.parseInt(request.getParameter("item_num"));
 		
 		userBean = new UserBean();

@@ -17,7 +17,7 @@ import static db.JdbcUtil.*; // JdbcUtil 클래스의 모든 static 메서드를
 public class QnaWriteProService {
 	
 	public boolean registArticle(QnaBean qnaBean) throws Exception {
-		System.out.println("qnaWriteProService");
+//		System.out.println("qnaWriteProService");
 //		System.out.println("getQna_writer" + QnaBean.getQna_writer());
 //		System.out.println("getQna_num" +QnaBean.getQna_num());
 //		System.out.println("getQna_subject" +QnaBean.getQna_subject());
@@ -85,7 +85,7 @@ public class QnaWriteProService {
 	}
 	
 	public ArrayList<QnaBean> getArticleList(int page, int limit, int item_num) throws Exception {
-		System.out.println("QnaBean - getArticleList()");
+//		System.out.println("QnaBean - getArticleList()");
 		
 		ArrayList<QnaBean> qnaList = null;
 		

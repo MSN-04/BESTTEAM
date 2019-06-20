@@ -30,7 +30,7 @@ public class BlogListSearchAction implements Action {
 		int listCount = blogListSearchService.getListCount(option,keyword); // 총 게시물 목록 수 가져오기
 
 		articleList = blogListSearchService.getArticleList(page, limit, option, keyword); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
-		System.out.println("articleList11 : "+articleList.size());
+		//System.out.println("articleList11 : "+articleList.size());
 		int maxPage = (int) ((double) listCount / limit + 0.95); // 총 페이지 수 계산(올림처리를 위해 + 0.95)
 		int startPage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1; // 현재 페이지에 표시할 시작 페이지) 번호
 		int endPage = startPage + 10 - 1; // 현재 페이지에 표시할 마지막 페이지 번호

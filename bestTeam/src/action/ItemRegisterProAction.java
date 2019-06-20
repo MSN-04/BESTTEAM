@@ -26,7 +26,7 @@ public class ItemRegisterProAction implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ItemRegisterProAction()");
+	//	System.out.println("ItemRegisterProAction()");
 		
 		
 		ActionForward forward = null;
@@ -39,17 +39,17 @@ public class ItemRegisterProAction implements Action {
 		
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
-		System.out.println("realFolder : "+realFolder);
+	//	System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+       //     System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }
 		
-		System.out.println(realFolder);
+	//	System.out.println(realFolder);
 		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		Enumeration files = multi.getFileNames();
