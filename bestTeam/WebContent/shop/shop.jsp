@@ -368,7 +368,8 @@
 														style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
 													<div class="text text-center pt-4" >
 														<h3>
-															<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><%=itemList.get(i).getItem_name() %></a>
+															<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><span style="color: red;"><%=itemList.get(i).getItem_amount() == 0 ? "[품절]" : "" %></span>
+															<%=itemList.get(i).getItem_name() %> </a>
 														</h3>
 <!-- 														<p>  -->
 															<table class="coffeeInfo" style="margin: auto;">
