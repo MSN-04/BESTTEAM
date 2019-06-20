@@ -904,7 +904,7 @@ $( '#rere1' ).click(
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
-														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important;">
+														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important; z-index: 999;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
 															<a href="qnaDeletePro.qna?qna_re_ref=<%=qnaList.get(a).getQna_re_ref() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>
