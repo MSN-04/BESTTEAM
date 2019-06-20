@@ -786,7 +786,6 @@ $( '#rere1' ).click(
 		</div>
 	</section>
 	<% }
-											
 											}else{
 											%>
 									<div class="panel-body">
