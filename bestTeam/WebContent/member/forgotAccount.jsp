@@ -93,7 +93,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="email">이메일주소로 찾기</label> 
-									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email">
+									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" required="required">
 								</div>
 							</div>
 								<div class="col-md-6 btn0517">
@@ -107,8 +107,8 @@
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="phone">핸드폰 번호로 찾기</label> <input type="text"
-										class="form-control" placeholder="핸드폰 번호를 입력해주세요." name="phone">
+									<label for="phone">핸드폰 번호로 찾기</label> 
+									<input type="text" class="form-control" placeholder="핸드폰 번호를 입력해주세요." name="phone" required="required">
 								</div>
 							</div>
 								<div class="col-md-6 btn0517">
@@ -128,11 +128,8 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="email">이메일 인증</label> 
-									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email">
+									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" required="required">
 								</div>
-							
-								 
-								 
 							</div>
 								<div class="col-md-6 btn0517">
 									<div class="form-group ">
