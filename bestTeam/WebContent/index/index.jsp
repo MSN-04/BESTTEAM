@@ -1,8 +1,11 @@
+<%@page import="vo.ItemBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
+	ArrayList<ItemBean> itemList = (ArrayList<ItemBean>)request.getAttribute("itemList");
 	String id = (String) session.getAttribute("id");
 	int isIdNull = 0;	
 
@@ -248,81 +251,36 @@ text-transform:none !important;
 				</div>
 			</div>
 			<hr>
+			
 			<div class="row">
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=52" class="img"
-							style="background-image: url(./itemUpload/les Amants.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-							Les Amants
-							</h3>
-							<p class="price">
-								<span>14,300원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=52" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=45" class="img"
-							style="background-image: url(./itemUpload/모모스커피 에스쇼콜라 블렌딩 커피.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								에스쇼콜라 블렌딩 커피
-							</h3>
-							<p class="price">
-								<span>12,000원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=45" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=48" class="img"
-							style="background-image: url(./itemUpload/서울.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								커피 서울 
-							</h3>
-							
-							<p class="price">
-								<span>15,400원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=48" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=37" class="img"
-							style="background-image: url(./itemUpload/Cream of the Crop.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								<a href="#">Cream Of The Crop</a>
-							</h3>
-							<p class="price">
-								<span>14,000원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=37" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
+		<%
+			if (itemList != null) {
+				for (int i = 0 ; i < itemList.size() ; i++) {
+					%>
+		<div class="col-md-3">
+			<div class="menu-entry">
+				<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
+					style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
+				<div class="text text-center pt-4">
+					<h3><%=itemList.get(i).getItem_name() %></h3>
+
+					<p class="price">
+						<span><%=itemList.get(i).getItem_price() %>원</span>
+					</p>
+					<p>
+						<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"
+							class="btn btn-primary btn-outline-primary">GO </a>
+					</p>
 				</div>
 			</div>
+		</div>
+
+		<%
+				}
+			}
+		%>
+	</div>
+			
 		</div>
 	</section>
 	

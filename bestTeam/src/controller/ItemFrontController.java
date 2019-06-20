@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BestSellerAction;
 import action.CartInsertAction;
 import action.ItemDeleteProAction;
 import action.ItemModifyFormAction;
@@ -75,7 +76,6 @@ public class ItemFrontController extends HttpServlet {
                 e.printStackTrace();
             }
             
-        // 기홍
         } else if (command.equals("/itemSingle.em")) { // DB 단에 가서 해당 item의 정보를 가져와야 함 Redirect
 //			System.out.println("itemSingle");
 			action = new ItemSingleAction();

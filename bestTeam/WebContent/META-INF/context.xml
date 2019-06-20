@@ -11,4 +11,17 @@
 		maxActive="500"
 		maxIdle="100"
 	/>
+	
+<!-- 	<Resource  -->
+<!-- 		name="jdbc/MySQL" -->
+<!-- 		auth="Container" -->
+<!-- 		type="javax.sql.DataSource" -->
+<!-- 		url="jdbc:mysql://localhost/itwillbs6" -->
+<!-- 		username="itwillbs6" -->
+<!-- 		password="itwillbs8030909" -->
+<!-- 		driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" -->
+<!-- 		maxActive="500" -->
+<!-- 		maxIdle="100" -->
+<!-- 	/> -->
 </Context>
