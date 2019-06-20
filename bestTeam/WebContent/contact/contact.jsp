@@ -206,9 +206,6 @@
 					
 					
           <div class="col-md-6 ftco-animate">
-<!--            <div class="col-lg-12 text-center"> -->
-<!--                 <h2 class="section-heading text-uppercase">오시는길</h2> -->
-<!--             </div> -->
    <div id="map" style="width:600px;height:350px; text-align:center;"></div>
 					<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=ad86d5356285065db2653bab5c5d0e4c&libraries=services,clusterer,drawing"></script>
 					<script>

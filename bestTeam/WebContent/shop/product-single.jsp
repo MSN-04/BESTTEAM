@@ -723,7 +723,7 @@ $( '#rere1' ).click(
 											<div class="panel-body">
 											<%
 											   if(reviewList.get(i).getReview_img() != null) {
-											       %><p><img src="./itemUpload/<%=reviewList.get(i).getReview_img() %>"></p><%
+											       %><p><img src="./itemUpload/<%=reviewList.get(i).getReview_img() %>" style="width: 500px; height: 500px;"></p><%
 											   }
 											%>
 											
