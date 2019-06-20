@@ -140,6 +140,7 @@
 								<th>사진</th>
 								<th>상품명</th>
 								<th>상품 가격</th>
+								<th>재고량</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -162,11 +163,13 @@
 											style="background-image:url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></div>
 								</a></td>
 								<td class="product-name"><a target="_blank"
-									href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><h3><%=itemList.get(i).getItem_name() %></h3></a>
+									href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"><h3><span style="color: red;"><%=itemList.get(i).getItem_amount() == 0 ? "[품절]" : "" %></span><%=itemList.get(i).getItem_name() %></h3></a>
 								</td>
 
 								<td class="price"><%=NumberFormat.getInstance().format(itemList.get(i).getItem_price()) %>
 									원</td>
+								<td class="price"> <%=itemList.get(i).getItem_amount() %>
+								</td>
 
 							</tr>
 							<% }	

@@ -152,7 +152,7 @@ b{
 <!-- 					<span class="mr-2"><a href="faq.jsp"><b>배송 관련</b> </a></span>| <span><a  -->
 <!-- 							href="faq2.jsp"> 결제 관련 </a></span>|<span><a href="faq3.jsp"> 교환/환불 관련 </a></span>  -->
 <!--  					</p> -->
-				<section class="ftco-menu mb-5 pb-5" >								
+				<section class="ftco-menu pb-5" >								
 							<div class="nav ftco-animate nav-pills justify-content-left"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: -100px;">
 

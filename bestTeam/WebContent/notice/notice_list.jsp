@@ -95,8 +95,6 @@
 	<br>
 	<br>
 
-
-
 	<section class="ftco=section">
 		<div class="container">
 
@@ -178,10 +176,6 @@
 										}
 									%>
 								</ul>
-
-								
-<!-- 								<br> <br> -->
-
 							</div>
 						</div>
 					</div>

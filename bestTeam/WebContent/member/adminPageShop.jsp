@@ -60,6 +60,9 @@
 		<%
 	}
 %>
+<style type="text/css">
+	.blk { background-color: black; }
+</style>
 </head>
 <body>
 	<header>
@@ -87,7 +90,7 @@
 
 
 	<section class="ftco-menu mb-5 pb-5"  id="go_top">
-		<div class="container">
+		<div class="container8">
 			<div class="row d-md-flex">
 				<div class="col-lg-12 ftco-animate p-md-5">
 
@@ -96,14 +99,22 @@
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
 
-								<a class="nav-link" id="v-pills-0-tab" href="adminPage.us" 
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-0-tab" href="adminPage.us" style="width: 24%; text-align: center; margin-right: 0.5rem;"
 								role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" 
 								onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" aria-selected="true">
 								전체 회원 정보</a> 
-								<a class="nav-link" id="v-pills-1-tab" href="adminPageShop.us" 
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="adminPageShop.us" style="width: 24%; text-align: center; margin-right: 0.5rem;"
 								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
 								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
 								전체 상품 정보</a>
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="blogWriteForm.bl" style="width: 24%; text-align: center; margin-right: 0.5rem;"
+								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
+								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
+								blog 글 작성</a>
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="noticeWriteForm.no" style="width: 24%; text-align: center; margin-right: 0.5rem;"
+								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
+								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
+								notice 글 작성</a>
 							</div>
 
 						</div>
@@ -122,19 +133,19 @@
 			 <div class="cart-list" style="text-align: center;">
 				<nav style="font-size: 22px; text-align: center; margin-bottom: 10px;">
 					<a href="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" target="ifbox01" 
-						style="width:461px; margin: 0 !important; " class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
+						style="width:49%; margin: 0 !important; " class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >일별</a>&nbsp;
 					<a href="adminPageShopMonth.us?year=<%=Calendar.getInstance().get(Calendar.YEAR) %>" target="ifbox01" 
-						style="width:461px; margin: 0 !important;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
+						style="width:49%; margin: 0 !important;" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" >월별</a>
 				</nav>
-				<iframe id="if01" name="ifbox01" width="950px" src="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" height="500px" style="margin: auto; border: 0px;">
+				<iframe id="if01" name="ifbox01" width="100%" src="adminPageShopDay.us?month=<%=Calendar.getInstance().get(Calendar.MONTH)+1 %>" height="500px" style="margin: auto; border: 0px;">
 				</iframe>
-				<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart"  href="itemRegister.em" style="font-weight: bold; width:952px;"
+				<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart"  href="itemRegister.em" style="font-weight: bold; width:99%; margin: 0;"
 					role="tab" aria-controls="v-pills-3" aria-selected="false">상품 등록</a>
     		</div>
     		
     		<h3 class="mb-4 billing-heading" style="padding-top: 3rem;">상품 목록</h3>
     		<div class="cart-list" style="text-align: center;">
-    			<iframe id="if02" name="ifbox02" width="950px" src="adminPageItemList.us" height="500px" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;">
+    			<iframe id="if02" name="ifbox02" width="100%" src="adminPageItemList.us" height="500px" onLoad="setIFrameHeight(this)" style="margin: auto; border: 0px;">
 				</iframe>
             </div>
 		</form>
