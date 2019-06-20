@@ -12,7 +12,6 @@ public class BlogDeleteProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BlogDeleteProAction");
 		
 		// ActionForward 인스턴스 생성
 		ActionForward forward = null;
@@ -24,7 +23,6 @@ public class BlogDeleteProAction implements Action {
 		
 		
 		// 본인 확인 결과 판별
-		
 			boolean isDeleteSuccess = blogDeleteProService.removeArticle(blog_num);
 			
 			if(!isDeleteSuccess){
@@ -40,9 +38,6 @@ public class BlogDeleteProAction implements Action {
 				forward.setRedirect(true);
 			}
 			
-			
-		
-		
 		return forward;
 	}
 

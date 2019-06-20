@@ -57,11 +57,11 @@
 					<div class="block-23 mb-6">
 						<ul>
 							<li><span class="icon icon-map-marker"></span><span
-								class="text">서울 용산구 한남대로27길 66 CoffeeBlend</span></li>
+								class="text">부산 부산진구 부전동 112-3 Tinkervell</span></li>
 							<li><a href="#"><span class="icon icon-phone"></span><span
-									class="text">02 548 1001</span></a></li>
-							<li><a href="#"><span class="icon icon-envelope"></span><span
-									class="text">coffeeblend@yourdomain.com</span></a></li>
+									class="text">051 803 0909</span></a></li>
+							<li><a href="contact.et#mail"><span class="icon icon-envelope"></span><span
+									class="text">tinkervell0624@gmail.com</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -77,47 +77,9 @@
 					</div>
 				</div>
 			</div>
-
-			<!--               <h2 class="ftco-heading-2">최근에 올라온 글</h2> -->
-			<!--               <div class="block-21 mb-4 d-flex"> -->
-			<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_1.jpg);"></a> -->
-			<!--                 <div class="text"> -->
-			<!--                   <h3 class="heading"><a href="#">커피의 맛이 가장 강렬하게 살아난 순간 로스팅을 멈추고 향을 놓치지 않는.</a></h3> -->
-			<!--                   <div class="meta"> -->
-			<!--                     <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div> -->
-			<!--                     <div><a href="#"><span class="icon-person"></span> 관리자</a></div> -->
-			<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-			<!--                   </div> -->
-			<!--                 </div> -->
-			<!--               </div> -->
-			<!--               <div class="block-21 mb-4 d-flex"> -->
-			<!--                 <a class="blog-img mr-4" style="background-image: url(../images/image_2.jpg);"></a> -->
-			<!--                 <div class="text"> -->
-			<!--                   <h3 class="heading"><a href="#">커피의 맛이 가장 강렬하게 살아난 순간 로스팅을 멈추고 향을 놓치지 않는</a></h3> -->
-			<!--                   <div class="meta"> -->
-			<!--                     <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div> -->
-			<!--                     <div><a href="#"><span class="icon-person"></span> 관리자</a></div> -->
-			<!--                     <div><a href="#"><span class="icon-chat"></span> 19</a></div> -->
-			<!--                   </div> -->
-			<!--                 </div> -->
-			<!--               </div> -->
-			<!--             </div> -->
-			<!--           </div> -->
-			<!--           <div class="col-lg-2 col-md-6 mb-5 mb-md-5"> -->
-			<!--              <div class="ftco-footer-widget mb-4 ml-md-4"> -->
-			<!--               <h2 class="ftco-heading-2">Services</h2> -->
-			<!--               <ul class="list-unstyled"> -->
-			<!--                 <li><a href="#" class="py-2 d-block">Cooked</a></li> -->
-			<!--                 <li><a href="#" class="py-2 d-block">Deliver</a></li> -->
-			<!--                 <li><a href="#" class="py-2 d-block">Quality Foods</a></li> -->
-			<!--                 <li><a href="#" class="py-2 d-block">Mixed</a></li> -->
-			<!--               </ul> -->
-			<!--             </div> -->
-			<!--           </div> -->
 			<div class="col-lg-3 col-md-5 mb-4 mb-md-5">
 				<div class="ftco-footer-widget mb-4">
 					<h2 class="ftco-heading-2">Follow Us</h2>
-					<!--               <p>CoffeeBlend는 로스팅을 하나의 여정으로 표현하여 가장 마지막 악장에 도달하는 커피의 향미를 에센스로 정의합니다.</p> -->
 					<ul class="ftco-footer-social list-unstyled">
 						<li><a href="#"><span class="icon-twitter"></span></a></li>
 						<li><a href="#"><span class="icon-facebook"></span></a></li>
