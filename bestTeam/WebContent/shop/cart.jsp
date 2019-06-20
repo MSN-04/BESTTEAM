@@ -9,10 +9,8 @@
   <%
   	ArrayList<CartBean> cartList = (ArrayList<CartBean>)request.getAttribute("cartList");
   	String id = (String)session.getAttribute("id"); 
-  
-  
   %>
-    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Cart ─ Café TinkerVell</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -170,7 +168,7 @@
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
               <h1 class="mb-3 mt-5 bread">Cart</h1>
-              <p class="breadcrumbs"><span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span><a href="cart.jsp">Cart</a></span></p>
+<!--               <p class="breadcrumbs"><span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span><a href="cart.jsp">Cart</a></span></p> -->
             </div>
             </div>
         </div>

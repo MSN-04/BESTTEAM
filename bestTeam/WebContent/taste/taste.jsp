@@ -135,13 +135,6 @@
                     
                 </div>
             </div>
-             <div class="col-sm-400">
-                <div class="team-member0">
-                    <a href="#taste-02" data-transiton="slideup" onclick="document.frm.COFFEE_AROMA.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
-                    <h4>선택안함</h4>
-                  
-                </div>
-            </div>
         </div> 
 
         <div class="row">
@@ -202,13 +195,6 @@
                     
                 </div>
             </div>
-             <div class="col-sm-400">
-                <div class="team-member0">
-                    <a href="#taste-03" data-transiton="slideup" onclick="document.frm.COFFEE_ACID.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
-                    <h4>선택안함</h4>
-                  
-                </div>
-            </div>
         </div> 
 
         <div class="row">
@@ -265,13 +251,6 @@
                     <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 5;"><img class="mx-auto rounded-circle" src="./images/taste3_5.png" alt=""></a>
                     <h4> 설탕 </h4>
                     
-                </div>
-            </div>
-             <div class="col-sm-400">
-                <div class="team-member0">
-                    <a href="#taste-04" data-transiton="slideup" onclick="document.frm.COFFEE_SWEET.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
-                    <h4>선택안함</h4>
-                  
                 </div>
             </div>
         </div> 
@@ -332,13 +311,6 @@
                     
                 </div>
             </div>
-             <div class="col-sm-400">
-                <div class="team-member0">
-                    <a href="#taste-05" data-transiton="slideup" onclick="document.frm.COFFEE_BITTER.value = 0;"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
-                    <h4>선택안함</h4>
-                  
-                </div>
-            </div>
         </div> 
 
         <div class="row">
@@ -395,13 +367,6 @@
                     <a href="#" onclick="i.goSubmit(5)"><img class="mx-auto rounded-circle" src="./images/taste5_5.png" alt=""></a>
                     <h4>매우 무거움</h4>
                     
-                </div>
-            </div>
-             <div class="col-sm-400">
-                <div class="team-member0">
-                    <a href="#" onclick="i.goSubmit(0)"><img class="mx-auto rounded-circle" src="./images/right-black-arrow-md.png" alt=""></a>
-                    <h4>선택안함</h4>
-                  
                 </div>
             </div>
         </div> 

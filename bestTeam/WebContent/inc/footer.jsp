@@ -15,7 +15,7 @@
 }
 
 .btn.btn-white.btn-outline-white {
-	margin: 0 6em 0 0;
+	margin: 0 6em 0 0;y
 }
 </style>
 <footer class="ftco-footer ftco-section img">

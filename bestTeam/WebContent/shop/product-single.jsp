@@ -612,7 +612,6 @@ $( '#rere1' ).click(
 						<div class="input-group col-md-6 d-flex mb-3">
 							<div class="input-group mb-3">
                     
-<!--               <span class="input-group-btn ml-2"> -->
                     <button type="button" class="quantity-left-minus btn input-group-btn">
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
@@ -620,7 +619,6 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
-<!--                  </span> -->
                       </div>
 						</div>
 					</div>
@@ -695,8 +693,6 @@ $( '#rere1' ).click(
                  <%
 										if (reviewList != null && listCount > 0) {
 											for (int i = 0; i < reviewList.size(); i++) {
-// 												System.out.println("싱글페이지:"+ reviewList.size());
-// 												System.out.println(reviewList.get(i).getReview_re_lev());
 									%>
 									
 								<tr>
@@ -705,7 +701,6 @@ $( '#rere1' ).click(
 									<% 
 									int wid = 0;
 										if(reviewList.get(i).getReview_re_lev()>0){
-// 											System.out.println(reviewList.get(i).getReview_re_lev());
 										wid = reviewList.get(i).getReview_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=reviewList.get(i).getReview_subject() %> </a></td>
@@ -718,8 +713,8 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id!= null){
-											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
+											<% 
+											%>
 											<div class="panel-body">
 											<%
 											   if(reviewList.get(i).getReview_img() != null) {
@@ -728,6 +723,8 @@ $( '#rere1' ).click(
 											%>
 											
 												<b><%=reviewList.get(i).getReview_content() %></b>
+												<%if(id!=null){
+												if(id.equals("admin") ||id.equals(reviewList.get(i).getReview_user_id())){ %>
 												<section class="ftco=section div0525" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
@@ -736,9 +733,11 @@ $( '#rere1' ).click(
 														</div>
 													</div>
 												</section>
-												
+												<%}
+												}%>
 <!-- 															id가 "admin"이고 답글인 경우 답글폼 숨기기  -->
-										<% if(id.equals("admin")){ 
+										<%if(id!= null){ 
+										if(id.equals("admin")){ 
 											if(reviewList.get(i).getReview_re_lev()==0){
 											%>
 													<section class="ftco-section" style="width: 100% !important;">
@@ -758,12 +757,10 @@ $( '#rere1' ).click(
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
 					<tr>
-						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
 							<input type="text" class="form-control" value="<%=id %>"
 								name="review_reply_writer" id="review_reply_writer" readonly="readonly">
 						</div>
-						<!-- 						</div> -->
 					</tr>
 					
 					</div>
@@ -788,10 +785,7 @@ $( '#rere1' ).click(
 			</form>
 		</div>
 	</section>
-	<% }else{
-		%><b><%=reviewList.get(i).getReview_content() %></b><%
-	}
-											
+	<% }
 											}else{
 											%>
 									<div class="panel-body">
@@ -802,12 +796,11 @@ $( '#rere1' ).click(
 										
 												%>		
 											</div>
-											<%}else{
-												%><b>작성자만 볼 수 있습니다.</b>
-											<% }
-											}else{%>
-											<b>로그인 후 이용 가능합니다.</b>
-											<%} %>
+											<%
+												%>
+											<% 
+											}%>
+											
 										</td>
 								</tr>
 								
@@ -876,8 +869,6 @@ $( '#rere1' ).click(
 									<% 
 										if (qnaList != null && listCount2 > 0) {
 											for (int a = 0; a < qnaList.size(); a++) {
-// 												System.out.println("싱글페이지:"+ qnaList.size());
-// 												System.out.println(qnaList.get(a).getQna_re_lev());
 									%>
 									
 								<tr>
@@ -885,7 +876,6 @@ $( '#rere1' ).click(
 									<% 
 									int wid2 = 0;
 										if(qnaList.get(a).getQna_re_lev()>0){
-// 											System.out.println(qnaList.get(a).getQna_re_lev());
 										wid2 = qnaList.get(a).getQna_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>" style="width=<%=wid2 %> ">[RE]:<%=qnaList.get(a).getQna_subject() %> </a></td>
