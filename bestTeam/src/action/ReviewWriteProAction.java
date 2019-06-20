@@ -35,7 +35,7 @@ public class ReviewWriteProAction implements Action {
 		
 		// 파일 업로드를 위한 정보 저장
 		String realFolder ; // 실제 경로
-		String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
+		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 //		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기

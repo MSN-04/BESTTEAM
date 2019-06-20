@@ -83,10 +83,28 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			
+			if ( $("#subject").val() == "" ) {
+                alert('제목을 입력하세요.');
+                return false;
+            } else if (ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>' || ir1 == "<br>") {
+                alert('내용을 입력하세요');
+                return false;
+            } else if (ir1.length > 1000) {
+                alert('글자수 최대 길이는 1000자 입니다.\n 현재 글자 수 : ' + ir1.length );
+                return false;
+            }
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-        
+		$("#reset").click(function() {
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
 		
 	});
 	 
@@ -123,20 +141,14 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Qna Write</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span
-								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-								Single</span>
-						</p>
+						<h1 class="mb-3 mt-5 bread">Qna Modify</h1>
 					</div>
 
 				</div>
@@ -146,11 +158,11 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 
 
 	<section class="ftco-section">
-		<div class="col-md-5" id="mail">
+		<div class="col-md-9" id="mail">
 			<form id="frm" action="qnaModifyPro.qna" method="post"
 				class="contact-form">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-uppercase">QNA</h2>
+					<h2 class="section-heading text-uppercase">QNA Moidfy</h2>
 				</div>
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
@@ -167,48 +179,16 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 						<!-- 						</div> -->
 
 					</tr>
-
-					<tr>
-<!-- 													<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail" /> 이메일로
-							답변 받기
-						</div>
-<!-- 						</div> -->
-					</tr>
-
-
-					<tr>
-						<!-- 						<div class="col-md-6"> -->
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly"> <input
-								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
-						</div>
-						</div>
-<!-- 												</div> -->
-					</tr>
-					<tr>
-
-						<div class="col-md-6">
-							<div class="form-group">
-							비밀글 
-								<input type="checkbox" id="secret" name="qna_secret" />
-							</div>
-						</div>
-					</tr>
 				</table>
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<div class="form-group">
-							<input type="text" class="form-control" value="<%=qnaSubject %>"
+							<input type="text" class="form-control" value="<%=qnaSubject %>" maxlength="50"
 								name="qna_subject" id="subject" required="required">
 						</div>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+						<td><textarea rows="10" cols="30"  name="qna_content"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ><%=qnaContent %>
 								</textarea></td>

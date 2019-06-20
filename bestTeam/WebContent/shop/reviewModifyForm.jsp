@@ -75,81 +75,79 @@ System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_im
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Review 수정</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.in">Home</a></span> <a href="shopMain.em"><span>Shop</span></a>
-						</p>
+						<h1 class="mb-3 mt-5 bread">Review</h1>
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</section>
-	
-		
-	<section class="ftco-section" >
-		<div class="container" style="left:100px !important;">
-			
-			<form id="frm" action="reviewModifyPro.re?review_num=<%=review_num %>" method="post" enctype="multipart/form-data">
-			
-				<table style="width: 80%; text-align: center; ">
-			<tr><td></td>
-			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 150px; height: 150px;"><br>
-			<a href="" class="tag-cloud-link"><%=itemBean.getItem_name()%></a>
-			<br>
-			</td>
-			</tr>
+
+
+	<section class="ftco-section">
+		<div class="container" style="left: 100px !important;">
+
+			<form id="frm"
+				action="reviewModifyPro.re?review_num=<%=review_num%>&review_item_num=<%=itemBean.getItem_num()%>"
+				method="post" enctype="multipart/form-data">
+
+				<table style="width: 100%; text-align: center;">
 					<tr>
-					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
-					<input type="hidden" value="<%=id%>" name="review_user_id">
-						<td style=" width:100px !important;">제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" value="<%=article.getReview_subject() %>"/></td>
-					</tr>
-					
-					<tr>
-						<td style="width:100px !important;" >후기작성</td>
-						<td><textarea rows="10" cols="30" name="review_content" 
-								style="width:100%; height: 200px;" ><%=article.getReview_content() %></textarea></td>
-					</tr>
-					
-					<tr>
-						<td style=" width:100px !important;">사진등록</td>
-						<td><input type="file" id="review_img" name="review_img" class="frmTitle" /></td>
-					</tr>
-					<tr>
-						<td style="text-align: center; " colspan="2">
-							<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" value="저장" /> 
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" />
+						<td></td>
+						<td style="padding-bottom: 5px;"><img
+							src="./itemUpload/<%=itemBean.getItem_img()%>"
+							style="width: 150px; height: 150px;"><br> <a href=""
+							class="tag-cloud-link"><%=itemBean.getItem_name()%></a> <br>
 						</td>
 					</tr>
-					
-					
-					
+					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr>
+						<input type="hidden" value="<%=id%>" name="review_user_id">
+						<td style="padding-right: 30px;">제목</td>
+						<td><input type="text" id="review_subject"
+							name="review_subject" class="frmTitle"
+							value="<%=article.getReview_subject()%>" maxlength="30"
+							required="required" /></td>
+					</tr>
+
+					<tr>
+						<td style="width: 100px !important;">후기작성</td>
+						<td><textarea rows="10" cols="30" name="review_content" class="frmTitle"
+								required="required" maxlength="1000"
+								style="width: 100%; height: 200px;"><%=article.getReview_content()%></textarea></td>
+					</tr>
+
+					<tr>
+						<td style="width: 100px !important;">사진등록</td>
+						<td><input type="file" id="review_img" name="review_img"
+							class="frmTitle" /></td>
+					</tr>
+					<tr><td colspan="2">&nbsp;</td></tr>
+					<tr>
+						<td style="text-align: center;" colspan="2"><input
+							type="submit" class="btn btn-primary py-3 px-4"
+							style="color: black;" value="수정" /> <input type="reset"
+							class="btn btn-primary py-3 px-4" style="color: black;"
+							id="reset" value="취소" /></td>
+					</tr>
 				</table>
-				
-				
-				
-				     
-					
-				
 			</form>
 		</div>
 	</section>
 
 
-	
-	
-	
-	
-<jsp:include page="../inc/footer.jsp"></jsp:include>
+
+
+
+
+	<jsp:include page="../inc/footer.jsp"></jsp:include>
 
 
 	<!-- loader -->

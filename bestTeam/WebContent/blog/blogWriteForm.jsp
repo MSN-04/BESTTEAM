@@ -88,7 +88,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-        
+		$("#reset").click(function() {
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
 		
 	});
 	 
@@ -157,8 +163,8 @@
 					<tr>
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
-							<input type="submit" id="save" value="저장" /> 
-							<input type="reset" value="취소"/>
+							<input type="button" id="save" class="btn btn-primary py-3 px-4" value="저장" /> 
+							<input type="button" id="reset" class="btn btn-primary py-3 px-4" value="취소"/>
 							
 						</td>
 					</tr>
@@ -168,7 +174,7 @@
 	</section>
 	
 	<!-- .section -->
-	<footer>
+	<footer style="margin-top: 3rem;">
 	<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</footer>
 

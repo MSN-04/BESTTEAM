@@ -537,9 +537,6 @@ $( '#rere1' ).click(
 					class="row slider-text justify-content-center align-items-center">
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span>Product Detail</span>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -580,7 +577,7 @@ $( '#rere1' ).click(
 </div>
 				
 				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
-					<h3><%=itemBean.getItem_name() %></h3>
+					<h3><span style="color: red;"><%=itemBean.getItem_amount() == 0 ? "[품절]" : "" %> </span><%=itemBean.getItem_name() %></h3>
 					<p class="price">
 						<span><%=NumberFormat.getInstance().format(itemBean.getItem_price()) %> 원</span>
 					</p>
@@ -627,12 +624,16 @@ $( '#rere1' ).click(
                       </div>
 						</div>
 					</div>
-					<p>
-					
-						<a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" style="margin-right: 5px !important;">Add to Cart</a>
-						<a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin-right: 5px !important;">BUY</a>
-						
-					</p>  <!-- <== song 190618 추가 -->
+					<%
+					   if (itemBean.getItem_amount() != 0) {
+					       %>
+					       <p>
+		                        <a id="cart" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" style="margin-right: 5px !important;">Add to Cart</a>
+		                        <a id="buy" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3" style="margin-right: 5px !important;">BUY</a>
+		                    </p>  <!-- <== song 190618 추가 -->
+					       <%
+					   }
+					%>
 		<div class="row1">
 		
 
@@ -720,7 +721,12 @@ $( '#rere1' ).click(
 											<% if(id!= null){
 											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
 											<div class="panel-body">
-											<p><img src="./img_upload/<%=reviewList.get(i).getReview_img() %>"></p>
+											<%
+											   if(reviewList.get(i).getReview_img() != null) {
+											       %><p><img src="./itemUpload/<%=reviewList.get(i).getReview_img() %>"></p><%
+											   }
+											%>
+											
 												<b><%=reviewList.get(i).getReview_content() %></b>
 												<section class="ftco=section div0525" id="ac1">
 													<div class="container">
@@ -1018,7 +1024,7 @@ $( '#rere1' ).click(
 		</div>
 		</div>
 	</section>
-<section>
+<section style="margin-top: 10rem;">
 		<div class="container" >
 			<div class="row" >
 				<div class="col-md-4" style="margin-top: 30px; width: 80%;">
