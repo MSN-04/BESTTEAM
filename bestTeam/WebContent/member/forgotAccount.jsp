@@ -87,18 +87,18 @@
 			<div class="row">
 			<span id="span0522">
 				<div class="col-xl-8 ftco-animate " id="div0517">
-					<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+					<form action="ForgotAccountProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post" style="margin-right: 30px;">
 						<h3 class="mb-4 billing-heading">아이디 찾기</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="email">이메일주소로 찾기</label> 
-									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" required="required">
+									<label for="email" style="margin-left: 20px;">이메일주소로 찾기</label> 
+									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" style="margin-left: 50px;" required="required">
 								</div>
 							</div>
 								<div class="col-md-6 btn0517">
 									<div class="form-group ">
-										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인">
+										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인" style="margin-right: 25px;">
 									</div>
                 				</div>
 	            		</div>
@@ -107,13 +107,13 @@
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="phone">핸드폰 번호로 찾기</label> 
-									<input type="text" class="form-control" placeholder="핸드폰 번호를 입력해주세요." name="phone" required="required">
+									<label for="phone" style="margin-left: 20px;">핸드폰 번호로 찾기</label> <input type="text"
+										class="form-control" placeholder="핸드폰 번호를 입력해주세요." name="phone" style="margin-left: 50px;" required="required">
 								</div>
 							</div>
 								<div class="col-md-6 btn0517">
 									<div class="form-group ">
-										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인">
+										 <input type="submit" class="btn btn-primary py-3 px-4 " value="확인" style="margin-right: 25px;">
 									</div>
                 				</div>
 	           			</div>
@@ -122,13 +122,13 @@
 	        </span>
 	        <span>
 	            <div class="col-xl-8 ftco-animate " id="div0522">
-					<form action="mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+					<form action="mailSend" class="billing-form ftco-bg-dark p-3 p-md-5" method="post" style="margin-left: 20px;">
 						<h3 class="mb-4 billing-heading">비밀번호 찾기</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="email">이메일 인증</label> 
-									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" required="required">
+									<input type="email" class="form-control" placeholder="이메일주소를 입력해주세요." name="email" style="margin-left: 50px;" required="required">
 								</div>
 							</div>
 								<div class="col-md-6 btn0517">
