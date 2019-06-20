@@ -35,7 +35,7 @@
 	for(int i = 0; i < ageList.size(); i++){
 		map = new HashMap<Object,Object>(); 
 		map.put("label", i*10 +"대(" + i*10 + "~" + ((i*10)+9) + "세" ); 
-		map.put("y", ((double)ageList.get(i)/(double)listCount)*100); 
+		map.put("y", (int)(((double)ageList.get(i)/(double)listCount)*100)); 
 		list.add(map);
 	}
 	String dataPoints = gsonObj.toJson(list);
@@ -47,8 +47,8 @@
 	Gson gsonObj2 = new Gson();
 	Map<Object,Object> map2 = null;
 	List<Map<Object,Object>> list2 = new ArrayList<Map<Object,Object>>();
-		map2 = new HashMap<Object,Object>(); map2.put("label", "남" ); map2.put("y", ((double)(maleList)/(double)listCount)*100); list2.add(map2);
-		map2 = new HashMap<Object,Object>(); map2.put("label", "여" ); map2.put("y", (((double)(listCount-maleList))/(double)listCount)*100); list2.add(map2);
+		map2 = new HashMap<Object,Object>(); map2.put("label", "남" ); map2.put("y", (int)(((double)(maleList)/(double)listCount)*100)); list2.add(map2);
+		map2 = new HashMap<Object,Object>(); map2.put("label", "여" ); map2.put("y", (int)((((double)(listCount-maleList))/(double)listCount)*100)); list2.add(map2);
 	String dataPoints2 = gsonObj2.toJson(list2);
 	//성별 전체 회원 분포 그래프
 	
@@ -170,7 +170,7 @@ window.onload = function() {
 		},
 		data : [ {
 			type : "column",
-			showInLegend : true,
+			showInLegend : false,
 			indexLabel : "{y}개",
 			indexLabelPlacement : "inside",
 			legendText : "{label}: {y}개",
@@ -264,7 +264,7 @@ window.onload = function() {
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" >
+			style="background-image: url(./images/coffeecup.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -272,9 +272,6 @@ window.onload = function() {
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">관리자 페이지</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="./index.jsp">Home</a></span> 
-						</p>
 					</div>
 
 				</div>
@@ -284,7 +281,7 @@ window.onload = function() {
 
 
 	<section class="ftco-menu mb-5 pb-5"  id="go_top">
-		<div class="container">
+		<div class="containerm8">
 			<div class="row d-md-flex">
 				<div class="col-lg-12 ftco-animate p-md-5">
 

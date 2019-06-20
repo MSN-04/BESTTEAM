@@ -83,7 +83,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);">
+			style="background-image: url(./images/coffeecup.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -91,11 +91,6 @@
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">MY PAGE</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="#information">INFORMATION</a></span>
-							<span><a href="./member/delete_member.jsp">DELETE
-									ACCOUNT</a></span>
-						</p>
 					</div>
 
 				</div>

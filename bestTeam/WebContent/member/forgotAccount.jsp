@@ -49,11 +49,11 @@
 /*      #div0522{ display: grid !important;grid-template-rows: auto; */
 /*   } */
 /*     .btn0517{width: 100px;} */
-#div0517,#div0522{margin:20px;}
-#div0517{border-right: 5px solid white;
-		padding-right:10px;}
-		#span0522{border-right: 5px solid gray;
-					padding-right:0px;}
+#div0517,#div0522{margin:1%;
+				  text-align: center;}
+#div0517{padding-right:10px;}
+#span0522{
+		  padding-right:0px;}
     </style>
   </head>
   <body>
@@ -64,7 +64,7 @@
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
+      <div class="slider-item" style="background-image: url(./images/coffeecup.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -82,7 +82,7 @@
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- 카카오톡 상담 End -->
 
-   <section class="ftco-section" id="login">
+   <section class="ftco-section" id="login" style="text-align: -webkit-center;">
 		<div class="container">
 			<div class="row">
 			<span id="span0522">

@@ -88,7 +88,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-        
+		$("#reset").click(function() {
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
 		
 	});
 	 
@@ -133,17 +139,17 @@
 				<table width="100%">
 					<tr>
 						<td>제목</td>
-						<td colspan="3"><input type="text" id="blog_subject" name="blog_subject" required="required"
+						<td colspan="3"><input type="text" id="blog_subject" name="blog_subject" required="required" maxlength="30"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>요약</td>
-						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" required="required"
+						<td colspan="3"><input type="text" id="blog_content1" name="blog_content1" required="required" maxlength="300"
 							style="width: 100%;"/></td>
 					</tr>
 					<tr>
 						<td>글쓴이</td>
-						<td><input type="text" id="blog_writer" name="blog_writer" required="required"
+						<td><input type="text" id="blog_writer" name="blog_writer" required="required" maxlength="15"
 							style="width: 100%;" /></td>
 						<td style="width: 86px;"><input type="file" id="blog_file" name="blog_file"
 							style="width: 100%;"required="required" /></td>
@@ -157,8 +163,8 @@
 					<tr>
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
-							<input type="submit" id="save" value="저장" /> 
-							<input type="reset" value="취소"/>
+							<input type="button" id="save" class="btn btn-primary py-3 px-4" value="저장" /> 
+							<input type="button" id="reset" class="btn btn-primary py-3 px-4" value="취소"/>
 							
 						</td>
 					</tr>
@@ -168,7 +174,7 @@
 	</section>
 	
 	<!-- .section -->
-	<footer>
+	<footer style="margin-top: 3rem;">
 	<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</footer>
 

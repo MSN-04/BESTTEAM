@@ -86,12 +86,12 @@
 		});
 		
 		$("#reset").click(function() {
-			if (confirm("정말 수정하시겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
         
 		
 	});
@@ -145,7 +145,7 @@
 			<form id="frm" action="noticeModifyPro.no?notice_num=<%=article.getNotice_num() %>" method="post">
 				<table style="width: 100%; text-align: center;">
 					<tr>
-						<td><input type="text" id="notice_subject" name="notice_subject" class="frmTitle" value="<%=article.getNotice_subject()%>"></td>
+						<td><input type="text" id="notice_subject" name="notice_subject" class="frmTitle" value="<%=article.getNotice_subject()%>" maxlength="30"></td>
 					</tr>
 					<tr>
 						<td><textarea rows="10" cols="30" id="ir1" name="notice_content" 
@@ -156,7 +156,7 @@
 							
 							<input type="submit" class="btn btn-primary py-3 px-4"
 							style="color: black;" id="save" value="저장" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" />
 						</td>
 					</tr>
 				</table>

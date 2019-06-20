@@ -59,46 +59,6 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
-<script type="text/javascript">
-	var oEditors = [];
-	
-	$(function(){
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
-		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
-		    fCreator: "createSEditor2",
-// 		    fOnAppLoad : function(){
-// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-// 		    }
-		});
-	
-		//저장버튼 클릭시 form 전송
-		$("#save").click(function() {
-			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
-		});
-		
-		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
-        
-		
-	});
-	 
-	// textArea에 이미지 첨부
-	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/' + filepath
-				+ '" style="max-width: 100%; height: auto; margin: 10px;">';
-		oEditors.getById["ir1"].exec("PASTE_HTML", [ sHTML ]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
-	}
-
-	// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
-</script>
 <!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
 <style type="text/css">
 .frmTitle {
@@ -123,20 +83,14 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Qna Write</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="index.html">Home</a></span> <span
-								class="mr-2"><a href="blog.html">Blog</a></span> <span>Blog
-								Single</span>
-						</p>
+						<h1 class="mb-3 mt-5 bread">QnA Write</h1>
 					</div>
 
 				</div>
@@ -155,63 +109,34 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
 					<tr>
-												<div class="col-md-6">
+												
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="작성자"
 								name="qna_name" readonly="readonly" value="<%=userbean.getUser_name() %>">
 						</div>
-												</div>
+												
 
 					</tr>
 
-					<tr>
-													<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="이메일"
-								name="qna_email" readonly="readonly" value="<%=userbean.getUser_email() %>"> <input
-								type="checkbox" id="checkemail" name="qna_checkemail"/> 이메일로
-							답변 받기
-						</div>
-													</div>
-						</div>
-					</tr>
-
-
-					<tr>
-												<div class="col-md-6">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="휴대폰번호"
-								name="qna_phone" readonly="readonly" value="<%=userbean.getUser_phone() %>"> <input
-								type="checkbox" id="checksms" name="qna_checksms" /> 문자로 답변 받기
-						</div>
-						</div>
-												</div>
-					</tr>
-					<tr>
-
-						<div class="col-md-6">
-							<div class="form-group">
-							비밀글 
-								<input type="checkbox" id="secret" name="qna_secret" />
-							</div>
-						</div>
-					</tr>
+					
 				</table>
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Subject"
+							<input type="text" class="form-control" placeholder="Subject" maxlength="50" required="required"
 								name="qna_subject" id="subject">
 						</div>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+						<td><textarea rows="10" cols="30" placeholder="내용" name="qna_content" maxlength="1000" required="required"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ></textarea></td>
 					</tr>
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
-						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" /></td>
+						<td colspan="2">
+						<input type="submit" class="btn btn-primary py-3 px-4" style="color: black;" id="save" value="등록" />
+						<input type="reset" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" /> 
+						</td>
 					</tr>
 				</table>
 			</form>
