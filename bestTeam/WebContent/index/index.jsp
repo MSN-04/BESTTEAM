@@ -262,7 +262,7 @@ text-transform:none !important;
 					%>
 		<div class="col-md-3">
 			<div class="menu-entry">
-				<a href="itemSingle.em?item_num=48" class="img"
+				<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
 					style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
 				<div class="text text-center pt-4">
 					<h3><%=itemList.get(i).getItem_name() %></h3>
@@ -271,7 +271,7 @@ text-transform:none !important;
 						<span><%=itemList.get(i).getItem_price() %>원</span>
 					</p>
 					<p>
-						<a href="itemSingle.em?item_num=4<%=itemList.get(i).getItem_num() %>"
+						<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"
 							class="btn btn-primary btn-outline-primary">GO </a>
 					</p>
 				</div>
