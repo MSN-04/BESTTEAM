@@ -15,7 +15,7 @@ import static db.JdbcUtil.*; // JdbcUtil 클래스의 모든 static 메서드를
 public class ReviewWriteProService {
 	
 	public boolean registArticle(ReviewBean reviewBean) throws Exception {
-		System.out.println("ReviewWriteProService");
+//		System.out.println("ReviewWriteProService");
 		
 		
 		// 작업 수행 성공 여부를 리턴할 boolean 타입 변수 선언

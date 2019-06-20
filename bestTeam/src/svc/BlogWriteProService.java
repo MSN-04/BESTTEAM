@@ -13,7 +13,7 @@ import static db.JdbcUtil.*; // JdbcUtil 클래스의 모든 static 메서드를
 public class BlogWriteProService {
 	
 	public boolean registArticle(BlogBean blogBean) throws Exception {
-		System.out.println("BoardWriteProService");
+//		System.out.println("BoardWriteProService");
 		
 		// 작업 수행 성공 여부를 리턴할 boolean 타입 변수 선언
 		boolean isWriteSuccess = false;

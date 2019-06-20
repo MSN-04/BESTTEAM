@@ -16,7 +16,7 @@ public class QnaReplyProService {
 
 	//답변 등록 서비스로직
 	public boolean insertReply(QnaBean qnaBean, int new_qna_re_ref) throws Exception{
-		System.out.println("QnaReplyInsertProService");
+//		System.out.println("QnaReplyInsertProService");
 		
 		boolean isInsertSuccess = false;
 		

@@ -23,7 +23,7 @@ public class ReviewService {
  */
 	public ItemBean getItem(int item_num) {
 
-		System.out.println("ReviewService - getItem() 시작");
+//		System.out.println("ReviewService - getItem() 시작");
 		
 		// 1.
 		Connection con = getConnection();
@@ -38,7 +38,7 @@ public class ReviewService {
 		// 4.
 		close(con);
 		
-		System.out.println("ItemSingleService - getItem() 끝");
+//		System.out.println("ItemSingleService - getItem() 끝");
 		// 5.
 		return itemBean;
 	}
@@ -57,14 +57,14 @@ public class ReviewService {
 		reviewBean = reviewDAO.selectArticle(review_num);
 		
 		// 게시물을 성공적으로 읽어왔을 때 조회수 증가 처리
-		int updateCount = reviewDAO.updateReadcount(review_num);
-		
-		// updateCount 가 1일 경우 commit, 0일 경우 rollback 수행
-		if(updateCount == 1) {
-			commit(con);
-		} else {
-			rollback(con);
-		}
+//		int updateCount = reviewDAO.updateReadcount(review_num);
+//		
+//		// updateCount 가 1일 경우 commit, 0일 경우 rollback 수행
+//		if(updateCount == 1) {
+//			commit(con);
+//		} else {
+//			rollback(con);
+//		}
 		
 		// Connection 객체 반환
 		close(con);

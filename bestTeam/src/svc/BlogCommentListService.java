@@ -26,7 +26,7 @@ public class BlogCommentListService {
 		
 		listCount = blogCommentDAO.selectListCount();
 		   
-		System.out.println("게시물 갯수 : " + listCount);
+//		System.out.println("게시물 갯수 : " + listCount);
 		
 		close(con);
 		
@@ -35,7 +35,7 @@ public class BlogCommentListService {
 	
 	// 글 목록 조회 후 리턴
 	public ArrayList<BlogCommentBean> getArticleList(int page, int limit) throws Exception {
-		System.out.println("blogCommentListService - getArticleList()");
+//		System.out.println("blogCommentListService - getArticleList()");
 		
 		ArrayList<BlogCommentBean> article2 = null;
 		

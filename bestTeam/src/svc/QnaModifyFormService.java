@@ -11,7 +11,7 @@ import vo.UserBean;
 public class QnaModifyFormService {
 	
 	public UserBean getUserInfo(String id) {
-		System.out.println("qnawriteFormService");
+//		System.out.println("qnawriteFormService");
 		UserBean userBean = null;
 		
 		Connection con = getConnection();

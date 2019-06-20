@@ -13,7 +13,7 @@ import dao.QnaDAO;
 public class BlogCommentWriteProService {
 
 	public boolean registArticle(BlogCommentBean blogCommentBean) throws Exception {
-		System.out.println("BlogCommentWriteProService");
+//		System.out.println("BlogCommentWriteProService");
 
 		boolean isWriteSuccess = false;
 
