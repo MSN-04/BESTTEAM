@@ -27,10 +27,11 @@ public class ReviewModifyProAction implements Action {
 		ActionForward forward = null;
 		
 		int review_num = Integer.parseInt(request.getParameter("review_num"));
+		int review_item_num = Integer.parseInt(request.getParameter("review_item_num"));
 		
 		// 파일 업로드를 위한 정보 저장
 		String realFolder = ""; // 실제 경로
-		String saveFolder = "/img_upload"; // 톰캣(이클립스) 상의 가상의 경로
+		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
 		int fileSize = 5 * 1024 * 1024; // 파일 사이즈(5MB)
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
@@ -77,7 +78,7 @@ public class ReviewModifyProAction implements Action {
 			// => ActionForward 객체 생성, boardList.bo 서블릿주소 지정, isRedirect 변수 값을 true 로 설정
 			// => boardList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
-			forward.setPath("shopMain.em");
+			forward.setPath("itemSingle.em?item_num="+review_item_num);
 			forward.setRedirect(true);
 		}
 		

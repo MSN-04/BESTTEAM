@@ -75,8 +75,7 @@ System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_im
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -98,22 +97,23 @@ System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_im
 	<section class="ftco-section" >
 		<div class="container">
 			
-			<form id="frm" action="reviewModifyPro.re?review_num=<%=review_num %>" method="post" enctype="multipart/form-data">
+			<form id="frm" action="reviewModifyPro.re?review_num=<%=review_num %>&review_item_num=<%=itemBean.getItem_num() %>" method="post" enctype="multipart/form-data">
 			
 				<table style="width: 100%; text-align: center;">
 			<tr><td></td>
 			<td style="padding-bottom: 5px;"><img src="./itemUpload/<%=itemBean.getItem_img() %>" style="width: 100px; height: 100px;"><a href="" class="tag-cloud-link"><%=itemBean.getItem_name()%></a><td>
 			</tr>
 					<tr>
-					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
+<%-- 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num"> --%>
+<%-- 					<% System.out.println("itemBean.getItem_num() :: " + itemBean.getItem_num()); %> --%>
 					<input type="hidden" value="<%=id%>" name="review_user_id">
 						<td style="padding-right: 30px;">제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" value="<%=article.getReview_subject() %>"/></td>
+						<td><input type="text" id="review_subject" name="review_subject" class="frmTitle" value="<%=article.getReview_subject() %>" maxlength="30" required="required"/></td>
 					</tr>
 					
 					<tr>
 						<td style="padding-right: 30px;">후기작성</td>
-						<td><textarea rows="10" cols="30" name="review_content" 
+						<td><textarea rows="10" cols="30" name="review_content" required="required" maxlength="1000"
 								style="width: 1015px; height: 200px;" ><%=article.getReview_content() %></textarea></td>
 					</tr>
 					

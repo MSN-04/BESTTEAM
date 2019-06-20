@@ -86,12 +86,12 @@
 		});
 		
 		$("#reset").click(function() {
-			if (confirm("정말 수정하시겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
         
 		
 	});
@@ -156,7 +156,7 @@
 							
 							<input type="submit" class="btn btn-primary py-3 px-4"
 							style="color: black;" id="save" value="저장" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="cancel" value="취소" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" />
 						</td>
 					</tr>
 				</table>

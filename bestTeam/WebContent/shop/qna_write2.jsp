@@ -76,28 +76,45 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 		//저장버튼 클릭시 form 전송
 		$("#save").click(function() {
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // textarea id 변경해야 함 [id = ir1(155번째줄)]
+			var ir1 = $("#ir1").val();
+			
+			if ( $("#subject").val() == "" ) {
+                alert('제목을 입력하세요.');
+                return false;
+            } else if (ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>' || ir1 == "<br>") {
+            	alert('내용을 입력하세요');
+            	return false;
+            } else if (ir1.length > 1000) {
+            	alert('글자수 최대 길이는 1000자 입니다.\n 현재 글자 수 : ' + ir1.length );
+            	return false;
+            }
+			
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
 		$("#reset").click(function() {
 			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
+				oEditors.getById["ir1"].exec("SET_IR", [""]);
 			} else {
 				return;
 			}
 		});
         
-		
+
+	    
 	});
 	 
 	// textArea에 이미지 첨부
 	function pasteHTML(filepath){
-		var sHTML = '<img src="<%=ctx%>/img_upload/' + filepath
+		var sHTML = '<img src="<%=ctx%>/itemUpload/' + filepath
 				+ '" style="max-width: 100%; height: auto; margin: 10px;">';
 		oEditors.getById["ir1"].exec("PASTE_HTML", [ sHTML ]); // textarea id 변경해야 함 [id = ir1(155번째줄)]
 	}
 
 	// 	oEditors.getById["ir1"].exec("PASTE_HTML", ['기본텍스트입니다.']); // placeholder
+    
+	
+	
 </script>
 <!---------------------- 스마트 에디터 가져오는 영역 끝 ---------------------->
 <style type="text/css">
@@ -123,8 +140,7 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -199,12 +215,12 @@ int item_num = Integer.parseInt(request.getParameter("item_num").toString());
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Subject"
+							<input type="text" class="form-control" placeholder="Subject" maxlength="50"
 								name="qna_subject" id="subject">
 						</div>
 					</tr>
 					<tr>
-						<td><textarea rows="10" cols="30" id="ir1" name="qna_content"
+						<td><textarea rows="10" cols="30" id="ir1" name="qna_content" 
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle" ></textarea></td>
 					</tr>

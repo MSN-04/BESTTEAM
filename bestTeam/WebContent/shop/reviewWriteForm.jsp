@@ -76,12 +76,12 @@
 		});
 		
 		$("#reset").click(function() {
-			if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-				$("#ir1").reset();
-			} else {
-				return;
-			}
-		});
+            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+                oEditors.getById["ir1"].exec("SET_IR", [""]);
+            } else {
+                return;
+            }
+        });
         
 		
 	});
@@ -123,8 +123,7 @@ body{text-align: center !important;}
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);"
-			data-stellar-background-ratio="0.5">
+			style="background-image: url(./images/bg_3.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -163,12 +162,12 @@ body{text-align: center !important;}
 					<input type="hidden" value="<%=itemBean.getItem_num()%>" name="review_item_num">
 					<input type="hidden" value="<%=id%>" name="review_user_id">
 						<td >제목</td>
-						<td><input type="text" id="review_subject" name="review_subject" class="form-control" style="border-bottom: 1px solid silver !important;"/></td>
+						<td><input type="text" id="review_subject" name="review_subject" class="form-control" maxlength="30" style="border-bottom: 1px solid silver !important; margin-bottom: 2rem; margin-top:1rem;" required="required"/></td>
 					</tr>
 					<br>
 					<tr>
 						<td style="padding-right: 10px;">내용</td>
-						<td><textarea rows="10" cols="30" name="review_content" 
+						<td><textarea rows="10" cols="30" name="review_content" maxlength="1000"
 								style="width: 100%; height: 650px;" required="required"
 								class="frmTitle"></textarea></td>
 					</tr>
