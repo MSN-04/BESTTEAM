@@ -21,7 +21,7 @@ public class ItemModifyProService {
 	Connection con = getConnection();
 
 	public int modifyItem(ItemBean itemBean) {
-		System.out.println("ItemModifyProService  - modifyItem() 시작");
+//		System.out.println("ItemModifyProService  - modifyItem() 시작");
 		// 2.
 		ItemDAO itemDAO = ItemDAO.getInstance();
 		itemDAO.setConnection(con);
@@ -36,7 +36,7 @@ public class ItemModifyProService {
 	
 	
 	public ItemBean getItem(int item_num) {
-		System.out.println("ItemModifyProService  - getItem() 시작");
+//		System.out.println("ItemModifyProService  - getItem() 시작");
 		
 		// 1.
 		Connection con = getConnection();
@@ -51,7 +51,7 @@ public class ItemModifyProService {
 		// 4.
 		close(con);
 		
-		System.out.println("ItemModifyProService - getItem() 끝");
+//		System.out.println("ItemModifyProService - getItem() 끝");
 		// 5.
 		return itemBean;
 	}

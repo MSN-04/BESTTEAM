@@ -93,7 +93,7 @@ public class ItemFrontController extends HttpServlet {
 			
 		// 기홍
 		} else if (command.equals("/itemRegisterPro.em")) { // 등록 페이지 Pro
-			System.out.println("itemRegisterPro");
+//			System.out.println("itemRegisterPro");
 			action = new ItemRegisterProAction();
 			
 			try {
@@ -104,7 +104,7 @@ public class ItemFrontController extends HttpServlet {
 			
 		// 미송
 		} else if (command.equals("/itemModify.em")) { // DB 단에 가서 해당 아이템의 정보를 가져와야 함 Redirect
-			System.out.println("itemModify");
+//			System.out.println("itemModify");
 			
 			action = (Action) new ItemModifyFormAction();
 			
@@ -116,7 +116,7 @@ public class ItemFrontController extends HttpServlet {
 			
 		// 미송
 		} else if (command.equals("/itemModifyPro.em")) { // 아이템 수정 Pro
-			System.out.println("itemModifyPro");
+//			System.out.println("itemModifyPro");
 			
 			action = (Action) new ItemModifyProAction();
 			

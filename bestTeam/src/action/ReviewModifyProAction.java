@@ -41,7 +41,7 @@ public class ReviewModifyProAction implements Action {
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+//            System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }

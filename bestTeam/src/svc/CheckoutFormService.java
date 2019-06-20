@@ -17,9 +17,9 @@ public class CheckoutFormService {
     //-- cart에 담긴 상품목록 리턴
 	public ArrayList<BuyItemBean> getCartItems(String id) throws Exception {
 		
-		System.out.println();
-		System.out.println("CheckoutFormService - getCartItems() 시작");
-		System.out.println("id = "+id);
+//		System.out.println();
+//		System.out.println("CheckoutFormService - getCartItems() 시작");
+//		System.out.println("id = "+id);
 		
 		// 2. DAO 객체 호출, 커넥션 전달 - DB 연결
 
@@ -32,7 +32,7 @@ public class CheckoutFormService {
 		// 4. 커넥션 반환
 		close(con);
 		
-		System.out.println("CheckoutFormService - getCartItems() 끝");
+//		System.out.println("CheckoutFormService - getCartItems() 끝");
 		
 		// 5. 아이템들 리턴
 		return cartItems;

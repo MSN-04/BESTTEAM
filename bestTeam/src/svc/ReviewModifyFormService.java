@@ -18,7 +18,7 @@ public class ReviewModifyFormService {
 	// 글 번호(board_num)을 전달받아 해당 게시물 정보를 조회하는 getArticle() 메서드 정의
 	public ItemBean getItem(int item_num) {
 
-		System.out.println("ReviewModifyService - getItem() 시작");
+//		System.out.println("ReviewModifyService - getItem() 시작");
 		
 		// 1.
 		Connection con = getConnection();
@@ -33,7 +33,7 @@ public class ReviewModifyFormService {
 		// 4.
 		close(con);
 		
-		System.out.println("ItemSingleService - getItem() 끝");
+//		System.out.println("ItemSingleService - getItem() 끝");
 		// 5.
 		return itemBean;
 	}
