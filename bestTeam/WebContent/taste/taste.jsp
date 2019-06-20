@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
-<title>Get Your Own Taste! Cafe Tinkervell</title>
+<title>Get Your Own Taste! Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

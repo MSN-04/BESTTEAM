@@ -24,9 +24,6 @@
 	Date today = new Date();
 	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 	SimpleDateFormat time = new SimpleDateFormat("k:mm");
-
-	System.out.println("오늘 날짜는 " + sdf.format(today));
-	System.out.println("현재 시간은 " + time.format(today));
 %>
 
 	<script language="javascript">
@@ -386,7 +383,7 @@
 				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
 				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
-					class="btn btn-primary btn-outline-primary" style="float: right;">삭제</a>
+					class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getBlog_num()%>')" style="float: right;">삭제</a>
 				
 				<%
 					} else {
