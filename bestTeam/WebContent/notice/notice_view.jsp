@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Notice ─ Cafe Tinkervell</title>
+<title>Notice ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -140,7 +140,6 @@
 <!-- 					style="text-align: center;"> -->
 <!-- 					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp; -->
 <%-- 				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a> --%>
-				
 <!-- 			</div> -->
 <!-- 		</div> -->
 

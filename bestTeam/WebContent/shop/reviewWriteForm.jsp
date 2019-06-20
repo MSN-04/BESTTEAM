@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -127,8 +127,12 @@ body{text-align: center !important;}
 					<tr>
 						<td style="width: 100px !important;">후기작성</td>
 						<td><textarea rows="10" cols="30" name="review_content" 
-								maxlength="1000" style="width: 100%; height: 200px;"
-								required="required" class="frmTitle"></textarea></td>
+								maxlength="1000" style="width: 100%; height: 200px; color: #A9A9A9; font-size: 15px;"
+								required="required" class="frmTitle" onclick="this.value=''">자세한 후기는 다른 고객의 구매에 많은 도움이 되며,   
+일반식품의 효능이나 효과 등에 오해의 소지가 있는 내용을 작성 시 검토 후 비공개 조치될 수 있습니다.
+반품/환불 문의는 카카오톡 문의로 가능합니다.
+
+								</textarea></td>
 					</tr>
 
 					<tr>
@@ -142,7 +146,7 @@ body{text-align: center !important;}
 							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
 							value="등록" /> <input type="button"
 							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /></td>
+							id="reset" value="취소" /	></td>
 					</tr>
 
 				</table>

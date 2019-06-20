@@ -15,7 +15,7 @@ public class ConfirmCheckoutListService {
 	public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id, int page, int limit) throws Exception{
 		ArrayList<BuyBean> buyList=null;
 		
-		System.out.println("ConfirmCheckoutListService - selectConfirmCheckoutList");
+//		System.out.println("ConfirmCheckoutListService - selectConfirmCheckoutList");
 		Connection con= getConnection();
 		
 		BuyDAO buydao=BuyDAO.getInstance();   //buydao의 인스턴스 가져 옴

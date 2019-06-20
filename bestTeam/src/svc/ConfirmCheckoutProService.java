@@ -17,7 +17,7 @@ public class ConfirmCheckoutProService {
 	public ArrayList<BuyItemBean> getOrderInfoList(int buy_num)throws Exception {
 		ArrayList<BuyItemBean> orderInfoList=null;
 		
-		System.out.println("ConfirmCheckoutProService - getOrderInfoList");
+//		System.out.println("ConfirmCheckoutProService - getOrderInfoList");
 		Connection con= getConnection();
 		
 		BuyDAO buydao=BuyDAO.getInstance();   //buydao의 인스턴스 가져 옴
@@ -40,7 +40,7 @@ public class ConfirmCheckoutProService {
 		
 		ArrayList<BuyBean> orderPersonList=null;
 		
-		System.out.println("ConfirmCheckoutProService - getOrderPersonList");
+//		System.out.println("ConfirmCheckoutProService - getOrderPersonList");
 		Connection con= getConnection();
 		
 		BuyDAO buydao=BuyDAO.getInstance();   //buydao의 인스턴스 가져 옴
