@@ -156,7 +156,7 @@
 							
 							<input type="submit" class="btn btn-primary py-3 px-4"
 							style="color: black;" id="save" value="저장" />
-							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" />
+							<input type="button" class="btn btn-primary py-3 px-4" style="color: black;" id="reset" value="취소" onClick="history.back()"/>
 						</td>
 					</tr>
 				</table>

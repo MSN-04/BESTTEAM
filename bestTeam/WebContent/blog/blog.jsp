@@ -175,13 +175,7 @@
 							%>
 
 						</ul>
-
-						
 					</div>
-					
-					
-					
-					
 				</div>
 			</div>
 			<form action="BlogListSearch.bl" method="post" class="search-form" id="hhh">

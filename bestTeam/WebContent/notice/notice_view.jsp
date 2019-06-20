@@ -140,7 +140,6 @@
 <!-- 					style="text-align: center;"> -->
 <!-- 					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp; -->
 <%-- 				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a> --%>
-				
 <!-- 			</div> -->
 <!-- 		</div> -->
 
