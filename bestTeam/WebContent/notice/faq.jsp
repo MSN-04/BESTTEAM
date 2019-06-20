@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>FAQ ─ Cafe Tinkervell</title>
+<title>FAQ ─ Café TinkerVell</title>
 <style type="text/css">
 b{
 	font-size:25px;
