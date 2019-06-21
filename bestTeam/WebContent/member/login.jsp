@@ -52,7 +52,7 @@
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
+	  <div class="slider-item" style="background-image: url(./images/coffeecup.jpg);" >
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -103,31 +103,34 @@
 		<div class="container">
 			<div class="row" >
 				<div class="col-xl-8 ftco-animate" style="margin: auto;" >
-					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post" style="padding-left: 100px !important;">
-						<h3 class="mb-4 billing-heading">로그인</h3>
-						<div class="row align-items-end">
-							<div class="col-md-6">
+					<form action="LoginProAction.us" class="billing-form ftco-bg-dark p-3 p-md-5" method="post">
+						<div class=" align-items-end">
+						
+							<div class="col-md-8" style="margin: auto; width: 407px !important;">
 								<div class="form-group">
 									<label for="firstname">아이디</label> <input type="text"
-										class="form-control" placeholder="아이디를 입력해주세요." name="id">
+										class="form-control" placeholder="아이디를 입력해주세요" name="id">
 								</div>
 							
 								<div class="form-group">
 									<label for="firstname">비밀번호</label> <input type="password"
-										class="form-control" placeholder="비밀번호를 입력해주세요." name="password">
+										class="form-control" placeholder="비밀번호를 입력해주세요" name="password">
 								</div>
-								</div>
-								<div class="col-md-6">
+								
 								<div class="form-group">
-										 <input type="submit" class="btn btn-primary py-3 px-4" value="로그인">
-	             <a href="join.us" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 join">회원가입</a>
-									</div>
-                </div>
+										<label for="firstname"></label>
+										<input type="submit" class="btn btn-primary py-3" style="width: 100%; font-size: 17px;" value="로그인"> <br>
+								</div>
+							<label for="firstname"></label>
+							<p style="text-align: center;">
+								<a href="join.us" class="fg"  style="font-size: 17px;">회원가입</a>
+								&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a class="fg" href="ForgotAccount.us" style="font-size: 17px;">아이디 · 비밀번호 찾기</a>
+							</p>
+							</div>
+								
 	            </div>
 	            </form>
-	            <div class="form-group fgdiv">
-	             	<a class="fg" href="ForgotAccount.us" style="font-size: 15px;">아이디/비밀번호 찾기</a>
-				</div>
 				</div>
 								
 						
