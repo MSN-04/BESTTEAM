@@ -12,9 +12,16 @@ public class QnaBean {
 	private int qna_re_ref;	// 참조 번호
 	private int qna_re_lev;	// 참조 레벨
 	private int qna_re_seq;	// 참조 순서
+	private String qna_re_writer; //답글작성자
 
 
 	
+	public String getQna_re_writer() {
+		return qna_re_writer;
+	}
+	public void setQna_re_writer(String qna_re_writer) {
+		this.qna_re_writer = qna_re_writer;
+	}
 	public int getQna_item_num() {
 		return qna_item_num;
 	}

@@ -152,7 +152,7 @@ text-transform:none !important;
 			마음과 마음이 이어지는 순간 TinkerVell은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Café TinkerVell - </p>
 		</div>
-	</div><br><br><br><br><br><br>
+	</div>
 
 	<section class="ftco-about d-md-flex">
 		<div class="one-half0 img0">
