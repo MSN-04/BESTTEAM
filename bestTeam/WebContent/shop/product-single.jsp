@@ -526,26 +526,12 @@ $( '#rere1' ).click(
 	<header>
 		<jsp:include page="/inc/header.jsp" />
 	</header>
-	<section class="home-slider owl-carousel">
-		<div class="slider-item"
-			style="background-image:  url(./images/bg_3.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	
 <!-- 카카오톡 상담 -->
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- 카카오톡 상담 End -->
 	
-	<section class="ftco-section">
+	<section class="ftco-section" style="margin-top: 150px;">
 		<div class="container">
 			<div class="row">
 <div class="container1">
