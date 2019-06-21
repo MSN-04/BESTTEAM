@@ -12,12 +12,16 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
+<<<<<<< HEAD
 	
+=======
+	String id = (String)session.getAttribute("id");
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 // 	System.out.println("listCount : " + listCount);
-	System.out.println("nowPage : " + nowPage);
-	System.out.println("maxPage : " + maxPage);
-	System.out.println("startPage : " + startPage);
-	System.out.println("endPage : " + endPage);
+// 	System.out.println("nowPage : " + nowPage);
+// 	System.out.println("maxPage : " + maxPage);
+// 	System.out.println("startPage : " + startPage);
+// 	System.out.println("endPage : " + endPage);
 // 	System.out.println("itemList.size() : " + itemList.size());
 %>
 <!DOCTYPE html>
@@ -320,6 +324,10 @@
 									role="tab" aria-controls="v-pills-3" aria-selected="false">쓴맛</a>
 								<a class="nav-link" id="v-pills-5-tab" href="shopMain.em?taste=item_favor_body" onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()"
 									role="tab" aria-controls="v-pills-3" aria-selected="false">묵직함</a>
+							<% if(id != null && id.equals("admin")) { %>
+								<a class="nav-link" id="v-pills-5-tab" href="itemRegister.em"
+									role="tab" aria-controls="v-pills-3" aria-selected="false">상품등록</a>
+							<% } %>
 							</div>
 							
 							<div class="shop-select" style="margin-top: -49px;">
