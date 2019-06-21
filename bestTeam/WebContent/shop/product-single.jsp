@@ -101,21 +101,19 @@
 //삭제 확인메세지
 function delconfirm(qna_re_ref,qna_re_lev,item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message == true) {
-		location.href = "./qnaDeletePro.qna?qna_re_ref=" + qna_re_ref+"&qna_re_lev="qna_re_lev+"&item_num="+item_num;
+	if (message) {
+		location.href = "./qnaDeletePro.qna?qna_re_ref="+ qna_re_ref+"&qna_re_lev="+qna_re_lev+"&item_num="+item_num;
 	} else{
-		alert("취소되었습니다");
-// 		history.back();
+		
 	return false;
 	}
 }
 function delconfirm2(review_re_ref,review_re_lev,item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message == true) {
-		location.href = "./reviewDeletePro.re?review_re_ref=" + review_re_ref+"review_re_lev="+review_re_lev+"&item_num="+item_num;
+	if (message) {
+		location.href = "./reviewDeletePro.re?review_re_ref=" + review_re_ref+"&review_re_lev="+review_re_lev+"&item_num="+item_num;
 	} else{
-		alert("취소되었습니다");
-// 		history.back();
+		
 	return false;
 }
 }
@@ -716,7 +714,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
 															<a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" >수정</a> 
-															<a href="reviewDeletePro.re?review_re_ref=<%=reviewList.get(i).getReview_re_ref() %>&review_re_lev=<%=reviewList.get(i).getReview_re_lev() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary"  onclick="delconfirm2('<%=reviewList.get(i).getReview_re_ref() %>','<%=reviewList.get(i).getReview_re_lev() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
+															<a  class="btn btn-primary btn-outline-primary"  onclick="delconfirm2('<%=reviewList.get(i).getReview_re_ref() %>','<%=reviewList.get(i).getReview_re_lev() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
