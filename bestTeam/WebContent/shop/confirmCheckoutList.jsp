@@ -20,29 +20,16 @@
 	
 	int number = 0;
 	
+	
 	number = listCount - (nowPage - 1) * (limit);
 	
 	BuyBean buyBean=(BuyBean)request.getAttribute("BuyBean");
-	//------------------------------------------------------
-// 	System.out.println("confirmCheckoutList.jsp-->listCount :"+listCount);
-// 	System.out.println("confirmCheckoutList.jsp-->nowPage :"+nowPage);
-// 	System.out.println("confirmCheckoutList.jsp-->maxPage :"+maxPage);
-// 	System.out.println("confirmCheckoutList.jsp-->startPage :"+startPage);
-// 	System.out.println("confirmCheckoutList.jsp-->endPage :"+endPage);
-	//System.out.println("confirmCheckoutList.jsp-->user_id :"+buyBean.getBuy_user_id());
-// 	System.out.println("confirmCheckoutList.jsp--> buy_num:"+buyBean.getBuy_num());
-// 	System.out.println("confirmCheckoutList.jsp--> buy_name:"+buyBean.getBuy_name());
-// 	System.out.println("confirmCheckoutList.jsp--> buy_date:"+buyBean.getBuy_buydate());
-// 	System.out.println("confirmCheckoutList.jsp-->buy_count:"+buyBean.getBuy_count());
-// 	System.out.println("confirmCheckoutList.jsp--> buy_total:"+buyBean.getBuy_total());
-	
 	
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Receipt ─ Cafe Tinkervell</title>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -79,22 +66,20 @@
 </head>
 <body>
 
-	<jsp:include page="/inc/header.jsp"></jsp:include>
-
-	<!-- END nav -->
+  <header>
+	<jsp:include page="/inc/header.jsp"/>
+    <!-- END nav -->
+  </header>
 
 	<section class="home-slider owl-carousel">
 
-		<div class="slider-item"
-			style="background-image: url(./images/coffeecup.jpg);" >
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
-
+      <div class="slider-item">
+		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover; opacity: .7;"></div>        
+		<div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+          
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">주문 목록</h1>
-						<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="./noticeList.no">Notice</a></span> </p> -->
 					</div>
 
 				</div>
@@ -115,7 +100,6 @@
           <div class="container" style=" margin: 50px;">
 <!--      <div class="col-xl-8 ftco-animate" style=" margin: auto;"> -->
 
-          
 <!-- box 1 -->          
 
 
@@ -139,17 +123,13 @@
                 <%
 							if (buyList != null && listCount > 0) {
 								for (int i = 0; i < buyList.size(); i++) {
-								//	int buy_num=buyList.get(i).getBuy_num();
-// 								System.out.println("buyList.size():"+buyList.size());
 						%>
 
                   
                   <tr class="text-center">
-<!--                     <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td> -->
                      <td class="product-num"><a href="confirm_checkout.sh?buy_num=<%=buyList.get(i).getBuy_num() %>&buy_ordernum=<%=buyList.get(i).getBuy_ordernum()%>">
                      <%=buyList.get(i).getBuy_ordernum() %>
                      </a></td>
-                   <!--   <td class="image-prod"><div class="img" style="background-image:url();"></div></td> -->
                     
                     <td class="product-name">
                     	<% if (buyList.get(i).getBuy_count() == 1)  {
@@ -187,6 +167,8 @@
 		<br><br>
 		
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
+
+
         </div>
         </div>
          <div class="row mt-5">
