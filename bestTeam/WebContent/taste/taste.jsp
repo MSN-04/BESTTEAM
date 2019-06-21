@@ -95,7 +95,7 @@
             <div class="col-lg-12 text-center">
             <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Aroma</h2>
-                <h3 class="section-subheading text-muted">커피추출시 발산되는 가스, 커피향기를 의미합니다</h3>
+                <h3 class="section-subheading text-muted" style="color: #b3b3b3 !important;">커피추출시 발산되는 가스, 커피향기를 의미합니다</h3>
             </div>
         </div>
         <div class="row">
@@ -155,7 +155,7 @@
             <div class="col-lg-12 text-center">
             <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Acidity</h2>
-                <h3 class="section-subheading text-muted">커피추출시 발산되는 가스, 커피향기를 의미합니다</h3>
+                <h3 class="section-subheading text-muted" style="color: #b3b3b3 !important;">커피에서 과일의 상큼한 신맛이 나는 것을 의미합니다</h3>
             </div>
         </div>
         <div class="row">
@@ -213,7 +213,7 @@
             <div class="col-lg-12 text-center">
             <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Sweetness</h2>
-                <h3 class="section-subheading text-muted">원두의 달달한 맛을 의미합니다</h3>
+                <h3 class="section-subheading text-muted" style="color: #b3b3b3 !important;">원두의 달달한 맛을 의미합니다</h3>
             </div>
         </div>
         <div class="row">
@@ -271,7 +271,7 @@
             <div class="col-lg-12 text-center">
             <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Bitterness</h2>
-                <h3 class="section-subheading text-muted">원두의 약간 쓰거나 불맛나는 향을 의미합니다</h3>
+                <h3 class="section-subheading text-muted" style="color: #b3b3b3 !important;">원두의 약간 쓰거나 불맛나는 향을 의미합니다</h3>
             </div>
         </div>
         <div class="row">
@@ -329,7 +329,7 @@
             <div class="col-lg-12 text-center">
             <br><br><br><br>
                 <h2 class="section-heading text-uppercase taste-h">Body / Texture</h2>
-                <h3 class="section-subheading text-muted">커피를 머금었을때 느껴지는 밀도와 무게감을 뜻합니다</h3>
+                <h3 class="section-subheading text-muted" style="color: #b3b3b3 !important;">커피를 머금었을때 느껴지는 밀도와 무게감을 뜻합니다</h3>
             </div>
         </div>
         <div class="row">
