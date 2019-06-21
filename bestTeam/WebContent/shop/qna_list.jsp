@@ -48,7 +48,7 @@ int pageCount = listCount2/pageSize+(listCount2%pageSize==0?0:1);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Q&A ─ Cafe Tinkervell</title>
 <style type="text/css">
 b {
 	font-size: 25px;

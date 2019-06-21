@@ -60,7 +60,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Shop ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -609,7 +609,7 @@ $( '#rere1' ).click(
 							<div class="form-group d-flex"></div>
 						</div>
 						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3">
+						<div class="input-group col-md-6 d-flex mb-3" style="padding-left: 0 !important; padding-right: 0 !important;">
 							<div class="input-group mb-3">
                     
 <!--               <span class="input-group-btn ml-2"> -->

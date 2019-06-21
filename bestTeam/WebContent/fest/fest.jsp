@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Festival ─ Cafe Tinkervell</title>
 <style>
 .jumbotron {
 	opacity: 0.87;
