@@ -27,7 +27,7 @@ public class QnaDeleteProService {
 //	}
    
 	// 게시물 번호에 해당하는 글 삭제 작업 수행
-	public boolean removeArticle(int qna_re_ref) {
+	public boolean removeArticle(int qna_re_ref,int qna_re_lev) {
 		boolean isRemoveSuccess = false;
 		
 		Connection con = getConnection();
@@ -37,7 +37,7 @@ public class QnaDeleteProService {
 		qnaDAO.setConnection(con);
 		
 		// qnaDAO 클래스의 deleteArticle() 메서드를 호출하여 번호 전달 후 게시물 삭제 수행 => 삭제 성공 여부(deleteSuccess) int형으로 리턴받음
-		int deleteSuccess = qnaDAO.deleteArticle(qna_re_ref);
+		int deleteSuccess = qnaDAO.deleteArticle(qna_re_ref,qna_re_lev);
 		
 		// 삭제 성공 여부 값(deleteSuccess) 가 0보다 크면 commit, isRemoveSuccess 를 true 로 변경
 		if(deleteSuccess > 0) {

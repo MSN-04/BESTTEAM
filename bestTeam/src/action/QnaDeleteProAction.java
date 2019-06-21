@@ -19,19 +19,18 @@ public class QnaDeleteProAction implements Action {
 //		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
 		int qna_re_ref = Integer.parseInt(request.getParameter("qna_re_ref"));
+		int qna_re_lev =Integer.parseInt(request.getParameter("qna_re_lev"));
 		QnaDeleteProService qnaDeleteProService = new QnaDeleteProService();
-		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_re_ref);
+		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_re_ref,qna_re_lev);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if(!isDeleteSuccess) {
-			System.out.println("실패");
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('삭제할 권한이 없습니다.')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
-			System.out.println("성공");
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("location.href='itemSingle.em?item_num=" +qna_item_num + "'"); // 오류 메세지 다이얼로그 표시
 			out.println("</script>"); // 자바스크립트 종료 태그
