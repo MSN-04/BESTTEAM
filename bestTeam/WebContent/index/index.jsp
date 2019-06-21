@@ -172,7 +172,7 @@ text-transform:none !important;
 			</div>
 		</div>
 	</section>
-	<br><br><br><br><br><br>
+	<br>
 
 	<section class="ftco-about d-md-flex">
 

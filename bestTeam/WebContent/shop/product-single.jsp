@@ -17,8 +17,6 @@
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	String id=(String)session.getAttribute("id");
-// 	System.out.println(id);
-// 	System.out.println("reviewList: " +reviewList.size());
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
@@ -29,7 +27,8 @@
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
-// 	qna
+
+	// 	qna
 	QnaBean qnabean = new QnaBean();
 // 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
@@ -54,13 +53,11 @@
 	c.setMaxAge(60*60*24); // 24시간
 	response.addCookie(c);
 %>
-
-	
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Shop ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
