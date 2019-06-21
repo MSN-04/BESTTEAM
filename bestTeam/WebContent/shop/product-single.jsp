@@ -99,23 +99,28 @@
 
 <script type="text/javascript">
 //삭제 확인메세지
-function delconfirm(qna_re_ref, qna_item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까? 1");
 
-	if (message == true) {
-		location.href = "qnaDeletePro.qna?qna_re_ref=" + qna_re_ref + "&qna_item_num="+qna_item_num;
-	} else {
-		alert("취소되었습니다");
+function delconfirm(qna_re_ref,qna_re_lev,qna_item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?");
+	if (message) {
+		location.href = "./qnaDeletePro.qna?qna_re_ref="+ qna_re_ref+"&qna_re_lev="+qna_re_lev+"&qna_item_num="+qna_item_num;
+	} else{
+		
+	alert("취소되었습니다");
+	return false;
 	}
 }
 
 
+
 function delconfirm2(review_re_ref,review_re_lev,review_item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까?2");
+	var message = confirm("이 게시글을 삭제하시겠습니까?");
 			
 	if (message == true) {
 		location.href = "reviewDeletePro.re?review_re_ref=" + review_re_ref +"&review_re_lev="+review_re_lev+"&review_item_num="+review_item_num;
+
 	} else{
+
 		alert("취소되었습니다");
 		return false;
 	}
