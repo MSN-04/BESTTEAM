@@ -99,14 +99,13 @@
   
   <header>
 	<jsp:include page="/inc/header.jsp"/>
-    END nav
   </header>
   
   
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item"  data-stellar-background-ratio="0.5">
-		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>        
+      <div class="slider-item">
+		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover; opacity: .7;"></div>        
 		<div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
