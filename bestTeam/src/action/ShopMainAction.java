@@ -39,7 +39,7 @@ public class ShopMainAction implements Action {
 		// 리스트 개수
 		ShopMainService shopMainService = new ShopMainService();
 		int listCount = shopMainService.getListCount(taste, degree);
-		System.out.println("listCount : " + listCount);
+	//	System.out.println("listCount : " + listCount);
 
 
 		// 총 리스트 받아옴

@@ -11,7 +11,7 @@ public class BlogModifyFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BoardModifyFormAction");
+	//	System.out.println("BoardModifyFormAction");
 		
 		// ActionForward 객체 생성
 		ActionForward forward = new ActionForward();

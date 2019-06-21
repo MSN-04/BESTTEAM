@@ -15,8 +15,8 @@ public class ForgotAccountProAction implements Action {
 		ActionForward forward = null;
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		System.out.println("action에서 email: "+email);
-		System.out.println("action에서 phone: "+phone);
+		//System.out.println("action에서 email: "+email);
+		//System.out.println("action에서 phone: "+phone);
 		ForgotAccountProService forgotAccountProService = new ForgotAccountProService();
 		String getId = forgotAccountProService.getId(email,phone);
 		request.setAttribute("id", getId);

@@ -37,6 +37,7 @@ public class IndexFrontController extends HttpServlet {
 		ActionForward forward = null;
 		
 		if(command.equals("/index.in")) {
+			//System.out.println("/index.in");
             action = new BestSellerAction();
             try {
                 forward = action.execute(request, response);

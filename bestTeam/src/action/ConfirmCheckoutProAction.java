@@ -21,7 +21,7 @@ public class ConfirmCheckoutProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println("ConfirmCheckoutProAction 시작");
+		//System.out.println("ConfirmCheckoutProAction 시작");
 		ActionForward forward=new ActionForward();
 	
 		ArrayList<BuyItemBean> orderInfoList=new ArrayList<BuyItemBean>();
@@ -38,7 +38,7 @@ public class ConfirmCheckoutProAction implements Action {
 		HttpSession session = request.getSession();
 		String id=(String) session.getAttribute("id");		
 		
-		System.out.println("action ->id:"+id);
+	//	System.out.println("action ->id:"+id);
 	//	System.out.println("action ->buy_num:"+buy_num);
 		
 	
@@ -55,8 +55,8 @@ public class ConfirmCheckoutProAction implements Action {
 		}else {
 				
 
-			System.out.println("buyBean에 user_id -->"+id);
-			System.out.println("buyItemBean에 buy_num-->"+buy_num);
+	//		System.out.println("buyBean에 user_id -->"+id);
+	//		System.out.println("buyItemBean에 buy_num-->"+buy_num);
 			ConfirmCheckoutProService confirmCheckoutProService=new ConfirmCheckoutProService();
 		//buyList=confirmCheckoutListService.selectConfirmCheckoutList(id);
 	
