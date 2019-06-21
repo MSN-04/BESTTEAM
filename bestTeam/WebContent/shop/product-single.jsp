@@ -885,7 +885,7 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id!=null){
+											<% if(id!=null){ 
 											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){
 												%>
 											
