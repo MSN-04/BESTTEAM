@@ -168,7 +168,7 @@ public class QnaDAO {
 				qnaBean.setQna_re_lev(rs.getInt("qna_re_lev"));
 				qnaBean.setQna_re_ref(rs.getInt("qna_re_ref"));
 				qnaBean.setQna_re_seq(rs.getInt("qna_re_seq"));
-
+				qnaBean.setQna_re_writer(rs.getString("qna_re_writer"));
 				articleList.add(qnaBean); // ArrayList 객체에 레코드 단위로 저장
 
 			}
@@ -312,9 +312,10 @@ public class QnaDAO {
 		return updateCount;
 	}
 
-	public int deleteArticle(int qna_re_ref) {
+	public int deleteArticle(int qna_re_ref, int qna_re_lev) {
 		int deleteCount=0;
 		
+		if(qna_re_lev==0) {
 		String sql="delete from qna where qna_re_ref=?";
 		try {
 			pstmt=con.prepareStatement(sql);
@@ -325,7 +326,18 @@ public class QnaDAO {
 		}finally {
 			close(pstmt);
 		}
-		
+		}else {
+			String sql="delete from qna where qna_re_ref=? AND qna_re_lev=1";
+			try {
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, qna_re_ref);
+				deleteCount=pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("deleteArticle() 실패!"+e.getMessage());
+			}finally {
+				close(pstmt);
+			}
+		}
 		
 		return deleteCount;
 	}

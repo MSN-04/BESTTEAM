@@ -317,9 +317,9 @@ public class ReviewDAO {
 	}
 
 
-	public int deleteArticle(int review_re_ref) {
+	public int deleteArticle(int review_re_ref, int review_re_lev) {
 		int deleteCount=0;
-		
+		if(review_re_lev==0) {
 		String sql="delete from REVIEW where review_re_ref=?";
 		try {
 			pstmt=con.prepareStatement(sql);
@@ -330,7 +330,18 @@ public class ReviewDAO {
 		}finally {
 			close(pstmt);
 		}
-		
+		}else {
+			String sql="delete from REVIEW where review_re_ref=? and review_re_lev=1";
+			try {
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, review_re_ref);
+				deleteCount=pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println("deleteArticle() 실패!"+e.getMessage());
+			}finally {
+				close(pstmt);
+			}
+		}
 		
 		return deleteCount;
 	}
