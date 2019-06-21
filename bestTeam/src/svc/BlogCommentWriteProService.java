@@ -48,7 +48,9 @@ public class BlogCommentWriteProService {
 		} else {
 			rollback(con);
 		}
-
+		
+		close(con);
+		
 		return userBean;
 	}
 

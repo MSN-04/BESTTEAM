@@ -25,6 +25,8 @@ public class AdminPageItemDeleteService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return isDeleted;
 	}
 }

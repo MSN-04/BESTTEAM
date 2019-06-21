@@ -30,8 +30,8 @@ public class ItemSingleAction implements Action {
 //		System.out.println("ItemSingleAction 시작");
 		
 		ActionForward forward = new ActionForward();
-		HttpSession session = request.getSession();
-		session.getAttribute("id");
+//		HttpSession session = request.getSession();
+//		session.getAttribute("id");
 		
 		// 1.
 		int item_num = Integer.parseInt(request.getParameter("item_num"));

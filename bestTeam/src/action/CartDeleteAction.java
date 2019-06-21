@@ -17,14 +17,21 @@ public class CartDeleteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		String list = request.getParameter("list");
 //		System.out.println("id :: " + id);
 //		System.out.println("list :: " + list);
 		String[] itemList = list.split(",");
-		
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		
 		if (id != null) {
 			CartDeleteService cartDeleteService = new CartDeleteService();

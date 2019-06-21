@@ -96,7 +96,7 @@
 					class="row slider-text justify-content-center align-items-center">
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">주문 목록</h1>
+						<h1 class="mb-3 mt-5 bread">order list</h1>
 						<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="./noticeList.no">Notice</a></span> </p> -->
 					</div>
 

@@ -58,6 +58,8 @@ public class QnaWriteProService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return userBean;
 	}
 	

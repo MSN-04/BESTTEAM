@@ -23,18 +23,31 @@ public class QnaModifyProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
-		System.out.println("QnaModifyProAction");
+//		System.out.println("QnaModifyProAction");
 		ActionForward forward = null;
 		QnaBean qnaBean = null;
 		HttpSession session = request.getSession();
 		UserBean userBean=null;
 //		
-		String id = session.getAttribute("id").toString();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null ) {
+			out.println("<script>");
+			out.println("alert('로그인 후 이용하실 수 있습니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		
 		String name = request.getParameter("qna_writer");
 		String qna_subject = request.getParameter("qna_subject");
 		String qna_content = request.getParameter("qna_content");
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
-		System.out.println(qna_num);
+//		System.out.println(qna_num);
 		int qna_item_num = Integer.parseInt(request.getParameter("item_num"));
 		
 		userBean = new UserBean();
@@ -53,8 +66,6 @@ public class QnaModifyProAction implements Action {
 		
 		// update 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isModifySuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 수정 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

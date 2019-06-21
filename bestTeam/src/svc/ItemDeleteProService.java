@@ -55,6 +55,8 @@ public class ItemDeleteProService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return isDeleteSuccess;
 		
 	}

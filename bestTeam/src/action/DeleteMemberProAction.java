@@ -19,6 +19,18 @@ public class DeleteMemberProAction implements Action {
 		
 		
 		String id = request.getParameter("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null  ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		String pass = request.getParameter("pass");
 		
 		UserBean userBean = new UserBean();
@@ -29,8 +41,6 @@ public class DeleteMemberProAction implements Action {
 		isDeleteSuccess = deleteMemberProService.deleteMember(userBean);
 		
 		if(!isDeleteSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('회원탈퇴 실패!')");
 			out.println("history.back()");
@@ -39,8 +49,6 @@ public class DeleteMemberProAction implements Action {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", null);
 			
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('탈퇴되었습니다')");
 			out.println("location.href='index.in'");

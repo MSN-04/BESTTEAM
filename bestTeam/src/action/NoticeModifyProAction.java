@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.NoticeModifyProService;
 import svc.NoticeViewService;
@@ -18,6 +19,21 @@ public class NoticeModifyProAction implements Action {
 //		System.out.println("noticeModifyProAction");
 		
 		ActionForward forward = new ActionForward();
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null || !id.equals("admin") ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		  
 		// 파라미터로 전달된 글번호(notice_num) 가져오기
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
@@ -36,14 +52,12 @@ public class NoticeModifyProAction implements Action {
 		boolean isModifySuccess = noticeModifyProService.modifyArticle(article);
 		
 		if(!isModifySuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('수정 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
-			System.out.println("글 수정 성공!");
+//			System.out.println("글 수정 성공!");
 			forward=new ActionForward();
 			// noticeDetail.no 서블릿 주소로 포워딩 => 주소 뒤에 파라미터로 글번호 전달 => Redirect 방식
 			forward.setPath("noticeDetail.no?notice_num=" + notice_num + "&page=1");

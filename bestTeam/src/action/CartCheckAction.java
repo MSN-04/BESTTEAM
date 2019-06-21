@@ -18,13 +18,20 @@ public class CartCheckAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		
-		CartService cartService = new CartService();
-		int cartCount = cartService.getCartCount(id);
-		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+
+		if (id == null ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		
+		CartService cartService = new CartService();
+		int cartCount = cartService.getCartCount(id);
 		
 		if (cartCount == 0) {
 			out.println(0);

@@ -25,13 +25,14 @@ public class FavorProAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		if(id == null) {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("alert('로그인 하세요!')");
-		out.println("location.href='login.us'");
-		out.println("</script>");
+		if(id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 하세요!')");
+			out.println("location.href='login.us'");
+			out.println("</script>");
+			return null;
 		}
 		
 		favorBean.setUser_favor_user_id(id);
@@ -44,15 +45,11 @@ public class FavorProAction implements Action {
 			boolean isUpdateSetFavor = favorProService.updateFavor(favorBean);
 			
 			if(!isUpdateSetFavor) {
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('취향설정에 실패했습니다!')");
 				out.println("location.href='login.us'");
 				out.println("</script>");
 			} else {
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('취향설정이 완료되었습니다')");
 				out.println("</script>");
@@ -65,15 +62,11 @@ public class FavorProAction implements Action {
 			boolean isSetFavor = favorProService.setFavor(favorBean);
 			
 			if(!isSetFavor) {
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('취향설정에 실패했습니다!')");
 				out.println("location.href='login.us'");
 				out.println("</script>");
 			} else {
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('취향설정이 완료되었습니다')");
 				out.println("</script>");

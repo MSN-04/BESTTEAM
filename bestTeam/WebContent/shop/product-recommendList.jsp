@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.ItemBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,7 +41,7 @@
 				<div class="text text-center pt-4">
 					<h3><%=list.get(i).getItem_name() %></h3>
 					<p class="price">
-						<span><%=list.get(i).getItem_price() %>원</span>
+						<span><%=NumberFormat.getInstance().format(list.get(i).getItem_price()) %>원</span>
 					</p>
 				</div>
 			</div>

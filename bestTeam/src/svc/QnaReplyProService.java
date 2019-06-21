@@ -34,6 +34,8 @@ public class QnaReplyProService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return isInsertSuccess;
 	}
 	
@@ -46,6 +48,9 @@ public class QnaReplyProService {
 		qnaReplyDAO.setConnection(con);
 		
 		isUpdateReply = qnaReplyDAO.updateReply(qnaBean);
+		
+		close(con);
+		
 		return isUpdateReply;
 	}
 	
@@ -59,8 +64,10 @@ public class QnaReplyProService {
 		
 		isDeleteReply = qnaReplyDAO.deleteReply(qna_reply_num);
 		
-		return isDeleteReply;
 		
+		close(con);
+		
+		return isDeleteReply;
 		
 	}
 }

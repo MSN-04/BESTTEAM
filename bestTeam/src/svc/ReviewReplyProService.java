@@ -36,6 +36,8 @@ public class ReviewReplyProService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return isInsertSuccess;
 	}
 	
@@ -48,6 +50,9 @@ public class ReviewReplyProService {
 		reviewReplyDAO.setConnection(con);
 		
 		isUpdateReply = reviewReplyDAO.updateReply(reviewBean);
+		
+		close(con);
+		
 		return isUpdateReply;
 	}
 	
@@ -61,8 +66,9 @@ public class ReviewReplyProService {
 		
 		isDeleteReply = reviewReplyDAO.deleteReply(review_reply_num);
 		
+		
+		close(con);
+		
 		return isDeleteReply;
-		
-		
 	}
 }

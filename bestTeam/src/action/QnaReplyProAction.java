@@ -15,13 +15,26 @@ public class QnaReplyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-System.out.println("QnaReplyProAction");
+//System.out.println("QnaReplyProAction");
 		QnaBean qnaBean = new QnaBean();
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
 		
 		String writer = request.getParameter("qna_reply_writer");
 		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 후 이용하실 수 있습니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
 		QnaReplyProService qnaReplyInsertProService = new QnaReplyProService();
@@ -35,8 +48,6 @@ System.out.println("QnaReplyProAction");
 		
 		
 		if(!isInsertSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('답글 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

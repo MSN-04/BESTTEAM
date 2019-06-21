@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -21,10 +22,23 @@ public class BlogModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BoardModifyProAction");
-		
 		// ActionForward 객체 생성
 		ActionForward forward = new ActionForward();
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null || !id.equals("admin") ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		
 		// 파라미터로 전달된 글번호(board_num) 가져오기
 		int blog_num = Integer.parseInt(request.getParameter("blog_num"));
@@ -64,8 +78,6 @@ public class BlogModifyProAction implements Action {
 			// 글 수정 성공 여부 판별
 			if(!isModifySuccess) {
 				// 글 수정 실패 시 자바스크립트를 사용하여 "수정 실패!" 출력
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				out.println("<script>"); // 자바스크립트 시작 태그
 				out.println("alert('수정 실패!')"); // 오류 메세지 다이얼로그 표시
 				out.println("history.back()"); // 이전 페이지로 돌아가기

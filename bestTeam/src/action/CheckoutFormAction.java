@@ -19,7 +19,7 @@ public class CheckoutFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		System.out.println();
-		System.out.println("CheckoutFormAction 시작");
+//		System.out.println("CheckoutFormAction 시작");
 		
 		// 0.
 		ActionForward forward = new ActionForward();
@@ -56,7 +56,7 @@ public class CheckoutFormAction implements Action {
 			// 3.
 			forward.setPath("/shop/checkout.jsp");
 			
-			System.out.println("CheckoutFormAction 끝");
+//			System.out.println("CheckoutFormAction 끝");
 			
 		}
 		

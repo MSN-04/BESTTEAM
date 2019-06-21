@@ -24,6 +24,19 @@ public class ReviewReplyProAction implements Action {
 		System.out.println("ReviewReplyProAction");
 		String writer = request.getParameter("review_reply_writer");
 		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		}
+		
 		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		int review_item_num = Integer.parseInt(request.getParameter("review_item_num"));
 		ReviewReplyProService reviewReplyInsertProService = new ReviewReplyProService();
@@ -37,8 +50,6 @@ public class ReviewReplyProAction implements Action {
 		
 		
 		if(!isInsertSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('답글 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

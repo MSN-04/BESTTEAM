@@ -30,6 +30,7 @@ public class QnaWriteFormAction implements Action {
 			out.println("alert('로그인하세요')");
 			out.println("location.href='login.us'");
 			out.println("</script>");
+			return null;
 		} else {
 			id = session.getAttribute("id").toString();
 		}

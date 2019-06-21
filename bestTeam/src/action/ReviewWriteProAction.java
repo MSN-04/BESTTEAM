@@ -11,6 +11,8 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.w3c.dom.events.MutationEvent;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -28,10 +30,25 @@ public class ReviewWriteProAction implements Action {
 		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
 		
-		System.out.println("reviewWriteProAction()");
+//		System.out.println("reviewWriteProAction()");
 		
 		ActionForward forward = null;
 		ReviewBean reviewBean = null;
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		
 		// 파일 업로드를 위한 정보 저장
 		String realFolder ; // 실제 경로
@@ -45,7 +62,7 @@ public class ReviewWriteProAction implements Action {
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+//            System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,8 +85,6 @@ public class ReviewWriteProAction implements Action {
 		int review_item_num = Integer.parseInt(multi.getParameter("review_item_num"));
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isWriteSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기
