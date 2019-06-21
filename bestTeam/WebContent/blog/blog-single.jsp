@@ -49,11 +49,10 @@
 		if (message == true) {
 			location.href = "./BlogCommentDeletePro.bl?comment_num="
 					+ comment_num;
-		
-		} else
+		} else {
 			alert("취소되었습니다.");
-// 			location.href = "history.back()";
-		return false;
+			return false;
+		}
 	}
 </script>
 <!DOCTYPE html>
@@ -490,12 +489,12 @@
 													<input type="submit" class="reply" value="수정" style="margin-top: 5px; margin-left:900px; ">
 	
 												</form>
-												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;">
+												<form action="BlogCommentDeletePro.bl" method="post" style="display: inline;" onsubmit='return delCmt(<%=articleList.get(i).getComment_num()%>);'>
 													<input type="hidden" name="comment_num"
 														value="<%=articleList.get(i).getComment_num()%>"> <input
 														type="hidden" name="comment_blog_num"
 														value="<%=articleList.get(i).getComment_blog_num()%>">
-													<input type="submit" class="reply" value="삭제" onclick="delCmt(<%=articleList.get(i).getComment_num()%>)" style="float: right; clear:both; margin-top: 5px;">
+													<input type="submit" class="reply" value="삭제" style="float: right; clear:both; margin-top: 5px;">
 												</form>
 											</div>
 									<%
