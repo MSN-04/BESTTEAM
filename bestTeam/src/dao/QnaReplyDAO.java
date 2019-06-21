@@ -59,7 +59,7 @@ public class QnaReplyDAO {
 				pstmt.setString(3, qnaBean.getQna_subject());
 				pstmt.setString(4, qnaBean.getQna_content());
 				pstmt.setInt(5, new_qna_re_ref);
-				pstmt.setString(6, qnaBean.getQna_re_writer());
+//				pstmt.setString(6, qnaBean.getQna_re_writer());
 //				pstmt.setInt(6, qna_re_lev);
 //				pstmt.setInt(7, qna_re_seq);
 				

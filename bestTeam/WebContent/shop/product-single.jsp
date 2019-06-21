@@ -99,23 +99,27 @@
 
 <script type="text/javascript">
 //삭제 확인메세지
-function delconfirm(qna_re_ref,item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message) {
-		location.href = "./qnaDeletePro.qna?qan_re_ref=" + re_ref+"&item_num="+item_num;
-	} else
+function delconfirm(qna_re_ref, qna_item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까? 1");
+
+	if (message == true) {
+		location.href = "qnaDeletePro.qna?qna_re_ref=" + qna_re_ref + "&qna_item_num="+qna_item_num;
+	} else {
 		alert("취소되었습니다");
-	return false;
+	}
 }
-function delconfirm2(review_re_ref,item_num) {
-	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message) {
-		location.href = "./reviewDeletePro.re?review_re_ref=" + re_ref+"&item_num="+item_num;
-	} else
+
+
+function delconfirm2(review_re_ref,review_re_lev,review_item_num) {
+	var message = confirm("이 게시글을 삭제하시겠습니까?2");
+			
+	if (message == true) {
+		location.href = "reviewDeletePro.re?review_re_ref=" + review_re_ref +"&review_re_lev="+review_re_lev+"&review_item_num="+review_item_num;
+	} else{
 		alert("취소되었습니다");
-	return false;
+		return false;
+	}
 }
-	 
 // $(document).ready(function(){$('.bxslider').bxSlider({  auto: true,speed: 500,pause: 4000,mode:'fade',autoControls: true,pager:true,}); });
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -713,7 +717,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
 															<a href="reviewModifyForm.re?review_num=<%=reviewList.get(i).getReview_num() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary" >수정</a> 
-															<a href="reviewDeletePro.re?review_re_ref=<%=reviewList.get(i).getReview_re_ref() %>&review_item_num=<%=reviewList.get(i).getReview_item_num() %>" class="btn btn-primary btn-outline-primary"  onclick="delconfirm2('<%=reviewList.get(i).getReview_re_ref() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
+															<a class="btn btn-primary btn-outline-primary"  onclick="delconfirm2('<%=reviewList.get(i).getReview_re_ref() %>','<%=reviewList.get(i).getReview_re_lev() %>','<%=reviewList.get(i).getReview_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
@@ -886,7 +890,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important; z-index: 999;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a href="qnaDeletePro.qna?qna_re_ref=<%=qnaList.get(a).getQna_re_ref() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
+															<a class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
@@ -910,13 +914,13 @@ $( '#rere1' ).click(
 																<h2 class="section-heading text-uppercase">QNA 답글</h2>
 															</div>
 															<table style="width: 100%; text-align: left;">
-																<div class="row">
 																<tr>
+																<div class="row">
 																	<!-- 						<div class="col-md-6"> -->
 																	<div class="form-group">
 																		<input type="text" class="form-control" value="<%=id %>"
 																			name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
-																			<
+																			
 																	</div>
 																	<!-- 						</div> -->
 																	</div>
