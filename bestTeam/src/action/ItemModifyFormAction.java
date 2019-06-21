@@ -1,7 +1,10 @@
 package action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.ItemSingleService;
 import vo.ActionForward;
@@ -20,6 +23,20 @@ public class ItemModifyFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = new ActionForward();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null || !id.equals("admin") ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		
 		// 1.
 		int item_num = Integer.parseInt(request.getParameter("item_num"));

@@ -29,7 +29,18 @@ public class QnaWriteProAction implements Action {
 		UserBean userBean = null;
 		   
 		String name = request.getParameter("qna_writer");
-		String id = session.getAttribute("id").toString();
+		String id = (String)session.getAttribute("id");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 후 이용하실 수 있습니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		int item_num = Integer.parseInt(request.getParameter("item_num"));
 		
 		userBean = new UserBean();
@@ -47,8 +58,6 @@ public class QnaWriteProAction implements Action {
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isWriteSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

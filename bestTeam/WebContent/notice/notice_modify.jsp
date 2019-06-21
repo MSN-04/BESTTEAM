@@ -3,8 +3,8 @@
 	pageEncoding="UTF-8"%>
 	<%
 	NoticeBean article = (NoticeBean)request.getAttribute("article");
-	article.getNotice_num();
-	System.out.println(article.getNotice_num());
+// 	article.getNotice_num();
+// 	System.out.println(article.getNotice_num());
 	int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 	%>
 <!DOCTYPE html>
@@ -85,13 +85,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-		$("#reset").click(function() {
-            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-                oEditors.getById["ir1"].exec("SET_IR", [""]);
-            } else {
-                return;
-            }
-        });
+// 		$("#reset").click(function() {
+//             if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+//                 oEditors.getById["ir1"].exec("SET_IR", [""]);
+//             } else {
+//                 return;
+//             }
+//         });
         
 		
 	});

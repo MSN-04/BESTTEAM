@@ -301,9 +301,9 @@ function check(reg, what) {
 
           <div class="col-md-7 col-sm-12 text-center ftco-animate">
             <h1 class="mb-3 mt-5 bread">Sign Up</h1>
-            <p class="breadcrumbs">
-              <span class="mr-2"><a href="index.in">Home</a></span> <span><a href="login.us">로그인</a></span>
-            </p>
+<!--             <p class="breadcrumbs"> -->
+<!--               <span class="mr-2"><a href="index.in">Home</a></span> <span><a href="login.us">로그인</a></span> -->
+<!--             </p> -->
           </div>
 
         </div>

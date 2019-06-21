@@ -17,18 +17,25 @@ public class CartUpdateAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		String item_num = request.getParameter("item_num");
-		String cart_count = request.getParameter("cart_count");
-		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
+
+		if (id == null  ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		String item_num = request.getParameter("item_num");
+		String cart_count = request.getParameter("cart_count");
+		
 		
 		if (item_num != null && id != null && cart_count != null) {
 			CartUpdateService cartUpdateService = new CartUpdateService();
 			boolean isUpdateSuccess = cartUpdateService.updateCart(id, Integer.parseInt(item_num), Integer.parseInt(cart_count));
 			if (isUpdateSuccess) {
-			//	System.out.println("CartUpdateAction 성공");
 				out.println("<script>");
 				out.println("var con = confirm('장바구니가 수정되었습니다.\\n장바구니로 이동하시겠습니까?')");
 //				out.println("confirm('장바구니가 수정되었습니다.\n장바구니로 이동하시겠습니까?')");

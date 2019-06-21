@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.w3c.dom.events.MutationEvent;
 
@@ -26,10 +27,24 @@ public class ItemRegisterProAction implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	//	System.out.println("ItemRegisterProAction()");
-		
 		
 		ActionForward forward = null;
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null || !id.equals("admin") ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		
 		ItemBean itemBean = null;
 		
 		String saveFolder = "/itemUpload"; // 톰캣(이클립스) 상의 가상의 경로
@@ -39,12 +54,10 @@ public class ItemRegisterProAction implements Action {
 		
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
-	//	System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-       //     System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,8 +93,6 @@ public class ItemRegisterProAction implements Action {
 		boolean isRegistSuccess = itemRegisterProService.registItem(itemBean);
 		
 		if(!isRegistSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

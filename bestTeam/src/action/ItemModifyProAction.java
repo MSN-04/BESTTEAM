@@ -26,7 +26,6 @@ public class ItemModifyProAction implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//System.out.println("ItemModifyProAction 시작");
 		
 		ActionForward forward = null;
 		
@@ -35,10 +34,8 @@ public class ItemModifyProAction implements Action {
 		String id = (String) session.getAttribute("id");
 		
 		if(id != null) {
-		//	System.out.println("세션아이디 null 아님");
 			
 			if(! id.equals("admin")) {
-		//		System.out.println("세션아이디 != admin");
 				
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
@@ -48,7 +45,6 @@ public class ItemModifyProAction implements Action {
 				out.println("</script>");
 				
 			}else {
-			//	System.out.println("세션아이디 == admin");
 				
 				// 2.
 				
@@ -57,21 +53,14 @@ public class ItemModifyProAction implements Action {
 				// 폴더의 물리적 경로
 				ServletContext context = request.getServletContext();
 				String realFolder = context.getRealPath("/itemUpload"); // 실제 경로
-			//	System.out.println("realFolder : "+realFolder );
-				
-			///	System.out.println("0");
 				
 				// 업로드 할 파일 최대 크기
 				int maxSize = 5 * 1024 * 1024; // 5MB
 				
-			//	System.out.println("1");
 
 				// (request, 폴더 물리적 경로, 파일 최대 크기, 캐릭터, 업로드한 파일 중 동일한 이름이 있으면 변경)				
 				MultipartRequest multi = new MultipartRequest(request, realFolder ,maxSize,"utf-8", new DefaultFileRenamePolicy() ); 
-				
-			//	System.out.println("2");
-				
-			//	System.out.println("item_num = "+ Integer.parseInt(request.getParameter("item_num")));
+
 				int item_num = Integer.parseInt(request.getParameter("item_num"));
 				String item_name = multi.getParameter("item_name");
 				int item_price = Integer.parseInt(multi.getParameter("item_price"));
@@ -81,17 +70,13 @@ public class ItemModifyProAction implements Action {
 				String item_img = multi.getFilesystemName("item_img");  //	String item_img = multi.getParameter("item_img"); 아님
 				String item_info = multi.getParameter("item_info");
 				
-			//	System.out.println("3");
 				int item_favor_aroma = Integer.parseInt(multi.getParameter("item_favor_aroma"));
-		//		System.out.println("item_favor_aroma : "+item_favor_aroma);
 				int item_favor_acidity = Integer.parseInt(multi.getParameter("item_favor_acidity"));
 				int item_favor_sweetness = Integer.parseInt(multi.getParameter("item_favor_sweetness"));
 				int item_favor_bitterness = Integer.parseInt(multi.getParameter("item_favor_bitterness"));
 				int item_favor_body = Integer.parseInt(multi.getParameter("item_favor_body"));
-			//	System.out.println("ifn : " + request.getParameter("item_favor_num"));
 				int item_favor_num = Integer.parseInt(request.getParameter("item_favor_num"));
 				
-			//	System.out.println("action - 파라미터값 저장");
 				
 				ItemBean newItemBean = new ItemBean();
 				
@@ -111,14 +96,12 @@ public class ItemModifyProAction implements Action {
 				newItemBean.setItem_favor_bitterness(item_favor_bitterness);
 				newItemBean.setItem_favor_body(item_favor_body);
 				
-			//	System.out.println("action - newItemBean 저장");
-				
 				// 3.
 				ItemModifyProService itemModifyProService = new ItemModifyProService();
 				int isModifySuccess = itemModifyProService.modifyItem(newItemBean);
 				
 				if (isModifySuccess == 2) {  // item, item_favor 업데이트 성공
-					System.out.println("action - item, item_favor Up");
+//					System.out.println("action - item, item_favor Up");
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out = response.getWriter();
 					out.println("<script>");
@@ -138,7 +121,6 @@ public class ItemModifyProAction implements Action {
 
 					
 				} else if (isModifySuccess == 1) {  // item_favor 업데이트 실패
-			//		System.out.println("action - item_favor Up fail");
 					
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out = response.getWriter();
@@ -148,7 +130,6 @@ public class ItemModifyProAction implements Action {
 					out.println("</script>");
 					
 				} else { // item 업데이트 실패
-				//	System.out.println("action - Up fail");
 					
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out = response.getWriter();

@@ -127,7 +127,6 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 영비
 		else if(command.equals("/confirmCheckoutList.sh")) {
-			//System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
 				action = new ConfirmCheckoutListProAction();
 			
 			try {
@@ -148,7 +147,6 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 영비
 		else if(command.equals("/confirm_checkout.sh")) {
-			// System.out.println("itemFrontController --> confirmCheckout.sh");
 		      
 		      action = new ConfirmCheckoutProAction();
 		      

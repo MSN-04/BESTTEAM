@@ -23,7 +23,20 @@ public class UpdateMemberProAction implements Action {
 		HttpSession session = request.getSession();
 		
 		String age = Integer.toString(((Calendar.getInstance().get(Calendar.YEAR)-(Integer.parseInt(request.getParameter("jumin1").substring(0, 2))))+1)%100);
-		String id = session.getAttribute("id").toString();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
+		
 		userBean.setUser_id(request.getParameter("id"));
 		userBean.setUser_pass(request.getParameter("pass2"));
 		userBean.setUser_name(request.getParameter("name"));
@@ -37,15 +50,12 @@ public class UpdateMemberProAction implements Action {
 		isUpdateSuccess = updateMemberProService.setUpdate(userBean, id);
 		
 		if(!isUpdateSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('회원정보 수정 실패!')");
 			out.println("location.href='login.us'");
 			out.println("</script>");
 		} else {
 			request.setAttribute("userBean", userBean);
-			
 			forward = new ActionForward();
 			forward.setRedirect(true);
 			forward.setPath("Mypage.us");

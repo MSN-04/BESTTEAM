@@ -38,6 +38,10 @@
 <!---------------------- 스마트 에디터 가져오는 영역 시작 ---------------------->
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
+	String id = (String)session.getAttribute("id");
+	if (id == null || !id.equals("admin") ) {
+		response.sendRedirect("index.in");
+	}
 %>
 <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="<%=ctx%>/se2/js/HuskyEZCreator.js"
@@ -85,13 +89,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-		$("#reset").click(function() {
-            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-                oEditors.getById["ir1"].exec("SET_IR", [""]);
-            } else {
-                return;
-            }
-        });
+// 		$("#reset").click(function() {
+//             if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+//                 oEditors.getById["ir1"].exec("SET_IR", [""]);
+//             } else {
+//                 return;
+//             }
+//         });
 		
 	});
 	 

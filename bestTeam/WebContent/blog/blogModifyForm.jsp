@@ -91,13 +91,13 @@
 			$("#frm").submit(); // form id로 변경해야 함 [id = frm(146)]
 		});
 		
-		$("#reset").click(function() {
-            if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
-                oEditors.getById["ir1"].exec("SET_IR", [""]);
-            } else {
-                return;
-            }
-        });
+// 		$("#reset").click(function() {
+//             if (confirm("정말 다시쓰겠습니까? 작업 내용이 모두 사라집니다.") == true) {
+//                 oEditors.getById["ir1"].exec("SET_IR", [""]);
+//             } else {
+//                 return;
+//             }
+//         });
 		
 	});
 	 

@@ -13,6 +13,9 @@
 	
 	// 주소 가져와서 주소와 상세주소로 나누기
 		StringTokenizer st = new StringTokenizer(updatePage.getUser_address(), ":");
+		
+		String address1 = st.nextToken();
+		String address2 = st.nextToken();
 	%>
 	
 <!DOCTYPE html>
@@ -325,11 +328,6 @@ function check(reg, what) {
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">MY PAGE</h1>
-						<p class="breadcrumbs">
-							<span class="mr-2"><a href="#information">INFORMATION</a></span>
-							<span><a href="./member/delete_member.jsp">DELETE
-									ACCOUNT</a></span>
-						</p>
 					</div>
 
 				</div>
@@ -358,13 +356,13 @@ function check(reg, what) {
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">비밀번호</label> <input type="password"
+									<label for="firstname">변경 비밀번호</label> <input type="password"
 										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass" id="pass" onkeyup="checkPwd1()" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">비밀번호 확인</label> <input type="password"
+									<label for="firstname">변경 비밀번호 확인</label> <input type="password"
 										class="form-control" placeholder="비밀번호를 입력해주세요." name="pass2" id="pass2" onkeyup="checkPwd2()" required="required">
 								</div>
 							</div>
@@ -509,13 +507,13 @@ function check(reg, what) {
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">주소</label> <input type="text"
-										class="form-control" id="address" placeholder="주소" name="address1" value=<%=st.nextToken() %> required="required">
+										class="form-control" id="address" placeholder="주소" name="address1" value="<%=address1 %>" required="required">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<input type="text" class="form-control" id="detailAddress"
-										placeholder="상세주소" required="required" name="address2" value=<%=st.nextToken() %>>
+										placeholder="상세주소" required="required" name="address2" value="<%=address2 %>">
 								</div>
 							</div>
 							<div class="w-100"></div>

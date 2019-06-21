@@ -90,12 +90,12 @@
 
 <!--       <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">  -->
        <div class="slider-item" data-stellar-background-ratio="0.5"> 
-      	<div class="overlay"  style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>
+		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover; opacity: .7;"></div>        
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">주문 상세 조회</h1>
+            	<h1 class="mb-3 mt-5 bread">order detail</h1>
 <!-- 	            <p class="breadcrumbs"> <span class="mr-2"><a href="./index.jsp">Home</a></span>  -->
 <!-- 	            					    <span class="mr-2"><a href="cart.jsp">Cart</a></span>   </p> -->
             </div>

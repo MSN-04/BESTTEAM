@@ -70,6 +70,8 @@ public class QnaModifyProService {
 			rollback(con);
 		}
 		
+		close(con);
+		
 		return userBean;
 	}
 

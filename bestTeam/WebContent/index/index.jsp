@@ -1,3 +1,4 @@
+<%@page import="java.text.NumberFormat"%>
 <%@page import="vo.ItemBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -265,7 +266,7 @@ text-transform:none !important;
 					<h3><%=itemList.get(i).getItem_name() %></h3>
 
 					<p class="price">
-						<span><%=itemList.get(i).getItem_price() %>원</span>
+						<span><%=NumberFormat.getInstance().format(itemList.get(i).getItem_price()) %>원</span>
 					</p>
 					<p>
 						<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"

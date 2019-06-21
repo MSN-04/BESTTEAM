@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -22,6 +23,21 @@ public class NoticeWriteProAction implements Action {
 		
 		ActionForward forward = null;
 		NoticeBean noticeBean = null;
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null || !id.equals("admin") ) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		   
 		// 파일 업로드를 위한 정보 저장
 //		String realFolder; // 실제 경로
@@ -48,8 +64,6 @@ public class NoticeWriteProAction implements Action {
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isWriteSuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기

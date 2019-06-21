@@ -39,6 +39,10 @@ pageEncoding="UTF-8"%>
 <!---------------------- 스마트 에디터 가져오는 영역 시작 ---------------------->
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
+	String id = (String)session.getAttribute("id");
+	if (id == null || !id.equals("admin") ) {
+		response.sendRedirect("index.in");
+	}
 %>
 
 <style type="text/css">

@@ -19,16 +19,26 @@ public class UpdateMemberFormAction implements Action {
 		UserBean userBean = null;
 		
 		HttpSession session = request.getSession();
-		String id = session.getAttribute("id").toString();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('로그인 후 이용할 수 있습니다.')");
+			out.println("location.href='login.us'");
+			out.println("</script>");
+			return null;
+		}
 		
 		UpdateMemberFormService updateMemberFormService = new UpdateMemberFormService();
 		userBean = updateMemberFormService.getUpdateForm(id);
 		
 		if(userBean == null) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('로그인 하세요!')");
+			out.println("alert('로그인 후 이용할 수 있습니다.')");
 			out.println("location.href='login.us'");
 			out.println("</script>");
 		} else {

@@ -68,6 +68,8 @@ public class BlogDetailService {
 			commit(con);
 		}
 		
+		close(con);
+		
 		return userBean;
 	}
 	

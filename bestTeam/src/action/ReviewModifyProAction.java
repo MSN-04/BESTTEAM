@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -22,9 +23,23 @@ public class ReviewModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	//	System.out.println("ReviewModifyProAction");
 		
 		ActionForward forward = null;
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+
+		if (id == null) {
+			out.println("<script>");
+			out.println("alert('잘못된 접근입니다.')");
+			out.println("location.href='index.in'");
+			out.println("</script>");
+			return null;
+		} 
 		
 		int review_num = Integer.parseInt(request.getParameter("review_num"));
 		int review_item_num = Integer.parseInt(request.getParameter("review_item_num"));
@@ -36,7 +51,6 @@ public class ReviewModifyProAction implements Action {
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-	//	System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
@@ -48,9 +62,7 @@ public class ReviewModifyProAction implements Action {
 //		
 		ReviewModifyProService reviewModifyProService = new ReviewModifyProService();
 		
-		
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-		
 		
 		ReviewBean article = new ReviewBean(); 
 		
@@ -67,8 +79,6 @@ public class ReviewModifyProAction implements Action {
 		
 		// INSERT 수행 결과가 false 이면 자바 스크립트를 사용하여 "등록 실패" 메세지를 표시(alert())
 		if(!isModifySuccess) {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			out.println("<script>"); // 자바스크립트 시작 태그
 			out.println("alert('게시물 등록 실패!')"); // 오류 메세지 다이얼로그 표시
 			out.println("history.back()"); // 이전 페이지로 돌아가기
