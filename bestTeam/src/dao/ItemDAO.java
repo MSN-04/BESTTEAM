@@ -168,6 +168,8 @@ public class ItemDAO {
 			
 			for ( int key : productList.keySet()) {
 				pstmt.setInt(1, key);
+//				System.out.println("productList.size() :: " + productList.size() );
+//				System.out.println("key :: " + key);
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					ItemBean itemBean = new ItemBean();
@@ -199,6 +201,7 @@ public class ItemDAO {
             
             for (int i = 0 ; i < itemNumList.size() ; i++) {
                 pstmt.setInt(1, itemNumList.get(i));
+//                System.out.println("itemNumList.get(" + i + ") :: " + itemNumList.get(i));
                 rs = pstmt.executeQuery();
                 if (rs.next()) {
                     ItemBean itemBean = new ItemBean();
