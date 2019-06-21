@@ -103,7 +103,7 @@
 function delconfirm(qna_re_ref,qna_re_lev,qna_item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
 	if (message) {
-		location.href = "./qnaDeletePro.qna?qna_re_ref="+ qna_re_ref+"&qna_re_lev="+qna_re_lev+"&qna_item_num="+qna_item_num;
+		location.href = "qnaDeletePro.qna?qna_re_ref="+ qna_re_ref+"&qna_re_lev="+qna_re_lev+"&qna_item_num="+qna_item_num;
 	} else{
 		
 	alert("취소되었습니다");
@@ -887,7 +887,7 @@ $( '#rere1' ).click(
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
 											<% if(id!=null){
 											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){
-												System.out.println(qnaList.get(a).getQna_writer());%>
+												%>
 											
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
@@ -895,7 +895,7 @@ $( '#rere1' ).click(
 													<div class="container">
 														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important; z-index: 999;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
-															<a class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
+															<a class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_re_lev() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>
 													</div>
 												</section>
