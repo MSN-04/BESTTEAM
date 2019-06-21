@@ -32,7 +32,7 @@ public class ContactMailSend extends HttpServlet {
 		String receiver = "tinkervell0624@gmail.com";
 		String sender = request.getParameter("sender");
 		String subject = "[TINKERVELL 문의] "+request.getParameter("subject");
-		String content = request.getParameter("content");
+		String content = request.getParameter("content") + "보낸사람 : " + sender;
 		response.setContentType("text/html;charset=UTF-8");
 		
 		try {

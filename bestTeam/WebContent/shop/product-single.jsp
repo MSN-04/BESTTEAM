@@ -101,7 +101,7 @@
 //삭제 확인메세지
 function delconfirm(qna_re_ref,item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message == true) {
+	if (message) {
 		location.href = "./qnaDeletePro.qna?qan_re_ref=" + re_ref+"&item_num="+item_num;
 	} else
 		alert("취소되었습니다");
@@ -109,7 +109,7 @@ function delconfirm(qna_re_ref,item_num) {
 }
 function delconfirm2(review_re_ref,item_num) {
 	var message = confirm("이 게시글을 삭제하시겠습니까?");
-	if (message == true) {
+	if (message) {
 		location.href = "./reviewDeletePro.re?review_re_ref=" + re_ref+"&item_num="+item_num;
 	} else
 		alert("취소되었습니다");
@@ -867,7 +867,11 @@ $( '#rere1' ).click(
 									%>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>"><%=qnaList.get(a).getQna_subject() %> </a></td>
 									<%} %>
+									<%if(qnaList.get(a).getQna_re_lev()>0){ %>
+									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>"><%=qnaList.get(a).getQna_re_writer() %></a></td>
+									<%}else{ %>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>"><%=qnaList.get(a).getQna_writer() %></a></td>
+									<%} %>
 									<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>"><%=qnaList.get(a).getQna_date() %></a></td>
 								</tr>
 								<tr>
