@@ -37,7 +37,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<title>Admin Page ─ Cafe Tinkervell</title>
 <!-- <link rel="stylesheet" href="./css/style.css"> -->
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

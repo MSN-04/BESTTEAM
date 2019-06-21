@@ -20,7 +20,8 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Café TinkerVell</title>
+<title>Q&A ─ Cafe Tinkervell</title>
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

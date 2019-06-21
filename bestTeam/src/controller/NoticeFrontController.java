@@ -80,7 +80,7 @@ public class NoticeFrontController extends HttpServlet {
 			
 			try {
 				forward = action.execute(request, response);
-				System.out.println("1");
+				//System.out.println("1");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

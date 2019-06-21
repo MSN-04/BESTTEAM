@@ -50,7 +50,7 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 미송
 		if(command.equals("/checkout.sh")) { // 구매진행 페이지 - 구매할 상품목록 / 배송정보 / 결제방법
-			System.out.println("checkoutForm");
+			//System.out.println("checkoutForm");
 			action = new CheckoutFormAction();
 			
 			try {
@@ -62,7 +62,7 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 주영
 		else if(command.equals("/checkoutPro.sh")) { 
-			System.out.println("checkoutPro");
+		//	System.out.println("checkoutPro");
 			action = new CheckoutProAction();
 			
 			try {
@@ -115,19 +115,18 @@ public class ShopFrontController extends HttpServlet{
 //			System.out.println("cartDelete 컨트롤러 종료");
 		}
 		else if(command.equals("/cartCheck.sh")) { 
-			System.out.println("cartCheck 컨트롤러 시작");
+		//	System.out.println("cartCheck 컨트롤러 시작");
 			action = new CartCheckAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println("cartCheck 컨트롤러 종료");
+			//System.out.println("cartCheck 컨트롤러 종료");
 		}
 		
 		// 영비
 		else if(command.equals("/confirmCheckoutList.sh")) {
-//			System.out.println(" itemFrontController -->confirmCheckoutListProAction.sh--");
 				action = new ConfirmCheckoutListProAction();
 			
 			try {
@@ -148,7 +147,6 @@ public class ShopFrontController extends HttpServlet{
 		
 		// 영비
 		else if(command.equals("/confirm_checkout.sh")) {
-//			 System.out.println("itemFrontController --> confirmCheckout.sh");
 		      
 		      action = new ConfirmCheckoutProAction();
 		      
@@ -172,7 +170,7 @@ public class ShopFrontController extends HttpServlet{
 		
 		if (forward != null) {
 			if (forward.isRedirect()) { // Redirect
-				System.out.println("forward.getPath() :: " + forward.getPath());
+			//	System.out.println("forward.getPath() :: " + forward.getPath());
 				response.sendRedirect(forward.getPath());
 			} else { // Dispatch
 				RequestDispatcher dispatch = request.getRequestDispatcher(forward.getPath());

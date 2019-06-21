@@ -36,12 +36,11 @@ public class CartUpdateAction implements Action {
 			CartUpdateService cartUpdateService = new CartUpdateService();
 			boolean isUpdateSuccess = cartUpdateService.updateCart(id, Integer.parseInt(item_num), Integer.parseInt(cart_count));
 			if (isUpdateSuccess) {
-//				System.out.println("CartUpdateAction 성공");
 				out.println("<script>");
 				out.println("var con = confirm('장바구니가 수정되었습니다.\\n장바구니로 이동하시겠습니까?')");
 //				out.println("confirm('장바구니가 수정되었습니다.\n장바구니로 이동하시겠습니까?')");
 				out.println("if (con) {location.href='cart.sh';} else { history.back(); };");
-				System.out.println("c");
+			//	System.out.println("c");
 //				out.println("history.back()");
 				out.println("</script>");
 //				forward = new ActionForward();

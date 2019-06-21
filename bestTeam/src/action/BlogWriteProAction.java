@@ -53,7 +53,7 @@ public class BlogWriteProAction implements Action {
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-		System.out.println("realFolder : "+realFolder);
+		//System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
@@ -63,7 +63,7 @@ public class BlogWriteProAction implements Action {
             e.printStackTrace();
         }
 		
-		System.out.println(realFolder);
+	//	System.out.println(realFolder);
 //		// 파일 업로드를 위한 MultipartRequest 객체 생성(cos.jar 필요)
 		MultipartRequest multi = new MultipartRequest(request, realFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 		

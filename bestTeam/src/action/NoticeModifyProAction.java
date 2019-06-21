@@ -57,7 +57,6 @@ public class NoticeModifyProAction implements Action {
 			out.println("history.back()"); // 이전 페이지로 돌아가기
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
-//			System.out.println("글 수정 성공!");
 			forward=new ActionForward();
 			// noticeDetail.no 서블릿 주소로 포워딩 => 주소 뒤에 파라미터로 글번호 전달 => Redirect 방식
 			forward.setPath("noticeDetail.no?notice_num=" + notice_num + "&page=1");

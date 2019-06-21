@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 <head>
+
 <title>Festival ─ Café TinkerVell</title>
 <style>
 .jumbotron {
@@ -107,7 +108,7 @@ background:none !important;
 
 	<section class="home-slider owl-carousel">
 
-		<div class="slider-item" style="background-image: url(fest/busanfest.JPG);">
+		<div class="slider-item" style="background-image: url(./fest/busanfest.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -138,7 +139,7 @@ background:none !important;
 			</div>
 		</div>
 
-			<div class="slider-item" style="background-image: url(fest/강릉.JPG);">
+			<div class="slider-item" style="background-image: url(./fest/강릉.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div

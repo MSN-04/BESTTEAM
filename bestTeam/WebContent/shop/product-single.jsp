@@ -17,8 +17,6 @@
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	String id=(String)session.getAttribute("id");
-// 	System.out.println(id);
-// 	System.out.println("reviewList: " +reviewList.size());
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
@@ -29,7 +27,8 @@
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
-// 	qna
+
+	// 	qna
 	QnaBean qnabean = new QnaBean();
 // 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
@@ -54,13 +53,12 @@
 	c.setMaxAge(60*60*24); // 24시간
 	response.addCookie(c);
 %>
-
-	
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+
+<title>Shop ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -528,26 +526,12 @@ $( '#rere1' ).click(
 	<header>
 		<jsp:include page="/inc/header.jsp" />
 	</header>
-	<section class="home-slider owl-carousel">
-		<div class="slider-item"
-			style="background-image:  url(./images/bg_3.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div
-					class="row slider-text justify-content-center align-items-center">
-					<div class="col-md-7 col-sm-12 text-center ftco-animate">
-						<h1 class="mb-3 mt-5 bread">Product Detail</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	
 <!-- 카카오톡 상담 -->
 <jsp:include page="../inc/kakaoChat.jsp"/>
 <!-- 카카오톡 상담 End -->
 	
-	<section class="ftco-section">
+	<section class="ftco-section" style="margin-top: 150px;">
 		<div class="container">
 			<div class="row">
 <div class="container1">
@@ -609,7 +593,7 @@ $( '#rere1' ).click(
 							<div class="form-group d-flex"></div>
 						</div>
 						<div class="w-100"></div>
-						<div class="input-group col-md-6 d-flex mb-3">
+						<div class="input-group col-md-6 d-flex mb-3" style="padding-left: 0 !important; padding-right: 0 !important;">
 							<div class="input-group mb-3">
                     
                     <button type="button" class="quantity-left-minus btn input-group-btn">
@@ -889,7 +873,9 @@ $( '#rere1' ).click(
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
 											<% if(id!=null){
-											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
+											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){
+												System.out.println(qnaList.get(a).getQna_writer());%>
+											
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
@@ -914,7 +900,8 @@ $( '#rere1' ).click(
 																			name="qna_num" id="qna_reply_subject" required="required">
 																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_item_num() %>"
 																			name="qna_item_num" id="qna_reply_subject" required="required">
-																
+																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_writer() %>"
+																			name="qna_writer" id="qna_writer" required="required">
 															<div class="col-lg-12 text-center">
 																<h2 class="section-heading text-uppercase">QNA 답글</h2>
 															</div>
@@ -925,9 +912,10 @@ $( '#rere1' ).click(
 																	<div class="form-group">
 																		<input type="text" class="form-control" value="<%=id %>"
 																			name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+																			<
 																	</div>
 																	<!-- 						</div> -->
-											
+																	</div>
 																</tr>
 															</table>
 															<table style="width: 100%; text-align: center;">

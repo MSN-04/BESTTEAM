@@ -7,7 +7,7 @@
 <html style="overflow: hidden;">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Shop ─ Cafe Tinkervell</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 <%
 	ArrayList<ItemBean> list = (ArrayList<ItemBean>)request.getAttribute("list");

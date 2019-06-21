@@ -411,9 +411,6 @@ public class BuyDAO {
 		//-- 장바구니의 아이템들 리턴
 	public ArrayList<BuyItemBean> getCartItems(String id) {
 		
-//		System.out.println("1. BuyDAO getCartItems() 시작");
-//		System.out.println("id = "+id);
-		
 		ArrayList<BuyItemBean> cartItems = new ArrayList<>();
 		BuyItemBean buyItemBean = new BuyItemBean();
 		
@@ -424,32 +421,24 @@ public class BuyDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-//			System.out.println("2. select 문 실행");
-			
 			while(rs.next()) {
-//				System.out.println("3. while 문 실행");
 				
 				// 1개 아이템 정보 가져와 저장
 				buyItemBean = new BuyItemBean();
 				
 				buyItemBean.setItem_buy_num(rs.getInt("cart_item_num"));
-//					System.out.println("cart_item_num : "+rs.getInt("cart_item_num"));
 				
 				buyItemBean.setItem_count(rs.getInt("cart_count"));
-//					System.out.println("cart_count : "+rs.getInt("cart_count"));
 				
 				buyItemBean.setItem_img(rs.getString("item_img"));
 				buyItemBean.setItem_name(rs.getString("item_name"));
 				buyItemBean.setItem_num(rs.getInt("item_num"));
 				buyItemBean.setItem_price(rs.getInt("item_price"));
 				
-//				System.out.println("4. "+ buyItemBean.getItem_name());
 				
 				cartItems.add(buyItemBean);
-//				System.out.println("5. cartItems에 butItemBean 추가");
 			}
 			
-//			System.out.println("6. BuyDAO getCartItems() 성공");
 			
 		} catch (SQLException e) {
 			System.out.println("BuyDAO - getCartItems() 실패");
@@ -467,7 +456,6 @@ public class BuyDAO {
 	
 	/*-------------------------------------- 영비 ---------------------------------------*/
 		public ArrayList<BuyBean> selectConfirmCheckoutList(String user_id, int page, int limit){
-//		System.out.println("BuyDAO --selectConfirmCheckoutList ");
 		
 		ArrayList<BuyBean> buyList=new ArrayList<>();
 		
@@ -513,7 +501,6 @@ public class BuyDAO {
 	
 		//영비 -- 글 목록 개수 구하기
 	public int selectBuyListCount(String id) {
-//		System.out.println("dao--> selectBuyListCount()");
 		int buyListCount=0;
 		String sql="select count(*) from buy where buy_user_id = '" + id + "' ";
 		

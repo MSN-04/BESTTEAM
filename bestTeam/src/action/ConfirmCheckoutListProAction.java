@@ -28,7 +28,6 @@ public class ConfirmCheckoutListProAction implements Action {
 		 * 결제금액: buy_total(from BuyBean)총 결제금액 가져오기
 		 * ---------------------------------------------
 		 * */
-//		System.out.println("ConfirmCheckoutListProAction 시작");
 		ActionForward forward=new ActionForward();
 		BuyBean buyBean=new BuyBean();	
 		ArrayList<BuyBean> buyList=new ArrayList<BuyBean>();

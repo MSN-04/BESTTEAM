@@ -20,7 +20,7 @@ public class QnaReplyProAction implements Action {
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
 		
-		String writer = request.getParameter("qna_reply_writer");
+		String qna_re_writer = request.getParameter("qna_reply_writer");
 		String id = (String)session.getAttribute("id");
 		
 		response.setCharacterEncoding("UTF-8");
@@ -35,12 +35,15 @@ public class QnaReplyProAction implements Action {
 			return null;
 		} 
 		
+		String qna_writer = request.getParameter("qna_writer");
 		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
 		QnaReplyProService qnaReplyInsertProService = new QnaReplyProService();
+		System.out.println(qna_writer);
 		
 		qnaBean.setQna_item_num(qna_item_num);
-		qnaBean.setQna_writer(writer);
+		qnaBean.setQna_writer(qna_writer);
+		qnaBean.setQna_re_writer(qna_re_writer);
 		qnaBean.setQna_subject(request.getParameter("qna_reply_subject"));
 		qnaBean.setQna_content(request.getParameter("qna_reply_content"));
 		

@@ -18,8 +18,6 @@ public class CheckoutFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		System.out.println();
-//		System.out.println("CheckoutFormAction 시작");
 		
 		// 0.
 		ActionForward forward = new ActionForward();
@@ -38,7 +36,7 @@ public class CheckoutFormAction implements Action {
 			out.println("</script>");
 		} else {
 			String id = (String) session.getAttribute("id");
-			System.out.println("id = "+id);
+		//	System.out.println("id = "+id);
 
 			// (1) user의 장바구니 상품 목록
 			CheckoutFormService checkoutFormService = new CheckoutFormService();
@@ -56,7 +54,6 @@ public class CheckoutFormAction implements Action {
 			// 3.
 			forward.setPath("/shop/checkout.jsp");
 			
-//			System.out.println("CheckoutFormAction 끝");
 			
 		}
 		

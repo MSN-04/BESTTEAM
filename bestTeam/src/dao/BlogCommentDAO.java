@@ -94,20 +94,20 @@ public class BlogCommentDAO {
 	// 댓글 수정 메소드
 	public int updateComment(BlogCommentBean blogCommentBean) {
 		int updateCount = 0;
-		System.out.println("BlogCommentDAO.java - updateComment()");
+		//System.out.println("BlogCommentDAO.java - updateComment()");
 		String sql = "UPDATE blog_comment SET comment_content=? WHERE comment_num=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, blogCommentBean.getComment_content());
 			pstmt.setInt(2, blogCommentBean.getComment_num());
-			System.out.println("updateComment - pstmt : "+pstmt);
+			//System.out.println("updateComment - pstmt : "+pstmt);
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-		System.out.println("updateComment - updateCount : "+updateCount);
+		//System.out.println("updateComment - updateCount : "+updateCount);
 		return updateCount;
 	}
 
@@ -192,7 +192,7 @@ public class BlogCommentDAO {
 	
 	// 댓글 목록 갯수 구하기
 	public int selectListCount() {
-		System.out.println("selectListCount()");
+	//	System.out.println("selectListCount()");
 		int listCount = 0;
 
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
@@ -217,7 +217,7 @@ public class BlogCommentDAO {
 	}
 
 	public ArrayList<BlogCommentBean> selectArticleList(int page, int limit) {
-		System.out.println("selectArticleList()");
+		//System.out.println("selectArticleList()");
 
 		ArrayList<BlogCommentBean> article2 = new ArrayList<BlogCommentBean>();
 		BlogCommentBean blogCommentBean = null;

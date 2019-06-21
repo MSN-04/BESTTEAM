@@ -38,7 +38,8 @@
 <!-- 결제 API 연동 1 End -->
 
   <head>
-    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Checkout ─ Cafe Tinkervell</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -98,14 +99,13 @@
   
   <header>
 	<jsp:include page="/inc/header.jsp"/>
-    END nav
   </header>
   
   
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item"  data-stellar-background-ratio="0.5">
-		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover;"></div>        
+      <div class="slider-item">
+		<div class="overlay" style="background-image: url(./images/receipt.jpg); background-position: 50% 0%; background-repeat: no-repeat; background-size: cover; opacity: .7;"></div>        
 		<div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
