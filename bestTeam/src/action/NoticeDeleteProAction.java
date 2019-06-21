@@ -43,9 +43,9 @@ public class NoticeDeleteProAction implements Action {
 			out.println("history.back()"); // 이전 페이지로 돌아가기
 			out.println("</script>"); // 자바스크립트 종료 태그
 		} else {
-			forward = new ActionForward();
-			forward.setPath("noticeList.no");
-			forward.setRedirect(true);
+			out.println("<script>"); // 자바스크립트 시작 태그
+			out.println("location.href='noticeList.no'"); // 오류 메세지 다이얼로그 표시
+			out.println("</script>"); // 자바스크립트 종료 태그
 		}
 		
 		return forward;

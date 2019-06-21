@@ -11,13 +11,15 @@
 	int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 %>
 <script language="javascript">
-	function delconfirm(num) {
+	function delconfirm(num, notice_num) {
+		
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
-			location.href = "./noticeDeletePro.no?num=" + num;
-		} else
+			location.href = "noticeDeletePro.no?num=" + num + "&notice_num=" + notice_num;
+		} else {
 			alert("취소되었습니다");
-		return false;
+			return false;
+		}
 	}
 </script>
 <!DOCTYPE html>
@@ -153,9 +155,8 @@
 				<a
 					href="./noticeModifyForm.no?notice_num=<%=article.getNotice_num()%>"
 					class="btn btn-primary btn-outline-primary">수정</a> <a
-					href="./noticeDeletePro.no?notice_num=<%=notice_num%>"
 					class="btn btn-primary btn-outline-primary"
-					onclick="delconfirm('<%=article.getNotice_num()%>')">삭제</a> <a
+					onclick="delconfirm('<%=article.getNotice_num()%>','<%=notice_num%>')">삭제</a> <a
 					href="./noticeList.no" class="btn btn-primary btn-outline-primary">글목록</a>
 					</div>
 				<%

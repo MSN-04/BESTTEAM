@@ -28,12 +28,14 @@
 
 	<script language="javascript">
 	function delconfirm(num) {
+
 		var message = confirm("이 게시글을 삭제하시겠습니까?");
 		if (message == true) {
-			location.href = "./BlogCommentDeletePro.bl?num=" + num;
-		} else
+			location.href = "BlogDeletePro.bl?blog_num=" + num;
+		} else {
 			alert("취소되었습니다.");
-		return false;
+			return false;
+		}
 	}
 
 	// 댓글창 숨기기
@@ -381,8 +383,7 @@
 					style="float: right;">글목록</a>
 				<a href="blogModifyForm.bl?blog_num=<%=blog_num%>"
 					class="btn btn-primary btn-outline-primary" style="float: right;">수정</a>
-				<a href="BlogDeletePro.bl?blog_num=<%=blog_num%>"
-					class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getBlog_num()%>')" style="float: right;">삭제</a>
+				<a class="btn btn-primary btn-outline-primary" onclick="delconfirm('<%=article.getBlog_num()%>')" style="float: right;">삭제</a>
 				
 				<%
 					} else {
