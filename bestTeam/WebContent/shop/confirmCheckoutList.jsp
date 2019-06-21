@@ -20,10 +20,6 @@
 	
 	int number = 0;
 	
-// 	System.out.println("nowPage :: " + nowPage);
-// 	System.out.println("startPage :: " + startPage);
-// 	System.out.println("endPage :: " + endPage);
-	
 	number = listCount - (nowPage - 1) * (limit);
 	
 	BuyBean buyBean=(BuyBean)request.getAttribute("BuyBean");
@@ -45,7 +41,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+<title>Shop ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,7 +85,7 @@
 	<section class="home-slider owl-carousel">
 
 		<div class="slider-item"
-			style="background-image: url(./images/bg_3.jpg);" >
+			style="background-image: url(./images/coffeecup.jpg);" >
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -190,11 +186,6 @@
 		<br><br>
 		
 <!--   ------------------------------------------------------------------------------------------------------------------------ -->
-
-
-      
-
-
         </div>
         </div>
          <div class="row mt-5">
