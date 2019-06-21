@@ -9,10 +9,8 @@
   <%
   	ArrayList<CartBean> cartList = (ArrayList<CartBean>)request.getAttribute("cartList");
   	String id = (String)session.getAttribute("id"); 
-  
-  
   %>
-    <title>Cart ─ Cafe Tinkervell</title>
+    <title>Cart ─ Café TinkerVell</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -163,14 +161,14 @@
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(./images/bg_3.jpg);">
+      <div class="slider-item" style="background-image: url(./images/coffeecup.jpg);">
         <div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
               <h1 class="mb-3 mt-5 bread">Cart</h1>
-              <p class="breadcrumbs"><span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span><a href="cart.jsp">Cart</a></span></p>
+<!--               <p class="breadcrumbs"><span class="mr-2"><a href="./index/index.jsp">Home</a></span> <span><a href="cart.jsp">Cart</a></span></p> -->
             </div>
             </div>
         </div>

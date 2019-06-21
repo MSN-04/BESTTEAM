@@ -18,7 +18,7 @@ public class ReviewReplyProService {
 
 	//답변 등록 서비스로직
 	public boolean insertReply(ReviewBean reviewBean, int new_review_re_ref) throws Exception{
-		System.out.println("리뷰ReplyInsertProService");
+//		System.out.println("리뷰ReplyInsertProService");
 		
 		boolean isInsertSuccess = false;
 		

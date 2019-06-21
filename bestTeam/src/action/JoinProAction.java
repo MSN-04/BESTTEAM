@@ -36,8 +36,6 @@ public class JoinProAction implements Action {
 		int age2 = (((Calendar.getInstance().get(Calendar.YEAR)-year)%100)+1);
 		String age = Integer.toString(age2);
 		
-		
-		System.out.println(age + " " + gender);
 		userBean.setUser_id(request.getParameter("id"));
 		userBean.setUser_pass(request.getParameter("pass"));
 		userBean.setUser_name(request.getParameter("name"));

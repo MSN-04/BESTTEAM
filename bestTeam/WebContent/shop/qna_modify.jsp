@@ -21,6 +21,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 <head>
 <meta charset="UTF-8">
 <title>Q&A ─ Cafe Tinkervell</title>
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">

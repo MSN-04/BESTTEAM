@@ -17,19 +17,18 @@
 	ArrayList<ReviewBean> reviewList = (ArrayList<ReviewBean>)request.getAttribute("reviewList");
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	String id=(String)session.getAttribute("id");
-	System.out.println(id);
-	System.out.println("reviewList: " +reviewList.size());
 	int listCount = pageInfo.getListCount();
 	int nowPage = pageInfo.getPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	
-	System.out.println("listCount: " +listCount);
+// 	System.out.println("listCount: " +listCount);
 	int pageSize = 5;
 	int pageBlock =3;
 	int pageCount = listCount/pageSize+(listCount%pageSize==0?0:1);
-// 	qna
+
+	// 	qna
 	QnaBean qnabean = new QnaBean();
 // 	UserBean userbean = new UserBean();
 	int qnaNum = qnabean.getQna_num();
@@ -45,7 +44,7 @@
 	int startPage2 = pageInfo2.getStartPage();
 	int endPage2 = pageInfo2.getEndPage();
 // 	int pageCount2 = listCount2/pageSize+(listCount2%pageSize==0?0:1);
-	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
+// 	System.out.println("스타트: "+startPage2+"엔드: "+endPage2);
 	
     ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
     
@@ -54,13 +53,12 @@
 	c.setMaxAge(60*60*24); // 24시간
 	response.addCookie(c);
 %>
-
-	
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Shop ─ Cafe Tinkervell</title>
+
+<title>Shop ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -612,7 +610,6 @@ $( '#rere1' ).click(
 						<div class="input-group col-md-6 d-flex mb-3" style="padding-left: 0 !important; padding-right: 0 !important;">
 							<div class="input-group mb-3">
                     
-<!--               <span class="input-group-btn ml-2"> -->
                     <button type="button" class="quantity-left-minus btn input-group-btn">
                      	<i class="icon-minus"></i>
                     </button>&nbsp;
@@ -620,7 +617,6 @@ $( '#rere1' ).click(
                     <button type="button" class="quantity-right-plus btn input-group-btn" >
                        <i class="icon-plus"></i>
                    </button>
-<!--                  </span> -->
                       </div>
 						</div>
 					</div>
@@ -695,8 +691,6 @@ $( '#rere1' ).click(
                  <%
 										if (reviewList != null && listCount > 0) {
 											for (int i = 0; i < reviewList.size(); i++) {
-												System.out.println("싱글페이지:"+ reviewList.size());
-												System.out.println(reviewList.get(i).getReview_re_lev());
 									%>
 									
 								<tr>
@@ -705,7 +699,6 @@ $( '#rere1' ).click(
 									<% 
 									int wid = 0;
 										if(reviewList.get(i).getReview_re_lev()>0){
-											System.out.println(reviewList.get(i).getReview_re_lev());
 										wid = reviewList.get(i).getReview_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse<%=i %>" style="width=<%=wid %> ">[RE]:<%=reviewList.get(i).getReview_subject() %> </a></td>
@@ -718,16 +711,18 @@ $( '#rere1' ).click(
 								</tr>
 								<tr>
 								<td id="collapse<%=i %>" class="panel-collapse collapse in" colspan="4">
-											<% if(id!= null){
-											if(id.equals(reviewList.get(i).getReview_user_id())||id.equals("admin")){ %>
+											<% 
+											%>
 											<div class="panel-body">
 											<%
 											   if(reviewList.get(i).getReview_img() != null) {
-											       %><p><img src="./itemUpload/<%=reviewList.get(i).getReview_img() %>"></p><%
+											       %><p><img src="./itemUpload/<%=reviewList.get(i).getReview_img() %>" style="width: 500px; height: 500px;"></p><%
 											   }
 											%>
 											
 												<b><%=reviewList.get(i).getReview_content() %></b>
+												<%if(id!=null){
+												if(id.equals("admin") ||id.equals(reviewList.get(i).getReview_user_id())){ %>
 												<section class="ftco=section div0525" id="ac1">
 													<div class="container">
 														<div class="col-md-8 ftco-animate " style="max-width:100% !important;">
@@ -736,9 +731,11 @@ $( '#rere1' ).click(
 														</div>
 													</div>
 												</section>
-												
+												<%}
+												}%>
 <!-- 															id가 "admin"이고 답글인 경우 답글폼 숨기기  -->
-										<% if(id.equals("admin")){ 
+										<%if(id!= null){ 
+										if(id.equals("admin")){ 
 											if(reviewList.get(i).getReview_re_lev()==0){
 											%>
 													<section class="ftco-section" style="width: 100% !important;">
@@ -758,12 +755,10 @@ $( '#rere1' ).click(
 				<table style="width: 100%; text-align: left;">
 					<div class="row">
 					<tr>
-						<!-- 						<div class="col-md-6"> -->
 						<div class="form-group">
 							<input type="text" class="form-control" value="<%=id %>"
 								name="review_reply_writer" id="review_reply_writer" readonly="readonly">
 						</div>
-						<!-- 						</div> -->
 					</tr>
 					
 					</div>
@@ -788,10 +783,7 @@ $( '#rere1' ).click(
 			</form>
 		</div>
 	</section>
-	<% }else{
-		%><b><%=reviewList.get(i).getReview_content() %></b><%
-	}
-											
+	<% }
 											}else{
 											%>
 									<div class="panel-body">
@@ -802,12 +794,11 @@ $( '#rere1' ).click(
 										
 												%>		
 											</div>
-											<%}else{
-												%><b>작성자만 볼 수 있습니다.</b>
-											<% }
-											}else{%>
-											<b>로그인 후 이용 가능합니다.</b>
-											<%} %>
+											<%
+												%>
+											<% 
+											}%>
+											
 										</td>
 								</tr>
 								
@@ -876,8 +867,6 @@ $( '#rere1' ).click(
 									<% 
 										if (qnaList != null && listCount2 > 0) {
 											for (int a = 0; a < qnaList.size(); a++) {
-												System.out.println("싱글페이지:"+ qnaList.size());
-												System.out.println(qnaList.get(a).getQna_re_lev());
 									%>
 									
 								<tr>
@@ -885,7 +874,6 @@ $( '#rere1' ).click(
 									<% 
 									int wid2 = 0;
 										if(qnaList.get(a).getQna_re_lev()>0){
-											System.out.println(qnaList.get(a).getQna_re_lev());
 										wid2 = qnaList.get(a).getQna_re_lev()*10;
 											%>
 											<td><a data-toggle="collapse" data-parent="#accordian" href="#collapse1<%=a %>" style="width=<%=wid2 %> ">[RE]:<%=qnaList.get(a).getQna_subject() %> </a></td>
@@ -899,12 +887,14 @@ $( '#rere1' ).click(
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
 											<% if(id!=null){
-											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
+											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){
+												System.out.println(qnaList.get(a).getQna_writer());%>
+											
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
 													<div class="container">
-														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important;">
+														<div class="col-md-8 ftco-animate div0525" style="max-width:100% !important; z-index: 999;">
 															<a href="qnaModifyForm.qna?qna_num=<%=qnaList.get(a).getQna_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;">수정</a> 
 															<a href="qnaDeletePro.qna?qna_re_ref=<%=qnaList.get(a).getQna_re_ref() %>&qna_item_num=<%=qnaList.get(a).getQna_item_num() %>" class="btn btn-primary btn-outline-primary" style="float: right;" onclick="delconfirm('<%=qnaList.get(a).getQna_re_ref() %>','<%=qnaList.get(a).getQna_item_num() %>')">삭제</a>
 														</div>
@@ -924,7 +914,8 @@ $( '#rere1' ).click(
 																			name="qna_num" id="qna_reply_subject" required="required">
 																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_item_num() %>"
 																			name="qna_item_num" id="qna_reply_subject" required="required">
-																
+																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_writer() %>"
+																			name="qna_writer" id="qna_writer" required="required">
 															<div class="col-lg-12 text-center">
 																<h2 class="section-heading text-uppercase">QNA 답글</h2>
 															</div>
@@ -935,9 +926,10 @@ $( '#rere1' ).click(
 																	<div class="form-group">
 																		<input type="text" class="form-control" value="<%=id %>"
 																			name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+																			<
 																	</div>
 																	<!-- 						</div> -->
-											
+																	</div>
 																</tr>
 															</table>
 															<table style="width: 100%; text-align: center;">

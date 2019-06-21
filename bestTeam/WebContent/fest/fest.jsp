@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 
 <head>
-<title>Festival ─ Cafe Tinkervell</title>
+
+<title>Festival ─ Café TinkerVell</title>
 <style>
 .jumbotron {
 	opacity: 0.87;
@@ -70,9 +71,9 @@ background:none !important;
 					</h2>
 				</div>
 				<div>
-					<p>카페 팅커벨은 커피 문화를 적극 후원합니다. <br>
+					<p>Café TinkerVell은 커피 문화를 적극 후원합니다.<br>
 					국내외에서 개최되는 각종 커피 박람회&축제를 소개함으로써 <br>
-					커피가 사람들의 문화에 한층 더 다가갈 수 있도록 하고싶은 팅커벨의 마음입니다.</p>
+					커피가 사람들의 문화에 한층 더 다가갈 수 있도록 하고싶은  마음입니다.</p>
 				</div>
 			</div>
 		</div>
@@ -83,7 +84,6 @@ background:none !important;
 	<!-- 		<h5>-----------------------------------------------------------</h5> -->
 	<!-- 		<h4 class="mb-4" style="text-align: center;"> -->
 
-	<!-- 			<i>여기에는 구글api캘린더를 구현 할 예정</i> -->
 	<!-- 		</h4> -->
 	<!-- 		<h5>-----------------------------------------------------------</h5> -->
 	<!-- 	</div> -->
@@ -108,7 +108,7 @@ background:none !important;
 
 	<section class="home-slider owl-carousel">
 
-		<div class="slider-item" style="background-image: url(fest/busanfest.JPG);">
+		<div class="slider-item" style="background-image: url(./fest/busanfest.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -139,7 +139,7 @@ background:none !important;
 			</div>
 		</div>
 
-			<div class="slider-item" style="background-image: url(fest/강릉.JPG);">
+			<div class="slider-item" style="background-image: url(./fest/강릉.JPG);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div
@@ -469,8 +469,6 @@ background:none !important;
 								특히나 바리스타 경연에는 시그니쳐 드링크 레시피와 제작과정을 담은 동영상을 제작 해 <br>
 								인터넷으로 응모하고 동영상으로 심사도 합니다.<br>
 								토너먼트방식으로 우승자를 가리는데, <br>축제장의 한 가운데서 관람객과 소통을 하면서 경연을 진행하는것이 큰 볼거리입니다.<br>
-								
-								
 								
 								</p>
 							</div>

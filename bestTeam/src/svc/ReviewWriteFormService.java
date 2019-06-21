@@ -12,7 +12,7 @@ import vo.UserBean;
 public class ReviewWriteFormService {
 	
 	public UserBean getUserInfo(String id) {
-		System.out.println("리뷰ㅜriteFormService");
+//		System.out.println("리뷰ㅜriteFormService");
 		UserBean userBean = null;
 		
 		Connection con = getConnection();

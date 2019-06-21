@@ -27,7 +27,7 @@ public class BlogListService {
 		// BoardDAO 클래스의 selectListCount() 메서드를 호출하여 글 목록 갯수 얻어와서 변수에 저장
 		listCount = blogDAO.selectListCount();
 		
-		System.out.println("게시물 갯수 : " + listCount);
+//		System.out.println("게시물 갯수 : " + listCount);
 		
 		// Connection 객체 반환
 		close(con);

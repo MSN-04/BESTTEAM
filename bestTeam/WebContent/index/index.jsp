@@ -1,8 +1,11 @@
+<%@page import="vo.ItemBean"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <%
+	ArrayList<ItemBean> itemList = (ArrayList<ItemBean>)request.getAttribute("itemList");
 	String id = (String) session.getAttribute("id");
 	int isIdNull = 0;	
 
@@ -14,7 +17,7 @@
 %>
 
 <head>
-<title>Cafe Tinkervell</title>
+<title>Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,15 +45,12 @@
 <link rel="stylesheet" href="./css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="./css/jquery.timepicker.css">
 
-
-
 <link rel="stylesheet" href="./css/flaticon.css">
 <link rel="stylesheet" href="./css/icomoon.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/kakaoTalkChat.css">
 
 </head>
-
 <body>
 <style>
  .h1{
@@ -113,7 +113,7 @@ text-transform:none !important;
 					data-scrollax-parent="true">
 
 					<div class="col-md-8 col-sm-12 text-center ftco-animate" style="margin-top: 70px !important;">
-						<span class="subheading">Café TinkervVell</span>
+						<span class="subheading">Café TinkerVell</span>
 						<h1 style="line-height: 1.3em;">Which Coffee is Attractive</h1>
 						<h4 >어떤 원두에 끌리세요?</h4>
 						<p>
@@ -145,14 +145,14 @@ text-transform:none !important;
 	<div class="row justify-content-center mb-5 pb-3">
 		<div class="col-md-7 heading-section ftco-animate text-center">
 			<h2 class="mb-4" style="color:#C49B63;">We Think Coffee's Value</h2>
-			<p> <h4>커피의 가치를 생각하는 카페 팅커벨</h4>
-			팅커벨은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br>
-			팅커벨은 국내 커피 역사를 이끌어 온 정통성과 세계적인 기술력, 커피전문가의 노하우로 고품질의 커피 본연의 맛과 향을 즐길 수 있는 좋은 커피입니다. <br>
-			팅커벨은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
-			마음과 마음이 이어지는 순간 팅커벨은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- TinkerVell - </p>
+			<p> <h4>커피의 가치를 생각하는 Café TinkerVell</h4>
+<!-- 			TinkerVell은 국내 커피시장을 선도하는 시장점유율 상위권 브랜드로 확고한 시장 위치를 차지하고 있습니다. <br> -->
+			TinkerVell은 세계적인 기술력, 커피 전문가의 노하우로 고품질의 본연의 맛과 향을 즐길 수 있는 좋은 커피를 유통합니다. <br>
+			TinkerVell은 일상 속 작은 휴식과 여유이며, 새로운 기운을 불어 넣어줍니다. <br>
+			마음과 마음이 이어지는 순간 TinkerVell은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Café TinkerVell - </p>
 		</div>
-	</div><br><br><br><br><br><br>
+	</div>
 
 	<section class="ftco-about d-md-flex">
 		<div class="one-half0 img0">
@@ -166,13 +166,13 @@ text-transform:none !important;
 					
 				</div>
 				<div>
-					<p>세계인들의 생활속에 스며들어 전 세계의 커피문화를 선도하고 있는 커피팅커벨이<br>
-					일상을 풍요롭게하는 제3의 공간으로서,<br> 어디에서도 고객과 함께하며 새로운 커피문화를 정착시키려 노력하고 있습니다.</p>
+					<p>세계인들의 생활 속에 스며들어 전 세계의 커피 문화를 선도하고 있는 Café TinkerVell이<br>
+					일상을 풍요롭게 하는 제3의 공간으로서,<br> 어디에서도 고객과 함께하며 새로운 커피문화를 정착시키려 노력하고 있습니다.</p>
 				</div>
 			</div>
 		</div>
 	</section>
-	<br><br><br><br><br><br>
+	<br>
 
 	<section class="ftco-about d-md-flex">
 
@@ -185,9 +185,9 @@ text-transform:none !important;
 				</div>
 				<div>
 					<p>블랜딩을 할 때에는 균일하게 로스팅을 하는 것이 중요하기 때문에 특유의 노하우가 필요합니다.<br>
-					카페 팅커벨은 잘 배합된 블렌딩 원두만을 선별하여 슬로우로스팅(Slow Roasting)된 원두만을 판매합니다.<br>
-					슬로우 로스팅은 보통의 로스팅 보다 천천히 로스팅하여, 원두 안의 좋은 맛과 향미의 성분을 끌어내는 방식입니다.<br>
-					그래서 카페 팅커벨의 원두는 탄맛이 적고 생두 고유의 향이 살아있습니다.<br>
+					Café TinkerVell은 잘 배합된 블렌딩 원두만을 선별하여 슬로우로스팅(Slow Roasting)된 원두만을 판매합니다.<br>
+					슬로우 로스팅은 보통의 로스팅보다 천천히 로스팅하여, 원두 안의 좋은 맛과 향미의 성분을 끌어내는 방식입니다.<br>
+					그래서 Café TinkerVell의 원두는 탄맛이 적고 생두 고유의 향이 살아있습니다.<br>
 					</p>
 				</div>
 			</div>
@@ -207,9 +207,9 @@ text-transform:none !important;
 					<h4 class="mb-4"><i>우아한 맛을 만나보세요 </i></h4>
 				</div>
 				<div>
-					<p>카페 팅커벨의 원두는 최고의 기후조건을 갖춘 각국의 재배지에서 재배된 원두를 가진 점포만을 선별하여<br>
-					카페 팅커벨만의 독자적인 배합비율로 블렌딩 과정을 거칩니다.<br>
-					[현재 판매점포: /Cafe1945 / ILDIO / Fior Di Caffee / Golden Bean / 모모스커피 ] 
+					<p>Café TinkerVell은 최고의 기후조건을 갖춘 각국의 재배지에서 재배된 원두를 가진 점포만을 선별하여<br>
+					Café TinkerVell만의 독자적인 배합비율로 블렌딩 과정을 거칩니다.<br>
+					
 					</p>
 				</div>
 			</div>
@@ -226,7 +226,7 @@ text-transform:none !important;
 					
 				</div>
 				<div>
-					<p>카페 팅커벨은 한 분, 한 분 취향에 맞는 원두를 추천 해 줍니다
+					<p>Café TinkerVell은 한 분, 한 분 취향에 맞는 원두를 추천해 줍니다.<br>
 					지금 당신의 취향에 맞는 원두를 골라보세요!<br><br>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a onclick="startNow(<%=isIdNull %>)" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Pick Now</a>
@@ -246,86 +246,41 @@ text-transform:none !important;
 				<div class="col-md-7 heading-section ftco-animate text-center">
 					<span class="subheading">Best Quality!</span>
 					<h2 class="mb-4"><i>Best Seller</i></h2>
-					<p>커피 팅커벨이 보장하는 퀄리티의 추천상품입니다</p>
+					<p>Café TinkerVell이 보장하는 퀄리티의 추천상품입니다</p>
 					
 				</div>
 			</div>
 			<hr>
+			
 			<div class="row">
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=52" class="img"
-							style="background-image: url(./itemUpload/les Amants.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-							Les Amants
-							</h3>
-							<p class="price">
-								<span>14,300원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=52" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=45" class="img"
-							style="background-image: url(./itemUpload/모모스커피 에스쇼콜라 블렌딩 커피.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								에스쇼콜라 블렌딩 커피
-							</h3>
-							<p class="price">
-								<span>12,000원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=45" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=48" class="img"
-							style="background-image: url(./itemUpload/서울.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								커피 서울 
-							</h3>
-							
-							<p class="price">
-								<span>15,400원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=48" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="itemSingle.em?item_num=37" class="img"
-							style="background-image: url(./itemUpload/Cream of the Crop.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3>
-								<a href="#">Cream Of The Crop</a>
-							</h3>
-							<p class="price">
-								<span>14,000원</span>
-							</p>
-							<p>
-								<a href="itemSingle.em?item_num=37" class="btn btn-primary btn-outline-primary">GO
-									</a>
-							</p>
-						</div>
-					</div>
+		<%
+			if (itemList != null) {
+				for (int i = 0 ; i < itemList.size() ; i++) {
+					%>
+		<div class="col-md-3">
+			<div class="menu-entry">
+				<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>" class="img"
+					style="background-image: url(./itemUpload/<%=itemList.get(i).getItem_img() %>);"></a>
+				<div class="text text-center pt-4">
+					<h3><%=itemList.get(i).getItem_name() %></h3>
+
+					<p class="price">
+						<span><%=itemList.get(i).getItem_price() %>원</span>
+					</p>
+					<p>
+						<a href="itemSingle.em?item_num=<%=itemList.get(i).getItem_num() %>"
+							class="btn btn-primary btn-outline-primary">GO </a>
+					</p>
 				</div>
 			</div>
+		</div>
+
+		<%
+				}
+			}
+		%>
+	</div>
+			
 		</div>
 	</section>
 	

@@ -22,7 +22,7 @@ public class ReviewModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ReviewModifyProAction");
+	//	System.out.println("ReviewModifyProAction");
 		
 		ActionForward forward = null;
 		
@@ -36,12 +36,12 @@ public class ReviewModifyProAction implements Action {
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-		System.out.println("realFolder : "+realFolder);
+	//	System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+//            System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Notice ─ Cafe Tinkervell</title>
+<title>Notice ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -98,7 +98,6 @@
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread" >Notice</h1>
 						<p class="breadcrumbs">
-<!-- 							<span class="mr-2"><a href="./noticeList.no">Notice</a></span> -->
 						</p>
 					</div>
 
@@ -140,7 +139,6 @@
 <!-- 					style="text-align: center;"> -->
 <!-- 					<i class="icon-minus"></i> &nbsp;&nbsp;이전글 &nbsp; -->
 <%-- 				</button><a href="noticeDetail.no?notice_num=<%=rre%> "> <%=article.getNotice_subject()%></a> --%>
-				
 <!-- 			</div> -->
 <!-- 		</div> -->
 

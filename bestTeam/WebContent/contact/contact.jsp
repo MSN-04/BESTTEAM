@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Contact ─ Cafe Tinkervell</title>
+    <title>Contact ─ Café TinkerVell</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -52,6 +52,9 @@
 	    .col-md-12 mb-3 .p{
 	    font-color:#fed136;
 	    }
+	    .text-muted1 {
+	    	color: #b3b3b3;
+	    }
 	    
 	    #mail{
 	    backgound:#3e3e2422;
@@ -86,7 +89,6 @@
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Contact Us</h1>
-<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="#crew">Crew</a></span> <span><a href="#mail">Contact</a></span></p> -->
             </div>
 
           </div>
@@ -112,9 +114,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/moon.jpg" alt="">
                     <h4>문세웅</h4>
-                    <p class="text-muted">문세웅</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">sewoong0409@naver.com</p>
+                    <p class="text-muted1">Moon SeWoong</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">sewoong0409@naver.com</p>
                     
                 </div>
             </div>
@@ -122,9 +124,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/choi.jpg" alt="">
                     <h4>최영비</h4>
-                    <p class="text-muted">최영비</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">cyeongb@gmail.com</p>
+                    <p class="text-muted1">Choe YeongBi</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">cyeongb@gmail.com</p>
                     
                 </div>
             </div>
@@ -132,9 +134,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/ji.jpg" alt="">
                     <h4>지이듬</h4>
-                    <p class="text-muted">지이듬</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">game9um@gmail.com</p>
+                    <p class="text-muted1">Ji YiDeum</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">game9um@gmail.com</p>
                     
                 </div>
             </div>
@@ -142,9 +144,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/shin.jpg" alt="">
                     <h4>신미송</h4>
-                    <p class="text-muted">신미송</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">fhdgofhdgo@naver.com</p>
+                    <p class="text-muted1">Shin MiSong</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">fhdgofhdgo@naver.com</p>
                     
                 </div>
             </div>
@@ -152,9 +154,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/kwon.jpg" alt="">
                     <h4>권경민</h4>
-                    <p class="text-muted">권경민</p>
-                    <p class="text-muted">Advisor</p>
-                    <p class="text-muted">kkmkwon@naver.com</p>
+                    <p class="text-muted1">Kwon KyoungMin</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">kkmkwon@naver.com</p>
                   
                 </div>
             </div>
@@ -162,9 +164,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/song.jpg" alt="">
                     <h4>송주영</h4>
-                    <p class="text-muted">송주영</p>
-                    <p class="text-muted">WEB,JSP,MYSQL</p>
-                    <p class="text-muted">saruru1@naver.com</p>
+                    <p class="text-muted1">Song JuYeong</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">saruru1@naver.com</p>
                     
                 </div>
        
@@ -173,9 +175,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/han.jpg" alt="">
                     <h4>한성민</h4>
-                    <p class="text-muted">한성민</p>
-                    <p class="text-muted">Advisor</p>
-                    <p class="text-muted">gkstyd1313@naver.com</p>
+                    <p class="text-muted1">Han SungMin</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">gkstyd1313@naver.com</p>
                   
                 </div>
             </div>
@@ -183,9 +185,9 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="./images/lee.jpg" alt="">
                     <h4>이기홍</h4>
-                    <p class="text-muted">이기홍</p>
-                    <p class="text-muted">Advisor</p>
-                    <p class="text-muted">ghlee@imsolutions.co.kr</p>
+                    <p class="text-muted1">Lee KiHong</p>
+                    <p class="text-muted1" style="margin-top: -12px;">Developer</p>
+                    <p class="text-muted1" style="margin-top: -21px;">ghlee@imsolutions.co.kr</p>
                   
                 </div>
             </div>
@@ -206,9 +208,6 @@
 					
 					
           <div class="col-md-6 ftco-animate">
-<!--            <div class="col-lg-12 text-center"> -->
-<!--                 <h2 class="section-heading text-uppercase">오시는길</h2> -->
-<!--             </div> -->
    <div id="map" style="width:600px;height:350px; text-align:center;"></div>
 					<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=ad86d5356285065db2653bab5c5d0e4c&libraries=services,clusterer,drawing"></script>
 					<script>
@@ -253,16 +252,16 @@
 							<div class="col-md-12 mb-4">
 	              <h2 class="h4">Contact Information</h2>
 	            </div>
-	            <div class="col-md-12 mb-3">
+	            <div class="col-md-12 mb-3 text-muted1">
 	              <p><span>주소:</span> 부산광역시 부산진구 동천로 109 삼한골든게이트빌딩 7층</p>
 	            </div>
-	            <div class="col-md-12 mb-3">
+	            <div class="col-md-12 mb-3 text-muted1">
 	              <p><span>전화번호:</span> +82 051-803-0909</p>
 	            </div>
-	            <div class="col-md-12 mb-3">
+	            <div class="col-md-12 mb-3 text-muted1">
 	              <p><span>이메일:</span> class@itwillbs.co.kr</p>
 	            </div>
-	            <div class="col-md-12 mb-3">
+	            <div class="col-md-12 mb-3 text-muted1">
 	              <p><span>홈페이지:</span> https://itwillbs.co.kr/</p>
 	            </div>
 						</div>

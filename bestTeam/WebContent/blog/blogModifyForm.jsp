@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog ─ Cafe Tinkervell</title>
+<title>Blog ─ Café TinkerVell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -63,9 +63,6 @@
 		    elPlaceHolder: "ir1",// textarea id로 변경해야 함 [id = ir1(155번째줄)]
 		    sSkinURI: "<%=ctx%>/se2/SmartEditor2Skin.html",
 		    fCreator: "createSEditor2",
-// 		    fOnAppLoad : function(){
-// 				oEditors.getById["ir1"].exec("PASTE_HTML", ['<span style="color: #999;" id="placeholder">이미지 퀵 에디터는 Microsoft Edge 또는 Window Explorer에서만 지원됩니다.</span>']);
-// 		    }
 		});
 	
 		//저장버튼 클릭시 form 전송
@@ -169,7 +166,7 @@
 						<td colspan="2" style="position: absolute; left: 50%;">	
 						
 							<input type="button" id="save" class="btn btn-primary py-3 px-4" value="저장" /> 
-                            <input type="button" id="reset" class="btn btn-primary py-3 px-4" value="취소"/>
+                            <input type="button" id="reset" class="btn btn-primary py-3 px-4" value="취소" onClick="history.back()"/>
 						</td>
 					</tr>
 				</table>

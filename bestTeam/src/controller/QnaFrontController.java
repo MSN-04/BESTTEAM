@@ -109,7 +109,7 @@ public class QnaFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/qnaModifyPro.qna")) {
 			// 수정글 저장하기 - qnaModifyProAction 클래스로 이동
-			System.out.println("/qnaModifyPro.qna 컨트롤러");
+		//	System.out.println("/qnaModifyPro.qna 컨트롤러");
 			action = new QnaModifyProAction();
 			try {
 				forward = action.execute(request, response);

@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cafe Tinkervell</title>
+
+    <title>Member ─ Cafe Tinkervell</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -47,8 +48,8 @@
           <div class="row slider-text justify-content-center align-items-center">
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">MY PAGE</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="#information">INFORMATION</a></span> <span><a href="./member/delete_member.jsp">DELETE ACCOUNT</a></span></p>
+            	<h1 class="mb-3 mt-5 bread">DELETE ACCOUNT</h1>
+<!-- 	            <p class="breadcrumbs"><span class="mr-2"><a href="#information">INFORMATION</a></span> <span><a href="./member/delete_member.jsp">DELETE ACCOUNT</a></span></p> -->
             </div>
 
           </div>

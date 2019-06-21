@@ -62,7 +62,7 @@ String id=(String)session.getAttribute("id");
 </style>
 <%
 	ItemBean itemBean = (ItemBean) request.getAttribute("itemBean");
-System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_img() );
+// System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_img() );
 %>
 
 </head>
@@ -135,7 +135,7 @@ System.out.println("리뷰수정페이지에서 이미지: "+itemBean.getItem_im
 							type="submit" class="btn btn-primary py-3 px-4"
 							style="color: black;" value="수정" /> <input type="reset"
 							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /></td>
+							id="reset" value="취소" onclick="history.back();"/></td>
 					</tr>
 				</table>
 			</form>

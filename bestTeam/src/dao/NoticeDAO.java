@@ -77,7 +77,7 @@ public class NoticeDAO {
 
 	// 글 목록 갯수 구하기
 	public int selectListCount() {
-		System.out.println("selectListCount()");
+	//	System.out.println("selectListCount()");
 		int listCount = 0;
 
 		// SELECT 구문 사용하여 게시물 수 카운트하여 listCount 에 저장
@@ -104,7 +104,7 @@ public class NoticeDAO {
 
 	// 글 목록 가져오기
 	public ArrayList<NoticeBean> selectArticleList(int page, int limit) {
-		System.out.println("selectArticleList()");
+	//	System.out.println("selectArticleList()");
 
 		ArrayList<NoticeBean> articleList = new ArrayList<NoticeBean>();
 		NoticeBean noticeBean = null;

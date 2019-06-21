@@ -21,7 +21,7 @@ public class ReviewReplyProAction implements Action {
 		ReviewBean reviewBean = new ReviewBean();
 		ActionForward forward = null;
 		HttpSession session = request.getSession();
-		System.out.println("ReviewReplyProAction");
+		//System.out.println("ReviewReplyProAction");
 		String writer = request.getParameter("review_reply_writer");
 		String id = (String)session.getAttribute("id");
 		int review_num = Integer.parseInt(request.getParameter("review_num"));

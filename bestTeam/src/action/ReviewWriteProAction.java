@@ -28,7 +28,7 @@ public class ReviewWriteProAction implements Action {
 		// 글 쓰기 작업에 대한 비즈니스 로직 처리를 위한 준비 작업 및 마무리 작업(실제 비즈니스 로직은 Service 클래스와 DAO 클래스에서 수행)
 		// Controller -> Action -> Service -> DAO -> Service -> Action -> Controller
 		
-		System.out.println("reviewWriteProAction()");
+	//	System.out.println("reviewWriteProAction()");
 		
 		ActionForward forward = null;
 		ReviewBean reviewBean = null;
@@ -45,7 +45,7 @@ public class ReviewWriteProAction implements Action {
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+    //        System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }

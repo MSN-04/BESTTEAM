@@ -243,25 +243,25 @@ public class ReviewDAO {
 	
 	
 	// 게시물 조회수 업데이트 => 기존 readcount 값을 1 증가시킨 후 결과값을 리턴
-		public int updateReadcount(int review_num) {
-			int updateCount = 0;
-			
-			// board_num 에 해당하는 레코드의 board_readcount 값을 1 증가시키기
-			String sql = "UPDATE REVIEW SET review_readcount=review_readcount+1 WHERE review_num=?";
-			
-			try {
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, review_num);
-				updateCount = pstmt.executeUpdate();
-//				System.out.println(updateCount);
-			} catch (SQLException e) {
-				System.out.println("selectArticle() 실패! : " + e.getMessage());
-			} finally {
-				close(pstmt);
-			}
-			
-			return updateCount;
-		}
+//		public int updateReadcount(int review_num) {
+//			int updateCount = 0;
+//			
+//			// board_num 에 해당하는 레코드의 board_readcount 값을 1 증가시키기
+//			String sql = "UPDATE REVIEW SET review_readcount=review_readcount+1 WHERE review_num=?";
+//			
+//			try {
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setInt(1, review_num);
+//				updateCount = pstmt.executeUpdate();
+////				System.out.println(updateCount);
+//			} catch (SQLException e) {
+//				System.out.println("selectArticle() 실패! : " + e.getMessage());
+//			} finally {
+//				close(pstmt);
+//			}
+//			
+//			return updateCount;
+//		}
 	
 	
 	

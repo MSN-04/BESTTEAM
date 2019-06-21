@@ -5,8 +5,7 @@
 <%
 	int review_num = Integer.parseInt(request.getParameter("review_num"));
 	ReviewDAO reviewDAO = ReviewDAO.getInstance();
-	int rea = reviewDAO.updateReadcount(review_num);
+// 	int rea = reviewDAO.updateReadcount(review_num);
 %> 
 
 
-<%=rea %>

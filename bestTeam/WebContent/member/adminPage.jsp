@@ -75,7 +75,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Cafe Tinkervell</title>
+
+<title>Admin Page ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -290,14 +291,22 @@ window.onload = function() {
 							<div class="nav ftco-animate nav-pills justify-content-center"
 								id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-bottom: 1rem;">
 
-								<a class="nav-link" id="v-pills-0-tab" href="adminPage.us" 
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-0-tab" href="adminPage.us" style="width: 24%; text-align: center; margin-right: 0.5rem;"
 								role="tab" aria-controls="v-pills-0" onmouseover="$('#v-degree-tab').hide()" 
 								onmouseout="if(!$('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" aria-selected="true">
 								전체 회원 정보</a> 
-								<a class="nav-link" id="v-pills-1-tab" href="adminPageShop.us" 
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="adminPageShop.us" style="width: 24%; text-align: center; margin-right: 0.5rem;"
 								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
 								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
 								전체 상품 정보</a>
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="blogWriteForm.bl" style="width: 24%; text-align: center; margin-right: 0.5rem;"
+								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
+								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
+								blog 글 작성</a>
+								<a class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3 cart" id="v-pills-1-tab" href="noticeWriteForm.no" style="width: 24%; text-align: center; margin-right: 0.5rem;"
+								onmouseover="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').css('display', '-webkit-box')" 
+								onmouseout="if($('#v-pills-0-tab').hasClass('active')) $('#v-degree-tab').hide()" aria-controls="v-pills-1" aria-selected="false">
+								notice 글 작성</a>
 							</div>
 
 						</div>

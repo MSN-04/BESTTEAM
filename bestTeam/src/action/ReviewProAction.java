@@ -19,7 +19,7 @@ public class ReviewProAction implements Action {
 */
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("ItemSingleAction 시작");
+	//	System.out.println("ItemSingleAction 시작");
 		
 		ActionForward forward = new ActionForward();
 		

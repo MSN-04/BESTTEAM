@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Action;
+import action.BestSellerAction;
 import vo.ActionForward;
 
 @WebServlet("*.in")
@@ -31,11 +33,17 @@ public class IndexFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		
+		Action action = null;
 		ActionForward forward = null;
 		
 		if(command.equals("/index.in")) {
-			forward = new ActionForward();
-			forward.setPath("./index/index.jsp");
+			//System.out.println("/index.in");
+            action = new BestSellerAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 		} 
 		
 		if(forward != null) {
