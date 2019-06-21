@@ -118,7 +118,7 @@
 	});
 </script>
 
-<title>adminPageItemList</title>
+<title>Admin Page ─ Cafe Tinkervell</title>
 <style type="text/css">
 	.trtd>td {
 		padding: 10px 0 !important;

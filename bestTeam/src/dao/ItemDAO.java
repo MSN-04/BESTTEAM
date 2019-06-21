@@ -88,11 +88,6 @@ public class ItemDAO {
 			sql = "select * from item inner join item_favor on item.item_num = item_favor.item_favor_item_num where item_favor."
 					+ taste + "=" + degree + " order by " + sqlFilter + " limit ?, ?";
 		}
-//		System.out.println("page :: " + page);
-//		System.out.println("limit :: " + limit);
-//		System.out.println("taste :: " + taste);
-//		System.out.println("filter :: " + filter);
-//		System.out.println("degree :: " + degree);
 		
 		try {
 			itemList = new ArrayList<>();

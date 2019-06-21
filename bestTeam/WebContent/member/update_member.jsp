@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
-<title>Café TinkerVell</title>
+<title>Member ─ Cafe Tinkervell</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
