@@ -152,7 +152,7 @@ text-transform:none !important;
 			마음과 마음이 이어지는 순간 TinkerVell은 행복을 전해주는 좋은 커피로 다가갑니다. <br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Café TinkerVell - </p>
 		</div>
-	</div><br><br>
+	</div>
 
 	<section class="ftco-about d-md-flex">
 		<div class="one-half0 img0">
@@ -209,7 +209,7 @@ text-transform:none !important;
 				<div>
 					<p>Café TinkerVell은 최고의 기후조건을 갖춘 각국의 재배지에서 재배된 원두를 가진 점포만을 선별하여<br>
 					Café TinkerVell만의 독자적인 배합비율로 블렌딩 과정을 거칩니다.<br>
-					[현재 판매점포: /Cafe1945 / ILDIO / Fior Di Caffee / Golden Bean / 모모스커피 ] 
+					
 					</p>
 				</div>
 			</div>

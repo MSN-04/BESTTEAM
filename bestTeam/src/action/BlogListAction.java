@@ -29,7 +29,7 @@ public class BlogListAction implements Action {
 		BlogListService blogListService = new BlogListService();
 
 		int listCount = blogListService.getListCount(); // 총 게시물 목록 수 가져오기
-		System.out.println("listCount :: " + listCount);
+		//System.out.println("listCount :: " + listCount);
 		
 		articleList = blogListService.getArticleList(page, limit); // 게시물 목록 가져오기(페이지 번호에 해당하는 목록을 limit 개수만큼 가져오기)
 		// 댓글 갯수 계산

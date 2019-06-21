@@ -71,7 +71,7 @@ public class ReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/reviewWriteForm.re")) {
-			System.out.println("리뷰롸이트폼 컨트롤러");
+		//	System.out.println("리뷰롸이트폼 컨트롤러");
 			action = new ReviewWriteFormAction();
 			try {
 				forward = action.execute(request, response);
@@ -124,7 +124,7 @@ public class ReviewFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if (command.equals("/reviewRead.re")) {
-			System.out.println("reviewRead controller");
+		//	System.out.println("reviewRead controller");
 			forward = new ActionForward();
 			forward.setPath("/shop/reviewRead.jsp");
 		}
@@ -148,7 +148,7 @@ public class ReviewFrontController extends HttpServlet {
 			}
 		}else if(command.equals("/ReviewReplyProAction.re")) {
 			// 글 목록 보기 작업 요청은 비즈니스 로직 처리를 위한 qnaListAction() 인스턴스 생성 필요
-			System.out.println("리뷰답글컨트롤러");
+		//	System.out.println("리뷰답글컨트롤러");
 			action = new ReviewReplyProAction();
 			
 			try {

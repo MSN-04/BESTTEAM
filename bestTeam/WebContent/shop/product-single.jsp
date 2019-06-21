@@ -886,7 +886,9 @@ $( '#rere1' ).click(
 								<tr>
 								<td id="collapse1<%=a %>" class="panel-collapse collapse in" colspan="4">
 											<% if(id!=null){
-											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){ %>
+											if(id.equals("admin")||id.equals(qnaList.get(a).getQna_writer())){
+												System.out.println(qnaList.get(a).getQna_writer());%>
+											
 											<div class="panel-body">
 												<b><%=qnaList.get(a).getQna_content() %></b>
 												<section class="ftco=section" id="ac1">
@@ -911,7 +913,8 @@ $( '#rere1' ).click(
 																			name="qna_num" id="qna_reply_subject" required="required">
 																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_item_num() %>"
 																			name="qna_item_num" id="qna_reply_subject" required="required">
-																
+																			<input type="hidden" class="form-control"value="<%=qnaList.get(a).getQna_writer() %>"
+																			name="qna_writer" id="qna_writer" required="required">
 															<div class="col-lg-12 text-center">
 																<h2 class="section-heading text-uppercase">QNA 답글</h2>
 															</div>
@@ -922,9 +925,10 @@ $( '#rere1' ).click(
 																	<div class="form-group">
 																		<input type="text" class="form-control" value="<%=id %>"
 																			name="qna_reply_writer" id="qna_reply_writer" readonly="readonly">
+																			<
 																	</div>
 																	<!-- 						</div> -->
-											
+																	</div>
 																</tr>
 															</table>
 															<table style="width: 100%; text-align: center;">

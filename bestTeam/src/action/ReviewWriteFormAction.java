@@ -54,7 +54,7 @@ public class ReviewWriteFormAction implements Action {
 			request.setAttribute("itemBean", itemBean);
 			forward = new ActionForward();
 			forward.setPath("/shop/reviewWriteForm.jsp?item_num="+item_num);
-			System.out.println("리뷰롸이트액션끝");
+		//	System.out.println("리뷰롸이트액션끝");
 		}
 		
 		return forward;

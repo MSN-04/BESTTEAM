@@ -12,7 +12,11 @@
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
+<<<<<<< HEAD
+	
+=======
 	String id = (String)session.getAttribute("id");
+>>>>>>> branch 'master' of https://github.com/MSN-04/BESTTEAM.git
 // 	System.out.println("listCount : " + listCount);
 // 	System.out.println("nowPage : " + nowPage);
 // 	System.out.println("maxPage : " + maxPage);

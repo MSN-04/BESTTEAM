@@ -21,7 +21,7 @@ public class BlogModifyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("BoardModifyProAction");
+	//	System.out.println("BoardModifyProAction");
 		
 		// ActionForward 객체 생성
 		ActionForward forward = new ActionForward();
@@ -39,12 +39,12 @@ public class BlogModifyProAction implements Action {
 		
 		ServletContext context = request.getServletContext(); // 현재 서블릿 컨텍스트 객체 얻어오기
 		realFolder = context.getRealPath(saveFolder); // 가상의 경로에 해당하는 실제 경로 얻어오기
-		System.out.println("realFolder : "+realFolder);
+		//System.out.println("realFolder : "+realFolder);
 		Path newDirectory = Paths.get(realFolder);
         
         try {
             Path createDirResult = Files.createDirectories(newDirectory);
-            System.out.println("디렉토리 생성 결과 : " + createDirResult);
+         //   System.out.println("디렉토리 생성 결과 : " + createDirResult);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class BlogModifyProAction implements Action {
 				out.println("history.back()"); // 이전 페이지로 돌아가기
 				out.println("</script>"); // 자바스크립트 종료 태그
 			} else {
-				System.out.println("글 수정 성공!");
+			//	System.out.println("글 수정 성공!");
 				// 글 수정 성공 시
 				forward=new ActionForward();
 				// boardDetail.bo 서블릿 주소로 포워딩 => 주소 뒤에 파라미터로 글번호(board_num) 전달 => Redirect 방식

@@ -316,7 +316,7 @@ public class BlogDAO {
 	}
 	
 	public ArrayList<BlogBean> selectArticleList(int page, int limit, String option, String keyword) {
-		System.out.println("selectArticleList");
+	//	System.out.println("selectArticleList");
 		ArrayList<BlogBean> articleList = new ArrayList<BlogBean>();
 		BlogBean blogBean=null;
 		
@@ -325,33 +325,33 @@ public class BlogDAO {
 		try {
 			String[] searches = keyword.split("\\s");
 			String sql = "select * from blog where "+option+" like '%"+searches[0]+"%'";
-			System.out.println("length 값 : " +searches.length);
-			System.out.println("화이팅");
+			//System.out.println("length 값 : " +searches.length);
+			//System.out.println("화이팅");
 			int j=1;
 			while(j<searches.length) {
 				sql+=" and "+ option +" like ? ";
 				j++;
-				System.out.println("j값 : "+j);
+				//System.out.println("j값 : "+j);
 			}
 			sql+=" order by blog_date desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
-			System.out.println("나이따");
+			//System.out.println("나이따");
 			int i=1;
 			for(;i<=searches.length;i++) {
 				pstmt.setString(i, "%"+searches[i-1]+"%");
-				System.out.println("searches값 : " + searches[i-1]);
-				System.out.println("i값 : " + i);
+				//System.out.println("searches값 : " + searches[i-1]);
+				//System.out.println("i값 : " + i);
 			}
 			pstmt.setInt(i-1, startRow);
 			pstmt.setInt(i, limit);
 			
-			System.out.println("pstmt sql : "+pstmt);
-			System.out.println("startRow : " + startRow);
-			System.out.println("limit : "+limit);
-			System.out.println("for문 바깥 i값 : "+i);
+		//	System.out.println("pstmt sql : "+pstmt);
+		//	System.out.println("startRow : " + startRow);
+		//	System.out.println("limit : "+limit);
+			//System.out.println("for문 바깥 i값 : "+i);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println("sql문 성공");
+				//System.out.println("sql문 성공");
 				blogBean= new BlogBean();
 				
 				blogBean.setBlog_num(rs.getInt("blog_num"));
@@ -367,7 +367,7 @@ public class BlogDAO {
 				
 				
 				articleList.add(blogBean);
-				System.out.println(blogBean.getBlog_subject());
+				//System.out.println(blogBean.getBlog_subject());
 				
 			}
 			
@@ -385,15 +385,15 @@ public class BlogDAO {
 		try {			
 			String[] searches = keyword.split("\\s");
 			String sql = "select count(*) from blog where "+option+" like '%"+searches[0]+"%'";
-			System.out.println("첫단어 : "+searches[0]);
-			System.out.println("sql : "+sql);
-			System.out.println("length 값 : " +searches.length);
+			//System.out.println("첫단어 : "+searches[0]);
+			//System.out.println("sql : "+sql);
+			//System.out.println("length 값 : " +searches.length);
 			int j=1;
 			while(j<searches.length) {
-				System.out.println("option : "+option);
+			//	System.out.println("option : "+option);
 				sql+=" and "+ option +" like ? ";
 				j++;
-				System.out.println("j값 : "+j);
+			//	System.out.println("j값 : "+j);
 			}
 			pstmt = con.prepareStatement(sql);
 //			int i=2;
@@ -406,18 +406,18 @@ public class BlogDAO {
 			int i=2;
 			for(;i<=searches.length;i++) {
 				pstmt.setString(i-1, "%"+searches[i-1]+"%");
-				System.out.println("searches값 : " + searches[i-1]);
-				System.out.println("i값 : " + i);
+			//	System.out.println("searches값 : " + searches[i-1]);
+			//	System.out.println("i값 : " + i);
 			}
 			
-			System.out.println("select list count sql : "+pstmt);
+			//System.out.println("select list count sql : "+pstmt);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println("selectListCount():");
+				//System.out.println("selectListCount():");
 				listCount = rs.getInt("count(*)");
 			}
 		} catch (SQLException e) {
-			System.out.println("여기");
+		//	System.out.println("여기");
 			System.out.println("selectListCount() 실패"+e.getMessage());
 		}finally {
 			close(rs);

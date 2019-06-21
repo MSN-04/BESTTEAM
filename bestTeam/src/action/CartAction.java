@@ -16,7 +16,7 @@ public class CartAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ActionForward forward = null;
-		System.out.println("CartAction");
+	//	System.out.println("CartAction");
 		ArrayList<CartBean> cartList = new ArrayList<>();
 		
 		HttpSession session = request.getSession();
