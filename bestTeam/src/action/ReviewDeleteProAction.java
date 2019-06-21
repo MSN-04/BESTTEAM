@@ -19,12 +19,13 @@ public class ReviewDeleteProAction implements Action {
 		// 게시물 번호 파라미터 가져오기
 		int review_re_ref = Integer.parseInt(request.getParameter("review_re_ref"));
 		int review_item_num = Integer.parseInt(request.getParameter("review_item_num"));
+		int review_re_lev =Integer.parseInt(request.getParameter("review_re_lev"));
 		ReviewDeleteProService reviewDeleteProService = new ReviewDeleteProService();
 		
 		
 		// 본인 확인 결과 판별
 		
-			boolean isDeleteSuccess = reviewDeleteProService.removeArticle(review_re_ref);
+			boolean isDeleteSuccess = reviewDeleteProService.removeArticle(review_re_ref,review_re_lev);
 			
 			if(!isDeleteSuccess){
 				response.setContentType("text/html;charset=UTF-8");

@@ -19,8 +19,9 @@ public class QnaDeleteProAction implements Action {
 //		int qna_num = Integer.parseInt(request.getParameter("qna_num"));
 		int qna_item_num = Integer.parseInt(request.getParameter("qna_item_num"));
 		int qna_re_ref = Integer.parseInt(request.getParameter("qna_re_ref"));
+		int qna_re_lev =Integer.parseInt(request.getParameter("qna_re_lev"));
 		QnaDeleteProService qnaDeleteProService = new QnaDeleteProService();
-		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_re_ref);
+		boolean isDeleteSuccess = qnaDeleteProService.removeArticle(qna_re_ref,qna_re_lev);
 		
 		if(!isDeleteSuccess) {
 			response.setContentType("text/html;charset=UTF-8");
