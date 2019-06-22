@@ -74,6 +74,7 @@ public class QnaModifyProAction implements Action {
 			// => qnaList.bo 페이지로 이동하면서 주소가 변경되므로(새로운 요청이 발생하므로) Redirect 방식으로 포워딩
 			forward = new ActionForward();
 			forward.setPath("itemSingle.em?item_num="+qna_item_num);
+			forward.setRedirect(true);
 		}
 		
 		return forward;

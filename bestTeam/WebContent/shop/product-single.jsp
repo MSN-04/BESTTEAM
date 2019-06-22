@@ -768,9 +768,11 @@ $( '#rere1' ).click(
 					</tr>
 					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
-							class="btn btn-primary py-3 px-4" style="color: black;"
-							id="reset" value="취소" /> <input type="submit"
+						<td colspan="2">
+<!-- 						<input type="button" -->
+<!-- 							class="btn btn-primary py-3 px-4" style="color: black;" -->
+<!-- 							id="reset" value="취소" />  -->
+							<input type="submit"
 							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
 							value="등록" /></td>
 					</tr>
@@ -940,9 +942,11 @@ $( '#rere1' ).click(
 																</tr>
 																<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
 																<tr style="display: inline-block;">
-																	<td colspan="2"><input type="button"
-																		class="btn btn-primary py-3 px-4" style="color: black;"
-																		id="reset" value="취소" /> <input type="submit"
+																	<td colspan="2">
+<!-- 																	<input type="reset" -->
+<!-- 																		class="btn btn-primary py-3 px-4" style="color: black;" -->
+<!-- 																		id="reset" value="취소" />  -->
+																		<input type="submit"
 																		class="btn btn-primary py-3 px-4" style="color: black;" id="save"
 																		value="등록" /></td>
 																</tr>

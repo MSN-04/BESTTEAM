@@ -196,7 +196,7 @@ System.out.println("qna_modify.jsp에서 : "+qnaContent);
 					</tr>
 					<!-- 					제목과 내용은 필수입력으로 메세지 띄우기 -->
 					<tr style="display: inline-block;">
-						<td colspan="2"><input type="button"
+						<td colspan="2"><input type="reset"
 							class="btn btn-primary py-3 px-4" style="color: black;"
 							id="reset" value="취소" /> <input type="submit"
 							class="btn btn-primary py-3 px-4" style="color: black;" id="save"
