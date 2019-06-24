@@ -38,13 +38,10 @@ public class ItemDeleteProAction implements Action {
 			out.println("alert('삭제할 권한이 없습니다.')"); 
 			out.println("history.back()"); // 
 			out.println("</script>"); 		
-		}else if(request.getParameter("user_id").equals("admin")&&request.getParameter("user_pass").equals("1234")) { //글 작성자 본인(관리자)일 경우
+		}else { //글 작성자 본인(관리자)일 경우
 			boolean isDeleteSuccess=itemdeleteproservice.deleteItem(item_num,item_favor_num);
-
-//			System.out.println("ItemDeleteProAction --b");
 			//---글 삭제 성공여부
 			if(!isDeleteSuccess) {
-//				System.out.println("ItemDeleteProAction --c");
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>"); 
@@ -52,15 +49,6 @@ public class ItemDeleteProAction implements Action {
 				out.println("history.back()"); 
 				out.println("</script>"); 
 			} else {
-//				System.out.println("ItemDeleteProAction --d");
-//				System.out.println("삭제 성공--");
-				
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>"); 
-				out.println("alert('삭제 되었습니다.')"); 
-				out.println("location.href='./shopMain.em'"); 
-				out.println("</script>"); 
 				forward = new ActionForward();
 				forward.setPath("./shopMain.em");
 				forward.setRedirect(true); // Redirect 방식

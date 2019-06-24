@@ -167,7 +167,7 @@
      }
     }
     setTimeout("sendId();", 500);
-   }
+ }
  
  // id 중복확인 결과
  function displayResult() {
@@ -245,7 +245,6 @@ function displayResultMail() {
   if (httpRequest.status == 200) {
    var resultText = httpRequest.responseText;
    var listView = document.getElementById('checkMail');
-//    alert(resultText);
 	   if(resultText==0){
 	    listView.innerHTML = "사용 할 수 있는 MAIL 입니다";
 	    listView.style.color = "#c39a63";
@@ -254,6 +253,47 @@ function displayResultMail() {
 	    listView.style.color = "#ff4d4d";
 	   }
 	  } else {
+   alert("에러 발생: "+httpRequest.status);
+  }
+ }
+}
+
+function checkPhone() {
+ frm.phone.value=frm.phone.value.replace(/[^0-9]/g,'');
+ if (frm.phone.value.length < 11) {
+	 document.getElementById('checkPhone').innerHTML = "";
+	 checkPhone();
+	 return;
+ }
+ sendPhone();
+}
+
+function sendPhone() {
+ var keyword = frm.phone.value;
+ if (keyword == '') {
+  lastKeyword = '';
+  document.getElementById('checkPhone').style.color = "#ff4d4d";
+  document.getElementById('checkPhone').innerHTML = "번호를 입력하세요";
+ } else {	     
+   var params = "phone="+keyword;
+   sendRequest("phone_check.us", params, displayResultPhone, 'POST');
+   setTimeout("checkPhone();", 500);
+ }
+}
+
+function displayResultPhone() {
+ if (httpRequest.readyState == 4) {
+  if (httpRequest.status == 200) {
+   var resultText = httpRequest.responseText;
+   var listView = document.getElementById('checkPhone');
+   if(resultText==0){
+    listView.innerHTML = "사용 할 수 있는 번호입니다";
+    listView.style.color = "#c39a63";
+   }else{
+    listView.innerHTML = "이미 등록된 번호입니다";
+    listView.style.color = "#ff4d4d";
+   }
+  } else {
    alert("에러 발생: "+httpRequest.status);
   }
  }
@@ -384,13 +424,12 @@ function check(reg, what) {
               <div class="w-100"></div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="phone">연락처</label> <input type="text"
+                  <label for="phone">연락처</label> <input type="text" onkeyup="checkPhone();"
+                    class="form-control" placeholder="숫자만 입력하세요" name="phone" id="phone" required="required" maxlength="11" >
 
-                    class="form-control" placeholder="숫자만 입력하세요" name="phone" id="phone" required="required" maxlength="11" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
-
-                    <div id="checkPhone" style="padding-left: 15px; font-size: 14px;">&nbsp;</div>
                 </div>
               </div>
+              <div id="checkPhone" style="margin-bottom: 1.8rem;"></div>
               <div class="w-100"></div>
               <div class="w-100"></div>
               <div class="col-md-6">

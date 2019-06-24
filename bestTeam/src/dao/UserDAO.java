@@ -341,6 +341,30 @@ public class UserDAO {
 		
 		return re;
 	}
+	
+	// 회원가입 아이디 체크
+	public int checkPhone(String phone) {
+		con = getConnection();
+		int re = 0;
+		String sql = "select * from user where user_phone=?";
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				re = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+			close(con);
+		}
+		
+		return re;
+	}
 
 	public int allUserCount() {
 

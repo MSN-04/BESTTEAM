@@ -67,6 +67,9 @@ public class UserFrontController extends HttpServlet {
 		} else if (command.equals("/mail_check.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/mail_check.jsp");
+		} else if (command.equals("/phone_check.us")) {
+			forward = new ActionForward();
+			forward.setPath("/member/phone_check.jsp");
 		} else if (command.equals("/ForgotAccount.us")) {
 			forward = new ActionForward();
 			forward.setPath("/member/forgotAccount.jsp");
