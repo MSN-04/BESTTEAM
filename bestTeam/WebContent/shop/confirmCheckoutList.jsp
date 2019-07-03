@@ -106,7 +106,7 @@
 
 
 		<form class="billing-form ftco-bg-dark p-3 p-md-5" style="overflow: auto;">
-			<h3 class="mb-4 billing-heading">주문상품 목록</h3>
+			<h3 class="mb-4 billing-heading">주문 내역</h3>
 <!-- 			<div class="row align-items-end" > -->
 			
 			  			  <div class="cart-list">
